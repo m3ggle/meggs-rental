@@ -1,7 +1,46 @@
+// dropdown specifically for appearance (light or dark Mode)
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 
-const Dropdown = () => {
+const DropdownMode = () => {
+  useEffect(() => {
+    setPreference();
+  }, []);
+
+  // on change
+  const setPreference = () => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  const handleChange = (mode) => {
+    // Todo: make it a dropdown
+    //    options: lightMode, darkMode, system
+    //    for lightMode do: localStorage.theme = 'light'
+    //    for darkMode do: localStorage.theme = 'dark'
+    //    for system do: localStorage.removeItem('theme')
+    if (mode === "light") {
+      localStorage.setItem("theme", "light");
+    } else if (mode === "dark") {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.removeItem("theme");
+    }
+    setPreference();
+  };
+
+  // when closing window, clear localStorage
+  window.onbeforeunload = function () {
+    localStorage.clear();
+  };
+
   return (
     <Menu as="div" className=" relative flex h-fit w-[340px] flex-col gap-2">
       {/* button */}
@@ -27,8 +66,11 @@ const Dropdown = () => {
           <Menu.Item>
             {({ active }) => (
               <button
+                onClick={() => handleChange("light")}
                 className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 ${
-                  active ? "bg-lmGrey100 dark:bg-dmGrey700" : "bg-white dark:bg-dmGrey800"
+                  active
+                    ? "bg-lmGrey100 dark:bg-dmGrey700"
+                    : "bg-white dark:bg-dmGrey800"
                 }`}
               >
                 <i
@@ -44,8 +86,11 @@ const Dropdown = () => {
           <Menu.Item>
             {({ active }) => (
               <button
+                onClick={() => handleChange("dark")}
                 className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 ${
-                  active ? "bg-lmGrey100 dark:bg-dmGrey700" : "bg-white dark:bg-dmGrey800"
+                  active
+                    ? "bg-lmGrey100 dark:bg-dmGrey700"
+                    : "bg-white dark:bg-dmGrey800"
                 }`}
               >
                 <i
@@ -61,6 +106,7 @@ const Dropdown = () => {
           <Menu.Item>
             {({ active }) => (
               <button
+                onClick={() => handleChange("system")}
                 className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 ${
                   active
                     ? "bg-lmGrey100 dark:bg-dmGrey700"
@@ -83,4 +129,4 @@ const Dropdown = () => {
   );
 };
 
-export default Dropdown;
+export default DropdownMode;

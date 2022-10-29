@@ -41,6 +41,10 @@ module.exports = {
         red600: "#dc2626",
         yellow600: "#fde047",
       },
+
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],

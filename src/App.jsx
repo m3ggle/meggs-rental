@@ -2,9 +2,8 @@ import Select from "./components/Select";
 import Dropdown from "./components/Dropdown";
 import DropdownMode from "./components/DropdownMode"
 import TextInput from "./components/TextInput"
-import TestInput from "./TestInput";
 // import Spline from "@splinetool/react-spline";
-
+import Test from "./Test"
 
 const transmissionSelect = {
   icon: "fa-solid fa-gears",
@@ -17,18 +16,27 @@ const seatSelect = {
   list: [2, 3, 4, 5, 6, 7],
 };
 
+const handleCallback = (call) => {
+  console.log(call)
+}
+
 export default function App() {
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center bg-white dark:bg-dmGrey900">
-      <Select
+      {/* <Select
         icon={transmissionSelect.icon}
         placeholder={transmissionSelect.placeholder}
         itemList={transmissionSelect.list}
       />
       <Dropdown />
       <DropdownMode />
-      <TextInput />
-      <TestInput />
+      <TextInput
+        firstIcon="fa-solid fa-magnifying-glass"
+        required={true}
+        callback={handleCallback}
+      /> */}
+
+      <Test />
     </div>
   );
 }

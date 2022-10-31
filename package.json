@@ -5,6 +5,8 @@
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.3",
     "@headlessui/react": "^1.7.3",
+    "@splinetool/react-spline": "^2.2.3",
+    "@splinetool/runtime": "^0.9.133",
     "@tanstack/react-query": "^4.13.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

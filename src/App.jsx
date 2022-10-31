@@ -1,5 +1,10 @@
 import Select from "./components/Select";
 import Dropdown from "./components/Dropdown";
+import DropdownMode from "./components/DropdownMode"
+import TextInput from "./components/TextInput"
+import TestInput from "./TestInput";
+// import Spline from "@splinetool/react-spline";
+
 
 const transmissionSelect = {
   icon: "fa-solid fa-gears",
@@ -21,6 +26,11 @@ export default function App() {
         itemList={transmissionSelect.list}
       />
       <Dropdown />
+      <DropdownMode />
+      <TextInput />
+      <TestInput />
     </div>
   );
 }
+
+{/* <Spline scene="https://prod.spline.design/og6CZMxsQfdlo-uE/scene.splinecode" /> */}

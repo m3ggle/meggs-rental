@@ -1,6 +1,7 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
+import {motion } from "framer-motion"
 
 const Select = ({ icon, placeholder, itemList }) => {
   const [selected, setSelected] = useState(placeholder);
@@ -41,7 +42,13 @@ const Select = ({ icon, placeholder, itemList }) => {
                   : "text-lmGrey600 dark:text-lmGrey100"
               }`}
             >
-              <HiChevronUpDown className="text-xl" />
+              <motion.div
+                animate={open ? { y: [0, 4, 0] } : { y: [0, -4, 0] }}
+                initial={false}
+                transition={{ ease: "easeOut", duration: 0.5 }}
+              >
+                <HiChevronUpDown className="text-xl" />
+              </motion.div>
             </i>
           </Listbox.Button>
 

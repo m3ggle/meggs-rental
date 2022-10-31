@@ -1,6 +1,7 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import Select from "./components/Select";
+import TextArea from "./components/TextArea";
 import TextInput from "./components/TextInput";
 
 const transmissionSelect = {
@@ -14,24 +15,10 @@ const Test = () => {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-2">
-      <Controller
-        name="firstName"
-        control={control}
-        render={({ field, fieldState }) => (
-          <TextInput
-            firstIcon="fa-solid fa-magnifying-glass"
-            onChange={field.onChange}
-            state={fieldState.isTouched}
-            label={"What is your first name?"}
-            value={field.value}
-            name={field.name}
-            onBlur={field.onBlur}
-            invalid={fieldState.error}
-          />
-        )}
-        rules={{ required: true }}
-      />
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex w-96 flex-col gap-y-3"
+    >
       <Controller
         name="lastName"
         control={control}
@@ -39,28 +26,58 @@ const Test = () => {
           <TextInput
             firstIcon="fa-solid fa-magnifying-glass"
             onChange={field.onChange}
-            state={fieldState.isTouched}
-            label={"What is your last name?"}
+            label="What is your last name?"
+            placeholder="Bande"
             value={field.value}
             onBlur={field.onBlur}
-            invalid={fieldState.error}
+            error={fieldState.error}
           />
         )}
-        rules={{ required: true }}
+        rules={{
+          required: "Last name is required",
+          minLength: { value: 3, message: "At least 3 Characters" },
+          pattern: {
+            value: /^[A-Za-z]+$/i,
+            message: "Only letters are allowed",
+          },
+        }}
       />
       <Controller
         name="gender"
         control={control}
-        render={({ field }) => (
+        rules={{ required: "Select an option" }}
+        render={({ field, fieldState }) => (
           <Select
             icon={transmissionSelect.icon}
             placeholder={transmissionSelect.placeholder}
             itemList={transmissionSelect.list}
             onChange={field.onChange}
+            label="What is your gender?"
+            error={fieldState.error}
           />
         )}
       />
-      <input type="submit" />
+      <Controller
+        name="bio"
+        control={control}
+        render={({ field, fieldState }) => (
+          <TextArea
+            onChange={field.onChange}
+            label="A place for a short bio."
+            placeholder="I rather use my bike than driving in my car, so hit me up if you want to borrow it :D"
+            value={field.value}
+            name={field.name}
+            onBlur={field.onBlur}
+            error={fieldState.error}
+          />
+        )}
+      />
+      <button
+        type="submit"
+        className="max-w-[340px] rounded-lg bg-lmPrimary dark:bg-dmPrimary text-lmGrey25 px-3 py-[10px] text-sm font-semibold"
+      >
+        Click to Submit
+      </button>
     </form>
   );
 };

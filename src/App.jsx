@@ -28,9 +28,11 @@ export default function App() {
         placeholder={transmissionSelect.placeholder}
         itemList={transmissionSelect.list}
       />
-      <Dropdown />
+      <Dropdown /> */}
+      <div className="hidden">
       <DropdownMode />
-      <TextInput
+      </div>
+      {/* <TextInput
         firstIcon="fa-solid fa-magnifying-glass"
         required={true}
         callback={handleCallback}

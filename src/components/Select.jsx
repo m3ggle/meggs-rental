@@ -1,11 +1,17 @@
 import { Listbox, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
 import {motion } from "framer-motion"
 import React from "react";
 
-const Select = ({ icon, placeholder, itemList}) => {
+const Select = ({ icon, placeholder, itemList, onChange }) => {
   const [selected, setSelected] = useState(placeholder);
+
+  
+
+  useEffect(() => {
+    onChange(selected);
+  }, [selected]);
 
   return (
     <Listbox

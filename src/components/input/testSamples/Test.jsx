@@ -1,8 +1,9 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import Select from "./components/Select";
-import TextArea from "./components/TextArea";
-import TextInput from "./components/TextInput";
+import Autocomplete from "../Autocomplete";
+import Select from "../Select";
+import TextArea from "../TextArea";
+import TextInput from "../TextInput";
 
 const transmissionSelect = {
   icon: "fa-solid fa-person",
@@ -57,6 +58,9 @@ const Test = () => {
           />
         )}
       />
+
+        <Autocomplete />
+      
       <Controller
         name="bio"
         control={control}
@@ -74,7 +78,7 @@ const Test = () => {
       />
       <button
         type="submit"
-        className="max-w-[340px] rounded-lg bg-lmPrimary dark:bg-dmPrimary text-lmGrey25 px-3 py-[10px] text-sm font-semibold"
+        className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 dark:bg-dmPrimary"
       >
         Click to Submit
       </button>

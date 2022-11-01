@@ -1,3 +1,4 @@
+// Listbox (Select)
 import { Listbox, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 import React, { Fragment, useEffect, useState } from "react";
@@ -71,7 +72,7 @@ const Select = ({ icon, placeholder, itemList, onChange, label, error }) => {
                   initial={false}
                   transition={{ ease: "easeOut", duration: 0.5 }}
                 >
-                  {!error && <HiChevronUpDown className="text-xl" />}
+                  {!error && <HiChevronUpDown aria-hidden="true" className="text-xl" />}
                 </motion.div>
               </i>
             </Listbox.Button>

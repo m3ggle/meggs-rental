@@ -1,9 +1,9 @@
-import Select from "./components/Select";
+import Select from "./components/input/Select";
 import Dropdown from "./components/Dropdown";
 import DropdownMode from "./components/DropdownMode"
-import TextInput from "./components/TextInput"
+import TextInput from "./components/input/TextInput"
 // import Spline from "@splinetool/react-spline";
-import Test from "./Test"
+import Test from "./components/input/testSamples/Test"
 
 const transmissionSelect = {
   icon: "fa-solid fa-gears",

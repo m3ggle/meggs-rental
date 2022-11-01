@@ -1,5 +1,7 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import ProgressBar from "../../ProgressBar";
+import FileUpload from "../../FileUpload";
 import Autocomplete from "../Autocomplete";
 import Select from "../Select";
 import TextArea from "../TextArea";
@@ -30,8 +32,9 @@ const Test = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex w-96 flex-col gap-y-3"
+      className="flex w-[340px] flex-col gap-y-3"
     >
+      <ProgressBar amount={5} finished={2} />
       <Controller
         name="lastName"
         control={control}
@@ -101,6 +104,9 @@ const Test = () => {
           />
         )}
       />
+
+      <FileUpload />
+
       <button
         type="submit"
         className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 dark:bg-dmPrimary shadow-md shadow-dmPrimary/40"

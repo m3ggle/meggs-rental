@@ -16,7 +16,7 @@ const TextArea = ({
     >
       <label
         htmlFor={name}
-        className="text-sm text-lmGrey800 dark:text-dmGrey25"
+        className="text-sm text-lmGrey500 dark:text-dmGrey25"
       >
         {label}
       </label>

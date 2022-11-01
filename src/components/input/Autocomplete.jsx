@@ -32,7 +32,7 @@ const Autocomplete = ({ label, onChange, error, placeholder, itemList }) => {
       {({ open }) => (
         <div className="flex w-full flex-col gap-y-2">
           <Combobox.Label
-            className={`w-fit text-sm text-lmGrey800 dark:text-dmGrey25`}
+            className={`w-fit text-sm text-lmGrey500 dark:text-dmGrey25`}
           >
             {label}
           </Combobox.Label>
@@ -95,9 +95,12 @@ const Autocomplete = ({ label, onChange, error, placeholder, itemList }) => {
           </div>
           <Transition
             as={Fragment}
-            leave="transition ease-in duration-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
             afterLeave={() => setQuery("")}
           >
             <Combobox.Options className="absolute left-0 z-30 mt-20 flex w-full flex-col gap-y-1 rounded-lg bg-lmGrey50 py-2 px-2 shadow-sm dark:bg-dmGrey800">

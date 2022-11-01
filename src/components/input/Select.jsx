@@ -22,7 +22,7 @@ const Select = ({ icon, placeholder, itemList, onChange, label, error }) => {
         <div className="flex flex-col gap-y-2">
           {/* label */}
           <Listbox.Label
-            className={`text-sm text-lmGrey800 dark:text-dmGrey25`}
+            className={`text-sm text-lmGrey500 dark:text-dmGrey25`}
           >
             {label}
           </Listbox.Label>

@@ -11,6 +11,18 @@ const transmissionSelect = {
   list: ["Male", "feMale", "Divers"],
 };
 
+const people = {
+  placeholder: "silly placeholder",
+  list: [
+    "Wade Cooper",
+    "Arlene Mccoy",
+    "Devon Webb",
+    "Tom Cook",
+    "Tanya Fox",
+    "Hellen Schmidt",
+  ],
+};
+
 const Test = () => {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
@@ -59,8 +71,21 @@ const Test = () => {
         )}
       />
 
-        <Autocomplete />
-      
+      <Controller
+        name="nickname"
+        control={control}
+        rules={{ required: "Select an option" }}
+        render={({ field, fieldState }) => (
+          <Autocomplete
+            placeholder="Silly placeholder"
+            itemList={people.list}
+            onChange={field.onChange}
+            label="What is your nickname?"
+            error={fieldState.error}
+          />
+        )}
+      />
+
       <Controller
         name="bio"
         control={control}
@@ -78,7 +103,7 @@ const Test = () => {
       />
       <button
         type="submit"
-        className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 dark:bg-dmPrimary"
+        className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 dark:bg-dmPrimary shadow-md shadow-dmPrimary/40"
       >
         Click to Submit
       </button>

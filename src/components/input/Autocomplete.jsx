@@ -1,51 +1,97 @@
 // Combobox (Autocomplete)
 import { Combobox, Transition } from "@headlessui/react";
-import React, { Fragment, useState } from "react";
+import { motion } from "framer-motion";
+import React, { Fragment, useEffect, useState } from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
 
-const people = [
-  { id: 1, name: "Wade Cooper" },
-  { id: 2, name: "Arlene Mccoy" },
-  { id: 3, name: "Devon Webb" },
-  { id: 4, name: "Tom Cook" },
-  { id: 5, name: "Tanya Fox" },
-  { id: 6, name: "Hellen Schmidt" },
-];
-
-const Autocomplete = () => {
-  const [selected, setSelected] = useState(people[0]);
+const Autocomplete = ({ label, onChange, error, placeholder, itemList }) => {
+  const [selected, setSelected] = useState(placeholder);
   const [query, setQuery] = useState("");
 
-  const filteredPeople =
+  const filteredItems =
     query === ""
-      ? people
-      : people.filter((person) =>
-          person.name
+      ? itemList
+      : itemList.filter((item) =>
+          item
             .toLowerCase()
             .replace(/\s+/g, "")
             .includes(query.toLowerCase().replace(/\s+/g, ""))
-        );
+      );
+
+  useEffect(() => {
+    itemList.includes(selected) && onChange(selected);
+  }, [selected, onChange, itemList]);
 
   return (
-      <Combobox
-        value={selected}
-        onChange={setSelected}
-        className="relative flex w-full max-w-[340px] flex-col"
-      >
-        <div className="relative mt-1">
-          <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
-            <Combobox.Input
-              className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
-              displayValue={(person) => person.name}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-            <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
-              {/* <ChevronUpDownIcon
-                className="h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              /> */}
-              <HiChevronUpDown aria-hidden="true" className="text-xl" />
-            </Combobox.Button>
+    <Combobox
+      value={selected}
+      onChange={setSelected}
+      as="div"
+      className="relative flex w-full max-w-[340px] flex-col"
+    >
+      {({ open }) => (
+        <div className="flex w-full flex-col gap-y-2">
+          <Combobox.Label
+            className={`w-fit text-sm text-lmGrey800 dark:text-dmGrey25`}
+          >
+            {label}
+          </Combobox.Label>
+
+          {/* input button errorMsg */}
+          <div className="flex w-full flex-col gap-y-1">
+            {/* input button */}
+            <div
+              className={`flex w-full items-center gap-2 rounded-lg ${
+                error
+                  ? "bg-red-100 dark:bg-red-900"
+                  : "bg-lmGrey50 dark:bg-dmGrey800"
+              } px-3 py-[10px] shadow-sm`}
+            >
+              <Combobox.Input
+                className={`w-full bg-transparent text-sm ${
+                  error
+                    ? "text-red-500 placeholder:text-red-300 dark:text-red-100"
+                    : selected === placeholder
+                    ? "text-lmGrey300 dark:text-lmGrey300"
+                    : "text-lmGrey600 placeholder:text-dmGrey300 dark:text-dmGrey25 placeholder:dark:text-dmGrey300"
+                }  focus:outline-none`}
+                displayValue={selected}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+              <Combobox.Button>
+                <i
+                  className={`${
+                    open ? "translate-y-1" : "translate-y-0"
+                  } flex items-center justify-center text-xl duration-500 ease-in-out ${
+                    error
+                      ? "fa-solid fa-triangle-exclamation h-[14px] w-fit text-[14px] text-red-300 dark:text-red-100"
+                      : selected === placeholder
+                      ? "text-lmGrey300 dark:text-lmGrey300"
+                      : "text-lmGrey600 dark:text-lmGrey100"
+                  }`}
+                >
+                  <motion.div
+                    animate={open ? { y: [0, 4, 0] } : { y: [0, -4, 0] }}
+                    initial={false}
+                    transition={{ ease: "easeOut", duration: 0.5 }}
+                  >
+                    {!error && (
+                      <HiChevronUpDown aria-hidden="true" className="text-xl" />
+                    )}
+                  </motion.div>
+                </i>
+              </Combobox.Button>
+            </div>
+
+            {/* errorMsg */}
+            {error && !open && (
+              <div className="flex items-center gap-x-2 px-3 ">
+                <i className="fa-solid fa-triangle-exclamation flex h-[12px] w-[12px] items-center justify-center text-xs text-red-300 dark:text-red-100"></i>
+                <span className="text-xs text-red-500 dark:text-red-100">
+                  {error.message}
+                </span>
+              </div>
+            )}
           </div>
           <Transition
             as={Fragment}
@@ -54,44 +100,39 @@ const Autocomplete = () => {
             leaveTo="opacity-0"
             afterLeave={() => setQuery("")}
           >
-            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-              {filteredPeople.length === 0 && query !== "" ? (
-                <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+            <Combobox.Options className="absolute left-0 z-30 mt-20 flex w-full flex-col gap-y-1 rounded-lg bg-lmGrey50 py-2 px-2 shadow-sm dark:bg-dmGrey800">
+              {filteredItems.length === 0 && query !== "" ? (
+                <div className="relative block cursor-default select-none truncate px-3 py-2 text-sm text-lmGrey600 dark:text-lmGrey100">
                   Nothing found.
                 </div>
               ) : (
-                filteredPeople.map((person) => (
+                filteredItems.map((item, itemIndex) => (
                   <Combobox.Option
-                    key={person.id}
+                    key={itemIndex}
                     className={({ active }) =>
-                      `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? "bg-teal-600 text-white" : "text-gray-900"
-                      }`
+                      `flex w-full cursor-default select-none items-center gap-2 rounded-lg px-3 py-2 ${
+                        active
+                          ? "bg-lmGrey100 dark:bg-dmGrey700"
+                          : "bg-lmGrey50 dark:bg-dmGrey800"
+                      } duration-300`
                     }
-                    value={person}
+                    value={item}
                   >
-                    {({ selected, active }) => (
+                    {({ selected }) => (
                       <>
+                        <i
+                          className={`${
+                            selected && "fa-solid fa-check"
+                          } flex h-5 w-5 items-center justify-center text-lmGrey600 dark:text-dmGrey100`}
+                          aria-hidden="true"
+                        />
                         <span
-                          className={`block truncate ${
-                            selected ? "font-medium" : "font-normal"
+                          className={`block truncate text-sm text-lmGrey600 dark:text-lmGrey100 ${
+                            selected ? "font-semibold" : "font-medium"
                           }`}
                         >
-                          {person.name}
+                          {item}
                         </span>
-                        {selected ? (
-                          <span
-                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                              active ? "text-white" : "text-teal-600"
-                            }`}
-                          >
-                            <i
-                              className="fa-solid fa-check h-5 w-5 text-[20px]"
-                              aria-hidden="true"
-                            ></i>
-                            {/* <CheckIcon className="h-5 w-5" aria-hidden="true" /> */}
-                          </span>
-                        ) : null}
                       </>
                     )}
                   </Combobox.Option>
@@ -100,7 +141,8 @@ const Autocomplete = () => {
             </Combobox.Options>
           </Transition>
         </div>
-      </Combobox>
+      )}
+    </Combobox>
   );
 };
 

@@ -46,7 +46,7 @@ const Select = ({ icon, placeholder, itemList, onChange, label, error }) => {
                 }`}
               ></i>
               <span
-                className={`flex w-full items-start text-sm font-semibold ${
+                className={`flex w-full items-start text-sm font-medium ${
                   error
                     ? "text-red-300 dark:text-red-100"
                     : selected === placeholder
@@ -72,11 +72,13 @@ const Select = ({ icon, placeholder, itemList, onChange, label, error }) => {
                   initial={false}
                   transition={{ ease: "easeOut", duration: 0.5 }}
                 >
-                  {!error && <HiChevronUpDown aria-hidden="true" className="text-xl" />}
+                  {!error && (
+                    <HiChevronUpDown aria-hidden="true" className="text-xl" />
+                  )}
                 </motion.div>
               </i>
             </Listbox.Button>
-            {(error && !open) && (
+            {error && !open && (
               <div className="flex items-center gap-x-2 px-3 ">
                 <i className="fa-solid fa-triangle-exclamation flex h-[12px] w-[12px] items-center justify-center text-xs text-red-300 dark:text-red-100"></i>
                 <span className="text-xs text-red-500 dark:text-red-100">
@@ -96,7 +98,7 @@ const Select = ({ icon, placeholder, itemList, onChange, label, error }) => {
             leaveTo="transform opacity-0 scale-95"
           >
             {/* menu */}
-            <Listbox.Options className="absolute left-0 mt-20 flex w-full flex-col gap-y-1 rounded-lg bg-lmGrey50 py-2 px-2 shadow-sm dark:bg-dmGrey800">
+            <Listbox.Options className="absolute left-0 z-30 mt-20 flex w-full flex-col gap-y-1 rounded-lg bg-lmGrey50 py-2 px-2 shadow-sm dark:bg-dmGrey800">
               {itemList.map((item, itemIndex) => (
                 <Listbox.Option
                   key={itemIndex}

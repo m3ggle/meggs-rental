@@ -1,0 +1,120 @@
+= Firestore Structure
+
+== User Collection
+----
+userId
+|- displayName: string
+|- firstName: string
+|- lastName: string
+|- email: string
+|- emailVarified: boolean
+|- age: number
+|- birthday: date
+|- gender: string
+|- hometown: {}
+    |- city: string
+    |- country: string
+|- telephoneNumber: number
+|- profilePictureUrl: string
+|- somker: boolean
+|- timestamp: date
+
+|- favoriteOffers: []
+    |- offerId: string
+|- ownOffers: []
+    |- offerId: string
+
+|- ratings: []
+    |- ratingId: string
+----
+* ratings => overall rating of all offers
+
+== UserChats Collection
+----
+userId
+|- chatId: {}
+    |- borrower: string (borrowerUserId)
+    |- owner: string (ownerUserId)
+    |- lastMessage: {}
+        |- messageContent: string
+        |- timestamp: date
+        |- status: string
+    |- offerId: string (offerId)
+    |- chatId: string (chatId)
+----
+
+== Chats Collection
+----
+chatId
+|- chatId: string (chatId)
+|- timestamp: date
+|- message: {}
+    |- messageContent: string
+    |- timestamp: date
+    |- userId: string (userId)
+    |- status: string
+----
+
+== Offers Collection
+----
+offerId
+|- photosRef: string
+|- title: string
+|- locattion: {}
+    |- lat: number
+    |- lon: number
+    |- street: string
+    |- housenumber: number
+    |- city: string
+    |- state: string
+    |- country: string
+    |- address_line1: string
+    |- address_line2: string
+    |- formatted: string
+|- price: {}
+    |- day: number
+    |- week: number
+    |- month: number 
+|- calendar: {}
+    |- startDate: date
+    |- endDate: date
+|- carSpecs: {}
+    |- condition: string
+    |- transmission: string
+    |- fuelType: string 
+    |- carType: string
+    |- milage: number
+    |- color: string 
+    |- trunkVolume: number
+    |- seats: number
+    |- smoking: boolean
+    |- eating: boolean
+|- ownerId: string 
+|- ratingId: string
+|- status: boolean
+----
+* status option are: true for active and false for inactive
+
+== Ratings
+----
+ratingId
+|- ratingOverall: number
+|- ratingDetailed: {}
+    |- fiveStars: number 
+    |- fourStars: number
+    |- threeStars: number
+    |- twoStars: number
+    |- oneStars: number
+|- ratingAmount: number
+|- reviews: []
+    |- userId: string
+    |- userProfilePicture: string
+    |- timestamp: date 
+    |- rating: number
+    |- reviewContent: string
+----
+
+
+
+
+

@@ -10,6 +10,7 @@ const TextInput = ({
   value,
   label,
   error,
+  type,
 }) => {
   return (
     <div
@@ -25,7 +26,7 @@ const TextInput = ({
       {/* input and error*/}
       <div className="flex w-full flex-col gap-y-1">
         <div
-          className={`flex gap-x-2 rounded-lg ${
+          className={`flex items-center gap-x-2 rounded-lg ${
             error
               ? "bg-red-100 dark:bg-red-900"
               : "bg-lmGrey50 dark:bg-dmGrey800"
@@ -34,7 +35,7 @@ const TextInput = ({
           {firstIcon && (
             <div className="flex h-full w-[14px] items-center justify-center">
               <i
-                className={`${firstIcon} h-[14px] w-[14px] ${
+                className={`${firstIcon} flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
                   error
                     ? "text-red-300 dark:text-red-100"
                     : value === undefined || value === ""
@@ -45,7 +46,7 @@ const TextInput = ({
             </div>
           )}
           <input
-            type="text"
+            type={type ?? "text"}
             name={name}
             value={value ? value : ""}
             onChange={onChange}
@@ -62,7 +63,7 @@ const TextInput = ({
               <i
                 className={`${
                   error ? "fa-solid fa-triangle-exclamation" : secondIcon
-                } h-[14px] w-[14px] ${
+                } flex h-[14px] w-[14px] text-[14px] items-center justify-center ${
                   error
                     ? "text-red-300 dark:text-red-100"
                     : value === undefined || value === ""

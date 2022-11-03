@@ -1,3 +1,4 @@
+// <OfferCard name="Tesla Model 3" location="Salzburger Straße 18" price="100" transmission="Automatic" seats={5} />
 import React from 'react'
 
 const OfferCard = ({name, location, price, transmission, seats}) => {

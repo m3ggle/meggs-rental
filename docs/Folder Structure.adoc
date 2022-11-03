@@ -1,0 +1,130 @@
+= Folder Structure
+
+----
+src 
+|- api
+|- context
+|- components
+    |- filter
+        |- Filter.jsx
+        |- index.js
+        |- view
+            |-
+    |- search 
+        |- Search.jsx
+        |- index.js 
+        |- view
+    |- Header.jsx (typical header of a component)
+    |- catalog (used in catalog but other componenents may need them)
+        |- OffersBoard.jsx (container for all the offer cards)
+        |- OfferCard.jsx (the individual offer card)
+        |- Offerlist.jsx (map through offer array)
+    |- offerDetails (used in offerDetails but other componenents may need them)
+        |- ImageCarousel.jsx
+        |- BasicInfo.jsx
+        |- Calendar.jsx
+        |- LocationPreview.jsx
+        |- CarSpec.jsx
+    |- userProfile
+        |- UserProfileSmall.jsx
+        |- UserProfileCard.jsx
+        |- UserProfileBig.jsx
+    |- ratings 
+        |- RatingHeader.jsx
+        |- RatingList.jsx
+        |- ratingCard (here code splitting not really needed)
+            |- RatingCardHeader.jsx
+            |- RatingCardComment.jsx
+        |- ratingButton.jsx
+    |- ProgressBar.jsx
+    
+    |- input 
+        |- Input.jsx
+        |- index.js
+        |- view (here code splitting not really needed)
+            |- InputLabel.jsx
+            |- InputMain.jsx (here are different variants of inputs)
+            |- InputError.jsx
+    |- Preview.jsx
+    |- MiniMobileCatalog.jsx
+|- constants (static text which does not change)
+|- hooks (for reusable hooks)
+|- pages
+    |- homepage
+        |- Homepage.jsx
+        |- index.js
+        |- view 
+            |- hero
+                |- Hero.jsx 
+                |- SearchBig.jsx
+            |- Services.jsx
+            |- searchByCity
+                |- SearchByCity.jsx
+                |- CityCarousel.jsx
+            |- AboutUs.jsx
+            |- Footer.jsx
+    |- catalog
+        |- Catalog.jsx
+        |- index.js
+        |- view
+            |- CatalogView.jsx
+            |- ShowButton.jsx
+    |- favorites 
+        |- same as catalog
+    |- offerDetails 
+        |- offerDetails.jsx
+        |- index.js
+        |- view 
+            |- offerDetailsView.jsx
+    |- userOffers
+        |- UserOffers.jsx
+        |- index.js
+        |- view 
+            |- UserOffersView.jsx
+            |- CreateOfferButton.jsx
+    |- upload
+        |- Upload.jsx
+        |- index.js
+        |- view
+            |- UploadHeader.jsx
+            |- UploadMain.jsx
+    |- map 
+        |- Map.jsx
+        |- index.js
+        |- view
+            |- MapHeader.jsx
+            |- MapContainer.jsx
+            |- ShowButton.jsx
+    |- userProfile
+        |- UserProfile.jsx
+        |- index.js
+        |- view
+            |- UserProfileHeader
+            |- UserProfileOffer
+    |- profile 
+        |- Profile.jsx
+        |- index.js
+        |- view
+            |- ProfileHeader.jsx
+            |- ProfileMain.jsx
+    |- sign (Sign-In, Sign-Up, Forget-Password)
+        |- Sign.jsx
+        |- index.js
+        |- view
+            |- SignHeader.jsx
+            |- SignMain.jsx
+    |- notFound 
+        |- NotFound.jsx
+----
+
+* different variants/types of inputs
+** normal text/number input 
+** textarea
+** select input 
+** combobox (like select but u can type in and if its in the selectMenu then it will show else it shows "Not Found")
+
+
+
+
+
+

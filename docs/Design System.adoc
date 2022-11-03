@@ -1,0 +1,87 @@
+= Design System
+
+== Color
+
+=== Specific to Light Mode
+
+.light Mode Specific Color's
+:table-caption: table
+[cols="4"]
+|===
+| Color Family | Name | Hex | Used
+| Sky Blue | lmPrimary | #0177ED | Yes
+| Grey | lmGrey25 | #F9FAFB | Yes
+| Grey | lmGrey50 | #f9fafb | Yes
+| Grey | lmGrey100 | #f3f4f6 | Yes
+| Grey | lmGrey200 | #e5e7eb | Yes
+| Grey | lmGrey300 | #d1d5db | Yes
+| Grey | lmGrey400 | #9ca3af | Yes
+| Grey | lmGrey500 | #6b7280 | Yes
+| Grey | lmGrey600 | #4b5563 | Yes
+| Grey | lmGrey700 | #374151 | Yes
+| Grey | lmGrey800 | #1f2937 | Yes
+| Grey | lmGrey900 | #111827 | No
+|===
+
+* lmPrimaryGradient from #0177ED to #2591FE
+* Used: if the color is used in the design or filler 
+
+=== Specific to Dark Mode
+
+.specific to Dark Mode
+:table-caption: table
+[cols="4"]
+|===
+| Color Family | Name | Hex | Used
+| Sky Blue | dmPrimary | #2591FE | Yes
+| Grey | dmGrey25 | #FAFAFA | Yes
+| Grey | dmGrey50 | | No
+| Grey | dmGrey100 | #E2E6E9 | Yes
+| Grey | dmGrey200 | #C6CDD2 | No
+| Grey | dmGrey300 | #A9B3BC | Yes
+| Grey | dmGrey400 | #8D9AA5 | No
+| Grey | dmGrey500 | #70818F | No
+| Grey | dmGrey600 | #5A6772 | Yes
+| Grey | dmGrey700 | #434D56 | No
+| Grey | dmGrey800 | #2D3439 | Yes
+| Grey | dmGrey900 | #161A1D | Yes
+|===
+
+* dmPrimaryGradient from #2591FE to #57ABFE
+
+=== None Specific Color's
+
+.none specific
+:table-caption: table
+[cols="4"]
+|===
+| Color Family | Name | Hex | Used
+| Lime | lime400 | #a3e635 | Yes (rating)
+| Lime | lime500 | #84cc16 | Yes (rating)
+| Orange | orange300 | #fdba74 | Yes  (input warning)
+| Orange | orange400 | #fb923c | Yes (input warning, rating)
+| Orange | orange600 | #ea580c | Yes (input warning)
+| Red | red50 | #fef2f2 | Yes (input warning)
+| Red | red300 | #fca5a5 | Yes (input warning)
+| Red | red500 | #ef4444 | Yes (rating)
+| Red | red600 | #dc2626 | Yes (input warning)
+| Yellow | yellow600 | #fde047 | Yes (rating)
+|===
+
+* borderDashed => grey100
+
+== Typography
+* Font 
+** Inter
+* Size, Line Height, Letter Spacing, 
+** everything from Tailwind Typography https://tailwindcss.com/docs/installation by Typography 
+
+== Spacing 
+* depending on the situation, but to give the most used ones
+** 8px, 12px, 16px, 24px padding or margin
+
+== Border Radius
+* https://tailwindcss.com/docs/border-radius
+* in the most cases: rounded-lg
+* on bigger objects: rounded-2xl or rounded-3xl
+

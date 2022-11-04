@@ -5,27 +5,6 @@ import Filter from "../filter/Filter";
 import TextInput from "../input/TextInput";
 import LittleOfferCard from "../LittleOfferCard";
 
-const solutions = [
-  {
-    name: "Insights",
-    description: "Measure actions your users take",
-    href: "##",
-    icon: IconOne,
-  },
-  {
-    name: "Automations",
-    description: "Create your own targeted content",
-    href: "##",
-    icon: IconTwo,
-  },
-  {
-    name: "Reports",
-    description: "Keep track of your growth",
-    href: "##",
-    icon: IconThree,
-  },
-];
-
 const MobileCatalog = () => {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
@@ -135,6 +114,7 @@ const MobileCatalog = () => {
               leaveTo="opacity-0 translate-y-6"
             >
               <Popover.Panel className="absolute left-0 right-0 top-20 bottom-0 z-30 flex h-fit w-full justify-center rounded-t-2xl bg-white p-6">
+                {/* <Filter /> */}
                 {({ close }) => <Filter onClose={close} />}
               </Popover.Panel>
             </Transition.Child>

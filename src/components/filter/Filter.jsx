@@ -67,7 +67,9 @@ const Filter = ({onClose}) => {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data)
+    if (onClose) {
       onClose();
+    }
   };
 
   return (
@@ -79,9 +81,11 @@ const Filter = ({onClose}) => {
       {/* header */}
       <div className="flex items-center justify-between text-2xl text-lmGrey700 ">
         <span className="">Filter</span>
-        <Popover.Button>
-          <i className="fa-solid fa-times cursor-pointer"></i>
-        </Popover.Button>
+        {onClose && (
+          <Popover.Button>
+            <i className="fa-solid fa-times cursor-pointer"></i>
+          </Popover.Button>
+        )}
       </div>
 
       {/* main */}
@@ -249,12 +253,12 @@ const Filter = ({onClose}) => {
         </div>
       </div>
 
-        <button
-          type="submit"
-          className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 dark:bg-dmPrimary"
-        >
-          Click to Submit
-        </button>
+      <button
+        type="submit"
+        className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 dark:bg-dmPrimary"
+      >
+        Click to Submit
+      </button>
     </form>
   );
 };

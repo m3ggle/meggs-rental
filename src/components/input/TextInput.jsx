@@ -1,5 +1,5 @@
+import { Popover } from "@headlessui/react";
 import React from "react";
-import { Popover, Transition } from "@headlessui/react";
 
 const TextInput = ({
   firstIcon,
@@ -14,6 +14,7 @@ const TextInput = ({
   type,
   filter,
 }) => {
+  // Todo: change color of filter icon if the filter is active
   return (
     <div
       className="flex w-full max-w-[340px] flex-col gap-y-2"

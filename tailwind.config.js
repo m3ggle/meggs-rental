@@ -59,7 +59,17 @@ module.exports = {
         1200: "1200px",
         1300: "1300px",
         1400: "1400px",
-      }
+      },
+
+      transitionDuration: {
+        0: "0ms",
+        1500: "1500ms",
+        2000: "2000ms",
+      },
+
+      scale: {
+        102: "1.02",
+      },
     },
   },
   plugins: [],

@@ -1,3 +1,4 @@
+// <UserProfileBig userData={userProfileBig} />
 import React from "react";
 import { getAge } from "../../utilities/getAge";
 
@@ -5,7 +6,7 @@ const UserProfileBig = ({ userData }) => {
   const {firstName, lastName, birthday, email, reviewsCount, joined, identityVerified} = userData
 
   return (
-    <div className="flex w-full flex-col items-center gap-y-2 rounded-3xl bg-white p-6 shadow-md">
+    <div className="flex w-full flex-col items-center gap-y-2 rounded-3xl bg-white dark:bg-dmGrey900 p-6 shadow-md">
       {/* header */}
       <div className="flex w-full flex-col items-center gap-y-2">
         <div

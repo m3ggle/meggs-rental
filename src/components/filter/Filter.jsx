@@ -1,3 +1,4 @@
+import { Popover } from "@headlessui/react";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import Select from "../input/Select";
@@ -61,20 +62,26 @@ const smokingSelect = {
   list: ["Yes", "No"],
 };
 
-const Filter = () => {
+const Filter = ({onClose}) => {
   // Todo: React Form Hook
   const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data)
+      onClose();
+  };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="relative flex h-[640px] w-80 flex-col gap-y-3 overflow-y-auto"
+      // w-80
+      className="relative flex h-[640px] flex-col gap-y-3 overflow-y-scroll rounded-lg "
     >
       {/* header */}
       <div className="flex items-center justify-between text-2xl text-lmGrey700 ">
         <span className="">Filter</span>
-        <i className="fa-solid fa-times cursor-pointer"></i>
+        <Popover.Button>
+          <i className="fa-solid fa-times cursor-pointer"></i>
+        </Popover.Button>
       </div>
 
       {/* main */}
@@ -119,8 +126,6 @@ const Filter = () => {
                 />
               )}
               rules={{
-                required: "Last name is required",
-                minLength: { value: 3, message: "At least 3 Characters" },
                 pattern: {
                   value: /^[0-9]+$/,
                   message: "Only numbers are allowed",
@@ -144,8 +149,6 @@ const Filter = () => {
                 />
               )}
               rules={{
-                required: "Last name is required",
-                minLength: { value: 3, message: "At least 3 Characters" },
                 pattern: {
                   value: /^[0-9]+$/,
                   message: "Only numbers are allowed",
@@ -246,12 +249,12 @@ const Filter = () => {
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 dark:bg-dmPrimary"
-      >
-        Click to Submit
-      </button>
+        <button
+          type="submit"
+          className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 dark:bg-dmPrimary"
+        >
+          Click to Submit
+        </button>
     </form>
   );
 };

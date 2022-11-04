@@ -1,19 +1,19 @@
-import OfferCard from "./components/catalog/OfferCard";
 import DropdownMode from "./components/DropdownMode";
-import Filter from "./components/filter/Filter";
 // import Spline from "@splinetool/react-spline";
-import Test from "./components/input/testSamples/Test";
+import { useForm } from "react-hook-form";
+import MobileCatalog from "./components/catalog/MobileCatalog";
 
 export default function App() {
-  return (
-    <div className="flex h-screen w-full flex-col items-center justify-center bg-white dark:bg-dmGrey900">
+  const { control, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data);
 
+  return (
+    <div className="relative flex h-screen w-full flex-col items-center justify-center bg-white dark:bg-dmGrey900">
       <div className="hidden">
         <DropdownMode />
       </div>
 
-      <Filter />
-
+      <MobileCatalog />
       {/* <Test /> */}
     </div>
   );

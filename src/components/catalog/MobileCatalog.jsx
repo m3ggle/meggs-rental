@@ -15,7 +15,7 @@ const MobileCatalog = () => {
     <Popover>
       {({ open }) => (
         <div
-          className={`relative flex h-[640px] w-[360px] max-w-[360px] flex-col items-center gap-y-3 overflow-scroll rounded-2xl bg-white py-6 shadow-xl`}
+          className={`relative flex h-[640px] w-[360px] max-w-[360px] flex-col items-center gap-y-3 overflow-scroll rounded-2xl bg-white py-6 shadow-xl dark:bg-dmGrey900`}
         >
           <div className="w-[312px]">
             <Controller
@@ -113,7 +113,7 @@ const MobileCatalog = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-6"
             >
-              <Popover.Panel className="absolute left-0 right-0 top-20 bottom-0 z-30 flex h-fit w-full justify-center rounded-t-2xl bg-white p-6">
+              <Popover.Panel className="absolute left-0 right-0 top-20 bottom-0 z-30 flex h-fit w-full justify-center rounded-t-2xl bg-white p-6 dark:bg-dmGrey900">
                 {/* <Filter /> */}
                 {({ close }) => <Filter onClose={close} />}
               </Popover.Panel>

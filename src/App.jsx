@@ -17,9 +17,9 @@ export default function App() {
       <div className="hidden">
         <DropdownMode />
       </div>
-      {/* <MobileCatalog /> */}
+      <MobileCatalog />
       {/* <Test /> */}
-      <CarSpecWrapper amount="all" specs={carSpecData} mobile={true} />
+      {/* <CarSpecWrapper amount="all" specs={carSpecData} mobile={true} /> */}
       {/* <CarSpecWrapper amount="preview" specs={carSpecData} mobile={true} /> */}
     </div>
   );

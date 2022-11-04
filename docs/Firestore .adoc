@@ -79,16 +79,19 @@ offerId
     |- startDate: date
     |- endDate: date
 |- carSpecs: {}
-    |- condition: string
-    |- transmission: string
-    |- fuelType: string 
-    |- carType: string
-    |- milage: number
-    |- color: string 
-    |- trunkVolume: number
-    |- seats: number
-    |- smoking: boolean
-    |- eating: boolean
+    |- condition: {}
+        |- title: string
+        |- value: string
+        |- icon: string
+    |- transmission: {}
+    |- fuelType: {}
+    |- carType: {}
+    |- milage: {}
+    |- color: {}
+    |- trunkVolume: {}
+    |- seats: {}
+    |- smoking: {}
+    |- eating: {}
 |- ownerId: string 
 |- ratingId: string
 |- status: boolean

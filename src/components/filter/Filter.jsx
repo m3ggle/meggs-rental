@@ -1,76 +1,29 @@
 import { Popover } from "@headlessui/react";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import ExampleData from "../../ExampleData";
 import Select from "../input/Select";
 import TextInput from "../input/TextInput";
 
-const transmissionSelect = {
-  label: null,
-  icon: "fa-solid fa-gears",
-  placeholder: "Which transmission?",
-  list: ["Automatic", "Manual"],
-};
-
-const fuelSelect = {
-  label: null,
-  icon: "fa-solid fa-gas-pump",
-  placeholder: "Which fuel type?",
-  list: ["Diesel", "Gas", "Electro"],
-};
-
-const seatSelect = {
-  label: null,
-  icon: "fa-solid fa-chair",
-  placeholder: "How many seats?",
-  list: ["2 seats", "3 seats", "4 seats", "5 seats", "6 seats", "7 seats"],
-};
-
-const trunkSelect = {
-  label: null,
-  icon: "fa-solid fa-suitcase",
-  placeholder: "How much trunk volume",
-  list: [
-    "3 suitcases",
-    "4 suitcases",
-    "5 suitcases",
-    "6 suitcases",
-    "7 suitcases",
-    "8 suitcases",
-  ],
-};
-
-const colorSelect = {
-  label: null,
-  icon: "fa-solid fa-palette",
-  placeholder: "Which Color?",
-  list: [
-    "Yellow",
-    "Green",
-    "Blue",
-    "Violet",
-    "Red",
-    "Orange",
-    "White",
-    "Black",
-  ],
-};
-
-const smokingSelect = {
-  label: null,
-  icon: "fa-solid fa-smoking",
-  placeholder: "Smoking Allowed? ",
-  list: ["Yes", "No"],
-};
-
-const Filter = ({onClose}) => {
+const Filter = ({ onClose }) => {
   // Todo: React Form Hook
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
+    console.log(data);
     if (onClose) {
       onClose();
     }
   };
+
+  const { filterSelects } = ExampleData();
+  const {
+    transmissionSelect,
+    fuelSelect,
+    seatSelect,
+    trunkSelect,
+    colorSelect,
+    smokingSelect,
+  } = filterSelects;
 
   return (
     <form
@@ -79,7 +32,7 @@ const Filter = ({onClose}) => {
       className="relative flex h-[640px] flex-col gap-y-3 overflow-y-scroll rounded-lg "
     >
       {/* header */}
-      <div className="flex items-center justify-between text-2xl text-lmGrey700 ">
+      <div className="flex items-center justify-between text-2xl text-lmGrey700 dark:text-dmGrey25">
         <span className="">Filter</span>
         {onClose && (
           <Popover.Button>
@@ -91,7 +44,9 @@ const Filter = ({onClose}) => {
       {/* main */}
       <div className="flex flex-col gap-y-3">
         <div className="gap-y-1">
-          <span className="text-base text-lmGrey600">Date Specifics</span>
+          <span className="text-base text-lmGrey600 dark:text-dmGrey100">
+            Date Specifics
+          </span>
           <Controller
             name="dateRange"
             control={control}
@@ -111,7 +66,9 @@ const Filter = ({onClose}) => {
         </div>
 
         <div className="gap-y-1">
-          <span className="text-base text-lmGrey600">Offer Specifics</span>
+          <span className="text-base text-lmGrey600 dark:text-dmGrey100">
+            Offer Specifics
+          </span>
           <div className="flex gap-x-2">
             <Controller
               name="priceStart"
@@ -163,7 +120,9 @@ const Filter = ({onClose}) => {
         </div>
 
         <div className=" flex flex-col gap-y-1">
-          <span className="text-base text-lmGrey600">Car Specifics</span>
+          <span className="text-base text-lmGrey600 dark:text-dmGrey100">
+            Car Specifics
+          </span>
           <div className="flex flex-col gap-y-2">
             <Controller
               name="transmission"

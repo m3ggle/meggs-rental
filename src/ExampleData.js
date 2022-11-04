@@ -118,8 +118,18 @@ const filterSelects = {
   smokingSelect: { ...smokingSelect },
 };
 
+const userProfileBig = {
+  firstName: "Meggle",
+  lastName: "Bande",
+  birthday: "2001/10/21",
+  email: "megglebande@web.de",
+  joined: "July 2021",
+  reviewsCount: "125",
+  identityVerified: true,
+};
+
 const ExampleData = () => {
-    return { carSpecData, filterSelects };
+    return { carSpecData, filterSelects, userProfileBig };
 }
 
 export default ExampleData;

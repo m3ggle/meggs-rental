@@ -5,6 +5,7 @@ import UserProfileBig from "./components/userProfile/UserProfileBig";
 import ExampleData from "./ExampleData";
 import UserProfileSmall from "./components/userProfile/UserProfileSmall";
 import UserProfileChat from "./components/userProfile/UserProfileChat";
+import ReviewSection from "./components/ratings/ReviewSection";
 
 export default function App() {
   const { control, handleSubmit } = useForm();
@@ -17,18 +18,8 @@ export default function App() {
       </div>
 
       <div className="flex w-[360px] items-center justify-center p-6 rounded-2xl shadow">
-        <UserProfileSmall
-          review={true}
-          rating="4.5/5"
-          text="Click to view the owners account"
-          displayName="Meggle Bande"
-        />
+        <ReviewSection />
       </div>
-        <UserProfileChat
-          newMsg={true}
-          lastMsg={"Hey long time no see!"}
-          displayName="Meggle Bande"
-        />
     </div>
   );
 }

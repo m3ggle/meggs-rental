@@ -40,6 +40,7 @@
 
 |React Calendar | displays a calendar for select | No |
 |Day.js | for validation, manipulation, and displaying dates and times | No | recommendation from moment.js
+|Date-fns | for dates (low level) | No |
 
 |React Query | API calls (non firebase) | No |
 

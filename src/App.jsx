@@ -1,15 +1,14 @@
 import DropdownMode from "./components/DropdownMode";
 // import Spline from "@splinetool/react-spline";
 import { useForm } from "react-hook-form";
-import ReviewSection from "./components/ratings/ReviewSection";
-import UserProfileBig from "./components/userProfile/UserProfileBig";
+import MobileCatalog from "./components/catalog/MobileCatalog";
 import ExampleData from "./ExampleData";
 
 export default function App() {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
 
-  const {userProfileBig} = ExampleData()
+  const { userProfileBig } = ExampleData();
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-scroll bg-white dark:bg-dmGrey900">
@@ -20,11 +19,11 @@ export default function App() {
         <ReviewSection />
       </div> */}
 
-      <div className="w-[360px]">
+      {/* <div className="w-[360px]">
       <UserProfileBig userData={userProfileBig} />
-      </div>
-      
-      {/* <MobileCatalog /> */}
+      </div> */}
+
+      <MobileCatalog />
     </div>
   );
 }

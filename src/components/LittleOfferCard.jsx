@@ -6,7 +6,7 @@ const LittleOfferCard = ({ name, location, price, transmission, seats }) => {
   // Todo: not transmission and seats as individual props but rather as object (car spec)
 
   return (
-    <div className="relative cursor-pointer flex min-w-[312px] gap-x-3 rounded-lg bg-white shadow-md hover:shadow-lg dark:bg-dmGrey900 duration-300 hover:scale-102">
+    <div className="relative cursor-pointer flex min-w-[300px] gap-x-3 rounded-lg bg-white shadow-md hover:shadow-lg dark:bg-dmGrey900 duration-300 hover:scale-102">
       {/* image */}
       <div
         className="h-full min-w-[110px] rounded-lg bg-cover bg-center"

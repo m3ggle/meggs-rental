@@ -187,8 +187,18 @@ const reviewId = {
   reviews,
 };
 
+const offerCard = {
+  name: "Tesla Model 3",
+  location: "Salzburger Straße 18",
+  priceDay: "30",
+  priceWeek: "150",
+  priceMonth: "600",
+  transmission: "Automatic",
+  seats: 5,
+}
+
 const ExampleData = () => {
-    return { carSpecData, filterSelects, userProfileBig, reviews, reviewRating, reviewId };
+    return { carSpecData, filterSelects, userProfileBig, reviews, reviewRating, reviewId, offerCard };
 }
 
 export default ExampleData;

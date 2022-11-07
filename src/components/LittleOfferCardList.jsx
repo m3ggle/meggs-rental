@@ -19,9 +19,9 @@ const LittleOfferCardList = () => {
           seats={offerCard.seats}
         />
       ))}
-      <button className="flex w-full items-center justify-center rounded-lg bg-primary100 px-3 py-2 text-sm font-semibold text-lmPrimary">
+      <div type='button' className="flex w-full items-center justify-center rounded-lg bg-primary100 px-3 py-2 text-sm font-semibold text-lmPrimary">
         Load More
-      </button>
+      </div>
     </div>
   );
 }

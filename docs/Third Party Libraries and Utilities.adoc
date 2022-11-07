@@ -3,34 +3,47 @@
 .collection of libs and utils
 :table-caption: table
 |===
-|Name | Status | Use Case/Responsibility | Importance/Needed (%) | Already used? | extra Info
-|React | JS Framework| JS| 100 | Yes |
-|Firebase | Backend | Database, Auth | 100| Yes |
-|Tailwind | Main CSS Framework | CSS | 100 | Yes |
-|HeadlessUI | kinda CSS Framework | gives CSS functinality| 80 | No   |
-|Toastify | Package | responsible for all notifications | 100 | Yes |
-|Font Awesome CDN | CDN | provides Icons | 100 | Yes |
-|UUID | Package | for generating random id's | 100 | Yes  | react has a hook for it "useId"
-|Framer Motion | Package | responsible for most animations | 80| Yes | 
-|Auto Animate | Package | responsible for list-animations | 30 | No |
-|React Hook Form | Package | responsible for JS behind inputs | 70 | No |
-|Yup | Package | responsible for input validation| 60 | No |
-|React Spinner | Package | responsible for loading svg (spinner) | 30 | No | use a svg for it
-|React Infinite Scroll | Package | responsible for infinite scroll | 10 | No | if its not worth, build it on your own
-|React Calendar | Package | responsible for displaying a calendar | 80 | No | building on your own could be painful (CSS ok, JS ugh)
-|React Query | Package | responsible for API calls (non firebase) | 60 | No | not really needed but important to learn
-|Fetch | build in | responsible for API calls (firebase) | 100 | Yes | don’t know how to use react query with firebase so good ol’ fetch
-|React Sight | Package | for visualizing the react app (structure) | 0 | No | test it out, could be helpful
-|React Skeleton | Package | for loading content screen | 0 | No | test it out, could be helpful
-|Day.js | Package | for validation, manipulation, and displaying dates and times | 50 | No | don’t know how painful dates + times are going to be 
-||||||
-||||||
-||||||
-||||||
-||||||
+|Name | Description | Already used? | extra Info
+
+|React | js framework | Yes | most comfortable innit
+|Firebase | backend, database, auth | Yes | 2 time, need more practice
+
+|Tailwind | css framework | Yes | 
+|HeadlessUI | behaviour css framework (gives CSS functinality) | Yes |
+|DaisyUI | premade components for tailwind | No |
+
+|Toastify | notifications on website | Yes |
+|Popper | popovers and tooltips | No | @popperjs/core
+
+|React Spinner | loading svg (spinner) | No | use a svg for it
+|Whirl CSS | loading css (spinner) | No |
+|React Skeleton | loading content screen | No |
+|Font Awesome | provides Icons | Yes |
+
+|UUID | generating random id's | Yes  | react has a hook for it "useId"
+
+|Framer Motion | animations | Yes | 
+|Auto Animate | list-animations | No |
+|AnimeXYZ | animations | No |
+
+|Algolia | searching on own website | No |
+
+|DND Kit | drag & drop | No |
+
+|React-Virtualized | effenciently rendering huge list | No |
+
+|React Hook Form | js behind inputs | No |
+|Formik | js behind inputs | No |
+|Yup | input validation| No |
+
+|React Infinite Scroll | infinite scroll | No | 
+
+|React Calendar | displays a calendar for select | No |
+|Day.js | for validation, manipulation, and displaying dates and times | No | recommendation from moment.js
+|Date-fns | for dates (low level) | No |
+
+|React Query | API calls (non firebase) | No |
+
+|React Sight | visualizes the react app (structure) | No |
 
 |===
-
-Maybe’s
-- Moment.js 
-- days.js mo

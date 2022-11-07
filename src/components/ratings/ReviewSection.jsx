@@ -7,7 +7,7 @@ import ReviewList from "./ReviewList";
 const ReviewSection = () => {
   const { reviewId } = ExampleData();
   return (
-    <div className="flex w-full flex-col gap-y-2 overflow-scroll rounded-lg p-3">
+    <div className="flex w-full flex-col gap-y-2 rounded-lg">
       <ReviewHeader
         totalAmount={reviewId.totalAmount}
         ratingDetailed={reviewId.ratingDetailed}

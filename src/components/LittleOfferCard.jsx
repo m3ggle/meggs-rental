@@ -9,7 +9,7 @@ const LittleOfferCard = ({ name, location, price, transmission, seats }) => {
     <div className="relative cursor-pointer flex min-w-[300px] gap-x-3 rounded-lg bg-white shadow-md hover:shadow-lg dark:bg-dmGrey900 duration-300 hover:scale-102">
       {/* image */}
       <div
-        className="h-full min-w-[110px] rounded-lg bg-cover bg-center"
+        className="h-[118px] min-w-[110px] w-[110px] rounded-lg bg-cover bg-center"
         style={{
           backgroundImage: `url(https://images.unsplash.com/photo-1571987502227-9231b837d92a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80)`,
         }}

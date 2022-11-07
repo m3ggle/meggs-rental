@@ -7,8 +7,7 @@ const ReviewList = ({ reviews }) => {
       {reviews.map((rev) => (
         <div
           key={rev.userId}
-          className="flex w-full flex-col gap-y-2 rounded-xl bg-white p-6 shadow 
-           dark:bg-lmGrey900"
+          className="flex w-full flex-col gap-y-2 rounded-xl bg-white p-6 shadow dark:bg-lmGrey900"
         >
           <UserProfileSmall
             review={true}

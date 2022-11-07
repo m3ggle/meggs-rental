@@ -1,11 +1,24 @@
 // <OfferCard name="Tesla Model 3" location="Salzburger Straße 18" price="100" transmission="Automatic" seats={5} />
 import React from 'react'
+import {motion} from "framer-motion"
 
-const OfferCard = ({name, location, price, transmission, seats}) => {
+const OfferCard = ({name, location, price, transmission, seats, index}) => {
   // Todo: not transmission and seats as individual props but rather as object (car spec)
 
   return (
-    <div className="relative flex min-w-[312px]  gap-x-3 rounded-lg bg-white shadow-md duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900 500:h-[252px] 500:w-[180px] 500:min-w-0 500:justify-center 500:gap-x-0 500:rounded-xl 500:shadow-none 1400:h-[406px] 1400:w-[292px] cursor-pointer">
+    <motion.div
+      initial={{ opacity: 0, translateY: -24 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{
+        duration: 0.3,
+        opacity: { delay: index * 0.2 },
+        translateY: { delay: index * 0.2 },
+        scale: { ease: "easeInOut" },
+      }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className="relative flex min-w-[312px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md dark:bg-dmGrey900 500:h-[252px] 500:w-[180px] 500:min-w-0 500:justify-center 500:gap-x-0 500:rounded-xl 500:shadow-none 1400:h-[406px] 1400:w-[292px]"
+    >
       {/* image */}
       <div
         className="h-full min-w-[110px] rounded-lg bg-cover bg-center 500:absolute 500:top-0 500:left-0 500:h-[200px] 500:w-full 500:rounded-xl 1400:h-80"
@@ -54,7 +67,7 @@ const OfferCard = ({name, location, price, transmission, seats}) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

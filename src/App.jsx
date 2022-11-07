@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import UserProfileSmall from "./components/userProfile/UserProfileSmall";
 import ExampleData from "./ExampleData";
 import UserProfile from "./pages/userProfile/UserProfile";
+import Navbar from "./components/Navbar";
 
 export default function App() {
   const { control, handleSubmit } = useForm();
@@ -22,9 +23,15 @@ export default function App() {
   function openModal() {
     setIsOpen(true);
   }
-
+  //bg-white dark:bg-dmGrey900
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-scroll bg-white dark:bg-dmGrey900">
+    <div
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-scroll bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "url(https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)",
+      }}
+    >
       <div className="hidden">
         <DropdownMode />
       </div>
@@ -35,7 +42,7 @@ export default function App() {
         {/* <UserProfileBig userData={userProfileBig} /> */}
       </div>
 
-      <div onClick={openModal} className="w-[360px]">
+      {/* <div onClick={openModal} className="w-[360px]">
         <UserProfileSmall
           review={true}
           rating="4"
@@ -47,8 +54,11 @@ export default function App() {
       <UserProfile
         isOpen={isOpen}
         closeModal={closeModal}
-      />
+      /> */}
+
       {/* <MobileCatalog /> */}
+
+      <Navbar />
     </div>
   );
 }

@@ -4,7 +4,6 @@ import LittleOfferCardList from "../../components/LittleOfferCardList";
 import ReviewSection from "../../components/ratings/ReviewSection";
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
 import ExampleData from "../../ExampleData";
-import {motion} from "framer-motion"
 
 const UserProfile = ({ isOpen, closeModal }) => {
   const { userProfileBig } = ExampleData();
@@ -43,11 +42,9 @@ const UserProfile = ({ isOpen, closeModal }) => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Dialog.Panel className="fixed top-20 bottom-0 w-full overflow-scroll scroll rounded-t-2xl 820:w-[820px] ">
+          <Dialog.Panel className="scroll fixed top-20 bottom-0 w-full overflow-scroll rounded-t-2xl 820:w-[820px] ">
             {/* Todo: when scrolling then top-10 or so and when the user is at top then top-20 */}
-            <div
-              className="relative flex w-full max-w-[820px] flex-col items-center rounded-t-2xl bg-white dark:bg-dmGrey900 p-6 shadow 600:pt-12">
-              
+            <div className="relative flex w-full max-w-[820px] flex-col items-center rounded-t-2xl bg-white p-6 shadow dark:bg-dmGrey900 600:pt-12">
               <div
                 onClick={closeModal}
                 className="fa-solid fa-times absolute top-6 right-6 cursor-pointer text-[24px] text-lmGrey700 dark:text-dmGrey25 600:top-10 600:right-12"

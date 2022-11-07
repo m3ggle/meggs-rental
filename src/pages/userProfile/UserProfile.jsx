@@ -46,11 +46,11 @@ const UserProfile = ({ isOpen, closeModal }) => {
           <Dialog.Panel className="fixed top-20 bottom-0 w-full overflow-scroll scroll rounded-t-2xl 820:w-[820px] ">
             {/* Todo: when scrolling then top-10 or so and when the user is at top then top-20 */}
             <div
-              className="relative flex w-full max-w-[820px] flex-col items-center rounded-t-2xl bg-white p-6 shadow 600:pt-12">
+              className="relative flex w-full max-w-[820px] flex-col items-center rounded-t-2xl bg-white dark:bg-dmGrey900 p-6 shadow 600:pt-12">
               
               <div
                 onClick={closeModal}
-                className="fa-solid fa-times absolute top-6 right-6 cursor-pointer text-[24px] text-lmGrey700 600:top-10 600:right-12"
+                className="fa-solid fa-times absolute top-6 right-6 cursor-pointer text-[24px] text-lmGrey700 dark:text-dmGrey25 600:top-10 600:right-12"
               ></div>
               <div className="flex w-full max-w-[472px] flex-col items-center justify-center gap-y-6">
                 <div className="flex flex-col gap-4">
@@ -60,7 +60,7 @@ const UserProfile = ({ isOpen, closeModal }) => {
                     birthday={birthday}
                     email={email}
                   />
-                  <Dialog.Description className="text-sm text-lmGrey600">
+                  <Dialog.Description className="text-sm text-lmGrey600 dark:text-dmGrey100">
                     I rather take my bike or the OVP to the Uni so I don’t
                     really have a need for my cars. If you like any of my
                     offer(s), don’t be scared to send me a Message 😊.
@@ -68,14 +68,14 @@ const UserProfile = ({ isOpen, closeModal }) => {
                 </div>
 
                 <div className="flex w-full flex-col gap-2">
-                  <span className="text-base font-semibold text-lmGrey700">
+                  <span className="text-base font-semibold text-lmGrey700 dark:text-dmGrey25">
                     Offers
                   </span>
                   <LittleOfferCardList />
                 </div>
 
                 <div className="flex w-full flex-col gap-2">
-                  <span className="text-base font-semibold text-lmGrey700">
+                  <span className="text-base font-semibold text-lmGrey700 dark:text-dmGrey25">
                     Ratings
                   </span>
                   <ReviewSection />

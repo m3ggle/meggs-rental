@@ -1,11 +1,10 @@
 import DropdownMode from "./components/DropdownMode";
 // import Spline from "@splinetool/react-spline";
+import Spline from "@splinetool/react-spline";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import UserProfileSmall from "./components/userProfile/UserProfileSmall";
-import ExampleData from "./ExampleData";
-import UserProfile from "./pages/userProfile/UserProfile";
 import Navbar from "./components/Navbar";
+import ExampleData from "./ExampleData";
 
 export default function App() {
   const { control, handleSubmit } = useForm();
@@ -14,16 +13,12 @@ export default function App() {
   const { userProfileBig } = ExampleData();
 
   // test
-  let [isOpen, setIsOpen] = useState(false);
+  let [isOpen, setIsOpen] = useState(true);
+  const closeModal = () => setIsOpen(false)
+  const openModal = () => setIsOpen(true)
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
   //bg-white dark:bg-dmGrey900
+
   return (
     <div
       className="relative flex h-screen w-full flex-col items-center justify-center overflow-scroll bg-cover bg-center"
@@ -58,7 +53,15 @@ export default function App() {
 
       {/* <MobileCatalog /> */}
 
-      <Navbar />
+      <Navbar isOpen={isOpen} closeModal={closeModal} />
+
+      {/* Logo stuff */}
+      <div
+        className={`fixed ${isOpen ? "bottom-[-100px]" : "bottom-10"} z-50 flex h-[64px] w-[64px] cursor-pointer items-center justify-center rounded-full duration-300 hover:scale-105 active:scale-95 800:h-[84px] 800:w-[84px]`}
+        onClick={openModal}
+      >
+        <Spline scene="https://prod.spline.design/og6CZMxsQfdlo-uE/scene.splinecode" />
+      </div>
     </div>
   );
 }

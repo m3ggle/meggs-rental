@@ -1,51 +1,61 @@
-import DropdownMode from "./components/DropdownMode";
 // import Spline from "@splinetool/react-spline";
-import Spline from "@splinetool/react-spline";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import Logo from "./components/Logo";
 import Navbar from "./components/Navbar";
-import ExampleData from "./ExampleData";
-import Example from "./components/offerDetails/Calendar";
-import Calendar from "./components/offerDetails/Calendar";
-import Preview from "./components/Preview";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Catalog from "./pages/catalog/Catalog";
+import Chat from "./pages/chat/Chat"
+import Favorites from "./pages/favorites/Favorites";
+import ForgotPassword from "./pages/forgetPassword/ForgotPassword";
+import Homepage from "./pages/homepage/Homepage";
+import Map from "./pages/map/Map";
+import NotFound from "./pages/notFound/NotFound"
+import OfferDetails from "./pages/offerDetails/OfferDetails";
+import Profile from "./pages/profile/Profile"
+import SignIn from "./pages/signIn/SignIn"
+import SignUp from "./pages/signUp/SignUp"
+import Upload from "./pages/upload/Upload"
+import UserOffers from "./pages/userOffers/UserOffers"
+import ChatInfo from "./pages/chat/view/ChatInfo"
+import ChatMain from "./pages/chat/view/ChatMain"
+import ChatSidebar from "./pages/chat/view/ChatSidebar"
 
 export default function App() {
-  const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
-
-  const { userProfileBig } = ExampleData();
-
-  // test
   let [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => setIsOpen(false)
-  const openModal = () => setIsOpen(true)
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
 
   return (
-    <div
-      className="relative flex h-screen w-full flex-col items-center p-40 overflow-scroll bg-white bg-cover bg-center dark:bg-dmGrey900"
-      // style={{
-      //   backgroundImage:
-      //     "url(https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)",
-      // }}
-    >
-      <div className="hidden">
-        <DropdownMode />
-      </div>
+    <div className="relative flex h-screen w-full flex-col items-center overflow-scroll bg-white bg-cover bg-center p-40 dark:bg-dmGrey900">
+      <Router>
+        <Navbar isOpen={isOpen} closeModal={closeModal} />
+        <Logo isOpen={isOpen} openModal={openModal} />
+        <Routes>
+          <Route path="/explore/map" element={<Map />} />
+          <Route path="/explore/catalog" element={<Catalog />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/offer-details" element={<OfferDetails />} />
 
-      <Navbar isOpen={isOpen} closeModal={closeModal} />
-      {/* Logo stuff */}
-      <div
-        className={`fixed ${
-          isOpen ? "bottom-[-100px]" : "bottom-10"
-        } z-50 flex h-[64px] w-[64px] cursor-pointer items-center justify-center rounded-full duration-300 hover:scale-105 active:scale-95 800:h-[84px] 800:w-[84px]`}
-        onClick={openModal}
-      >
-        <Spline scene="https://prod.spline.design/og6CZMxsQfdlo-uE/scene.splinecode" />
-      </div>
+          <Route path="/user-offers" element={<UserOffers />} />
+          <Route path="/upload" element={<Upload />} />
+          
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/chat/sidebar" element={<ChatSidebar />} />
+          <Route path="/chat/chat-info" element={<ChatInfo />} />
+          <Route path="/chat/chat-main" element={<ChatMain />} />
+
+          <Route path="/" element={<Homepage />} />
+          <Route path="/homepage" element={<Homepage />} />
+          
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+
+          
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   );
-}
-
-{
-  /* <Spline scene="https://prod.spline.design/og6CZMxsQfdlo-uE/scene.splinecode" /> */
 }

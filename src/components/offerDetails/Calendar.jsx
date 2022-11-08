@@ -99,7 +99,7 @@ export default function Example() {
   );
 
   return (
-    <div className="h-fit w-fit rounded-2xl bg-white p-6 shadow dark:border-[0.5px] dark:border-solid dark:bg-dmGrey900">
+    <div className="h-fit w-fit rounded-2xl bg-white p-6 shadow dark:border-[1px] dark:border-solid dark:border-dmGrey800 dark:bg-dmGrey900">
       <div className="flex flex-col gap-y-6">
         {/* calendar header */}
         <div className="flex items-center">
@@ -150,7 +150,7 @@ export default function Example() {
                   onClick={() => setSelectedDay(day)}
                   className={classNames(
                     isEqual(day, selectedDay) &&
-                      "text-white dark:text-dmGrey900",
+                      "text-white",
                     !isEqual(day, selectedDay) &&
                       isToday(day) &&
                       "text-lmPrimary dark:text-dmPrimary",
@@ -161,13 +161,13 @@ export default function Example() {
                     !isEqual(day, selectedDay) &&
                       !isToday(day) &&
                       !isSameMonth(day, firstDayCurrentMonth) &&
-                      "text-lmGrey300 dark:text-dmGrey300",
+                      "text-lmGrey300 dark:text-dmGrey600",
                     isEqual(day, selectedDay) &&
                       isToday(day) &&
                       "bg-lmPrimary dark:bg-dmPrimary",
                     isEqual(day, selectedDay) &&
                       !isToday(day) &&
-                      "bg-lmGrey600 dark:bg-dmGrey300",
+                      "bg-lmGrey600 dark:bg-dmGrey600",
                     !isEqual(day, selectedDay) &&
                       "hover:bg-lmGrey100 dark:hover:bg-dmGrey800",
                     (isEqual(day, selectedDay) || isToday(day)) &&

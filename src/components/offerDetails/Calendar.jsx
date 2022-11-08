@@ -1,6 +1,4 @@
 // https://youtu.be/9ySmMd5Cjc0
-// import { DotsVerticalIcon } from "@heroicons/react/outline";
-// import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import {
   add,
   eachDayOfInterval,
@@ -8,64 +6,19 @@ import {
   endOfWeek,
   format,
   isEqual,
-  isSameDay,
   isSameMonth,
   isToday,
   parse,
-  parseISO,
   startOfToday,
   startOfWeek,
 } from "date-fns";
 import { useState } from "react";
 
-const meetings = [
-  {
-    id: 1,
-    name: "Leslie Alexander",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    startDatetime: "2022-05-11T13:00",
-    endDatetime: "2022-05-11T14:30",
-  },
-  {
-    id: 2,
-    name: "Michael Foster",
-    imageUrl:
-      "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    startDatetime: "2022-05-20T09:00",
-    endDatetime: "2022-05-20T11:30",
-  },
-  {
-    id: 3,
-    name: "Dries Vincent",
-    imageUrl:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    startDatetime: "2022-05-20T17:00",
-    endDatetime: "2022-05-20T18:30",
-  },
-  {
-    id: 4,
-    name: "Leslie Alexander",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    startDatetime: "2022-06-09T13:00",
-    endDatetime: "2022-06-09T14:30",
-  },
-  {
-    id: 5,
-    name: "Michael Foster",
-    imageUrl:
-      "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    startDatetime: "2022-05-13T14:00",
-    endDatetime: "2022-05-13T14:30",
-  },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+const Calendar = () => {
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today); // selected day
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy")); // Nov-2022
@@ -93,14 +46,9 @@ export default function Example() {
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
   }
 
-  // every rerender checks if the clicked/today is the same as one of the meeting dates
-  let selectedDayMeetings = meetings.filter((meeting) =>
-    isSameDay(parseISO(meeting.startDatetime), selectedDay)
-  );
-
   return (
-    <div className="h-fit w-fit rounded-2xl bg-white p-6 shadow dark:border-[1px] dark:border-solid dark:border-dmGrey800 dark:bg-dmGrey900">
-      <div className="flex flex-col gap-y-6">
+    <div className="h-fit w-full overflow-hidden rounded-2xl bg-white p-6 shadow dark:border-[1px] dark:border-solid dark:border-dmGrey800 dark:bg-dmGrey900">
+      <div className="flex flex-col gap-y-4">
         {/* calendar header */}
         <div className="flex items-center">
           <h2 className="flex-auto font-semibold dark:text-dmGrey100">
@@ -142,15 +90,14 @@ export default function Example() {
             <div>S</div>
           </div>
           {/* days */}
-          <div className="grid grid-cols-7 gap-[2px] text-sm">
+          <div className="grid grid-cols-7 gap-y-1 text-sm">
             {days.map((day) => (
               <div key={day.toString()}>
                 <button
                   type="button"
                   onClick={() => setSelectedDay(day)}
                   className={classNames(
-                    isEqual(day, selectedDay) &&
-                      "text-white",
+                    isEqual(day, selectedDay) && "text-white",
                     !isEqual(day, selectedDay) &&
                       isToday(day) &&
                       "text-lmPrimary dark:text-dmPrimary",
@@ -172,19 +119,13 @@ export default function Example() {
                       "hover:bg-lmGrey100 dark:hover:bg-dmGrey800",
                     (isEqual(day, selectedDay) || isToday(day)) &&
                       "font-semibold",
-                    "mx-auto flex h-11 w-11 items-center justify-center rounded-full duration-300"
+                    "mx-auto flex h-8 w-8 items-center justify-center rounded-full duration-300"
                   )}
                 >
                   <time dateTime={format(day, "yyyy-MM-dd")}>
                     {format(day, "d")}
                   </time>
                 </button>
-
-                {/* <div className="mx-auto mt-1 h-1 w-1">
-                  {meetings.some((meeting) =>
-                    isSameDay(parseISO(meeting.startDatetime), day)
-                  ) && <div className="h-1 w-1 rounded-full bg-sky-500"></div>}
-                </div> */}
               </div>
             ))}
           </div>
@@ -192,4 +133,6 @@ export default function Example() {
       </div>
     </div>
   );
-}
+};
+
+export default Calendar;

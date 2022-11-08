@@ -31,30 +31,6 @@ export default function App() {
       <div className="hidden">
         <DropdownMode />
       </div>
-      {/* <div className="flex w-[360px] 600:w-[489px] justify-center rounded-2xl py-6 px-4 shadow overflow-scroll h-[640px]">
-        <ReviewSection />
-      </div> */}
-      <div className="w-[360px]">
-        {/* <UserProfileBig userData={userProfileBig} /> */}
-      </div>
-
-      {/* <div onClick={openModal} className="w-[360px]">
-        <UserProfileSmall
-          review={true}
-          rating="4"
-          text="Click to view the owners account"
-          displayName="Meggle Bande"
-          profilePic="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80"
-        />
-      </div>
-      <UserProfile
-        isOpen={isOpen}
-        closeModal={closeModal}
-      /> */}
-
-      {/* <MobileCatalog /> */}
-
-      <Preview />
 
       <Navbar isOpen={isOpen} closeModal={closeModal} />
       {/* Logo stuff */}

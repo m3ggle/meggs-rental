@@ -1,15 +1,27 @@
 // <UserProfileBig userData={userProfileBig} />
 import React from "react";
-import { getAge } from "../../utilities/getAge";
 import UserProfileHeader from "./UserProfileHeader";
 
 const UserProfileBig = ({ userData }) => {
-  const {firstName, lastName, birthday, email, reviewsCount, joined, identityVerified} = userData
+  const {
+    firstName,
+    lastName,
+    birthday,
+    email,
+    reviewsCount,
+    joined,
+    identityVerified,
+  } = userData;
 
   return (
-    <div className="flex w-full flex-col items-center gap-y-2 rounded-3xl bg-white dark:bg-dmGrey900 p-6 shadow-md">
+    <div className="flex w-full flex-col items-center gap-y-2 rounded-3xl bg-white p-6 shadow-md dark:bg-dmGrey900">
       {/* header */}
-      <UserProfileHeader firstName={firstName} lastName={lastName} birthday={birthday} email={email} />
+      <UserProfileHeader
+        firstName={firstName}
+        lastName={lastName}
+        birthday={birthday}
+        email={email}
+      />
 
       {/* mid */}
       <div className="flex w-full flex-col items-center justify-center text-sm text-lmGrey400 dark:text-dmGrey300">
@@ -26,9 +38,7 @@ const UserProfileBig = ({ userData }) => {
             Identity verified <div className="fa-solid fa-shield-halved"></div>
           </span>
         ) : (
-          <span>
-            Identity not verified
-          </span>
+          <span>Identity not verified</span>
         )}
       </div>
 
@@ -43,3 +53,8 @@ const UserProfileBig = ({ userData }) => {
 export default UserProfileBig;
 
 // pic: https://images.unsplash.com/photo-1635107510862-53886e926b74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2535&q=80
+/* in App
+  <div className="w-[360px]">
+    <UserProfileBig userData={userProfileBig} /> 
+  </div>
+*/

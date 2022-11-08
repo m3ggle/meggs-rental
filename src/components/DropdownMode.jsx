@@ -37,13 +37,21 @@ const DropdownMode = () => {
   };
 
   return (
-    <Menu as="div" className=" relative flex h-fit w-[340px] flex-col">
+    <Menu as="div" className=" relative flex h-fit w-full flex-col">
       {/* button */}
       {({ open }) => (
         <>
-          <Menu.Button className="flex w-fit items-center gap-2 rounded-lg bg-lmGrey50 px-3 py-[10px] shadow-sm dark:bg-dmGrey800">
-            <i className="fa-solid fa-sun flex h-[14px] w-[14px] items-center justify-center text-sm text-lmGrey600 dark:text-lmGrey100"></i>
-            <span className="text-sm font-semibold text-lmGrey600 dark:text-lmGrey100">
+          <Menu.Button className="flex w-full items-center gap-2 rounded-lg bg-white px-3 py-[10px] shadow-sm hover:bg-lmGrey50 dark:bg-dmGrey800">
+            <i
+              className={`${
+                localStorage.theme === "light"
+                  ? "fa-solid fa-sun"
+                  : localStorage.theme === "dark"
+                  ? "fa-solid fa-moon"
+                  : "fa-solid fa-desktop"
+              } flex h-[14px] w-[14px] items-center justify-center text-sm text-lmGrey600 duration-300 dark:text-lmGrey100`}
+            ></i>
+            <span className="flex w-full  text-sm text-lmGrey600 dark:text-lmGrey100">
               Appearance
             </span>
             <i
@@ -63,15 +71,15 @@ const DropdownMode = () => {
             leaveTo="transform opacity-0 scale-95"
           >
             {/* menu */}
-            <Menu.Items className="absolute left-0 mt-12 flex w-fit flex-col gap-y-1 rounded-lg bg-lmGrey50 py-2 px-2 shadow-sm dark:bg-dmGrey800">
+            <Menu.Items className="absolute left-0 mt-12 flex w-full flex-col gap-y-1 rounded-lg bg-white py-2 px-2 shadow-sm dark:bg-dmGrey800">
               <Menu.Item>
                 {({ active }) => (
                   <button
                     onClick={() => handleChange("light")}
                     className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 ${
                       active
-                        ? "bg-lmGrey100 dark:bg-dmGrey700"
-                        : "bg-lmGrey50 dark:bg-dmGrey800"
+                        ? "bg-lmGrey50 dark:bg-dmGrey700"
+                        : "bg-white dark:bg-dmGrey800"
                     } duration-300`}
                   >
                     <i
@@ -90,8 +98,8 @@ const DropdownMode = () => {
                     onClick={() => handleChange("dark")}
                     className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 ${
                       active
-                        ? "bg-lmGrey100 dark:bg-dmGrey700"
-                        : "bg-lmGrey50 dark:bg-dmGrey800"
+                        ? "bg-lmGrey50 dark:bg-dmGrey700"
+                        : "bg-white dark:bg-dmGrey800"
                     } duration-300`}
                   >
                     <i
@@ -110,8 +118,8 @@ const DropdownMode = () => {
                     onClick={() => handleChange("system")}
                     className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 ${
                       active
-                        ? "bg-lmGrey100 dark:bg-dmGrey700"
-                        : "bg-lmGrey50 dark:bg-dmGrey800"
+                        ? "bg-lmGrey50 dark:bg-dmGrey700"
+                        : "bg-white dark:bg-dmGrey800"
                     } duration-300`}
                   >
                     <i

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "./components/Navbar";
 import ExampleData from "./ExampleData";
+import Example from "./components/offerDetails/Calendar";
 
 export default function App() {
   const { control, handleSubmit } = useForm();
@@ -13,19 +14,17 @@ export default function App() {
   const { userProfileBig } = ExampleData();
 
   // test
-  let [isOpen, setIsOpen] = useState(true);
+  let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false)
   const openModal = () => setIsOpen(true)
 
-  //bg-white dark:bg-dmGrey900
-
   return (
     <div
-      className="relative flex h-screen w-full flex-col items-center justify-center overflow-scroll bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "url(https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)",
-      }}
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-scroll bg-white bg-cover bg-center dark:bg-dmGrey900"
+      // style={{
+      //   backgroundImage:
+      //     "url(https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)",
+      // }}
     >
       <div className="hidden">
         <DropdownMode />
@@ -53,11 +52,14 @@ export default function App() {
 
       {/* <MobileCatalog /> */}
 
-      <Navbar isOpen={isOpen} closeModal={closeModal} />
+      <Example />
 
+      <Navbar isOpen={isOpen} closeModal={closeModal} />
       {/* Logo stuff */}
       <div
-        className={`fixed ${isOpen ? "bottom-[-100px]" : "bottom-10"} z-50 flex h-[64px] w-[64px] cursor-pointer items-center justify-center rounded-full duration-300 hover:scale-105 active:scale-95 800:h-[84px] 800:w-[84px]`}
+        className={`fixed ${
+          isOpen ? "bottom-[-100px]" : "bottom-10"
+        } z-50 flex h-[64px] w-[64px] cursor-pointer items-center justify-center rounded-full duration-300 hover:scale-105 active:scale-95 800:h-[84px] 800:w-[84px]`}
         onClick={openModal}
       >
         <Spline scene="https://prod.spline.design/og6CZMxsQfdlo-uE/scene.splinecode" />

@@ -46,7 +46,7 @@ const Calendar = ({shadowUI, header}) => {
   }
 
   return (
-    <div className={`h-fit w-full overflow-hidden rounded-2xl bg-white p-6 ${shadowUI && "shadow"} dark:border-[1px] dark:border-solid dark:border-dmGrey800 dark:bg-dmGrey900`}>
+    <div className={`h-fit w-full overflow-hidden rounded-2xl bg-white p-6 ${shadowUI && "shadow"} dark:border dark:border-solid dark:border-dmGrey800 dark:bg-dmGrey900`}>
       <div className="flex flex-col gap-y-4">
         {/* calendar header */}
         {header && <div className="flex items-center">

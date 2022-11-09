@@ -38,8 +38,9 @@ const Preview = () => {
       </div>
       {/* img carousel */}
       <div className="flex h-fit w-full gap-x-2 overflow-x-scroll rounded-lg">
-        {picArray.map((pic) => (
+        {picArray.map((pic, index) => (
           <div
+            key={index}
             className="h-[220px] w-40 min-w-[160px] rounded-lg bg-slate-100 bg-cover bg-center shadow"
             style={{ backgroundImage: `url(${pic})` }}
           ></div>

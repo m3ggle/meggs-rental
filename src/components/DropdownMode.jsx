@@ -9,10 +9,18 @@ const DropdownMode = () => {
 
   // on change
   const setPreference = () => {
+    // if (
+    //   localStorage.theme === "dark" ||
+    //   (!("theme" in localStorage) &&
+    //     window.matchMedia("(prefers-color-scheme: dark)").matches)
+    // ) {
+    //   document.documentElement.classList.add("dark");
+    // } else {
+    //   document.documentElement.classList.remove("dark");
+    // }
     if (
       localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
+      window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
       document.documentElement.classList.add("dark");
     } else {
@@ -32,9 +40,9 @@ const DropdownMode = () => {
   };
 
   // when closing window, clear localStorage
-  window.onbeforeunload = function () {
-    localStorage.clear();
-  };
+  // window.onbeforeunload = function () {
+  //   localStorage.clear();
+  // };
 
   return (
     <Menu as="div" className=" relative flex h-fit w-full flex-col">

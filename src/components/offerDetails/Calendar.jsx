@@ -18,7 +18,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Calendar = () => {
+const Calendar = ({shadowUI, header}) => {
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today); // selected day
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy")); // Nov-2022
@@ -34,7 +34,6 @@ const Calendar = () => {
     start: startOfWeek(firstDayCurrentMonth),
     end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
   });
-  console.log(newDays);
 
   function previousMonth() {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 }); // first day of prev month
@@ -47,10 +46,10 @@ const Calendar = () => {
   }
 
   return (
-    <div className="h-fit w-full overflow-hidden rounded-2xl bg-white p-6 shadow dark:border-[1px] dark:border-solid dark:border-dmGrey800 dark:bg-dmGrey900">
+    <div className={`h-fit w-full overflow-hidden rounded-2xl bg-white p-6 ${shadowUI && "shadow"} dark:border-[1px] dark:border-solid dark:border-dmGrey800 dark:bg-dmGrey900`}>
       <div className="flex flex-col gap-y-4">
         {/* calendar header */}
-        <div className="flex items-center">
+        {header && <div className="flex items-center">
           <h2 className="flex-auto font-semibold dark:text-dmGrey100">
             {format(firstDayCurrentMonth, "MMMM yyyy")}
           </h2>
@@ -76,7 +75,7 @@ const Calendar = () => {
               aria-hidden="true"
             ></div>
           </button>
-        </div>
+        </div>}
         {/* calendar main */}
         <div className="flex flex-col gap-y-2">
           {/* weeks */}

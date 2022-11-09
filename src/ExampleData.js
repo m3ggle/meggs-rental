@@ -49,6 +49,16 @@ const carSpecData = {
     value: "No",
     icon: "fa-solid fa-utensils",
   },
+  placeholderOne: {
+    title: "",
+    value: "",
+    icon: ""
+  },
+  placeholderTwo: {
+    title: "",
+    value: "",
+    icon: ""
+  },
 };
 
 const transmissionSelect = {

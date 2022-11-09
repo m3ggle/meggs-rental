@@ -1,5 +1,5 @@
 // <UserProfileBig userData={userProfileBig} />
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserProfileHeader from "./UserProfileHeader";
 

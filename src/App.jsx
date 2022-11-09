@@ -19,6 +19,7 @@ import UserOffers from "./pages/userOffers/UserOffers"
 import ChatInfo from "./pages/chat/view/ChatInfo"
 import ChatMain from "./pages/chat/view/ChatMain"
 import ChatSidebar from "./pages/chat/view/ChatSidebar"
+import DropdownMode from "./components/DropdownMode";
 
 export default function App() {
   let [isOpen, setIsOpen] = useState(false);
@@ -28,6 +29,9 @@ export default function App() {
   return (
     <div className="relative flex h-screen w-full flex-col items-center overflow-scroll bg-white bg-cover bg-center dark:bg-dmGrey900">
       <Router>
+        <div className="hidden" aria-hidden="true">
+          <DropdownMode />
+        </div>
         <Navbar isOpen={isOpen} closeModal={closeModal} />
         <Logo isOpen={isOpen} openModal={openModal} />
         <Routes>

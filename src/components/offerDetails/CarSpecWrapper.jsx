@@ -35,7 +35,8 @@ const CarSpecWrapper = ({ amount, specs, mobile }) => {
   }, [amount, specs]);
 
   return (
-    <div className={`flex ${mobile ? "w-[360px]" : "w-full justify-between"} flex-wrap`}>
+    <div className={`flex w-full flex-wrap gap-2`}>
+    {/* <div className={`flex ${mobile ? "w-[360px]" : "w-full justify-between"} flex-wrap gap-y-2`}> */}
       {filteredSpecs.map((spec, index) => (
         <CarSpec
           key={spec.title === "" ? index : spec.title}

@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from "react";
+import UserProfile from "../../pages/userProfile/UserProfile";
 import { getAge } from "../../utilities/getAge";
 
-const UserProfileHeader = ({firstName, lastName, birthday, email}) => {
-    return (
-    <div className="flex w-full flex-col items-center gap-y-2">
+const UserProfileHeader = ({ firstName, lastName, birthday, email }) => {
+  let [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
+  return (
+    <div
+      onClick={openModal}
+      className="flex w-full flex-col items-center gap-y-2 cursor-pointer">
       <div
         className="h-[84px] w-[84px] rounded-full bg-cover bg-center shadow"
         style={{
@@ -23,8 +29,9 @@ const UserProfileHeader = ({firstName, lastName, birthday, email}) => {
         </div>
         <span>{email}</span>
       </div>
+      <UserProfile isOpen={isOpen} closeModal={closeModal} />
     </div>
   );
-}
+};
 
-export default UserProfileHeader
+export default UserProfileHeader;

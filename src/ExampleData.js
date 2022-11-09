@@ -207,8 +207,24 @@ const offerCard = {
   seats: 5,
 }
 
+const genderSelect = {
+  label: null,
+  icon: "fa-solid fa-person",
+  placeholder: "Gender",
+  list: ["Male", "feMale", "Divers"],
+};
+
 const ExampleData = () => {
-    return { carSpecData, filterSelects, userProfileBig, reviews, reviewRating, reviewId, offerCard };
+    return {
+      carSpecData,
+      filterSelects,
+      userProfileBig,
+      reviews,
+      reviewRating,
+      reviewId,
+      offerCard,
+      genderSelect,
+    };
 }
 
 export default ExampleData;

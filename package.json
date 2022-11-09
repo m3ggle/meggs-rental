@@ -8,6 +8,7 @@
     "@popperjs/core": "^2.11.6",
     "@splinetool/react-spline": "^2.2.3",
     "@splinetool/runtime": "^0.9.133",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@tanstack/react-query": "^4.13.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

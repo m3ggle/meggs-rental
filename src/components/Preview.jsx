@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Bmw1 from "../assets/img/bmw1.jpg";
 import Bmw2 from "../assets/img/bmw2.jpg";
 import Bmw3 from "../assets/img/bmw3.jpg";
@@ -18,7 +19,7 @@ const Preview = () => {
       {/* icons */}
       <div className="absolute  top-5 right-[22px] flex h-fit w-fit flex-col items-center justify-center text-[20px]">
         <div className="fa-solid fa-times flex h-8 w-8 items-center justify-center text-lmGrey600"></div>
-        <div className="fa-solid fa-heart flex h-8 w-8 items-center justify-center text-lmGrey300 text-[18px]"></div>
+        <div className="fa-solid fa-heart flex h-8 w-8 items-center justify-center text-[18px] text-lmGrey300"></div>
       </div>
 
       {/* header */}
@@ -45,7 +46,7 @@ const Preview = () => {
         ))}
       </div>
       {/* calendar */}
-      <Calendar />
+      <Calendar shadow={true} header={true} />
       {/* car specs */}
       <CarSpecWrapper amount="preview" specs={carSpecData} mobile={false} />
       {/* profile */}
@@ -60,12 +61,18 @@ const Preview = () => {
       </div>
       {/* btns */}
       <div className="flex w-full gap-x-2 ">
-        <div className="flex w-full items-center justify-center rounded-lg bg-primary100 py-3 px-4 text-sm font-semibold text-lmPrimary">
+        <Link
+          to="/offer-details"
+          className="flex w-full items-center justify-center rounded-lg bg-primary100 py-3 px-4 text-sm font-semibold text-lmPrimary"
+        >
           View full Offer
-        </div>
-        <div className="flex w-full items-center justify-center rounded-lg bg-lmPrimary py-3 px-4 text-sm font-semibold text-white shadow-lg">
+        </Link>
+        <Link
+          to="/chat"
+          className="flex w-full items-center justify-center rounded-lg bg-lmPrimary py-3 px-4 text-sm font-semibold text-white shadow-lg"
+        >
           Contact Owner
-        </div>
+        </Link>
       </div>
     </div>
   );

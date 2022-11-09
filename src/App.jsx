@@ -26,7 +26,7 @@ export default function App() {
   const openModal = () => setIsOpen(true);
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center overflow-scroll bg-white bg-cover bg-center p-40 dark:bg-dmGrey900">
+    <div className="relative flex h-screen w-full flex-col items-center overflow-scroll bg-white bg-cover bg-center dark:bg-dmGrey900">
       <Router>
         <Navbar isOpen={isOpen} closeModal={closeModal} />
         <Logo isOpen={isOpen} openModal={openModal} />

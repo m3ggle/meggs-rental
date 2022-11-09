@@ -1,5 +1,6 @@
 // <UserProfileBig userData={userProfileBig} />
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import UserProfileHeader from "./UserProfileHeader";
 
 const UserProfileBig = ({ userData }) => {
@@ -13,8 +14,15 @@ const UserProfileBig = ({ userData }) => {
     identityVerified,
   } = userData;
 
+  const navigate = useNavigate()
+
+  const handleButtonClick = () => {
+    navigate("/chat")
+  }
+
   return (
-    <div className="flex w-full flex-col items-center gap-y-2 rounded-3xl bg-white p-6 shadow-md dark:bg-dmGrey900">
+    <div className="flex h-[242] w-full flex-col items-center gap-y-2">
+      {/* <div className="flex w-full flex-col items-center gap-y-2 rounded-3xl bg-white p-6 shadow-md dark:bg-dmGrey900"> */}
       {/* header */}
       <UserProfileHeader
         firstName={firstName}
@@ -24,7 +32,7 @@ const UserProfileBig = ({ userData }) => {
       />
 
       {/* mid */}
-      <div className="flex w-full flex-col items-center justify-center text-sm text-lmGrey400 dark:text-dmGrey300">
+      {/* <div className="flex w-full flex-col items-center justify-center text-sm text-lmGrey400 dark:text-dmGrey300">
         <div className="flex w-full items-center justify-center gap-x-[2px]">
           <span className="w-full truncate text-right">Joined in {joined}</span>
           <div className="text-lg">•</div>
@@ -40,10 +48,13 @@ const UserProfileBig = ({ userData }) => {
         ) : (
           <span>Identity not verified</span>
         )}
-      </div>
+      </div> */}
 
       {/* btn */}
-      <button className="w-full rounded-lg bg-lmPrimary py-3 text-sm font-semibold text-white dark:bg-dmPrimary">
+      <button
+        onClick={handleButtonClick}
+        className="w-full rounded-lg bg-lmPrimary py-3 text-sm font-semibold text-white dark:bg-dmPrimary"
+      >
         Contact Owner
       </button>
     </div>

@@ -30,9 +30,12 @@ const SignIn = () => {
           </span>
         </div>
         {/* main main */}
-        <div className="flex w-full max-w-[340px] flex-col gap-y-8">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex w-full max-w-[340px] flex-col gap-y-8"
+        >
           {/* inputs */}
-          <div className="flex w-full flex-col gap-y-2">
+          <div className="flex w-full flex-col gap-y-3">
             <Controller
               name="email"
               control={control}
@@ -116,7 +119,7 @@ const SignIn = () => {
               </span>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </SignWrapper>
   );

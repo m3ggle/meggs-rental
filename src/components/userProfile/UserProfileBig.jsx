@@ -1,5 +1,5 @@
 // <UserProfileBig userData={userProfileBig} />
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import UserProfileHeader from "./UserProfileHeader";
 
@@ -8,17 +8,14 @@ const UserProfileBig = ({ userData }) => {
     firstName,
     lastName,
     birthday,
-    email,
-    reviewsCount,
-    joined,
-    identityVerified,
+    email
   } = userData;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/chat")
-  }
+    navigate("/chat");
+  };
 
   return (
     <div className="flex h-[242] w-full flex-col items-center gap-y-2">

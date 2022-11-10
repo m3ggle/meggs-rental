@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../style";
+import styles from "../../../style";
 
 const ProfileButton = ({ btnTitle, icon, link }) => {
   const navigate = useNavigate();

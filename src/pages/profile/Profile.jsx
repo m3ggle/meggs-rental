@@ -2,7 +2,7 @@ import React from "react";
 import SignWrapper from "../../components/SignWrapper";
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
 import ExampleData from "../../ExampleData";
-import ProfileButton from "../ProfileButton";
+import ProfileButton from "./view/ProfileButton";
 
 const Profile = () => {
   const { userProfileBig } = ExampleData();

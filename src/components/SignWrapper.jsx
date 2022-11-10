@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignWrapper = ({ children, pic }) => {
+const SignWrapper = ({ children, pic, puffer }) => {
   const navigate = useNavigate();
   const handleHomeButtonClick = () => {
     navigate("/homepage");
@@ -11,7 +11,7 @@ const SignWrapper = ({ children, pic }) => {
       {/* info part */}
       <div className="flex h-screen w-full max-w-[560px] flex-col items-center gap-y-2 overflow-scroll px-6 py-[28px]">
         {/* puffer */}
-        <div className="h-[40px] min-h-[40px] 600:h-[100px] 600:min-h-[100px] w-full"></div>
+        {puffer === undefined && (<div className="h-[40px] min-h-[40px] 600:h-[100px] 600:min-h-[100px] w-full"></div>)}
         {children}
       </div>
 

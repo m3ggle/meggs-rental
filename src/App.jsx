@@ -18,6 +18,7 @@ import OfferDetails from "./pages/offerDetails/OfferDetails";
 import Profile from "./pages/profile/Profile";
 import Account from "./pages/profile/sub/Account";
 import Help from "./pages/profile/sub/Help";
+import Notification from "./pages/profile/sub/Notification";
 import Payments from "./pages/profile/sub/Payments";
 import PrivacyPolicy from "./pages/profile/sub/PrivacyPolicy";
 import Reviews from "./pages/profile/sub/Reviews";
@@ -61,6 +62,7 @@ export default function App() {
           <Route path="/profile/account" element={<Account />} />
           <Route path="/profile/payments" element={<Payments />} />
           <Route path="/profile/reviews" element={<Reviews />} />
+          <Route path="/profile/notification" element={<Notification />} />
           <Route path="/profile/help" element={<Help />} />
           <Route
             path="/profile/terms-of-service"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Bmw1 from "../../assets/img/bmw1.jpg";
 import Bmw2 from "../../assets/img/bmw2.jpg";
 import Bmw3 from "../../assets/img/bmw3.jpg";
@@ -11,16 +11,11 @@ import ReviewSection from "../../components/ratings/ReviewSection";
 import UserProfileBig from "../../components/userProfile/UserProfileBig";
 import ExampleData from "../../ExampleData";
 import style from "../../style";
-import UserProfile from "../userProfile/UserProfile";
 
 const picArray = [Bmw1, Bmw2, Bmw3, Bmw4, Bmw5];
 const { carSpecData, userProfileBig } = ExampleData();
 
 const OfferDetails = () => {
-
-
-
-
   return (
     <div className="relative flex w-full max-w-[1440px] flex-col pt-6 1200:flex-row 1200:pt-0">
       {/* pic */}
@@ -37,7 +32,7 @@ const OfferDetails = () => {
         </div>
         {/* big img */}
         <div
-          className="fixed top-0 left-0 bottom-0 hidden h-screen w-6/12 items-center justify-center rounded-r-[60px] shadow-md bg-black bg-cover bg-center 1200:flex"
+          className="fixed top-0 left-0 bottom-0 hidden h-screen w-6/12 items-center justify-center rounded-r-[60px] bg-black bg-cover bg-center shadow-md 1200:flex"
           style={{ backgroundImage: `url(${Bmw2})` }}
         >
           <div className="flex w-full items-center justify-between px-6 opacity-60">
@@ -208,7 +203,7 @@ const OfferDetails = () => {
               </div>
             </div>
           </div>
-          
+
           {/* ratings */}
           <div className="flex w-full flex-col">
             <span className="text-lg text-lmGrey600 dark:text-dmGrey100">

@@ -58,7 +58,7 @@ const SignUp = () => {
           className="flex w-full max-w-[340px] flex-col gap-y-8"
         >
           {/* inputs */}
-          <div className="flex w-full flex-col gap-y-2">
+          <div className="flex w-full flex-col gap-y-3">
             <div className={currentRound === 0 ? "flex" : "hidden"}>
               <Controller
                 name="email"

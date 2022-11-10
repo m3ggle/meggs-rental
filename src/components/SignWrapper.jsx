@@ -11,7 +11,7 @@ const SignWrapper = ({ children, pic, puffer }) => {
       {/* info part */}
       <div className="flex h-screen w-full max-w-[560px] flex-col items-center gap-y-2 overflow-scroll px-6 py-[28px]">
         {/* puffer */}
-        {puffer === undefined && (<div className="h-[40px] min-h-[40px] 600:h-[100px] 600:min-h-[100px] w-full"></div>)}
+        {(puffer === undefined || puffer) && (<div className="h-[40px] min-h-[40px] 600:h-[100px] 600:min-h-[100px] w-full"></div>)}
         {children}
       </div>
 

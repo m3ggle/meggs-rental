@@ -30,10 +30,10 @@ const Calendar = ({shadowUI, header}) => {
     end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
   });
 
-  let newDays = eachDayOfInterval({
-    start: startOfWeek(firstDayCurrentMonth),
-    end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
-  });
+  // let newDays = eachDayOfInterval({
+  //   start: startOfWeek(firstDayCurrentMonth),
+  //   end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
+  // });
 
   function previousMonth() {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 }); // first day of prev month

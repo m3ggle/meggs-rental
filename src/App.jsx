@@ -20,6 +20,12 @@ import ChatInfo from "./pages/chat/view/ChatInfo"
 import ChatMain from "./pages/chat/view/ChatMain"
 import ChatSidebar from "./pages/chat/view/ChatSidebar"
 import DropdownMode from "./components/DropdownMode";
+import Account from "./pages/profile/sub/Account";
+import Payments from "./pages/profile/sub/Payments";
+import Ratings from "./pages/profile/sub/Ratings";
+import Help from "./pages/profile/sub/Help";
+import TermsOfService from "./pages/profile/sub/TermsOfService";
+import PrivacyPolicy from "./pages/profile/sub/PrivacyPolicy";
 
 export default function App() {
   let [isOpen, setIsOpen] = useState(false);
@@ -52,6 +58,13 @@ export default function App() {
           <Route path="/homepage" element={<Homepage />} />
           
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/account" element={<Account />} />
+          <Route path="/profile/payments" element={<Payments />} />
+          <Route path="/profile/ratings" element={<Ratings />} />
+          <Route path="/profile/help" element={<Help />} />
+          <Route path="/profile/terms-of-service" element={<TermsOfService />} />
+          <Route path="/profile/privacy-policy" element={<PrivacyPolicy />} />
+          
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />

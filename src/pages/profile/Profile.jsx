@@ -32,9 +32,9 @@ const Profile = () => {
             link="payments"
           />
           <ProfileButton
-            btnTitle="Ratings"
+            btnTitle="Reviews"
             icon="fa-solid fa-star"
-            link="ratings"
+            link="reviews"
           />
           <ProfileButton
             btnTitle="Notification"

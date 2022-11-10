@@ -26,26 +26,21 @@ const round = [
 const { genderSelect } = ExampleData();
 
 const SignUp = () => {
-  const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
-
   const [currentRound, setCurrentRound] = useState(0);
-
   const navigate = useNavigate();
-
-  const handleSignInClick = () => {
-    navigate("/sign-in");
+  
+  const { control, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    console.log(data)
+    navigate("/homepage");
   };
 
-  const handleContinue = () => {
-    setCurrentRound((prevState) => prevState + 1);
-  };
-
-  const handleGoBack = () => {
-    currentRound !== 0 && setCurrentRound((prevState) => prevState - 1);
-  };
-
+  const handleSignInClick = () => navigate("/sign-in");
   const handleGoogle = () => {};
+
+  const handleContinue = () => setCurrentRound((prevState) => prevState + 1);
+  const handleGoBack = () => currentRound !== 0 && setCurrentRound((prevState) => prevState - 1);
+
 
   return (
     <SignWrapper pic="https://images.unsplash.com/photo-1628437255792-911a5d23097e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80">

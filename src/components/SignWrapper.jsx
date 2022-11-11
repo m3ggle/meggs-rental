@@ -11,7 +11,9 @@ const SignWrapper = ({ children, pic, puffer }) => {
       {/* info part */}
       <div className="flex h-screen w-full max-w-[560px] flex-col items-center gap-y-2 overflow-scroll px-6 py-[28px]">
         {/* puffer */}
-        {(puffer === undefined || puffer) && (<div className="h-[40px] min-h-[40px] 600:h-[100px] 600:min-h-[100px] w-full"></div>)}
+        {(puffer === undefined || puffer) && (
+          <div className="h-[40px] min-h-[40px] w-full 600:h-[100px] 600:min-h-[100px]"></div>
+        )}
         {children}
       </div>
 
@@ -25,7 +27,7 @@ const SignWrapper = ({ children, pic, puffer }) => {
         </div>
         <button
           onClick={handleHomeButtonClick}
-          className="absolute top-[56px] right-[76px] flex h-[64px] w-[64px] items-center justify-center rounded-full bg-white dark:bg-dmGrey900"
+          className="absolute top-[56px] right-[76px] flex h-[64px] w-[64px] items-center justify-center rounded-full bg-white hover:scale-102 active:scale-98 dark:bg-dmGrey900 duration-300"
         >
           <i className="fa-solid fa-house text-[28px] text-lmGrey800 dark:text-dmGrey100"></i>
         </button>

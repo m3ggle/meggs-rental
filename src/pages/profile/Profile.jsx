@@ -45,25 +45,21 @@ const Profile = () => {
             btnTitle="Help"
             icon="fa-solid fa-handshake-angle"
             link="help"
-            secondIcon={false}
           />
           <ProfileButton
             btnTitle="Terms of Service"
             icon="fa-solid fa-section"
             link="terms-of-service"
-            secondIcon={false}
           />
           <ProfileButton
             btnTitle="Privacy Policy"
             icon="fa-solid fa-user-shield"
             link="privacy-policy"
-            secondIcon={false}
           />
           <ProfileButton
             btnTitle="Sign Out"
             icon="fa-solid fa-right-from-bracket"
             link="/sign-in"
-            secondIcon={false}
           />
         </div>
       </div>

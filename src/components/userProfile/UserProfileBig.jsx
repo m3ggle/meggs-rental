@@ -1,6 +1,7 @@
 // <UserProfileBig userData={userProfileBig} />
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Btn from "../Btn";
 import UserProfileHeader from "./UserProfileHeader";
 
 const UserProfileBig = ({ userData }) => {
@@ -48,12 +49,7 @@ const UserProfileBig = ({ userData }) => {
       </div> */}
 
       {/* btn */}
-      <button
-        onClick={handleButtonClick}
-        className="w-full rounded-lg bg-lmPrimary py-3 text-sm font-semibold text-white dark:bg-dmPrimary"
-      >
-        Contact Owner
-      </button>
+      <Btn type="button" uiType="primary" title="Contact Owner" onClick={handleButtonClick} />
     </div>
   );
 };

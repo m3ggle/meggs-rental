@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Btn from "../../components/Btn";
 import Select from "../../components/input/Select";
 import TextInput from "../../components/input/TextInput";
 import ProgressBar from "../../components/ProgressBar";
 import SignWrapper from "../../components/SignWrapper";
 import ExampleData from "../../ExampleData";
-import styles from "../../style";
 
 const round = [
   {
@@ -28,10 +28,10 @@ const { genderSelect } = ExampleData();
 const SignUp = () => {
   const [currentRound, setCurrentRound] = useState(0);
   const navigate = useNavigate();
-  
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
+    console.log(data);
     navigate("/homepage");
   };
 
@@ -39,8 +39,13 @@ const SignUp = () => {
   const handleGoogle = () => {};
 
   const handleContinue = () => setCurrentRound((prevState) => prevState + 1);
-  const handleGoBack = () => currentRound !== 0 && setCurrentRound((prevState) => prevState - 1);
+  const handleGoBack = () =>
+    currentRound !== 0 && setCurrentRound((prevState) => prevState - 1);
 
+  const handleCallbackPrimaryBtn = () =>
+    currentRound === round.length - 1 ? onSubmit() : handleContinue();
+  const handleCallbackSecondaryBtn = () =>
+    currentRound === 0 ? handleGoogle() : handleGoBack();
 
   return (
     <SignWrapper pic="https://images.unsplash.com/photo-1628437255792-911a5d23097e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80">
@@ -246,21 +251,18 @@ const SignUp = () => {
           </div>
           {/* bottom */}
           <div className="flex flex-col gap-y-2 text-sm">
-            <button
+            <Btn
               type="submit"
-              onClick={
-                currentRound === round.length - 1 ? onSubmit : handleContinue
-              }
-              className="flex items-center justify-center rounded-lg bg-lmPrimary py-3 px-4 text-white shadow-md"
-            >
-              {currentRound === round.length - 1 ? "Finish" : "Continue"}
-            </button>
-            <button
-              onClick={currentRound === 0 ? handleGoogle : handleGoBack}
-              className={`flex items-center justify-center rounded-lg bg-primary100 dark:bg-transparent ${styles.darkModeBorder} py-3 px-4 text-lmPrimary duration-300 dark:text-lmGrey100 dark:hover:border-dmGrey600`}
-            >
-              {currentRound === 0 ? "Sign Up with Google" : "Go Back"}
-            </button>
+              uiType="primary"
+              title={currentRound === round.length - 1 ? "Finish" : "Continue"}
+              onClick={handleCallbackPrimaryBtn}
+            />
+            <Btn
+              type="button"
+              uiType="secondary"
+              title={currentRound === 0 ? "Sign Up with Google" : "Go Back"}
+              onClick={handleCallbackSecondaryBtn}
+            />
             <span className="text-lmGrey500 dark:text-dmGrey300">
               Already have an Account?{" "}
               <span

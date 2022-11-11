@@ -27,7 +27,7 @@ const SignWrapper = ({ children, pic, puffer }) => {
         </div>
         <button
           onClick={handleHomeButtonClick}
-          className="absolute top-[56px] right-[76px] flex h-[64px] w-[64px] items-center justify-center rounded-full bg-white hover:scale-102 active:scale-98 dark:bg-dmGrey900 duration-300"
+          className={`absolute top-[56px] right-[76px] flex h-[64px] w-[64px] items-center justify-center rounded-full bg-white duration-300 hover:scale-102 active:scale-98 dark:border dark:border-solid dark:border-transparent dark:bg-dmGrey900 dark:hover:border-dmGrey800`}
         >
           <i className="fa-solid fa-house text-[28px] text-lmGrey800 dark:text-dmGrey100"></i>
         </button>

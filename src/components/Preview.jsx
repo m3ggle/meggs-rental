@@ -6,12 +6,13 @@ import Bmw3 from "../assets/img/bmw3.jpg";
 import Bmw4 from "../assets/img/bmw4.jpg";
 import Bmw5 from "../assets/img/bmw5.jpg";
 import ExampleData from "../ExampleData";
+import Btn from "./Btn";
 import Calendar from "./offerDetails/Calendar";
 import CarSpecWrapper from "./offerDetails/CarSpecWrapper";
 import UserProfileSmall from "./userProfile/UserProfileSmall";
 
 const picArray = [Bmw1, Bmw2, Bmw3, Bmw4, Bmw5];
-const { carSpecData} = ExampleData()
+const { carSpecData } = ExampleData();
 
 const Preview = () => {
   return (
@@ -62,17 +63,11 @@ const Preview = () => {
       </div>
       {/* btns */}
       <div className="flex w-full gap-x-2 ">
-        <Link
-          to="/offer-details"
-          className="flex w-full items-center justify-center rounded-lg bg-primary100 py-3 px-4 text-sm font-semibold text-lmPrimary"
-        >
-          View full Offer
+        <Link to="/offer-details" className="w-full">
+          <Btn uiType="secondary" type="button" title="View full Offer" />
         </Link>
-        <Link
-          to="/chat"
-          className="flex w-full items-center justify-center rounded-lg bg-lmPrimary py-3 px-4 text-sm font-semibold text-white shadow-lg"
-        >
-          Contact Owner
+        <Link to="/chat" className="w-full">
+          <Btn uiType="primary" type="button" title="Contact Owner" />
         </Link>
       </div>
     </div>

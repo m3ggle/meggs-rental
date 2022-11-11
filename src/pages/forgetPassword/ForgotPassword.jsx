@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Btn from "../../components/Btn";
 import TextInput from "../../components/input/TextInput";
 import ProgressBar from "../../components/ProgressBar";
 import SignWrapper from "../../components/SignWrapper";
-import styles from "../../style";
 
 const round = [
   {
@@ -23,16 +23,20 @@ const ForgotPassword = () => {
 
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
-    navigate("/homepage")
+    console.log(data);
+    navigate("/homepage");
   };
-
 
   const handleSignInClick = () => navigate("/sign-in");
   const handleSignUpClick = () => navigate("/sign-up");
 
-  const handleContinueClick = () => (currentRound !== round.length - 1) && setCurrentRound(prevState => prevState + 1)
+  const handleContinueClick = () =>
+    currentRound !== round.length - 1 &&
+    setCurrentRound((prevState) => prevState + 1);
   const handleGoogle = () => {};
+
+  const handleCallbackPrimaryBtn = () =>
+    currentRound === round.length - 1 ? onSubmit : handleContinueClick;
 
   return (
     <SignWrapper pic="https://images.unsplash.com/photo-1651304285431-e46e5e15ed7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80">
@@ -105,23 +109,18 @@ const ForgotPassword = () => {
           </div>
           {/* bottom */}
           <div className="flex flex-col gap-y-2 text-sm">
-            <button
+            <Btn
               type="submit"
-              onClick={
-                currentRound === round.length - 1
-                  ? onSubmit
-                  : handleContinueClick
-              }
-              className="flex items-center justify-center rounded-lg bg-lmPrimary py-3 px-4 text-white shadow-md"
-            >
-              {round[currentRound].btnTitle}
-            </button>
-            <button
+              uiType="primary"
+              onClick={handleCallbackPrimaryBtn}
+              title={round[currentRound].btnTitle}
+            />
+            <Btn
+              type="submit"
+              uiType="secondary"
               onClick={handleGoogle}
-              className={`flex items-center justify-center rounded-lg bg-primary100 dark:bg-transparent ${styles.darkModeBorder} py-3 px-4 text-lmPrimary duration-300 dark:text-lmGrey100 dark:hover:border-dmGrey600`}
-            >
-              Sign In with Google
-            </button>
+              title="Sign In with Google"
+            />
             {currentRound === 0 && (
               <div className="flex flex-col gap-y-1">
                 <span className="text-lmGrey500 dark:text-dmGrey300">

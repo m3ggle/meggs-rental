@@ -1,6 +1,7 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Btn from "../../components/Btn";
 import TextInput from "../../components/input/TextInput";
 import SignWrapper from "../../components/SignWrapper";
 import styles from "../../style";
@@ -10,7 +11,6 @@ const SignIn = () => {
 
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     navigate("/homepage");
   };
 
@@ -86,13 +86,12 @@ const SignIn = () => {
           </div>
           {/* bottom */}
           <div className="flex flex-col gap-y-2 text-sm">
-            <button
+            <Btn
+              uiType="primary"
               type="submit"
               onClick={onSubmit}
-              className="flex items-center justify-center rounded-lg bg-lmPrimary py-3 px-4 text-white shadow-md"
-            >
-              Sign In
-            </button>
+              title="Sign In"
+            />
             <button
               className={`flex items-center justify-center rounded-lg bg-primary100 dark:bg-transparent ${styles.darkModeBorder} py-3 px-4 text-lmPrimary duration-300 dark:text-lmGrey100 dark:hover:border-dmGrey600`}
             >

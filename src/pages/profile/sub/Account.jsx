@@ -5,13 +5,13 @@ import TextArea from "../../../components/input/TextArea";
 import TextInput from "../../../components/input/TextInput";
 import SignWrapper from "../../../components/SignWrapper";
 import ExampleData from "../../../ExampleData";
-import ProfileHeader from "../view/ProfileHeader";
+import ProfileSubHeader from "../view/ProfileSubHeader";
 
 const { genderSelect } = ExampleData();
 
 const Account = () => {
-    const { control, handleSubmit } = useForm();
-    const onSubmit = (data) => console.log(data);
+  const { control, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data);
 
   return (
     <SignWrapper
@@ -19,10 +19,10 @@ const Account = () => {
       pic="https://images.unsplash.com/photo-1658391157361-43b9984cbddf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     >
       <div className="flex w-full max-w-[348px] flex-col gap-y-3 overflow-y-scroll px-[2px] py-6">
-        <ProfileHeader title="Account" />
+        <ProfileSubHeader title="Account" />
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-y-3 w-full"
+          className="flex w-full flex-col gap-y-3"
         >
           <Controller
             name="firstName"
@@ -226,9 +226,9 @@ const Account = () => {
           <button
             type="submit"
             onClick={onSubmit}
-            className="flex items-center justify-center w-[340px] rounded-lg bg-lmPrimary py-3 px-4 text-white shadow-md"
+            className="flex w-[340px] items-center justify-center rounded-lg bg-lmPrimary py-3 px-4 text-white shadow-md"
           >
-            Submit changes 
+            Submit changes
           </button>
         </form>
       </div>

@@ -9,12 +9,15 @@ const ProfileButton = ({ btnTitle, icon, link, secondIcon }) => {
     <button
       type="button"
       onClick={handleClick}
-      className={`flex items-center justify-center gap-x-2 border border-solid border-lmGrey100 text-lmGrey300 duration-300 hover:scale-101 hover:border-lmGrey300 hover:text-lmGrey600 active:scale-99 ${styles.darkModeBorder} w-full rounded-lg px-4 py-3 shadow`}
+      className={`flex items-center justify-center gap-x-2 text-lmGrey300 duration-300 hover:scale-101 hover:text-lmGrey600 active:scale-99 dark:text-dmGrey300 dark:hover:text-dmGrey100 ${styles.LmDmHoverBorder} w-full rounded-lg px-4 py-3 shadow`}
+      // className={`flex items-center justify-center gap-x-2 border border-solid border-lmGrey100 text-lmGrey300 dark:text-dmGrey300 duration-300 hover:scale-101 hover:border-lmGrey300 hover:text-lmGrey600 dark:hover:text-dmGrey100 dark:hover:border-dmGrey700 active:scale-99 ${styles.darkModeBorder} w-full rounded-lg px-4 py-3 shadow`}
     >
       <i
         className={`${icon} flex h-[14px] min-h-[14px] w-[14px] min-w-[14px] items-center justify-center text-[14px]`}
       />
-      <span className="flex w-full text-sm text-lmGrey600">{btnTitle}</span>
+      <span className="flex w-full text-sm text-lmGrey600 dark:text-dmGrey100">
+        {btnTitle}
+      </span>
       <i
         className={`${
           (secondIcon === undefined || secondIcon) &&

@@ -1,11 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const ProfileHeader = ({ title }) => {
+const ProfileSubHeader = ({ title }) => {
     const navigate = useNavigate()
     const handleGoBack = () => navigate("/profile")
   return (
-    <div className="flex w-full items-center justify-center gap-x-2 py-3 text-lmGrey600">
+    <div className="flex w-full items-center justify-center gap-x-2 py-3 text-lmGrey600 dark:text-dmGrey100">
       <i
         onClick={handleGoBack}
         className="fa-solid fa-chevron-left cursor-pointer flex h-6 w-6 items-center justify-center text-[20px]"
@@ -16,4 +16,4 @@ const ProfileHeader = ({ title }) => {
   );
 }
 
-export default ProfileHeader
+export default ProfileSubHeader

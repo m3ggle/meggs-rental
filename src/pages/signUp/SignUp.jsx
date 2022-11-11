@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import Btn from "../../components/Btn";
-import Select from "../../components/input/Select";
-import TextInput from "../../components/input/TextInput";
 import ProgressBar from "../../components/ProgressBar";
 import SignWrapper from "../../components/SignWrapper";
 import ExampleData from "../../ExampleData";
+import SignUpConfirmation from "./view/SignUpConfirmation";
+import SignUpEmail from "./view/SignUpEmail";
+import SignUpPassword from "./view/SignUpPassword";
 
 const round = [
   {
     title: "Create a new account",
+  },
+  {
+    title: "Confirm your Email Address",
   },
   {
     title: "What is your full name",
@@ -26,26 +27,44 @@ const round = [
 const { genderSelect } = ExampleData();
 
 const SignUp = () => {
+  // dataCollection should be stored inside the url
+  const [dataCollection, setDataCollection] = useState({
+    email: "",
+    confirmation: false,
+    password: "",
+  });
   const [currentRound, setCurrentRound] = useState(0);
-  const navigate = useNavigate();
 
-  const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    navigate("/homepage");
+  const handleCallback = ({ data, nextStep }) => {
+    if (nextStep === "google") {
+      setCurrentRound((prevState) => prevState + 2);
+    } else if (nextStep) {
+      let currentData = dataCollection;
+      Object.entries(data).map((item) => {
+        currentData[item[0]] = item[1];
+      });
+      console.log(currentData);
+      setDataCollection({ ...currentData });
+      setCurrentRound((prevState) => prevState + 1);
+    } else {
+      setCurrentRound((prevState) => prevState - 1);
+    }
   };
 
-  const handleSignInClick = () => navigate("/sign-in");
-  const handleGoogle = () => {};
-
-  const handleContinue = () => setCurrentRound((prevState) => prevState + 1);
-  const handleGoBack = () =>
-    currentRound !== 0 && setCurrentRound((prevState) => prevState - 1);
-
-  const handleCallbackPrimaryBtn = () =>
-    currentRound === round.length - 1 ? onSubmit() : handleContinue();
-  const handleCallbackSecondaryBtn = () =>
-    currentRound === 0 ? handleGoogle() : handleGoBack();
+  const renderComponent = () => {
+    switch (currentRound) {
+      case 0:
+        return <SignUpEmail handleCallback={handleCallback} />;
+      case 1:
+        return <SignUpConfirmation handleCallback={handleCallback} />;
+      case 2:
+        return <SignUpPassword handleCallback={handleCallback} />;
+      case 3:
+        return <SignUpPassword handleCallback={handleCallback} />;
+      default:
+        return "";
+    }
+  };
 
   return (
     <SignWrapper pic="https://images.unsplash.com/photo-1628437255792-911a5d23097e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80">
@@ -57,12 +76,12 @@ const SignUp = () => {
           </span>
           <ProgressBar amount={round.length} finished={currentRound} />
         </div>
-        {/* main main */}
-        <form
+        {renderComponent()}
+
+        {/* <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex w-full max-w-[340px] flex-col gap-y-8"
         >
-          {/* inputs */}
           <div className="flex w-full flex-col gap-y-3">
             <div className={currentRound === 0 ? "flex" : "hidden"}>
               <Controller
@@ -249,7 +268,6 @@ const SignUp = () => {
               />
             </div>
           </div>
-          {/* bottom */}
           <div className="flex flex-col gap-y-2 text-sm">
             <Btn
               type="submit"
@@ -273,7 +291,7 @@ const SignUp = () => {
               </span>
             </span>
           </div>
-        </form>
+        </form> */}
       </div>
     </SignWrapper>
   );

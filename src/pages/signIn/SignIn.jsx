@@ -1,21 +1,26 @@
 import React from "react";
-import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import Btn from "../../components/Btn";
-import TextInput from "../../components/input/TextInput";
 import SignWrapper from "../../components/SignWrapper";
-import styles from "../../style";
+import { useSignStateData } from "../../hooks/useSignStateData";
+import SignInEmailPassword from "./view/SignInEmailPassword";
 
 const SignIn = () => {
+  const { storeDataInState } = useSignStateData();
   const navigate = useNavigate();
 
-  const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    navigate("/homepage");
+  const handleCallback = ({ data, nextStep }) => {
+    switch (nextStep) {
+      case "google":
+        console.log("signing in");
+        break;
+      case "finished":
+        storeDataInState(data);
+        navigate("/homepage");
+        break;
+      default:
+        break;
+    }
   };
-
-  const handleSignUpClick = () => navigate("/sign-up");
-  const handleForgotClick = () => navigate("/forgot-password");
 
   return (
     <SignWrapper pic="https://images.unsplash.com/photo-1566896212627-e4f210557f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80">
@@ -29,96 +34,7 @@ const SignIn = () => {
             Suspendisse et nunc fringilla in tempus.
           </span>
         </div>
-        {/* main main */}
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex w-full max-w-[340px] flex-col gap-y-8"
-        >
-          {/* inputs */}
-          <div className="flex w-full flex-col gap-y-3">
-            <Controller
-              name="email"
-              control={control}
-              rules={{
-                required: "Email is required",
-                pattern: {
-                  value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
-                  message: "Invalid email address",
-                },
-              }}
-              render={({ field, fieldState }) => (
-                <TextInput
-                  firstIcon="fa-solid fa-at"
-                  onChange={field.onChange}
-                  label="Email"
-                  placeholder="maxMustermann@web.de"
-                  value={field.value}
-                  onBlur={field.onBlur}
-                  error={fieldState.error}
-                />
-              )}
-            />
-            <Controller
-              name="password"
-              control={control}
-              rules={{
-                required: "Password is required",
-                pattern: {
-                  value:
-                    /^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$/,
-                  message:
-                    "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
-                },
-              }}
-              render={({ field, fieldState }) => (
-                <TextInput
-                  firstIcon="fa-solid fa-lock"
-                  onChange={field.onChange}
-                  label="Password"
-                  placeholder="••••••"
-                  type="password"
-                  value={field.value}
-                  onBlur={field.onBlur}
-                  error={fieldState.error}
-                />
-              )}
-            />
-          </div>
-          {/* bottom */}
-          <div className="flex flex-col gap-y-2 text-sm">
-            <Btn
-              uiType="primary"
-              type="submit"
-              onClick={onSubmit}
-              title="Sign In"
-            />
-            <button
-              className={`flex items-center justify-center rounded-lg bg-primary100 dark:bg-transparent ${styles.darkModeBorder} py-3 px-4 text-lmPrimary duration-300 dark:text-lmGrey100 dark:hover:border-dmGrey600`}
-            >
-              Sign In with Google
-            </button>
-            <div className="flex flex-col gap-y-1">
-              <span className="text-lmGrey500 dark:text-dmGrey300">
-                Don't have a account?{" "}
-                <span
-                  onClick={handleSignUpClick}
-                  className="cursor-pointer underline underline-offset-2 duration-300 dark:hover:text-dmGrey100"
-                >
-                  Sign Up instead
-                </span>
-              </span>
-              <span className="text-lmGrey500 dark:text-dmGrey300">
-                Forgot your password?{" "}
-                <span
-                  onClick={handleForgotClick}
-                  className="cursor-pointer underline underline-offset-2 duration-300 dark:hover:text-dmGrey100"
-                >
-                  Let's change that
-                </span>
-              </span>
-            </div>
-          </div>
-        </form>
+        <SignInEmailPassword handleCallback={handleCallback} />
       </div>
     </SignWrapper>
   );

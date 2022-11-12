@@ -1,3 +1,37 @@
+const signUpRounds = [
+  {
+    title: "Create a new account",
+  },
+  {
+    title: "Confirm your Email Address",
+  },
+  {
+    title: "Your new Password",
+  },
+  {
+    title: "Almost finished",
+  },
+  {
+    title: "Last step, promised 🤞",
+  },
+];
+
+const forgotPasswordRounds = [
+  {
+    title: "Forgot your password?",
+    btnTitle: "Send Email",
+  },
+  {
+    title: "Reset your password",
+    btnTitle: "Reset password",
+  },
+];
+
+const citiesAutocomplete = {
+  placeholder: "Dresden",
+  list: ["Berlin", "Dresden", "Cologne", "Munich", "Paris", "New York"],
+};
+
 const carSpecData = {
   condition: {
     title: "Condition",
@@ -224,6 +258,9 @@ const ExampleData = () => {
       reviewId,
       offerCard,
       genderSelect,
+      signUpRounds,
+      forgotPasswordRounds,
+      citiesAutocomplete,
     };
 }
 

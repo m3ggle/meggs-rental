@@ -3,12 +3,18 @@ import { Controller, useForm } from "react-hook-form";
 import TextInput from "../../../components/input/TextInput";
 import BottomPart from "./BottomPart";
 
-const SignUpPassword = ({ handleCallback }) => {
+const SignUpTele = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log("setting password");
+    console.log("birthday, gender and city");
     const nextStep = true;
     handleCallback({ data, nextStep });
+  };
+
+  const handleGoBack = () => {
+    console.log("going back");
+    const nextStep = false;
+    handleCallback({ nextStep });
   };
 
   return (
@@ -17,24 +23,21 @@ const SignUpPassword = ({ handleCallback }) => {
       className="flex w-full max-w-[340px] flex-col gap-y-8"
     >
       <Controller
-        name="password"
+        name="telephoneNumber"
         control={control}
         rules={{
-          required: "Password is required",
           pattern: {
-            value:
-              /^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*?+-=€/ ])\S*$/,
-            message:
-              "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
+            value: /^\d+$/,
+            message: "Only numbers are allowed",
           },
         }}
         render={({ field, fieldState }) => (
           <TextInput
-            firstIcon="fa-solid fa-lock"
+            firstIcon="fa-solid fa-phone"
             onChange={field.onChange}
-            label="Password"
-            placeholder="••••••"
-            type="password"
+            label="Telephone number (optional)"
+            placeholder="03 251 2342783"
+            type="number"
             value={field.value}
             onBlur={field.onBlur}
             error={fieldState.error}
@@ -46,9 +49,13 @@ const SignUpPassword = ({ handleCallback }) => {
         firstBtnTitle="Continue"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
+        secondBtn="secondary"
+        secondBtnTitle="Go Back"
+        secondBtnType="button"
+        secondBtnOnClick={handleGoBack}
       />
     </form>
   );
 };
 
-export default SignUpPassword;
+export default SignUpTele;

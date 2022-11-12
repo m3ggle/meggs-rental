@@ -1,13 +1,13 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import TextInput from "../../../components/input/TextInput";
-import BottomPart from "./BottomPart";
+import BottomPart from "../../signUp/view/BottomPart";
 
-const SignUpPassword = ({ handleCallback }) => {
+const ForgotPasswordPassword = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("setting password");
-    const nextStep = true;
+    const nextStep = "finished";
     handleCallback({ data, nextStep });
   };
 
@@ -43,7 +43,7 @@ const SignUpPassword = ({ handleCallback }) => {
       />
       <BottomPart
         firstBtn="primary"
-        firstBtnTitle="Continue"
+        firstBtnTitle="Set as new Password"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
       />
@@ -51,4 +51,4 @@ const SignUpPassword = ({ handleCallback }) => {
   );
 };
 
-export default SignUpPassword;
+export default ForgotPasswordPassword;

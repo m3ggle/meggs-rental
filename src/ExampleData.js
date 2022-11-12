@@ -28,7 +28,7 @@ const forgotPasswordRounds = [
 ];
 
 const citiesAutocomplete = {
-  placeholder: "Dresden",
+  // placeholder: "Dresden",
   list: ["Berlin", "Dresden", "Cologne", "Munich", "Paris", "New York"],
 };
 
@@ -86,12 +86,12 @@ const carSpecData = {
   placeholderOne: {
     title: "",
     value: "",
-    icon: ""
+    icon: "",
   },
   placeholderTwo: {
     title: "",
     value: "",
-    icon: ""
+    icon: "",
   },
 };
 
@@ -239,7 +239,7 @@ const offerCard = {
   priceMonth: "600",
   transmission: "Automatic",
   seats: 5,
-}
+};
 
 const genderSelect = {
   label: null,
@@ -249,19 +249,19 @@ const genderSelect = {
 };
 
 const ExampleData = () => {
-    return {
-      carSpecData,
-      filterSelects,
-      userProfileBig,
-      reviews,
-      reviewRating,
-      reviewId,
-      offerCard,
-      genderSelect,
-      signUpRounds,
-      forgotPasswordRounds,
-      citiesAutocomplete,
-    };
-}
+  return {
+    carSpecData,
+    filterSelects,
+    userProfileBig,
+    reviews,
+    reviewRating,
+    reviewId,
+    offerCard,
+    genderSelect,
+    signUpRounds,
+    forgotPasswordRounds,
+    citiesAutocomplete,
+  };
+};
 
 export default ExampleData;

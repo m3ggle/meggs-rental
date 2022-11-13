@@ -17,7 +17,7 @@ const Upload = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentRound) {
+    if (currentRound === 0 || !currentRound) {
       const newParam = new URLSearchParams({ round: 1 });
       navigate(`/upload/?${newParam}`);
     }
@@ -26,14 +26,15 @@ const Upload = () => {
 
   const handleCallback = ({ data, nextStep }) => {
     switch (nextStep) {
-      case "finished":
-        storeDataInState(data);
+      case "finish":
+        localStorage.removeItem("uploadData")
         navigate("/homepage");
         break;
       case true:
         const nextRound = currentRound + 1;
         const newParam = new URLSearchParams({ round: nextRound });
         setSearchParams(newParam);
+        storeDataInState(data);
         break;
       case "back":
         if (currentRound !== 1) {
@@ -48,7 +49,6 @@ const Upload = () => {
       default:
         break;
     }
-    localStorage.setItem("Nectar", "Joji");
   };
 
   const renderComponent = () => {

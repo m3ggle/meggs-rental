@@ -98,7 +98,7 @@ const carSpecData = {
 const eatingSelect = {
   label: null,
   icon: "fa-solid fa-utensils",
-  placeholder: "No",
+  placeholder: "Eating allowed?",
   list: ["Yes", "No"],
 };
 
@@ -133,7 +133,7 @@ const seatSelect = {
 const trunkSelect = {
   label: null,
   icon: "fa-solid fa-suitcase",
-  placeholder: "How much trunk volume",
+  placeholder: "How much trunk volume?",
   list: [
     "3 suitcases",
     "4 suitcases",
@@ -147,7 +147,7 @@ const trunkSelect = {
 const colorSelect = {
   label: null,
   icon: "fa-solid fa-palette",
-  placeholder: "Which Color?",
+  placeholder: "Which color?",
   list: [
     "Yellow",
     "Green",
@@ -163,7 +163,7 @@ const colorSelect = {
 const smokingSelect = {
   label: null,
   icon: "fa-solid fa-smoking",
-  placeholder: "Smoking Allowed? ",
+  placeholder: "Smoking allowed?",
   list: ["Yes", "No"],
 };
 

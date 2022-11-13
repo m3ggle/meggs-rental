@@ -49,6 +49,8 @@ export default function App() {
 
           <Route path="/user-offers" element={<UserOffers />} />
           <Route path="/upload" element={<Upload />} />
+          <Route path="/upload/:round" element={<Upload />} />
+          {/* <Route path="/upload/:params" element={<Upload />} /> */}
 
           <Route path="/chat" element={<Chat />} />
           <Route path="/chat/sidebar" element={<ChatSidebar />} />

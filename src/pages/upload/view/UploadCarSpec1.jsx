@@ -14,8 +14,6 @@ const UploadCarSpec1 = ({ handleCallback }) => {
     const nextStep = true;
     handleCallback({ data, nextStep });
   };
-
-    console.log(transmissionSelect, fuelSelect, trunkSelect, seatSelect);
     
   return (
     <form

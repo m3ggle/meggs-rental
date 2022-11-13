@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import SignWrapper from "../../components/SignWrapper";
 import { useSignStateData } from "../../hooks/useSignStateData";
 import UploadBasicInfo from "./view/UploadBasicInfo";
@@ -11,11 +11,18 @@ import UploadImgUpload from "./view/UploadImgUpload";
 import UploadPrev from "./view/UploadPrev";
 
 const Upload = () => {
-  // dataCollection should be stored inside the url
   const { storeDataInState } = useSignStateData();
-  const [currentRound, setCurrentRound] = useState(0);
-
+  let [searchParams, setSearchParams] = useSearchParams();
+  const currentRound = +searchParams.get("round");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentRound) {
+      const newParam = new URLSearchParams({ round: 1 });
+      navigate(`/upload/?${newParam}`);
+    }
+  }, [navigate]);
+
 
   const handleCallback = ({ data, nextStep }) => {
     switch (nextStep) {
@@ -24,34 +31,39 @@ const Upload = () => {
         navigate("/homepage");
         break;
       case true:
-        console.log("Hallo")
-        storeDataInState(data);
-        setCurrentRound((prevState) => prevState + 1);
+        const nextRound = currentRound + 1;
+        const newParam = new URLSearchParams({ round: nextRound });
+        setSearchParams(newParam);
         break;
       case "back":
-        setCurrentRound((prevState) => prevState - 1);
+        if (currentRound !== 1) {
+          const nextRound = currentRound - 1;
+          const newParam = new URLSearchParams({ round: nextRound });
+          setSearchParams(newParam);
+        }
         break;
-      case "close": 
+      case "close":
         navigate("/user-offers");
         break;
       default:
         break;
     }
+    localStorage.setItem("Nectar", "Joji");
   };
 
   const renderComponent = () => {
     switch (currentRound) {
-      case 0:
-        return <UploadBasicInfo handleCallback={handleCallback} />;
       case 1:
-        return <UploadCarSpec1 handleCallback={handleCallback} />;
+        return <UploadBasicInfo handleCallback={handleCallback} />;
       case 2:
-        return <UploadCarSpec2 handleCallback={handleCallback} />;
+        return <UploadCarSpec1 handleCallback={handleCallback} />;
       case 3:
-        return <UploadCarSpec3 handleCallback={handleCallback} />;
+        return <UploadCarSpec2 handleCallback={handleCallback} />;
       case 4:
-        return <UploadImgUpload handleCallback={handleCallback} />;
+        return <UploadCarSpec3 handleCallback={handleCallback} />;
       case 5:
+        return <UploadImgUpload handleCallback={handleCallback} />;
+      case 6:
         return <UploadPrev handleCallback={handleCallback} />;
       default:
         return "";
@@ -67,7 +79,7 @@ const Upload = () => {
         <UploadHeader
           handleCallback={handleCallback}
           maxRounds={6}
-          currentRound={currentRound}
+          currentRound={currentRound - 1}
         />
         {renderComponent()}
       </div>

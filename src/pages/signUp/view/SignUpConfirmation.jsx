@@ -4,10 +4,12 @@ import TextInput from "../../../components/input/TextInput";
 import BottomPart from "./BottomPart";
 
 const SignUpConfirmation = ({ handleCallback }) => {
+  const { confirmation } = JSON.parse(localStorage.getItem("signUpData")) ?? false;
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("code confirmed");
-    const nextStep = true;
+    const nextStep = "confirmation";
     handleCallback({ data, nextStep });
   };
 
@@ -33,12 +35,13 @@ const SignUpConfirmation = ({ handleCallback }) => {
             message: "Invalid code",
           },
         }}
+        defaultValue={confirmation ? confirmation : undefined}
         render={({ field, fieldState }) => (
           <TextInput
             type="number"
             firstIcon="fa-solid fa-barcode"
             onChange={field.onChange}
-            label="Code that we send you to your email"
+            label="Enter the code which we send you to your email"
             placeholder="123456"
             value={field.value}
             onBlur={field.onBlur}

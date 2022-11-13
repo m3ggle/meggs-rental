@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ProgressBar from "../../components/ProgressBar";
 import SignWrapper from "../../components/SignWrapper";
 import ExampleData from "../../ExampleData";
-import { useSignStateData } from "../../hooks/useSignStateData";
+import { useMultiStepHelper } from "../../utilities/useMultiStepHelper";
 import SignUpBdayGenderCity from "./view/SignUpBdayGenderCity";
 import SignUpConfirmation from "./view/SignUpConfirmation";
 import SignUpEmail from "./view/SignUpEmail";
@@ -11,45 +11,70 @@ import SignUpName from "./view/SignUpName";
 import SignUpPassword from "./view/SignUpPassword";
 
 const SignUp = () => {
-  // dataCollection should be stored inside the url
-  const { storeDataInState } = useSignStateData();
-  const [currentRound, setCurrentRound] = useState(0);
+  const {
+    handleStorage,
+    handleContinue,
+    handleGoBack,
+    handleGoogle,
+    handleEmailContinue,
+    handleConfirmationContinue,
+  } = useMultiStepHelper();
+  let [searchParams] = useSearchParams();
+  const currentRound = +searchParams.get("round");
+  const navigate = useNavigate();
+
   const { signUpRounds } = ExampleData();
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (currentRound === 0 || !currentRound) {
+      const newParam = new URLSearchParams({ round: 1 });
+      navigate(`/sign-up/?${newParam}`);
+    }
+  }, [navigate]);
 
   const handleCallback = ({ data, nextStep }) => {
     switch (nextStep) {
       case "google":
-        setCurrentRound((prevState) => prevState + 2);
+        handleGoogle();
         break;
-      case "finished":
-        storeDataInState(data);
+      case "email":
+        handleEmailContinue(data);
+        handleStorage(data, "signUpData");
+        break;
+      case "confirmation":
+        handleConfirmationContinue(data);
+        handleStorage(data, "signUpData");
+        break;
+      case "finish":
+        localStorage.removeItem("signUpData");
         navigate("/homepage");
         break;
       case true:
-        storeDataInState(data);
-        setCurrentRound((prevState) => prevState + 1);
+        handleContinue();
+        handleStorage(data, "signUpData");
         break;
       case false:
-        setCurrentRound((prevState) => prevState - 1);
+        handleGoBack();
         break;
       default:
         break;
     }
+
+    console.log(JSON.parse(localStorage.getItem("signUpData")));
   };
 
+  console.log(currentRound);
   const renderComponent = () => {
     switch (currentRound) {
-      case 0:
-        return <SignUpEmail handleCallback={handleCallback} />;
       case 1:
-        return <SignUpConfirmation handleCallback={handleCallback} />;
+        return <SignUpEmail handleCallback={handleCallback} />;
       case 2:
-        return <SignUpPassword handleCallback={handleCallback} />;
+        return <SignUpConfirmation handleCallback={handleCallback} />;
       case 3:
-        return <SignUpName handleCallback={handleCallback} />;
+        return <SignUpPassword handleCallback={handleCallback} />;
       case 4:
+        return <SignUpName handleCallback={handleCallback} />;
+      case 5:
         return <SignUpBdayGenderCity handleCallback={handleCallback} />;
       default:
         return "";
@@ -62,9 +87,12 @@ const SignUp = () => {
         {/* title part */}
         <div className="flex flex-col items-center justify-center gap-y-2 p-2">
           <span className="text-2xl text-lmGrey800 dark:text-dmGrey25">
-            {signUpRounds[currentRound].title}
+            {signUpRounds[currentRound - 1].title}
           </span>
-          <ProgressBar amount={signUpRounds.length} finished={currentRound} />
+          <ProgressBar
+            amount={signUpRounds.length}
+            finished={currentRound - 1}
+          />
         </div>
         {renderComponent()}
       </div>

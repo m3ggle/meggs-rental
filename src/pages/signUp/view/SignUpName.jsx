@@ -4,6 +4,7 @@ import TextInput from "../../../components/input/TextInput";
 import BottomPart from "./BottomPart";
 
 const SignUpName = ({ handleCallback }) => {
+  const { firstName, lastName } = JSON.parse(localStorage.getItem("signUpData")) ?? false;
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("first and last name");
@@ -33,6 +34,7 @@ const SignUpName = ({ handleCallback }) => {
               message: "Only letter are allowed",
             },
           }}
+          defaultValue={firstName ? firstName : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-signature"
@@ -56,6 +58,7 @@ const SignUpName = ({ handleCallback }) => {
               message: "Only letter are allowed",
             },
           }}
+          defaultValue={lastName ? lastName : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-signature"

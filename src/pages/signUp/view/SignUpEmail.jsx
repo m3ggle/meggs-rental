@@ -5,10 +5,13 @@ import TextInput from "../../../components/input/TextInput";
 import BottomPart from "./BottomPart";
 
 const SignUpEmail = ({ handleCallback }) => {
+  const { email } =
+    JSON.parse(localStorage.getItem("signUpData")) ?? false;
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("sending email");
-    const nextStep = true;
+    const nextStep = "email";
     handleCallback({ data, nextStep });
   };
 
@@ -37,6 +40,7 @@ const SignUpEmail = ({ handleCallback }) => {
             message: "Invalid email address",
           },
         }}
+        defaultValue={email ? email : undefined}
         render={({ field, fieldState }) => (
           <TextInput
             firstIcon="fa-solid fa-at"

@@ -1,13 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import FileUpload from "../../../components/FileUpload";
-import ExampleData from "../../../ExampleData";
 import BottomPart from "../../signUp/view/BottomPart";
 
-const { smokingSelect, eatingSelect } = ExampleData();
-
 const UploadImgUpload = ({ handleCallback }) => {
-  const { control, handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("basic info");
     const nextStep = true;

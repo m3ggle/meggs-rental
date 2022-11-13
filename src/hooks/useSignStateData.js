@@ -9,7 +9,9 @@ export const useSignStateData = () => {
       currentData[item[0]] = item[1];
     });
     console.log(currentData);
+    localStorage.setItem("testDrive", "Joji");
     setDataCollection({ ...currentData });
+    localStorage.setItem("uploadData", JSON.stringify(currentData));
     return;
   };
 

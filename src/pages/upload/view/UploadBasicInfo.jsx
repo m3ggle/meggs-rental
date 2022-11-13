@@ -51,6 +51,10 @@ const UploadBasicInfo = ({ handleCallback }) => {
           control={control}
           rules={{
             required: "Price of the day is required",
+            pattern: {
+              value: /^\d+$/,
+              message: "Only numbers are allowed",
+            },
           }}
           defaultValue={priceDay ? priceDay : undefined}
           render={({ field, fieldState }) => (
@@ -71,6 +75,10 @@ const UploadBasicInfo = ({ handleCallback }) => {
           control={control}
           rules={{
             required: "Price for a week is required",
+            pattern: {
+              value: /^\d+$/,
+              message: "Only numbers are allowed",
+            },
           }}
           defaultValue={priceWeek ? priceWeek : undefined}
           render={({ field, fieldState }) => (
@@ -91,6 +99,10 @@ const UploadBasicInfo = ({ handleCallback }) => {
           control={control}
           rules={{
             required: "Price for a month is required",
+            pattern: {
+              value: /^\d+$/,
+              message: "Only numbers are allowed",
+            },
           }}
           defaultValue={priceMonth ? priceMonth : undefined}
           render={({ field, fieldState }) => (

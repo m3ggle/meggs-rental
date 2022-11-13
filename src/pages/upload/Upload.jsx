@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import SignWrapper from "../../components/SignWrapper";
-import { useSignStateData } from "../../hooks/useSignStateData";
+import { useMultiStepHelper } from "../../utilities/useMultiStepHelper";
 import UploadBasicInfo from "./view/UploadBasicInfo";
 import UploadCarSpec1 from "./view/UploadCarSpec1";
 import UploadCarSpec2 from "./view/UploadCarSpec2";
@@ -11,8 +11,8 @@ import UploadImgUpload from "./view/UploadImgUpload";
 import UploadPrev from "./view/UploadPrev";
 
 const Upload = () => {
-  const { storeDataInState } = useSignStateData();
-  let [searchParams, setSearchParams] = useSearchParams();
+  const { handleStorage, handleContinue, handleGoBack } = useMultiStepHelper();
+  let [searchParams] = useSearchParams();
   const currentRound = +searchParams.get("round");
   const navigate = useNavigate();
 
@@ -23,27 +23,21 @@ const Upload = () => {
     }
   }, [navigate]);
 
-
   const handleCallback = ({ data, nextStep }) => {
     switch (nextStep) {
       case "finish":
-        localStorage.removeItem("uploadData")
+        localStorage.removeItem("uploadData");
         navigate("/homepage");
         break;
       case true:
-        const nextRound = currentRound + 1;
-        const newParam = new URLSearchParams({ round: nextRound });
-        setSearchParams(newParam);
-        storeDataInState(data);
+        handleContinue();
+        handleStorage(data, "uploadData");
         break;
       case "back":
-        if (currentRound !== 1) {
-          const nextRound = currentRound - 1;
-          const newParam = new URLSearchParams({ round: nextRound });
-          setSearchParams(newParam);
-        }
+        handleGoBack();
         break;
       case "close":
+        localStorage.removeItem("uploadData");
         navigate("/user-offers");
         break;
       default:

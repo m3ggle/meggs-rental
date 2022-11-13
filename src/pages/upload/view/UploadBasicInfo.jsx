@@ -8,6 +8,9 @@ import BottomPart from "../../signUp/view/BottomPart";
 const { citiesAutocomplete } = ExampleData();
 
 const UploadBasicInfo = ({ handleCallback }) => {
+  const { name, priceDay, priceWeek, priceMonth, startDate, endDate, city } =
+    JSON.parse(localStorage.getItem("uploadData")) ?? false;
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("basic info");
@@ -30,6 +33,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           rules={{
             required: "Name is required",
           }}
+          defaultValue={name ? name : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-signature"
@@ -48,6 +52,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           rules={{
             required: "Price of the day is required",
           }}
+          defaultValue={priceDay ? priceDay : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-coins"
@@ -67,6 +72,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           rules={{
             required: "Price for a week is required",
           }}
+          defaultValue={priceWeek ? priceWeek : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-coins"
@@ -86,6 +92,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           rules={{
             required: "Price for a month is required",
           }}
+          defaultValue={priceMonth ? priceMonth : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-coins"
@@ -106,6 +113,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
             rules={{
               required: "Start date is required",
             }}
+            defaultValue={startDate ? startDate : undefined}
             render={({ field, fieldState }) => (
               <TextInput
                 firstIcon="fa-solid fa-calendar-days"
@@ -125,6 +133,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
             rules={{
               required: "End date is required",
             }}
+            defaultValue={endDate ? endDate : undefined}
             render={({ field, fieldState }) => (
               <TextInput
                 firstIcon="fa-solid fa-calendar-days"
@@ -148,6 +157,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           render={({ field, fieldState }) => (
             <Autocomplete
               //   placeholder={citiesAutocomplete.placeholder}
+              value={city ? city : undefined}
               itemList={citiesAutocomplete.list}
               onChange={field.onChange}
               label="Where is the offer/car located?"

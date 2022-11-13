@@ -8,13 +8,16 @@ const { transmissionSelect, fuelSelect, trunkSelect, seatSelect } =
   ExampleData();
 
 const UploadCarSpec1 = ({ handleCallback }) => {
+    const { transmission, fuelType, trunkVolume, seats } = JSON.parse(
+    localStorage.getItem("uploadData")) ?? false;
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("basic info");
     const nextStep = true;
     handleCallback({ data, nextStep });
   };
-    
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -30,6 +33,7 @@ const UploadCarSpec1 = ({ handleCallback }) => {
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
+              value={transmission ? transmission : undefined}
               icon={transmissionSelect.icon}
               placeholder={transmissionSelect.placeholder}
               itemList={transmissionSelect.list}
@@ -45,6 +49,7 @@ const UploadCarSpec1 = ({ handleCallback }) => {
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
+              value={fuelType ? fuelType : undefined}
               icon={fuelSelect.icon}
               placeholder={fuelSelect.placeholder}
               itemList={fuelSelect.list}
@@ -60,6 +65,7 @@ const UploadCarSpec1 = ({ handleCallback }) => {
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
+              value={trunkVolume ? trunkVolume : undefined}
               icon={trunkSelect.icon}
               placeholder={trunkSelect.placeholder}
               itemList={trunkSelect.list}
@@ -75,6 +81,7 @@ const UploadCarSpec1 = ({ handleCallback }) => {
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
+              value={seats ? seats : undefined}
               icon={seatSelect.icon}
               placeholder={seatSelect.placeholder}
               itemList={seatSelect.list}

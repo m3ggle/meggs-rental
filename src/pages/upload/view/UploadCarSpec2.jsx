@@ -8,6 +8,9 @@ import BottomPart from "../../signUp/view/BottomPart";
 const { carTypeSelect, colorSelect } = ExampleData();
 
 const UploadCarSpec2 = ({ handleCallback }) => {
+      const { carType, milage, color } =
+        JSON.parse(localStorage.getItem("uploadData")) ?? false;
+    
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("basic info");
@@ -30,6 +33,7 @@ const UploadCarSpec2 = ({ handleCallback }) => {
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
+              value={carType ? carType : undefined}
               icon={carTypeSelect.icon}
               placeholder={carTypeSelect.placeholder}
               itemList={carTypeSelect.list}
@@ -49,6 +53,7 @@ const UploadCarSpec2 = ({ handleCallback }) => {
               message: "Invalid code",
             },
           }}
+          defaultValue={milage ? milage : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-gauge"
@@ -68,6 +73,7 @@ const UploadCarSpec2 = ({ handleCallback }) => {
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
+              value={color ? color : undefined}
               icon={colorSelect.icon}
               placeholder={colorSelect.placeholder}
               itemList={colorSelect.list}

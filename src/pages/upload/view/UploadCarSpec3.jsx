@@ -8,8 +8,11 @@ import BottomPart from "../../signUp/view/BottomPart";
 const { smokingSelect, eatingSelect } = ExampleData();
 
 const UploadCarSpec3 = ({ handleCallback }) => {
-  const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+      const { smoking, eating, carBio } =
+        JSON.parse(localStorage.getItem("uploadData")) ?? false;
+
+    const { control, handleSubmit } = useForm();
+    const onSubmit = (data) => {
     console.log("basic info");
     const nextStep = true;
     handleCallback({ data, nextStep });
@@ -30,6 +33,7 @@ const UploadCarSpec3 = ({ handleCallback }) => {
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
+              value={smoking ? smoking : undefined}
               icon={smokingSelect.icon}
               placeholder={smokingSelect.placeholder}
               itemList={smokingSelect.list}
@@ -45,6 +49,7 @@ const UploadCarSpec3 = ({ handleCallback }) => {
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
+              value={eating ? eating : undefined}
               icon={eatingSelect.icon}
               placeholder={eatingSelect.placeholder}
               itemList={eatingSelect.list}
@@ -57,6 +62,7 @@ const UploadCarSpec3 = ({ handleCallback }) => {
         <Controller
           name="carBio"
           control={control}
+          defaultValue={carBio ? carBio : undefined}
           render={({ field, fieldState }) => (
             <TextArea
               onChange={field.onChange}

@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import React, { Fragment, useEffect, useState } from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
 
-const Autocomplete = ({ label, onChange, error, placeholder, itemList }) => {
-  const [selected, setSelected] = useState(placeholder);
+const Autocomplete = ({ label, onChange, error, placeholder, itemList, value }) => {
+  const [selected, setSelected] = useState(value ? value : placeholder);
   const [query, setQuery] = useState("");
 
   const filteredItems =

@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import React, { Fragment, useEffect, useState } from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
 
-const Select = ({ icon, placeholder, itemList, onChange, label, error }) => {
-  const [selected, setSelected] = useState(placeholder);
+const Select = ({ icon, placeholder, itemList, onChange, label, error, value }) => {
+  const [selected, setSelected] = useState(value ? value : placeholder);
 
   useEffect(() => {
     itemList.includes(selected) && onChange(selected);

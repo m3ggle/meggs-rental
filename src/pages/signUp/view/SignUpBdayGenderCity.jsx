@@ -9,10 +9,13 @@ import BottomPart from "./BottomPart";
 const { genderSelect, citiesAutocomplete } = ExampleData();
 
 const SignUpBdayGenderCity = ({ handleCallback }) => {
+  const { birthday, gender, city } =
+    JSON.parse(localStorage.getItem("signUpData")) ?? false;
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("birthday, gender and city");
-    const nextStep = "finished";
+    const nextStep = "finish";
     handleCallback({ data, nextStep });
   };
 
@@ -34,6 +37,7 @@ const SignUpBdayGenderCity = ({ handleCallback }) => {
           rules={{
             required: "Birthday is required",
           }}
+          defaultValue={birthday ? birthday : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-calendar-days"
@@ -53,6 +57,7 @@ const SignUpBdayGenderCity = ({ handleCallback }) => {
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
+              value={gender ? gender : undefined}
               icon={genderSelect.icon}
               placeholder={genderSelect.placeholder}
               itemList={genderSelect.list}
@@ -70,7 +75,8 @@ const SignUpBdayGenderCity = ({ handleCallback }) => {
           }}
           render={({ field, fieldState }) => (
             <Autocomplete
-              placeholder={citiesAutocomplete.placeholder}
+              // placeholder={citiesAutocomplete.placeholder}
+              value={city ? city : undefined}
               itemList={citiesAutocomplete.list}
               onChange={field.onChange}
               label="What city you live in?"

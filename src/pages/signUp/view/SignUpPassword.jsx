@@ -4,6 +4,9 @@ import TextInput from "../../../components/input/TextInput";
 import BottomPart from "./BottomPart";
 
 const SignUpPassword = ({ handleCallback }) => {
+  const { password } =
+    JSON.parse(localStorage.getItem("signUpData")) ?? false;
+  
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("setting password");
@@ -28,6 +31,7 @@ const SignUpPassword = ({ handleCallback }) => {
               "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
           },
         }}
+        defaultValue={password ? password : undefined}
         render={({ field, fieldState }) => (
           <TextInput
             firstIcon="fa-solid fa-lock"

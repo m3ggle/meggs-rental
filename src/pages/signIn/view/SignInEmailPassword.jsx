@@ -20,8 +20,8 @@ const SignInEmailPassword = ({ handleCallback }) => {
 
   // outsource
   const navigate = useNavigate();
-  const handleSignInClick = () => navigate("/sign-in");
   const handleForgotClick = () => navigate("/forgot-password");
+  const handleSignUpClick = () => navigate("/sign-up");
 
   return (
     <form
@@ -86,12 +86,12 @@ const SignInEmailPassword = ({ handleCallback }) => {
         secondBtnTitle="Sign Up with Google"
         secondBtnType="button"
         secondBtnOnClick={handleGoogle}
-        underBtnFirstText="Already have an Account?"
-        underBtnFirstLinkText="Sign In instead"
-        underBtnFirstOnClick={handleSignInClick}
-        underBtnSecondText="Forgot your password?"
-        underBtnSecondLinkText="Let's fix that"
-        underBtnSecondOnClick={handleForgotClick}
+        underBtnFirstText="Forgot your password?"
+        underBtnFirstLinkText="Let's fix that"
+        underBtnFirstOnClick={handleForgotClick}
+        underBtnSecondText="Don't have a account?"
+        underBtnSecondLinkText="Sign Up here"
+        underBtnSecondOnClick={handleSignUpClick}
       />
     </form>
   );

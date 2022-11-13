@@ -8,7 +8,7 @@ const ForgotPasswordEmail = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("sending email");
-    const nextStep = true;
+    const nextStep = "email";
     handleCallback({ data, nextStep });
   };
 

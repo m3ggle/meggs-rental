@@ -1,31 +1,39 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ProgressBar from "../../components/ProgressBar";
 import SignWrapper from "../../components/SignWrapper";
 import ExampleData from "../../ExampleData";
-import { useSignStateData } from "../../hooks/useSignStateData";
+import { useMultiStepHelper } from "../../utilities/useMultiStepHelper";
 import ForgotPasswordEmail from "./view/ForgotPasswordEmail";
 import ForgotPasswordPassword from "./view/ForgotPasswordPassword";
 
 const ForgotPassword = () => {
-  const { storeDataInState } = useSignStateData();
-  const [currentRound, setCurrentRound] = useState(0);
+  const { handleStorage, handleEmailContinue } = useMultiStepHelper();
+  let [searchParams] = useSearchParams();
+  const currentRound = +searchParams.get("round");
+  const navigate = useNavigate();
+
   const { forgotPasswordRounds } = ExampleData();
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (currentRound === 0 || !currentRound) {
+      const newParam = new URLSearchParams({ round: 1 });
+      navigate(`/forgot-password/?${newParam}`);
+    }
+  }, [navigate]);
+
 
   const handleCallback = ({ data, nextStep }) => {
     switch (nextStep) {
       case "google":
-        setCurrentRound((prevState) => prevState + 2);
-        break;
-      case "finished":
-        storeDataInState(data);
         navigate("/homepage");
         break;
-      case true:
-        storeDataInState(data);
-        setCurrentRound((prevState) => prevState + 1);
+      case "finished":
+        navigate("/homepage");
+        break;
+      case "email":
+        handleEmailContinue(data);
+        handleStorage(data, "forgotPasswordData");
         break;
       default:
         break;
@@ -34,9 +42,9 @@ const ForgotPassword = () => {
 
   const renderComponent = () => {
     switch (currentRound) {
-      case 0:
-        return <ForgotPasswordEmail handleCallback={handleCallback} />;
       case 1:
+        return <ForgotPasswordEmail handleCallback={handleCallback} />;
+      case 2:
         return <ForgotPasswordPassword handleCallback={handleCallback} />;
       default:
         return "";
@@ -49,11 +57,11 @@ const ForgotPassword = () => {
         {/* title part */}
         <div className="flex flex-col items-center justify-center gap-y-1 p-2">
           <span className="text-2xl text-lmGrey800 dark:text-dmGrey25">
-            {forgotPasswordRounds[currentRound].title}
+            {forgotPasswordRounds[currentRound -1].title}
           </span>
           <ProgressBar
             amount={forgotPasswordRounds.length}
-            finished={currentRound}
+            finished={currentRound - 1}
           />
         </div>
         {renderComponent()}

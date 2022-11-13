@@ -16,7 +16,7 @@ const { carSpecData } = ExampleData();
 
 const Preview = () => {
   return (
-    <div className="relative flex h-fit w-[360px] flex-col gap-y-2 rounded-2xl p-6 shadow">
+    <div className="relative flex h-fit w-full flex-col gap-y-2 rounded-2xl p-6 shadow">
       {/* icons */}
       <div className="absolute  top-5 right-[22px] flex h-fit w-fit flex-col items-center justify-center text-[20px]">
         <div className="fa-solid fa-times flex h-8 w-8 items-center justify-center text-lmGrey600"></div>

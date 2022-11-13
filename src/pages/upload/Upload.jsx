@@ -24,6 +24,7 @@ const Upload = () => {
         navigate("/homepage");
         break;
       case true:
+        console.log("Hallo")
         storeDataInState(data);
         setCurrentRound((prevState) => prevState + 1);
         break;
@@ -60,7 +61,7 @@ const Upload = () => {
   return (
     <SignWrapper
       puffer={false}
-      pic="https://images.unsplash.com/photo-1628437255792-911a5d23097e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      pic="https://images.unsplash.com/photo-1664286244753-7f5e25a2eb0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
     >
       <div className="flex w-full max-w-[348px] flex-col gap-y-8">
         <UploadHeader

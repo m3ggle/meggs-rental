@@ -3,7 +3,9 @@ import Preview from '../../components/Preview'
 
 const Homepage = () => {
   return (
-    <Preview />
+    <div className='w-[360px]'>
+      <Preview />
+    </div>
   )
 }
 

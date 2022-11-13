@@ -95,6 +95,20 @@ const carSpecData = {
   },
 };
 
+const eatingSelect = {
+  label: null,
+  icon: "fa-solid fa-utensils",
+  placeholder: "No",
+  list: ["Yes", "No"],
+};
+
+const carTypeSelect = {
+  label: null,
+  icon: "fa-solid fa-car",
+  placeholder: "Which transmission?",
+  list: ["Coupe", "Sedan", "SUV", "Hatchback", "Sport", "Minivan"],
+};
+
 const transmissionSelect = {
   label: null,
   icon: "fa-solid fa-gears",
@@ -255,9 +269,17 @@ const ExampleData = () => {
     userProfileBig,
     reviews,
     reviewRating,
+    carTypeSelect,
+    transmissionSelect,
+    colorSelect,
+    fuelSelect,
+    trunkSelect,
+    seatSelect,
     reviewId,
     offerCard,
     genderSelect,
+    eatingSelect,
+    smokingSelect,
     signUpRounds,
     forgotPasswordRounds,
     citiesAutocomplete,

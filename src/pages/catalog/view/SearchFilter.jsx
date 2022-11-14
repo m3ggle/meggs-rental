@@ -18,6 +18,10 @@ const SearchFilter = ({
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
 
+  const handleButtonClick = () => {
+    console.log("ayo wtf");
+  };
+
   let [isOpen, setIsOpen] = useState(true);
 
   function closeModal() {
@@ -60,9 +64,12 @@ const SearchFilter = ({
             />
             <>
               <button
+                type="button"
+                onClick={openModal}
                 className={`fa-solid fa-filter flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
               />
               <button
+                type="submit"
                 onClick={handleSubmit}
                 className={`fa-solid fa-chevron-right flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
               />

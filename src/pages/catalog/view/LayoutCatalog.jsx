@@ -17,22 +17,7 @@ const LayoutCatalog = ({ children }) => {
     } else {
       return (
         <div className="w-[312px]">
-          <SearchFilter />
-          {/* <Controller
-            name="search"
-            control={control}
-            render={({ field, fieldState }) => (
-              <SearchFilter
-                firstIcon="fa-solid fa-magnifying-glass"
-                onChange={field.onChange}
-                label="Search for a offer?"
-                placeholder="Audi A8"
-                value={field.value}
-                onBlur={field.onBlur}
-                error={fieldState.error}
-              />
-            )}
-          /> */}
+          <SearchFilter /> 
         </div>
       );
     }

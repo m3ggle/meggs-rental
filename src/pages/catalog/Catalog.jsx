@@ -1,10 +1,13 @@
-import React from 'react'
-import LayoutCatalog from './view/LayoutCatalog'
+import React from "react";
+import CatalogList from "./view/CatalogList";
+import LayoutCatalog from "./view/LayoutCatalog";
 
 const Catalog = () => {
   return (
-    <LayoutCatalog />
-  )
-}
+    <LayoutCatalog>
+      <CatalogList />
+    </LayoutCatalog>
+  );
+};
 
-export default Catalog
+export default Catalog;

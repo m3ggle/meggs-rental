@@ -40,7 +40,7 @@ const Navbar = ({ isOpen, closeModal }) => {
         >
           <div
             onClick={closeModal}
-            className="fixed inset-0 bg-black bg-opacity-25"
+            className="fixed inset-0 z-40 bg-black bg-opacity-25"
           />
         </Transition.Child>
 
@@ -54,7 +54,7 @@ const Navbar = ({ isOpen, closeModal }) => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <div className="fixed inset-0 overflow-y-auto">
+          <div className="fixed inset-0 z-50 overflow-y-auto">
             <Dialog.Panel className="hideScrollbar absolute top-20 left-0 bottom-0 w-full overflow-scroll 600:top-7 600:left-7 600:w-fit 600:pb-7">
               <button
                 className="absolute opacity-0"

@@ -1,8 +1,9 @@
 import React from 'react'
+import LayoutCatalog from './view/LayoutCatalog'
 
 const Catalog = () => {
   return (
-    <div>Catalog</div>
+    <LayoutCatalog />
   )
 }
 

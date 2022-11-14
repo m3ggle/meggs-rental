@@ -1,9 +1,13 @@
 // <OfferCard name="Tesla Model 3" location="Salzburger Straße 18" price="100" transmission="Automatic" seats={5} />
 import React from 'react'
 import {motion} from "framer-motion"
+import { useNavigate } from 'react-router-dom';
+import styles from '../../style';
 
 const OfferCard = ({name, location, price, transmission, seats, index}) => {
   // Todo: not transmission and seats as individual props but rather as object (car spec)
+  const navigate = useNavigate()
+  const handleClick = () => navigate("/offer-details")
 
   return (
     <motion.div
@@ -15,9 +19,10 @@ const OfferCard = ({name, location, price, transmission, seats, index}) => {
         translateY: { delay: index * 0.2 },
         scale: { ease: "easeInOut" },
       }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className="relative flex min-w-[312px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md dark:bg-dmGrey900 500:h-[252px] 500:w-[180px] 500:min-w-0 500:justify-center 500:gap-x-0 500:rounded-xl 500:shadow-none 1400:h-[406px] 1400:w-[292px]"
+      whileHover={{ scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
+      onClick={handleClick}
+      className="relative flex w-full min-w-[312px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md dark:bg-dmGrey900 500:h-[252px] 500:w-[180px] 500:min-w-0 500:justify-center 500:gap-x-0 500:rounded-xl 500:shadow-none 1400:h-[406px] 1400:w-[292px]"
     >
       {/* image */}
       <div
@@ -31,16 +36,18 @@ const OfferCard = ({name, location, price, transmission, seats, index}) => {
       </div>
 
       {/* card part */}
-      <div className="flex w-full flex-col gap-y-1 overflow-hidden rounded-xl py-3 dark:bg-dmGrey900 500:absolute 500:bottom-[2%] 500:z-10 500:w-11/12 500:gap-y-0 500:bg-white 500:p-3 500:shadow-md 1400:bottom-[6%] 1400:gap-y-1">
+      <div
+        className={`${styles.darkModeBorder} flex w-full flex-col gap-y-1 overflow-hidden rounded-xl py-3 dark:bg-dmGrey900 500:absolute 500:bottom-[2%] 500:z-10 500:w-11/12 500:gap-y-0 500:bg-white 500:p-3 500:shadow-md 1400:bottom-[6%] 1400:gap-y-1`}
+      >
         {/* name and location */}
         <div className="flex flex-col gap-y-1">
           {/* location */}
           <div className="flex items-center gap-x-1 text-xs text-lmGrey600 dark:text-dmGrey100 1400:text-base">
             <i className="fa-solid fa-location-dot"></i>
-            <span>{location}</span>
+            <span className="w-full truncate">{location}</span>
           </div>
           {/* name */}
-          <span className="text-base font-semibold text-lmGrey700 dark:text-dmGrey25 1400:text-xl">
+          <span className="w-full truncate text-base font-semibold text-lmGrey700 dark:text-dmGrey25 1400:text-xl">
             {name}
           </span>
         </div>

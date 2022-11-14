@@ -6,7 +6,6 @@ import Select from "../input/Select";
 import TextInput from "../input/TextInput";
 
 const Filter = ({ onClose }) => {
-  // Todo: React Form Hook
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);

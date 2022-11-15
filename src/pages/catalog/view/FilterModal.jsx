@@ -16,8 +16,7 @@ const FilterModal = ({
 }) => {
   let [searchParams, setSearchParams] = useSearchParams();
   const { control, handleSubmit, setValue, formState } = useForm();
-
-  let resetCondition = false
+  const [resetCount, setResetCount] = useState(0)
 
   const cleanUpFilterData = (data) => {
     let allActives = {};
@@ -41,6 +40,11 @@ const FilterModal = ({
       setValue("search", searchParams.get("search"));
   }, [setValue, searchParams]);
 
+  // when modal closes it is not unmounted, it is still mounted so the resetCount does not get reset, this will solve it
+  useEffect(() => {
+    setResetCount(0)
+  }, [isOpen])
+
   const handleSearchDelete = () => {
     handleDeleteInput("search", "");
     setValue("search", "");
@@ -62,13 +66,11 @@ const FilterModal = ({
     smokingSelect,
   } = filterSelects;
 
-  const childRef = useRef();
   const handleClearAll = () => {
     Object.keys(formState.dirtyFields).map((item) => {
       setValue(item, undefined);
     });
-    childRef.current.reset();
-    resetCondition = true;
+    setResetCount(prevState => prevState + 1)
   };
 
   // todo: set default values depending on url
@@ -228,7 +230,6 @@ const FilterModal = ({
                 control={control}
                 render={({ field, fieldState }) => (
                   <Select
-                    ref={childRef}
                     value={
                       searchParams.get("transmission")
                         ? searchParams.get("transmission")
@@ -240,6 +241,7 @@ const FilterModal = ({
                     onChange={field.onChange}
                     label={transmissionSelect.label}
                     error={fieldState.error}
+                    reset={resetCount}
                   />
                 )}
               />
@@ -259,6 +261,7 @@ const FilterModal = ({
                     onChange={field.onChange}
                     label={fuelSelect.label}
                     error={fieldState.error}
+                    reset={resetCount}
                   />
                 )}
               />
@@ -278,6 +281,7 @@ const FilterModal = ({
                     onChange={field.onChange}
                     label={seatSelect.label}
                     error={fieldState.error}
+                    reset={resetCount}
                   />
                 )}
               />
@@ -297,6 +301,7 @@ const FilterModal = ({
                     onChange={field.onChange}
                     label={trunkSelect.label}
                     error={fieldState.error}
+                    reset={resetCount}
                   />
                 )}
               />
@@ -316,6 +321,7 @@ const FilterModal = ({
                     onChange={field.onChange}
                     label={colorSelect.label}
                     error={fieldState.error}
+                    reset={resetCount}
                   />
                 )}
               />
@@ -335,13 +341,13 @@ const FilterModal = ({
                     onChange={field.onChange}
                     label={smokingSelect.label}
                     error={fieldState.error}
+                    reset={resetCount}
                   />
                 )}
               />
             </div>
           </div>
         </div>
-        {/* type, title, onClick, onSubmit, uiType */}
         <div className="flex w-full gap-x-2">
           <Btn
             type="button"

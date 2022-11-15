@@ -8,11 +8,11 @@ import ModalWrapper from "../../../layouts/ModalWrapper";
 
 const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
   let [searchParams] = useSearchParams();
-  const { control, handleSubmit: handleSubmitFilter } = useForm();
+  const { control, handleSubmit } = useForm();
 
   const cleanUpFilterData = (data) => {
     let allActives = {};
-    Object.entries(data).some((item) => {
+    Object.entries(data).map((item) => {
       if (item[1] !== undefined && item[1] !== "") {
         allActives[item[0]] = item[1];
       }
@@ -21,7 +21,7 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
     return allActives;
   };
 
-  const onSubmitFilter = (data) => {
+  const onSubmit = (data) => {
     handleFilterCallback(cleanUpFilterData(data));
     closeModal()
   };
@@ -40,7 +40,7 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
   return (
     <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
       <form
-        onSubmit={handleSubmitFilter(onSubmitFilter)}
+        onSubmit={handleSubmit(onSubmit)}
         // w-80
         className="relative flex h-[640px] w-[340px] max-w-[340px] flex-col gap-y-3 overflow-y-scroll rounded-lg"
       >
@@ -280,7 +280,7 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
 
         <button
           type="submit"
-          onClick={handleSubmitFilter}
+          onClick={handleSubmit}
           className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 duration-300 hover:scale-102 active:scale-98 dark:bg-dmPrimary"
         >
           Update Filter

@@ -6,6 +6,7 @@ const TextInput = ({
   secondIcon,
   onChange,
   onBlur,
+  onDelete,
   name,
   placeholder,
   value,
@@ -15,6 +16,47 @@ const TextInput = ({
   filter,
 }) => {
   // Todo: change color of filter icon if the filter is active
+
+  const renderSecondIcon = () => {
+    switch (secondIcon) {
+      case "fa-solid fa-times":
+        if (error || (value !== "" && value)) {
+          return (
+            <i
+              onClick={onDelete}
+              className={`${
+                error ? "fa-solid fa-triangle-exclamation" : secondIcon
+              } min-w[14px] h-min-[14px] flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
+                error
+                  ? "text-red-300 dark:text-red-100"
+                  : value === undefined || value === ""
+                  ? "text-lmGrey300 dark:text-dmGrey300"
+                  : "text-lmGrey600 dark:text-dmGrey25"
+              }  `}
+            ></i>
+          );
+        } else {
+          break;
+        }
+      default:
+        return (
+          <div className="flex h-full w-[14px] items-center justify-center">
+            <i
+              className={`${
+                error ? "fa-solid fa-triangle-exclamation" : secondIcon
+              } flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
+                error
+                  ? "text-red-300 dark:text-red-100"
+                  : value === undefined || value === ""
+                  ? "text-lmGrey300 dark:text-dmGrey300"
+                  : "text-lmGrey600 dark:text-dmGrey25"
+              }  `}
+            ></i>
+          </div>
+        );
+    }
+  };
+
   return (
     <div
       className="flex w-full max-w-[340px] flex-col gap-y-2"
@@ -62,7 +104,8 @@ const TextInput = ({
                   : "text-lmGrey600 placeholder:text-dmGrey300 dark:text-dmGrey25 placeholder:dark:text-dmGrey300"
               }  focus:outline-none`}
             />
-            {(secondIcon || error) && (
+            {(secondIcon || error) && renderSecondIcon()}
+            {/* {(secondIcon || error) && (
               <div className="flex h-full w-[14px] items-center justify-center">
                 <i
                   className={`${
@@ -76,21 +119,14 @@ const TextInput = ({
                   }  `}
                 ></i>
               </div>
-            )}
+            )} */}
           </div>
 
+          {/* for popover */}
           {filter !== undefined && (
             <Popover.Button
               className={`fa-solid fa-filter flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
-            >
-              {/* <span>Solutions</span> */}
-              {/* <ChevronDownIcon
-                  className={`${open ? "" : "text-opacity-70"}
-                  ml-2 h-5 w-5 text-orange-300 transition duration-150 ease-in-out group-hover:text-opacity-80`}
-                  aria-hidden="true"
-                /> */}
-            </Popover.Button>
-            // <div className="fa-solid fa-filter flex min-w-[40px] min-h-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300"></div>
+            />
           )}
         </div>
         {error && (

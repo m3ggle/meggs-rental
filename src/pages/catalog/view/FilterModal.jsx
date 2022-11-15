@@ -5,7 +5,6 @@ import Filter from "./Filter"
 const FilterModal = ({
   isOpen,
   closeModal,
-  handleFilterCallback,
   setOutsideSearch,
   handleDeleteInput,
 }) => {
@@ -15,7 +14,6 @@ const FilterModal = ({
         filterModal={true}
         isOpen={isOpen}
         closeModal={closeModal}
-        handleFilterCallback={handleFilterCallback}
         setOutsideSearch={setOutsideSearch}
         handleDeleteInput={handleDeleteInput}
       />

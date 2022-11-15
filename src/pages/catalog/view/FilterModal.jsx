@@ -1,21 +1,19 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
 import ModalWrapper from "../../../layouts/ModalWrapper";
-import Search from "./Search";
 
 const FilterModal = ({
   isOpen,
   closeModal,
   handleFilterCallback,
   setOutsideSearch,
-  handleDelete,
+  handleDeleteInput,
 }) => {
-  let [searchParams] = useSearchParams();
+  let [searchParams, setSearchParams] = useSearchParams();
   const { control, handleSubmit, setValue } = useForm();
 
   const cleanUpFilterData = (data) => {
@@ -36,13 +34,20 @@ const FilterModal = ({
 
   // updating search inside filterModal
   useEffect(() => {
-    searchParams.get("search") && setValue("search", searchParams.get("search"));
+    searchParams.get("search") &&
+      setValue("search", searchParams.get("search"));
   }, [setValue, searchParams]);
 
   const handleSearchDelete = () => {
-    handleDelete("search", "")
+    handleDeleteInput("search", "");
     setValue("search", "");
-  }
+  };
+
+  const handleDelete = (inputName, inputValue) => {
+    setValue(inputName, inputValue);
+    searchParams.delete(inputName);
+    setSearchParams(searchParams);
+  };
 
   const { filterSelects } = ExampleData();
   const {
@@ -76,11 +81,10 @@ const FilterModal = ({
                 : undefined
             }
             render={({ field, fieldState }) => (
-              <Search
+              <TextInput
                 firstIcon="fa-solid fa-magnifying-glass"
                 secondIcon="fa-solid fa-times"
                 onChange={field.onChange}
-                label="Search for a offer?"
                 placeholder="Audi A8"
                 value={field.value}
                 onBlur={field.onBlur}
@@ -103,7 +107,9 @@ const FilterModal = ({
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-calendar-days"
+                    secondIcon="fa-solid fa-times"
                     onChange={field.onChange}
+                    onDelete={() => handleDelete("startDate", "")}
                     label="Start date"
                     placeholder="02.06.2023"
                     type="text"
@@ -124,7 +130,9 @@ const FilterModal = ({
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-calendar-days"
+                    secondIcon="fa-solid fa-times"
                     onChange={field.onChange}
+                    onDelete={() => handleDelete("endDate", "")}
                     label="End date"
                     placeholder="21.06.2023"
                     type="text"
@@ -150,8 +158,9 @@ const FilterModal = ({
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-coins"
-                    secondIcon="fa-solid fa-euro"
+                    secondIcon="fa-solid fa-times"
                     onChange={field.onChange}
+                    onDelete={() => handleDelete("startPrice", "")}
                     label="Start price"
                     placeholder="30..."
                     value={field.value}
@@ -177,7 +186,8 @@ const FilterModal = ({
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-coins"
-                    secondIcon="fa-solid fa-euro"
+                    secondIcon="fa-solid fa-times"
+                    onDelete={() => handleDelete("endPrice", "")}
                     onChange={field.onChange}
                     label="End price"
                     placeholder="300..."

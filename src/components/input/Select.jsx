@@ -12,7 +12,7 @@ const Select = ({
   label,
   error,
   value,
-  reset
+  reset,
 }) => {
   const [selected, setSelected] = useState(value ? value : placeholder);
 
@@ -21,11 +21,7 @@ const Select = ({
   }, [selected, onChange, itemList]);
 
   useEffect(() => {
-    if (reset > 0) {
-      console.log("resetting")
-      console.log(reset)
-      setSelected(placeholder);
-    }
+    reset > 0 && setSelected(placeholder);
   }, [reset, setSelected, placeholder]);
 
   return (

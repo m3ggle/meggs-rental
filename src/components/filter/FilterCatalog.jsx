@@ -29,22 +29,8 @@ const FilterCatalog = ({ onClose }) => {
       // w-80
       className="relative flex h-[640px] flex-col gap-y-3 rounded-lg min-h-fit"
     >
-      {/* header */}
-      {/* <div className="flex items-center justify-between text-2xl text-lmGrey700 dark:text-dmGrey25">
-        <span className="">Filter</span>
-        {onClose && (
-          <Popover.Button>
-            <i className="fa-solid fa-times cursor-pointer"></i>
-          </Popover.Button>
-        )}
-      </div> */}
-
-      {/* main */}
       <div className="flex flex-col gap-y-3">
         <div className=" flex flex-col gap-y-1">
-          {/* <span className="text-base text-lmGrey600 dark:text-dmGrey100">
-            Search
-          </span> */}
           <div className="flex flex-col gap-y-2">
             <Controller
               name="search"
@@ -66,9 +52,6 @@ const FilterCatalog = ({ onClose }) => {
         </div>
 
         <div className="gap-y-1">
-          {/* <span className="text-base text-lmGrey600 dark:text-dmGrey100">
-            Date Specifics
-          </span> */}
           <div className="flex gap-x-2">
             <Controller
               name="startDate"
@@ -106,9 +89,6 @@ const FilterCatalog = ({ onClose }) => {
         </div>
 
         <div className="gap-y-1">
-          {/* <span className="text-base text-lmGrey600 dark:text-dmGrey100">
-            Offer Specifics
-          </span> */}
           <div className="flex gap-x-2">
             <Controller
               name="priceStart"

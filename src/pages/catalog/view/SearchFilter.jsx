@@ -1,6 +1,7 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useSearchParams } from "react-router-dom";
+import FilterModal from "./FilterModal";
 import Search from "./Search";
 
 const SearchFilter = ({
@@ -15,22 +16,50 @@ const SearchFilter = ({
   error,
   type,
 }) => {
+  let [searchParams, setSearchParams] = useSearchParams();
   const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
 
-  const handleButtonClick = () => {
-    console.log("ayo wtf");
+  let [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
+
+  const onSubmit = (data) => {
+    handleUrlUpdate(data, "search");
+  };
+  const handleFilterCallback = (data) => {
+    handleUrlUpdate(data, "filter");
   };
 
-  let [isOpen, setIsOpen] = useState(true);
+  const handleUrlUpdate = (data, type) => {
+    if (type === "filter") {
+      console.log(data)
+      searchParams.get("search") && (data.search = searchParams.get("search"));
+      const newParams = new URLSearchParams(data)
+      setSearchParams(newParams)
+    } else if (type === "search") {
+      searchParams.set("search", data.search)
+      setSearchParams(searchParams);
+    }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+    // let currentParams = {}
+    // Object.entries(searchParams).map(item => {
+    //   currentParams[item[0]] = item[1]
+    // })
 
-  function openModal() {
-    setIsOpen(true);
-  }
+    // let seaParam = {}
+    // seaParam.search = searchParams.get("search");
+    
+
+
+    // searchParams.forEach((val, key) => console.log(key, val))
+
+    // console.log(searchParams.toString());
+
+    // searchParams.set("search", "meggle")
+    // searchParams.set("transmission", "manual")
+
+    // setSearchParams(searchParams)
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -77,62 +106,11 @@ const SearchFilter = ({
           </div>
         </div>
       </div>
-
-      {/* modal try */}
-      <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
-                    Payment successful
-                  </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
-                    </p>
-                  </div>
-
-                  <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Got it, thanks!
-                    </button>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
-        </Dialog>
-      </Transition>
+      <FilterModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        handleFilterCallback={handleFilterCallback}
+      />
     </form>
   );
 };

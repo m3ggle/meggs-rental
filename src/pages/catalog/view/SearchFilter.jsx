@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import TextInput from "../../../components/input/TextInput";
+import { useHandlingParams } from "../helper/useHandlingParams";
 import FilterModal from "./FilterModal";
 import Search from "./Search";
 
@@ -17,8 +18,9 @@ const SearchFilter = ({
   error,
   type,
 }) => {
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
   const { control, handleSubmit, setValue } = useForm();
+  const {handleUrlUpdate, handleSingleDelete} = useHandlingParams()
 
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
@@ -28,43 +30,10 @@ const SearchFilter = ({
     console.log("submitting");
     handleUrlUpdate(data, "search");
   };
-  const handleFilterCallback = (data) => {
-    console.log("filter calling back");
-    handleUrlUpdate(data, "filter");
-  };
-
-  const handleUrlUpdate = (data, type) => {
-    if (type === "filter") {
-      searchParams.get("search") && (data.search = searchParams.get("search"));
-      const newParams = new URLSearchParams(data);
-      setSearchParams(newParams);
-    } else if (type === "search") {
-      searchParams.set("search", data.search);
-      setSearchParams(searchParams);
-    }
-
-    // let currentParams = {}
-    // Object.entries(searchParams).map(item => {
-    //   currentParams[item[0]] = item[1]
-    // })
-
-    // let seaParam = {}
-    // seaParam.search = searchParams.get("search");
-
-    // searchParams.forEach((val, key) => console.log(key, val))
-
-    // console.log(searchParams.toString());
-
-    // searchParams.set("search", "meggle")
-    // searchParams.set("transmission", "manual")
-
-    // setSearchParams(searchParams)
-  };
 
   const handleDelete = (inputName, inputValue) => {
     setValue(inputName, inputValue);
-    searchParams.delete(inputName);
-    setSearchParams(searchParams);
+    handleSingleDelete(inputName);
   };
 
   // when changing the search inside filterModal, the search outside filterModal has to be updated too
@@ -124,7 +93,6 @@ const SearchFilter = ({
       <FilterModal
         isOpen={isOpen}
         closeModal={closeModal}
-        handleFilterCallback={handleFilterCallback}
         setOutsideSearch={settingSearch}
         handleDeleteInput={handleDelete}
       />

@@ -5,32 +5,34 @@ import Btn from "../../../components/Btn";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
+import { cleanUpFilterData } from "../helper/cleanUpFilterData";
+import { useHandlingParams } from "../helper/useHandlingParams";
+
+  const { filterSelects } = ExampleData();
+  const {
+    transmissionSelect,
+    fuelSelect,
+    seatSelect,
+    trunkSelect,
+    colorSelect,
+    smokingSelect,
+  } = filterSelects;
 
 const Filter = ({
-  isOpen,
-  closeModal,
-  handleFilterCallback,
-  setOutsideSearch,
-  handleDeleteInput,
-  filterModal
+  isOpen, //done
+  closeModal, //done
+  setOutsideSearch, //done
+  handleDeleteInput, //done
+  filterModal //4sure
 }) => {
   let [searchParams, setSearchParams] = useSearchParams();
   const { control, handleSubmit, setValue, watch } = useForm();
   const [resetCount, setResetCount] = useState(0);
-
-  const cleanUpFilterData = (data) => {
-    let allActives = {};
-    Object.entries(data).map((item) => {
-      if (item[1] !== undefined && item[1] !== "") {
-        allActives[item[0]] = item[1];
-      }
-    });
-    return allActives;
-  };
+  const {handleUrlUpdate} = useHandlingParams()
 
   const onSubmit = (data) => {
     (data.search && filterModal) && setOutsideSearch(data.search);
-    handleFilterCallback && handleFilterCallback(cleanUpFilterData(data));
+    handleUrlUpdate(cleanUpFilterData(data), "filter");
     filterModal && closeModal();
   };
 
@@ -47,7 +49,7 @@ const Filter = ({
 
   const handleSearchDelete = () => {
     filterModal && handleDeleteInput("search", ""); //outside search
-    setValue("search", "");
+    setValue("search", ""); //inside search
   };
 
   const handleDelete = (inputName, inputValue) => {
@@ -55,16 +57,6 @@ const Filter = ({
     searchParams.delete(inputName);
     setSearchParams(searchParams);
   };
-
-  const { filterSelects } = ExampleData();
-  const {
-    transmissionSelect,
-    fuelSelect,
-    seatSelect,
-    trunkSelect,
-    colorSelect,
-    smokingSelect,
-  } = filterSelects;
 
   const handleClearAll = () => {
     // delete textInputs

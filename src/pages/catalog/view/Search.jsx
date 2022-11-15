@@ -1,10 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Search = ({
   firstIcon,
   secondIcon,
   onChange,
   onBlur,
+  onDelete,
   name,
   placeholder,
   value,
@@ -44,23 +45,22 @@ const Search = ({
             : "text-lmGrey600 placeholder:text-dmGrey300 dark:text-dmGrey25 placeholder:dark:text-dmGrey300"
         }  focus:outline-none`}
       />
-      {(secondIcon || error) && (
-        <div className="flex h-full w-[14px] items-center justify-center">
-          <i
-            className={`${
-              error ? "fa-solid fa-triangle-exclamation" : secondIcon
-            } flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
-              error
-                ? "text-red-300 dark:text-red-100"
-                : value === undefined || value === ""
-                ? "text-lmGrey300 dark:text-dmGrey300"
-                : "text-lmGrey600 dark:text-dmGrey25"
-            }  `}
-          ></i>
-        </div>
+      {(error || (value !== "" && value)) && (
+        <i
+          onClick={onDelete}
+          className={`${
+            error ? "fa-solid fa-triangle-exclamation" : secondIcon
+          } min-w[14px] h-min-[14px] flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
+            error
+              ? "text-red-300 dark:text-red-100"
+              : value === undefined || value === ""
+              ? "text-lmGrey300 dark:text-dmGrey300"
+              : "text-lmGrey600 dark:text-dmGrey25"
+          }  `}
+        ></i>
       )}
     </div>
   );
 };
 
-export default Search
+export default Search;

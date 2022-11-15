@@ -62,7 +62,7 @@ const Preview = () => {
         />
       </div>
       {/* btns */}
-      <div className="flex w-full gap-x-2 ">
+      <div className="flex w-full gap-x-2">
         <Link to="/offer-details" className="w-full">
           <Btn uiType="secondary" type="button" title="View full Offer" />
         </Link>

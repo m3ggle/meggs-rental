@@ -35,13 +35,10 @@ const SearchFilter = ({
 
   const handleUrlUpdate = (data, type) => {
     if (type === "filter") {
-      console.log(data);
       searchParams.get("search") && (data.search = searchParams.get("search"));
       const newParams = new URLSearchParams(data);
       setSearchParams(newParams);
     } else if (type === "search") {
-      console.log("hallo");
-      console.log(type);
       searchParams.set("search", data.search);
       setSearchParams(searchParams);
     }

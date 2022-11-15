@@ -16,7 +16,7 @@ const FilterModal = ({
 }) => {
   let [searchParams, setSearchParams] = useSearchParams();
   const { control, handleSubmit, setValue, formState, watch } = useForm();
-  const [resetCount, setResetCount] = useState(0)
+  const [resetCount, setResetCount] = useState(0);
 
   const cleanUpFilterData = (data) => {
     let allActives = {};
@@ -42,8 +42,8 @@ const FilterModal = ({
 
   // when modal closes it is not unmounted, it is still mounted so the resetCount does not get reset, this will solve it
   useEffect(() => {
-    setResetCount(0)
-  }, [isOpen])
+    setResetCount(0);
+  }, [isOpen]);
 
   const handleSearchDelete = () => {
     handleDeleteInput("search", ""); //outside search
@@ -73,11 +73,11 @@ const FilterModal = ({
     });
 
     // delete search
-    handleSearchDelete()
+    handleSearchDelete();
 
     // delete selects
-    setResetCount(prevState => prevState + 1)
-    
+    setResetCount((prevState) => prevState + 1);
+
     // delete all params from url
     // searchParams.forEach((val, key) => searchParams.delete(key))
     // setSearchParams(searchParams)
@@ -85,7 +85,6 @@ const FilterModal = ({
 
   // todo: set default values depending on url
   return (
-    <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
       <form
         onSubmit={handleSubmit(onSubmit)}
         // w-80
@@ -373,7 +372,6 @@ const FilterModal = ({
           />
         </div>
       </form>
-    </ModalWrapper>
   );
 };
 

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
+import Btn from "../../../components/Btn";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
@@ -14,7 +15,9 @@ const FilterModal = ({
   handleDeleteInput,
 }) => {
   let [searchParams, setSearchParams] = useSearchParams();
-  const { control, handleSubmit, setValue } = useForm();
+  const { control, handleSubmit, setValue, formState } = useForm();
+
+  let resetCondition = false
 
   const cleanUpFilterData = (data) => {
     let allActives = {};
@@ -59,13 +62,22 @@ const FilterModal = ({
     smokingSelect,
   } = filterSelects;
 
+  const childRef = useRef();
+  const handleClearAll = () => {
+    Object.keys(formState.dirtyFields).map((item) => {
+      setValue(item, undefined);
+    });
+    childRef.current.reset();
+    resetCondition = true;
+  };
+
   // todo: set default values depending on url
   return (
     <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
       <form
         onSubmit={handleSubmit(onSubmit)}
         // w-80
-        className="relative flex h-[640px] w-[340px] max-w-[340px] flex-col gap-y-3 overflow-y-scroll rounded-lg"
+        className="relative flex h-fit w-[340px] max-w-[340px] flex-col gap-y-3 rounded-lg"
       >
         <div className="flex flex-col gap-y-3">
           <span className="text-2xl text-lmGrey700 dark:text-dmGrey25">
@@ -216,6 +228,7 @@ const FilterModal = ({
                 control={control}
                 render={({ field, fieldState }) => (
                   <Select
+                    ref={childRef}
                     value={
                       searchParams.get("transmission")
                         ? searchParams.get("transmission")
@@ -328,14 +341,21 @@ const FilterModal = ({
             </div>
           </div>
         </div>
-
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 duration-300 hover:scale-102 active:scale-98 dark:bg-dmPrimary"
-        >
-          Update Filter
-        </button>
+        {/* type, title, onClick, onSubmit, uiType */}
+        <div className="flex w-full gap-x-2">
+          <Btn
+            type="button"
+            uiType="secondary"
+            onClick={handleClearAll}
+            title="Clear Filter"
+          />
+          <Btn
+            type="submit"
+            uiType="primary"
+            onClick={handleSubmit}
+            title="Update Filter"
+          />
+        </div>
       </form>
     </ModalWrapper>
   );

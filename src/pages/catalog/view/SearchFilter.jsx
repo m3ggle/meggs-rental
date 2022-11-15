@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import FilterModal from "./FilterModal";
@@ -69,6 +69,11 @@ const SearchFilter = ({
     setSearchParams(searchParams);
   };
 
+  // when changing the search inside filterModal, the search outside filterModal has to be updated too
+  const settingSearch = (value) => {
+    setValue("search", value)
+  }
+
   return (
     <div>
       <form
@@ -125,6 +130,8 @@ const SearchFilter = ({
         isOpen={isOpen}
         closeModal={closeModal}
         handleFilterCallback={handleFilterCallback}
+        setOutsideSearch={settingSearch}
+        handleDelete={handleDelete}
       />
     </div>
   );

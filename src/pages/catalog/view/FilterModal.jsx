@@ -1,14 +1,22 @@
 import React from "react";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
 import ModalWrapper from "../../../layouts/ModalWrapper";
+import Search from "./Search";
 
-const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
+const FilterModal = ({
+  isOpen,
+  closeModal,
+  handleFilterCallback,
+  setOutsideSearch,
+  handleDelete,
+}) => {
   let [searchParams] = useSearchParams();
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, setValue } = useForm();
 
   const cleanUpFilterData = (data) => {
     let allActives = {};
@@ -17,14 +25,24 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
         allActives[item[0]] = item[1];
       }
     });
-
     return allActives;
   };
 
   const onSubmit = (data) => {
+    data.search && setOutsideSearch(data.search);
     handleFilterCallback(cleanUpFilterData(data));
-    closeModal()
+    closeModal();
   };
+
+  // updating search inside filterModal
+  useEffect(() => {
+    searchParams.get("search") && setValue("search", searchParams.get("search"));
+  }, [setValue, searchParams]);
+
+  const handleSearchDelete = () => {
+    handleDelete("search", "")
+    setValue("search", "");
+  }
 
   const { filterSelects } = ExampleData();
   const {
@@ -48,6 +66,29 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
           <span className="text-2xl text-lmGrey700 dark:text-dmGrey25">
             Filter
           </span>
+
+          <Controller
+            name="search"
+            control={control}
+            defaultValue={
+              searchParams.get("search")
+                ? searchParams.get("search")
+                : undefined
+            }
+            render={({ field, fieldState }) => (
+              <Search
+                firstIcon="fa-solid fa-magnifying-glass"
+                secondIcon="fa-solid fa-times"
+                onChange={field.onChange}
+                label="Search for a offer?"
+                placeholder="Audi A8"
+                value={field.value}
+                onBlur={field.onBlur}
+                onDelete={handleSearchDelete}
+                error={fieldState.error}
+              />
+            )}
+          />
 
           <div className="gap-y-1">
             <div className="flex gap-x-2">

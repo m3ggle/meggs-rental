@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
+import TextInput from "../../../components/input/TextInput";
 import FilterModal from "./FilterModal";
 import Search from "./Search";
 
@@ -87,8 +88,7 @@ const SearchFilter = ({
           {label}
         </label>
         {/* input and error*/}
-        <div className="flex w-full flex-col gap-y-1">
-          <div className="flex w-full gap-x-2">
+          <div className="flex w-full gap-x-2 items-end">
             <Controller
               name="search"
               control={control}
@@ -98,11 +98,10 @@ const SearchFilter = ({
                   : undefined
               }
               render={({ field, fieldState }) => (
-                <Search
+                <TextInput
                   firstIcon="fa-solid fa-magnifying-glass"
                   secondIcon="fa-solid fa-times"
                   onChange={field.onChange}
-                  label="Search for a offer?"
                   placeholder="Audi A8"
                   value={field.value}
                   onBlur={field.onBlur}
@@ -115,23 +114,22 @@ const SearchFilter = ({
               <button
                 type="button"
                 onClick={openModal}
-                className={`fa-solid fa-filter flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
+                className={`fa-solid fa-filter h-10 flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
               />
               <button
                 type="submit"
                 onClick={handleSubmit}
-                className={`fa-solid fa-chevron-right flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
+                className={`fa-solid fa-chevron-right h-10 flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
               />
             </>
           </div>
-        </div>
       </form>
       <FilterModal
         isOpen={isOpen}
         closeModal={closeModal}
         handleFilterCallback={handleFilterCallback}
         setOutsideSearch={settingSearch}
-        handleDelete={handleDelete}
+        handleDeleteInput={handleDelete}
       />
     </div>
   );

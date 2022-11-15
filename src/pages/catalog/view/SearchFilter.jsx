@@ -17,15 +17,15 @@ const SearchFilter = ({
   type,
 }) => {
   let [searchParams, setSearchParams] = useSearchParams();
-  const { control, handleSubmit: handleSearchSubmit, setValue } = useForm();
+  const { control, handleSubmit, setValue } = useForm();
 
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
-  const onSubmitSearch = (data) => {
+  const onSubmit = (data) => {
     console.log("submitting");
-    data.search && handleUrlUpdate(data, "search");
+    handleUrlUpdate(data, "search");
   };
   const handleFilterCallback = (data) => {
     console.log("filter calling back");
@@ -70,10 +70,10 @@ const SearchFilter = ({
   };
 
   return (
-    <form onSubmit={handleSearchSubmit(onSubmitSearch)}>
-      <div
+    <div>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
         className="flex w-full max-w-[340px] flex-col gap-y-2"
-        aria-invalid={error ? "true" : "false"}
       >
         <label
           htmlFor={name}
@@ -114,19 +114,19 @@ const SearchFilter = ({
               />
               <button
                 type="submit"
-                onClick={handleSearchSubmit}
+                onClick={handleSubmit}
                 className={`fa-solid fa-chevron-right flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
               />
             </>
           </div>
         </div>
-      </div>
+      </form>
       <FilterModal
         isOpen={isOpen}
         closeModal={closeModal}
         handleFilterCallback={handleFilterCallback}
       />
-    </form>
+    </div>
   );
 };
 

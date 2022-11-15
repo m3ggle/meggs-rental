@@ -1,8 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import FilterCatalog from "../../../components/filter/FilterCatalog";
-
 import { useWindowSize } from "../../../hooks/useWindowSize";
+import Filter from "./Filter";
 import SearchFilter from "./SearchFilter";
 
 const LayoutCatalog = ({ children }) => {
@@ -13,11 +12,12 @@ const LayoutCatalog = ({ children }) => {
 
   const filterRender = () => {
     if (size.width >= 1000) {
-      return <FilterCatalog />;
+      // return <FilterCatalog />;
+      return <Filter isOpen={true} filterModal={false} />;
     } else {
       return (
         <div className="w-[312px]">
-          <SearchFilter /> 
+          <SearchFilter />
         </div>
       );
     }

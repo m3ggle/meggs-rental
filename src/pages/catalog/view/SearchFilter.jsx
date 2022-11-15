@@ -17,27 +17,31 @@ const SearchFilter = ({
   type,
 }) => {
   let [searchParams, setSearchParams] = useSearchParams();
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit: handleSearchSubmit, setValue } = useForm();
 
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
-  const onSubmit = (data) => {
-    handleUrlUpdate(data, "search");
+  const onSubmitSearch = (data) => {
+    console.log("submitting");
+    data.search && handleUrlUpdate(data, "search");
   };
   const handleFilterCallback = (data) => {
+    console.log("filter calling back");
     handleUrlUpdate(data, "filter");
   };
 
   const handleUrlUpdate = (data, type) => {
     if (type === "filter") {
-      console.log(data)
+      console.log(data);
       searchParams.get("search") && (data.search = searchParams.get("search"));
-      const newParams = new URLSearchParams(data)
-      setSearchParams(newParams)
+      const newParams = new URLSearchParams(data);
+      setSearchParams(newParams);
     } else if (type === "search") {
-      searchParams.set("search", data.search)
+      console.log("hallo");
+      console.log(type);
+      searchParams.set("search", data.search);
       setSearchParams(searchParams);
     }
 
@@ -48,8 +52,6 @@ const SearchFilter = ({
 
     // let seaParam = {}
     // seaParam.search = searchParams.get("search");
-    
-
 
     // searchParams.forEach((val, key) => console.log(key, val))
 
@@ -61,8 +63,14 @@ const SearchFilter = ({
     // setSearchParams(searchParams)
   };
 
+  const handleDelete = (inputName, inputValue) => {
+    setValue(inputName, inputValue);
+    searchParams.delete(inputName);
+    setSearchParams(searchParams);
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSearchSubmit(onSubmitSearch)}>
       <div
         className="flex w-full max-w-[340px] flex-col gap-y-2"
         aria-invalid={error ? "true" : "false"}
@@ -79,14 +87,21 @@ const SearchFilter = ({
             <Controller
               name="search"
               control={control}
+              defaultValue={
+                searchParams.get("search")
+                  ? searchParams.get("search")
+                  : undefined
+              }
               render={({ field, fieldState }) => (
                 <Search
                   firstIcon="fa-solid fa-magnifying-glass"
+                  secondIcon="fa-solid fa-times"
                   onChange={field.onChange}
                   label="Search for a offer?"
                   placeholder="Audi A8"
                   value={field.value}
                   onBlur={field.onBlur}
+                  onDelete={() => handleDelete("search", "")}
                   error={fieldState.error}
                 />
               )}
@@ -99,7 +114,7 @@ const SearchFilter = ({
               />
               <button
                 type="submit"
-                onClick={handleSubmit}
+                onClick={handleSearchSubmit}
                 className={`fa-solid fa-chevron-right flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
               />
             </>

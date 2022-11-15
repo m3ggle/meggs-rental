@@ -1,12 +1,14 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useSearchParams } from "react-router-dom";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
 import ModalWrapper from "../../../layouts/ModalWrapper";
 
 const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
-  const { control, handleSubmit } = useForm();
+  let [searchParams] = useSearchParams();
+  const { control, handleSubmit: handleSubmitFilter } = useForm();
 
   const cleanUpFilterData = (data) => {
     let allActives = {};
@@ -19,8 +21,9 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
     return allActives;
   };
 
-  const onSubmit = (data) => {
+  const onSubmitFilter = (data) => {
     handleFilterCallback(cleanUpFilterData(data));
+    closeModal()
   };
 
   const { filterSelects } = ExampleData();
@@ -37,7 +40,7 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
   return (
     <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmitFilter(onSubmitFilter)}
         // w-80
         className="relative flex h-[640px] w-[340px] max-w-[340px] flex-col gap-y-3 overflow-y-scroll rounded-lg"
       >
@@ -51,6 +54,11 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
               <Controller
                 name="startDate"
                 control={control}
+                defaultValue={
+                  searchParams.get("startDate")
+                    ? searchParams.get("startDate")
+                    : undefined
+                }
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-calendar-days"
@@ -67,6 +75,11 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
               <Controller
                 name="endDate"
                 control={control}
+                defaultValue={
+                  searchParams.get("endDate")
+                    ? searchParams.get("endDate")
+                    : undefined
+                }
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-calendar-days"
@@ -86,8 +99,13 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
           <div className="gap-y-1">
             <div className="flex gap-x-2">
               <Controller
-                name="priceStart"
+                name="startPrice"
                 control={control}
+                defaultValue={
+                  searchParams.get("startPrice")
+                    ? searchParams.get("startPrice")
+                    : undefined
+                }
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-coins"
@@ -108,8 +126,13 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
                 }}
               />
               <Controller
-                name="priceEnd"
+                name="endPrice"
                 control={control}
+                defaultValue={
+                  searchParams.get("endPrice")
+                    ? searchParams.get("endPrice")
+                    : undefined
+                }
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-coins"
@@ -142,6 +165,11 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
                 control={control}
                 render={({ field, fieldState }) => (
                   <Select
+                    value={
+                      searchParams.get("transmission")
+                        ? searchParams.get("transmission")
+                        : undefined
+                    }
                     icon={transmissionSelect.icon}
                     placeholder={transmissionSelect.placeholder}
                     itemList={transmissionSelect.list}
@@ -156,6 +184,11 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
                 control={control}
                 render={({ field, fieldState }) => (
                   <Select
+                    value={
+                      searchParams.get("fuelType")
+                        ? searchParams.get("fuelType")
+                        : undefined
+                    }
                     icon={fuelSelect.icon}
                     placeholder={fuelSelect.placeholder}
                     itemList={fuelSelect.list}
@@ -170,6 +203,11 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
                 control={control}
                 render={({ field, fieldState }) => (
                   <Select
+                    value={
+                      searchParams.get("seats")
+                        ? searchParams.get("seats")
+                        : undefined
+                    }
                     icon={seatSelect.icon}
                     placeholder={seatSelect.placeholder}
                     itemList={seatSelect.list}
@@ -184,6 +222,11 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
                 control={control}
                 render={({ field, fieldState }) => (
                   <Select
+                    value={
+                      searchParams.get("trunkVolume")
+                        ? searchParams.get("trunkVolume")
+                        : undefined
+                    }
                     icon={trunkSelect.icon}
                     placeholder={trunkSelect.placeholder}
                     itemList={trunkSelect.list}
@@ -198,6 +241,11 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
                 control={control}
                 render={({ field, fieldState }) => (
                   <Select
+                    value={
+                      searchParams.get("color")
+                        ? searchParams.get("color")
+                        : undefined
+                    }
                     icon={colorSelect.icon}
                     placeholder={colorSelect.placeholder}
                     itemList={colorSelect.list}
@@ -212,6 +260,11 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
                 control={control}
                 render={({ field, fieldState }) => (
                   <Select
+                    value={
+                      searchParams.get("smoking")
+                        ? searchParams.get("smoking")
+                        : undefined
+                    }
                     icon={smokingSelect.icon}
                     placeholder={smokingSelect.placeholder}
                     itemList={smokingSelect.list}
@@ -227,6 +280,7 @@ const FilterModal = ({ isOpen, closeModal, handleFilterCallback }) => {
 
         <button
           type="submit"
+          onClick={handleSubmitFilter}
           className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 duration-300 hover:scale-102 active:scale-98 dark:bg-dmPrimary"
         >
           Update Filter

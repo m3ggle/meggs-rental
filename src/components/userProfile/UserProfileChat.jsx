@@ -3,7 +3,7 @@ import React from "react";
 
 const UserProfileChat = ({ newMsg, lastMsg, displayName }) => {
     return (
-      <div className="flex w-[360px] items-center justify-center rounded-2xl p-6 shadow">
+      <div className="flex w-full items-center justify-center rounded-2xl p-6 shadow">
         <div className="flex h-11 w-full gap-x-2">
           {/* pic */}
           <div

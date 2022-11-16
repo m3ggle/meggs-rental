@@ -10,6 +10,8 @@ import SignUpEmail from "./view/SignUpEmail";
 import SignUpName from "./view/SignUpName";
 import SignUpPassword from "./view/SignUpPassword";
 
+const { signUpRounds } = ExampleData();
+
 const SignUp = () => {
   const {
     handleStorage,
@@ -19,18 +21,18 @@ const SignUp = () => {
     handleEmailContinue,
     handleConfirmationContinue,
   } = useMultiStepHelper();
-  let [searchParams] = useSearchParams();
-  const currentRound = +searchParams.get("round");
+  let [searchParams, setSearchParams] = useSearchParams();
+  const currentRound = searchParams.get("round")
+    ? +searchParams.get("round")
+    : 1;
   const navigate = useNavigate();
 
-  const { signUpRounds } = ExampleData();
-
   useEffect(() => {
-    if (currentRound === 0 || !currentRound) {
-      const newParam = new URLSearchParams({ round: 1 });
-      navigate(`/sign-up/?${newParam}`);
+    if (!searchParams.get("round")) {
+      searchParams.set("round", 1);
+      setSearchParams(searchParams);
     }
-  }, [navigate]);
+  }, [searchParams, setSearchParams]);
 
   const handleCallback = ({ data, nextStep }) => {
     switch (nextStep) {
@@ -63,7 +65,6 @@ const SignUp = () => {
     console.log(JSON.parse(localStorage.getItem("signUpData")));
   };
 
-  console.log(currentRound);
   const renderComponent = () => {
     switch (currentRound) {
       case 1:

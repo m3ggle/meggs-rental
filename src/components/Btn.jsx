@@ -9,7 +9,8 @@ const Btn = ({ type, title, onClick, onSubmit, uiType }) => {
       onClick={handleClick}
       onSubmit={handleSubmit}
       type={type === undefined ? "button" : type}
-      className={`${
+      className={`
+      ${
         uiType === "primary"
           ? "bg-lmPrimary text-white shadow-lg dark:bg-dmPrimary dark:hover:bg-lmPrimary"
           : uiType === "secondary"

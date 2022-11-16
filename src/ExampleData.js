@@ -262,6 +262,54 @@ const genderSelect = {
   list: ["Male", "feMale", "Divers"],
 };
 
+const messages = [
+  {
+    id: 1,
+    owner: false,
+    text: "Nibh venenatis eleifend turpis arcu eget. Urna, viverra dignissim nulla aliquet suspendisse a.",
+  },
+  {
+    id: 2,
+    owner: true,
+    text: "Dolor risus, risus non rhoncus, leo sed platea sed. Tellus in convallis sagittis, risus accumsan sed orci, mattis blandit. Bibendum elementum ultrices nulla dictumst rhoncus, mauris, tristique justo.",
+  },
+  {
+    id: 3,
+    owner: false,
+    text: "Nam quis faucibus consequat auctor.",
+  },
+  {
+    id: 4,
+    owner: false,
+    text: "Neque sed molestie orci ut. Et diam vel vitae tristique amet aliquet at.",
+  },
+  {
+    id: 5,
+    owner: true,
+    text: "Suscipit dictum fusce posuere ullamcorper integer sed. Praesent praesent montes, nisi, et elementum urna.",
+  },
+  {
+    id: 6,
+    owner: false,
+    text: "Sed nisl, ullamcorper amet molestie massa, accumsan.",
+  },
+  {
+    id: 7,
+    owner: true,
+    text: "Consectetur leo lorem facilisis urna consectetur tellus. Et, porttitor eget suspendisse arcu sem commodo.",
+  },
+  {
+    id: 8,
+    owner: true,
+    text: "Faucibus mollis porttitor est in eleifend convallis.",
+  },
+  {
+    id: 9,
+    owner: false,
+    text: "Nibh venenatis eleifend turpis arcu eget. Urna, viverra dignissim nulla aliquet suspendisse a.",
+  },
+];
+
 const ExampleData = () => {
   return {
     carSpecData,
@@ -283,6 +331,7 @@ const ExampleData = () => {
     signUpRounds,
     forgotPasswordRounds,
     citiesAutocomplete,
+    messages
   };
 };
 

@@ -49,7 +49,7 @@ export default function App() {
 
           <Route path="/user-offers" element={<UserOffers />} />
           <Route path="/upload" element={<Upload />} />
-          <Route path="/upload/:round" element={<Upload />} />
+          {/* <Route path="/upload/:round" element={<Upload />} /> */}
           {/* <Route path="/upload/:params" element={<Upload />} /> */}
 
           <Route path="/chat" element={<Chat />} />
@@ -74,9 +74,9 @@ export default function App() {
 
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/sign-up/:round" element={<SignUp />} />
+          {/* <Route path="/sign-up/:round" element={<SignUp />} /> */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/forgot-password/:round" element={<ForgotPassword />} />
+          {/* <Route path="/forgot-password/:round" element={<ForgotPassword />} /> */}
 
           <Route path="/*" element={<NotFound />} />
         </Routes>

@@ -9,19 +9,20 @@ import ForgotPasswordPassword from "./view/ForgotPasswordPassword";
 
 const ForgotPassword = () => {
   const { handleStorage, handleEmailContinue } = useMultiStepHelper();
-  let [searchParams] = useSearchParams();
-  const currentRound = +searchParams.get("round");
+  let [searchParams, setSearchParams] = useSearchParams();
+  const currentRound = searchParams.get("round")
+    ? +searchParams.get("round")
+    : 1;
   const navigate = useNavigate();
 
   const { forgotPasswordRounds } = ExampleData();
 
   useEffect(() => {
-    if (currentRound === 0 || !currentRound) {
-      const newParam = new URLSearchParams({ round: 1 });
-      navigate(`/forgot-password/?${newParam}`);
+    if (!searchParams.get("round")) {
+      searchParams.set("round", 1);
+      setSearchParams(searchParams);
     }
-  }, [navigate]);
-
+  }, [searchParams, setSearchParams]);
 
   const handleCallback = ({ data, nextStep }) => {
     switch (nextStep) {

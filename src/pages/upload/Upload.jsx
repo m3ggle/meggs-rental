@@ -12,16 +12,19 @@ import UploadPrev from "./view/UploadPrev";
 
 const Upload = () => {
   const { handleStorage, handleContinue, handleGoBack } = useMultiStepHelper();
-  let [searchParams] = useSearchParams();
-  const currentRound = +searchParams.get("round");
+  let [searchParams, setSearchParams] = useSearchParams();
+  const currentRound = searchParams.get("round")
+    ? +searchParams.get("round")
+    : 1;
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentRound === 0 || !currentRound) {
-      const newParam = new URLSearchParams({ round: 1 });
-      navigate(`/upload/?${newParam}`);
+    if (!searchParams.get("round")) {
+      searchParams.set("round", 1);
+      setSearchParams(searchParams);
     }
-  }, [navigate]);
+  }, [searchParams, setSearchParams]);
+
 
   const handleCallback = ({ data, nextStep }) => {
     switch (nextStep) {

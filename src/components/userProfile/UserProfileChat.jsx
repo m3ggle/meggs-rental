@@ -1,9 +1,9 @@
 // <UserProfileChat newMsg={true} lastMsg={"Hey long time no see!"} displayName="Meggle Bande" />
 import React from "react";
 
-const UserProfileChat = ({ newMsg, lastMsg, displayName }) => {
+const UserProfileChat = ({ newMsg, lastMsg, displayName, shadow }) => {
     return (
-      <div className="flex w-full items-center justify-center rounded-2xl p-6 shadow">
+      <div className={`flex w-full items-center justify-center rounded-2xl px-2 py-4 ${shadow && "shadow"}`}>
         <div className="flex h-11 w-full gap-x-2">
           {/* pic */}
           <div
@@ -29,7 +29,7 @@ const UserProfileChat = ({ newMsg, lastMsg, displayName }) => {
           {newMsg && (
             <div className={`flex h-full w-6 min-w-fit items-center`}>
               <div
-                className={`h-3 w-3 rounded-full bg-lmPrimary dark:bg-dmPrimary`}
+                className={`h-2 w-2 rounded-full bg-lmPrimary dark:bg-dmPrimary`}
               ></div>
             </div>
           )}

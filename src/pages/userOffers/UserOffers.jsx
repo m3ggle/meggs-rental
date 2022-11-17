@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import ExampleData from "../../ExampleData";
+import CatalogLikeView from "../catalog/view/CatalogLikeView";
 
 const UserOffers = () => {
-  return (
-    <div>UserOffers</div>
-  )
-}
+    const { exampleOffers } = ExampleData();
+    const filteredOffers = exampleOffers.filter((offer) => offer.ownerId === "ae5cdceb-1e5b-4b84-9bab-bab3d55a1abb");
+    return <CatalogLikeView offerList={filteredOffers} />;
+};
 
-export default UserOffers
+export default UserOffers;

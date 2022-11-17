@@ -1,11 +1,12 @@
-import React from 'react'
-import Catalog from '../catalog/Catalog'
+import React from "react";
+import ExampleData from "../../ExampleData";
+import CatalogLikeView from "../catalog/view/CatalogLikeView";
+import Catalog from "../catalog/view/CatalogLikeView";
 
 const Favorites = () => {
-  // do the logic in here and than pass the results of the liked (filtered) offers to catalog
-  return (
-    <Catalog />
-  )
-}
+  const { exampleOffers } = ExampleData();
+  const filteredOffers = exampleOffers.filter(offer => offer.liked)
+   return <CatalogLikeView offerList={filteredOffers} />;
+};
 
-export default Favorites
+export default Favorites;

@@ -52,19 +52,20 @@ const ChatInfo = ({ isOpen, closeModal }) => {
               <div className="flex h-fit w-[360px] flex-col gap-y-6 rounded-2xl bg-white p-6 shadow-lg">
                 {/* header */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xl text-lmGrey800">Details</span>
+                  <span className="text-xl text-lmGrey700">Details</span>
                   <i
                     onClick={closeModal}
-                    className="fa-solid fa-times cursor-pointer text-[24px] text-lmGrey700 dark:text-dmGrey25" />
+                    className="fa-solid fa-times cursor-pointer text-[24px] text-lmGrey700 dark:text-dmGrey25"
+                  />
                 </div>
                 {/* parti... */}
                 <div className="flex flex-col gap-y-2">
                   <span className="text-lg text-lmGrey600">Participants</span>
-                  <UserProfileSmall
-                    text="Online • Burrower"
-                    displayName="Nele Langrock"
-                    profilePic="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80"
-                  />
+                    <UserProfileSmall
+                      text="Online • Burrower"
+                      displayName="Nele Langrock"
+                      profilePic="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80"
+                    />
                   <UserProfileSmall
                     text="Online • Owner"
                     displayName="Meggle Bande"

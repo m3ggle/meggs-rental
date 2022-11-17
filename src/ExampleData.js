@@ -310,6 +310,49 @@ const messages = [
   },
 ];
 
+const chatPreviews = [
+  {
+    chatId: "9575065e-659f-46a8-b021-20b284f4c406",
+    newMsg: true,
+    lastMsg: "Thank your for the offer but no thanks.",
+    displayName: "Nele Langrock",
+    photoUrl:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80",
+  },
+  {
+    chatId: "4cc0d8da-004d-4348-8651-24da06414dbd",
+    newMsg: true,
+    lastMsg: "Bye bye.",
+    displayName: "Adiana Hall",
+    photoUrl:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+  },
+  {
+    chatId: "96c9653b-c546-4207-91fc-3cbcfb297326",
+    newMsg: false,
+    lastMsg: "Hey, can we talk about your latest offer.",
+    displayName: "Olaf Koch",
+    photoUrl:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2261&q=80",
+  },
+  {
+    chatId: "e569a76d-c4b6-4f14-94fd-ed652a42eb47",
+    newMsg: true,
+    lastMsg: "Nice offer",
+    displayName: "Belarin Paul",
+    photoUrl:
+      "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
+  },
+  {
+    chatId: "e7127111-348e-4909-aab6-c3ca70ed16a1",
+    newMsg: false,
+    lastMsg: "Lets meet in the middle!",
+    displayName: "Richard Mitschel",
+    photoUrl:
+      "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+  },
+];
+
 const ExampleData = () => {
   return {
     carSpecData,
@@ -331,7 +374,8 @@ const ExampleData = () => {
     signUpRounds,
     forgotPasswordRounds,
     citiesAutocomplete,
-    messages
+    messages,
+    chatPreviews,
   };
 };
 

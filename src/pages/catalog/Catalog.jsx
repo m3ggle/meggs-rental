@@ -1,13 +1,10 @@
 import React from "react";
-import CatalogList from "./view/CatalogList";
-import LayoutCatalog from "./view/LayoutCatalog";
+import CatalogLikeView from "./view/CatalogLikeView";
+import ExampleData from "../../ExampleData"
 
 const Catalog = () => {
-  return (
-    <LayoutCatalog>
-      <CatalogList />
-    </LayoutCatalog>
-  );
+  const { exampleOffers } = ExampleData();
+  return <CatalogLikeView offerList={exampleOffers} />;
 };
 
 export default Catalog;

@@ -1,81 +1,14 @@
-import React from 'react'
-import OfferCard from '../../../components/catalog/OfferCard';
+import React from "react";
+import OfferCard from "../../../components/catalog/OfferCard";
 
-const CatalogList = () => {
+const CatalogList = ({ offerList }) => {
   return (
     <>
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
-      <OfferCard
-        name="Tesla Model 3"
-        location="Salzburger Straße 18"
-        price="100"
-        transmission="Automatic"
-        seats={5}
-      />
+      {offerList.map((offer, index) => (
+        <OfferCard key={offer.offerId} offerInformation={offer} index={index} />
+      ))}
     </>
   );
-}
+};
 
-export default CatalogList
+export default CatalogList;

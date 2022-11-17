@@ -52,8 +52,7 @@ export default function App() {
 
           <Route path="/chat" element={<Chat />} />
           <Route path="/chat/sidebar" element={<ChatSidebar />} />
-          <Route path="/chat/chat-info" element={<ChatInfo />} />
-          <Route path="/chat/chat-main" element={<ChatMain />} />
+          <Route path="/chat/chat-main/:chatId" element={<ChatMain />} />
 
           <Route path="/" element={<Homepage />} />
           <Route path="/homepage" element={<Homepage />} />

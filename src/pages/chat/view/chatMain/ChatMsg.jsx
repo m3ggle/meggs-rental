@@ -6,7 +6,7 @@ const ChatMsg = ({ owner, text }) => {
       <div
         className={`${
           owner ? "bg-lmPrimary text-white" : "bg-lmGrey25 text-lmGrey600"
-        } w-fit max-w-[640px] rounded-lg p-4 text-sm`}
+        } w-fit max-w-[90%] 600:max-w-[640px] rounded-lg p-4 text-sm`}
       >
         {text}
       </div>

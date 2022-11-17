@@ -5,9 +5,7 @@ import ChatInput from "./ChatInput";
 const ChatMainInputArea = () => {
   const [currentMsgState, setCurrentMsgState] = useState(false);
   const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const onSubmit = (data) => data
 
   const handleBlur = () => setCurrentMsgState(false);
   const handleFocus = () => setCurrentMsgState(true);
@@ -20,9 +18,6 @@ const ChatMainInputArea = () => {
       <Controller
         name="message"
         control={control}
-        rules={{
-          required: "Name is required",
-        }}
         render={({ field, fieldState }) => (
           <ChatInput
             secondIcon="fa-solid fa-paperclip"

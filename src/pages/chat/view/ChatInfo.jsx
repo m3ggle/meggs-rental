@@ -44,12 +44,12 @@ const ChatInfo = ({ isOpen, closeModal }) => {
         >
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="relative h-full w-full"></div>
-            <Dialog.Panel className="hideScrollbar absolute top-20 right-0 h-fit w-fit overflow-scroll 600:top-7 600:right-6 600:pb-7">
+            <Dialog.Panel className="hideScrollbar absolute top-20 right-0 h-fit w-full 600:w-fit overflow-scroll 600:top-7 600:right-6 600:pb-7">
               <button
                 className="absolute opacity-0"
                 aria-hidden="true"
               ></button>
-              <div className="flex h-fit w-[360px] flex-col gap-y-6 rounded-2xl bg-white p-6 shadow-lg">
+              <div className="flex h-fit w-full 600:w-[360px] flex-col gap-y-6 rounded-2xl bg-white p-6 shadow-lg">
                 {/* header */}
                 <div className="flex items-center justify-between">
                   <span className="text-xl text-lmGrey700">Details</span>

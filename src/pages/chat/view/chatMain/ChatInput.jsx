@@ -39,6 +39,25 @@ const ChatInput = ({
         } else {
           break;
         }
+      case "fa-solid fa-paperclip":
+        return (
+          <div className="flex h-[20px] w-[14px] items-center justify-center">
+            <input
+              type="file"
+              name="fileUpload"
+              multiple
+              className={`${
+                error ? "fa-solid fa-triangle-exclamation" : secondIcon
+              } cursor-pointer flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
+                error
+                  ? "text-red-300 dark:text-red-100"
+                  : value === undefined || value === ""
+                  ? "text-lmGrey300 dark:text-dmGrey300"
+                  : "text-lmGrey600 dark:text-dmGrey25"
+              }  `}
+            ></input>
+          </div>
+        );
       default:
         return (
           <div className="flex h-[20px] w-[14px] items-center justify-center">
@@ -105,7 +124,7 @@ const ChatInput = ({
                 error
                   ? "text-red-500 placeholder:text-red-300 dark:text-red-100"
                   : "text-lmGrey600 placeholder:text-dmGrey300 dark:text-dmGrey25 placeholder:dark:text-dmGrey300"
-              }  break-words focus:outline-none h-[20px] focus:h-[60px] duration-300 outline-none`}
+              }  h-[20px] break-words outline-none duration-300 focus:h-[60px] focus:outline-none`}
             />
             {(secondIcon || error) && renderSecondIcon()}
             {/* {(secondIcon || error) && (

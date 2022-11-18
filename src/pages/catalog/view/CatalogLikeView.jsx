@@ -44,6 +44,73 @@ const CatalogLikeView = ({ offerList }) => {
             })
           );
           break;
+        case "startPriceDay":
+          tempFiltered = tempFiltered.filter(
+            (offer) => param[1] <= offer.price.day
+          );
+          break;
+        case "endPriceDay":
+          tempFiltered = tempFiltered.filter(
+            (offer) => param[1] >= offer.price.day
+          );
+          break;
+        case "startPriceWeek":
+          tempFiltered = tempFiltered.filter(
+            (offer) => param[1] <= offer.price.week
+          );
+          break;
+        case "endPriceWeek":
+          tempFiltered = tempFiltered.filter(
+            (offer) => param[1] >= offer.price.week
+          );
+          break;
+        case "startPriceMonth":
+          tempFiltered = tempFiltered.filter(
+            (offer) => param[1] <= offer.price.month
+          );
+          break;
+        case "endPriceMonth":
+          tempFiltered = tempFiltered.filter(
+            (offer) => param[1] >= offer.price.month
+          );
+          break;
+        case "transmission":
+          tempFiltered = tempFiltered.filter(
+            (offer) => param[1] === offer.carSpecs.transmission
+          );
+          break;
+        case "fuelType":
+          tempFiltered = tempFiltered.filter(
+            (offer) => param[1] === offer.carSpecs.fuelType
+          );
+          break;
+        case "seats":
+          const numberOfSeats = parseInt(param[1].split(" ")[0]);
+          tempFiltered = tempFiltered.filter(
+            (offer) => numberOfSeats <= offer.carSpecs.seats
+          );
+          break;
+        case "trunkVolume":
+          const trunkVol = parseInt(param[1].split(" ")[0]);
+          tempFiltered = tempFiltered.filter(
+            (offer) => trunkVol <= offer.carSpecs.trunkVolume
+          );
+          break;
+        case "color":
+          tempFiltered = tempFiltered.filter(
+            (offer) => param[1] === offer.carSpecs.color
+          );
+          break;
+        case "smoking":
+          tempFiltered = tempFiltered.filter((offer) =>
+            param[1] === offer.carSpecs.smoking ? "Yes" : "No"
+          );
+          break;
+        case "eating":
+          tempFiltered = tempFiltered.filter((offer) =>
+            param[1] === offer.carSpecs.eating ? "Yes" : "No"
+          );
+          break;
         default:
           break;
       }

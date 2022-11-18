@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
 export const useGetAllParams = () => {
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
   
     const getAllParams = () => {
     let tempHolder = {};

@@ -84,7 +84,7 @@ const Filter = ({
     <form
       onSubmit={handleSubmit(onSubmit)}
       // w-80
-      className="relative flex h-fit w-[340px] max-w-[340px] flex-col gap-y-3 rounded-lg"
+      className={`${!filterModal && "pb-[90px]"} relative flex h-fit w-[340px] max-w-[340px] flex-col gap-y-3 rounded-lg`}
     >
       <div className="flex flex-col gap-y-3">
         <span className="text-2xl text-lmGrey700 dark:text-dmGrey25">
@@ -165,11 +165,11 @@ const Filter = ({
         <div className="gap-y-1">
           <div className="flex gap-x-2">
             <Controller
-              name="startPrice"
+              name="startPriceDay"
               control={control}
               defaultValue={
-                searchParams.get("startPrice")
-                  ? searchParams.get("startPrice")
+                searchParams.get("startPriceDay")
+                  ? searchParams.get("startPriceDay")
                   : undefined
               }
               render={({ field, fieldState }) => (
@@ -177,8 +177,8 @@ const Filter = ({
                   firstIcon="fa-solid fa-coins"
                   secondIcon="fa-solid fa-times"
                   onChange={field.onChange}
-                  onDelete={() => handleDelete("startPrice", "")}
-                  label="Start price"
+                  onDelete={() => handleDelete("startPriceDay", "")}
+                  label="Daily start price"
                   placeholder="30..."
                   value={field.value}
                   onBlur={field.onBlur}
@@ -193,20 +193,140 @@ const Filter = ({
               }}
             />
             <Controller
-              name="endPrice"
+              name="endPriceDay"
               control={control}
               defaultValue={
-                searchParams.get("endPrice")
-                  ? searchParams.get("endPrice")
+                searchParams.get("endPriceDay")
+                  ? searchParams.get("endPriceDay")
                   : undefined
               }
               render={({ field, fieldState }) => (
                 <TextInput
                   firstIcon="fa-solid fa-coins"
                   secondIcon="fa-solid fa-times"
-                  onDelete={() => handleDelete("endPrice", "")}
+                  onDelete={() => handleDelete("endPriceDay", "")}
                   onChange={field.onChange}
-                  label="End price"
+                  label="Daily end price"
+                  placeholder="300..."
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+              rules={{
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Only numbers are allowed",
+                },
+              }}
+            />
+          </div>
+        </div>
+        <div className="gap-y-1">
+          <div className="flex gap-x-2">
+            <Controller
+              name="startPriceWeek"
+              control={control}
+              defaultValue={
+                searchParams.get("startPriceWeek")
+                  ? searchParams.get("startPriceWeek")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-coins"
+                  secondIcon="fa-solid fa-times"
+                  onChange={field.onChange}
+                  onDelete={() => handleDelete("startPriceWeek", "")}
+                  label="Weekly start price"
+                  placeholder="30..."
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+              rules={{
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Only numbers are allowed",
+                },
+              }}
+            />
+            <Controller
+              name="endPriceWeek"
+              control={control}
+              defaultValue={
+                searchParams.get("endPriceWeek")
+                  ? searchParams.get("endPriceWeek")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-coins"
+                  secondIcon="fa-solid fa-times"
+                  onDelete={() => handleDelete("endPriceWeek", "")}
+                  onChange={field.onChange}
+                  label="Weekly end price"
+                  placeholder="300..."
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+              rules={{
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Only numbers are allowed",
+                },
+              }}
+            />
+          </div>
+        </div>
+        <div className="gap-y-1">
+          <div className="flex gap-x-2">
+            <Controller
+              name="startPriceMonth"
+              control={control}
+              defaultValue={
+                searchParams.get("startPriceMonth")
+                  ? searchParams.get("startPriceMonth")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-coins"
+                  secondIcon="fa-solid fa-times"
+                  onChange={field.onChange}
+                  onDelete={() => handleDelete("startPriceMonth", "")}
+                  label="Monthly start price"
+                  placeholder="30..."
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+              rules={{
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Only numbers are allowed",
+                },
+              }}
+            />
+            <Controller
+              name="endPriceMonth"
+              control={control}
+              defaultValue={
+                searchParams.get("endPriceMonth")
+                  ? searchParams.get("endPriceMonth")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-coins"
+                  secondIcon="fa-solid fa-times"
+                  onDelete={() => handleDelete("endPriceMonth", "")}
+                  onChange={field.onChange}
+                  label="Monthly end price"
                   placeholder="300..."
                   value={field.value}
                   onBlur={field.onBlur}

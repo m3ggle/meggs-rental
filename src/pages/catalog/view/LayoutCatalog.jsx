@@ -8,10 +8,10 @@ const LayoutCatalog = ({ children }) => {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
 
-  const size = useWindowSize();
+  const windowSize = useWindowSize();
 
   const filterRender = () => {
-    if (size.width >= 1000) {
+    if (windowSize.width >= 1000) {
       // return <FilterCatalog />;
       return <Filter isOpen={true} filterModal={false} />;
     } else {

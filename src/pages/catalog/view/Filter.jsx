@@ -6,32 +6,32 @@ import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
 import { cleanUpFilterData } from "../helper/cleanUpFilterData";
-import { useHandlingParams } from "../helper/useHandlingParams";
+import { useHandlingParams } from "../hooks/useHandlingParams";
 
-  const { filterSelects } = ExampleData();
-  const {
-    transmissionSelect,
-    fuelSelect,
-    seatSelect,
-    trunkSelect,
-    colorSelect,
-    smokingSelect,
-  } = filterSelects;
+const { filterSelects } = ExampleData();
+const {
+  transmissionSelect,
+  fuelSelect,
+  seatSelect,
+  trunkSelect,
+  colorSelect,
+  smokingSelect,
+} = filterSelects;
 
 const Filter = ({
   isOpen, //done
   closeModal, //done
   setOutsideSearch, //done
   handleDeleteInput, //done
-  filterModal //4sure
+  filterModal, //4sure
 }) => {
   let [searchParams, setSearchParams] = useSearchParams();
   const { control, handleSubmit, setValue, watch } = useForm();
   const [resetCount, setResetCount] = useState(0);
-  const {handleUrlUpdate} = useHandlingParams()
+  const { handleUrlUpdate } = useHandlingParams();
 
   const onSubmit = (data) => {
-    (data.search && filterModal) && setOutsideSearch(data.search);
+    data.search && filterModal && setOutsideSearch(data.search);
     handleUrlUpdate(cleanUpFilterData(data), "filter");
     filterModal && closeModal();
   };
@@ -48,8 +48,12 @@ const Filter = ({
   }, [isOpen]);
 
   const handleSearchDelete = () => {
-    filterModal && handleDeleteInput("search", ""); //outside search
-    setValue("search", ""); //inside search
+    if (filterModal) {
+      handleDeleteInput("search", "");
+      setValue("search", "");
+    } else {
+      handleDelete("search", "");
+    }
   };
 
   const handleDelete = (inputName, inputValue) => {

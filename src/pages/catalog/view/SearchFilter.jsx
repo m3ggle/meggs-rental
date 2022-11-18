@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import TextInput from "../../../components/input/TextInput";
-import { useHandlingParams } from "../helper/useHandlingParams";
+import { useHandlingParams } from "../hooks/useHandlingParams";
 import FilterModal from "./FilterModal";
-import Search from "./Search";
 
 const SearchFilter = ({
   firstIcon,
@@ -20,7 +19,7 @@ const SearchFilter = ({
 }) => {
   let [searchParams] = useSearchParams();
   const { control, handleSubmit, setValue } = useForm();
-  const {handleUrlUpdate, handleSingleDelete} = useHandlingParams()
+  const { handleUrlUpdate, handleSingleDelete } = useHandlingParams();
 
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
@@ -38,8 +37,8 @@ const SearchFilter = ({
 
   // when changing the search inside filterModal, the search outside filterModal has to be updated too
   const settingSearch = (value) => {
-    setValue("search", value)
-  }
+    setValue("search", value);
+  };
 
   return (
     <div>
@@ -54,41 +53,41 @@ const SearchFilter = ({
           {label}
         </label>
         {/* input and error*/}
-          <div className="flex w-full gap-x-2 items-end">
-            <Controller
-              name="search"
-              control={control}
-              defaultValue={
-                searchParams.get("search")
-                  ? searchParams.get("search")
-                  : undefined
-              }
-              render={({ field, fieldState }) => (
-                <TextInput
-                  firstIcon="fa-solid fa-magnifying-glass"
-                  secondIcon="fa-solid fa-times"
-                  onChange={field.onChange}
-                  placeholder="Audi A8"
-                  value={field.value}
-                  onBlur={field.onBlur}
-                  onDelete={() => handleDelete("search", "")}
-                  error={fieldState.error}
-                />
-              )}
+        <div className="flex w-full items-end gap-x-2">
+          <Controller
+            name="search"
+            control={control}
+            defaultValue={
+              searchParams.get("search")
+                ? searchParams.get("search")
+                : undefined
+            }
+            render={({ field, fieldState }) => (
+              <TextInput
+                firstIcon="fa-solid fa-magnifying-glass"
+                secondIcon="fa-solid fa-times"
+                onChange={field.onChange}
+                placeholder="Audi A8"
+                value={field.value}
+                onBlur={field.onBlur}
+                onDelete={() => handleDelete("search", "")}
+                error={fieldState.error}
+              />
+            )}
+          />
+          <>
+            <button
+              type="button"
+              onClick={openModal}
+              className={`fa-solid fa-filter flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
             />
-            <>
-              <button
-                type="button"
-                onClick={openModal}
-                className={`fa-solid fa-filter h-10 flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
-              />
-              <button
-                type="submit"
-                onClick={handleSubmit}
-                className={`fa-solid fa-chevron-right h-10 flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
-              />
-            </>
-          </div>
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className={`fa-solid fa-chevron-right flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
+            />
+          </>
+        </div>
       </form>
       <FilterModal
         isOpen={isOpen}

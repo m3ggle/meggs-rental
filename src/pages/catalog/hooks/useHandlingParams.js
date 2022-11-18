@@ -5,7 +5,7 @@ export const useHandlingParams = () => {
 
   const handleUrlUpdate = (data, type) => {
     if (type === "filter") {
-      searchParams.get("search") && (data.search = searchParams.get("search"));
+      // searchParams.get("search") && (data.search = searchParams.get("search")); // for filter where there is no search innit
       const newParams = new URLSearchParams(data);
       setSearchParams(newParams);
     } else if (type === "search") {

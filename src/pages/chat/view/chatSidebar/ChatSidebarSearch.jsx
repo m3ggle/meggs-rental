@@ -3,7 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import TextInput from "../../../../components/input/TextInput";
 import { cleanUpFilterData } from "../../../catalog/helper/cleanUpFilterData";
-import { useHandlingParams } from "../../../catalog/helper/useHandlingParams";
+import { useHandlingParams } from "../../../catalog/hooks/useHandlingParams";
 
 const ChatSidebarSearch = () => {
   let [searchParams, setSearchParams] = useSearchParams();

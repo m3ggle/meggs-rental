@@ -7,8 +7,12 @@ const Logo = ({ isOpen, openModal }) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname.includes("/chat/chat-main/")) {
-      setHideLogo(true)
+    if (location.pathname.includes("/chat/")) {
+      if (location.pathname.includes("/chat/chat-main/")) {
+        setHideLogo(true)
+      } else {
+        setHideLogo(false);
+      }
     }
   }, [location]);
 

@@ -1,5 +1,5 @@
-import { falseDateToCorrectDate } from "./falseDateToCorrectDate";
+import { euDateSyntaxToUsDateSyntax } from "./euDateSyntaxToUsDateSyntax";
 
 export const createDate = (stringDate) => {
-  return new Date(falseDateToCorrectDate(stringDate));
+  return new Date(euDateSyntaxToUsDateSyntax(stringDate));
 };

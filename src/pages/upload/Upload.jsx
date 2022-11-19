@@ -48,6 +48,8 @@ const Upload = () => {
     }
   };
 
+
+  // outsource and refactor
   const renderComponent = () => {
     switch (currentRound) {
       case 1:

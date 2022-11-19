@@ -743,8 +743,8 @@ const exampleOffers = [
       month: 700,
     },
     calendar: {
-      startDate: "",
-      endDate: "",
+      startDate: "01.06.2023",
+      endDate: "28.06.2023",
     },
     carSpecs: {
       condition: "Fair",

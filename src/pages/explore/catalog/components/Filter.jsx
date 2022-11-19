@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
-import Btn from "../../../components/Btn";
-import Select from "../../../components/input/Select";
-import TextInput from "../../../components/input/TextInput";
-import ExampleData from "../../../ExampleData";
+import Btn from "../../../../components/Btn";
+import Select from "../../../../components/input/Select";
+import TextInput from "../../../../components/input/TextInput";
+import ExampleData from "../../../../ExampleData";
 import { cleanUpFilterData } from "../helper/cleanUpFilterData";
 import { useHandlingParams } from "../hooks/useHandlingParams";
 
@@ -84,7 +84,9 @@ const Filter = ({
     <form
       onSubmit={handleSubmit(onSubmit)}
       // w-80
-      className={`${!filterModal && "pb-[90px]"} relative flex h-fit w-[340px] max-w-[340px] flex-col gap-y-3 rounded-lg`}
+      className={`${
+        !filterModal && "pb-[90px]"
+      } relative flex h-fit w-[340px] max-w-[340px] flex-col gap-y-3 rounded-lg`}
     >
       <div className="flex flex-col gap-y-3">
         <span className="text-2xl text-lmGrey700 dark:text-dmGrey25">

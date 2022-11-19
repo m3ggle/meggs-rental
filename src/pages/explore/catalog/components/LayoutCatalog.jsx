@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useWindowSize } from "../../../hooks/useWindowSize";
+import { useWindowSize } from "../../../../hooks/useWindowSize";
 import Filter from "./Filter";
 import SearchFilter from "./SearchFilter";
 

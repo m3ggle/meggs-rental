@@ -1,6 +1,6 @@
 import React from "react";
-import CatalogLikeView from "./view/CatalogLikeView";
-import ExampleData from "../../ExampleData"
+import ExampleData from "../../../ExampleData";
+import CatalogLikeView from "./components/CatalogLikeView";
 
 const Catalog = () => {
   const { exampleOffers } = ExampleData();

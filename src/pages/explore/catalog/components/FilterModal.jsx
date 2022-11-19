@@ -1,6 +1,6 @@
 import React from "react";
-import ModalWrapper from "../../../layouts/ModalWrapper";
-import Filter from "./Filter"
+import ModalWrapper from "../../../../layouts/ModalWrapper";
+import Filter from "./Filter";
 
 const FilterModal = ({
   isOpen,

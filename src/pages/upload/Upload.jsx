@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import SignWrapper from "../../components/SignWrapper";
-import { useMultiStepHelper } from "../../utilities/useMultiStepHelper";
+import { useMultiStepHelper } from "../../hooks/useMultiStepHelper";
 import UploadBasicInfo from "./view/UploadBasicInfo";
 import UploadCarSpec1 from "./view/UploadCarSpec1";
 import UploadCarSpec2 from "./view/UploadCarSpec2";
@@ -25,7 +25,6 @@ const Upload = () => {
     }
   }, [searchParams, setSearchParams]);
 
-
   const handleCallback = ({ data, nextStep }) => {
     switch (nextStep) {
       case "finish":
@@ -47,7 +46,6 @@ const Upload = () => {
         break;
     }
   };
-
 
   // outsource and refactor
   const renderComponent = () => {

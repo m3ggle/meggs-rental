@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const ProfileSubHeader = ({ title }) => {
+const ProfileSubPageHeader = ({ title }) => {
     const navigate = useNavigate()
     const handleGoBack = () => navigate("/profile")
   return (
@@ -16,4 +16,4 @@ const ProfileSubHeader = ({ title }) => {
   );
 }
 
-export default ProfileSubHeader
+export default ProfileSubPageHeader;

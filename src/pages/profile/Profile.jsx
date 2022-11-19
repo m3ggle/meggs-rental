@@ -2,7 +2,8 @@ import React from "react";
 import SignWrapper from "../../components/SignWrapper";
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
 import ExampleData from "../../ExampleData";
-import ProfileButton from "./view/ProfileButton";
+import ProfileButtonList from "./components/ProfileButtonList";
+import { profileButtonListData } from "./data/profileButtonListData";
 
 const Profile = () => {
   const { userProfileBig } = ExampleData();
@@ -20,48 +21,7 @@ const Profile = () => {
           birthday={birthday}
           email={email}
         />
-        <div className="flex flex-col gap-y-2 py-3">
-          <ProfileButton
-            btnTitle="Account"
-            icon="fa-solid fa-user"
-            link="account"
-          />
-          <ProfileButton
-            btnTitle="Payments"
-            icon="fa-solid fa-credit-card"
-            link="payments"
-          />
-          <ProfileButton
-            btnTitle="Reviews"
-            icon="fa-solid fa-star"
-            link="reviews"
-          />
-          <ProfileButton
-            btnTitle="Notification"
-            icon="fa-solid fa-bell"
-            link="notification"
-          />
-          <ProfileButton
-            btnTitle="Help"
-            icon="fa-solid fa-handshake-angle"
-            link="help"
-          />
-          <ProfileButton
-            btnTitle="Terms of Service"
-            icon="fa-solid fa-section"
-            link="terms-of-service"
-          />
-          <ProfileButton
-            btnTitle="Privacy Policy"
-            icon="fa-solid fa-user-shield"
-            link="privacy-policy"
-          />
-          <ProfileButton
-            btnTitle="Sign Out"
-            icon="fa-solid fa-right-from-bracket"
-            link="/sign-in"
-          />
-        </div>
+        <ProfileButtonList profileButtonList={profileButtonListData} />
       </div>
     </SignWrapper>
   );

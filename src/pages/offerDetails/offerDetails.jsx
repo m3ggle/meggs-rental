@@ -199,7 +199,7 @@ const OfferDetails = () => {
               <div
                 className={`rounded-3xl bg-white p-6 shadow-md ${style.darkModeBorder} dark:bg-dmGrey900`}
               >
-                <UserProfileBig userData={userProfileBig} />
+                <UserProfileBig userProfileData={userProfileBig} />
               </div>
             </div>
           </div>

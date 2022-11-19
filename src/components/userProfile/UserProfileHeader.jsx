@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { getAge } from "../../helpers/getAge";
 import UserProfile from "../../pages/userProfile/UserProfile";
 
-const UserProfileHeader = ({ firstName, lastName, birthday, email }) => {
+const UserProfileHeader = ({ userProfileData = {} }) => {
+  const { firstName, lastName, birthday, email, photoUrl } = userProfileData;
+
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
@@ -14,8 +16,7 @@ const UserProfileHeader = ({ firstName, lastName, birthday, email }) => {
       <div
         className="h-[84px] w-[84px] rounded-full bg-cover bg-center shadow"
         style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1635107510862-53886e926b74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2535&q=80)",
+          backgroundImage: `url(${photoUrl})`,
         }}
       ></div>
       <div className="flex w-full flex-col items-center gap-y-[2px] text-sm text-lmGrey600 dark:text-dmGrey100">

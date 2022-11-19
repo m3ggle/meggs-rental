@@ -1,14 +1,14 @@
 import React from "react";
 import ReviewSection from "../../../components/ratings/ReviewSection";
 import SignWrapper from "../../../components/SignWrapper";
+import ExampleData from "../../../ExampleData";
 import ProfileSubPageHeader from "../components/ProfileSubPageHeader";
+
+const { userProfileBig } = ExampleData();
 
 const ProfileReviews = () => {
   return (
-    <SignWrapper
-      puffer={false}
-      pic="https://images.unsplash.com/photo-1658391157361-43b9984cbddf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-    >
+    <SignWrapper puffer={false} pic={userProfileBig.photoUrl}>
       <div className="flex w-full max-w-[348px] flex-col gap-y-3 overflow-y-scroll px-[2px] py-6">
         <ProfileSubPageHeader title="Reviews" />
         <ReviewSection />

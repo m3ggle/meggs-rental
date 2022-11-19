@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAge } from "../../helpers/getAge";
+import { getAge } from "../../helper/getAge";
 import UserProfile from "../../pages/userProfile/UserProfile";
 
 const UserProfileHeader = ({ userProfileData = {} }) => {

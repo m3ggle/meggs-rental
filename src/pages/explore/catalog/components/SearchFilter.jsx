@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
-import TextInput from "../../../components/input/TextInput";
+import TextInput from "../../../../components/input/TextInput";
 import { useHandlingParams } from "../hooks/useHandlingParams";
 import FilterModal from "./FilterModal";
 

@@ -2,8 +2,8 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import TextInput from "../../../../components/input/TextInput";
-import { cleanUpFilterData } from "../../../catalog/helper/cleanUpFilterData";
-import { useHandlingParams } from "../../../catalog/hooks/useHandlingParams";
+import { cleanUpFilterData } from "../../../explore/catalog/helper/cleanUpFilterData";
+import { useHandlingParams } from "../../../explore/catalog/hooks/useHandlingParams";
 
 const ChatSidebarSearch = () => {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -17,8 +17,8 @@ const ChatSidebarSearch = () => {
   };
 
   const handleSearchDelete = () => {
-    searchParams.delete("search")
-    setSearchParams(searchParams)
+    searchParams.delete("search");
+    setSearchParams(searchParams);
     setValue("search", "");
   };
 

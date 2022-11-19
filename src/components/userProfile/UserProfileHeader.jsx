@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { getAge } from "../../helpers/getAge";
 import UserProfile from "../../pages/userProfile/UserProfile";
-import { getAge } from "../../utilities/getAge";
 
 const UserProfileHeader = ({ firstName, lastName, birthday, email }) => {
   let [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,8 @@ const UserProfileHeader = ({ firstName, lastName, birthday, email }) => {
   return (
     <div
       onClick={openModal}
-      className="flex w-full flex-col items-center gap-y-2 cursor-pointer">
+      className="flex w-full cursor-pointer flex-col items-center gap-y-2"
+    >
       <div
         className="h-[84px] w-[84px] rounded-full bg-cover bg-center shadow"
         style={{

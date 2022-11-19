@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import ProgressBar from "../../components/ProgressBar";
 import SignWrapper from "../../components/SignWrapper";
 import ExampleData from "../../ExampleData";
-import { useMultiStepHelper } from "../../utilities/useMultiStepHelper";
+import { useMultiStepHelper } from "../../hooks/useMultiStepHelper";
 import SignUpBdayGenderCity from "./view/SignUpBdayGenderCity";
 import SignUpConfirmation from "./view/SignUpConfirmation";
 import SignUpEmail from "./view/SignUpEmail";

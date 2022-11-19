@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import ProgressBar from "../../components/ProgressBar";
 import SignWrapper from "../../components/SignWrapper";
 import ExampleData from "../../ExampleData";
-import { useMultiStepHelper } from "../../utilities/useMultiStepHelper";
+import { useMultiStepHelper } from "../../hooks/useMultiStepHelper";
 import ForgotPasswordEmail from "./view/ForgotPasswordEmail";
 import ForgotPasswordPassword from "./view/ForgotPasswordPassword";
 
@@ -58,7 +58,7 @@ const ForgotPassword = () => {
         {/* title part */}
         <div className="flex flex-col items-center justify-center gap-y-1 p-2">
           <span className="text-2xl text-lmGrey800 dark:text-dmGrey25">
-            {forgotPasswordRounds[currentRound -1].title}
+            {forgotPasswordRounds[currentRound - 1].title}
           </span>
           <ProgressBar
             amount={forgotPasswordRounds.length}

@@ -7,11 +7,11 @@ import Chat from "./pages/chat/Chat";
 import ChatMain from "./pages/chat/view/chatMain/ChatMain";
 import ChatSidebar from "./pages/chat/view/chatSidebar/ChatSidebar";
 import Catalog from "./pages/explore/catalog/Catalog";
+import Map from "./pages/explore/map/Map";
 import Favorites from "./pages/favorites/Favorites";
 import ForgotPassword from "./pages/forgetPassword/ForgotPassword";
 import Help from "./pages/help/Help";
 import Homepage from "./pages/homepage/Homepage";
-import Map from "./pages/explore/map/Map";
 import NotFound from "./pages/notFound/NotFound";
 import OfferDetails from "./pages/offerDetails/OfferDetails";
 import PrivacyPolicy from "./pages/privacyPolicy/PrivacyPolicy";
@@ -32,8 +32,8 @@ export default function App() {
   const openModal = () => setIsOpen(true);
 
   return (
-    <div className="flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white bg-cover bg-center dark:bg-dmGrey900">
-      <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white bg-cover bg-center dark:bg-dmGrey900">
+    <div className="flex h-full w-full items-center justify-center bg-white dark:bg-dmGrey900">
+      <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white dark:bg-dmGrey900">
         <Router>
           <div className="hidden" aria-hidden="true">
             <DropdownMode />

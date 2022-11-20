@@ -8,6 +8,7 @@ const Chat = () => {
   const windowSize = useWindowSize();
   const navigate = useNavigate();
 
+  // debounce to prevent from overdoing
   useEffect(() => {
     windowSize.width < 1000 && navigate("/chat/sidebar");
   }, [navigate, windowSize]);

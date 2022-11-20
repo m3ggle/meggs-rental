@@ -5,15 +5,16 @@ import ChatSidebarMain from "./ChatSidebarMain";
 import ChatSidebarSearch from "./ChatSidebarSearch";
 
 const ChatSidebar = () => {
-    const windowSize = useWindowSize();
-    const navigate = useNavigate();
+  const windowSize = useWindowSize();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-      windowSize.width > 1000 && navigate("/chat");
-    }, [navigate, windowSize]);
-  
+  // debounce to prevent from overdoing
+  useEffect(() => {
+    windowSize.width > 1000 && navigate("/chat");
+  }, [navigate, windowSize]);
+
   return (
-    <div className="flex flex-col items-center gap-y-6 px-7 pb-7 pt-9 min-w-[360px] w-[412px]">
+    <div className="flex w-[412px] min-w-[360px] flex-col items-center gap-y-6 px-7 pb-7 pt-9">
       <ChatSidebarSearch />
       <ChatSidebarMain />
     </div>

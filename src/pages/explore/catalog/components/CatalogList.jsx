@@ -1,5 +1,5 @@
 import React from "react";
-import OfferCard from "../../../../components/catalog/OfferCard";
+import OfferCard from "../../../../components/catalog/offerCard/OfferCard";
 
 const CatalogList = ({ offerList }) => {
   return (

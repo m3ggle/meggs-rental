@@ -44,7 +44,7 @@ export default function App() {
             <Route path="/explore/map" element={<Map />} />
             <Route path="/explore/catalog" element={<Catalog />} />
             <Route path="/favorites" element={<Favorites />} />
-            <Route path="/offer-details" element={<OfferDetails />} />
+            <Route path="/offer-details/:offerId" element={<OfferDetails />} />
 
             <Route path="/user-offers" element={<UserOffers />} />
             <Route path="/upload" element={<Upload />} />

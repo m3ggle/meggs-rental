@@ -1,5 +1,6 @@
 import React from 'react'
 import ExampleData from '../ExampleData';
+import Btn from './Btn';
 import LittleOfferCard from './LittleOfferCard';
 
 const LittleOfferCardList = () => {
@@ -8,22 +9,24 @@ const LittleOfferCardList = () => {
 
   
     return (
-    <div className="flex flex-col gap-y-2">
-      {anArray.map((item) => (
-        <LittleOfferCard
-          key={item}
-          name={offerCard.name}
-          location={offerCard.location}
-          price={offerCard.priceMonth}
-          transmission={offerCard.transmission}
-          seats={offerCard.seats}
+      <div className="flex flex-col gap-y-2">
+        {anArray.map((item) => (
+          <LittleOfferCard
+            key={item}
+            name={offerCard.name}
+            location={offerCard.location}
+            price={offerCard.priceMonth}
+            transmission={offerCard.transmission}
+            seats={offerCard.seats}
+          />
+        ))}
+        <Btn
+          type="button"
+          uiType="secondary"
+          title="Load More"
         />
-      ))}
-      <div type='button' className="flex w-full items-center justify-center rounded-lg bg-primary100 px-3 py-2 text-sm font-semibold text-lmPrimary">
-        Load More
       </div>
-    </div>
-  );
+    );
 }
 
 export default LittleOfferCardList

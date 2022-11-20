@@ -1,6 +1,7 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import ExampleData from "../../ExampleData";
+import Btn from "../Btn";
 import Select from "../input/Select";
 import TextInput from "../input/TextInput";
 
@@ -27,7 +28,7 @@ const FilterCatalog = ({ onClose }) => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       // w-80
-      className="relative flex h-[640px] flex-col gap-y-3 rounded-lg min-h-fit"
+      className="relative flex h-[640px] min-h-fit flex-col gap-y-3 rounded-lg"
     >
       <div className="flex flex-col gap-y-3">
         <div className=" flex flex-col gap-y-1">
@@ -230,6 +231,12 @@ const FilterCatalog = ({ onClose }) => {
         </div>
       </div>
 
+      <Btn
+        type="submit"
+        uiType="primary"
+        title="Update Filter"
+        onClick={handleSubmit}
+      />
       <button
         type="submit"
         className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 duration-300 hover:scale-102 active:scale-98 dark:bg-dmPrimary"

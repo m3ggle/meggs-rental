@@ -2,6 +2,7 @@ import { Popover } from "@headlessui/react";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import ExampleData from "../../ExampleData";
+import Btn from "../Btn";
 import Select from "../input/Select";
 import TextInput from "../input/TextInput";
 
@@ -211,12 +212,12 @@ const Filter = ({ onClose }) => {
         </div>
       </div>
 
-      <button
+      <Btn
         type="submit"
-        className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 duration-300 hover:scale-102 active:scale-98 dark:bg-dmPrimary"
-      >
-        Click to Submit
-      </button>
+        uiType="primary"
+        title="Click to submit"
+        onClick={handleSubmit}
+      />
     </form>
   );
 };

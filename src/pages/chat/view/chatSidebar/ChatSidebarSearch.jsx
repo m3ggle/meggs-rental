@@ -1,6 +1,7 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
+import Btn from "../../../../components/Btn";
 import TextInput from "../../../../components/input/TextInput";
 import { cleanUpFilterData } from "../../../explore/catalog/helper/cleanUpFilterData";
 import { useHandlingParams } from "../../../explore/catalog/hooks/useHandlingParams";
@@ -47,10 +48,11 @@ const ChatSidebarSearch = () => {
         )}
       />
 
-      <button
+      <Btn
         type="submit"
+        uiType="primary"
+        icon="fa-solid fa-chevron-right"
         onClick={handleSubmit}
-        className={`fa-solid fa-chevron-right flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
       />
     </form>
   );

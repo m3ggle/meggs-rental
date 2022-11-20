@@ -482,6 +482,7 @@ const Filter = ({
         />
         <Btn
           type="submit"
+          icon="fa solid fa-chevron-right"
           uiType="primary"
           onClick={handleSubmit}
           title="Update Filter"

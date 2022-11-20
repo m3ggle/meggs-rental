@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import Btn from "../../../../components/Btn";
 import ChatInput from "./ChatInput";
 
 const ChatMainInputArea = () => {
   const [currentMsgState, setCurrentMsgState] = useState(false);
   const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => data
+  const onSubmit = (data) => data;
 
   const handleBlur = () => setCurrentMsgState(false);
   const handleFocus = () => setCurrentMsgState(true);
@@ -31,13 +32,14 @@ const ChatMainInputArea = () => {
         )}
       />
       <div className={`flex h-full items-center duration-300`}>
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className={`fa-solid fa-arrow-right flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white duration-300 dark:bg-dmPrimary dark:text-white ${
-            currentMsgState ? "-translate-y-5" : ""
-          }`}
-        />
+        <div className={`${currentMsgState && "-translate-y-5"} h-fit w-fit duration-300`}>
+          <Btn
+            type="submit"
+            uiType="primary"
+            icon="fa-solid fa-chevron-right"
+            onClick={handleSubmit}
+          />
+        </div>
       </div>
     </form>
   );

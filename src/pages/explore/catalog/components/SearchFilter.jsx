@@ -1,22 +1,12 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
+import Btn from "../../../../components/Btn";
 import TextInput from "../../../../components/input/TextInput";
 import { useHandlingParams } from "../hooks/useHandlingParams";
 import FilterModal from "./FilterModal";
 
-const SearchFilter = ({
-  firstIcon,
-  secondIcon,
-  onChange,
-  onBlur,
-  name,
-  placeholder,
-  value,
-  label,
-  error,
-  type,
-}) => {
+const SearchFilter = ({ name, label }) => {
   let [searchParams] = useSearchParams();
   const { control, handleSubmit, setValue } = useForm();
   const { handleUrlUpdate, handleSingleDelete } = useHandlingParams();
@@ -75,18 +65,17 @@ const SearchFilter = ({
               />
             )}
           />
-          <>
-            <button
-              type="button"
-              onClick={openModal}
-              className={`fa-solid fa-filter flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
-            />
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              className={`fa-solid fa-chevron-right flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
-            />
-          </>
+          <button
+            type="button"
+            onClick={openModal}
+            className={`fa-solid fa-filter flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
+          />
+          <Btn
+            type="submit"
+            uiType="primary"
+            icon="fa-solid fa-chevron-right"
+            onClick={handleSubmit}
+          />
         </div>
       </form>
       <FilterModal

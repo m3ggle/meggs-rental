@@ -5,8 +5,8 @@ import Btn from "../../../../components/Btn";
 import Select from "../../../../components/input/Select";
 import TextInput from "../../../../components/input/TextInput";
 import ExampleData from "../../../../ExampleData";
+import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { cleanUpFilterData } from "../helper/cleanUpFilterData";
-import { useHandlingParams } from "../hooks/useHandlingParams";
 
 const { filterSelects } = ExampleData();
 const {
@@ -18,48 +18,28 @@ const {
   smokingSelect,
 } = filterSelects;
 
-const Filter = ({
-  isOpen, //done
-  closeModal, //done
-  setOutsideSearch, //done
-  handleDeleteInput, //done
-  filterModal, //4sure
-}) => {
-  let [searchParams, setSearchParams] = useSearchParams();
+const Filter = ({ isOpen, closeModal, filterModal }) => {
+  let [searchParams] = useSearchParams();
+  const { setArrayOfParams, deleteSingleParam } = useUrlManipulation();
   const { control, handleSubmit, setValue, watch } = useForm();
   const [resetCount, setResetCount] = useState(0);
-  const { handleUrlUpdate } = useHandlingParams();
 
   const onSubmit = (data) => {
-    data.search && filterModal && setOutsideSearch(data.search);
-    handleUrlUpdate(cleanUpFilterData(data), "filter");
+    setArrayOfParams(cleanUpFilterData(data));
     filterModal && closeModal();
   };
 
-  // updating search inside filterModal
-  useEffect(() => {
-    searchParams.get("search") &&
-      setValue("search", searchParams.get("search"));
-  }, [setValue, searchParams]);
-
+  // when params change, set search (to be up to date with the outside (when modal modus is active) search)
+  useEffect(
+    () => setValue("search", searchParams.get("search")),
+    [setValue, searchParams]
+  );
   // when modal closes it is not unmounted, it is still mounted so the resetCount does not get reset, this will solve it
-  useEffect(() => {
-    setResetCount(0);
-  }, [isOpen]);
-
-  const handleSearchDelete = () => {
-    if (filterModal) {
-      handleDeleteInput("search", "");
-      setValue("search", "");
-    } else {
-      handleDelete("search", "");
-    }
-  };
+  useEffect(() => setResetCount(0), [isOpen]);
 
   const handleDelete = (inputName, inputValue) => {
     setValue(inputName, inputValue);
-    searchParams.delete(inputName);
-    setSearchParams(searchParams);
+    deleteSingleParam(inputName);
   };
 
   const handleClearAll = () => {
@@ -68,15 +48,8 @@ const Filter = ({
       handleDelete(item, "");
     });
 
-    // delete search
-    handleSearchDelete();
-
     // delete selects
     setResetCount((prevState) => prevState + 1);
-
-    // delete all params from url
-    // searchParams.forEach((val, key) => searchParams.delete(key))
-    // setSearchParams(searchParams)
   };
 
   // todo: set default values depending on url
@@ -107,7 +80,7 @@ const Filter = ({
               placeholder="Audi A8"
               value={field.value}
               onBlur={field.onBlur}
-              onDelete={handleSearchDelete}
+              onDelete={() => handleDelete("search", "")}
               error={fieldState.error}
             />
           )}

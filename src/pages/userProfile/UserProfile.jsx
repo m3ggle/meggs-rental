@@ -1,5 +1,5 @@
-import { Dialog, Transition } from "@headlessui/react";
-import React, { Fragment } from "react";
+import { Dialog } from "@headlessui/react";
+import React from "react";
 import LittleOfferCardList from "../../components/LittleOfferCardList";
 import ReviewSection from "../../components/ratings/ReviewSection";
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";

@@ -4,27 +4,46 @@ export const useUrlManipulation = () => {
   let [searchParams, setSearchParams] = useSearchParams();
 
   // setting
-  const setIndividualParam = (desiredParam, desiredValue) => {
+  const setSingleParam = (desiredParam = "", desiredValue) => {
     searchParams.set(desiredParam, desiredValue);
     setSearchParams(searchParams);
   };
-  const setArrayOfParams = () => {};
+  const setArrayOfParams = (desiredParams = {}) => {
+    const newParams = new URLSearchParams(desiredParams);
+    setSearchParams(newParams);
+  };
 
   // getting
-  const getIndividualParam = (desiredParam) => {
+  const getSingleParam = (desiredParam = "") => {
     return searchParams.get(desiredParam);
   };
-  const getArrayOfParams = () => {};
+  const getArrayOfParams = (desiredAParams = []) => {
+    let paramsAsObject = {};
+    desiredAParams.map((param) => {
+      paramsAsObject[param] = searchParams.get(param);
+    });
+    return paramsAsObject;
+  };
 
   // delete
-  const deleteIndividualParam = (desiredParam) => {
+  const deleteSingleParam = (desiredParam) => {
     searchParams.delete(desiredParam);
     setSearchParams(searchParams);
   };
-  const deleteAllParams = () => {};
   const deleteArrayOfParams = () => {};
+    const deleteAllParams = () => {
+      searchParams.forEach((val, key) => searchParams.delete(key))
+      setSearchParams(searchParams)
+    };
 
   // handle (more compplex)
 
-  return { setIndividualParam };
+  return {
+    setSingleParam,
+    setArrayOfParams,
+    getSingleParam,
+    getArrayOfParams,
+    deleteSingleParam,
+    deleteAllParams,
+  };
 };

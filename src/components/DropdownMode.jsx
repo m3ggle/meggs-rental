@@ -3,21 +3,10 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect } from "react";
 
 const DropdownMode = () => {
-  useEffect(() => {
-    setPreference();
-  }, []);
+  useEffect(() => setPreference(), []);
 
   // on change
   const setPreference = () => {
-    // if (
-    //   localStorage.theme === "dark" ||
-    //   (!("theme" in localStorage) &&
-    //     window.matchMedia("(prefers-color-scheme: dark)").matches)
-    // ) {
-    //   document.documentElement.classList.add("dark");
-    // } else {
-    //   document.documentElement.classList.remove("dark");
-    // }
     if (
       localStorage.theme === "dark" ||
       window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -38,11 +27,6 @@ const DropdownMode = () => {
     }
     setPreference();
   };
-
-  // when closing window, clear localStorage
-  // window.onbeforeunload = function () {
-  //   localStorage.clear();
-  // };
 
   return (
     <Menu as="div" className=" relative flex h-fit w-full flex-col">

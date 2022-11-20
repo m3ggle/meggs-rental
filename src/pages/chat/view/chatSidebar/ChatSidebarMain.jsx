@@ -6,7 +6,7 @@ import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlMani
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 
 const ChatSidebarMain = () => {
-  const { setIndividualParam } = useUrlManipulation();
+  const { setSingleParam } = useUrlManipulation();
   const { chatPreviews } = ExampleData();
 
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const ChatSidebarMain = () => {
 
   const handleClick = (chatId) => {
     if (windowSize.width > 1000) {
-      setIndividualParam("chatId", chatId);
+      setSingleParam("chatId", chatId);
     } else {
       navigate(`/chat/chat-main/${chatId}`);
     }

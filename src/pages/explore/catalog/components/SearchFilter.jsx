@@ -1,33 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import Btn from "../../../../components/Btn";
 import TextInput from "../../../../components/input/TextInput";
-import { useHandlingParams } from "../hooks/useHandlingParams";
+import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import FilterModal from "./FilterModal";
 
 const SearchFilter = ({ name, label }) => {
-  let [searchParams] = useSearchParams();
   const { control, handleSubmit, setValue } = useForm();
-  const { handleUrlUpdate, handleSingleDelete } = useHandlingParams();
+  let [searchParams] = useSearchParams();
+  const { setSingleParam, deleteSingleParam, getSingleParam } =
+    useUrlManipulation();
 
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
   const onSubmit = (data) => {
-    console.log("submitting");
-    handleUrlUpdate(data, "search");
+    if (data.search && data.search !== "") {
+      setSingleParam("search", data.search);
+    }
   };
+
+  useEffect(() => {
+    setValue("search", searchParams.get("search"));
+  }, [setValue, searchParams]);
 
   const handleDelete = (inputName, inputValue) => {
     setValue(inputName, inputValue);
-    handleSingleDelete(inputName);
-  };
-
-  // when changing the search inside filterModal, the search outside filterModal has to be updated too
-  const settingSearch = (value) => {
-    setValue("search", value);
+    deleteSingleParam(inputName);
   };
 
   return (
@@ -48,9 +49,7 @@ const SearchFilter = ({ name, label }) => {
             name="search"
             control={control}
             defaultValue={
-              searchParams.get("search")
-                ? searchParams.get("search")
-                : undefined
+              getSingleParam("search") ? getSingleParam("search") : undefined
             }
             render={({ field, fieldState }) => (
               <TextInput
@@ -78,12 +77,7 @@ const SearchFilter = ({ name, label }) => {
           />
         </div>
       </form>
-      <FilterModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        setOutsideSearch={settingSearch}
-        handleDeleteInput={handleDelete}
-      />
+      <FilterModal isOpen={isOpen} closeModal={closeModal} />
     </div>
   );
 };

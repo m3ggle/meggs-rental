@@ -13,6 +13,7 @@ import {
   startOfWeek,
 } from "date-fns";
 import { useState } from "react";
+import styles from "../../style";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -46,7 +47,7 @@ const Calendar = ({shadowUI, header}) => {
   }
 
   return (
-    <div className={`h-fit w-full overflow-hidden rounded-2xl bg-white p-6 ${shadowUI && "shadow"} dark:border dark:border-solid dark:border-dmGrey800 dark:bg-dmGrey900`}>
+    <div className={`h-fit w-full overflow-hidden rounded-2xl bg-white p-6 ${shadowUI && "shadow"} ${styles.darkModeBorder} bg-dmGrey900 `}>
       <div className="flex flex-col gap-y-4">
         {/* calendar header */}
         {header && <div className="flex items-center">

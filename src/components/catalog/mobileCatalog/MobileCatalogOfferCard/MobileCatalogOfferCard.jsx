@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useHandleLocationNavigation } from "../../../../pages/explore/catalog/hooks/useHandleLocationNavigation";
+import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
 import styles from "../../../../style";
 import MobileCatalogOfferCardIcons from "./MobileCatalogOfferCardIcons";
 import MobileCatalogOfferCardImgPart from "./MobileCatalogOfferCardImgPart";
@@ -14,9 +14,9 @@ const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
 
   const navigate = useNavigate();
   const handleNavigation = () => {
-    closeModal && closeModal()
+    closeModal && closeModal();
     navigate(`/offer-details/${offerId}`);
-  }
+  };
 
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () => {

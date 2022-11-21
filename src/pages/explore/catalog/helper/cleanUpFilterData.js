@@ -3,9 +3,10 @@ export const cleanUpFilterData = (data) => {
 
   for (const [key, value] of Object.entries(data)) {
     if (activeCondition(value)) {
-      allActives[key] = value;
+      allActives[key] = value.replace(/\s+/g, " ").trim();
     }
   }
+  console.log(allActives)
   return allActives;
 };
 

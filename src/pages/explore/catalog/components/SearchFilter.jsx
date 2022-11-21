@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import Btn from "../../../../components/Btn";
 import TextInput from "../../../../components/input/TextInput";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
+import { cleanUpFilterData } from "../helper/cleanUpFilterData";
 import FilterModal from "./FilterModal";
 
 const SearchFilter = ({ name, label }) => {
@@ -17,9 +18,8 @@ const SearchFilter = ({ name, label }) => {
   const openModal = () => setIsOpen(true);
 
   const onSubmit = (data) => {
-    if (data.search && data.search !== "") {
-      setSingleParam("search", data.search);
-    }
+    const cleanedUpSearch = cleanUpFilterData(data).search;
+    cleanedUpSearch && setSingleParam("search", cleanedUpSearch);
   };
 
   useEffect(() => {

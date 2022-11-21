@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import ProgressBar from "../../components/ProgressBar";
-import SignWrapper from "../../components/SignWrapper";
+import SignWrapper from "../../components/wrapper/SignWrapper";
 import ExampleData from "../../ExampleData";
 import { useMultiStepHelper } from "../../hooks/useMultiStepHelper";
 import SignUpBdayGenderCity from "./view/SignUpBdayGenderCity";

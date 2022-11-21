@@ -3,7 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import Select from "../../../components/input/Select";
 import TextArea from "../../../components/input/TextArea";
 import TextInput from "../../../components/input/TextInput";
-import SignWrapper from "../../../components/SignWrapper";
+import SignWrapper from "../../../components/wrapper/SignWrapper";
 import ExampleData from "../../../ExampleData";
 import ProfileSubPageHeader from "../components/ProfileSubPageHeader";
 

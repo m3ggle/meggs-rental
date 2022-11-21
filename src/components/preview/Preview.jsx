@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Bmw1 from "../assets/img/bmw1.jpg";
-import Bmw2 from "../assets/img/bmw2.jpg";
-import Bmw3 from "../assets/img/bmw3.jpg";
-import Bmw4 from "../assets/img/bmw4.jpg";
-import Bmw5 from "../assets/img/bmw5.jpg";
-import ExampleData from "../ExampleData";
-import Btn from "./common/Btn";
-import Calendar from "./offerDetails/Calendar";
-import CarSpecWrapper from "./offerDetails/CarSpecWrapper";
-import UserProfileSmall from "./userProfile/UserProfileSmall";
+import Bmw1 from "../../assets/img/bmw1.jpg";
+import Bmw2 from "../../assets/img/bmw2.jpg";
+import Bmw3 from "../../assets/img/bmw3.jpg";
+import Bmw4 from "../../assets/img/bmw4.jpg";
+import Bmw5 from "../../assets/img/bmw5.jpg";
+import ExampleData from "../../ExampleData";
+import Btn from "../common/Btn";
+import Calendar from "../offerDetails/Calendar";
+import CarSpecWrapper from "../offerDetails/CarSpecWrapper";
+import UserProfileSmall from "../userProfile/UserProfileSmall";
 
 const picArray = [Bmw1, Bmw2, Bmw3, Bmw4, Bmw5];
 const { carSpecData } = ExampleData();

@@ -1,5 +1,5 @@
 import React from "react";
-import SignWrapper from "../../../components/SignWrapper";
+import SignWrapper from "../../../components/wrapper/SignWrapper";
 import ExampleData from "../../../ExampleData";
 import ProfileSubPageHeader from "../components/ProfileSubPageHeader";
 

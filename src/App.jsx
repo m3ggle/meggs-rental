@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import DropdownMode from "./components/DropdownMode";
 import Logo from "./components/Logo";
-import Navbar from "./components/Navbar";
+import DropdownMode from "./components/navbar/DropdownMode";
+import Navbar from "./components/navbar/Navbar";
 import Chat from "./pages/chat/Chat";
 import ChatMain from "./pages/chat/view/chatMain/ChatMain";
 import ChatSidebar from "./pages/chat/view/chatSidebar/ChatSidebar";

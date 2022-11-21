@@ -1,12 +1,11 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import TextInput from "../../../components/input/TextInput";
-import BottomPart from "./BottomPart";
+import TextInput from "../../../../components/input/TextInput";
+import BottomPart from "../../../../components/authentication/BottomPart";
 
 const SignUpPassword = ({ handleCallback }) => {
-  const { password } =
-    JSON.parse(localStorage.getItem("signUpData")) ?? false;
-  
+  const { password } = JSON.parse(localStorage.getItem("signUpData")) ?? false;
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("setting password");

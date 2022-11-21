@@ -1,9 +1,9 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import BottomPart from "../../../components/authentication/BottomPart";
 import Autocomplete from "../../../components/input/Autocomplete";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
-import BottomPart from "../../signUp/view/BottomPart";
 
 const { citiesAutocomplete } = ExampleData();
 

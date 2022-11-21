@@ -1,26 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import SignWrapper from "../../components/wrapper/SignWrapper";
-import { useSignStateData } from "../../hooks/useSignStateData";
+import SignWrapper from "../../../components/wrapper/SignWrapper";
+import { useSignUpCallback } from "../signUp/hooks/useSignUpCallback";
 import SignInEmailPassword from "./view/SignInEmailPassword";
 
 const SignIn = () => {
-  const { storeDataInState } = useSignStateData();
-  const navigate = useNavigate();
-
-  const handleCallback = ({ data, nextStep }) => {
-    switch (nextStep) {
-      case "google":
-        console.log("signing in");
-        break;
-      case "finished":
-        storeDataInState(data);
-        navigate("/homepage");
-        break;
-      default:
-        break;
-    }
-  };
+  const { handleCallback } = useSignUpCallback();
 
   return (
     <SignWrapper pic="https://images.unsplash.com/photo-1566896212627-e4f210557f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80">

@@ -1,7 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import React from "react";
-import LittleOfferCardList from "../../components/LittleOfferCardList";
 import ReviewSection from "../../components/ratings/ReviewSection";
+import LittleOfferCardList from "../../components/userProfile/LittleOfferCardList";
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
 import ExampleData from "../../ExampleData";
 import ModalWrapper from "../../layouts/ModalWrapper";

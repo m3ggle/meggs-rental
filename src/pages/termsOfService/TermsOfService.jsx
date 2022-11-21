@@ -1,5 +1,5 @@
 import React from 'react'
-import MobileCatalog from '../../components/catalog/MobileCatalog'
+import MobileCatalog from '../../components/catalog/mobileCatalog/MobileCatalog'
 
 const TermsOfService = () => {
   return (

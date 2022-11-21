@@ -3,8 +3,8 @@ import React from "react";
 import ReviewSection from "../../components/ratings/ReviewSection";
 import LittleOfferCardList from "../../components/userProfile/LittleOfferCardList";
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
+import ModalWrapper from "../../components/wrapper/ModalWrapper";
 import ExampleData from "../../ExampleData";
-import ModalWrapper from "../../layouts/ModalWrapper";
 
 const UserProfile = ({ isOpen, closeModal }) => {
   const { userProfileBig } = ExampleData();

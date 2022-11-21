@@ -1,7 +1,7 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import TextInput from "../../../components/input/TextInput";
-import BottomPart from "../../signUp/view/BottomPart";
+import TextInput from "../../../../components/input/TextInput";
+import BottomPart from "../../../../components/authentication/BottomPart";
 
 const ForgotPasswordPassword = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();

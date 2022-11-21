@@ -1,9 +1,9 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import TextArea from "../../../components/input/TextArea";
 import ExampleData from "../../../ExampleData";
-import BottomPart from "../../signUp/view/BottomPart";
 
 const { smokingSelect, eatingSelect } = ExampleData();
 

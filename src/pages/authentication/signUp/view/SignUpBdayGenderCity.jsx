@@ -1,10 +1,10 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import Autocomplete from "../../../components/input/Autocomplete";
-import Select from "../../../components/input/Select";
-import TextInput from "../../../components/input/TextInput";
-import ExampleData from "../../../ExampleData";
-import BottomPart from "./BottomPart";
+import Autocomplete from "../../../../components/input/Autocomplete";
+import Select from "../../../../components/input/Select";
+import TextInput from "../../../../components/input/TextInput";
+import ExampleData from "../../../../ExampleData";
+import BottomPart from "../../../../components/authentication/BottomPart";
 
 const { genderSelect, citiesAutocomplete } = ExampleData();
 

@@ -1,48 +1,43 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import TextInput from "../../../components/input/TextInput";
-import BottomPart from "./BottomPart";
+import BottomPart from "../../../../components/authentication/BottomPart";
 
-const SignUpConfirmation = ({ handleCallback }) => {
-  const { confirmation } = JSON.parse(localStorage.getItem("signUpData")) ?? false;
-
+const SignUpTele = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log("code confirmed");
-    const nextStep = "confirmation";
+    console.log("birthday, gender and city");
+    const nextStep = true;
     handleCallback({ data, nextStep });
   };
 
   const handleGoBack = () => {
+    console.log("going back");
     const nextStep = false;
     handleCallback({ nextStep });
   };
 
-  // Todo: in pattern, compare input value with code
-  // Todo: delete user/emails from firebase which are out of the time interval of 7 days
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="flex w-full max-w-[340px] flex-col gap-y-8"
     >
       <Controller
-        name="confirmation"
+        name="telephoneNumber"
         control={control}
         rules={{
-          required: "Code is required",
           pattern: {
             value: /^\d+$/,
-            message: "Invalid code",
+            message: "Only numbers are allowed",
           },
         }}
-        defaultValue={confirmation ? confirmation : undefined}
         render={({ field, fieldState }) => (
           <TextInput
-            type="number"
-            firstIcon="fa-solid fa-barcode"
+            firstIcon="fa-solid fa-phone"
             onChange={field.onChange}
-            label="Enter the code which we send you to your email"
-            placeholder="123456"
+            label="Telephone number (optional)"
+            placeholder="03 251 2342783"
+            type="number"
             value={field.value}
             onBlur={field.onBlur}
             error={fieldState.error}
@@ -51,7 +46,7 @@ const SignUpConfirmation = ({ handleCallback }) => {
       />
       <BottomPart
         firstBtn="primary"
-        firstBtnTitle="Confirm Code"
+        firstBtnTitle="Continue"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
         secondBtn="secondary"
@@ -63,4 +58,4 @@ const SignUpConfirmation = ({ handleCallback }) => {
   );
 };
 
-export default SignUpConfirmation;
+export default SignUpTele;

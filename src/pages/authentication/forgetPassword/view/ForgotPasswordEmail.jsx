@@ -1,13 +1,10 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import TextInput from "../../../components/input/TextInput";
-import BottomPart from "./BottomPart";
+import BottomPart from "../../../../components/authentication/BottomPart";
+import TextInput from "../../../../components/input/TextInput";
 
-const SignUpEmail = ({ handleCallback }) => {
-  const { email } =
-    JSON.parse(localStorage.getItem("signUpData")) ?? false;
-
+const ForgotPasswordEmail = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("sending email");
@@ -40,7 +37,6 @@ const SignUpEmail = ({ handleCallback }) => {
             message: "Invalid email address",
           },
         }}
-        defaultValue={email ? email : undefined}
         render={({ field, fieldState }) => (
           <TextInput
             firstIcon="fa-solid fa-at"
@@ -55,7 +51,7 @@ const SignUpEmail = ({ handleCallback }) => {
       />
       <BottomPart
         firstBtn="primary"
-        firstBtnTitle="Send Email For Confirmation"
+        firstBtnTitle="Send Email"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
         secondBtn="secondary"
@@ -70,4 +66,4 @@ const SignUpEmail = ({ handleCallback }) => {
   );
 };
 
-export default SignUpEmail;
+export default ForgotPasswordEmail;

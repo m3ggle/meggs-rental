@@ -1,8 +1,8 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import TextInput from "../../../components/input/TextInput";
-import BottomPart from "../../signUp/view/BottomPart";
+import TextInput from "../../../../components/input/TextInput";
+import BottomPart from "../../../../components/authentication/BottomPart";
 
 const SignInEmailPassword = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();

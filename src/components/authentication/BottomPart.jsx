@@ -1,5 +1,5 @@
 import React from "react";
-import Btn from "../../../components/common/Btn";
+import Btn from "../common/Btn";
 
 const BottomPart = ({
   firstBtn,

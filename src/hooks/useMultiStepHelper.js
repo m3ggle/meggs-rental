@@ -1,15 +1,21 @@
-import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useUrlManipulation } from "./urlManipulation/useUrlManipulation";
 
 export const useMultiStepHelper = () => {
-  let [searchParams, setSearchParams] = useSearchParams();
-  const currentRound = +searchParams.get("round");
+  // mandatory
+  const { searchParams, setSingleParam, setArrayOfParams, getSingleParam } =
+    useUrlManipulation();
+  const currentRound = getSingleParam("round") ? +getSingleParam("round") : 1;
 
+  useEffect(() => {
+    !getSingleParam("round") && setSingleParam("round", 1);
+  }, [searchParams]);
+
+  // all functions
   const handleGoogle = () => {
-    // Todo: localStorage
-    searchParams.set("round", currentRound + 2);
-    setSearchParams(searchParams.toString());
+    setSingleParam("round", currentRound + 2);
   };
-  
+
   const handleStorage = (data, localStorageName) => {
     const localStorageData = JSON.parse(localStorage.getItem(localStorageName));
     let newLocalStorage = localStorageData ?? {};
@@ -19,34 +25,25 @@ export const useMultiStepHelper = () => {
     localStorage.setItem(localStorageName, JSON.stringify(newLocalStorage));
   };
 
-  const handleContinue = () => {
-    searchParams.set("round", currentRound + 1);
-    setSearchParams(searchParams.toString());
-  };
-  
-  const handleGoBack = () => {
-    if (currentRound !== 1) {
-      searchParams.set("round", currentRound - 1);
-      setSearchParams(searchParams);
-    }
-  };
+  const handleContinue = () => setSingleParam("round", currentRound + 1);
+
+  const handleGoBack = () =>
+    currentRound !== 1 && setSingleParam("round", currentRound - 1);
 
   // special kinds
   // sign up
   const handleEmailContinue = (data) => {
     handleStorage(data, "signUpData");
-    searchParams.set("email", data.email);
-    searchParams.set("round", currentRound + 1);
-    setSearchParams(searchParams.toString());
+    setArrayOfParams({ email: data.email, round: currentRound + 1 });
   };
   const handleConfirmationContinue = (data) => {
-    data.email = searchParams.get("email");
-    console.log(data);
+    data.email = getSingleParam("email");
     handleStorage(data, "signUpData");
     handleContinue();
   };
 
   return {
+    currentRound,
     handleStorage,
     handleContinue,
     handleGoBack,

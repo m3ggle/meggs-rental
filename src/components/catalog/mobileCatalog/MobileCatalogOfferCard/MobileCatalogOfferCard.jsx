@@ -4,18 +4,25 @@ import { motion } from "framer-motion";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useHandleLocationNavigation } from "../../../../pages/explore/catalog/hooks/useHandleLocationNavigation";
+import styles from "../../../../style";
+import MobileCatalogOfferCardIcons from "./MobileCatalogOfferCardIcons";
 import MobileCatalogOfferCardImgPart from "./MobileCatalogOfferCardImgPart";
 import MobileCatalogOfferCardInfoPart from "./MobileCatalogOfferCardInfoPart";
 
-const MobileCatalogOfferCard = ({ offerInformation, index }) => {
-  const { offerId, location, photoUrl } = offerInformation;
+const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
+  const { offerId, photoUrl, liked, location } = offerInformation;
 
   const navigate = useNavigate();
-  const handleNavigation = () => navigate(`/offer-details/${offerId}`);
+  const handleNavigation = () => {
+    closeModal && closeModal()
+    navigate(`/offer-details/${offerId}`);
+  }
 
   const { handleLocationNavigation } = useHandleLocationNavigation();
-  const handleLocation = () => handleLocationNavigation(offerId, location);
-
+  const handleLocation = () => {
+    closeModal && closeModal();
+    handleLocationNavigation(offerId, location);
+  };
   const handleLike = () => {};
 
   return (
@@ -30,11 +37,21 @@ const MobileCatalogOfferCard = ({ offerInformation, index }) => {
       }}
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
-      className="relative flex min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900"
+      className={`${styles.darkModeBorder} relative flex min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900`}
     >
-      <MobileCatalogOfferCardImgPart photoUrl={photoUrl} />
-
-      <MobileCatalogOfferCardInfoPart offerInformation={offerInformation} />
+      <MobileCatalogOfferCardImgPart
+        onNavigationCallback={handleNavigation}
+        photoUrl={photoUrl}
+      />
+      <MobileCatalogOfferCardIcons
+        liked={liked}
+        onLikeCallback={handleLike}
+        onLocationCallback={handleLocation}
+      />
+      <MobileCatalogOfferCardInfoPart
+        onNavigationCallback={handleNavigation}
+        offerInformation={offerInformation}
+      />
     </motion.div>
   );
 };

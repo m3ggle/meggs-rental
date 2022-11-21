@@ -3,7 +3,7 @@ const styles = {
 
   lightModeBorder: "border border-solid border-lmGrey100",
   darkModeBorder:
-    "dark:border dark:border-solid dark:border-dmGrey800/50 dark:shadow-sm",
+    "dark:border dark:border-solid dark:border-dmGrey800/50 dark:shadow-md",
   LmDmHoverBorder:
     "border border-solid border-lmGrey100 dark:border dark:border-solid dark:border-dmGrey900 hover:border-lmGrey300 dark:hover:border-dmGrey700",
 };

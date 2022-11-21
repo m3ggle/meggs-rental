@@ -25,7 +25,7 @@ const OfferDetails = () => {
           {picArray.map((pic, index) => (
             <div
               key={index}
-              className="h-[348px] w-60 min-w-[240px] rounded-lg bg-slate-100 bg-cover bg-center shadow"
+              className="h-[348px] w-60 min-w-[240px] rounded-lg bg-slate-100 bg-cover bg-center shadow dark:dark:bg-dmGrey800"
               style={{ backgroundImage: `url(${pic})` }}
             ></div>
           ))}

@@ -1,10 +1,10 @@
 import React from "react";
+import CatalogWrapper from "../../../components/wrapper/CatalogWrapper";
 import ExampleData from "../../../ExampleData";
-import CatalogLikeView from "./components/CatalogLikeView";
 
 const Catalog = () => {
   const { exampleOffers } = ExampleData();
-  return <CatalogLikeView offerList={exampleOffers} />;
+  return <CatalogWrapper offerList={exampleOffers} />;
 };
 
 export default Catalog;

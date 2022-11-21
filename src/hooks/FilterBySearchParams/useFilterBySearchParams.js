@@ -1,4 +1,4 @@
-import { useGetAllParams } from "../useGetAllParams";
+import { useUrlManipulation } from "../urlManipulation/useUrlManipulation";
 import { filterByCarSpec } from "./helper/filterByCarSpec";
 import { filterByDate } from "./helper/filterByDate";
 import { filterByEndPrice } from "./helper/filterByEndPrice";
@@ -6,7 +6,7 @@ import { filterBySearch } from "./helper/filterBySearch";
 import { filterByStartPrice } from "./helper/filterByStartPrice";
 
 export const useFilterBySearchParams = () => {
-  const { getAllParams } = useGetAllParams();
+  const { getAllParams } = useUrlManipulation();
 
   const filterBySearchParams = (offerList) => {
     let tempFiltered = offerList;

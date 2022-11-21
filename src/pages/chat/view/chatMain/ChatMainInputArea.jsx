@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import Btn from "../../../../components/Btn";
+import Btn from "../../../../components/common/Btn";
 import ChatInput from "./ChatInput";
 
 const ChatMainInputArea = () => {

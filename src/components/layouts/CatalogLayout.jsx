@@ -1,7 +1,7 @@
 import React from "react";
-import { useRenderFilter } from "../hooks/useRenderFilter";
+import { useRenderFilter } from "../../hooks/useRenderFilter";
 
-const LayoutCatalog = ({ children }) => {
+const CatalogLayout = ({ children }) => {
   const { renderFilter } = useRenderFilter();
 
   return (
@@ -18,4 +18,4 @@ const LayoutCatalog = ({ children }) => {
   );
 };
 
-export default LayoutCatalog;
+export default CatalogLayout;

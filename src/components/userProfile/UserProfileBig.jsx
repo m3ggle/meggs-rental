@@ -1,7 +1,7 @@
 // <UserProfileBig userProfileData={userProfileBig} />
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Btn from "../Btn";
+import Btn from "../common/Btn";
 import UserProfileHeader from "./UserProfileHeader";
 
 const UserProfileBig = ({ userProfileData = {} }) => {

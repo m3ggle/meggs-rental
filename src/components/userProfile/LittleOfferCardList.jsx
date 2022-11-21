@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ExampleData from "../../ExampleData";
-import Btn from "../Btn";
 import MobileCatalogOfferCard from "../catalog/mobileCatalog/MobileCatalogOfferCard/MobileCatalogOfferCard";
+import Btn from "../common/Btn";
 
 const LittleOfferCardList = ({ closeModal }) => {
   const [amountOfOfferCards, setAmountOfOfferCards] = useState([1,2,3])

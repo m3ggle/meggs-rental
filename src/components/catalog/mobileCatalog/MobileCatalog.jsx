@@ -1,6 +1,5 @@
 import ExampleData from "../../../ExampleData";
-import CatalogList from "../../../pages/explore/catalog/components/CatalogList";
-import SearchFilter from "../../../pages/explore/catalog/components/SearchFilter";
+import SearchFilter from "../../filter/SearchFilter";
 import MobileCatalogList from "./MobileCatalogList";
 
 const { exampleOffers } = ExampleData();

@@ -31,7 +31,7 @@ const UserProfile = ({ isOpen, closeModal }) => {
           <span className="text-base font-semibold text-lmGrey700 dark:text-dmGrey25">
             Offers
           </span>
-          <LittleOfferCardList />
+          <LittleOfferCardList closeModal={closeModal} />
         </div>
         <div className="flex w-full flex-col gap-2">
           <span className="text-base font-semibold text-lmGrey700 dark:text-dmGrey25">

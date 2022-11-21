@@ -5,7 +5,7 @@ const MobileCatalogOfferCardInfoPart = ({onNavigationCallback, offerInformation 
   
   return (
     <div
-      // onClick={onNavigationCallback}
+      onClick={onNavigationCallback}
       className="flex w-full flex-col gap-y-1 overflow-hidden rounded-xl py-3 dark:bg-dmGrey900"
     >
       {/* name and location */}

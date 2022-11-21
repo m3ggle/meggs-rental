@@ -3,23 +3,21 @@ import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import Btn from "../../../../components/Btn";
 import TextInput from "../../../../components/input/TextInput";
+import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { cleanUpFilterData } from "../../../explore/catalog/helper/cleanUpFilterData";
-import { useHandlingParams } from "../../../explore/catalog/hooks/useHandlingParams";
 
 const ChatSidebarSearch = () => {
-  let [searchParams, setSearchParams] = useSearchParams();
-  const { handleUrlUpdate } = useHandlingParams();
+  let [searchParams] = useSearchParams();
+  const { setSingleParam, deleteSingleParam } = useUrlManipulation();
   const { control, handleSubmit, setValue } = useForm();
 
   const onSubmit = (data) => {
-    data.search !== "" && data.search !== undefined
-      ? handleUrlUpdate(cleanUpFilterData(data), "search")
-      : handleSearchDelete();
+    const cleanedUpSearch = cleanUpFilterData(data).search;
+    cleanedUpSearch && setSingleParam("search", cleanedUpSearch);
   };
 
   const handleSearchDelete = () => {
-    searchParams.delete("search");
-    setSearchParams(searchParams);
+    deleteSingleParam("search");
     setValue("search", "");
   };
 

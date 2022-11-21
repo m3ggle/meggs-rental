@@ -1,6 +1,6 @@
 import React from "react";
 import ReviewSection from "../../../components/ratings/ReviewSection";
-import SignWrapper from "../../../components/SignWrapper";
+import SignWrapper from "../../../components/wrapper/SignWrapper";
 import ExampleData from "../../../ExampleData";
 import ProfileSubPageHeader from "../components/ProfileSubPageHeader";
 

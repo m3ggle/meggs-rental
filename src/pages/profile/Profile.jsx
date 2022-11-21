@@ -1,6 +1,6 @@
 import React from "react";
-import SignWrapper from "../../components/SignWrapper";
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
+import SignWrapper from "../../components/wrapper/SignWrapper";
 import ExampleData from "../../ExampleData";
 import ProfileButtonList from "./components/ProfileButtonList";
 import { profileButtonListData } from "./data/profileButtonListData";

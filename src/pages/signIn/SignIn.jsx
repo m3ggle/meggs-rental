@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import SignWrapper from "../../components/SignWrapper";
+import SignWrapper from "../../components/wrapper/SignWrapper";
 import { useSignStateData } from "../../hooks/useSignStateData";
 import SignInEmailPassword from "./view/SignInEmailPassword";
 

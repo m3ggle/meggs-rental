@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import SignWrapper from "../../components/SignWrapper";
+import SignWrapper from "../../components/wrapper/SignWrapper";
 import { useMultiStepHelper } from "../../hooks/useMultiStepHelper";
 import UploadBasicInfo from "./view/UploadBasicInfo";
 import UploadCarSpec1 from "./view/UploadCarSpec1";

@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import DropdownMode from "./DropdownMode";
-import UserProfileSmall from "./userProfile/UserProfileSmall";
+import UserProfileSmall from "../userProfile/UserProfileSmall";
 
 const Navbar = ({ isOpen, closeModal }) => {
   const [signedIn] = useState(true);

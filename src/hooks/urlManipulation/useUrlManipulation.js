@@ -24,6 +24,13 @@ export const useUrlManipulation = () => {
     });
     return paramsAsObject;
   };
+  const getAllParams = () => {
+    let tempHolder = {};
+    for (const [key, value] of searchParams.entries()) {
+      tempHolder[key] = value;
+    }
+    return tempHolder;
+  };
 
   // delete
   const deleteSingleParam = (desiredParam) => {
@@ -31,10 +38,10 @@ export const useUrlManipulation = () => {
     setSearchParams(searchParams);
   };
   const deleteArrayOfParams = () => {};
-    const deleteAllParams = () => {
-      searchParams.forEach((val, key) => searchParams.delete(key))
-      setSearchParams(searchParams)
-    };
+  const deleteAllParams = () => {
+    searchParams.forEach((val, key) => searchParams.delete(key));
+    setSearchParams(searchParams);
+  };
 
   // handle (more compplex)
 
@@ -43,6 +50,7 @@ export const useUrlManipulation = () => {
     setArrayOfParams,
     getSingleParam,
     getArrayOfParams,
+    getAllParams,
     deleteSingleParam,
     deleteAllParams,
   };

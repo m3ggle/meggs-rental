@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../style";
+import styles from "../../style";
 
 const Btn = ({ type, title, icon, onClick, onSubmit, uiType }) => {
   const handleClick = () => onClick !== undefined && onClick();

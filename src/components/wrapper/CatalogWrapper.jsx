@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useFilterBySearchParams } from "../hooks/FilterBySearchParams/useFilterBySearchParams";
-import CatalogList from "./CatalogList";
-import LayoutCatalog from "./LayoutCatalog";
+import { useFilterBySearchParams } from "../../hooks/FilterBySearchParams/useFilterBySearchParams";
+import CatalogList from "../catalog/CatalogList";
+import CatalogLayout from "../layouts/CatalogLayout";
 
-const CatalogLikeView = ({ offerList }) => {
+const CatalogWrapper = ({ offerList }) => {
   const [filteredOffers, setFilteredOffers] = useState(offerList);
   let [searchParams] = useSearchParams();
   const { filterBySearchParams } = useFilterBySearchParams();
@@ -15,10 +15,10 @@ const CatalogLikeView = ({ offerList }) => {
   }, [searchParams, offerList, setFilteredOffers]);
 
   return (
-    <LayoutCatalog>
+    <CatalogLayout>
       <CatalogList offerList={filteredOffers} />
-    </LayoutCatalog>
+    </CatalogLayout>
   );
 };
 
-export default CatalogLikeView;
+export default CatalogWrapper;

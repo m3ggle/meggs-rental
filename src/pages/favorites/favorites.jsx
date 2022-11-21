@@ -1,11 +1,11 @@
 import React from "react";
+import CatalogWrapper from "../../components/wrapper/CatalogWrapper";
 import ExampleData from "../../ExampleData";
-import CatalogLikeView from "../explore/catalog/components/CatalogLikeView";
 
 const Favorites = () => {
   const { exampleOffers } = ExampleData();
   const filteredOffers = exampleOffers.filter((offer) => offer.liked);
-  return <CatalogLikeView offerList={filteredOffers} />;
+  return <CatalogWrapper offerList={filteredOffers} />;
 };
 
 export default Favorites;

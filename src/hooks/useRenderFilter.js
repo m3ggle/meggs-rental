@@ -1,6 +1,6 @@
-import { useWindowSize } from "../../../../hooks/useWindowSize";
-import Filter from "../components/Filter";
-import SearchFilter from "../components/SearchFilter";
+import Filter from "../components/filter/Filter";
+import SearchFilter from "../components/filter/SearchFilter";
+import { useWindowSize } from "./useWindowSize";
 
 export const useRenderFilter = () => {
   const windowSize = useWindowSize();

@@ -1,10 +1,10 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
-import Btn from "../../../../components/Btn";
+import Btn from "../../../../components/common/Btn";
 import TextInput from "../../../../components/input/TextInput";
+import { cleanUpFilterData } from "../../../../helper/filter/cleanUpFilterData";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
-import { cleanUpFilterData } from "../../../explore/catalog/helper/cleanUpFilterData";
 
 const ChatSidebarSearch = () => {
   let [searchParams] = useSearchParams();

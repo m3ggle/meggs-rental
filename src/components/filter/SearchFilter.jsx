@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
-import Btn from "../../../../components/Btn";
-import TextInput from "../../../../components/input/TextInput";
-import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
-import { cleanUpFilterData } from "../helper/cleanUpFilterData";
+import { cleanUpFilterData } from "../../helper/filter/cleanUpFilterData";
+import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
+import Btn from "../common/Btn";
+import TextInput from "../input/TextInput";
 import FilterModal from "./FilterModal";
 
 const SearchFilter = ({ name, label }) => {

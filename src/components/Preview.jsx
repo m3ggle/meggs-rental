@@ -6,7 +6,7 @@ import Bmw3 from "../assets/img/bmw3.jpg";
 import Bmw4 from "../assets/img/bmw4.jpg";
 import Bmw5 from "../assets/img/bmw5.jpg";
 import ExampleData from "../ExampleData";
-import Btn from "./Btn";
+import Btn from "./common/Btn";
 import Calendar from "./offerDetails/Calendar";
 import CarSpecWrapper from "./offerDetails/CarSpecWrapper";
 import UserProfileSmall from "./userProfile/UserProfileSmall";

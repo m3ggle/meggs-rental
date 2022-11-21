@@ -7,7 +7,7 @@ import Bmw3 from "../../../assets/img/bmw3.jpg";
 import Bmw4 from "../../../assets/img/bmw4.jpg";
 import Bmw5 from "../../../assets/img/bmw5.jpg";
 import GoogleMap from "../../../assets/img/googleMap.png";
-import Btn from "../../../components/Btn";
+import Btn from "../../../components/common/Btn";
 import Calendar from "../../../components/offerDetails/Calendar";
 import UserProfileSmall from "../../../components/userProfile/UserProfileSmall";
 import styles from "../../../style";

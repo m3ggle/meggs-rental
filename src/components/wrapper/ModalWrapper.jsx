@@ -6,7 +6,7 @@ const ModalWrapper = ({ isOpen, closeModal, children }) => {
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-10 flex items-start justify-center"
+        className="relative z-50 flex items-start justify-center"
         onClose={closeModal}
       >
         {/* backdrop */}
@@ -19,7 +19,7 @@ const ModalWrapper = ({ isOpen, closeModal, children }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Dialog.Backdrop className="fixed inset-0 bg-black bg-opacity-25" />
+          <Dialog.Backdrop className="fixed z-40 inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
         {/* main */}
@@ -32,7 +32,7 @@ const ModalWrapper = ({ isOpen, closeModal, children }) => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Dialog.Panel className="fixed top-20 bottom-0 w-full overflow-scroll rounded-t-2xl 820:w-[820px] ">
+          <Dialog.Panel className="fixed top-20 bottom-0 w-full overflow-scroll rounded-t-2xl 820:w-[820px] z-50">
             {/* Todo: when scrolling then top-10 or so and when the user is at top then top-20 */}
             <div className="relative flex h-fit min-h-full w-full max-w-[820px] flex-col items-center rounded-t-2xl bg-white p-6 shadow dark:bg-dmGrey900 600:pt-12">
               <button

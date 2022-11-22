@@ -1,11 +1,14 @@
-import React from 'react'
-import UserProfileBig from '../../../../components/userProfile/UserProfileBig';
-import ExampleData from '../../../../ExampleData';
-import styles from '../../../../style';
+import React, { useEffect } from "react";
+import UserProfileBig from "../../../../components/userProfile/UserProfileBig";
+import ExampleData from "../../../../ExampleData";
+import styles from "../../../../style";
 
 const { userProfileBig } = ExampleData();
 
 const OfferDetailsOwner = () => {
+  useEffect(() => {getOwner()}, []);
+  const getOwner = () => {}
+
   return (
     <div className="flex gap-x-6">
       {/* bio */}
@@ -36,6 +39,6 @@ const OfferDetailsOwner = () => {
       </div>
     </div>
   );
-}
+};
 
-export default OfferDetailsOwner
+export default OfferDetailsOwner;

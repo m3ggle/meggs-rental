@@ -5,15 +5,15 @@ import OfferDetailsCarSpecs from "./OfferDetailsCarSpecs";
 import OfferDetailsOwner from "./OfferDetailsOwner";
 import OfferDetailsReviews from "./OfferDetailsReviews";
 
-const OfferDetailsInfoPart = () => {
+const OfferDetailsInfoPart = ({ offerInformation }) => {
   return (
     <div className="flex w-full justify-center">
       <div className="flex w-[440px] flex-col gap-y-6 p-6 700:w-[720px] 1200:w-[480px] 1400:w-full">
-        <OfferDetailsBasicInfo />
-        <OfferDetailsCalLoc />
-        <OfferDetailsCarSpecs />
-        <OfferDetailsOwner />
-        <OfferDetailsReviews />
+        <OfferDetailsBasicInfo offerInformation={offerInformation} />
+        <OfferDetailsCalLoc offerInformation={offerInformation} />
+        <OfferDetailsCarSpecs offerInformation={offerInformation} />
+        <OfferDetailsOwner offerInformation={offerInformation} />
+        <OfferDetailsReviews offerInformation={offerInformation} />
       </div>
     </div>
   );

@@ -1,48 +1,19 @@
-// <CarSpecWrapper amount="preview" specs={carSpecData} mobile={true} /> 
-import React, { useEffect, useState } from "react";
+// <CarSpecWrapper amount="preview" specs={carSpecData} mobile={true} />
+import React from "react";
 import CarSpec from "./CarSpec";
+import { useCarSpecFilter } from "./hooks/useCarSpecFilter";
 
-const conditionPreview = [
-  "transmission",
-  "fuelType",
-  "color",
-  "trunkVolume",
-  "seats",
-  "smoking",
-];
-
-const CarSpecWrapper = ({ amount, specs, mobile }) => {
-  // Todo: React.Callback
-
-  const [filteredSpecs, setFilteredSpecs] = useState([]);
-
-  useEffect(() => {
-    let filSpecs = [];
-    if (amount === "all") {
-      filSpecs = Object.keys(specs).map((itemKey) => {
-        return specs[itemKey];
-      });
-      setFilteredSpecs(filSpecs);
-    } else if (amount === "preview") {
-      Object.keys(specs).map(
-        (itemKey) =>
-          conditionPreview.includes(itemKey) && filSpecs.push(specs[itemKey])
-      );
-      setFilteredSpecs(filSpecs);
-    } else {
-      setFilteredSpecs([]);
-    }
-  }, [amount, specs]);
+const CarSpecWrapper = ({ amount, specs }) => {
+  const { filteredSpecs } = useCarSpecFilter({ specs, amount });
 
   return (
     <div className={`flex w-full flex-wrap gap-2`}>
-    {/* <div className={`flex ${mobile ? "w-[360px]" : "w-full justify-between"} flex-wrap gap-y-2`}> */}
-      {filteredSpecs.map((spec, index) => (
+      {Object.keys(filteredSpecs).map((spec, index) => (
         <CarSpec
-          key={spec.title === "" ? index : spec.title}
-          title={spec.title}
-          value={spec.value}
-          icon={spec.icon}
+          key={index}
+          title={filteredSpecs[spec].title}
+          value={filteredSpecs[spec].value}
+          icon={filteredSpecs[spec].icon}
         />
       ))}
     </div>

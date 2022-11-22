@@ -47,7 +47,7 @@ const OfferDetails = () => {
       {offerInformation ? (
         <div className="relative flex w-full max-w-[1440px] flex-col pt-6 1200:flex-row 1200:pt-0">
           <OfferDetailsImgPart offerImages={offerInformation.photoUrl} />
-          <OfferDetailsInfoPart />
+          <OfferDetailsInfoPart offerInformation={offerInformation} />
         </div>
       ) : (
         <div className="h-screen w-full bg-white dark:bg-dmGrey900"></div>

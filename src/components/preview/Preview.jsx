@@ -13,7 +13,7 @@ const Preview = ({ offerInformation }) => {
         <PreviewIcons />
         <PreviewBasicInfo />
         <PreviewImgs />
-        <div className={`-my-2 min-h-fit w-full rounded-2xl`}>
+        <div className={`-my-2 dark:mt-2 dark:mb-1 min-h-fit w-full rounded-2xl`}>
           <Calendar shadow={true} header={true} />
         </div>
         {/* <CarSpecWrapper amount="preview" specs={carSpecData} mobile={false} /> */}

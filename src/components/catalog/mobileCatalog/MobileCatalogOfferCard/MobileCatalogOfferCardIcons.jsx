@@ -9,12 +9,12 @@ const MobileCatalogOfferCardIcons = ({
     <>
       <i
         onClick={onLocationCallback}
-        className="fa-solid fa-location-dot absolute right-[10px] top-10 z-10 text-2xl text-white/40 drop-shadow duration-300 hover:text-lmPrimary/50 focus:text-lmPrimary"
+        className="fa-solid fa-location-dot absolute right-[10px] top-10 z-10 text-2xl text-lmGrey200 drop-shadow duration-300 hover:scale-102 hover:text-lmPrimary/60 active:scale-99 active:text-lmPrimary dark:text-dmGrey300"
       />
       <i
         onClick={onLikeCallback}
         className={`fa-solid fa-heart ${
-          liked ? "text-red-500" : "text-white/40"
+          liked ? "text-red-500" : "text-lmGrey200 dark:text-dmGrey300"
         } absolute right-2 top-2 z-10 text-2xl drop-shadow duration-300 hover:text-red-400`}
       />
     </>

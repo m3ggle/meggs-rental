@@ -15,7 +15,6 @@ const TextInput = ({
   type,
   filter,
 }) => {
-  // Todo: change color of filter icon if the filter is active
 
   const renderSecondIcon = () => {
     switch (secondIcon) {
@@ -29,7 +28,7 @@ const TextInput = ({
               } min-w[14px] h-min-[14px] flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
                 error
                   ? "text-red-300 dark:text-red-100"
-                  : value === undefined || value === ""
+                  : value === undefined || value === "" || value === null
                   ? "text-lmGrey300 dark:text-dmGrey300"
                   : "text-lmGrey600 dark:text-dmGrey25"
               }  `}
@@ -47,7 +46,7 @@ const TextInput = ({
               } flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
                 error
                   ? "text-red-300 dark:text-red-100"
-                  : value === undefined || value === ""
+                  : value === undefined || value === "" || value === null
                   ? "text-lmGrey300 dark:text-dmGrey300"
                   : "text-lmGrey600 dark:text-dmGrey25"
               }  `}
@@ -84,7 +83,7 @@ const TextInput = ({
                   className={`${firstIcon} flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
                     error
                       ? "text-red-300 dark:text-red-100"
-                      : value === undefined || value === ""
+                      : value === undefined || value === "" || value === null
                       ? "text-lmGrey300 dark:text-dmGrey300"
                       : "text-lmGrey600 dark:text-dmGrey25"
                   }  `}

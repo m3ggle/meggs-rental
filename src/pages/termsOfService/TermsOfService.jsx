@@ -1,9 +1,12 @@
 import React from 'react'
 import MobileCatalog from '../../components/catalog/mobileCatalog/MobileCatalog'
+import Preview from '../../components/preview/Preview'
 
 const TermsOfService = () => {
   return (
-    <MobileCatalog />
+    <div className='p-48'>
+      <Preview />
+    </div>
   )
 }
 

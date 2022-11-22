@@ -1,23 +1,15 @@
-import React from 'react'
-import CarSpecWrapper from '../../../../components/offerDetails/CarSpecWrapper';
-import ExampleData from '../../../../ExampleData';
+import React from "react";
+import CarSpecWrapper from "../../../../components/offerDetails/CarSpecWrapper";
 
-const { carSpecData, userProfileBig } = ExampleData();
-
-const OfferDetailsCarSpecs = () => {
+const OfferDetailsCarSpecs = ({ offerInformation }) => {
   return (
     <div className="flex w-full max-w-[652px] flex-col">
       <span className="text-lg text-lmGrey600 dark:text-dmGrey100">
         Car Specification
       </span>
-      {/* <div
-              className={`flex h-full w-full flex-col gap-y-1 items-center rounded-3xl bg-white p-6 shadow-md ${style.darkModeBorder} dark:bg-dmGrey900`}
-            >
-              <CarSpecWrapper amount="all" specs={carSpecData} mobile={false} />
-            </div> */}
-      <CarSpecWrapper amount="all" specs={carSpecData} mobile={false} />
+      <CarSpecWrapper amount="all" specs={offerInformation.carSpecs} />
     </div>
   );
-}
+};
 
-export default OfferDetailsCarSpecs
+export default OfferDetailsCarSpecs;

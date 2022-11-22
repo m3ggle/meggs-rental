@@ -1,10 +1,14 @@
 import React from 'react'
 
-const PreviewIcons = () => {
+const PreviewIcons = ({liked}) => {
   return (
-    <div className="absolute  top-5 right-[22px] flex h-fit w-fit flex-col items-center justify-center text-[20px]">
-      <div className="fa-solid fa-times flex h-8 w-8 items-center justify-center text-lmGrey600"></div>
-      <div className="fa-solid fa-heart flex h-8 w-8 items-center justify-center text-[18px] text-lmGrey300"></div>
+    <div className="absolute -top-[2px] right-0 flex h-fit w-fit cursor-pointer flex-col items-center justify-center text-[24px]">
+      <i className="fa-solid fa-times flex h-8 w-8 items-center justify-center text-[28px] text-lmGrey600 drop-shadow duration-300 hover:scale-102 hover:text-lmGrey800 active:scale-99" />
+      <i
+        className={`fa-solid fa-heart flex h-8 w-8 items-center justify-center drop-shadow duration-300 hover:scale-102 hover:text-red-400 active:scale-99 ${
+          liked ? "text-red-500" : "text-lmGrey200"
+        }`}
+      />
     </div>
   );
 }

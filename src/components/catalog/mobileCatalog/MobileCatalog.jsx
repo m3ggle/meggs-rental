@@ -7,7 +7,7 @@ const { exampleOffers } = ExampleData();
 const MobileCatalog = () => {
   return (
     <div
-      className={`relative flex h-[640px] w-[360px] max-w-[360px] flex-col items-center gap-y-3 overflow-scroll rounded-2xl bg-white py-6 shadow-xl dark:bg-dmGrey900`}
+      className={`relative flex h-[640px] w-[360px] max-w-[360px] flex-col items-center gap-y-3 overflow-scroll rounded-2xl bg-white py-6 shadow-xl duration-300 dark:bg-dmGrey900`}
     >
       <div className="w-[312px]">
         <SearchFilter />

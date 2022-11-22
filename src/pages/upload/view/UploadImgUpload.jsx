@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import FileUpload from "../../../components/FileUpload";
-import BottomPart from "../../signUp/view/BottomPart";
+import BottomPart from "../../../components/authentication/BottomPart";
+import FileUpload from "../../../components/input/FileUpload";
 
 const UploadImgUpload = ({ handleCallback }) => {
   const { handleSubmit } = useForm();

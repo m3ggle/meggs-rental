@@ -1,8 +1,8 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import ExampleData from "../../../ExampleData";
-import BottomPart from "../../signUp/view/BottomPart";
 
 const { transmissionSelect, fuelSelect, trunkSelect, seatSelect } =
   ExampleData();

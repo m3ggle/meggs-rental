@@ -1,84 +1,158 @@
-import { Popover } from "@headlessui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useSearchParams } from "react-router-dom";
 import ExampleData from "../../ExampleData";
+import { cleanUpFilterData } from "../../helper/filter/cleanUpFilterData";
+import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
+import Btn from "../common/Btn";
 import Select from "../input/Select";
 import TextInput from "../input/TextInput";
+const { filterSelects } = ExampleData();
+const {
+  transmissionSelect,
+  fuelSelect,
+  seatSelect,
+  trunkSelect,
+  colorSelect,
+  smokingSelect,
+} = filterSelects;
 
-const Filter = ({ onClose }) => {
-  const { control, handleSubmit } = useForm();
+const Filter = ({ isOpen, closeModal, filterModal }) => {
+  let [searchParams] = useSearchParams();
+  const { setArrayOfParams, deleteSingleParam } = useUrlManipulation();
+  const { control, handleSubmit, setValue, watch } = useForm();
+  const [resetCount, setResetCount] = useState(0);
+
   const onSubmit = (data) => {
-    console.log(data);
-    if (onClose) {
-      onClose();
-    }
+    setArrayOfParams(cleanUpFilterData(data));
+    filterModal && closeModal();
   };
 
-  const { filterSelects } = ExampleData();
-  const {
-    transmissionSelect,
-    fuelSelect,
-    seatSelect,
-    trunkSelect,
-    colorSelect,
-    smokingSelect,
-  } = filterSelects;
+  // when params change, set search (to be up to date with the outside (when modal modus is active) search)
+  useEffect(
+    () => setValue("search", searchParams.get("search")),
+    [setValue, searchParams]
+  );
+  // when modal closes it is not unmounted, it is still mounted so the resetCount does not get reset, this will solve it
+  useEffect(() => setResetCount(0), [isOpen]);
 
+  const handleDelete = (inputName, inputValue) => {
+    setValue(inputName, inputValue);
+    deleteSingleParam(inputName);
+  };
+
+  const handleClearAll = () => {
+    // delete textInputs
+    Object.keys(watch()).map((item) => {
+      handleDelete(item, "");
+    });
+
+    // delete selects
+    setResetCount((prevState) => prevState + 1);
+  };
+
+  // todo: set default values depending on url
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       // w-80
-      className="relative flex h-[640px] flex-col gap-y-3 overflow-y-scroll rounded-lg "
+      className={`${
+        !filterModal && "pb-[90px]"
+      } relative flex h-fit w-[340px] max-w-[340px] flex-col gap-y-3 rounded-lg`}
     >
-      {/* header */}
-      <div className="flex items-center justify-between text-2xl text-lmGrey700 dark:text-dmGrey25">
-        <span className="">Filter</span>
-        {onClose && (
-          <Popover.Button>
-            <i className="fa-solid fa-times cursor-pointer"></i>
-          </Popover.Button>
-        )}
-      </div>
-
-      {/* main */}
       <div className="flex flex-col gap-y-3">
+        <span className="text-2xl text-lmGrey700 dark:text-dmGrey25">
+          Filter
+        </span>
+
+        <Controller
+          name="search"
+          control={control}
+          defaultValue={
+            searchParams.get("search") ? searchParams.get("search") : undefined
+          }
+          render={({ field, fieldState }) => (
+            <TextInput
+              firstIcon="fa-solid fa-magnifying-glass"
+              secondIcon="fa-solid fa-times"
+              onChange={field.onChange}
+              placeholder="Audi A8"
+              value={field.value}
+              onBlur={field.onBlur}
+              onDelete={() => handleDelete("search", "")}
+              error={fieldState.error}
+            />
+          )}
+        />
+
         <div className="gap-y-1">
-          <span className="text-base text-lmGrey600 dark:text-dmGrey100">
-            Date Specifics
-          </span>
-          <Controller
-            name="dateRange"
-            control={control}
-            render={({ field, fieldState }) => (
-              <TextInput
-                firstIcon="fa-solid fa-calendar-days"
-                secondIcon="fa-solid fa-chevron-down"
-                onChange={field.onChange}
-                label="Select a Date Range"
-                placeholder="13.10.2022 - 25.10.2022"
-                value={field.value}
-                onBlur={field.onBlur}
-                error={fieldState.error}
-              />
-            )}
-          />
+          <div className="flex gap-x-2">
+            <Controller
+              name="startDate"
+              control={control}
+              defaultValue={
+                searchParams.get("startDate")
+                  ? searchParams.get("startDate")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-calendar-days"
+                  secondIcon="fa-solid fa-times"
+                  onChange={field.onChange}
+                  onDelete={() => handleDelete("startDate", "")}
+                  label="Start date"
+                  placeholder="02.06.2023"
+                  type="text"
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+            />
+            <Controller
+              name="endDate"
+              control={control}
+              defaultValue={
+                searchParams.get("endDate")
+                  ? searchParams.get("endDate")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-calendar-days"
+                  secondIcon="fa-solid fa-times"
+                  onChange={field.onChange}
+                  onDelete={() => handleDelete("endDate", "")}
+                  label="End date"
+                  placeholder="21.06.2023"
+                  type="text"
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+            />
+          </div>
         </div>
 
         <div className="gap-y-1">
-          <span className="text-base text-lmGrey600 dark:text-dmGrey100">
-            Offer Specifics
-          </span>
           <div className="flex gap-x-2">
             <Controller
-              name="priceStart"
+              name="startPriceDay"
               control={control}
+              defaultValue={
+                searchParams.get("startPriceDay")
+                  ? searchParams.get("startPriceDay")
+                  : undefined
+              }
               render={({ field, fieldState }) => (
                 <TextInput
                   firstIcon="fa-solid fa-coins"
-                  secondIcon="fa-solid fa-euro"
-                  type="number"
+                  secondIcon="fa-solid fa-times"
                   onChange={field.onChange}
-                  label="Start"
+                  onDelete={() => handleDelete("startPriceDay", "")}
+                  label="Daily start price"
                   placeholder="30..."
                   value={field.value}
                   onBlur={field.onBlur}
@@ -93,15 +167,140 @@ const Filter = ({ onClose }) => {
               }}
             />
             <Controller
-              name="priceEnd"
+              name="endPriceDay"
               control={control}
+              defaultValue={
+                searchParams.get("endPriceDay")
+                  ? searchParams.get("endPriceDay")
+                  : undefined
+              }
               render={({ field, fieldState }) => (
                 <TextInput
                   firstIcon="fa-solid fa-coins"
-                  secondIcon="fa-solid fa-euro"
-                  type="number"
+                  secondIcon="fa-solid fa-times"
+                  onDelete={() => handleDelete("endPriceDay", "")}
                   onChange={field.onChange}
-                  label="End"
+                  label="Daily end price"
+                  placeholder="300..."
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+              rules={{
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Only numbers are allowed",
+                },
+              }}
+            />
+          </div>
+        </div>
+        <div className="gap-y-1">
+          <div className="flex gap-x-2">
+            <Controller
+              name="startPriceWeek"
+              control={control}
+              defaultValue={
+                searchParams.get("startPriceWeek")
+                  ? searchParams.get("startPriceWeek")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-coins"
+                  secondIcon="fa-solid fa-times"
+                  onChange={field.onChange}
+                  onDelete={() => handleDelete("startPriceWeek", "")}
+                  label="Weekly start price"
+                  placeholder="30..."
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+              rules={{
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Only numbers are allowed",
+                },
+              }}
+            />
+            <Controller
+              name="endPriceWeek"
+              control={control}
+              defaultValue={
+                searchParams.get("endPriceWeek")
+                  ? searchParams.get("endPriceWeek")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-coins"
+                  secondIcon="fa-solid fa-times"
+                  onDelete={() => handleDelete("endPriceWeek", "")}
+                  onChange={field.onChange}
+                  label="Weekly end price"
+                  placeholder="300..."
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+              rules={{
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Only numbers are allowed",
+                },
+              }}
+            />
+          </div>
+        </div>
+        <div className="gap-y-1">
+          <div className="flex gap-x-2">
+            <Controller
+              name="startPriceMonth"
+              control={control}
+              defaultValue={
+                searchParams.get("startPriceMonth")
+                  ? searchParams.get("startPriceMonth")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-coins"
+                  secondIcon="fa-solid fa-times"
+                  onChange={field.onChange}
+                  onDelete={() => handleDelete("startPriceMonth", "")}
+                  label="Monthly start price"
+                  placeholder="30..."
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  error={fieldState.error}
+                />
+              )}
+              rules={{
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Only numbers are allowed",
+                },
+              }}
+            />
+            <Controller
+              name="endPriceMonth"
+              control={control}
+              defaultValue={
+                searchParams.get("endPriceMonth")
+                  ? searchParams.get("endPriceMonth")
+                  : undefined
+              }
+              render={({ field, fieldState }) => (
+                <TextInput
+                  firstIcon="fa-solid fa-coins"
+                  secondIcon="fa-solid fa-times"
+                  onDelete={() => handleDelete("endPriceMonth", "")}
+                  onChange={field.onChange}
+                  label="Monthly end price"
                   placeholder="300..."
                   value={field.value}
                   onBlur={field.onBlur}
@@ -119,7 +318,7 @@ const Filter = ({ onClose }) => {
         </div>
 
         <div className=" flex flex-col gap-y-1">
-          <span className="text-base text-lmGrey600 dark:text-dmGrey100">
+          <span className="text-sm text-lmGrey500 dark:text-dmGrey100">
             Car Specifics
           </span>
           <div className="flex flex-col gap-y-2">
@@ -128,12 +327,18 @@ const Filter = ({ onClose }) => {
               control={control}
               render={({ field, fieldState }) => (
                 <Select
+                  value={
+                    searchParams.get("transmission")
+                      ? searchParams.get("transmission")
+                      : undefined
+                  }
                   icon={transmissionSelect.icon}
                   placeholder={transmissionSelect.placeholder}
                   itemList={transmissionSelect.list}
                   onChange={field.onChange}
                   label={transmissionSelect.label}
                   error={fieldState.error}
+                  reset={resetCount}
                 />
               )}
             />
@@ -142,12 +347,18 @@ const Filter = ({ onClose }) => {
               control={control}
               render={({ field, fieldState }) => (
                 <Select
+                  value={
+                    searchParams.get("fuelType")
+                      ? searchParams.get("fuelType")
+                      : undefined
+                  }
                   icon={fuelSelect.icon}
                   placeholder={fuelSelect.placeholder}
                   itemList={fuelSelect.list}
                   onChange={field.onChange}
                   label={fuelSelect.label}
                   error={fieldState.error}
+                  reset={resetCount}
                 />
               )}
             />
@@ -156,12 +367,18 @@ const Filter = ({ onClose }) => {
               control={control}
               render={({ field, fieldState }) => (
                 <Select
+                  value={
+                    searchParams.get("seats")
+                      ? searchParams.get("seats")
+                      : undefined
+                  }
                   icon={seatSelect.icon}
                   placeholder={seatSelect.placeholder}
                   itemList={seatSelect.list}
                   onChange={field.onChange}
                   label={seatSelect.label}
                   error={fieldState.error}
+                  reset={resetCount}
                 />
               )}
             />
@@ -170,12 +387,18 @@ const Filter = ({ onClose }) => {
               control={control}
               render={({ field, fieldState }) => (
                 <Select
+                  value={
+                    searchParams.get("trunkVolume")
+                      ? searchParams.get("trunkVolume")
+                      : undefined
+                  }
                   icon={trunkSelect.icon}
                   placeholder={trunkSelect.placeholder}
                   itemList={trunkSelect.list}
                   onChange={field.onChange}
                   label={trunkSelect.label}
                   error={fieldState.error}
+                  reset={resetCount}
                 />
               )}
             />
@@ -184,12 +407,18 @@ const Filter = ({ onClose }) => {
               control={control}
               render={({ field, fieldState }) => (
                 <Select
+                  value={
+                    searchParams.get("color")
+                      ? searchParams.get("color")
+                      : undefined
+                  }
                   icon={colorSelect.icon}
                   placeholder={colorSelect.placeholder}
                   itemList={colorSelect.list}
                   onChange={field.onChange}
                   label={colorSelect.label}
                   error={fieldState.error}
+                  reset={resetCount}
                 />
               )}
             />
@@ -198,25 +427,39 @@ const Filter = ({ onClose }) => {
               control={control}
               render={({ field, fieldState }) => (
                 <Select
+                  value={
+                    searchParams.get("smoking")
+                      ? searchParams.get("smoking")
+                      : undefined
+                  }
                   icon={smokingSelect.icon}
                   placeholder={smokingSelect.placeholder}
                   itemList={smokingSelect.list}
                   onChange={field.onChange}
                   label={smokingSelect.label}
                   error={fieldState.error}
+                  reset={resetCount}
                 />
               )}
             />
           </div>
         </div>
       </div>
-
-      <button
-        type="submit"
-        className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 duration-300 hover:scale-102 active:scale-98 dark:bg-dmPrimary"
-      >
-        Click to Submit
-      </button>
+      <div className="flex w-full gap-x-2">
+        <Btn
+          type="button"
+          uiType="secondary"
+          onClick={handleClearAll}
+          title="Clear Filter"
+        />
+        <Btn
+          type="submit"
+          icon="fa solid fa-chevron-right"
+          uiType="primary"
+          onClick={handleSubmit}
+          title="Update Filter"
+        />
+      </div>
     </form>
   );
 };

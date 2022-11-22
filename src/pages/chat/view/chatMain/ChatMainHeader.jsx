@@ -9,17 +9,20 @@ const ChatMainHeader = () => {
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
-  const navigate = useNavigate()
-  const windowSize = useWindowSize()
+  const navigate = useNavigate();
+  const windowSize = useWindowSize();
 
-  const handleGoBack = () => {
-    navigate("/chat/sidebar")
-  }
+  const handleGoBack = () => navigate("/chat/sidebar");
 
   return (
     <div className="flex min-h-[106px] w-full items-center justify-between gap-y-2 px-6 pb-6 pt-9">
-      <div className="w-[240px] 600:w-[320px] flex gap-x-4 items-center">
-        {windowSize.width < 1000 && <i onClick={handleGoBack} className="fa-solid fa-chevron-left h-fit w-7 text-[24px] text-lmGrey300 hover:text-lmGrey600" />}
+      <div className="flex w-[240px] items-center gap-x-4 600:w-[320px]">
+        {windowSize.width < 1000 && (
+          <i
+            onClick={handleGoBack}
+            className="fa-solid fa-chevron-left h-fit w-7 text-[24px] text-lmGrey300 hover:text-lmGrey600"
+          />
+        )}
         <UserProfileSmall
           text="Online"
           displayName="Meggle Bande"

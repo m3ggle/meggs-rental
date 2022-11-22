@@ -1,29 +1,28 @@
-// import Spline from "@splinetool/react-spline";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import DropdownMode from "./components/DropdownMode";
 import Logo from "./components/Logo";
-import Navbar from "./components/Navbar";
-import Catalog from "./pages/catalog/Catalog";
+import DropdownMode from "./components/navbar/DropdownMode";
+import Navbar from "./components/navbar/Navbar";
+import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
+import SignIn from "./pages/authentication/signIn/SignIn";
+import SignUp from "./pages/authentication/signUp/SignUp";
 import Chat from "./pages/chat/Chat";
 import ChatMain from "./pages/chat/view/chatMain/ChatMain";
 import ChatSidebar from "./pages/chat/view/chatSidebar/ChatSidebar";
+import Catalog from "./pages/explore/catalog/Catalog";
+import Map from "./pages/explore/map/Map";
 import Favorites from "./pages/favorites/Favorites";
-import ForgotPassword from "./pages/forgetPassword/ForgotPassword";
+import Help from "./pages/help/Help";
 import Homepage from "./pages/homepage/Homepage";
-import Map from "./pages/map/Map";
 import NotFound from "./pages/notFound/NotFound";
 import OfferDetails from "./pages/offerDetails/OfferDetails";
+import PrivacyPolicy from "./pages/privacyPolicy/PrivacyPolicy";
 import Profile from "./pages/profile/Profile";
-import Account from "./pages/profile/sub/Account";
-import Help from "./pages/profile/sub/Help";
-import Notification from "./pages/profile/sub/Notification";
-import Payments from "./pages/profile/sub/Payments";
-import PrivacyPolicy from "./pages/profile/sub/PrivacyPolicy";
-import Reviews from "./pages/profile/sub/Reviews";
-import TermsOfService from "./pages/profile/sub/TermsOfService";
-import SignIn from "./pages/signIn/SignIn";
-import SignUp from "./pages/signUp/SignUp";
+import ProfileAccount from "./pages/profile/subPages/ProfileAccount";
+import ProfileNotification from "./pages/profile/subPages/ProfileNotification";
+import ProfilePayments from "./pages/profile/subPages/ProfilePayments";
+import ProfileReviews from "./pages/profile/subPages/ProfileReviews";
+import TermsOfService from "./pages/termsOfService/TermsOfService";
 import Upload from "./pages/upload/Upload";
 import UserOffers from "./pages/userOffers/UserOffers";
 
@@ -33,8 +32,8 @@ export default function App() {
   const openModal = () => setIsOpen(true);
 
   return (
-    <div className="flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white bg-cover bg-center dark:bg-dmGrey900">
-      <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white bg-cover bg-center dark:bg-dmGrey900">
+    <div className="flex h-full w-full items-center justify-center bg-white dark:bg-dmGrey900">
+      <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white dark:bg-dmGrey900">
         <Router>
           <div className="hidden" aria-hidden="true">
             <DropdownMode />
@@ -45,7 +44,7 @@ export default function App() {
             <Route path="/explore/map" element={<Map />} />
             <Route path="/explore/catalog" element={<Catalog />} />
             <Route path="/favorites" element={<Favorites />} />
-            <Route path="/offer-details" element={<OfferDetails />} />
+            <Route path="/offer-details/:offerId" element={<OfferDetails />} />
 
             <Route path="/user-offers" element={<UserOffers />} />
             <Route path="/upload" element={<Upload />} />
@@ -57,17 +56,18 @@ export default function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/homepage" element={<Homepage />} />
 
-            <Route path="/profile/:userId" element={<Profile />} />
-            <Route path="/profile/account" element={<Account />} />
-            <Route path="/profile/payments" element={<Payments />} />
-            <Route path="/profile/reviews" element={<Reviews />} />
-            <Route path="/profile/notification" element={<Notification />} />
-            <Route path="/profile/help" element={<Help />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/account" element={<ProfileAccount />} />
+            <Route path="/profile/payments" element={<ProfilePayments />} />
+            <Route path="/profile/reviews" element={<ProfileReviews />} />
             <Route
-              path="/profile/terms-of-service"
-              element={<TermsOfService />}
+              path="/profile/notification"
+              element={<ProfileNotification />}
             />
-            <Route path="/profile/privacy-policy" element={<PrivacyPolicy />} />
+
+            <Route path="/help" element={<Help />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />

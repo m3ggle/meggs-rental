@@ -3,7 +3,7 @@ import ImageCarousel from "../components/ImageCarousel";
 
 const OfferDetailsImgPart = ({ offerImages }) => {
   return (
-    <div className="flex h-[352px] w-full justify-center bg-slate-500 1200:h-full">
+    <div className="flex h-[352px] w-full justify-center 1200:h-full">
       {/* img carousel */}
       <div className="hideScrollbar flex h-fit w-full max-w-[672px] gap-x-2 overflow-x-scroll rounded-lg px-6 700:px-0 1200:hidden">
         {offerImages.map((pic, index) => (

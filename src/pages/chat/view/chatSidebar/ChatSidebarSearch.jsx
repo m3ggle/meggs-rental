@@ -1,24 +1,23 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
+import Btn from "../../../../components/common/Btn";
 import TextInput from "../../../../components/input/TextInput";
-import { cleanUpFilterData } from "../../../catalog/helper/cleanUpFilterData";
-import { useHandlingParams } from "../../../catalog/hooks/useHandlingParams";
+import { cleanUpFilterData } from "../../../../helper/filter/cleanUpFilterData";
+import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 
 const ChatSidebarSearch = () => {
-  let [searchParams, setSearchParams] = useSearchParams();
-  const { handleUrlUpdate } = useHandlingParams();
+  let [searchParams] = useSearchParams();
+  const { setSingleParam, deleteSingleParam } = useUrlManipulation();
   const { control, handleSubmit, setValue } = useForm();
 
   const onSubmit = (data) => {
-    data.search !== "" && data.search !== undefined
-      ? handleUrlUpdate(cleanUpFilterData(data), "search")
-      : handleSearchDelete();
+    const cleanedUpSearch = cleanUpFilterData(data).search;
+    cleanedUpSearch && setSingleParam("search", cleanedUpSearch);
   };
 
   const handleSearchDelete = () => {
-    searchParams.delete("search")
-    setSearchParams(searchParams)
+    deleteSingleParam("search");
     setValue("search", "");
   };
 
@@ -47,10 +46,11 @@ const ChatSidebarSearch = () => {
         )}
       />
 
-      <button
+      <Btn
         type="submit"
+        uiType="primary"
+        icon="fa-solid fa-chevron-right"
         onClick={handleSubmit}
-        className={`fa-solid fa-chevron-right flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmPrimary text-base text-white dark:bg-dmPrimary dark:text-white`}
       />
     </form>
   );

@@ -95,6 +95,15 @@ const carSpecData = {
   },
 };
 
+const previewSpecs = [
+  "transmission",
+  "fuelType",
+  "color",
+  "trunkVolume",
+  "seats",
+  "smoking",
+];
+
 const eatingSelect = {
   label: null,
   icon: "fa-solid fa-utensils",
@@ -177,6 +186,8 @@ const filterSelects = {
 };
 
 const userProfileBig = {
+  photoUrl:
+    "https://images.unsplash.com/photo-1635107510862-53886e926b74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2535&q=80",
   firstName: "Meggle",
   lastName: "Bande",
   birthday: "2001/10/21",
@@ -356,6 +367,7 @@ const chatPreviews = [
 const exampleOffers = [
   {
     name: "VW Golf",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
     location: {
       lat: 52.4199,
@@ -393,15 +405,16 @@ const exampleOffers = [
     status: "Active",
     liked: true,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://images.unsplash.com/photo-1666346167029-d8bf4466fab3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80",
+      "https://images.unsplash.com/photo-1666346166820-67cc5ccdd678?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+      "https://images.unsplash.com/photo-1666346166850-e5ee1857ea18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "https://images.unsplash.com/photo-1666346166835-a70595660aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+      "https://images.unsplash.com/photo-1666346166849-8443c47f50fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80",
     ],
   },
   {
     name: "Ford Focus",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "4469d428-3ee6-42a3-ad96-a5e42b481379",
     location: {
       lat: 52.4199,
@@ -439,15 +452,16 @@ const exampleOffers = [
     status: "Reserved",
     liked: false,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://images.unsplash.com/photo-1610535650161-21e7f7ffea31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80",
+      "https://images.unsplash.com/photo-1610535650181-314c70b5dfe4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80",
+      "https://images.unsplash.com/photo-1610535650139-67895955fe3c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80",
+      "https://images.unsplash.com/photo-1610535650136-df6ca3e6f796?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80",
+      "https://images.unsplash.com/photo-1610535650134-781e16f4648f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80",
     ],
   },
   {
     name: "VW Tiguan",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "a36e91f5-c9f3-4bc1-9b26-08099879303c",
     location: {
       lat: 52.4182,
@@ -469,7 +483,7 @@ const exampleOffers = [
       endDate: "13.05.2023",
     },
     carSpecs: {
-      condition: "Reserved",
+      condition: "Good",
       transmission: "Automatic",
       fuelType: "Electro",
       carType: "Sedan",
@@ -494,6 +508,7 @@ const exampleOffers = [
   },
   {
     name: "Skoda Octavia",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "cc4ae289-e33b-4db7-b0a2-1760bf586121",
     location: {
       lat: 52.418,
@@ -540,6 +555,7 @@ const exampleOffers = [
   },
   {
     name: "VW Passat",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "6752948f-37fe-4913-8f9a-be23e01bcbc0",
     location: {
       lat: 52.4184817,
@@ -586,6 +602,7 @@ const exampleOffers = [
   },
   {
     name: "Opel Corsea",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "85b76ab2-3cb1-4da2-9a3a-e712b4c4ef73",
     location: {
       lat: 52.41673,
@@ -632,6 +649,7 @@ const exampleOffers = [
   },
   {
     name: "VW T-Roc",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "da0d15a5-a42d-49c1-8694-0ce3078462ee",
     location: {
       lat: 123,
@@ -678,6 +696,7 @@ const exampleOffers = [
   },
   {
     name: "BMW 3-Series",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "506a01d3-322b-47f0-9e7e-62250e882776",
     location: {
       lat: 52.41904,
@@ -724,6 +743,7 @@ const exampleOffers = [
   },
   {
     name: "VW Polo",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "18c430f6-c1ba-466e-8397-53cbd3608293",
     location: {
       lat: 52.41914,
@@ -741,8 +761,8 @@ const exampleOffers = [
       month: 700,
     },
     calendar: {
-      startDate: "",
-      endDate: "",
+      startDate: "01.06.2023",
+      endDate: "28.06.2023",
     },
     carSpecs: {
       condition: "Fair",
@@ -770,6 +790,7 @@ const exampleOffers = [
   },
   {
     name: "BMW Mini",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "154eb406-9729-4435-902e-25df689762f0",
     location: {
       lat: 52.4157479,
@@ -816,6 +837,7 @@ const exampleOffers = [
   },
   {
     name: "Toyota Yaris",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "0c4441e3-e6e1-4010-a319-4946349df0f2",
     location: {
       lat: 52.4204147,
@@ -862,6 +884,7 @@ const exampleOffers = [
   },
   {
     name: "Renault Clio",
+    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "58f2899f-85d3-46fa-a0d3-99a0eae2f07d",
     location: {
       lat: 52.4206,
@@ -911,6 +934,7 @@ const exampleOffers = [
 const ExampleData = () => {
   return {
     carSpecData,
+    previewSpecs,
     filterSelects,
     userProfileBig,
     reviews,
@@ -934,5 +958,6 @@ const ExampleData = () => {
     exampleOffers,
   };
 };
+
 
 export default ExampleData;

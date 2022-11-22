@@ -7,32 +7,11 @@ import ChatSidebar from "./view/chatSidebar/ChatSidebar";
 const Chat = () => {
   const windowSize = useWindowSize();
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (windowSize.width < 1000) {
-  //     navigate("/chat/sidebar");
-  //   } else {
-  //     renderDesktopSizeChat();
-  //   }
-  // }, [windowSize.width, navigate]);
 
-  // const renderDesktopSizeChat = () => {
-  //   console.log("gonna render ok")
-  //   return (
-  //     <div className="relative flex h-full w-full bg-black">
-  //       <ChatSidebar />
-  //       <ChatMain />
-  //     </div>
-  //   );
-  // };
-
+  // debounce to prevent from overdoing
   useEffect(() => {
-    if (windowSize.width < 1000) {
-      navigate("/chat/sidebar");
-      console.log("should redirect");
-    }
+    windowSize.width < 1000 && navigate("/chat/sidebar");
   }, [navigate, windowSize]);
-
-  // console.log(windowSize.width < 1000);
 
     return (
       <div className="relative flex h-full w-full">

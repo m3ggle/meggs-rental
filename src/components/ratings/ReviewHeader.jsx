@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { calcPercentage } from "../../utilities/calcPercentage";
+import { calcPercentage } from "../../helper/calcPercentage";
 import ReviewBar from "./ReviewBar";
 
 const ReviewHeader = ({ totalAmount, ratingDetailed }) => {

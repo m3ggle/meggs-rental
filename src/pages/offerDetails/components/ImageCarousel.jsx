@@ -1,73 +1,45 @@
-import {motion} from "framer-motion"
-import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import useMeasure from "react-use-measure";
+import { AnimatePresence, motion } from "framer-motion";
+import { useImageCarouselHelper } from "../hooks/useImageCarouselHelper";
 
-
-const ImageCarousel = () => {
-  let [count, setCount] = useState(1);
-  let previous = usePrevious(count);
-  let [ref, { width }] = useMeasure();
-  let direction = count > previous ? 1 : -1;
+const ImageCarousel = ({ offerImages }) => {
+  const { count, direction, handleContinue, handlePrevious } =
+    useImageCarouselHelper();
 
   return (
-    <div className="mx-auto  flex w-full  flex-col items-center py-16 px-4">
-      <div className="flex w-full justify-between">
-        <button
-          onClick={() => setCount(count - 1)}
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-white hover:bg-gray-200"
-        >
-          <i className="fa-solid fa-chevron-left h-5 w-5 text-[20px]" />
-        </button>
-        <button
-          onClick={() => setCount(count + 1)}
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-white hover:bg-gray-200"
-        >
-          <i className="fa-solid fa-chevron-right h-5 w-5 text-[20px]" />
-        </button>
-      </div>
-      <div
-        ref={ref}
-        className="relative mt-8 flex h-28 w-1/2 items-center justify-center overflow-hidden bg-gray-700"
+    <AnimatePresence>
+      <motion.div
+        key={count}
+        initial={{
+          opacity: [0.9, 0.96, 1],
+          scale: direction >= 0 ? [1.01, 0.5, 1] : [0.99, 1.5, 1],
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+        }}
+        transition={{
+          duration: 0.3,
+          opacity: { delay: 0.2 },
+          scale: { ease: "easeInOut" },
+        }}
+        className="fixed top-0 left-0 bottom-0 hidden h-screen w-6/12 items-center justify-center rounded-r-[60px] bg-black bg-cover bg-center shadow-md 1200:flex"
+        style={{ backgroundImage: `url(${offerImages[count]})` }}
       >
-        <AnimatePresence custom={{ direction, width }}>
-          <motion.div
-            key={count}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            custom={{ direction, width }}
-            className={`${
-              colors[Math.abs(count) % 4]
-            } absolute flex h-20 w-20 items-center justify-center text-xl font-bold text-white`}
-          >
-            {count}
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </div>
+        <div className="flex w-full items-center justify-between px-6 opacity-60">
+          <button
+            onClick={() => handlePrevious(offerImages)}
+            aria-hidden="true"
+            className="fa-solid fa-chevron-left flex h-[84px] w-[84px] items-center justify-center text-[36px] text-white"
+          />
+          <button
+            onClick={() => handleContinue(offerImages)}
+            aria-hidden="true"
+            className="fa-solid fa-chevron-right flex h-[84px] w-[84px] items-center justify-center text-[36px] text-white"
+          />
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
-export default ImageCarousel
-
-let colors = ["bg-red-500", "bg-blue-500", "bg-green-500", "bg-yellow-500"];
-let variants = {
-  enter: ({ direction, width }) => ({
-    x: direction * width,
-  }),
-  center: { x: 0 },
-  exit: ({ direction, width }) => ({
-    x: direction * -width,
-  }),
-};
-
-function usePrevious(state) {
-  let [tuple, setTuple] = useState([state, null]);
-  if (tuple[1] !== state) {
-    setTuple([tuple[1], state]);
-  }
-
-  return tuple[0];
-}
+export default ImageCarousel;

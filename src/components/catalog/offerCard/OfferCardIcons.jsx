@@ -11,7 +11,7 @@ const OfferCardIcons = ({ liked, onLikeCallback, onLocationCallback }) => {
         onClick={onLikeCallback}
         className={`fa-solid fa-heart ${
           liked ? "text-red-500" : "text-white/40"
-        } absolute right-2 top-2 text-2xl drop-shadow duration-300 hover:text-red-400 500:right-3 500:top-3 500:flex 1400:right-6 1400:top-6 1400:text-[36px]`}
+        } absolute right-2 top-2 text-2xl drop-shadow-sm duration-300 hover:text-red-400 500:right-3 500:top-3 500:flex 1400:right-6 1400:top-6 1400:text-[36px]`}
       />
     </>
   );

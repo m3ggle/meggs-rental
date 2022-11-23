@@ -1,37 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import Calendar from "../../../../../components/offerDetails/Calendar";
-import { useUrlManipulation } from "../../../../../hooks/urlManipulation/useUrlManipulation";
-import { useGetOffer } from "../../../../../hooks/useGetOffer";
+import CarSpecWrapper from "../../../../../components/offerDetails/CarSpecWrapper";
 import PreviewBasicInfo from "./components/PreviewBasicInfo";
 import PreviewButtons from "./components/PreviewButtons";
 import PreviewIcons from "./components/PreviewIcons";
 import PreviewImgs from "./components/PreviewImgs";
 import PreviewOwner from "./components/PreviewOwner";
+import { usePreviewLogic } from "./hooks/usePreviewLogic";
 
 const Preview = () => {
-  const { searchParams, getSingleParam } = useUrlManipulation();
-  const { getOffer } = useGetOffer("map");
-
-  const [show, setShow] = useState(getSingleParam("offerId") ? true : false);
-  const [offerInformation, setOfferInformation] = useState();
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const tempShow = getSingleParam("offerId") ? true : false;
-
-    if (tempShow) {
-      setShow(true);
-
-      const result = getOffer(getSingleParam("offerId"));
-      result ? setOfferInformation(result) : navigate("not-found");
-      return;
-    }
-
-    // if there is no offerId inside the url and show is true (prevent setting state )
-    show && setShow(false);
-  }, [searchParams, getSingleParam, navigate, getOffer, show]);
+  const { show, offerInformation } = usePreviewLogic();
 
   return (
     // <div className="flex absolute left-7 top-7 bottom-7 z-20 h-[640px] w-fit max-w-[360px] overflow-scroll rounded-xl bg-white shadow-xl">
@@ -50,12 +28,12 @@ const Preview = () => {
               className={`-my-2 min-h-fit w-full rounded-2xl dark:mt-2 dark:mb-1`}
             >
               <Calendar
-                offerDates={offerInformation.calendar}
+                dates={offerInformation.calendar}
                 shadow={true}
                 header={true}
               />
             </div>
-            {/* <CarSpecWrapper offerInformation={offerInformation} amount="preview" specs={carSpecData} mobile={false} /> */}
+            <CarSpecWrapper specs={offerInformation.carSpecs} amount="preview" />
             <PreviewOwner ownerId={offerInformation.ownerId} />
             <PreviewButtons offerId={offerInformation.offerId} />
           </>

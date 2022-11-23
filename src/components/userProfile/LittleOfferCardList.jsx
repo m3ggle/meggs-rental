@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ExampleData from "../../ExampleData";
-import MobileCatalogOfferCard from "../catalog/mobileCatalog/MobileCatalogOfferCard/MobileCatalogOfferCard";
+import MobileCatalogOfferCard from "../../pages/explore/map/components/mobileCatalog/MobileCatalogOfferCard/MobileCatalogOfferCard";
 import Btn from "../common/Btn";
 
 const LittleOfferCardList = ({ closeModal }) => {

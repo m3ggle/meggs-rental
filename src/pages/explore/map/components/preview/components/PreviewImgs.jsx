@@ -1,9 +1,9 @@
 import React from 'react'
-import Bmw1 from "../../../assets/img/bmw1.jpg";
-import Bmw2 from "../../../assets/img/bmw2.jpg";
-import Bmw3 from "../../../assets/img/bmw3.jpg";
-import Bmw4 from "../../../assets/img/bmw4.jpg";
-import Bmw5 from "../../../assets/img/bmw5.jpg";
+import Bmw1 from "../../../../../../assets/img/bmw1.jpg";
+import Bmw2 from "../../../../../../assets/img/bmw2.jpg";
+import Bmw3 from "../../../../../../assets/img/bmw3.jpg";
+import Bmw4 from "../../../../../../assets/img/bmw4.jpg";
+import Bmw5 from "../../../../../../assets/img/bmw5.jpg";
 const picArray = [Bmw1, Bmw2, Bmw3, Bmw4, Bmw5];
 
 const PreviewImgs = () => {

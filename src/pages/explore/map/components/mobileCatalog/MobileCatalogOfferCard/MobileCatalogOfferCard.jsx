@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
-import styles from "../../../../style";
+import { useHandleLocationNavigation } from "../../../../../../hooks/catalog/useHandleLocationNavigation";
+import styles from "../../../../../../style";
 import MobileCatalogOfferCardIcons from "./MobileCatalogOfferCardIcons";
 import MobileCatalogOfferCardImgPart from "./MobileCatalogOfferCardImgPart";
 import MobileCatalogOfferCardInfoPart from "./MobileCatalogOfferCardInfoPart";

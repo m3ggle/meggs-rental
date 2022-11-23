@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import Btn from '../../common/Btn';
+import React from "react";
+import { Link } from "react-router-dom";
+import Btn from "../../../../../../components/common/Btn";
 
 const PreviewButtons = () => {
   return (
@@ -13,6 +13,6 @@ const PreviewButtons = () => {
       </Link>
     </div>
   );
-}
+};
 
-export default PreviewButtons
+export default PreviewButtons;

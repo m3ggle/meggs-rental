@@ -1,6 +1,6 @@
 import React from "react";
 import BottomPart from "../../../components/authentication/BottomPart";
-import Preview from "../../../components/preview/Preview";
+import Preview from "../../explore/map/components/preview/Preview";
 
 const UploadPrev = ({ handleCallback }) => {
   const upload = () => {

@@ -1,13 +1,7 @@
-import React from 'react'
-import MobileCatalog from '../../components/catalog/mobileCatalog/MobileCatalog'
-import Preview from '../../components/preview/Preview'
+import React from "react";
 
 const TermsOfService = () => {
-  return (
-    <div className='p-48'>
-      <Preview />
-    </div>
-  )
-}
+  return <div className="p-48"></div>;
+};
 
-export default TermsOfService
+export default TermsOfService;

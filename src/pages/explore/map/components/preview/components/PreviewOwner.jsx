@@ -1,5 +1,5 @@
-import React from 'react'
-import UserProfileSmall from '../../userProfile/UserProfileSmall';
+import React from "react";
+import UserProfileSmall from "../../../../../../components/userProfile/UserProfileSmall";
 
 const PreviewOwner = () => {
   return (
@@ -13,6 +13,6 @@ const PreviewOwner = () => {
       />
     </div>
   );
-}
+};
 
-export default PreviewOwner
+export default PreviewOwner;

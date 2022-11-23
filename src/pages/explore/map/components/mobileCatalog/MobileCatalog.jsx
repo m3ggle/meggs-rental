@@ -1,5 +1,5 @@
-import ExampleData from "../../../ExampleData";
-import SearchFilter from "../../filter/SearchFilter";
+import SearchFilter from "../../../../../components/filter/SearchFilter";
+import ExampleData from "../../../../../ExampleData";
 import MobileCatalogList from "./MobileCatalogList";
 
 const { exampleOffers } = ExampleData();

@@ -19,7 +19,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Calendar = ({shadowUI, header}) => {
+const Calendar = ({ dates, shadowUI, header }) => {
+  // instead of selectDay, selectDays (dates props)
+  // implement when dates are in between selectedDays then they have a different color
+  // implement popover to signal that it is available
+  // 
+
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today); // selected day
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy")); // Nov-2022

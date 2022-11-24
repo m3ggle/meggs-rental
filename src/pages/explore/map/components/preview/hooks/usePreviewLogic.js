@@ -6,13 +6,12 @@ import { useGetOffer } from "../../../../../../hooks/useGetOffer";
 export const usePreviewLogic = () => {
       const { searchParams, getSingleParam } = useUrlManipulation();
       const { getOffer } = useGetOffer("map");
+      const navigate = useNavigate();
 
       const [show, setShow] = useState(
         getSingleParam("offerId") ? true : false
       );
       const [offerInformation, setOfferInformation] = useState();
-
-      const navigate = useNavigate();
 
       useEffect(() => {
         const tempShow = getSingleParam("offerId") ? true : false;

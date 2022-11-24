@@ -1,7 +1,6 @@
 import React from 'react'
 import Calendar from '../../../../components/offerDetails/Calendar';
 import styles from '../../../../style';
-import GoogleMap from "../../../../assets/img/googleMap.png";
 
 const OfferDetailsCalLoc = () => {
   return (
@@ -23,8 +22,7 @@ const OfferDetailsCalLoc = () => {
           Location
         </span>
         <div
-          className={`${styles.darkModeBorder} flex h-[256px] w-full flex-col gap-y-1 rounded-3xl bg-white bg-cover bg-center shadow-md dark:bg-dmGrey900`}
-          style={{ backgroundImage: `url(${GoogleMap})` }}
+          className={`${styles.darkModeBorder} flex h-[256px] w-full flex-col gap-y-1 rounded-3xl bg-pink-300 bg-cover bg-center shadow-md dark:bg-dmGrey900`}
         />
       </div>
     </div>

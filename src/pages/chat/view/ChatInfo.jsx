@@ -1,18 +1,10 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import Bmw1 from "../../../assets/img/bmw1.jpg";
-import Bmw2 from "../../../assets/img/bmw2.jpg";
-import Bmw3 from "../../../assets/img/bmw3.jpg";
-import Bmw4 from "../../../assets/img/bmw4.jpg";
-import Bmw5 from "../../../assets/img/bmw5.jpg";
-import GoogleMap from "../../../assets/img/googleMap.png";
 import Btn from "../../../components/common/Btn";
 import Calendar from "../../../components/offerDetails/Calendar";
 import UserProfileSmall from "../../../components/userProfile/UserProfileSmall";
 import styles from "../../../style";
-
-const picArray = [Bmw1, Bmw2, Bmw3, Bmw4, Bmw5];
 
 const ChatInfo = ({ isOpen, closeModal }) => {
   const navigate = useNavigate()
@@ -89,13 +81,13 @@ const ChatInfo = ({ isOpen, closeModal }) => {
                     Original Offer - Snippet
                   </span>
                   <div className="flex h-fit w-full gap-x-2 overflow-x-scroll rounded-lg">
-                    {picArray.map((pic, index) => (
+                    {/* {picArray.map((pic, index) => (
                       <div
                         key={index}
                         className="h-[220px] w-40 min-w-[160px] rounded-lg bg-slate-100 bg-cover bg-center shadow"
                         style={{ backgroundImage: `url(${pic})` }}
                       ></div>
-                    ))}
+                    ))} */}
                   </div>
                   <div className="flex flex-col gap-y-1">
                     <div
@@ -151,8 +143,7 @@ const ChatInfo = ({ isOpen, closeModal }) => {
                   {/* location */}
                   <div className="flex w-full flex-col">
                     <div
-                      className={`${styles.darkModeBorder} flex h-[256px] w-full flex-col gap-y-1 rounded-3xl bg-white bg-cover bg-center shadow-md dark:bg-dmGrey900`}
-                      style={{ backgroundImage: `url(${GoogleMap})` }}
+                      className={`${styles.darkModeBorder} flex h-[256px] w-full flex-col gap-y-1 rounded-3xl bg-pink-300 bg-cover bg-center shadow-md dark:bg-dmGrey900`}
                     />
                   </div>
                   <Btn

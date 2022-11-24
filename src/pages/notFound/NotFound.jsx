@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import NotFoundBg from "../../assets/img/notFound.jpg"
+import NotFoundBg from "../../assets/img/notFound.webp"
 import Btn from '../../components/common/Btn'
 
 const NotFound = () => {

@@ -367,7 +367,8 @@ const chatPreviews = [
 const exampleOffers = [
   {
     name: "VW Golf",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
     location: {
       lat: 52.4199,
@@ -414,7 +415,8 @@ const exampleOffers = [
   },
   {
     name: "Ford Focus",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "4469d428-3ee6-42a3-ad96-a5e42b481379",
     location: {
       lat: 52.4199,
@@ -461,7 +463,8 @@ const exampleOffers = [
   },
   {
     name: "VW Tiguan",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "a36e91f5-c9f3-4bc1-9b26-08099879303c",
     location: {
       lat: 52.4182,
@@ -508,7 +511,8 @@ const exampleOffers = [
   },
   {
     name: "Skoda Octavia",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "cc4ae289-e33b-4db7-b0a2-1760bf586121",
     location: {
       lat: 52.418,
@@ -555,7 +559,8 @@ const exampleOffers = [
   },
   {
     name: "VW Passat",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "6752948f-37fe-4913-8f9a-be23e01bcbc0",
     location: {
       lat: 52.4184817,
@@ -602,7 +607,8 @@ const exampleOffers = [
   },
   {
     name: "Opel Corsea",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "85b76ab2-3cb1-4da2-9a3a-e712b4c4ef73",
     location: {
       lat: 52.41673,
@@ -649,11 +655,12 @@ const exampleOffers = [
   },
   {
     name: "VW T-Roc",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "da0d15a5-a42d-49c1-8694-0ce3078462ee",
     location: {
-      lat: 123,
-      lon: 321,
+      lat: 52.520008,
+      lon: 13.404954,
       street: "Harry-S.-Truman-Allee",
       number: 27,
       city: "Berlin",
@@ -696,7 +703,8 @@ const exampleOffers = [
   },
   {
     name: "BMW 3-Series",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "506a01d3-322b-47f0-9e7e-62250e882776",
     location: {
       lat: 52.41904,
@@ -743,7 +751,8 @@ const exampleOffers = [
   },
   {
     name: "VW Polo",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "18c430f6-c1ba-466e-8397-53cbd3608293",
     location: {
       lat: 52.41914,
@@ -790,7 +799,8 @@ const exampleOffers = [
   },
   {
     name: "BMW Mini",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "154eb406-9729-4435-902e-25df689762f0",
     location: {
       lat: 52.4157479,
@@ -837,7 +847,8 @@ const exampleOffers = [
   },
   {
     name: "Toyota Yaris",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "0c4441e3-e6e1-4010-a319-4946349df0f2",
     location: {
       lat: 52.4204147,
@@ -884,7 +895,8 @@ const exampleOffers = [
   },
   {
     name: "Renault Clio",
-    extraInfo: "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    extraInfo:
+      "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "58f2899f-85d3-46fa-a0d3-99a0eae2f07d",
     location: {
       lat: 52.4206,

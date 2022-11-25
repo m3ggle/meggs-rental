@@ -1,6 +1,7 @@
 import React from "react";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import ExampleData from "../../../ExampleData";
+import Help from "../../help/Help";
 import MapView from "./components/mapView/MapView";
 import MobileCatalog from "./components/mobileCatalog/MobileCatalog";
 import Preview from "./components/preview/Preview";

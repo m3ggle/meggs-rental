@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React, { Fragment, useEffect, useState } from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
 
-const Autocomplete = ({ label, onChange, error, placeholder, itemList, value }) => {
+const Autocomplete = ({ label, onChange, onInputChange, error, placeholder, itemList, value }) => {
   const [selected, setSelected] = useState(value ? value : placeholder);
   const [query, setQuery] = useState("");
 
@@ -21,6 +21,11 @@ const Autocomplete = ({ label, onChange, error, placeholder, itemList, value }) 
   useEffect(() => {
     itemList.includes(selected) && onChange(selected);
   }, [selected, onChange, itemList]);
+
+  const handleChange = (e) => {
+    setQuery(e.target.value)
+    onInputChange()
+  }
 
   return (
     <Combobox
@@ -56,7 +61,8 @@ const Autocomplete = ({ label, onChange, error, placeholder, itemList, value }) 
                     : "text-lmGrey600 placeholder:text-dmGrey300 dark:text-dmGrey25 placeholder:dark:text-dmGrey300"
                 }  focus:outline-none`}
                 displayValue={selected}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={handleChange}
+                // onChange={(event) => setQuery(event.target.value)}
               />
               <Combobox.Button>
                 <i

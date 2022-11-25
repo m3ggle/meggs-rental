@@ -1,4 +1,5 @@
 import SearchFilter from "../../../../../components/filter/SearchFilter";
+import Autocomplete from "../../../../../components/input/Autocomplete";
 import ExampleData from "../../../../../ExampleData";
 import MobileCatalogList from "./MobileCatalogList";
 

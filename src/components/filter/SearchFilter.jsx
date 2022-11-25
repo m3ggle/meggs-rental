@@ -1,36 +1,40 @@
-import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { useSearchParams } from "react-router-dom";
-import { cleanUpFilterData } from "../../helper/filter/cleanUpFilterData";
-import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { Controller } from "react-hook-form";
+import ExampleData from "../../ExampleData";
+import { useDebounce } from "../../hooks/useDebounce";
 import Btn from "../common/Btn";
-import TextInput from "../input/TextInput";
+import Autocomplete from "../input/Autocomplete";
 import FilterModal from "./FilterModal";
+import { useSearchFilter } from "./hooks/useSearchFilter";
+import axios from "axios"
+
 
 const SearchFilter = ({ name, label }) => {
-  const { control, handleSubmit, setValue } = useForm();
-  let [searchParams] = useSearchParams();
-  const { setSingleParam, deleteSingleParam, getSingleParam } =
-    useUrlManipulation();
+  const {
+    isOpen,
+    control,
+    onSubmit,
+    closeModal,
+    openModal,
+    handleSubmit,
+    handleDelete,
+  } = useSearchFilter();
 
-  let [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
+  const {debounce} = useDebounce()
 
-  const onSubmit = (data) => {
-    const cleanedUpSearch = cleanUpFilterData(data).search;
-    cleanedUpSearch && setSingleParam("search", cleanedUpSearch);
-  };
+  // autocomplete
+  const { citiesAutocomplete } = ExampleData();
+  const { city } = JSON.parse(localStorage.getItem("signUpData")) ?? false;
 
-  useEffect(() => {
-    setValue("search", searchParams.get("search"));
-  }, [setValue, searchParams]);
+  const [autoCompleteList, setAutoCompleteList] = useState([]);
 
-  const handleDelete = (inputName, inputValue) => {
-    setValue(inputName, inputValue);
-    deleteSingleParam(inputName);
-  };
+  const handleChange = debounce(() => mockFetchData("event"), 800);
 
+  const mockFetchData = () => {
+    console.log("blab")
+  }
+  
   return (
     <div>
       <form
@@ -45,7 +49,7 @@ const SearchFilter = ({ name, label }) => {
         </label>
         {/* input and error*/}
         <div className="flex w-full items-end gap-x-2">
-          <Controller
+          {/* <Controller
             name="search"
             control={control}
             defaultValue={
@@ -60,6 +64,27 @@ const SearchFilter = ({ name, label }) => {
                 value={field.value}
                 onBlur={field.onBlur}
                 onDelete={() => handleDelete("search", "")}
+                error={fieldState.error}
+              />
+            )}
+          /> */}
+          <Controller
+            name="city"
+            control={control}
+            rules={{
+              required: "City is required",
+            }}
+            render={({ field, fieldState }) => (
+              <Autocomplete
+                // placeholder={citiesAutocomplete.placeholder}
+                value={city ? city : undefined}
+                itemList={autoCompleteList}
+                onChange={() => {
+                  field.onChange();
+                  handleChange();
+                }}
+                onInputChange={handleChange}
+                label="What city you live in?"
                 error={fieldState.error}
               />
             )}

@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Logo from "./components/Logo";
@@ -25,58 +26,68 @@ import ProfileReviews from "./pages/profile/subpages/ProfileReviews";
 import TermsOfService from "./pages/termsOfService/TermsOfService";
 import Upload from "./pages/upload/Upload";
 import UserOffers from "./pages/userOffers/UserOffers";
+import {ReactQueryDevtools} from "react-query/devtools";
+
 
 export default function App() {
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
+  const queryClient = new QueryClient();
+
   return (
-    <div className="flex h-full w-full items-center justify-center bg-white dark:bg-dmGrey900">
-      <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white dark:bg-dmGrey900">
-        <Router>
-          <div className="hidden" aria-hidden="true">
-            <DropdownMode />
-          </div>
-          <Navbar isOpen={isOpen} closeModal={closeModal} />
-          <Logo isOpen={isOpen} openModal={openModal} />
-          <Routes>
-            <Route path="/explore/map" element={<Map />} />
-            <Route path="/explore/catalog" element={<Catalog />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/offer-details/:offerId" element={<OfferDetails />} />
+    <QueryClientProvider client={queryClient}>
+      <div className="flex h-full w-full items-center justify-center bg-white dark:bg-dmGrey900">
+        <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white dark:bg-dmGrey900">
+          <Router>
+            <div className="hidden" aria-hidden="true">
+              <DropdownMode />
+            </div>
+            <Navbar isOpen={isOpen} closeModal={closeModal} />
+            <Logo isOpen={isOpen} openModal={openModal} />
+            <Routes>
+              <Route path="/explore/map" element={<Map />} />
+              <Route path="/explore/catalog" element={<Catalog />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route
+                path="/offer-details/:offerId"
+                element={<OfferDetails />}
+              />
 
-            <Route path="/user-offers" element={<UserOffers />} />
-            <Route path="/upload" element={<Upload />} />
+              <Route path="/user-offers" element={<UserOffers />} />
+              <Route path="/upload" element={<Upload />} />
 
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/chat/sidebar" element={<ChatSidebar />} />
-            <Route path="/chat/chat-main/:chatId" element={<ChatMain />} />
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/chat/sidebar" element={<ChatSidebar />} />
+              <Route path="/chat/chat-main/:chatId" element={<ChatMain />} />
 
-            <Route path="/" element={<Homepage />} />
-            <Route path="/homepage" element={<Homepage />} />
+              <Route path="/" element={<Homepage />} />
+              <Route path="/homepage" element={<Homepage />} />
 
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/profile/account" element={<ProfileAccount />} />
-            <Route path="/profile/payments" element={<ProfilePayments />} />
-            <Route path="/profile/reviews" element={<ProfileReviews />} />
-            <Route
-              path="/profile/notification"
-              element={<ProfileNotification />}
-            />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/account" element={<ProfileAccount />} />
+              <Route path="/profile/payments" element={<ProfilePayments />} />
+              <Route path="/profile/reviews" element={<ProfileReviews />} />
+              <Route
+                path="/profile/notification"
+                element={<ProfileNotification />}
+              />
 
-            <Route path="/help" element={<Help />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/help" element={<Help />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
 
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
-        </Router>
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </Router>
+        </div>
       </div>
-    </div>
+      {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}
+    </QueryClientProvider>
   );
 }

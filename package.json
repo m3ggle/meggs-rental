@@ -5,6 +5,7 @@
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.3",
     "@headlessui/react": "^1.7.3",
+    "@mapbox/search-js-react": "^1.0.0-beta.14",
     "@popperjs/core": "^2.11.6",
     "@splinetool/react-spline": "^2.2.3",
     "@splinetool/runtime": "^0.9.133",
@@ -13,6 +14,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.2.0",
     "date-fns": "^2.29.3",
     "framer-motion": "^7.6.1",
     "leaflet": "^1.9.3",
@@ -23,6 +25,7 @@
     "react-icons": "^4.6.0",
     "react-leaflet": "^4.1.0",
     "react-map-gl": "^7.0.19",
+    "react-query": "^3.39.2",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.8",

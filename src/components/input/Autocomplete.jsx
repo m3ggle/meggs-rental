@@ -4,7 +4,15 @@ import { motion } from "framer-motion";
 import React, { Fragment, useEffect, useState } from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
 
-const Autocomplete = ({ label, onChange, onInputChange, error, placeholder, itemList, value }) => {
+const Autocomplete = ({
+  label,
+  onChange,
+  onInputChange,
+  error,
+  placeholder,
+  itemList,
+  value,
+}) => {
   const [selected, setSelected] = useState(value ? value : placeholder);
   const [query, setQuery] = useState("");
 
@@ -12,20 +20,24 @@ const Autocomplete = ({ label, onChange, onInputChange, error, placeholder, item
     query === ""
       ? itemList
       : itemList.filter((item) =>
-          item
+          item.name
             .toLowerCase()
             .replace(/\s+/g, "")
             .includes(query.toLowerCase().replace(/\s+/g, ""))
-      );
+        );
 
   useEffect(() => {
-    itemList.includes(selected) && onChange(selected);
-  }, [selected, onChange, itemList]);
+    const checkSelected = itemList.filter((item) => item.name === selected);
+    if (checkSelected) {
+      checkSelected.length > 0 && onChange(checkSelected[0]);
+    }
+    // itemList.includes(selected) && onChange(selected);
+  }, [selected]);
 
   const handleChange = (e) => {
-    setQuery(e.target.value)
-    onInputChange()
-  }
+    setQuery(e.target.value);
+    onInputChange(e.target.value);
+  };
 
   return (
     <Combobox
@@ -109,15 +121,15 @@ const Autocomplete = ({ label, onChange, onInputChange, error, placeholder, item
             leaveTo="transform opacity-0 scale-95"
             afterLeave={() => setQuery("")}
           >
-            <Combobox.Options className="absolute left-0 z-30 mt-20 flex w-full flex-col gap-y-1 rounded-lg bg-lmGrey50 py-2 px-2 shadow-sm dark:bg-dmGrey800">
+            <Combobox.Options className="absolute left-0 z-30 mt-14 flex min-h-[40px] w-full flex-col gap-y-1 rounded-lg bg-lmGrey50 py-2 px-2 shadow-sm dark:bg-dmGrey800">
               {filteredItems.length === 0 && query !== "" ? (
                 <div className="relative block cursor-default select-none truncate px-3 py-2 text-sm text-lmGrey600 dark:text-lmGrey100">
                   Nothing found.
                 </div>
               ) : (
-                filteredItems.map((item, itemIndex) => (
+                filteredItems.map((item) => (
                   <Combobox.Option
-                    key={itemIndex}
+                    key={item.id}
                     className={({ active }) =>
                       `flex w-full cursor-default select-none items-center gap-2 rounded-lg px-3 py-2 ${
                         active
@@ -125,7 +137,7 @@ const Autocomplete = ({ label, onChange, onInputChange, error, placeholder, item
                           : "bg-lmGrey50 dark:bg-dmGrey800"
                       } duration-300`
                     }
-                    value={item}
+                    value={item.name}
                   >
                     {({ selected }) => (
                       <>
@@ -140,7 +152,7 @@ const Autocomplete = ({ label, onChange, onInputChange, error, placeholder, item
                             selected ? "font-semibold" : "font-medium"
                           }`}
                         >
-                          {item}
+                          {item.name}
                         </span>
                       </>
                     )}

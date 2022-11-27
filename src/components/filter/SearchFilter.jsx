@@ -3,7 +3,7 @@ import FilterModal from "./FilterModal";
 import { useSearchFilter } from "./hooks/useSearchFilter";
 import InputChoice from "./InputChoice";
 
-const SearchFilter = ({ name, label }) => {
+const SearchFilter = ({ name, label, showSubmitButton }) => {
   const {
     isOpen,
     control,
@@ -38,12 +38,14 @@ const SearchFilter = ({ name, label }) => {
             onClick={openModal}
             className={`fa-solid fa-filter flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
           />
+          {(showSubmitButton === undefined || showSubmitButton === true) && (
           <Btn
             type="submit"
             uiType="primary"
             icon="fa-solid fa-chevron-right"
             onClick={handleSubmit}
           />
+          )}
         </div>
       </form>
       <FilterModal isOpen={isOpen} closeModal={closeModal} />

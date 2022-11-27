@@ -87,20 +87,20 @@ const Autocomplete = ({
                 // onChange={(event) => setQuery(event.target.value)}
               />
               {/* delete btn */}
-              {selected !== placeholder && (
                 <i
                   onClick={handleDelete}
                   className={`${
                     error
                       ? "fa-solid fa-triangle-exclamation"
                       : "fa-solid fa-times"
-                  } min-w[14px] h-min-[14px] flex h-[14px] w-[14px] items-center justify-center text-[14px] ${
+                  }
+                  ${selected?.length > 0 || query.length > 0 ? "flex" : "hidden"}
+                  min-w[14px] h-min-[14px] h-[14px] w-[14px] items-center justify-center text-[14px] duration-300 ${
                     error
                       ? "text-red-300 dark:text-red-100"
                       : "text-lmGrey600 dark:text-dmGrey25"
-                  }  `}
+                  }`}
                 />
-              )}
               <Combobox.Button>
                 <i
                   className={`${

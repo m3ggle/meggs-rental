@@ -5,44 +5,8 @@ import { useDebounce } from "../../hooks/useDebounce";
 import Autocomplete from "../input/Autocomplete";
 import { useAutocompleteApi } from "./hooks/useAutocompleteApi";
 
-const fakeList = [
-  {
-    id: "123dwe23e12w",
-    name: "Dresden, Saxony, Germany",
-    extraInfo: {
-      bounds: [
-        [50.974971, 13.579366],
-        [51.177761, 13.966115],
-      ],
-      center: [13.738144, 51.049329],
-    },
-  },
-  {
-    id: "123dwewed23e12w",
-    name: "Dresdin, Saxony, Germany",
-    extraInfo: {
-      bounds: [
-        [50.974971, 13.579366],
-        [51.177761, 13.966115],
-      ],
-      center: [13.738144, 51.049329],
-    },
-  },
-  {
-    id: "12323e12w",
-    name: "Drestan, Saxony, Germany",
-    extraInfo: {
-      bounds: [
-        [50.974971, 13.579366],
-        [51.177761, 13.966115],
-      ],
-      center: [13.738144, 51.049329],
-    },
-  },
-];
-
 const MobileCatalogAutocomplete = ({ control }) => {
-  const { setArrayOfParams, deleteArrayOfParams } = useUrlManipulation();
+  const { getSingleParam, setArrayOfParams, deleteSingleParam, deleteArrayOfParams } = useUrlManipulation();
 
   const [inputValue, setInputValue] = useState("");
   const [center, setCenter] = useState([])
@@ -88,14 +52,21 @@ const MobileCatalogAutocomplete = ({ control }) => {
   }
 
   useEffect(() => {
-    if (center.length > 1) {
+    if (center.length > 1 && inputValue.length >= 3) {
       const urlPrep = { lon: center[0], lat: center[1], city: inputValue};
       setArrayOfParams(urlPrep);
     } else {
-      const urlPrep = ["lon", "lat", "city"];
-      deleteArrayOfParams(urlPrep);
+      deleteSingleParam("city");
+      // const urlPrep = ["lon", "lat", "city"];
+      // deleteArrayOfParams(urlPrep);
     }
   }, [center, setArrayOfParams, deleteArrayOfParams]);
+
+  const handleDelete = () => {
+    setInputValue("")
+    setItemList([])
+    deleteSingleParam("city")
+  }
 
   return (
     <>
@@ -105,14 +76,16 @@ const MobileCatalogAutocomplete = ({ control }) => {
         render={({ field, fieldState }) => (
           <Autocomplete
             placeholder="Dresden..."
-            value={field.value}
+            value={getSingleParam("city") ? getSingleParam("city") : null}
             itemList={itemList}
             onChange={(callbackObject) => {
               field.onChange(callbackObject.name);
               handleInputChange(callbackObject.name);
               handleSelect(callbackObject);
             }}
+            isLoading={isLoading}
             onBlur={field.onBlur}
+            onDelete={handleDelete}
             onInputChange={handleInputChange}
             error={fieldState.error}
           />

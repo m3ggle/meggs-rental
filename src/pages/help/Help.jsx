@@ -11,7 +11,7 @@ const Help = () => {
 
   return (
     <div className="h-screen w-full">
-      <MapView offers={exampleOffers} />
+      {/* <MapView offers={exampleOffers} /> */}
       <div className="absolute right-7 top-7 z-20 h-fit w-fit">
         <MobileCatalog />
       </div>

@@ -49,7 +49,6 @@ const MobileCatalogAutocomplete = ({ control }) => {
   const [itemList, setItemList] = useState([]);
 
   const successFunc = (data) => {
-    console.log("success", data.data.features);
     const tempList = data.data.features.map((feature) => {
       return {
         id: feature.id,
@@ -76,15 +75,18 @@ const MobileCatalogAutocomplete = ({ control }) => {
 
   useEffect(() => {
     if (inputValue.length >= 3) {
-      console.log(inputValue)
       refetch();
     }
   }, [inputValue, refetch]);
 
   const { debounce } = useDebounce();
-  const handleChange = debounce((e) => setInputValue(e), 800);
+  const handleInputChange = debounce((e) => setInputValue(e), 800);
 
-  const handleUrlUpdate = (callbackObject) => setCenter(callbackObject.extraInfo.center)
+  const handleSelect = (callbackObject) => {
+    setInputValue(callbackObject.name)
+    setCenter(callbackObject.extraInfo.center)
+  }
+
   useEffect(() => {
     if (center.length > 1) {
       const urlPrep = { lon: center[0], lat: center[1], city: inputValue};
@@ -94,7 +96,6 @@ const MobileCatalogAutocomplete = ({ control }) => {
       deleteArrayOfParams(urlPrep);
     }
   }, [center, setArrayOfParams, deleteArrayOfParams]);
-
 
   return (
     <>
@@ -108,11 +109,11 @@ const MobileCatalogAutocomplete = ({ control }) => {
             itemList={itemList}
             onChange={(callbackObject) => {
               field.onChange(callbackObject.name);
-              handleChange(callbackObject.name);
-              handleUrlUpdate(callbackObject);
+              handleInputChange(callbackObject.name);
+              handleSelect(callbackObject);
             }}
             onBlur={field.onBlur}
-            onInputChange={handleChange}
+            onInputChange={handleInputChange}
             error={fieldState.error}
           />
         )}

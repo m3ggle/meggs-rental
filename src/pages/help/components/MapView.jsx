@@ -1,9 +1,20 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Map, { Marker } from "react-map-gl";
+import { useMapContext } from "../../../context/map/mapContext";
 import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipulation";
+import { useFlyTo } from "../hooks/mapView/useFlyTo";
+import { useHandleMapInit } from "../hooks/mapView/useHandleMapInit";
+import { useHandleMoveEnd } from "../hooks/mapView/useHandleMoveEnd";
+import { useMarkerLogic } from "../hooks/mapView/useMarkerLogic";
 
 const MapView = ({ offers }) => {
-  const { searchParams, setSingleParam, getSingleParam } = useUrlManipulation();
+  // gets pass the enlarged bounds
+  // when map changes, check if the bounds are still in the enlarged bounds
+  // if not callback to parent for new offers and more
+
+  const { flyTo, dispatchMap } = useMapContext();
+
+  const { setSingleParam } = useUrlManipulation();
   const handleMarkerClick = (id) => setSingleParam("offerId", id);
 
   // map stuff
@@ -11,7 +22,7 @@ const MapView = ({ offers }) => {
     "pk.eyJ1IjoibTFnZ2xlIiwiYSI6ImNsYXVtaHM0ejA1eTgzdm1wMmRkaDBnNDAifQ.ayNDhREPUzI4mBOyVjor6A";
   const mapRef = useRef();
 
-  const [viewState, setViewState] = useState({
+  const [position, setPosition] = useState({
     latitude: 52.4199,
     longitude: 13.29384,
     zoom: 14,
@@ -23,40 +34,29 @@ const MapView = ({ offers }) => {
     mapboxAccessToken: MAPBOX_TOKEN,
   });
 
-  const [activeMarker, setActiveMarker] = useState();
-  const [hoverMarker, setHoverMarker] = useState();
+  // functionality after the drag movement stops
+  const { handleMoveEnd } = useHandleMoveEnd({
+    mapRef,
+    setPosition,
+  });
 
-  const handleMoveEnd = useCallback((e) => {
-    console.log(mapRef.current.getBounds());
-    console.log(mapRef.current);
-    console.log(
-      "lat: ",
-      e.viewState.latitude,
-      "long: ",
-      e.viewState.latitude,
-      "zoom: ",
-      e.viewState.latitude
-    );
-  }, []);
+  // Markers (active and hover)
+  const { activeMarker, hoverMarker } = useMarkerLogic();
 
-  useEffect(() => {
-    const currentUrlOfferId = getSingleParam("offerId");
-      setActiveMarker(currentUrlOfferId);
-      setHoverMarker(undefined)
-  }, [searchParams, setActiveMarker, getSingleParam]);
+  // flyTo functionality
+  useFlyTo({ flyTo, mapRef, dispatchMap });
 
-  useEffect(() => {
-    const currentUrlOfferId = getSingleParam("hoverId");
-    setHoverMarker(currentUrlOfferId);
-  }, [searchParams, setHoverMarker, getSingleParam]);
+  // init
+  const { handleInit } = useHandleMapInit(mapRef);
 
   return (
     <Map
-      {...viewState}
+      {...position}
       {...staticState}
       ref={mapRef}
-      onMove={(evt) => setViewState(evt.viewState)}
+      onMove={(evt) => setPosition(evt.position)}
       onMoveEnd={handleMoveEnd}
+      onLoad={handleInit}
     >
       {offers.map((offer) => (
         <Marker

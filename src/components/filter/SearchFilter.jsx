@@ -17,7 +17,9 @@ const SearchFilter = ({ name, label, showSubmitButton }) => {
   return (
     <div>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={() => {
+          handleSubmit(onSubmit);
+        }}
         className="flex w-full max-w-[340px] flex-col gap-y-2"
       >
         <label
@@ -39,12 +41,12 @@ const SearchFilter = ({ name, label, showSubmitButton }) => {
             className={`fa-solid fa-filter flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
           />
           {(showSubmitButton === undefined || showSubmitButton === true) && (
-          <Btn
-            type="submit"
-            uiType="primary"
-            icon="fa-solid fa-chevron-right"
-            onClick={handleSubmit}
-          />
+            <Btn
+              type="submit"
+              uiType="primary"
+              icon="fa-solid fa-chevron-right"
+              onClick={handleSubmit}
+            />
           )}
         </div>
       </form>

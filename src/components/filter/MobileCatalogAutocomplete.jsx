@@ -1,19 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
 import { useDebounce } from "../../hooks/useDebounce";
+import { useHandleFly } from "../../hooks/useHandleFly";
 import Autocomplete from "../input/Autocomplete";
 import { useAutocompleteApi } from "./hooks/useAutocompleteApi";
 
 const MobileCatalogAutocomplete = ({ control }) => {
-  const { getSingleParam, setArrayOfParams, deleteSingleParam, deleteArrayOfParams } = useUrlManipulation();
+  const {
+    getSingleParam,
+    setArrayOfParams,
+    deleteSingleParam,
+    deleteArrayOfParams,
+  } = useUrlManipulation();
+
+  const { handleFly } = useHandleFly();
 
   const [inputValue, setInputValue] = useState("");
-  const [center, setCenter] = useState([])
+  const [center, setCenter] = useState([]);
   const [itemList, setItemList] = useState([]);
 
   const successFunc = (data) => {
-    const tempList = data.data.features.map((feature) => {
+    const filteredList = data.data.features.filter(
+      (feature) =>
+        feature.id && feature.place_name && feature.center && feature.bbox
+    );
+
+    const tempList = filteredList.map((feature) => {
       return {
         id: feature.id,
         name: feature.place_name,
@@ -26,6 +39,7 @@ const MobileCatalogAutocomplete = ({ control }) => {
         },
       };
     });
+
     setItemList(tempList);
   };
   const errorFunc = (data) => console.log("error", data.data);
@@ -47,26 +61,30 @@ const MobileCatalogAutocomplete = ({ control }) => {
   const handleInputChange = debounce((e) => setInputValue(e), 800);
 
   const handleSelect = (callbackObject) => {
-    setInputValue(callbackObject.name)
-    setCenter(callbackObject.extraInfo.center)
-  }
+    setInputValue(callbackObject.name);
+    setCenter(callbackObject.extraInfo.center);
+    handleFly(
+      callbackObject.extraInfo.center[0],
+      callbackObject.extraInfo.center[1]
+    );
+    // const stringifiedBounds = JSON.stringify(callbackObject.extraInfo.bounds);
+    // setSingleParam("bounds", JSON.stringify(stringifiedBounds));
+  };
 
   useEffect(() => {
     if (center.length > 1 && inputValue.length >= 3) {
-      const urlPrep = { lon: center[0], lat: center[1], city: inputValue};
+      const urlPrep = { lng: center[0], lat: center[1] };
       setArrayOfParams(urlPrep);
-    } else {
-      deleteSingleParam("city");
-      // const urlPrep = ["lon", "lat", "city"];
-      // deleteArrayOfParams(urlPrep);
+      return;
     }
+    deleteSingleParam("city");
   }, [center, setArrayOfParams, deleteArrayOfParams]);
 
   const handleDelete = () => {
-    setInputValue("")
-    setItemList([])
-    deleteSingleParam("city")
-  }
+    setInputValue("");
+    setItemList([]);
+    deleteSingleParam("city");
+  };
 
   return (
     <>

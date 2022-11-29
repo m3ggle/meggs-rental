@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MapProvider, useMapContext } from "../../context/map/mapContext";
+import { useMapContext } from "../../context/map/mapContext";
 import ExampleData from "../../ExampleData";
 import { useFilterByCustomObject } from "../../hooks/FilterByCustomObject/useFilterByCustomObject";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
@@ -36,8 +36,7 @@ const Help = () => {
   const [filterTypeSearchParamsState, setFilterTypeSearchParamsState] =
     useState({});
 
-  const [currentBounds, setCurrentBounds] = useState()
-  
+  const {bounds} = useMapContext()
   const { searchParams } = useUrlManipulation();
   const { filterByCustomObject } = useFilterByCustomObject();
 
@@ -67,8 +66,10 @@ const Help = () => {
   }, [searchParams]);
 
   // bounds
-  useEffect(() => { }, [
-  ])
+  useEffect(() => { 
+    console.log("refetching")
+    // setOffers()
+  }, [bounds])
 
 
   return (

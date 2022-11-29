@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Map, { Marker } from "react-map-gl";
+import Map, { Marker, Layer } from "react-map-gl";
 import { useMapContext } from "../../../context/map/mapContext";
 import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipulation";
 import { useFlyTo } from "../hooks/mapView/useFlyTo";
@@ -45,6 +45,16 @@ const MapView = ({ offers }) => {
   // init
   const { handleInit } = useHandleMapInit(mapRef);
 
+const parkLayer = {
+  id: "landuse_park",
+  type: "fill",
+  source: "",
+  
+  // paint: {
+  //   "fill-color": "transparent",
+  // },
+};
+
   return (
     <Map
       {...position}
@@ -64,10 +74,10 @@ const MapView = ({ offers }) => {
             height: "44px",
             zIndex:
               activeMarker === offer.offerId
-                ? "20"
+                ? "30"
                 : hoverMarker === offer.offerId
-                ? "10"
-                : "0",
+                ? "20"
+                : "10",
           }}
           anchor="bottom"
           onClick={() => handleMarkerClick(offer.offerId)}

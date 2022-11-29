@@ -14,8 +14,11 @@ export const useUrlManipulation = () => {
   );
   const setArrayOfParams = useCallback(
     (desiredParams = {}) => {
-      const newParams = new URLSearchParams(desiredParams);
-      setSearchParams(newParams);
+      const allParams = getAllParams();
+      for (const [key, value] of Object.entries(desiredParams)) {
+        allParams[key] = value;
+      }
+      setSearchParams(allParams);
     },
     [setSearchParams]
   );
@@ -53,7 +56,11 @@ export const useUrlManipulation = () => {
     },
     [searchParams, setSearchParams]
   );
-  const deleteArrayOfParams = () => {};
+  const deleteArrayOfParams = useCallback((desiredParams = []) => {
+    console.log("annoyed")
+    desiredParams.map((key) => searchParams.delete(key));
+    setSearchParams(searchParams);
+  }, [searchParams, setSearchParams])
   const deleteAllParams = useCallback(() => {
     searchParams.forEach((val, key) => searchParams.delete(key));
     setSearchParams(searchParams);
@@ -67,6 +74,7 @@ export const useUrlManipulation = () => {
     getArrayOfParams,
     getAllParams,
     deleteSingleParam,
+    deleteArrayOfParams,
     deleteAllParams,
   };
 };

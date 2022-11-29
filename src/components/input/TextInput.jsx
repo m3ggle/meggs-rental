@@ -15,7 +15,6 @@ const TextInput = ({
   type,
   filter,
 }) => {
-
   const renderSecondIcon = () => {
     switch (secondIcon) {
       case "fa-solid fa-times":

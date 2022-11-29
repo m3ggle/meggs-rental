@@ -11,7 +11,7 @@ export const useRenderFilter = () => {
     } else {
       return (
         <div className="w-[312px]">
-          <SearchFilter />
+          <SearchFilter choice="search" />
         </div>
       );
     }

@@ -10,8 +10,6 @@ import OfferCardInfoPart from "./OfferCardInfoPart";
 const OfferCard = ({ offerInformation, index }) => {
   const { offerId, liked, photoUrl, location } = offerInformation;
 
-  console.log(offerInformation)
-
   const navigate = useNavigate();
   const handleNavigation = () => navigate(`/offer-details/${offerId}`);
 

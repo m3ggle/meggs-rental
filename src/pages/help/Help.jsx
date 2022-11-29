@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { MapProvider } from "../../context/map/mapContext";
+import { MapProvider, useMapContext } from "../../context/map/mapContext";
 import ExampleData from "../../ExampleData";
 import { useFilterByCustomObject } from "../../hooks/FilterByCustomObject/useFilterByCustomObject";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
+import { useEnlargedBounds } from "../../hooks/useEnlargedBounds";
 import MobileCatalog from "../explore/map/components/mobileCatalog/MobileCatalog";
 import Preview from "../explore/map/components/preview/Preview";
 import MapView from "./components/MapView";
@@ -69,10 +70,11 @@ const Help = () => {
   useEffect(() => { }, [
   ])
 
+
   return (
-    <MapProvider>
+    
       <div className="h-screen w-full">
-        {/* <MapView offers={filteredOffers ?? offers} /> */}
+        <MapView offers={filteredOffers ?? offers} />
         <div className="absolute right-7 top-7 z-20 h-fit w-fit">
           <MobileCatalog offerList={filteredOffers ?? offers} />
         </div>
@@ -80,7 +82,7 @@ const Help = () => {
           <Preview />
         </div>
       </div>
-    </MapProvider>
+    
   );
 };
 

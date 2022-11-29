@@ -10,10 +10,11 @@ export function useMapContext() {
 
 export const MapProvider = ({ children }) => {
   const initialState = {
-    bounds: [],
-    enlargedBounds: [],
+    bounds: {},
+    enlargedBounds: {},
+    storedZoom: null,
     flyTo: false,
-    position: []
+    position: {}
   };
 
   const [state, dispatchMap] = useReducer(

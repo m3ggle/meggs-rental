@@ -4,7 +4,7 @@ import { useHandleMoveEnd } from "./useHandleMoveEnd";
 
 export const useHandleMapInit = (mapRef) => {
   const { setArrayOfParams, getArrayOfParams } = useUrlManipulation();
-  const { handlePreparation } = useHandleMoveEnd();
+  const { handlePreparation } = useHandleMoveEnd({ mapRef });
 
   const handleInit = useCallback(() => {
     const currentSearchParams = getArrayOfParams(["lat", "lng", "z"]);

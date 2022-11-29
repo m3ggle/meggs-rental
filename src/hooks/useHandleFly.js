@@ -8,7 +8,7 @@ export const useHandleFly = () => {
     (lng, lat, z) => {
       dispatchMap({
         type: "FLY",
-        payload: [lng, lat, z],
+        payload: { lng, lat, z },
       });
     },
     [dispatchMap]

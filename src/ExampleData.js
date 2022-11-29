@@ -943,11 +943,33 @@ const exampleOffers = [
   },
 ];
 
+const filterTypes = [
+  "search",
+
+  "startDate",
+  "endDate",
+  "startPriceDay",
+  "endPriceDay",
+  "startPriceWeek",
+  "endPriceWeek",
+  "endPriceMonth",
+  "startPriceMonth",
+
+  // carSpec
+  "color",
+  "fuelType",
+  "seats",
+  "smoking",
+  "transmission",
+  "trunkVolume",
+];
+
 const ExampleData = () => {
   return {
     carSpecData,
     previewSpecs,
     filterSelects,
+    filterTypes,
     userProfileBig,
     reviews,
     reviewRating,

@@ -3,11 +3,10 @@ import FilterModal from "./FilterModal";
 import { useSearchFilter } from "./hooks/useSearchFilter";
 import InputChoice from "./InputChoice";
 
-const SearchFilter = ({ name, label, showSubmitButton }) => {
+const SearchFilter = ({ name, label, showSubmitButton, choice }) => {
   const {
     isOpen,
     control,
-    onSubmit,
     closeModal,
     openModal,
     handleSubmit,
@@ -17,9 +16,7 @@ const SearchFilter = ({ name, label, showSubmitButton }) => {
   return (
     <div>
       <form
-        onSubmit={() => {
-          handleSubmit(onSubmit);
-        }}
+        // onSubmit={handleSubmit(onSubmit)}
         className="flex w-full max-w-[340px] flex-col gap-y-2"
       >
         <label
@@ -31,7 +28,7 @@ const SearchFilter = ({ name, label, showSubmitButton }) => {
         {/* input and error*/}
         <div className="flex w-full items-end gap-x-2">
           <InputChoice
-            choice="autocomplete"
+            choice={choice}
             control={control}
             handleDelete={handleDelete}
           />
@@ -42,10 +39,11 @@ const SearchFilter = ({ name, label, showSubmitButton }) => {
           />
           {(showSubmitButton === undefined || showSubmitButton === true) && (
             <Btn
-              type="submit"
+              type="button"
               uiType="primary"
               icon="fa-solid fa-chevron-right"
               onClick={handleSubmit}
+              // onClick={handleTest}
             />
           )}
         </div>

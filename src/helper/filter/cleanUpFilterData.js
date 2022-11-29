@@ -14,7 +14,7 @@ const activeCondition = (value) => {
   return (
     value !== undefined &&
     value !== "" &&
-    value.trim(" ").length > 0 &&
+    value?.trim(" ").length > 0 &&
     value !== "undefined"
   );
 };

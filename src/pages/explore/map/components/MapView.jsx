@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
-import Map, { Marker, Layer } from "react-map-gl";
-import { useMapContext } from "../../../context/map/mapContext";
-import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipulation";
-import { useFlyTo } from "../hooks/mapView/useFlyTo";
-import { useHandleMapInit } from "../hooks/mapView/useHandleMapInit";
-import { useHandleMoveEnd } from "../hooks/mapView/useHandleMoveEnd";
-import { useMarkerLogic } from "../hooks/mapView/useMarkerLogic";
+import Map, { Marker } from "react-map-gl";
+import { useMapContext } from "../../../../context/map/mapContext";
+import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
+import { useFlyTo } from "../hooks/useFlyTo";
+import { useHandleMapInit } from "../hooks/useHandleMapInit";
+import { useHandleMoveEnd } from "../hooks/useHandleMoveEnd";
+import { useMarkerLogic } from "../hooks/useMarkerLogic";
 
 const MapView = ({ offers }) => {
   const { flyTo, dispatchMap } = useMapContext();
@@ -45,15 +45,15 @@ const MapView = ({ offers }) => {
   // init
   const { handleInit } = useHandleMapInit(mapRef);
 
-const parkLayer = {
-  id: "landuse_park",
-  type: "fill",
-  source: "",
-  
-  // paint: {
-  //   "fill-color": "transparent",
-  // },
-};
+  const parkLayer = {
+    id: "landuse_park",
+    type: "fill",
+    source: "",
+
+    // paint: {
+    //   "fill-color": "transparent",
+    // },
+  };
 
   return (
     <Map

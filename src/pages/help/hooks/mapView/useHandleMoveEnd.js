@@ -3,7 +3,7 @@ import { useMapContext } from "../../../../context/map/mapContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 
 export const useHandleMoveEnd = ({ mapRef, setPosition }) => {
-  const { bounds, dispatchMap } = useMapContext();
+  const { dispatchMap } = useMapContext();
   const { setArrayOfParams } = useUrlManipulation();
 
   const convertBoundsSyntax = (bounds) => {
@@ -38,7 +38,6 @@ export const useHandleMoveEnd = ({ mapRef, setPosition }) => {
           position: { ...positionPrep },
         },
       });
-      console.log("dispatching tralala");
     },
     [dispatchMap]
   );

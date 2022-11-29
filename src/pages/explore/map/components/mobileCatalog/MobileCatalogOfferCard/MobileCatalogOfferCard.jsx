@@ -5,6 +5,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useHandleLocationNavigation } from "../../../../../../hooks/catalog/useHandleLocationNavigation";
 import { useUrlManipulation } from "../../../../../../hooks/urlManipulation/useUrlManipulation";
+import { useHandleFly } from "../../../../../../hooks/useHandleFly";
 import styles from "../../../../../../style";
 import MobileCatalogOfferCardIcons from "./MobileCatalogOfferCardIcons";
 import MobileCatalogOfferCardImgPart from "./MobileCatalogOfferCardImgPart";
@@ -20,9 +21,12 @@ const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
     navigate(`/offer-details/${offerId}`);
   };
 
+  const {handleFly} = useHandleFly()
+
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () => {
     closeModal && closeModal();
+    handleFly(location.lon, location.lat, 14)
     setSingleParam("offerId", offerId);
     // handleLocationNavigation(offerId, location);
   };

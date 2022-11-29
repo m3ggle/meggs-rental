@@ -3,7 +3,6 @@ import { useEffect } from "react";
 export const useFlyTo = ({ flyTo, mapRef, dispatchMap }) => {
   useEffect(() => {
     if (flyTo) {
-      console.log(flyTo);
       mapRef.current.flyTo({
         center: [flyTo.lng, flyTo.lat],
         essential: true,

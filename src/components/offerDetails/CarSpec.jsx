@@ -3,7 +3,6 @@ import React from "react";
 const CarSpec = ({title, value, icon}) => {
   const renderValue = () => {
     if (title === "Smoking" || title === "Eating") {
-      console.log("inhere")
       return value ? "Yes" : "No"  
     }
     return value

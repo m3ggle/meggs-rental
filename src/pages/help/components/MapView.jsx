@@ -8,10 +8,6 @@ import { useHandleMoveEnd } from "../hooks/mapView/useHandleMoveEnd";
 import { useMarkerLogic } from "../hooks/mapView/useMarkerLogic";
 
 const MapView = ({ offers }) => {
-  // gets pass the enlarged bounds
-  // when map changes, check if the bounds are still in the enlarged bounds
-  // if not callback to parent for new offers and more
-
   const { flyTo, dispatchMap } = useMapContext();
 
   const { setSingleParam } = useUrlManipulation();

@@ -17,6 +17,16 @@ const mapReducer = (state, action) => {
         ...state,
         flyTo: payload,
       };
+    case "SET_ENLARGED_BOUNDS":
+      return {
+        ...state,
+        enlargedBounds: payload,
+      };
+    case "SET_STORED_ZOOM":
+      return {
+        ...state,
+        storedZoom: payload,
+      };
     default:
       break;
   }

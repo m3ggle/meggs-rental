@@ -5,9 +5,9 @@ export const useFlyTo = ({ flyTo, mapRef, dispatchMap }) => {
     if (flyTo) {
       console.log(flyTo);
       mapRef.current.flyTo({
-        center: [flyTo[0], flyTo[1]],
+        center: [flyTo.lng, flyTo.lat],
         essential: true,
-        zoom: flyTo[2] ?? 12,
+        zoom: flyTo.z ?? 12,
       });
       dispatchMap({
         type: "FLY",

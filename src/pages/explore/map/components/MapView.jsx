@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Map, { Marker, Layer } from "react-map-gl";
+import Map, { Marker, Layer, NavigationControl } from "react-map-gl";
 import { useMapContext } from "../../../../context/map/mapContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useFlyTo } from "../hooks/useFlyTo";
@@ -25,7 +25,7 @@ const MapView = ({ offers }) => {
   });
 
   const [staticState] = useState({
-    style: { width: "100%", height: "100%" },
+    style: { width: "100%", height: "100%"},
     mapStyle: "mapbox://styles/m1ggle/clavbv34v006214nkabl8az22",
     mapboxAccessToken: MAPBOX_TOKEN,
   });
@@ -83,6 +83,7 @@ const MapView = ({ offers }) => {
           />
         </Marker>
       ))}
+      <NavigationControl position="bottom-right" style={{rotate: "-90deg", marginRight: "64px"}} />
     </Map>
   );
 };

@@ -1,3 +1,4 @@
+import mapboxgl from "mapbox-gl";
 import { useCallback } from "react";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useHandleMoveEnd } from "./useHandleMoveEnd";

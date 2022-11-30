@@ -8,10 +8,10 @@ export const useHandleMoveEnd = ({ mapRef, setPosition }) => {
 
   const convertBoundsSyntax = (bounds) => {
     return {
-      north: bounds["_ne"].lng,
-      east: bounds["_ne"].lat,
-      south: bounds["_sw"].lng,
-      west: bounds["_sw"].lat,
+      north: bounds["_ne"].lat,
+      east: bounds["_ne"].lng,
+      south: bounds["_sw"].lat,
+      west: bounds["_sw"].lng,
     };
   };
 

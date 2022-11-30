@@ -7,7 +7,7 @@ import { useHandleMapInit } from "../hooks/useHandleMapInit";
 import { useHandleMoveEnd } from "../hooks/useHandleMoveEnd";
 import { useMarkerLogic } from "../hooks/useMarkerLogic";
 
-const MapView = ({ offers }) => {
+const MapView = ({ offers, isLoading }) => {
   const { flyTo, dispatchMap } = useMapContext();
 
   const { setSingleParam } = useUrlManipulation();
@@ -54,9 +54,8 @@ const MapView = ({ offers }) => {
       onMoveEnd={handleMoveEnd}
       onLoad={handleInit}
     >
-      {offers.map((offer) => (
+      {offers.map((offer, index) => (
         <Marker
-          key={offer.offerId}
           longitude={offer.location.lng}
           latitude={offer.location.lat}
           style={{

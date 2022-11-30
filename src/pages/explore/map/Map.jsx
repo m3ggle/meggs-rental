@@ -64,8 +64,14 @@ const Map = () => {
     };
   }, [bounds]);
 
+  // necessary for the map
+  // const handleKeyDown = (e) => {console.log(e)}
+
   return (
-    <div className="flex h-screen w-full justify-center">
+    <div
+      className="flex h-screen w-full justify-center"
+    // onKeyDown={handleKeyDown}
+    >
       <MapView offers={filteredOffers ?? offers} />
       {windowSize.width >= 1100 ? (
         <>

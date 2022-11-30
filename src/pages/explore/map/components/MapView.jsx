@@ -53,7 +53,6 @@ const MapView = ({ offers }) => {
       onMove={(evt) => setPosition(evt.position)}
       onMoveEnd={handleMoveEnd}
       onLoad={handleInit}
-
     >
       {offers.map((offer) => (
         <Marker

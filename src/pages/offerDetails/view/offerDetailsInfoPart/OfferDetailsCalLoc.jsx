@@ -1,8 +1,9 @@
 import React from 'react'
 import Calendar from '../../../../components/offerDetails/Calendar';
 import styles from '../../../../style';
+import Location from '../../../../components/Location';
 
-const OfferDetailsCalLoc = () => {
+const OfferDetailsCalLoc = ({offerInformation}) => {
   return (
     <div className="flex flex-col gap-6 700:flex-row 1200:flex-col 1400:flex-row">
       {/* calendar */}
@@ -12,7 +13,7 @@ const OfferDetailsCalLoc = () => {
         </span>
         <div className="flex w-full flex-col items-center gap-y-1 overflow-hidden rounded-3xl bg-white shadow-md 1200:p-6 1400:p-0">
           <div className="w-full 1200:w-[360px] 1400:w-full">
-            <Calendar />
+            <Calendar offerInformation={offerInformation} />
           </div>
         </div>
       </div>
@@ -22,8 +23,13 @@ const OfferDetailsCalLoc = () => {
           Location
         </span>
         <div
-          className={`${styles.darkModeBorder} flex h-[256px] w-full flex-col gap-y-1 rounded-3xl bg-pink-300 bg-cover bg-center shadow-md dark:bg-dmGrey900`}
-        />
+          className={`${styles.darkModeBorder} flex h-[256px] w-full flex-col gap-y-1 overflow-hidden rounded-3xl bg-pink-300 bg-cover bg-center shadow-md dark:bg-dmGrey900`}
+        >
+          <Location
+            lng={offerInformation.location.lon}
+            lat={offerInformation.location.lat}
+          />
+        </div>
       </div>
     </div>
   );

@@ -77,7 +77,7 @@ const Map = () => {
           </div>
         </>
       ) : (
-        <div className="absolute top-4 flex h-12 w-full flex-col items-center gap-y-2">
+        <div className="absolute top-4 flex h-12 w-full flex-col items-center gap-y-2 z-50">
           <div className="w-[340px] max-w-[340px]">
             <SearchFilter choice="autocomplete" showSubmitButton={false} />
           </div>

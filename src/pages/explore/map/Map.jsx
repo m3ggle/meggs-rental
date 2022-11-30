@@ -4,11 +4,11 @@ import { useMapContext } from "../../../context/map/mapContext";
 import ExampleData from "../../../ExampleData";
 import { useFilterByCustomObject } from "../../../hooks/FilterByCustomObject/useFilterByCustomObject";
 import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipulation";
-import { useDebounce } from "../../../hooks/useDebounce";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import MapView from "./components/MapView";
 import MobileCatalog from "./components/mobileCatalog/MobileCatalog";
 import MobileCatalogOfferCard from "./components/mobileCatalog/MobileCatalogOfferCard/MobileCatalogOfferCard";
+import MobileSearchPreview from "./components/MobileSearchPreview";
 import { usePreviewLogic } from "./components/preview/hooks/usePreviewLogic";
 import Preview from "./components/preview/Preview";
 
@@ -70,7 +70,7 @@ const Map = () => {
   return (
     <div
       className="flex h-screen w-full justify-center"
-    // onKeyDown={handleKeyDown}
+      // onKeyDown={handleKeyDown}
     >
       <MapView offers={filteredOffers ?? offers} />
       {windowSize.width >= 1100 ? (
@@ -83,19 +83,20 @@ const Map = () => {
           </div>
         </>
       ) : (
-        <div className="absolute top-4 flex h-12 w-full flex-col items-center gap-y-2 z-50">
-          <div className="w-[340px] max-w-[340px]">
-            <SearchFilter choice="autocomplete" showSubmitButton={false} />
-          </div>
-          {mobileOfferInformation && (
-            <div className="w-[340px] max-w-[340px]">
-              <MobileCatalogOfferCard
-                offerInformation={mobileOfferInformation}
-                index={0}
-              />
-            </div>
-          )}
-        </div>
+        <MobileSearchPreview offerInformation={mobileOfferInformation} />
+        // <div className="absolute top-4 z-50 flex h-12 w-full flex-col items-center gap-y-2">
+        //   <div className="w-[340px] max-w-[340px]">
+        //     <SearchFilter choice="autocomplete" showSubmitButton={false} />
+        //   </div>
+        //   {mobileOfferInformation && (
+        //     <div className="w-[340px] max-w-[340px]">
+        //       <MobileCatalogOfferCard
+        //         offerInformation={mobileOfferInformation}
+        //         index={0}
+        //       />
+        //     </div>
+        //   )}
+        // </div>
       )}
     </div>
   );

@@ -7,7 +7,7 @@ export const useHandleLocationNavigation = () => {
     const nextParams = new URLSearchParams({
       offerId,
       lat: location.lat,
-      lon: location.lon,
+      lng: location.lng,
       z: 14,
     });
     navigate(`/explore/map?${nextParams}`);

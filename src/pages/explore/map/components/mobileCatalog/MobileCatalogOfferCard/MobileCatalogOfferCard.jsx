@@ -27,7 +27,7 @@ const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () => {
     closeModal && closeModal();
-    handleFly(location.lon, location.lat, 14)
+    handleFly(location.lng, location.lat, 14)
     setSingleParam("offerId", offerId);
     // handleLocationNavigation(offerId, location);
   };

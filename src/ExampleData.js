@@ -372,7 +372,7 @@ const exampleOffers = [
     offerId: "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
     location: {
       lat: 52.4199,
-      lon: 13.29384,
+      lng: 13.29384,
       street: "Goerzallee",
       number: 156,
       city: "Berlin",
@@ -420,7 +420,7 @@ const exampleOffers = [
     offerId: "4469d428-3ee6-42a3-ad96-a5e42b481379",
     location: {
       lat: 52.4199,
-      lon: 13.2885845,
+      lng: 13.2885845,
       street: "Goerzallee",
       number: 189,
       city: "Berlin",
@@ -468,7 +468,7 @@ const exampleOffers = [
     offerId: "a36e91f5-c9f3-4bc1-9b26-08099879303c",
     location: {
       lat: 52.4182,
-      lon: 13.29016,
+      lng: 13.29016,
       street: "Kolonie Parkkol. Amselweg",
       number: 935,
       city: "Berlin",
@@ -516,7 +516,7 @@ const exampleOffers = [
     offerId: "cc4ae289-e33b-4db7-b0a2-1760bf586121",
     location: {
       lat: 52.418,
-      lon: 13.28999,
+      lng: 13.28999,
       street: "Lichterfelder Weg",
       number: 932,
       city: "Berlin",
@@ -564,7 +564,7 @@ const exampleOffers = [
     offerId: "6752948f-37fe-4913-8f9a-be23e01bcbc0",
     location: {
       lat: 52.4184817,
-      lon: 13.2857082,
+      lng: 13.2857082,
       street: "Billy-Wilder-Promenade",
       number: 42,
       city: "Berlin",
@@ -612,7 +612,7 @@ const exampleOffers = [
     offerId: "85b76ab2-3cb1-4da2-9a3a-e712b4c4ef73",
     location: {
       lat: 52.41673,
-      lon: 13.28629,
+      lng: 13.28629,
       street: "Am Stichkanal",
       number: 1,
       city: "Berlin",
@@ -660,7 +660,7 @@ const exampleOffers = [
     offerId: "da0d15a5-a42d-49c1-8694-0ce3078462ee",
     location: {
       lat: 52.520008,
-      lon: 13.404954,
+      lng: 13.404954,
       street: "Harry-S.-Truman-Allee",
       number: 27,
       city: "Berlin",
@@ -708,7 +708,7 @@ const exampleOffers = [
     offerId: "506a01d3-322b-47f0-9e7e-62250e882776",
     location: {
       lat: 52.41904,
-      lon: 13.29453,
+      lng: 13.29453,
       street: "Drei-Zinnen-Weg",
       number: 5,
       city: "Berlin",
@@ -756,7 +756,7 @@ const exampleOffers = [
     offerId: "18c430f6-c1ba-466e-8397-53cbd3608293",
     location: {
       lat: 52.41914,
-      lon: 13.29396,
+      lng: 13.29396,
       street: "Lichterfelder Weg",
       number: 3,
       city: "Berlin",
@@ -804,7 +804,7 @@ const exampleOffers = [
     offerId: "154eb406-9729-4435-902e-25df689762f0",
     location: {
       lat: 52.4157479,
-      lon: 13.2866306,
+      lng: 13.2866306,
       street: "Am Stichkanal",
       number: 10,
       city: "Berlin",
@@ -852,7 +852,7 @@ const exampleOffers = [
     offerId: "0c4441e3-e6e1-4010-a319-4946349df0f2",
     location: {
       lat: 52.4204147,
-      lon: 13.2839802,
+      lng: 13.2839802,
       street: "Harry-S.-Truman-Allee",
       number: 3,
       city: "Berlin",
@@ -900,7 +900,7 @@ const exampleOffers = [
     offerId: "58f2899f-85d3-46fa-a0d3-99a0eae2f07d",
     location: {
       lat: 52.4206,
-      lon: 13.29398,
+      lng: 13.29398,
       street: " Kolonie Parkkol. Elsternweg",
       number: 797,
       city: "Berlin",

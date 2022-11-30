@@ -3,6 +3,8 @@ import { Combobox, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 import React, { Fragment, useEffect, useState } from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
+import { useLocation } from "react-router-dom";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 const Autocomplete = ({
   label,
@@ -48,6 +50,11 @@ const Autocomplete = ({
     onDelete();
   };
 
+  const location = useLocation()
+  const windowSize = useWindowSize()
+  const inputColorCondition =
+    location.pathname === "/explore/map" && windowSize.width < 1100
+
   return (
     <Combobox
       value={selected}
@@ -70,6 +77,8 @@ const Autocomplete = ({
               className={`flex w-full items-center gap-2 rounded-lg ${
                 error
                   ? "bg-red-100 dark:bg-red-900"
+                  : inputColorCondition
+                  ? "bg-white dark:bg-dmGrey900"
                   : "bg-lmGrey50 dark:bg-dmGrey800"
               } px-3 py-[10px] shadow-sm`}
             >
@@ -87,20 +96,22 @@ const Autocomplete = ({
                 // onChange={(event) => setQuery(event.target.value)}
               />
               {/* delete btn */}
-                <i
-                  onClick={handleDelete}
-                  className={`${
-                    error
-                      ? "fa-solid fa-triangle-exclamation"
-                      : "fa-solid fa-times"
+              <i
+                onClick={handleDelete}
+                className={`${
+                  error
+                    ? "fa-solid fa-triangle-exclamation"
+                    : "fa-solid fa-times"
+                }
+                  ${
+                    selected?.length > 0 || query.length > 0 ? "flex" : "hidden"
                   }
-                  ${selected?.length > 0 || query.length > 0 ? "flex" : "hidden"}
                   min-w[14px] h-min-[14px] h-[14px] w-[14px] items-center justify-center text-[14px] duration-300 ${
                     error
                       ? "text-red-300 dark:text-red-100"
                       : "text-lmGrey600 dark:text-dmGrey25"
                   }`}
-                />
+              />
               <Combobox.Button>
                 <i
                   className={`${
@@ -150,9 +161,11 @@ const Autocomplete = ({
             afterLeave={() => setQuery("")}
           >
             <Combobox.Options
-              className={`${
-                isLoading && "animate-pulse"
-              } absolute left-0 z-30 mt-14 flex min-h-[40px] w-full flex-col gap-y-1 rounded-lg bg-lmGrey50 py-2 px-2 shadow-sm dark:bg-dmGrey800`}
+              className={`${isLoading && "animate-pulse"} ${
+                inputColorCondition
+                  ? "bg-white dark:bg-dmGrey900"
+                  : "bg-lmGrey50 dark:bg-dmGrey800"
+              } absolute left-0 z-30 mt-14 flex min-h-[40px] w-full flex-col gap-y-1 rounded-lg py-2 px-2 shadow-sm`}
             >
               {isLoading ? (
                 <div className="relative block cursor-default select-none truncate px-3 py-2 text-sm text-lmGrey600 dark:text-lmGrey100"></div>
@@ -168,6 +181,8 @@ const Autocomplete = ({
                       `flex w-full cursor-default select-none items-center gap-2 rounded-lg px-3 py-2 ${
                         active
                           ? "bg-lmGrey100 dark:bg-dmGrey700"
+                          : inputColorCondition
+                          ? "bg-white dark:bg-dmGrey900"
                           : "bg-lmGrey50 dark:bg-dmGrey800"
                       } duration-300`
                     }

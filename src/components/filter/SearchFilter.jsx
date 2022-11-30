@@ -1,17 +1,18 @@
+import { useLocation } from "react-router-dom";
+import { useWindowSize } from "../../hooks/useWindowSize";
 import Btn from "../common/Btn";
 import FilterModal from "./FilterModal";
 import { useSearchFilter } from "./hooks/useSearchFilter";
 import InputChoice from "./InputChoice";
 
 const SearchFilter = ({ name, label, showSubmitButton, choice }) => {
-  const {
-    isOpen,
-    control,
-    closeModal,
-    openModal,
-    handleSubmit,
-    handleDelete,
-  } = useSearchFilter();
+  const { isOpen, control, closeModal, openModal, handleSubmit, handleDelete } =
+    useSearchFilter();
+
+  const location = useLocation();
+  const windowSize = useWindowSize();
+  const inputColorCondition =
+    location.pathname === "/explore/map" && windowSize.width < 1100;
 
   return (
     <div>
@@ -35,7 +36,11 @@ const SearchFilter = ({ name, label, showSubmitButton, choice }) => {
           <button
             type="button"
             onClick={openModal}
-            className={`fa-solid fa-filter flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg bg-lmGrey50 text-base text-lmGrey200 dark:bg-lmGrey800 dark:text-dmGrey300`}
+            className={`fa-solid fa-filter flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg ${
+              inputColorCondition
+                ? "bg-white dark:bg-lmGrey900"
+                : "bg-lmGrey50 dark:bg-lmGrey800"
+            } text-base text-lmGrey200  dark:text-dmGrey300`}
           />
           {(showSubmitButton === undefined || showSubmitButton === true) && (
             <Btn

@@ -12,6 +12,7 @@ import MobileCatalogOfferCardImgPart from "./MobileCatalogOfferCardImgPart";
 import MobileCatalogOfferCardInfoPart from "./MobileCatalogOfferCardInfoPart";
 
 const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
+  // console.log(offerInformation)
   const { offerId, photoUrl, liked, location } = offerInformation;
   const {setSingleParam, deleteSingleParam} = useUrlManipulation()
 
@@ -39,7 +40,7 @@ const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
     <div
       onMouseEnter={() => handleHoverStart()}
       onMouseLeave={() => handleHoverEnd()}
-      className={`${styles.darkModeBorder} relative flex min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900`}
+      className={`${styles.darkModeBorder} relative flex min-w-[300px] w-full cursor-pointer gap-x-3 rounded-lg bg-white shadow-md duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900`}
     >
       <MobileCatalogOfferCardImgPart
         onNavigationCallback={handleNavigation}

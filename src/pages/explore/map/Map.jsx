@@ -21,11 +21,15 @@ const Map = () => {
     useState({});
 
   // const [mobileSizeOffer, setMobileSizeOffer] = useState();
-  const { show, offerInformation: mobileOfferInformation } = usePreviewLogic();
+  const {
+    show,
+    offerInformation: mobileOfferInformation,
+    setOfferInformation,
+  } = usePreviewLogic();
   const windowSize = useWindowSize();
 
   const { bounds } = useMapContext();
-  const { searchParams } = useUrlManipulation();
+  const { searchParams, deleteArrayOfParams } = useUrlManipulation();
   const { filterByCustomObject } = useFilterByCustomObject();
 
   // filtering
@@ -64,8 +68,10 @@ const Map = () => {
     };
   }, [bounds]);
 
-  // necessary for the map
-  // const handleKeyDown = (e) => {console.log(e)}
+  const handleMobilePreviewDelete = () => {
+    deleteArrayOfParams(["offerId", "hoverId"])
+    setOfferInformation(null)
+  }
 
   return (
     <div
@@ -83,7 +89,7 @@ const Map = () => {
           </div>
         </>
       ) : (
-        <MobileSearchPreview offerInformation={mobileOfferInformation} />
+        <MobileSearchPreview offerInformation={mobileOfferInformation} onDelete={handleMobilePreviewDelete} />
         // <div className="absolute top-4 z-50 flex h-12 w-full flex-col items-center gap-y-2">
         //   <div className="w-[340px] max-w-[340px]">
         //     <SearchFilter choice="autocomplete" showSubmitButton={false} />

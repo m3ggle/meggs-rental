@@ -23,7 +23,7 @@ const OfferDetailsCalLoc = ({offerInformation}) => {
           Location
         </span>
         <div
-          className={`${styles.darkModeBorder} flex h-[256px] w-full flex-col gap-y-1 overflow-hidden rounded-3xl bg-pink-300 bg-cover bg-center shadow-md dark:bg-dmGrey900`}
+          className={`${styles.darkModeBorder} flex h-[256px] w-full flex-col gap-y-1 overflow-hidden rounded-3xl bg-cover bg-center shadow-md dark:bg-dmGrey900`}
         >
           <Location
             lng={offerInformation.location.lon}

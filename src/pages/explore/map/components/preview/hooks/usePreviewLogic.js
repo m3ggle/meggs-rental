@@ -28,5 +28,5 @@ export const usePreviewLogic = () => {
         show && setShow(false);
       }, [searchParams, getSingleParam, navigate, getOffer, show]);
     
-    return {show, offerInformation}
+    return { show, offerInformation, setOfferInformation };
 }

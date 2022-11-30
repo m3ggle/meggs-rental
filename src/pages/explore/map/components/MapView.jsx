@@ -57,7 +57,7 @@ const MapView = ({ offers }) => {
       {offers.map((offer) => (
         <Marker
           key={offer.offerId}
-          longitude={offer.location.lon}
+          longitude={offer.location.lng}
           latitude={offer.location.lat}
           style={{
             width: "44px",

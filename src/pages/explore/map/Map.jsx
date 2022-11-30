@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import SearchFilter from "../../../components/filter/SearchFilter";
 import { useMapContext } from "../../../context/map/mapContext";
 import ExampleData from "../../../ExampleData";
 import { useFilterByCustomObject } from "../../../hooks/FilterByCustomObject/useFilterByCustomObject";
@@ -7,7 +6,6 @@ import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipul
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import MapView from "./components/MapView";
 import MobileCatalog from "./components/mobileCatalog/MobileCatalog";
-import MobileCatalogOfferCard from "./components/mobileCatalog/MobileCatalogOfferCard/MobileCatalogOfferCard";
 import MobileSearchPreview from "./components/MobileSearchPreview";
 import { usePreviewLogic } from "./components/preview/hooks/usePreviewLogic";
 import Preview from "./components/preview/Preview";
@@ -32,6 +30,8 @@ const Map = () => {
   const { searchParams, deleteArrayOfParams } = useUrlManipulation();
   const { filterByCustomObject } = useFilterByCustomObject();
 
+  // entkopplung, heißt ein useEffect das die searchParams überwacht, wenn es geschehen ist speicher die filterTypes inside a state
+
   // filtering
   useEffect(() => {
     let filterTypeSearchParams = {}; // storage for the current filter type params
@@ -47,15 +47,20 @@ const Map = () => {
       JSON.stringify(filterTypeSearchParamsState)
     ) {
       // not the same, do filtering
-      const tempHolder = filterByCustomObject({
+      let tempHolder = filterByCustomObject({
         offerList: exampleOffers,
         object: filterTypeSearchParams,
       });
+      filterByBounds(tempHolder);
       setFilteredOffers(tempHolder);
       setFilterTypeSearchParamsState(filterTypeSearchParams);
       return;
     }
   }, [searchParams]);
+
+  const filterByBounds = (offers) => {
+    console.log(offers)
+  };
 
   // bounds with debounce
   useEffect(() => {
@@ -69,15 +74,12 @@ const Map = () => {
   }, [bounds]);
 
   const handleMobilePreviewDelete = () => {
-    deleteArrayOfParams(["offerId", "hoverId"])
-    setOfferInformation(null)
-  }
+    deleteArrayOfParams(["offerId", "hoverId"]);
+    setOfferInformation(null);
+  };
 
   return (
-    <div
-      className="flex h-screen w-full justify-center"
-      // onKeyDown={handleKeyDown}
-    >
+    <div className="flex h-screen w-full justify-center">
       <MapView offers={filteredOffers ?? offers} />
       {windowSize.width >= 1100 ? (
         <>
@@ -89,20 +91,10 @@ const Map = () => {
           </div>
         </>
       ) : (
-        <MobileSearchPreview offerInformation={mobileOfferInformation} onDelete={handleMobilePreviewDelete} />
-        // <div className="absolute top-4 z-50 flex h-12 w-full flex-col items-center gap-y-2">
-        //   <div className="w-[340px] max-w-[340px]">
-        //     <SearchFilter choice="autocomplete" showSubmitButton={false} />
-        //   </div>
-        //   {mobileOfferInformation && (
-        //     <div className="w-[340px] max-w-[340px]">
-        //       <MobileCatalogOfferCard
-        //         offerInformation={mobileOfferInformation}
-        //         index={0}
-        //       />
-        //     </div>
-        //   )}
-        // </div>
+        <MobileSearchPreview
+          offerInformation={mobileOfferInformation}
+          onDelete={handleMobilePreviewDelete}
+        />
       )}
     </div>
   );

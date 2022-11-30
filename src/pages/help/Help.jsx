@@ -22,7 +22,7 @@ function Item({ total, index, onDelete }) {
   }
 
   return (
-    <motion.div
+    <motion.div //container
       style={{
         width: 150,
         height: height,
@@ -36,7 +36,7 @@ function Item({ total, index, onDelete }) {
       layout
       transition={{ type: "spring", stiffness: 600, damping: 30 }}
     >
-      <motion.div
+      <motion.div // here the MobileCatalogCard
         style={{
           width: size,
           height: height,

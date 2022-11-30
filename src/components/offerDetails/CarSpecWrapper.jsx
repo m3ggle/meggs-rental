@@ -7,7 +7,7 @@ const CarSpecWrapper = ({ amount, specs }) => {
   const { filteredSpecs } = useCarSpecFilter({ specs, amount });
 
   return (
-    <div className={`flex w-full flex-wrap gap-2`}>
+    <div className={`flex w-full justify-center flex-wrap gap-2`}>
       {Object.keys(filteredSpecs).map((spec, index) => (
         <CarSpec
           key={index}

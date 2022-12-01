@@ -1,8 +1,5 @@
 import SearchFilter from "../../../../../components/filter/SearchFilter";
-import ExampleData from "../../../../../ExampleData";
 import MobileCatalogList from "./MobileCatalogList";
-
-const { exampleOffers } = ExampleData();
 
 const MobileCatalog = ({ offerList }) => {
   return (

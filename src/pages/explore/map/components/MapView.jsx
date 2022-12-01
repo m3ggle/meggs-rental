@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Map, { Marker } from "react-map-gl";
+import Map, { Marker, Layer } from "react-map-gl";
 import { useMapContext } from "../../../../context/map/mapContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useFlyTo } from "../hooks/useFlyTo";
@@ -45,6 +45,14 @@ const MapView = ({ offers, isLoading }) => {
   // init
   const { handleInit } = useHandleMapInit(mapRef);
 
+const parkLayer = {
+  id: "landuse_park",
+  type: "background",
+  paint: {
+    "background-color": "rgba(22, 26, 29, 0.2)",
+  },
+};
+
   return (
     <Map
       {...position}
@@ -82,6 +90,7 @@ const MapView = ({ offers, isLoading }) => {
           />
         </Marker>
       ))}
+      <Layer {...parkLayer} />
       {/* <NavigationControl position="bottom-right" style={{rotate: "-90deg", marginRight: "64px"}} /> */}
     </Map>
   );

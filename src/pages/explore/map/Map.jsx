@@ -120,7 +120,7 @@ const Map = () => {
               duration: 0.3,
               scale: { ease: "easeInOut" },
             }}
-            className={`absolute ${mobileOfferInformation ? "top-52" : "top-20"} z-20 flex h-11 animate-pulse items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-lmGrey600 shadow-md 1100:top-7`}
+            className={`absolute ${mobileOfferInformation ? "top-52" : "top-20"} z-20 flex h-11 animate-pulse items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-lmGrey600 dark:bg-dmGrey900 dark:text-white shadow-md 1100:top-7`}
           >
             Loading...
           </motion.div>

@@ -1,5 +1,6 @@
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useRef, useState } from "react";
-import Map, { Marker, Layer } from "react-map-gl";
+import Map, { Layer, Marker } from "react-map-gl";
 import { useMapContext } from "../../../../context/map/mapContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useFlyTo } from "../hooks/useFlyTo";
@@ -45,13 +46,15 @@ const MapView = ({ offers, isLoading }) => {
   // init
   const { handleInit } = useHandleMapInit(mapRef);
 
-const parkLayer = {
-  id: "landuse_park",
-  type: "background",
-  paint: {
-    "background-color": "rgba(22, 26, 29, 0.2)",
-  },
-};
+  const darkModeLayer = {
+    id: "darkModeLayer",
+    type: "background",
+    paint: {
+      "background-color": "rgba(22, 26, 29, 0.2)",
+    },
+  };
+
+  const darkMode = document.documentElement.classList.contains("dark");
 
   return (
     <Map
@@ -64,6 +67,7 @@ const parkLayer = {
     >
       {offers.map((offer, index) => (
         <Marker
+          key={offer.offerId}
           longitude={offer.location.lng}
           latitude={offer.location.lat}
           style={{
@@ -79,7 +83,17 @@ const parkLayer = {
           anchor="bottom"
           onClick={() => handleMarkerClick(offer.offerId)}
         >
-          <div
+          <motion.div
+            initial={{ opacity: 0, translateY: -24, scale: 0.5 }}
+            animate={{ opacity: 1, translateY: 0, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              opacity: { delay: index * 0.02 },
+              translateY: { delay: index * 0.02 },
+              scale: { delay: index * 0.02 },
+            }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.99 }}
             className={`fa-solid fa-location-dot ${
               activeMarker === offer.offerId
                 ? "scale-125 text-lmPrimary"
@@ -88,9 +102,20 @@ const parkLayer = {
                 : "scale-100 text-lmGrey800"
             } text-[44px] drop-shadow-lg duration-300`}
           />
+          
+          {/* <div
+            className={`fa-solid fa-location-dot ${
+              activeMarker === offer.offerId
+                ? "scale-125 text-lmPrimary"
+                : hoverMarker === offer.offerId
+                ? "scale-110 text-lmGrey400"
+                : "scale-100 text-lmGrey800"
+            } text-[44px] drop-shadow-lg duration-300`}
+          /> */}
+          
         </Marker>
       ))}
-      <Layer {...parkLayer} />
+      {darkMode && <Layer {...darkModeLayer} />}
       {/* <NavigationControl position="bottom-right" style={{rotate: "-90deg", marginRight: "64px"}} /> */}
     </Map>
   );

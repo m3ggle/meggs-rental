@@ -57,7 +57,7 @@ const MapView = ({ offers, isLoading }) => {
   const darkMode = document.documentElement.classList.contains("dark");
 
   const markerVariants = {
-    hover: { scale: 1.2  },
+    hover: { scale: 1.1  },
     tap: { scale: 0.99 },
     initial: { opacity: 0, translateY: -24, scale: 0.5 },
     animation: ({ offer }) => ({
@@ -72,8 +72,8 @@ const MapView = ({ offers, isLoading }) => {
     }),
     transition: ({ index }) => ({
       duration: 0.3,
-      opacity: { delay: index * 0.02 },
-      translateY: { delay: index * 0.02 },
+      opacity: { delay: index * 0.2 },
+      translateY: { delay: index * 0.2 },
       scale: { ease: "ease-out" },
     }),
   };
@@ -112,7 +112,7 @@ const MapView = ({ offers, isLoading }) => {
             whileHover="hover"
             whileTap="tap"
             variants={markerVariants}
-            custom={{ index, offer }}
+            custom={{offer, index}}
             className={`fa-solid fa-location-dot ${
               activeMarker === offer.offerId
                 ? "text-lmPrimary"

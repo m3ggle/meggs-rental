@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { useRef, useState } from "react";
 import Map, { Layer, Marker } from "react-map-gl";
 import { useMapContext } from "../../../../context/map/mapContext";
@@ -56,6 +56,28 @@ const MapView = ({ offers, isLoading }) => {
 
   const darkMode = document.documentElement.classList.contains("dark");
 
+  const markerVariants = {
+    hover: { scale: 1.2  },
+    tap: { scale: 0.99 },
+    initial: { opacity: 0, translateY: -24, scale: 0.5 },
+    animation: ({ offer }) => ({
+      opacity: 1,
+      translateY: 0,
+      scale:
+        activeMarker === offer.offerId
+          ? 1.25
+          : activeMarker === offer.offerId
+          ? 1.1
+          : 1,
+    }),
+    transition: ({ index }) => ({
+      duration: 0.3,
+      opacity: { delay: index * 0.02 },
+      translateY: { delay: index * 0.02 },
+      scale: { ease: "ease-out" },
+    }),
+  };
+
   return (
     <Map
       {...position}
@@ -84,25 +106,22 @@ const MapView = ({ offers, isLoading }) => {
           onClick={() => handleMarkerClick(offer.offerId)}
         >
           <motion.div
-            initial={{ opacity: 0, translateY: -24, scale: 0.5 }}
-            animate={{ opacity: 1, translateY: 0, scale: 1 }}
-            transition={{
-              duration: 0.3,
-              opacity: { delay: index * 0.02 },
-              translateY: { delay: index * 0.02 },
-              scale: { delay: index * 0.02 },
-            }}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.99 }}
+            initial="initial"
+            animate="animation"
+            transition="transition"
+            whileHover="hover"
+            whileTap="tap"
+            variants={markerVariants}
+            custom={{ index, offer }}
             className={`fa-solid fa-location-dot ${
               activeMarker === offer.offerId
-                ? "scale-125 text-lmPrimary"
+                ? "text-lmPrimary"
                 : hoverMarker === offer.offerId
-                ? "scale-110 text-lmGrey400"
-                : "scale-100 text-lmGrey800"
+                ? "text-lmGrey400"
+                : "text-lmGrey800"
             } text-[44px] drop-shadow-lg duration-300`}
           />
-          
+
           {/* <div
             className={`fa-solid fa-location-dot ${
               activeMarker === offer.offerId
@@ -112,7 +131,6 @@ const MapView = ({ offers, isLoading }) => {
                 : "scale-100 text-lmGrey800"
             } text-[44px] drop-shadow-lg duration-300`}
           /> */}
-          
         </Marker>
       ))}
       {darkMode && <Layer {...darkModeLayer} />}

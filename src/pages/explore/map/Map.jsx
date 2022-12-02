@@ -15,7 +15,7 @@ import Preview from "./components/preview/Preview";
 const { exampleOffers, filterTypes } = ExampleData();
 
 const Map = () => {
-  const [offers, setOffers] = useState(exampleOffers);
+  const [offers] = useState(exampleOffers);
   const [filteredOffers, setFilteredOffers] = useState();
   const [filteredBoundsOffers, setFilteredBoundsOffers] = useState();
   const [filterTypeSearchParamsState, setFilterTypeSearchParamsState] =

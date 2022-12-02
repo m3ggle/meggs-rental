@@ -66,7 +66,7 @@ const Navbar = ({ isOpen, closeModal }) => {
               >
                 <div className="fa-solid fa-times text-lmGrey600 dark:text-dmGrey100"></div>
               </div>
-              <div className="flex h-fit w-full flex-col items-center gap-y-2 rounded-t-2xl bg-white/80 py-8 backdrop-blur-lg dark:border-[1px] dark:border-solid dark:border-dmGrey800 dark:bg-dmGrey900 600:w-[360px] 600:rounded-2xl">
+              <div className="flex h-fit w-full flex-col items-center gap-y-2 rounded-t-2xl bg-white/80 py-8 shadow-dmShadow backdrop-blur-lg dark:bg-dmGrey900 600:w-[360px] 600:rounded-2xl">
                 <div className="flex w-[360px] cursor-pointer items-center gap-x-2 rounded-lg px-8 text-base duration-300">
                   <DropdownMode />
                 </div>

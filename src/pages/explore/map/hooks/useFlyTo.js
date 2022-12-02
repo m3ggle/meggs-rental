@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useMapSubContext } from "../../../../context/map/mapSub/mapSubContext";
-
+// hook for map
 export const useFlyTo = ({ mapRef }) => {
   const { flyTo, dispatchMapSub } = useMapSubContext();
   

@@ -44,8 +44,7 @@ const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
     <div
       onMouseEnter={() => handleHoverStart()}
       onMouseLeave={() => handleHoverEnd()}
-      className={`relative flex w-full min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md dark:shadow-dmShadow duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900`}
-      // className={`${(windowSize.width > 1100 && locationDom.pathname === "/explore/map") && styles.darkModeBorder} relative flex w-full min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900`}
+      className={`relative flex w-full min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow dark:shadow-dmShadow duration-300 hover:scale-102 hover:shadow-md dark:bg-dmGrey900`}
     >
       <MobileCatalogOfferCardImgPart
         onNavigationCallback={handleNavigation}

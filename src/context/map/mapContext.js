@@ -10,6 +10,7 @@ export function useMapContext() {
 
 export const MapProvider = ({ children }) => {
   const initialState = {
+    mapLoaded: false,
     bounds: {},
     enlargedBounds: {},
     storedZoom: null,

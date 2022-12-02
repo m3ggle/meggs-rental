@@ -419,8 +419,8 @@ const exampleOffers = [
       "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
     offerId: "4469d428-3ee6-42a3-ad96-a5e42b481379",
     location: {
-      lat: 52.4199,
-      lng: 13.2885845,
+      lat: 52.4168112,
+      lng: 13.2896103,
       street: "Goerzallee",
       number: 189,
       city: "Berlin",

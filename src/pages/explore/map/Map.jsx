@@ -29,7 +29,7 @@ const Map = () => {
   } = usePreviewLogic();
   const windowSize = useWindowSize();
 
-  const { bounds } = useMapContext();
+  const { bounds, mapLoaded } = useMapContext();
   const { searchParams, deleteArrayOfParams } = useUrlManipulation();
   const { filterByCustomObject } = useFilterByCustomObject();
 
@@ -108,36 +108,61 @@ const Map = () => {
     setOfferInformation(null);
   };
 
+  const loadingVariant = {
+    initial: {
+      opacity: 0,
+      translateY: -24,
+    },
+    animate: {
+      opacity: 1,
+      translateY: 0,
+    },
+    exit: {
+      opacity: 0,
+      translateY: 16,
+    },
+    transition: {
+      duration: 0.3,
+      scale: { ease: "easeInOut" },
+    },
+  };
+
   return (
     <div className="flex h-screen w-full justify-center">
       <AnimatePresence>
         {isLoading && (
           <motion.div
-            initial={{ opacity: 0, translateY: -24 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            exit={{ opacity: 0, translateY: 16 }}
-            transition={{
-              duration: 0.3,
-              scale: { ease: "easeInOut" },
-            }}
-            className={`absolute ${mobileOfferInformation ? "top-52" : "top-20"} z-20 flex h-11 animate-pulse items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-lmGrey600 dark:bg-dmGrey900 dark:text-white shadow-md 1100:top-7`}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition="transition"
+            variants={loadingVariant}
+            className={`absolute ${
+              mobileOfferInformation ? "top-52" : "top-20"
+            } z-20 flex h-11 animate-pulse items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-lmGrey600 shadow-md dark:bg-dmGrey900 dark:text-white 1100:top-7`}
           >
             Loading...
           </motion.div>
         )}
       </AnimatePresence>
-      <MapView
-        offers={filteredBoundsOffers ?? filteredOffers ?? offers}
-        isLoading={isLoading}
-      />
+      <MapView offers={filteredBoundsOffers ?? filteredOffers ?? offers} />
       {windowSize.width >= 1100 ? (
         <>
-          <div className="absolute right-7 top-7 z-20 flex h-fit w-fit">
+          <motion.div
+            animate={mapLoaded && "visible"}
+            initial="hidden"
+            transition={{ duration: 0.3 }}
+            variants={{
+              visible: { opacity: 1, scale: 1 },
+              hidden: { opacity: 0, scale: 1 },
+            }}
+            className="absolute right-7 top-7 z-20 flex h-fit w-fit"
+          >
             <MobileCatalog
               offerList={filteredBoundsOffers ?? filteredOffers ?? offers}
             />
-          </div>
-          <div className="absolute left-7 top-7 bottom-7 z-20 flex h-[640px] w-fit max-w-[360px] overflow-scroll rounded-2xl bg-white shadow-xl">
+          </motion.div>
+          <div className="absolute left-7 top-7 z-20 flex h-fit w-fit">
             <Preview />
           </div>
         </>

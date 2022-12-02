@@ -1,11 +1,12 @@
-import mapboxgl from "mapbox-gl";
 import { useCallback } from "react";
+import { useMapContext } from "../../../../context/map/mapContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useHandleMoveEnd } from "./useHandleMoveEnd";
 
 export const useHandleMapInit = (mapRef) => {
   const { setArrayOfParams, getArrayOfParams } = useUrlManipulation();
   const { handlePreparation } = useHandleMoveEnd({ mapRef });
+  const { dispatchMap } = useMapContext()
 
   const handleInit = useCallback(() => {
     const currentSearchParams = getArrayOfParams(["lat", "lng", "z"]);
@@ -16,6 +17,7 @@ export const useHandleMapInit = (mapRef) => {
       const { positionPrep } = handlePreparation(mapRef);
       setArrayOfParams({ ...positionPrep });
     }
+    dispatchMap({ type: "UPDATE_MAP_LOAD", payload: true });
   }, [setArrayOfParams, getArrayOfParams, handlePreparation, mapRef]);
     
     return {handleInit}

@@ -38,8 +38,8 @@ const SearchFilter = ({ name, label, showSubmitButton, choice }) => {
             onClick={openModal}
             className={`fa-solid fa-filter flex h-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-lg ${
               inputColorCondition
-                ? "bg-white dark:bg-lmGrey900"
-                : "bg-lmGrey50 dark:bg-lmGrey800"
+                ? "bg-white dark:bg-dmGrey900"
+                : "bg-lmGrey50 dark:bg-dmGrey800"
             } text-base text-lmGrey200  dark:text-dmGrey300`}
           />
           {(showSubmitButton === undefined || showSubmitButton === true) && (

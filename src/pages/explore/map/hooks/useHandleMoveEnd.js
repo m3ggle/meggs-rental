@@ -1,9 +1,9 @@
 import { useCallback } from "react";
-import { useMapContext } from "../../../../context/map/mapContext";
+import { useMapCoordContext } from "../../../../context/map/mapCoord/mapCoordContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 
 export const useHandleMoveEnd = ({ mapRef, setPosition }) => {
-  const { dispatchMap } = useMapContext();
+  const { dispatchMapCoord } = useMapCoordContext();
   const { setArrayOfParams } = useUrlManipulation();
 
   const convertBoundsSyntax = (bounds) => {
@@ -31,7 +31,7 @@ export const useHandleMoveEnd = ({ mapRef, setPosition }) => {
 
   const setContext = useCallback(
     (bounds, positionPrep) => {
-      dispatchMap({
+      dispatchMapCoord({
         type: "UPDATE_BOUNDS_AND_POSITION",
         payload: {
           bounds: convertBoundsSyntax(bounds),
@@ -39,7 +39,7 @@ export const useHandleMoveEnd = ({ mapRef, setPosition }) => {
         },
       });
     },
-    [dispatchMap]
+    [dispatchMapCoord]
   );
 
   const handleMoveEnd = useCallback(() => {

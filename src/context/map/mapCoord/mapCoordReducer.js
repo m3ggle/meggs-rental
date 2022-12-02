@@ -1,4 +1,4 @@
-const mapReducer = (state, action) => {
+const mapCoordReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case "UPDATE_BOUNDS":
@@ -37,4 +37,4 @@ const mapReducer = (state, action) => {
   }
 };
 
-export default mapReducer;
+export default mapCoordReducer;

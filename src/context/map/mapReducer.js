@@ -27,6 +27,11 @@ const mapReducer = (state, action) => {
         ...state,
         storedZoom: payload,
       };
+    case "UPDATE_MAP_LOAD": 
+      return {
+        ...state,
+        mapLoaded: payload
+      }
     default:
       break;
   }

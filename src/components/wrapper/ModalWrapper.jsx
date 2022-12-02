@@ -32,7 +32,7 @@ const ModalWrapper = ({ isOpen, closeModal, children }) => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Dialog.Panel className="fixed top-20 bottom-0 w-full overflow-scroll rounded-t-2xl 820:w-[820px] z-50">
+          <Dialog.Panel className="fixed top-20 bottom-0 w-full overflow-scroll hideScrollbar rounded-t-2xl 820:w-[820px] z-50">
             {/* Todo: when scrolling then top-10 or so and when the user is at top then top-20 */}
             <div className="relative flex h-fit min-h-full w-full max-w-[820px] flex-col items-center rounded-t-2xl bg-white p-6 shadow dark:bg-dmGrey900 600:pt-12">
               <button

@@ -8,7 +8,7 @@ import { useHandleMapInit } from "../hooks/useHandleMapInit";
 import { useHandleMoveEnd } from "../hooks/useHandleMoveEnd";
 import { useMarkerLogic } from "../hooks/useMarkerLogic";
 
-const MapView = ({ offers, isLoading }) => {
+const MapView = ({ offers }) => {
   const { flyTo, dispatchMap } = useMapContext();
 
   const { setSingleParam } = useUrlManipulation();
@@ -111,10 +111,10 @@ const MapView = ({ offers, isLoading }) => {
             height: "44px",
             zIndex:
               activeMarker === offer.offerId
-                ? "30"
+                ? "15"
                 : hoverMarker === offer.offerId
-                ? "20"
-                : "10",
+                ? "10"
+                : "5",
           }}
           anchor="bottom"
           onClick={() => handleMarkerClick(offer.offerId)}

@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useMapContext } from "../../../../../../context/map/mapContext";
 import { useUrlManipulation } from "../../../../../../hooks/urlManipulation/useUrlManipulation";
 import { useGetOffer } from "../../../../../../hooks/useGetOffer";
 
 export const usePreviewLogic = () => {
       const { searchParams, getSingleParam } = useUrlManipulation();
       const { getOffer } = useGetOffer("map");
-      const navigate = useNavigate();
+  const navigate = useNavigate();
+  
+  const {mapLoaded} = useMapContext()
 
       const [show, setShow] = useState(
-        getSingleParam("offerId") ? true : false
+        getSingleParam("offerId") && mapLoaded ? true : false
       );
       const [offerInformation, setOfferInformation] = useState();
 
       useEffect(() => {
-        const tempShow = getSingleParam("offerId") ? true : false;
+        const tempShow = getSingleParam("offerId") && mapLoaded ? true : false;
 
         if (tempShow) {
           setShow(true);

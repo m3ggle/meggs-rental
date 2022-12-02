@@ -83,7 +83,6 @@ const Autocomplete = ({
               } px-3 py-[10px] shadow-sm`}
             >
               <Combobox.Input
-                autocomplete="off"
                 className={`w-full bg-transparent text-sm ${
                   error
                     ? "text-red-500 placeholder:text-red-300 dark:text-red-100"

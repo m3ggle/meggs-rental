@@ -52,36 +52,42 @@ const Calendar = ({ dates, shadowUI, header }) => {
   }
 
   return (
-    <div className={`h-fit w-full overflow-hidden rounded-2xl bg-white p-6 ${shadowUI && "shadow"} ${styles.darkModeBorder} dark:bg-dmGrey900 `}>
+    <div
+      className={`h-fit w-full overflow-hidden rounded-2xl bg-white p-6 ${
+        shadowUI && "shadow"
+      } dark:bg-dmGrey900 dark:shadow-dmShadow `}
+    >
       <div className="flex flex-col gap-y-4">
         {/* calendar header */}
-        {header && <div className="flex items-center">
-          <h2 className="flex-auto font-semibold dark:text-dmGrey100">
-            {format(firstDayCurrentMonth, "MMMM yyyy")}
-          </h2>
-          <button
-            type="button"
-            onClick={previousMonth}
-            className="flex h-10 w-10 items-center justify-center text-lmGrey300 duration-300 hover:text-lmGrey600 dark:text-dmGrey300 dark:hover:text-dmGrey100"
-          >
-            <span className="sr-only">Previous month</span>
-            <div
-              className="fa-solid fa-chevron-left text-[16px]"
-              aria-hidden="true"
-            ></div>
-          </button>
-          <button
-            onClick={nextMonth}
-            type="button"
-            className="-mr-1.6 flex h-10 w-10 items-center justify-center text-lmGrey300 duration-300 hover:text-lmGrey600 dark:text-dmGrey300 dark:hover:text-dmGrey100"
-          >
-            <span className="sr-only">Next month</span>
-            <div
-              className="fa-solid fa-chevron-right text-[16px]"
-              aria-hidden="true"
-            ></div>
-          </button>
-        </div>}
+        {header && (
+          <div className="flex items-center">
+            <h2 className="flex-auto font-semibold dark:text-dmGrey100">
+              {format(firstDayCurrentMonth, "MMMM yyyy")}
+            </h2>
+            <button
+              type="button"
+              onClick={previousMonth}
+              className="flex h-10 w-10 items-center justify-center text-lmGrey300 duration-300 hover:text-lmGrey600 dark:text-dmGrey300 dark:hover:text-dmGrey100"
+            >
+              <span className="sr-only">Previous month</span>
+              <div
+                className="fa-solid fa-chevron-left text-[16px]"
+                aria-hidden="true"
+              ></div>
+            </button>
+            <button
+              onClick={nextMonth}
+              type="button"
+              className="-mr-1.6 flex h-10 w-10 items-center justify-center text-lmGrey300 duration-300 hover:text-lmGrey600 dark:text-dmGrey300 dark:hover:text-dmGrey100"
+            >
+              <span className="sr-only">Next month</span>
+              <div
+                className="fa-solid fa-chevron-right text-[16px]"
+                aria-hidden="true"
+              ></div>
+            </button>
+          </div>
+        )}
         {/* calendar main */}
         <div className="flex flex-col gap-y-2">
           {/* weeks */}

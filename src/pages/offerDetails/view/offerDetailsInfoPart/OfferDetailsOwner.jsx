@@ -17,7 +17,7 @@ const OfferDetailsOwner = () => {
           Short Bio
         </span>
         <div
-          className={`${styles.darkModeBorder} flex h-[242px] w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow-md dark:bg-dmGrey900`}
+          className={`flex h-[242px] w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
         >
           <span className="w-full text-sm text-lmGrey600 line-clamp-[9] dark:text-dmGrey300">
             I rather take my bike or the OVP to the Uni so I don’t really have a
@@ -32,7 +32,7 @@ const OfferDetailsOwner = () => {
           Owner
         </span>
         <div
-          className={`rounded-3xl bg-white p-6 shadow-md ${styles.darkModeBorder} dark:bg-dmGrey900`}
+          className={`rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
         >
           <UserProfileBig userProfileData={userProfileBig} />
         </div>

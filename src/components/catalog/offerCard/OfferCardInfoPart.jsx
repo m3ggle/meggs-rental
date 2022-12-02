@@ -6,7 +6,7 @@ const OfferCardInfoPart = ({ onNavigationCallback, offerInformation }) => {
   return (
     <div
       onClick={onNavigationCallback}
-      className={`flex w-full  flex-col gap-y-1  rounded-xl py-3 dark:border-solid dark:border-dmGrey800/50 dark:bg-dmGrey900 dark:shadow-sm 500:absolute 500:bottom-[2%] 500:z-10 500:w-11/12 500:gap-y-0 500:bg-white 500:p-3 500:shadow-md dark:500:border 1400:bottom-[6%] 1400:gap-y-1`}
+      className={`flex w-full  flex-col gap-y-1 rounded-xl py-3 dark:bg-dmGrey900 dark:shadow-sm dark:shadow-dmShadow 500:absolute 500:bottom-[2%] 500:z-10 500:w-11/12 500:gap-y-0 500:bg-white 500:p-3 500:shadow 1400:bottom-[6%] 1400:gap-y-1`}
     >
       <div className="flex w-full flex-col gap-y-1 overflow-hidden">
         <div className="flex w-10/12 items-center gap-x-1 text-xs text-lmGrey600 dark:text-dmGrey100 400:w-10/12 500:w-full 1400:text-base">

@@ -36,6 +36,8 @@ module.exports = {
         dmGrey800: "#2D3439",
         dmGrey900: "#161A1D",
 
+        dmShadow: "#101214",
+
         lime400: "#A3E635",
         lime500: "#84cc16",
         orange300: "#fdba74",

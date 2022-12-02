@@ -9,7 +9,7 @@ const OfferDetailsReviews = () => {
         Ratings
       </span>
       <div
-        className={`${styles.darkModeBorder} flex w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow-md dark:bg-dmGrey900`}
+        className={`flex w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
       >
         <ReviewSection />
       </div>

@@ -91,7 +91,7 @@ const ChatInfo = ({ isOpen, closeModal }) => {
                   </div>
                   <div className="flex flex-col gap-y-1">
                     <div
-                      className={`flex h-full w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow-md ${styles.darkModeBorder} dark:bg-dmGrey900`}
+                      className={`flex h-full w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow-md dark:bg-dmGrey900 dark:shadow-dmShadow`}
                     >
                       {/* top */}
                       <div className="flex items-center text-lmGrey600 dark:text-dmGrey100">
@@ -143,7 +143,7 @@ const ChatInfo = ({ isOpen, closeModal }) => {
                   {/* location */}
                   <div className="flex w-full flex-col">
                     <div
-                      className={`${styles.darkModeBorder} flex h-[256px] w-full flex-col gap-y-1 rounded-3xl bg-pink-300 bg-cover bg-center shadow-md dark:bg-dmGrey900`}
+                      className={`flex h-[256px] w-full flex-col gap-y-1 rounded-3xl bg-pink-300 bg-cover bg-center shadow-md dark:bg-dmGrey900 dark:shadow-dmShadow`}
                     />
                   </div>
                   <Btn

@@ -33,7 +33,10 @@ const Preview = () => {
                 header={true}
               />
             </div>
-            <CarSpecWrapper specs={offerInformation.carSpecs} amount="preview" />
+            <CarSpecWrapper
+              specs={offerInformation.carSpecs}
+              amount="preview"
+            />
             <PreviewOwner ownerId={offerInformation.ownerId} />
             <PreviewButtons offerId={offerInformation.offerId} />
           </>

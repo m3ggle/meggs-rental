@@ -57,8 +57,18 @@ const MapView = ({ offers, isLoading }) => {
   const darkMode = document.documentElement.classList.contains("dark");
 
   const markerVariants = {
-    hover: { scale: 1.1  },
-    tap: { scale: 0.99 },
+    hover: ({ offer }) => ({
+      scale: activeMarker === offer.offerId ? 1.25 : 1.1,
+      transition: {
+        duration: 0.1,
+      },
+    }),
+    tap: {
+      scale: 0.99,
+      transition: {
+        duration: 0.1,
+      },
+    },
     initial: { opacity: 0, translateY: -24, scale: 0.5 },
     animation: ({ offer }) => ({
       opacity: 1,
@@ -66,16 +76,20 @@ const MapView = ({ offers, isLoading }) => {
       scale:
         activeMarker === offer.offerId
           ? 1.25
-          : activeMarker === offer.offerId
+          : hoverMarker === offer.offerId
           ? 1.1
           : 1,
     }),
-    transition: ({ index }) => ({
+    transition: {
       duration: 0.3,
-      opacity: { delay: index * 0.2 },
-      translateY: { delay: index * 0.2 },
-      scale: { ease: "ease-out" },
-    }),
+    },
+    // idk but does not work
+    // transition: ({ index }) => ({
+    //   duration: 0.3,
+    //   opacity: { delay: index * 0.2 },
+    //   translateY: { delay: index * 0.2 },
+    //   scale: { ease: "ease-out" },
+    // }),
   };
 
   return (
@@ -112,13 +126,13 @@ const MapView = ({ offers, isLoading }) => {
             whileHover="hover"
             whileTap="tap"
             variants={markerVariants}
-            custom={{offer, index}}
+            custom={{ offer, index }}
             className={`fa-solid fa-location-dot ${
               activeMarker === offer.offerId
-                ? "text-lmPrimary"
+                ? "text-lmPrimary dark:text-lmPrimary"
                 : hoverMarker === offer.offerId
-                ? "text-lmGrey400"
-                : "text-lmGrey800"
+                ? "text-lmGrey400 dark:text-dmGrey400"
+                : "text-lmGrey800 dark:text-dmGrey800"
             } text-[44px] drop-shadow-lg duration-300`}
           />
 

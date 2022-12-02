@@ -1,6 +1,9 @@
 import { useEffect } from "react";
+import { useMapSubContext } from "../../../../context/map/mapSub/mapSubContext";
 
-export const useFlyTo = ({ flyTo, mapRef, dispatchMap }) => {
+export const useFlyTo = ({ mapRef }) => {
+  const { flyTo, dispatchMapSub } = useMapSubContext();
+  
   useEffect(() => {
     if (flyTo) {
       mapRef.current.flyTo({
@@ -8,10 +11,10 @@ export const useFlyTo = ({ flyTo, mapRef, dispatchMap }) => {
         essential: true,
         zoom: flyTo.z ?? 12,
       });
-      dispatchMap({
+      dispatchMapSub({
         type: "FLY",
         payload: false,
       });
     }
-  }, [mapRef, flyTo, dispatchMap]);
+  }, [mapRef, flyTo, dispatchMapSub]);
 };

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useRef, useState } from "react";
 import Map, { Layer, Marker } from "react-map-gl";
-import { useMapContext } from "../../../../context/map/mapContext";
+import { useMapCoordContext } from "../../../../context/map/mapCoord/mapCoordContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useFlyTo } from "../hooks/useFlyTo";
 import { useHandleMapInit } from "../hooks/useHandleMapInit";
@@ -9,8 +9,6 @@ import { useHandleMoveEnd } from "../hooks/useHandleMoveEnd";
 import { useMarkerLogic } from "../hooks/useMarkerLogic";
 
 const MapView = ({ offers }) => {
-  const { flyTo, dispatchMap } = useMapContext();
-
   const { setSingleParam } = useUrlManipulation();
   const handleMarkerClick = (id) => setSingleParam("offerId", id);
 
@@ -41,7 +39,7 @@ const MapView = ({ offers }) => {
   const { activeMarker, hoverMarker } = useMarkerLogic();
 
   // flyTo functionality
-  useFlyTo({ flyTo, mapRef, dispatchMap });
+  useFlyTo({ mapRef });
 
   // init
   const { handleInit } = useHandleMapInit(mapRef);

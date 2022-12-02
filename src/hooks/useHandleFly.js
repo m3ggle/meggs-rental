@@ -1,17 +1,17 @@
 import { useCallback } from "react";
-import { useMapContext } from "../context/map/mapContext";
+import { useMapSubContext } from "../context/map/mapSub/mapSubContext";
 
 export const useHandleFly = () => {
-  const { dispatchMap } = useMapContext();
+  const { dispatchMapSub } = useMapSubContext();
 
   const handleFly = useCallback(
     (lng, lat, z) => {
-      dispatchMap({
+      dispatchMapSub({
         type: "FLY",
         payload: { lng, lat, z },
       });
     },
-    [dispatchMap]
+    [dispatchMapSub]
   );
 
   return { handleFly };

@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useCallback, useEffect, useState } from "react";
-import { useMapContext } from "../../../context/map/mapContext";
+import { useMapCoordContext } from "../../../context/map/mapCoord/mapCoordContext";
 import ExampleData from "../../../ExampleData";
 import { useFilterByCustomObject } from "../../../hooks/FilterByCustomObject/useFilterByCustomObject";
 import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipulation";
@@ -29,7 +29,7 @@ const Map = () => {
   } = usePreviewLogic();
   const windowSize = useWindowSize();
 
-  const { bounds, mapLoaded } = useMapContext();
+  const { bounds, mapLoaded } = useMapCoordContext();
   const { searchParams, deleteArrayOfParams } = useUrlManipulation();
   const { filterByCustomObject } = useFilterByCustomObject();
 

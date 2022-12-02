@@ -1,3 +1,4 @@
+import React from "react";
 import SearchFilter from "../../../../../components/filter/SearchFilter";
 import MobileCatalogList from "./MobileCatalogList";
 
@@ -10,7 +11,7 @@ const MobileCatalog = ({ offerList }) => {
         <SearchFilter choice="autocomplete" showSubmitButton={false} />
       </div>
 
-      <div className="flex w-full flex-grow flex-col items-center overflow-scroll hideScrollbar rounded-lg pb-4">
+      <div className="hideScrollbar flex w-full flex-grow flex-col items-center overflow-scroll rounded-lg pb-4">
         <div className={`flex w-[312px] flex-col gap-y-3 rounded-lg`}>
           <MobileCatalogList offerList={offerList} />
         </div>

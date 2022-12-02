@@ -1,15 +1,23 @@
 import { useNavigate } from 'react-router-dom';
+import { useMapCoordContext } from '../../context/map/mapCoord/mapCoordContext';
+import { useMapSubContext } from '../../context/map/mapSub/mapSubContext';
 
 export const useHandleLocationNavigation = () => {
   const navigate = useNavigate();
+  const {dispatchMapCoord} = useMapCoordContext()
+  const { dispatchMapSub } = useMapSubContext();
 
   const handleLocationNavigation = (offerId, location) => {
-    const nextParams = new URLSearchParams({
-      offerId,
+    const positionPrep = {
       lat: location.lat,
       lng: location.lng,
       z: 14,
-    });
+    }
+
+    const nextParams = new URLSearchParams(positionPrep);
+    
+    dispatchMapCoord({ type: "UPDATE_POSITION", payload: { ...positionPrep } });
+    dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: offerId });
     navigate(`/explore/map?${nextParams}`);
   }
   

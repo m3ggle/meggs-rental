@@ -12,6 +12,11 @@ const mapCoordReducer = (state, action) => {
         bounds: payload.bounds,
         position: payload.position,
       };
+    case "UPDATE_POSITION":
+      return {
+        ...state,
+        position: payload,
+      };
     case "FLY":
       return {
         ...state,
@@ -27,11 +32,11 @@ const mapCoordReducer = (state, action) => {
         ...state,
         storedZoom: payload,
       };
-    case "UPDATE_MAP_LOAD": 
+    case "UPDATE_MAP_LOAD":
       return {
         ...state,
-        mapLoaded: payload
-      }
+        mapLoaded: payload,
+      };
     default:
       break;
   }

@@ -32,6 +32,10 @@ const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
   
   const handleLocation = () => {
     closeModal && closeModal();
+    if (locationDom.pathname !== "/explore/map") {
+      handleLocationNavigation(offerId, location)
+      return
+    } 
     handleFly(location.lng, location.lat, 14);
     dispatchMapSub({
       type: "UPDATE_ACTIVE_MARKER",

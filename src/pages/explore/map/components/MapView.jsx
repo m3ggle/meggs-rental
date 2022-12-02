@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useRef, useState } from "react";
 import Map, { Layer, Marker } from "react-map-gl";
-import { useMapCoordContext } from "../../../../context/map/mapCoord/mapCoordContext";
+import { useMapSubContext } from "../../../../context/map/mapSub/mapSubContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useFlyTo } from "../hooks/useFlyTo";
 import { useHandleMapInit } from "../hooks/useHandleMapInit";
@@ -10,7 +10,10 @@ import { useMarkerLogic } from "../hooks/useMarkerLogic";
 
 const MapView = ({ offers }) => {
   const { setSingleParam } = useUrlManipulation();
-  const handleMarkerClick = (id) => setSingleParam("offerId", id);
+  const { activeMarker, hoverMarker, dispatchMapSub } = useMapSubContext();
+  const handleMarkerClick = (id) =>
+    dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: id });
+  // const handleMarkerClick = (id) => setSingleParam("offerId", id);
 
   // map stuff
   const MAPBOX_TOKEN =
@@ -36,7 +39,8 @@ const MapView = ({ offers }) => {
   });
 
   // Markers (active and hover)
-  const { activeMarker, hoverMarker } = useMarkerLogic();
+  // const { activeMarker, hoverMarker } = useMarkerLogic();
+
 
   // flyTo functionality
   useFlyTo({ mapRef });

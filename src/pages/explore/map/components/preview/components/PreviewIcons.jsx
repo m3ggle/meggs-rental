@@ -1,10 +1,15 @@
-import React from 'react'
-import { useUrlManipulation } from '../../../../../../hooks/urlManipulation/useUrlManipulation';
+import React from "react";
+import { useMapSubContext } from "../../../../../../context/map/mapSub/mapSubContext";
 
-const PreviewIcons = ({liked}) => {
-  const {deleteSingleParam} = useUrlManipulation()
-  const handleClose = () => deleteSingleParam("offerId")
-  
+const PreviewIcons = ({ liked }) => {
+  // const {deleteSingleParam} = useUrlManipulation()
+  // const handleClose = () => deleteSingleParam("offerId")
+
+  const { dispatchMapSub } = useMapSubContext();
+  const handleClose = () => {
+    dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: false });
+  };
+
   return (
     <div className="absolute -top-[2px] right-0 flex h-fit w-fit cursor-pointer flex-col items-center justify-center text-[24px]">
       <i
@@ -20,6 +25,6 @@ const PreviewIcons = ({liked}) => {
       />
     </div>
   );
-}
+};
 
-export default PreviewIcons
+export default PreviewIcons;

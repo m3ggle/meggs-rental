@@ -11,6 +11,16 @@ const mapCoordReducer = (state, action) => {
         ...state,
         mapLoaded: payload,
       };
+    case "UPDATE_HOVER_MARKER":
+      return {
+        ...state,
+        hoverMarker: payload,
+      };
+    case "UPDATE_ACTIVE_MARKER":
+      return {
+        ...state,
+        activeMarker: payload,
+      };
     default:
       break;
   }

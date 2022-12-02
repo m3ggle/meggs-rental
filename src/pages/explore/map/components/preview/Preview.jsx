@@ -1,5 +1,5 @@
-import {motion} from "framer-motion"
-import React from "react";
+import { motion } from "framer-motion";
+import React, { memo } from "react";
 import Calendar from "../../../../../components/offerDetails/Calendar";
 import CarSpecWrapper from "../../../../../components/offerDetails/CarSpecWrapper";
 import PreviewBasicInfo from "./components/PreviewBasicInfo";
@@ -12,12 +12,9 @@ import { usePreviewLogic } from "./hooks/usePreviewLogic";
 const Preview = () => {
   const { show, offerInformation } = usePreviewLogic();
 
-  console.log(show)
-
   return (
-    // <div className="flex absolute left-7 top-7 bottom-7 z-20 h-[640px] w-fit max-w-[360px] overflow-scroll rounded-xl bg-white shadow-xl">
     <motion.div
-      animate={show && "visible"}
+      animate={show ? "visible" : "hidden"}
       initial="hidden"
       transition={{ duration: 0.3 }}
       variants={{
@@ -25,9 +22,6 @@ const Preview = () => {
         hidden: { opacity: 0, scale: 1 },
       }}
       className={`flex h-[640px] w-[360px] max-w-[360px] flex-col gap-y-2 overflow-scroll rounded-2xl bg-white p-6 pt-10 shadow-xl duration-300 dark:bg-dmGrey900`}
-      // className={`${
-      //   show ? "flex" : "hidden"
-      // } h-[640px] w-[360px] max-w-[360px] flex-col gap-y-2 overflow-scroll rounded-2xl bg-white p-6 pt-10 shadow-xl duration-300 dark:bg-dmGrey900`}
     >
       <div className="hideScrollbar relative flex h-fit w-full flex-col gap-y-4 overflow-scroll">
         {offerInformation && (
@@ -52,8 +46,7 @@ const Preview = () => {
         )}
       </div>
     </motion.div>
-    // </div>
   );
 };
 
-export default Preview;
+export default memo(Preview);

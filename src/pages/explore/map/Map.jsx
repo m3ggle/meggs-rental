@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useMapCoordContext } from "../../../context/map/mapCoord/mapCoordContext";
+import { useMapSubContext } from "../../../context/map/mapSub/mapSubContext";
 import ExampleData from "../../../ExampleData";
 import { useFilterByCustomObject } from "../../../hooks/FilterByCustomObject/useFilterByCustomObject";
 import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipulation";
@@ -23,13 +24,13 @@ const Map = () => {
 
   // const [mobileSizeOffer, setMobileSizeOffer] = useState();
   const {
-    show,
     offerInformation: mobileOfferInformation,
     setOfferInformation,
   } = usePreviewLogic();
   const windowSize = useWindowSize();
 
-  const { bounds, mapLoaded } = useMapCoordContext();
+  const { bounds } = useMapCoordContext();
+  const { mapLoaded } = useMapSubContext();
   const { searchParams, deleteArrayOfParams } = useUrlManipulation();
   const { filterByCustomObject } = useFilterByCustomObject();
 

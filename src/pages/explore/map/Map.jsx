@@ -128,8 +128,13 @@ const Map = () => {
     },
   };
 
+  // const fullHeight = window.innerHeight()
+
   return (
-    <div className="flex h-screen w-full justify-center">
+    <div
+      style={{ height: `${windowSize.height}px` }}
+      className={`flex w-full justify-center`}
+    >
       <AnimatePresence>
         {isLoading && (
           <motion.div

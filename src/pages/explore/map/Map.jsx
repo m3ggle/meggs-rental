@@ -137,7 +137,7 @@ const Map = () => {
               offerList={filteredBoundsOffers ?? filteredOffers ?? offers}
             />
           </div>
-          <div className="absolute left-7 top-7 bottom-7 z-20 flex h-[640px] w-fit max-w-[360px] overflow-scroll rounded-xl bg-white shadow-xl">
+          <div className="absolute left-7 top-7 bottom-7 z-20 flex h-[640px] w-fit max-w-[360px] overflow-scroll rounded-2xl bg-white shadow-xl">
             <Preview />
           </div>
         </>

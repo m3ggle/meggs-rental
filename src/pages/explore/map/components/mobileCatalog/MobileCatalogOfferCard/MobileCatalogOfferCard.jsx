@@ -2,10 +2,11 @@
 // <LittleOfferCard name="Tesla Model 3" location="Salzburger Straße 18" price="100" transmission="Automatic" seats={5} />
 import { motion } from "framer-motion";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useHandleLocationNavigation } from "../../../../../../hooks/catalog/useHandleLocationNavigation";
 import { useUrlManipulation } from "../../../../../../hooks/urlManipulation/useUrlManipulation";
 import { useHandleFly } from "../../../../../../hooks/useHandleFly";
+import { useWindowSize } from "../../../../../../hooks/useWindowSize";
 import styles from "../../../../../../style";
 import MobileCatalogOfferCardIcons from "./MobileCatalogOfferCardIcons";
 import MobileCatalogOfferCardImgPart from "./MobileCatalogOfferCardImgPart";
@@ -24,6 +25,9 @@ const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
 
   const {handleFly} = useHandleFly()
 
+  const windowSize = useWindowSize()
+  const locationDom = useLocation()
+
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () => {
     closeModal && closeModal();
@@ -40,7 +44,8 @@ const MobileCatalogOfferCard = ({ offerInformation, index, closeModal }) => {
     <div
       onMouseEnter={() => handleHoverStart()}
       onMouseLeave={() => handleHoverEnd()}
-      className={`${styles.darkModeBorder} relative flex min-w-[300px] w-full cursor-pointer gap-x-3 rounded-lg bg-white shadow-md duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900`}
+      className={`relative flex w-full min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md dark:shadow-dmShadow duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900`}
+      // className={`${(windowSize.width > 1100 && locationDom.pathname === "/explore/map") && styles.darkModeBorder} relative flex w-full min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow-md duration-300 hover:scale-102 hover:shadow-lg dark:bg-dmGrey900`}
     >
       <MobileCatalogOfferCardImgPart
         onNavigationCallback={handleNavigation}

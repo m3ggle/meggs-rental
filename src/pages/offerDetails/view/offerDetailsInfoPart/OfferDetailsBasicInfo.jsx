@@ -16,14 +16,14 @@ const OfferDetailsBasicInfo = ({ offerInformation }) => {
           Basic Information
         </span>
         <div
-          className={`flex h-full w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow-md ${styles.darkModeBorder} dark:bg-dmGrey900`}
+          className={`flex h-full w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
         >
           <div className="flex items-center text-lmGrey600 dark:text-dmGrey100">
             <div
               className="fa-solid fa-location-dot mb-[3px] h-[16px] w-[16px] text-[16px]"
               aria-hidden="true"
             />
-            <span onClick={handleLocation} className="text-base cursor-pointer">
+            <span onClick={handleLocation} className="cursor-pointer text-base">
               {location.formatted}
             </span>
           </div>
@@ -70,7 +70,7 @@ const OfferDetailsBasicInfo = ({ offerInformation }) => {
           Prices
         </span>
         <div
-          className={`flex h-full w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow-md ${styles.darkModeBorder} dark:bg-dmGrey900`}
+          className={`flex h-full w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
         >
           <span className="text-lg text-lmPrimary dark:text-dmPrimary">
             {price.day}{" "}

@@ -166,16 +166,6 @@ const MapView = ({ offers }) => {
                     : "text-lmGrey800 dark:text-dmGrey900"
                 } text-[44px] drop-shadow-lg duration-300`}
               />
-
-              {/* <div
-            className={`fa-solid fa-location-dot ${
-              activeMarker === offer.offerId
-              ? "scale-125 text-lmPrimary"
-              : hoverMarker === offer.offerId
-              ? "scale-110 text-lmGrey400"
-              : "scale-100 text-lmGrey800"
-            } text-[44px] drop-shadow-lg duration-300`}
-          /> */}
             </Marker>
           ))}
           {darkMode && <Layer {...darkModeLayer} />}

@@ -21,7 +21,10 @@ const MobileSearchPreview = ({ offerInformation, onDelete }) => {
 
   return (
     <div className="absolute top-4 z-50 flex h-12 w-full flex-col items-center gap-y-2">
-      <div className="min-w-[300px] w-8/12 max-w-[340px]">
+      <div
+        className="w-[340px] max-w-[340px]"
+        // className="min-w-[300px] w-8/12 max-w-[340px]"
+      >
         <SearchFilter choice="autocomplete" showSubmitButton={false} />
       </div>
       {offerInformation && (

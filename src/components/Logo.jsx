@@ -45,7 +45,7 @@ const Logo = ({ isOpen, openModal }) => {
         // }}
         // variants={labelVariant}
         // custom={loadedLogo}
-        className="absolute -top-3 rounded-lg bg-white/80 px-2 py-1 text-[16px] backdrop-blur-sm duration-300"
+        className="absolute -top-3 rounded-lg bg-white/80 dark:bg-dmGrey900/80 px-2 py-1 text-[16px] backdrop-blur-sm duration-300"
       >
         <span className="text-lmGrey600 drop-shadow-lg dark:text-dmGrey25">
           Menu

@@ -18,7 +18,7 @@ const MobileCatalog = ({ offerList }) => {
       onClick={checkExtended}
       className={`relative flex ${
         extended ? "h-[640px] py-6" : "h-[88px] pb-6 pt-2 cursor-pointer"
-        } w-[360px] max-w-[360px] flex-col items-center gap-y-3 overflow-scroll rounded-2xl bg-white shadow-xl duration-300 dark:bg-dmGrey900`}
+        } w-[360px] max-w-[360px] flex-col items-center gap-y-3 overflow-hidden rounded-2xl bg-white shadow-xl duration-300 dark:bg-dmGrey900`}
     >
       <div
         className={`w-[312px]`}

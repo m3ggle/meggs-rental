@@ -22,7 +22,7 @@ const Logo = ({ isOpen, openModal }) => {
 
   return (
     <div
-      className={`fixed ${isOpen || hideLogo ? "bottom-[-100px]" : "bottom-10"}
+      className={`fixed ${isOpen || hideLogo ? "bottom-[-120px]" : "bottom-10"}
         z-50 flex h-[80px] w-[80px] cursor-pointer items-center justify-center rounded-full duration-300 hover:scale-105 active:scale-95 800:h-[92px] 800:w-[92px]`}
       onClick={openModal}
     >

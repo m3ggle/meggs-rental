@@ -15,7 +15,7 @@ const UserProfileChat = ({
       onClick={() => onClick(chatId)}
       className={`flex w-full items-center justify-center rounded-lg px-2 py-4 ${
         shadow && "shadow"
-      } cursor-pointer duration-300 hover:bg-lmGrey50`}
+      } cursor-pointer duration-300 hover:bg-lmGrey50 dark:hover:bg-dmGrey800`}
     >
       <div className="flex h-11 w-full gap-x-2">
         {/* pic */}

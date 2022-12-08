@@ -128,8 +128,6 @@ const Map = () => {
     },
   };
 
-  // const fullHeight = window.innerHeight()
-
   return (
     <div
       style={{ height: `${windowSize.height}px` }}

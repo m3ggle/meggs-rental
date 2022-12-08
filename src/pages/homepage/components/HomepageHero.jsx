@@ -16,7 +16,7 @@ const HomepageHero = () => {
   const handleGetStarted = () => {};
 
   return (
-    <div className="flex h-screen w-full items-center bg-white px-14">
+    <div className="relative flex h-screen w-full items-center bg-white px-14">
       {/* text */}
       <div className="flex w-[712px] flex-col gap-y-9">
         <h1 className="text-[80px] font-bold leading-[80px] text-lmGrey900">
@@ -39,7 +39,7 @@ const HomepageHero = () => {
       </div>
 
       {/* imgs */}
-      <div className="absolute right-[56px] flex h-[80%] w-[620px] items-center ">
+      <div className="absolute right-[56px] flex h-[80%] w-[620px] items-center">
         <div className="absolute left-[20px] top-0 opacity-40">
           <TabletOfferCard offerInformation={singleOffer} index={0} />
         </div>

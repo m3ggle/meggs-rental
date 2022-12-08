@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserProfileSmall from "../../../../components/userProfile/UserProfileSmall";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
-import ChatInfo from "../ChatInfo";
+import ChatInfo from "../chatInfo/ChatInfo";
 
 const ChatMainHeader = () => {
   let [isOpen, setIsOpen] = useState(false);

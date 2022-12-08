@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import ExampleData from "../../ExampleData";
-import MobileCatalogOfferCard from "../../pages/explore/map/components/mobileCatalog/MobileCatalogOfferCard/MobileCatalogOfferCard";
 import Btn from "../common/Btn";
+import MobileCatalogOfferCard from "../offerCard/nonResponsive/mobileOfferCard/MobileOfferCard";
 
 const LittleOfferCardList = ({ closeModal }) => {
-  const [amountOfOfferCards, setAmountOfOfferCards] = useState([1,2,3])
+  const [amountOfOfferCards, setAmountOfOfferCards] = useState([1, 2, 3]);
   const { exampleOffers } = ExampleData();
 
   const handleLoadMore = () => {
-    let currentAmount = amountOfOfferCards
+    let currentAmount = amountOfOfferCards;
     for (let i = 0; i < 3; i++) {
-      currentAmount.push(2)
+      currentAmount.push(2);
     }
     setAmountOfOfferCards([...currentAmount]);
-  }
+  };
 
   return (
     <div className="flex flex-col gap-y-2">

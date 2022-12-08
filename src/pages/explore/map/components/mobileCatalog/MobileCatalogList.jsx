@@ -1,11 +1,11 @@
 import React from "react";
-import MobileCatalogOfferCard from "./MobileCatalogOfferCard/MobileCatalogOfferCard";
+import MobileOfferCard from "../../../../../components/offerCard/nonResponsive/mobileOfferCard/MobileOfferCard";
 
 const MobileCatalogList = ({ offerList }) => {
   return (
     <>
       {offerList.map((offer, index) => (
-        <MobileCatalogOfferCard
+        <MobileOfferCard
           key={offer.offerId}
           offerInformation={offer}
           index={index}

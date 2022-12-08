@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MobileCatalogOfferCardIcons = ({
+const MobileOfferCardIcons = ({
   liked,
   onLikeCallback,
   onLocationCallback,
@@ -21,4 +21,4 @@ const MobileCatalogOfferCardIcons = ({
   );
 };
 
-export default MobileCatalogOfferCardIcons
+export default MobileOfferCardIcons

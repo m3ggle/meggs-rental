@@ -1,7 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
 import React from "react";
 import SearchFilter from "../../../../components/filter/SearchFilter";
-import MobileCatalogOfferCard from "./mobileCatalog/MobileCatalogOfferCard/MobileCatalogOfferCard";
+import MobileCatalogOfferCard from "../../../../components/offerCard/nonResponsive/mobileOfferCard/MobileOfferCard";
 
 const MobileSearchPreview = ({ offerInformation, onDelete }) => {
   const controls = useAnimation();

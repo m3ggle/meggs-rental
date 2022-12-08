@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MobileCatalogOfferCardInfoPart = ({onNavigationCallback, offerInformation }) => {
+const MobileOfferCardInfoPart = ({onNavigationCallback, offerInformation }) => {
   const { location, name, price, carSpecs } = offerInformation;
   
   return (
@@ -50,4 +50,4 @@ const MobileCatalogOfferCardInfoPart = ({onNavigationCallback, offerInformation 
   );
 };
 
-export default MobileCatalogOfferCardInfoPart
+export default MobileOfferCardInfoPart

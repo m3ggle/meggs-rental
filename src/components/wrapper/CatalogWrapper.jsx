@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useFilterBySearchParams } from "../../hooks/FilterBySearchParams/useFilterBySearchParams";
-import CatalogList from "../catalog/CatalogList";
+import CatalogList from "../../pages/explore/catalog/components/CatalogList";
 import CatalogLayout from "../layouts/CatalogLayout";
 
 const CatalogWrapper = ({ offerList }) => {

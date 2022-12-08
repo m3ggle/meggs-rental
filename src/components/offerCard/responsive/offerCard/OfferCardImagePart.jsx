@@ -8,7 +8,7 @@ const OfferCardImagePart = ({ onNavigationCallback, photoUrl }) => {
       style={{
         backgroundImage: `url(${photoUrl[0]})`,
       }}
-    ></div>
+    />
   );
 };
 

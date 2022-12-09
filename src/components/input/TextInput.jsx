@@ -100,7 +100,7 @@ const TextInput = ({
                 error
                   ? "text-red-500 placeholder:text-red-300 dark:text-red-100"
                   : "text-lmGrey600 placeholder:text-dmGrey300 dark:text-dmGrey25 placeholder:dark:text-dmGrey300"
-              }  focus:outline-none`}
+              } focus:outline-none`}
             />
             {(secondIcon || error) && renderSecondIcon()}
             {/* {(secondIcon || error) && (

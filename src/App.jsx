@@ -34,19 +34,19 @@ export default function App() {
 
   const queryClient = new QueryClient();
 
-  const handleKeyPress = useCallback((event) => {
-    console.log(`Key pressed: ${event.key}`);
-  }, []);
+  // const handleKeyPress = useCallback((event) => {
+  //   console.log(`Key pressed: ${event.key}`);
+  // }, []);
 
-  useEffect(() => {
-    // attach the event listener
-    document.addEventListener("keydown", handleKeyPress);
+  // useEffect(() => {
+  //   // attach the event listener
+  //   document.addEventListener("keydown", handleKeyPress);
 
-    // remove the event listener
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [handleKeyPress]);
+  //   // remove the event listener
+  //   return () => {
+  //     document.removeEventListener("keydown", handleKeyPress);
+  //   };
+  // }, [handleKeyPress]);
 
   return (
     <QueryClientProvider client={queryClient}>

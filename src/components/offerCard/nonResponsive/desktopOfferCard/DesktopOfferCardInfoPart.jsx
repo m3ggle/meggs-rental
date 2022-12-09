@@ -51,11 +51,11 @@ const DesktopOfferCardInfoPart = ({
 
       {/* sum more info */}
       <div className="flex w-5/6 gap-x-4">
-        <div className="flex items-center gap-x-1 text-xs text-lmGrey300 dark:text-dmGrey100">
+        <div className="flex items-center gap-x-1 text-sm text-lmGrey300 dark:text-dmGrey100">
           <i className="fa-solid fa-gears"></i>
           <span>{carSpecs.transmission}</span>
         </div>
-        <div className="flex items-center gap-x-1 text-xs text-lmGrey300 dark:text-dmGrey100">
+        <div className="flex items-center gap-x-1 text-sm text-lmGrey300 dark:text-dmGrey100">
           <i className="fa-solid fa-chair"></i>
           <span>{carSpecs.seats} Seats</span>
         </div>

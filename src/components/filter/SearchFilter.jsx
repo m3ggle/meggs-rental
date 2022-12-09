@@ -18,7 +18,7 @@ const SearchFilter = ({ name, label, showSubmitButton, choice }) => {
     <div>
       <form
         // onSubmit={handleSubmit(onSubmit)}
-        className="flex w-full max-w-[340px] flex-col gap-y-2"
+        className="flex w-full max-w-[340px] bg-slate-400 flex-col gap-y-2"
       >
         <label
           htmlFor={name}

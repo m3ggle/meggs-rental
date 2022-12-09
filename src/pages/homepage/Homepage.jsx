@@ -1,4 +1,6 @@
 import React from "react";
+import HomepageFooter from "./components/footer/HomepageFooter";
+import HomepageAbout from "./components/HomepageAbout";
 import HomepageChat from "./components/HomepageChat";
 import HomepageExplore from "./components/HomepageExplore";
 import HomepageHero from "./components/HomepageHero";
@@ -17,6 +19,8 @@ const Homepage = () => {
       <HomepageSearch />
       <HomepageSearchByCity />
       <HomepageMostViewed />
+      <HomepageAbout />
+      <HomepageFooter />
     </div>
   );
 };

@@ -1,22 +1,23 @@
 import React from "react";
+import {useForm} from "react-hook-form"
 
 const PrivacyPolicy = () => {
   return (
-    <div className="flex h-screen w-full items-center justify-center">
-      {/* footer main */}
-      <div className="h-fit w-full bg-blue-100 px-14">
-        <div className="h-fit w-full gap-6 rounded-[30px] bg-white p-6 shadow-lg">
-          {/* first col */}
-          <div className="flex w-full flex-col gap-y-6 p-6">
-            <h2 className="text-5xl text-lmGrey800">
-              Contact the Developer directly
-            </h2>
-            <div className="flex w-full items-center gap-x-3 border-b-[1px] border-lmGrey300 px-3 pt-6 pb-3">
-              <i className="fa-solid fa-at" />
-            </div>
-          </div>
-        </div>
-      </div>
+    <div
+      style={{
+        width: "312px",
+        backgroundColor: "white",
+        boxShadow:
+          "0px 1px 2px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06)",
+        borderRadius: "12px",
+        padding: "24px",
+        gap: "4px",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <span>Friedrichsgracht 58-110</span>
+      <span>10178 Berlin, Germany</span>
     </div>
   );
 };

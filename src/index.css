@@ -12,3 +12,22 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* mapbox */
+.mapboxgl-popup-content {
+  box-shadow: none;
+  height: fit-content;
+  padding: 0px 0px;
+}
+
+.mapboxgl-popup-tip {
+  display: none;
+}
+
+.mapboxgl-popup-content span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}

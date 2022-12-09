@@ -1,6 +1,9 @@
 import React from 'react'
 
 const HomepageNavbar = () => {
+const textInTheFooter =
+  "text-lmGrey600 cursor-pointer w-fit hover:text-lmGrey800 active:text-lmPrimary duration-300";
+
   return (
     <div className="fixed top-0 left-0 flex items-center justify-between rounded-b-lg bg-white/80 z-40 h-fit w-full py-6 px-14 backdrop-blur-lg dark:bg-dmGrey900/20">
       {/* logo */}
@@ -11,11 +14,11 @@ const HomepageNavbar = () => {
 
       {/* links */}
       <div className="flex gap-x-6 text-lg text-lmGrey800">
-        <span>Explore</span>
-        <span>Chat</span>
-        <span>Search</span>
-        <span>Most Viewed</span>
-        <span>About</span>
+        <span className={textInTheFooter}>Explore</span>
+        <span className={textInTheFooter}>Chat</span>
+        <span className={textInTheFooter}>Search</span>
+        <span className={textInTheFooter}>Most Viewed</span>
+        <span className={textInTheFooter}>About</span>
       </div>
 
       {/* user */}

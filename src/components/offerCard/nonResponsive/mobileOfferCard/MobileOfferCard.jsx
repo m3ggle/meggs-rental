@@ -48,7 +48,7 @@ const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
     <div
       onMouseEnter={() => handleHover(offerId)}
       onMouseLeave={() => handleHover(false)}
-      className={`relative flex w-full min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow duration-300 hover:scale-102 hover:shadow-md dark:bg-dmGrey900 dark:shadow-dmShadow`}
+      className={`relative flex w-full min-w-[300px] cursor-pointer gap-x-3 rounded-lg bg-white shadow duration-300 hover:scale-102 hover:shadow-md active:scale-99 active:shadow-sm dark:bg-dmGrey900 dark:shadow-dmShadow`}
     >
       <MobileCatalogOfferCardImgPart
         onNavigationCallback={handleNavigation}

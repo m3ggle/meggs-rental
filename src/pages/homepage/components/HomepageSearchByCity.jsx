@@ -46,7 +46,7 @@ const HomepageSearchByCity = () => {
       <div className="h-[720px] min-w-[720px] rounded-[60px] bg-blue-200" />
       <div className="flex h-[720px] w-full justify-center">
         <div className="flex w-[448px] flex-col gap-y-6 py-6">
-          <h2 className="text-5xl font-semibold text-lmGrey800">
+          <h2 className="text-5xl font-semibold text-lmGrey800 drop-shadow">
             Search by City
           </h2>
           <div className="flex h-full flex-grow flex-col gap-y-3 overflow-scroll">

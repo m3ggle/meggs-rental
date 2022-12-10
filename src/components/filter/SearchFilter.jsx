@@ -48,7 +48,6 @@ const SearchFilter = ({ name, label, showSubmitButton, choice }) => {
               uiType="primary"
               icon="fa-solid fa-chevron-right"
               onClick={handleSubmit}
-              // onClick={handleTest}
             />
           )}
         </div>

@@ -16,7 +16,7 @@ const HomepageMostViewed = () => {
   const today = [exampleOffers[4], exampleOffers[5], exampleOffers[6]];
 
   return (
-    <div className="flex w-full flex-col items-center gap-y-6 bg-white py-[100px]">
+    <div id="mostViewed" className="flex w-full flex-col items-center gap-y-6 bg-white py-[100px]">
       <div className="flex items-end gap-x-6">
         <div className="flex flex-col gap-y-3 rounded-[24px] p-9 shadow">
           <h3 className="text-3xl text-lmGrey800">This Month</h3>

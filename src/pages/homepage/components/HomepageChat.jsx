@@ -1,14 +1,12 @@
-import React from 'react'
-import Btn from '../../../components/common/Btn';
-import MobileChatSidebar from "../../../assets/img/mobileChatSidebar.webp"
-import DesktopChat from "../../../assets/img/desktopChat.webp"
-import TableExploreMap from "../../../assets/img/tabletExploreMap.webp"
-
-
+import React from "react";
+import Btn from "../../../components/common/Btn";
 
 const HomepageChat = () => {
   return (
-    <div className="flex w-full flex-col gap-y-6 bg-white px-14 py-[100px]">
+    <div
+      id="chat"
+      className="flex w-full flex-col gap-y-6 bg-white px-14 py-[100px]"
+    >
       <div className="flex w-[615px] flex-col gap-y-6">
         <span className="text-5xl font-semibold text-lmGrey800">Chat</span>
         <span className="w-full text-2xl text-lmGrey800">
@@ -30,7 +28,7 @@ const HomepageChat = () => {
           </div>
         </div>
       </div>
-      <div className="relative flex h-[571px] w-full max-w-full items-baseline bg-pink-100 px-1 overflow">
+      <div className="overflow relative flex h-[571px] w-full max-w-full items-baseline bg-pink-100 px-1">
         <div className="absolute left-0 bottom-0 z-20 min-h-[404px] min-w-[200px] bg-blue-200"></div>
         <div className="absolute left-[100px] bottom-0 z-10 min-h-[574.4px] min-w-[1000px] bg-blue-300"></div>
         <div className="absolute right-0 bottom-0 min-h-[831.84px] min-w-[600px] bg-blue-400"></div>
@@ -42,6 +40,6 @@ const HomepageChat = () => {
       </div> */}
     </div>
   );
-}
+};
 
-export default HomepageChat
+export default HomepageChat;

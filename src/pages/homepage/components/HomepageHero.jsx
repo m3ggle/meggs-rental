@@ -16,7 +16,7 @@ const HomepageHero = () => {
   const handleGetStarted = () => {};
 
   return (
-    <div className="relative flex h-screen w-full items-center bg-white px-14">
+    <div id="hero" className="relative flex h-screen w-full items-center bg-white px-14">
       {/* text */}
       <div className="flex w-[712px] flex-col gap-y-9">
         <h1 className="text-[80px] font-bold leading-[80px] text-lmGrey900">

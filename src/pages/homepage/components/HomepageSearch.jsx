@@ -4,7 +4,7 @@ import MapScreenshot from "../../../assets/img/mapScreenshot.webp"
 
 const HomepageSearch = () => {
   return (
-      <div className="h-[720px] w-full bg-cover bg-center"
+      <div id="directSearch" className="h-[720px] w-full bg-cover bg-center"
         style={{backgroundImage: `url(${MapScreenshot})`}}
       >
       <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-t from-white via-white/0 to-white">

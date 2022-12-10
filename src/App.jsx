@@ -75,7 +75,10 @@ export default function App() {
               <Route path="/chat/chat-main/:chatId" element={<ChatMain />} />
 
               <Route path="/" element={<Homepage />} />
-              <Route path="/homepage" element={<Homepage />} />
+              <Route
+                path="/homepage"
+                element={<Homepage openModal={openModal} />}
+              />
 
               <Route path="/profile" element={<Profile />} />
               <Route path="/profile/account" element={<ProfileAccount />} />

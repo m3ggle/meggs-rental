@@ -5,7 +5,9 @@ import DesktopExploreMap from "../../../assets/img/desktopExploreMap.webp";
 
 const HomepageExplore = () => {
   return (
-    <div className="flex w-full flex-col gap-y-6 bg-white px-14 py-[100px]">
+    <div
+      id="explore"
+      className="flex w-full flex-col gap-y-6 bg-white px-14 py-[100px]">
       <div className="flex w-[615px] flex-col gap-y-6">
         <span className="text-5xl font-semibold text-lmGrey800">Explore</span>
         <span className="w-full text-2xl text-lmGrey800">

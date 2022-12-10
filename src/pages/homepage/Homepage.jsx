@@ -9,10 +9,10 @@ import HomepageNavbar from "./components/HomepageNavbar";
 import HomepageSearch from "./components/HomepageSearch";
 import HomepageSearchByCity from "./components/HomepageSearchByCity";
 
-const Homepage = () => {
+const Homepage = ({openModal}) => {
   return (
-    <div className="relative w-full flex flex-col overflow-hidden">
-      <HomepageNavbar />
+    <div className="relative flex w-full flex-col overflow-hidden max-w-[1440px]">
+      <HomepageNavbar openModal={openModal} />
       <HomepageHero />
       <HomepageExplore />
       <HomepageChat />

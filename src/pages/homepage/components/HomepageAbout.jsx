@@ -5,7 +5,7 @@ import HomepageSocial from "./HomepageSocial";
 
 const HomepageAbout = () => {
   return (
-    <div className="relative flex w-full gap-x-6 bg-white py-[100px] px-14">
+    <div id="about" className="relative flex w-full gap-x-6 bg-white py-[100px] px-14">
       <div className="flex w-full flex-col items-center gap-y-6">
         <h2 className="text text-5xl">Our Vision</h2>
         <div className="flex w-full gap-x-3">

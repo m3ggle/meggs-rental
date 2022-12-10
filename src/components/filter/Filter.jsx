@@ -7,6 +7,7 @@ import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulati
 import Btn from "../common/Btn";
 import Select from "../input/Select";
 import TextInput from "../input/TextInput";
+import MobileCatalogAutocomplete from "./MobileCatalogAutocomplete";
 const { filterSelects } = ExampleData();
 const {
   transmissionSelect,
@@ -64,7 +65,6 @@ const Filter = ({ isOpen, closeModal, filterModal }) => {
         <span className="text-2xl text-lmGrey700 dark:text-dmGrey25">
           Filter
         </span>
-
         <Controller
           name="search"
           control={control}
@@ -84,6 +84,8 @@ const Filter = ({ isOpen, closeModal, filterModal }) => {
             />
           )}
         />
+        
+        <MobileCatalogAutocomplete control={control} />
 
         <div className="gap-y-1">
           <div className="flex gap-x-2">
@@ -135,7 +137,6 @@ const Filter = ({ isOpen, closeModal, filterModal }) => {
             />
           </div>
         </div>
-
         <div className="gap-y-1">
           <div className="flex gap-x-2">
             <Controller
@@ -316,7 +317,6 @@ const Filter = ({ isOpen, closeModal, filterModal }) => {
             />
           </div>
         </div>
-
         <div className=" flex flex-col gap-y-1">
           <span className="text-sm text-lmGrey500 dark:text-dmGrey100">
             Car Specifics

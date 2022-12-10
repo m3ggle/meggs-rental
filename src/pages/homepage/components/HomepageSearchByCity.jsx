@@ -42,7 +42,7 @@ const HomepageSearchByCity = () => {
   };
 
   return (
-    <div className="flex w-full gap-x-3 bg-white px-14 py-[100px]">
+    <div className="hidden 1200:flex w-full gap-x-3 bg-white px-14 py-[100px]">
       <div className="h-[720px] min-w-[720px] rounded-[60px] bg-blue-200" />
       <div className="flex h-[720px] w-full justify-center">
         <div className="flex w-[448px] flex-col gap-y-6 py-6">

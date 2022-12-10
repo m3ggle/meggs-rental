@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Btn from "../../../components/common/Btn";
 import DesktopOfferCard from "../../../components/offerCard/nonResponsive/desktopOfferCard/DesktopOfferCard";
 import MobileOfferCard from "../../../components/offerCard/nonResponsive/mobileOfferCard/MobileOfferCard";
@@ -13,29 +14,33 @@ const HomepageHero = () => {
 
   const singleOffer = exampleOffers[0];
 
-  const handleGetStarted = () => {};
+  const navigate = useNavigate()
+  const handleGetStarted = () => {
+    navigate("/explore/catalog")
+  };
 
   return (
-    <div id="hero" className="relative flex h-screen w-full items-center bg-white px-14">
+    <div
+      id="hero"
+      className="relative flex h-screen w-full items-center bg-white px-14"
+    >
       {/* text */}
-      <div className="flex w-[712px] flex-col gap-y-9">
-        <h1 className="text-[80px] font-bold leading-[80px] text-lmGrey900">
+      <div className="z-30 ml-11 flex w-[712px] flex-col gap-y-9">
+        <h1 className="text-[80px] font-bold leading-[80px] text-lmGrey900 drop-shadow">
           Drive what you want, where and when you want!
         </h1>
-        <h3 className="text-4xl text-lmGrey800">
+        <h3 className="text-4xl text-lmGrey800 drop-shadow-sm">
           Nisi facilisis mauris lacus sit arcu enim. Commodo faucibus tincidunt
           morbi risus imperdiet tincidunt.
         </h3>
 
-        <div className="w-fit">
-          <Btn
-            type="button"
-            uiType="primary"
-            title="Get Started"
-            icon="fa-solid fa-chevron-right"
-            onClick={handleGetStarted}
-          />
-        </div>
+        <button
+          onClick={handleGetStarted}
+          className="flex w-fit items-center justify-center gap-x-2 rounded-lg bg-lmPrimary py-3 px-4 text-lg font-semibold text-white shadow duration-300 hover:scale-101 hover:shadow-lg active:scale-99 active:shadow-sm dark:bg-dmPrimary dark:hover:bg-lmPrimary"
+        >
+          Get Started
+          <i className="fa-solid fa-chevron-right text-[16px]" />
+        </button>
       </div>
 
       {/* imgs */}

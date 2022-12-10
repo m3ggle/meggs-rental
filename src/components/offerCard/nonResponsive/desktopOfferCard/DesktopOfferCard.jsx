@@ -17,7 +17,7 @@ const DesktopOfferCard = ({ offerInformation }) => {
   const handleLike = () => {};
 
   return (
-    <div className="relative flex cursor-pointer bg-white dark:bg-dmGrey900 dark:shadow-sm justify-center gap-x-0 rounded-xl shadow-none dark:border-none h-[406px] w-[292px]">
+    <div className="relative flex h-[406px] w-[292px] cursor-pointer justify-center gap-x-0 rounded-xl bg-white shadow-none duration-300 hover:scale-101 active:scale-99 dark:border-none dark:bg-dmGrey900 dark:shadow-sm">
       <DesktopOfferCardImagePart
         photoUrl={photoUrl}
         onNavigationCallback={handleNavigation}

@@ -1,9 +1,9 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
-import { useHandleLocationNavigation } from '../../../../hooks/catalog/useHandleLocationNavigation';
-import SpecialHomepageOfferCardIcons from './SpecialHomepageOfferCardIcons';
-import SpecialHomepageOfferCardImagePart from './SpecialHomepageOfferCardImagePart';
-import SpecialHomepageOfferCardInfoPart from './SpecialHomepageOfferCardInfoPart';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
+import SpecialHomepageOfferCardIcons from "./SpecialHomepageOfferCardIcons";
+import SpecialHomepageOfferCardImagePart from "./SpecialHomepageOfferCardImagePart";
+import SpecialHomepageOfferCardInfoPart from "./SpecialHomepageOfferCardInfoPart";
 
 const SpecialHomepageOfferCard = ({ offerInformation }) => {
   const { offerId, liked, photoUrl, location } = offerInformation;
@@ -17,7 +17,7 @@ const SpecialHomepageOfferCard = ({ offerInformation }) => {
   const handleLike = () => {};
 
   return (
-    <div className="relative flex h-[406px] w-[292px] cursor-pointer justify-center gap-x-0 rounded-xl bg-white shadow-none dark:border-none dark:bg-dmGrey900 dark:shadow-sm">
+    <div className="relative flex h-[406px] w-[292px] cursor-pointer justify-center gap-x-0 rounded-xl bg-white duration-300 hover:scale-101 active:scale-99 shadow-md active:shadow-sm hover:shadow-lg dark:border-none dark:bg-dmGrey900 dark:shadow-sm">
       <SpecialHomepageOfferCardImagePart
         photoUrl={photoUrl}
         onNavigationCallback={handleNavigation}
@@ -36,4 +36,4 @@ const SpecialHomepageOfferCard = ({ offerInformation }) => {
   );
 };
 
-export default SpecialHomepageOfferCard
+export default SpecialHomepageOfferCard;

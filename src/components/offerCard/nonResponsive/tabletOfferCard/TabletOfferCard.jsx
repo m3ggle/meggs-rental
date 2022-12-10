@@ -17,7 +17,7 @@ const TabletOfferCard = ({ offerInformation }) => {
   const handleLike = () => {};
 
   return (
-    <div className="relative flex cursor-pointer bg-white dark:bg-dmGrey900 dark:shadow-sm h-[252px] w-[180px] justify-center gap-x-0 rounded-xl shadow-none">
+    <div className="relative flex h-[252px] w-[180px] cursor-pointer justify-center gap-x-0 rounded-xl bg-white shadow-none duration-300 hover:scale-102 active:scale-99 dark:bg-dmGrey900 dark:shadow-sm">
       <TabletOfferCardImagePart
         photoUrl={photoUrl}
         onNavigationCallback={handleNavigation}

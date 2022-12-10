@@ -8,8 +8,10 @@ const HomepageChat = () => {
       className="flex w-full flex-col gap-y-6 bg-white px-14 py-[100px]"
     >
       <div className="flex w-[615px] flex-col gap-y-6">
-        <span className="text-5xl font-semibold text-lmGrey800">Chat</span>
-        <span className="w-full text-2xl text-lmGrey800">
+        <span className="text-5xl font-semibold text-lmGrey800 drop-shadow">
+          Chat
+        </span>
+        <span className="w-full text-2xl text-lmGrey800 drop-shadow-sm">
           If you've discovered the appropriate Offer for you, don't be timid
           about contacting the Owner. Seal the deal and drive away after a
           friendly exchange.

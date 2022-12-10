@@ -10,11 +10,11 @@ const HomepageFooterMain = () => {
     "text-lmGrey600 cursor-pointer w-fit hover:text-lmGrey800 active:text-lmPrimary duration-300";
 
   return (
-    <div className="h-fit w-full px-14 z-20">
+    <div className="z-20 h-fit w-full px-14">
       <div className="flex h-fit w-full gap-6 rounded-[30px] bg-white p-6 shadow-lg">
         {/* first col */}
         <div className="flex w-full flex-col gap-y-6 p-6">
-          <h2 className="text-5xl text-lmGrey800">
+          <h2 className="text-5xl text-lmGrey800 drop-shadow">
             Contact the Developer directly
           </h2>
           <div

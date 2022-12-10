@@ -13,7 +13,7 @@ const HomepageExplore = () => {
   return (
     <div
       id="explore"
-      className="relative flex w-full flex-col gap-y-6 bg-white px-14 py-[100px]"
+      className="relative flex w-full flex-col gap-y-[120px] bg-white px-14 py-[100px] 700:gap-y-6"
     >
       <div className="flex w-[615px] flex-col gap-y-6">
         <span className="text-5xl font-semibold text-lmGrey800 drop-shadow">
@@ -37,27 +37,26 @@ const HomepageExplore = () => {
           </div>
         </div>
       </div>
+
       <img
-        onClick={() => handleNavigation("/explore/catalog")}
-        className="absolute -left-44 h-fit w-[700px] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99"
+        aria-hidden={true}
+        className="h-fit w-[55%] cursor-pointer opacity-0 drop-shadow-lg duration-300 hover:scale-101 active:scale-99 900:-left-[8%]"
         src={TabletExploreCatalog}
         alt="tablet"
       />
 
-      {/* <div className="relative flex h-[505px] w-full max-w-full">
-        <img
-          onClick={() => handleNavigation("/explore/catalog")}
-          className="absolute -left-44 h-fit w-[700px] cursor-pointer drop-shadow-lg hover:scale-101 duration-300 active:scale-99"
-          src={TabletExploreCatalog}
-          alt="tablet"
-        />
-        <img
-          onClick={() => handleNavigation("/explore/map")}
-          className="absolute bottom-0 -right-[400px] h-fit w-[1200px] cursor-pointer drop-shadow-lg hover:scale-101 duration-300 active:scale-99"
-          src={DesktopExploreMap}
-          alt="desktop"
-        />
-      </div> */}
+      <img
+        onClick={() => handleNavigation("/explore/catalog")}
+        className="absolute -left-[6%] bottom-[100px] h-fit w-[50%] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99 900:-left-[8%]"
+        src={TabletExploreCatalog}
+        alt="tablet"
+      />
+      <img
+        onClick={() => handleNavigation("/explore/map")}
+        className="absolute bottom-[100px] left-[45%] z-10 h-fit w-[84%] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99"
+        src={DesktopExploreMap}
+        alt="desktop"
+      />
     </div>
   );
 };

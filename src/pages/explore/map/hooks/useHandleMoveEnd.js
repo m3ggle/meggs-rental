@@ -32,7 +32,7 @@ export const useHandleMoveEnd = ({ mapRef, setPosition }) => {
   const setContext = useCallback(
     (bounds, positionPrep) => {
       dispatchMapCoord({
-        type: "UPDATE_BOUNDS_AND_POSITION",
+        type: "SET_BOUNDS_AND_POSITION",
         payload: {
           bounds: convertBoundsSyntax(bounds),
           position: { ...positionPrep },
@@ -47,6 +47,7 @@ export const useHandleMoveEnd = ({ mapRef, setPosition }) => {
     const { positionPrep, bounds } = handlePreparation(mapRef);
 
     // state update
+    console.log("setting position because of move end")
     setPosition({ ...positionPrep });
 
     // searchParams update

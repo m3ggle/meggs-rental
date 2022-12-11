@@ -17,7 +17,7 @@ export const useHandleMapInit = (mapRef) => {
       const { positionPrep } = handlePreparation(mapRef);
       setArrayOfParams({ ...positionPrep });
     }
-    dispatchMapSub({ type: "UPDATE_MAP_LOAD", payload: true });
+    dispatchMapSub({ type: "SET_MAP_LOAD", payload: true });
   }, [setArrayOfParams, getArrayOfParams, handlePreparation, mapRef]);
 
   return { handleInit };

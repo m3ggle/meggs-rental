@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Controller } from "react-hook-form";
+import { useLocation } from "react-router-dom";
+import { useMapCoordContext } from "../../context/map/mapCoord/mapCoordContext";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useHandleFly } from "../../hooks/useHandleFly";
 import Autocomplete from "../input/Autocomplete";
 import { useAutocompleteApi } from "./hooks/useAutocompleteApi";
 
-const MobileCatalogAutocomplete = ({ control }) => {
+// too many renders
+const MobileCatalogAutocomplete = ({ control, definedActions }) => {
+  definedActions = "mapCatalog";
+  let locationPathname = useLocation().pathname;
+
   const {
     getSingleParam,
     setArrayOfParams,
     deleteSingleParam,
     deleteArrayOfParams,
   } = useUrlManipulation();
+  const { dispatchMapCoord } = useMapCoordContext();
 
   const { handleFly } = useHandleFly();
 
@@ -21,6 +28,37 @@ const MobileCatalogAutocomplete = ({ control }) => {
   const [itemList, setItemList] = useState([]);
 
   const successFunc = (data) => {
+    setItemList(filterDistributor(data));
+
+    // const filteredList = data.data.features.filter(
+    //   (feature) =>
+    //     feature.id && feature.place_name && feature.center && feature.bbox
+    // );
+
+    // const tempList = filteredList.map((feature) => {
+    //   return {
+    //     id: feature.id,
+    //     name: feature.place_name,
+    //     extraInfo: {
+    //       bounds: [
+    //         [feature.bbox[1], feature.bbox[0]],
+    //         [feature.bbox[3], feature.bbox[2]],
+    //       ],
+    //       center: feature.center,
+    //     },
+    //   };
+    // });
+
+    // setItemList(tempList);
+  };
+
+  const filterDistributor = (data) => {
+    if (definedActions === "mapCatalog") {
+      return mapCatalogFilter(data);
+    }
+  };
+
+  const mapCatalogFilter = (data) => {
     const filteredList = data.data.features.filter(
       (feature) =>
         feature.id && feature.place_name && feature.center && feature.bbox
@@ -40,12 +78,15 @@ const MobileCatalogAutocomplete = ({ control }) => {
       };
     });
 
-    setItemList(tempList);
+    return tempList;
   };
+
+  // Todo: setItemList to error in other words display the error in the autocomplete results
   const errorFunc = (data) => console.log("error", data.data);
 
   const { data, isLoading, error, isError, refetch, isFetching } =
     useAutocompleteApi({
+      definedActions,
       value: inputValue,
       onSuccessCallback: successFunc,
       onErrorCallback: errorFunc,
@@ -67,18 +108,42 @@ const MobileCatalogAutocomplete = ({ control }) => {
       callbackObject.extraInfo.center[0],
       callbackObject.extraInfo.center[1]
     );
+
+    console.log(callbackObject)
+
     // const stringifiedBounds = JSON.stringify(callbackObject.extraInfo.bounds);
     // setSingleParam("bounds", JSON.stringify(stringifiedBounds));
   };
 
-  useEffect(() => {
-    if (center.length > 1 && inputValue.length >= 3) {
-      const urlPrep = { lng: center[0], lat: center[1] };
-      setArrayOfParams(urlPrep);
+  const decideSelectAction = (callbackObject) => {
+    // autocomplete in: mobileCatalog and page: map
+    if (definedActions === "mapCatalog" && locationPathname === "/explore/map") {
+      handleFly(
+        callbackObject.extraInfo.center[0],
+        callbackObject.extraInfo.center[1]
+      );
       return;
     }
-    deleteSingleParam("city");
-  }, [center, setArrayOfParams, deleteArrayOfParams]);
+
+    // autocomplete in: filterModal and page: map
+    // if (definedActions === "mapFilterModal" && locationPathname === "/explore/map") {
+    //       const positionPrep = {
+    //         lat: location.lat,
+    //         lng: location.lng,
+    //         z: 14,
+    //       };
+      
+    // }
+  };
+
+  // useEffect(() => {
+  //   if (center.length > 1 && inputValue.length >= 3) {
+  //     const urlPrep = { lng: center[0], lat: center[1] };
+  //     setArrayOfParams(urlPrep);
+  //     return;
+  //   }
+  //   deleteSingleParam("city");
+  // }, [center, setArrayOfParams, deleteArrayOfParams]);
 
   const handleDelete = () => {
     setInputValue("");

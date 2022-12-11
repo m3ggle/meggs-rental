@@ -6,7 +6,7 @@ const mapCoordReducer = (state, action) => {
         ...state,
         flyTo: payload,
       };
-    case "UPDATE_MAP_LOAD":
+    case "SET_MAP_LOAD":
       return {
         ...state,
         mapLoaded: payload,

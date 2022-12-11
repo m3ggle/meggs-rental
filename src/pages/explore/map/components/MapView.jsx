@@ -3,17 +3,25 @@ import React, { useEffect, useRef, useState } from "react";
 import Map, { Layer, Marker } from "react-map-gl";
 import { useMapCoordContext } from "../../../../context/map/mapCoord/mapCoordContext";
 import { useMapSubContext } from "../../../../context/map/mapSub/mapSubContext";
+import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useFlyTo } from "../hooks/useFlyTo";
 import { useHandleMapInit } from "../hooks/useHandleMapInit";
 import { useHandleMoveEnd } from "../hooks/useHandleMoveEnd";
 
 const MapView = ({ offers }) => {
-  const { activeMarker, hoverMarker, dispatchMapSub } = useMapSubContext();
+  const { activeMarker, hoverMarker, dispatchMapSub, mapLoaded } =
+    useMapSubContext();
   const handleMarkerClick = (id) =>
     dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: id });
   // const handleMarkerClick = (id) => setSingleParam("offerId", id);
 
-  const { position: positionContext, dispatchMapCoord } = useMapCoordContext();
+  const { setArrayOfParams } = useUrlManipulation();
+
+  const {
+    position: positionContext,
+    externalPositionChange,
+    dispatchMapCoord,
+  } = useMapCoordContext();
 
   // map stuff
   const MAPBOX_TOKEN =
@@ -26,33 +34,72 @@ const MapView = ({ offers }) => {
     // mapView init
 
     // if anything is inside ctx
-    if (positionContext.lng && positionContext.lat && positionContext.z) {
+    // if (positionContext.lng && positionContext.lat && positionContext.z) {
+    //   console.log("in position ctx is something, wtf: ", positionContext);
+    //   setPosition({
+    //     latitude: positionContext.lat,
+    //     longitude: positionContext.lng,
+    //     zoom: positionContext.z,
+    //   });
+    //   return;
+    // }
+
+    // if anything is inside externalPositionChange ctx
+    if (
+      externalPositionChange?.lng &&
+      externalPositionChange?.lat &&
+      externalPositionChange?.z
+    ) {
+      setArrayOfParams({
+        lat: externalPositionChange.lat,
+        lng: externalPositionChange.lng,
+        z: externalPositionChange.z,
+      });
       setPosition({
-        latitude: positionContext.lat,
-        longitude: positionContext.lng,
-        zoom: positionContext.z,
+        latitude: externalPositionChange.lat,
+        longitude: externalPositionChange.lng,
+        zoom: externalPositionChange.z,
+      });
+      dispatchMapCoord({
+        type: "SET_EXTERNAL_POSITION_CHANGES",
+        payload: null,
       });
       return;
     }
-
     // look in localStorage
 
     // look in userProfile
 
     // use default
+    console.log("uses default");
     setPosition({
       latitude: 52.4199,
       longitude: 13.29384,
       zoom: 14,
     });
+  }, []);
 
+  // clean up
+  useEffect(() => {
     return () => {
       dispatchMapCoord({
-        type: "UPDATE_POSITION",
+        type: "SET_POSITION",
         payload: { lat: null, lng: null, z: null },
       });
+      dispatchMapSub({
+        type: "SET_MAP_LOAD",
+        payload: false,
+      });
     };
-  }, []);
+  }, [dispatchMapCoord, dispatchMapSub]);
+
+  // if a external component changes the position, react to it (eg. in filterModal autocomplete)
+  useEffect(() => {
+    if (externalPositionChange !== null && mapLoaded) {
+      console.log("i guess, my mistake");
+      setPosition({ ...externalPositionChange });
+    }
+  }, [externalPositionChange]);
 
   const [staticState] = useState({
     style: { width: "100%", height: "100%" },
@@ -65,9 +112,6 @@ const MapView = ({ offers }) => {
     mapRef,
     setPosition,
   });
-
-  // Markers (active and hover)
-  // const { activeMarker, hoverMarker } = useMarkerLogic();
 
   // flyTo functionality
   useFlyTo({ mapRef });
@@ -121,6 +165,8 @@ const MapView = ({ offers }) => {
     // }),
   };
 
+  console.log(position, mapLoaded);
+
   return (
     <>
       {position !== null && (
@@ -128,7 +174,6 @@ const MapView = ({ offers }) => {
           {...position}
           {...staticState}
           ref={mapRef}
-          onMove={(evt) => setPosition(evt.position)}
           onMoveEnd={handleMoveEnd}
           onLoad={handleInit}
         >

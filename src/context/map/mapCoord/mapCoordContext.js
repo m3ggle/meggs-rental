@@ -13,6 +13,7 @@ export const MapCoordProvider = ({ children }) => {
     bounds: {},
     storedZoom: null,
     position: {},
+    externalPositionChange: null,
   };
 
   const [state, dispatchMapCoord] = useReducer(mapCoordReducer, initialState);

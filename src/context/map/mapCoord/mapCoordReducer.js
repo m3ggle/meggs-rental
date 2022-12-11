@@ -1,18 +1,18 @@
 const mapCoordReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
-    case "UPDATE_BOUNDS":
+    case "SET_BOUNDS":
       return {
         ...state,
         bounds: payload,
       };
-    case "UPDATE_BOUNDS_AND_POSITION":
+    case "SET_BOUNDS_AND_POSITION":
       return {
         ...state,
         bounds: payload.bounds,
         position: payload.position,
       };
-    case "UPDATE_POSITION":
+    case "SET_POSITION":
       return {
         ...state,
         position: payload,
@@ -32,10 +32,15 @@ const mapCoordReducer = (state, action) => {
         ...state,
         storedZoom: payload,
       };
-    case "UPDATE_MAP_LOAD":
+    case "SET_MAP_LOAD":
       return {
         ...state,
         mapLoaded: payload,
+      };
+    case "SET_EXTERNAL_POSITION_CHANGES":
+      return {
+        ...state,
+        externalPositionChange: payload
       };
     default:
       break;

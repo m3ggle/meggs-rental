@@ -10,7 +10,7 @@ import { useAutocompleteApi } from "./hooks/useAutocompleteApi";
 
 // too many renders
 const MobileCatalogAutocomplete = ({ control, definedActions }) => {
-  definedActions = "mapCatalog";
+  definedActions = definedActions ?? "mapCatalog";
   let locationPathname = useLocation().pathname;
 
   const {
@@ -103,21 +103,23 @@ const MobileCatalogAutocomplete = ({ control, definedActions }) => {
 
   const handleSelect = (callbackObject) => {
     setInputValue(callbackObject.name);
-    setCenter(callbackObject.extraInfo.center);
-    handleFly(
-      callbackObject.extraInfo.center[0],
-      callbackObject.extraInfo.center[1]
-    );
-
-    console.log(callbackObject)
-
-    // const stringifiedBounds = JSON.stringify(callbackObject.extraInfo.bounds);
-    // setSingleParam("bounds", JSON.stringify(stringifiedBounds));
+    decideSelectAction(callbackObject)
+    // setCenter(callbackObject.extraInfo.center);
+    // handleFly(
+    //   callbackObject.extraInfo.center[0],
+    //   callbackObject.extraInfo.center[1]
+    // );
   };
 
   const decideSelectAction = (callbackObject) => {
-    // autocomplete in: mobileCatalog and page: map
-    if (definedActions === "mapCatalog" && locationPathname === "/explore/map") {
+    console.log(callbackObject);
+
+    // autocomplete in: mobileCatalog and page: map (city)
+    if (
+      definedActions === "mapCatalog" &&
+      locationPathname === "/explore/map"
+    ) {
+      console.log("flying")
       handleFly(
         callbackObject.extraInfo.center[0],
         callbackObject.extraInfo.center[1]
@@ -125,15 +127,8 @@ const MobileCatalogAutocomplete = ({ control, definedActions }) => {
       return;
     }
 
-    // autocomplete in: filterModal and page: map
-    // if (definedActions === "mapFilterModal" && locationPathname === "/explore/map") {
-    //       const positionPrep = {
-    //         lat: location.lat,
-    //         lng: location.lng,
-    //         z: 14,
-    //       };
-      
-    // }
+    // Todo: autocomplete in: mobileCatalog and page: map (search)
+    // Todo: autocomplete in: filter and page: catalog (search)
   };
 
   // useEffect(() => {

@@ -2,9 +2,14 @@ import React from "react";
 import MobileCatalogAutocomplete from "./MobileCatalogAutocomplete";
 import MobileCatalogSearch from "./MobileCatalogSearch";
 
-const InputChoice = ({ choice, control, handleDelete }) => {
+const InputChoice = ({ choice, control, handleDelete, definedActions }) => {
   if (choice === "autocomplete") {
-    return <MobileCatalogAutocomplete control={control} />;
+    return (
+      <MobileCatalogAutocomplete
+        control={control}
+        definedActions={definedActions}
+      />
+    );
   }
 
   if (choice === "search") {

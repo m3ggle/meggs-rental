@@ -163,6 +163,7 @@ const Map = () => {
             className="absolute right-7 top-7 z-20 flex h-fit w-fit"
           >
             <MobileCatalog
+              definedActions="mapCatalog"
               offerList={filteredBoundsOffers ?? filteredOffers ?? offers}
             />
           </motion.div>

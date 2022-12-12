@@ -5,7 +5,13 @@ import FilterModal from "./FilterModal";
 import { useSearchFilter } from "./hooks/useSearchFilter";
 import InputChoice from "./InputChoice";
 
-const SearchFilter = ({ name, label, showSubmitButton, choice }) => {
+const SearchFilter = ({
+  name,
+  label,
+  showSubmitButton,
+  choice,
+  definedActions,
+}) => {
   const { isOpen, control, closeModal, openModal, handleSubmit, handleDelete } =
     useSearchFilter();
 
@@ -29,6 +35,7 @@ const SearchFilter = ({ name, label, showSubmitButton, choice }) => {
         {/* input and error*/}
         <div className="flex w-full items-end gap-x-2">
           <InputChoice
+            definedActions={definedActions}
             choice={choice}
             control={control}
             handleDelete={handleDelete}
@@ -52,7 +59,11 @@ const SearchFilter = ({ name, label, showSubmitButton, choice }) => {
           )}
         </div>
       </form>
-      <FilterModal isOpen={isOpen} closeModal={closeModal} />
+      <FilterModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        definedActions={definedActions}
+      />
     </div>
   );
 };

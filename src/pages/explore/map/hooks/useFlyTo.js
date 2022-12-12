@@ -6,6 +6,7 @@ export const useFlyTo = ({ mapRef }) => {
   
   useEffect(() => {
     if (flyTo) {
+      console.log("i'm flying: ", flyTo)
       mapRef.current.flyTo({
         center: [flyTo.lng, flyTo.lat],
         essential: true,

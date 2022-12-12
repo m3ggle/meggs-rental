@@ -43,19 +43,22 @@ export const useHandleMoveEnd = ({ mapRef, setPosition }) => {
   );
 
   const handleMoveEnd = useCallback(() => {
+    console.log("done flying, preparing")
     // preparation
     const { positionPrep, bounds } = handlePreparation(mapRef);
 
     // state update
-    console.log("setting position because of move end")
+    console.log("setting position to: ", positionPrep);
     setPosition({ ...positionPrep });
 
+    console.log("setting param to: ", positionPrep);
     // searchParams update
     setArrayOfParams(positionPrep);
 
+    console.log("setting context to: ", bounds)
     // context update
     setContext(bounds, positionPrep);
   }, [mapRef, handlePreparation, setPosition, setArrayOfParams, setContext]);
 
-  return { handleMoveEnd, handlePreparation };
+  return { handleMoveEnd, handlePreparation, setContext };
 };

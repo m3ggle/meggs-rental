@@ -15,16 +15,12 @@ const MobileCatalogAutocomplete = ({ control, definedActions }) => {
 
   const {
     getSingleParam,
-    setArrayOfParams,
     deleteSingleParam,
-    deleteArrayOfParams,
   } = useUrlManipulation();
-  const { dispatchMapCoord } = useMapCoordContext();
 
   const { handleFly } = useHandleFly();
 
   const [inputValue, setInputValue] = useState("");
-  const [center, setCenter] = useState([]);
   const [itemList, setItemList] = useState([]);
 
   const successFunc = (data) => {
@@ -104,22 +100,16 @@ const MobileCatalogAutocomplete = ({ control, definedActions }) => {
   const handleSelect = (callbackObject) => {
     setInputValue(callbackObject.name);
     decideSelectAction(callbackObject)
-    // setCenter(callbackObject.extraInfo.center);
-    // handleFly(
-    //   callbackObject.extraInfo.center[0],
-    //   callbackObject.extraInfo.center[1]
-    // );
   };
 
   const decideSelectAction = (callbackObject) => {
     console.log(callbackObject);
 
-    // autocomplete in: mobileCatalog and page: map (city)
+    // autocomplete in: mobileCatalog or filterModal and page: map (city)
     if (
       definedActions === "mapCatalog" &&
       locationPathname === "/explore/map"
     ) {
-      console.log("flying")
       handleFly(
         callbackObject.extraInfo.center[0],
         callbackObject.extraInfo.center[1]

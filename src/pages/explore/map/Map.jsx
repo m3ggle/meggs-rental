@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useMapCoordContext } from "../../../context/map/mapCoord/mapCoordContext";
 import { useMapSubContext } from "../../../context/map/mapSub/mapSubContext";
 import ExampleData from "../../../ExampleData";
@@ -17,16 +17,14 @@ const { exampleOffers, filterTypes } = ExampleData();
 const Map = () => {
   const [offers] = useState(exampleOffers);
   const [filteredOffers, setFilteredOffers] = useState();
-  const [filteredBoundsOffers, setFilteredBoundsOffers] = useState();
+  const [filteredBoundsOffers, setFilteredBoundsOffers] = useState([]);
   const [filterTypeSearchParamsState, setFilterTypeSearchParamsState] =
     useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   // const [mobileSizeOffer, setMobileSizeOffer] = useState();
-  const {
-    offerInformation: mobileOfferInformation,
-    setOfferInformation,
-  } = usePreviewLogic();
+  const { offerInformation: mobileOfferInformation, setOfferInformation } =
+    usePreviewLogic();
   const windowSize = useWindowSize();
 
   const { bounds } = useMapCoordContext();
@@ -72,7 +70,6 @@ const Map = () => {
             offer.location.lng > bounds.west &&
             offer.location.lng < bounds.east
         );
-        console.log(filtered);
         return filtered;
       } else {
         return offers;
@@ -85,7 +82,8 @@ const Map = () => {
   const refetching = async () => {
     return await new Promise(() => {
       setTimeout(() => {
-        console.log("refetching for 2 seconds");
+        console.log("bounds changed, fetching")
+        // console.log("refetching for 1 seconds");
         setFilteredBoundsOffers(filterByBounds(filteredOffers ?? offers));
         setIsLoading(false);
       }, 1000);
@@ -95,8 +93,10 @@ const Map = () => {
   // bounds with debounce
   useEffect(() => {
     const identifier = setTimeout(() => {
-      setIsLoading(true);
-      refetching();
+      if (Object.keys(bounds).length > 0) {
+        setIsLoading(true);
+        refetching();
+      }
     }, 1000);
 
     return () => {
@@ -149,7 +149,8 @@ const Map = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <MapView offers={filteredBoundsOffers ?? filteredOffers ?? offers} />
+      <MapView offers={filteredBoundsOffers} />
+      {/* <MapView offers={filteredBoundsOffers ?? filteredOffers ?? offers} /> */}
       {windowSize.width >= 1100 ? (
         <>
           <motion.div

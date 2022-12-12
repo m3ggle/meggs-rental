@@ -1,45 +1,67 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useMapCoordContext } from "../../../../../context/map/mapCoord/mapCoordContext";
-import { useUrlManipulation } from "../../../../../hooks/urlManipulation/useUrlManipulation";
+
+// mainly for setting the state position
 
 export const useMapViewInit = ({ setPosition }) => {
   const { externalPositionChange, dispatchMapCoord } = useMapCoordContext();
-  const { setArrayOfParams } = useUrlManipulation();
 
   useEffect(() => {
-    // mapView init
-
     // if anything is inside externalPositionChange ctx
+    if (externalCondition()) {
+      handleExternal();
+      return;
+    }
+
+    // look in localStorage
+    if (localStorage.getItem("exploreMapLastPosition") !== null ) {
+      handleLocalStorage();
+      return;
+    }
+
+    // look in userProfile
+
+    // use default
+    handleDefault();
+  }, []);
+
+  const externalCondition = useCallback(() => {
     if (
       externalPositionChange?.lng &&
       externalPositionChange?.lat &&
       externalPositionChange?.z
     ) {
-      setArrayOfParams({
-        lat: externalPositionChange.lat,
-        lng: externalPositionChange.lng,
-        z: externalPositionChange.z,
-      });
-      setPosition({
-        latitude: externalPositionChange.lat,
-        longitude: externalPositionChange.lng,
-        zoom: externalPositionChange.z,
-      });
-      dispatchMapCoord({
-        type: "SET_EXTERNAL_POSITION_CHANGES",
-        payload: null,
-      });
-      return;
+      return true;
     }
-    // look in localStorage
+    return false;
+  }, [externalPositionChange]);
 
-    // look in userProfile
+  const setPositionHelper = useCallback(
+    (positionObject) => {
+      setPosition({
+        latitude: positionObject.lat,
+        longitude: positionObject.lng,
+        zoom: positionObject.z,
+      });
+    },
+    [setPosition]
+  );
 
-    // use default
-    setPosition({
-      latitude: 52.4199,
-      longitude: 13.29384,
-      zoom: 14,
+  const handleExternal = useCallback(() => {
+    setPositionHelper(externalPositionChange);
+    dispatchMapCoord({
+      type: "SET_EXTERNAL_POSITION_CHANGES",
+      payload: null,
     });
-  }, []);
+  }, [setPositionHelper, dispatchMapCoord, externalPositionChange]);
+
+  const handleLocalStorage = useCallback(() => {
+    let positionInLocalStorage = localStorage.getItem("exploreMapLastPosition");
+    positionInLocalStorage = JSON.parse(positionInLocalStorage);
+    setPositionHelper(positionInLocalStorage);
+  }, [setPositionHelper]);
+
+  const handleDefault = useCallback(() => {
+    setPositionHelper({ lat: 52.4199, lng: 13.29384, z: 14 });
+  }, [setPositionHelper]);
 };

@@ -8,7 +8,7 @@ export const useCheckExternalChanges = ({ setPosition }) => {
 
   useEffect(() => {
     if (externalPositionChange !== null && mapLoaded) {
-      console.log("i guess, my mistake");
+      console.log("my time to shine")
       setPosition({ ...externalPositionChange });
     }
   }, [externalPositionChange, setPosition, mapLoaded]);

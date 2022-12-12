@@ -19,11 +19,11 @@ const MapView = ({ offers }) => {
   const { staticState } = useStaticMapInformation();
   const [position, setPosition] = useState(null);
 
-  // when it gets initialized
+  // when component gets initialized
   useMapViewInit({ setPosition });
 
-  // when map loads, gets this function called
-  const { handleInit } = useHandleMapInit(mapRef);
+  // when map loads, this function gets called
+  const { handleInit } = useHandleMapInit(mapRef); // check
 
   // when the movement on the map stops
   const { handleMoveEnd } = useHandleMoveEnd({

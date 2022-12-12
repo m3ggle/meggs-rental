@@ -18,7 +18,7 @@ const {
   smokingSelect,
 } = filterSelects;
 
-const Filter = ({ isOpen, closeModal, filterModal }) => {
+const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
   let [searchParams] = useSearchParams();
   const { setArrayOfParams, deleteSingleParam } = useUrlManipulation();
   const { control, handleSubmit, setValue, watch } = useForm();
@@ -84,8 +84,11 @@ const Filter = ({ isOpen, closeModal, filterModal }) => {
             />
           )}
         />
-        
-        <MobileCatalogAutocomplete control={control} />
+
+        <MobileCatalogAutocomplete
+          definedActions={definedActions}
+          control={control}
+        />
 
         <div className="gap-y-1">
           <div className="flex gap-x-2">

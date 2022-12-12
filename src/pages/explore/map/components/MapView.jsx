@@ -1,134 +1,52 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Map, { Layer, Marker } from "react-map-gl";
-import { useMapCoordContext } from "../../../../context/map/mapCoord/mapCoordContext";
 import { useMapSubContext } from "../../../../context/map/mapSub/mapSubContext";
-import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useFlyTo } from "../hooks/useFlyTo";
 import { useHandleMapInit } from "../hooks/useHandleMapInit";
 import { useHandleMoveEnd } from "../hooks/useHandleMoveEnd";
+import { darkModeLayer } from "./helper/DarkModeLayer";
+import { useCheckExternalChanges } from "./hooks/useCheckExternalChanges";
+import { useMapViewCleanUp } from "./hooks/useMapViewCleanUp";
+import { useMapViewInit } from "./hooks/useMapViewInit";
+import { useStaticMapInformation } from "./hooks/useStaticMapInformation";
 
 const MapView = ({ offers }) => {
-  const { activeMarker, hoverMarker, dispatchMapSub, mapLoaded } =
-    useMapSubContext();
-  const handleMarkerClick = (id) =>
-    dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: id });
-  // const handleMarkerClick = (id) => setSingleParam("offerId", id);
-
-  const { setArrayOfParams } = useUrlManipulation();
-
-  const {
-    position: positionContext,
-    externalPositionChange,
-    dispatchMapCoord,
-  } = useMapCoordContext();
+  const { activeMarker, hoverMarker, dispatchMapSub } = useMapSubContext();
 
   // map stuff
-  const MAPBOX_TOKEN =
-    "pk.eyJ1IjoibTFnZ2xlIiwiYSI6ImNsYXVtaHM0ejA1eTgzdm1wMmRkaDBnNDAifQ.ayNDhREPUzI4mBOyVjor6A";
   const mapRef = useRef();
-
+  const { staticState } = useStaticMapInformation();
   const [position, setPosition] = useState(null);
 
-  useEffect(() => {
-    // mapView init
+  // when it gets initialized
+  useMapViewInit({ setPosition });
 
-    // if anything is inside ctx
-    // if (positionContext.lng && positionContext.lat && positionContext.z) {
-    //   console.log("in position ctx is something, wtf: ", positionContext);
-    //   setPosition({
-    //     latitude: positionContext.lat,
-    //     longitude: positionContext.lng,
-    //     zoom: positionContext.z,
-    //   });
-    //   return;
-    // }
+  // when map loads, gets this function called
+  const { handleInit } = useHandleMapInit(mapRef);
 
-    // if anything is inside externalPositionChange ctx
-    if (
-      externalPositionChange?.lng &&
-      externalPositionChange?.lat &&
-      externalPositionChange?.z
-    ) {
-      setArrayOfParams({
-        lat: externalPositionChange.lat,
-        lng: externalPositionChange.lng,
-        z: externalPositionChange.z,
-      });
-      setPosition({
-        latitude: externalPositionChange.lat,
-        longitude: externalPositionChange.lng,
-        zoom: externalPositionChange.z,
-      });
-      dispatchMapCoord({
-        type: "SET_EXTERNAL_POSITION_CHANGES",
-        payload: null,
-      });
-      return;
-    }
-    // look in localStorage
-
-    // look in userProfile
-
-    // use default
-    console.log("uses default");
-    setPosition({
-      latitude: 52.4199,
-      longitude: 13.29384,
-      zoom: 14,
-    });
-  }, []);
-
-  // clean up
-  useEffect(() => {
-    return () => {
-      dispatchMapCoord({
-        type: "SET_POSITION",
-        payload: { lat: null, lng: null, z: null },
-      });
-      dispatchMapSub({
-        type: "SET_MAP_LOAD",
-        payload: false,
-      });
-    };
-  }, [dispatchMapCoord, dispatchMapSub]);
-
-  // if a external component changes the position, react to it (eg. in filterModal autocomplete)
-  useEffect(() => {
-    if (externalPositionChange !== null && mapLoaded) {
-      console.log("i guess, my mistake");
-      setPosition({ ...externalPositionChange });
-    }
-  }, [externalPositionChange]);
-
-  const [staticState] = useState({
-    style: { width: "100%", height: "100%" },
-    mapStyle: "mapbox://styles/m1ggle/clavbv34v006214nkabl8az22",
-    mapboxAccessToken: MAPBOX_TOKEN,
-  });
-
-  // functionality after the drag movement stops
+  // when the movement on the map stops
   const { handleMoveEnd } = useHandleMoveEnd({
     mapRef,
     setPosition,
   });
 
+  // when there are external changes
+  useCheckExternalChanges({ setPosition });
+
   // flyTo functionality
   useFlyTo({ mapRef });
 
-  // init
-  const { handleInit } = useHandleMapInit(mapRef);
+  // when the component unmounts
+  useMapViewCleanUp();
 
-  const darkModeLayer = {
-    id: "darkModeLayer",
-    type: "background",
-    paint: {
-      "background-color": "rgba(22, 26, 29, 0.2)",
-    },
-  };
-
+  // check wether dark mode is active or not (for darkLayer)
   const darkMode = document.documentElement.classList.contains("dark");
 
+  // marker click
+  const handleMarkerClick = (id) =>
+    dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: id });
+  // marker animation
   const markerVariants = {
     hover: ({ offer }) => ({
       scale: activeMarker === offer.offerId ? 1.25 : 1.1,
@@ -156,16 +74,7 @@ const MapView = ({ offers }) => {
     transition: {
       duration: 0.3,
     },
-    // idk but does not work
-    // transition: ({ index }) => ({
-    //   duration: 0.3,
-    //   opacity: { delay: index * 0.2 },
-    //   translateY: { delay: index * 0.2 },
-    //   scale: { ease: "ease-out" },
-    // }),
   };
-
-  console.log(position, mapLoaded);
 
   return (
     <>

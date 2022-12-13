@@ -1,16 +1,41 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
+import { useWindowSize } from "../../../../hooks/useWindowSize";
 
 const HomepageFooterMap = () => {
   const MAPBOX_TOKEN =
     "pk.eyJ1IjoibTFnZ2xlIiwiYSI6ImNsYXVtaHM0ejA1eTgzdm1wMmRkaDBnNDAifQ.ayNDhREPUzI4mBOyVjor6A";
   const mapRef = useRef();
 
+  const windowSize = useWindowSize();
+
+  console.log(windowSize.width < 700);
+
   const [position, setPosition] = useState({
     longitude: 13.391487,
     latitude: 52.522124,
     zoom: 14,
   });
+
+  useEffect(() => {
+    if (windowSize.width < 700) {
+      setPosition({
+        longitude: 13.396487,
+        latitude: 52.540124,
+        zoom: 13,
+      });
+      return;
+    }
+
+    if (position.latitude !== 52.522124) {
+      setPosition({
+        longitude: 13.391487,
+        latitude: 52.522124,
+        zoom: 14,
+      });
+      return 
+    }
+  }, [windowSize.width]);
 
   const [staticState] = useState({
     style: { width: "100%", height: "100%" },
@@ -28,8 +53,8 @@ const HomepageFooterMap = () => {
       essential: true,
       zoom: 14,
     });
-  }
-  
+  };
+
   return (
     <div className="absolute top-0 left-0 z-0 h-full w-full">
       <Map
@@ -41,7 +66,10 @@ const HomepageFooterMap = () => {
       >
         <Marker
           onClick={handleFly}
-          latitude={52.514124} longitude={13.401487} anchor="bottom">
+          latitude={52.514124}
+          longitude={13.401487}
+          anchor="bottom"
+        >
           <div className="fa-solid fa-location-dot text-[44px] text-lmPrimary drop-shadow-lg duration-300" />
         </Marker>
         <Popup
@@ -63,7 +91,7 @@ const HomepageFooterMap = () => {
           }}
         >
           <span>Friedrichsgracht 58-110</span>
-          <br/>
+          <br />
           <span>10178 Berlin, Germany</span>
         </Popup>
       </Map>

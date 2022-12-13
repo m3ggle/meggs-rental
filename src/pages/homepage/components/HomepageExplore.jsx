@@ -1,22 +1,22 @@
 import React from "react";
-import Btn from "../../../components/common/Btn";
-import TabletExploreCatalog from "../../../assets/img/tabletExploreCatalog.webp"
-import DesktopExploreMap from "../../../assets/img/desktopExploreMap.webp";
 import { useNavigate } from "react-router-dom";
+import DesktopExploreMap from "../../../assets/img/desktopExploreMap.webp";
+import TabletExploreCatalog from "../../../assets/img/tabletExploreCatalog.webp";
+import Btn from "../../../components/common/Btn";
 
 const HomepageExplore = () => {
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   return (
     <div
       id="explore"
-      className="relative flex w-full flex-col gap-y-[120px] bg-white 1200:px-14 px-6 py-16 700:gap-y-6 700:py-[100px] 700:px-11"
+      className="relative flex w-full flex-col gap-y-[120px] bg-white px-6 py-16 700:gap-y-6 700:py-[100px] 700:px-11 1200:px-14"
     >
-      <div className="flex w-full 700:w-[615px] flex-col gap-y-6">
-        <span className="text-4xl 700:text-[40px] 700:leading-[40px] -tracking-[1.2%] 1200:text-5xl font-semibold text-lmGrey800 drop-shadow">
+      <div className="flex w-full flex-col gap-y-6 700:w-[615px]">
+        <span className="text-4xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow 700:text-[40px] 700:leading-[40px] 1200:text-5xl">
           Explore
         </span>
-        <span className="w-full text-lg 700:text-xl 1200:text-2xl text-lmGrey800 drop-shadow-sm">
+        <span className="w-full text-lg text-lmGrey800 drop-shadow-sm 700:text-xl 1200:text-2xl">
           Explore low-cost rental cars in a catalog or on an interactive map.
           Find the best deal for you anywhere in the world.
         </span>

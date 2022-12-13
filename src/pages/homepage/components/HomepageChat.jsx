@@ -73,32 +73,6 @@ const HomepageChat = () => {
           alt="tablet"
         />
       </div>
-
-      {/* <img
-        aria-hidden={true}
-        className="z-10 -ml-[100px] h-fit w-[1000px] mt-8 700:mt-0 opacity-0"
-        src={DesktopChat}
-        alt="desktop"
-      />
-
-      <img
-        onClick={() => navigate("/chat")}
-        className="absolute left-14 bottom-[100px] z-20 h-fit w-[14%] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99"
-        src={MobileChatSidebar}
-        alt="tablet"
-      />
-      <img
-        onClick={() => navigate("/chat")}
-        className="absolute left-[156px] bottom-[100px] z-10 -ml-[100px] h-fit w-[69.44%] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99"
-        src={DesktopChat}
-        alt="desktop"
-      />
-      <img
-        onClick={() => navigate("/explore/map")}
-        className="absolute right-14 bottom-[100px] h-fit w-[41.66%] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99"
-        src={TableExploreMap}
-        alt="desktop"
-      /> */}
     </div>
   );
 };

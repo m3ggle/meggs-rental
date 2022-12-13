@@ -7,7 +7,6 @@ import HomepageHero from "./components/HomepageHero";
 import HomepageMostViewed from "./components/HomepageMostViewed";
 import HomepageNavbar from "./components/HomepageNavbar";
 import HomepageSearch from "./components/HomepageSearch";
-import HomepageSearchByCity from "./components/HomepageSearchByCity";
 
 const Homepage = ({openModal}) => {
   return (
@@ -16,8 +15,8 @@ const Homepage = ({openModal}) => {
       <HomepageHero />
       <HomepageExplore />
       <HomepageChat />
-      <HomepageSearch />
-      <HomepageSearchByCity />
+      {/* <HomepageSearch /> */}
+      {/* <HomepageSearchByCity /> */}
       <HomepageMostViewed />
       <HomepageAbout />
       <HomepageFooter />

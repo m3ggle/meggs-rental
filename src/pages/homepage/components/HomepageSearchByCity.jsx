@@ -42,11 +42,11 @@ const HomepageSearchByCity = () => {
   };
 
   return (
-    <div className="hidden 1200:flex w-full gap-x-3 bg-white px-14 py-[100px]">
+    <div className="hidden w-full gap-x-3 bg-white px-14 py-[100px] dark:bg-dmGrey900 1200:flex">
       <div className="h-[720px] min-w-[720px] rounded-[60px] bg-blue-200" />
       <div className="flex h-[720px] w-full justify-center">
         <div className="flex w-[448px] flex-col gap-y-6 py-6">
-          <h2 className="text-5xl font-semibold text-lmGrey800 drop-shadow">
+          <h2 className="text-5xl font-semibold text-lmGrey800 drop-shadow dark:text-dmGrey25">
             Search by City
           </h2>
           <div className="flex h-full flex-grow flex-col gap-y-3 overflow-scroll">

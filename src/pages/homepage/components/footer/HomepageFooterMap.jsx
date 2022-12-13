@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import Map, { Marker, Popup } from "react-map-gl";
+import Map, { Layer, Marker, Popup } from "react-map-gl";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
+import { darkModeLayer } from "../../../explore/map/components/helper/DarkModeLayer";
 
 const HomepageFooterMap = () => {
   const MAPBOX_TOKEN =
@@ -8,8 +9,6 @@ const HomepageFooterMap = () => {
   const mapRef = useRef();
 
   const windowSize = useWindowSize();
-
-  console.log(windowSize.width < 700);
 
   const [position, setPosition] = useState({
     longitude: 13.391487,
@@ -55,6 +54,8 @@ const HomepageFooterMap = () => {
     });
   };
 
+  const darkMode = document.documentElement.classList.contains("dark");
+
   return (
     <div className="absolute top-0 left-0 z-0 h-full w-full">
       <Map
@@ -94,6 +95,7 @@ const HomepageFooterMap = () => {
           <br />
           <span>10178 Berlin, Germany</span>
         </Popup>
+        {darkMode && <Layer {...darkModeLayer} />}
       </Map>
     </div>
   );

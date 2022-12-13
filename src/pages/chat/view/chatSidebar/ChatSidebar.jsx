@@ -14,7 +14,7 @@ const ChatSidebar = () => {
   }, [navigate, windowSize]);
 
   return (
-    <div className="flex w-[412px] min-w-[360px] flex-col items-center gap-y-6 px-7 pb-7 pt-9">
+    <div className="flex w-[412px] min-w-[360px] h-screen flex-col items-center gap-y-6 px-7 pb-7 pt-9">
       <ChatSidebarSearch />
       <ChatSidebarMain />
     </div>

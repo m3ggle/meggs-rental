@@ -48,9 +48,9 @@ const HomepageNavbar = ({ openModal }) => {
   ];
 
   return (
-    <div className="fixed top-0 left-auto z-40 flex h-fit w-full max-w-[1440px] items-center justify-between border-b-2 border-lmGrey100/50 bg-white/80 py-4 px-14 backdrop-blur-lg dark:bg-dmGrey900/20">
+    <div className="fixed -top-1 left-auto z-40 flex h-fit w-full max-w-[1440px] items-center justify-between border-b-2 border-lmGrey100/50 bg-white/80 py-4 px-6 backdrop-blur-lg dark:bg-dmGrey900/20 700:px-11 1200:px-14">
       {/* logo */}
-      <div className="flex w-60 cursor-pointer items-center gap-x-1">
+      <div className="flex w-fit 700:w-60 cursor-pointer items-center gap-x-1">
         <div
           onClick={openModal}
           className={`h-14 w-14 rounded-full ${
@@ -72,7 +72,7 @@ const HomepageNavbar = ({ openModal }) => {
       </div>
 
       {/* links */}
-      <div className="flex gap-x-6 text-lg text-lmGrey800">
+      <div className="hidden gap-x-6 text-lg text-lmGrey800 1100:flex">
         {navbarLinks.map((navLink, index) => (
           <span
             key={index}
@@ -85,7 +85,7 @@ const HomepageNavbar = ({ openModal }) => {
       </div>
 
       {/* user */}
-      <div className="flex w-60 items-center justify-end gap-x-2">
+      <div className="flex w-fit items-center justify-end gap-x-2 700:w-60">
         {signedIn ? (
           <>
             <span className="text-lg text-lmGrey800">

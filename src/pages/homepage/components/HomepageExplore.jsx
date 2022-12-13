@@ -10,13 +10,13 @@ const HomepageExplore = () => {
   return (
     <div
       id="explore"
-      className="relative flex w-full flex-col gap-y-[120px] bg-white px-14 py-[100px] 700:gap-y-6"
+      className="relative flex w-full flex-col gap-y-[120px] bg-white 1200:px-14 px-6 py-16 700:gap-y-6 700:py-[100px] 700:px-11"
     >
-      <div className="flex w-[615px] flex-col gap-y-6">
-        <span className="text-5xl font-semibold text-lmGrey800 drop-shadow">
+      <div className="flex w-full 700:w-[615px] flex-col gap-y-6">
+        <span className="text-4xl 700:text-[40px] 700:leading-[40px] -tracking-[1.2%] 1200:text-5xl font-semibold text-lmGrey800 drop-shadow">
           Explore
         </span>
-        <span className="w-full text-2xl text-lmGrey800 drop-shadow-sm">
+        <span className="w-full text-lg 700:text-xl 1200:text-2xl text-lmGrey800 drop-shadow-sm">
           Explore low-cost rental cars in a catalog or on an interactive map.
           Find the best deal for you anywhere in the world.
         </span>

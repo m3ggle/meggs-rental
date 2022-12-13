@@ -6,6 +6,7 @@ import MobileOfferCard from "../../../components/offerCard/nonResponsive/mobileO
 import SpecialHomepageOfferCard from "../../../components/offerCard/nonResponsive/specialHomepageOfferCard/SpecialHomepageOfferCard";
 import TabletOfferCard from "../../../components/offerCard/nonResponsive/tabletOfferCard/TabletOfferCard";
 import ExampleData from "../../../ExampleData";
+import { useWindowSize } from "../../../hooks/useWindowSize";
 
 const { exampleOffers } = ExampleData();
 
@@ -14,50 +15,62 @@ const HomepageHero = () => {
 
   const singleOffer = exampleOffers[0];
 
-  const navigate = useNavigate()
+  const windowSize = useWindowSize();
+
+  const navigate = useNavigate();
   const handleGetStarted = () => {
-    navigate("/explore/catalog")
+    navigate("/explore/catalog");
   };
 
   return (
     <div
       id="hero"
-      className="relative flex h-screen w-full items-center bg-white px-14"
+      className="relative flex h-screen min-h-[800px] w-full flex-col justify-center gap-y-6 bg-white py-16 700:py-[100px] px-6 700:px-11 1200:h-screen 1200:flex-row 1200:items-center 1200:justify-start 1200:px-14"
     >
       {/* text */}
-      <div className="z-30 ml-11 flex w-[712px] flex-col gap-y-9">
-        <h1 className="text-[80px] font-bold leading-[80px] text-lmGrey900 drop-shadow">
+      <div className="z-30 mt-14 700:mt-10 flex w-full flex-col gap-y-5 700:w-[712px] 700:gap-y-6 1200:mt-0 1200:ml-11 1200:gap-y-9">
+        <h1 className="text-[40px] font-bold leading-[48px] -tracking-[1.2%] text-lmGrey900 drop-shadow 700:text-[60px] 700:leading-[60px] 700:-tracking-[1.5%] 1200:text-[80px] 1200:leading-[80px] 1200:tracking-[1%]">
           Drive what you want, where and when you want!
         </h1>
-        <h3 className="text-4xl text-lmGrey800 drop-shadow-sm">
+        <h3 className="text-lg text-lmGrey800 drop-shadow-sm 700:text-3xl 1200:text-4xl">
           Nisi facilisis mauris lacus sit arcu enim. Commodo faucibus tincidunt
           morbi risus imperdiet tincidunt.
         </h3>
-
-        <button
-          onClick={handleGetStarted}
-          className="flex w-fit items-center justify-center gap-x-2 rounded-lg bg-lmPrimary py-3 px-4 text-lg font-semibold text-white shadow duration-300 hover:scale-101 hover:shadow-lg active:scale-99 active:shadow-sm dark:bg-dmPrimary dark:hover:bg-lmPrimary"
-        >
-          Get Started
-          <i className="fa-solid fa-chevron-right text-[16px]" />
-        </button>
+        {windowSize.width > 700 ? (
+          <button
+            onClick={handleGetStarted}
+            className="flex w-fit items-center justify-center gap-x-2 rounded-lg bg-lmPrimary py-3 px-4 text-lg font-semibold text-white shadow duration-300 hover:scale-101 hover:shadow-lg active:scale-99 active:shadow-sm dark:bg-dmPrimary dark:hover:bg-lmPrimary"
+          >
+            Get Started
+            <i className="fa-solid fa-chevron-right text-[16px]" />
+          </button>
+        ) : (
+          <div className="w-fit">
+            <Btn
+              type="button"
+              uiType="primary"
+              title="Get Started"
+              onClick={handleGetStarted}
+            />
+          </div>
+        )}
       </div>
 
       {/* imgs */}
-      <div className="absolute right-[56px] flex h-[80%] w-[620px] items-center">
-        <div className="absolute left-[20px] top-0 opacity-40">
+      <div className="relative flex h-fit w-full flex-grow  items-center justify-center 700:justify-start 1200:absolute 1200:right-[56px] 1200:h-[80%] 1200:w-[620px]">
+        <div className="absolute left-[20px] top-0 hidden opacity-40 1200:flex">
           <TabletOfferCard offerInformation={singleOffer} index={0} />
         </div>
 
-        <div className="absolute left-[160px] top-[135px] z-20">
+        <div className="700:scale-100 absolute left-auto -top-12 z-20 scale-50 700:left-[30%] 700:top-[120px] 1200:left-[160px] 1200:top-[135px]">
           <SpecialHomepageOfferCard offerInformation={singleOffer} index={0} />
         </div>
 
-        <div className="absolute right-0 top-[60px] opacity-80">
+        <div className="700:scale-100 absolute -left-[124px] -top-[100px] scale-50 opacity-80 700:-left-[44px] 700:top-0 1200:left-auto 1200:right-0 1200:top-[60px]">
           <DesktopOfferCard offerInformation={singleOffer} index={0} />
         </div>
 
-        <div className="absolute -left-8 -bottom-20 flex flex-col gap-y-2">
+        <div className="700:scale-100 700:w-[360px] absolute -top-[180px] -right-24 flex scale-50 flex-col gap-y-2 700:left-[64%] 700:top-[60px] 1200:top-auto 1200:-left-8 1200:-bottom-20">
           <div className="">
             <MobileOfferCard offerInformation={exampleOffers[0]} index={0} />
           </div>

@@ -13,9 +13,9 @@ const HomepageSearch = () => {
       style={{ backgroundImage: `url(${MapScreenshot})` }}
     >
       <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-t from-white via-white/0 to-white">
-        <div className="flex h-[92px] w-[714px] items-center gap-x-2 rounded-full bg-white p-3 shadow">
+        <div className="flex h-[92px] w-[714px] items-center gap-x-2 rounded-full bg-white p-3 shadow dark:bg-dmGrey900">
           {/* first col */}
-          <div className="flex w-full items-center gap-x-2 rounded-full  px-2 justify-center">
+          <div className="flex w-full items-center justify-center gap-x-2  rounded-full px-2">
             {/* icon */}
             <div className="flex h-full w-9 items-center justify-center">
               <i className="fa-solid fa-location-dot text-[36px] text-lmGrey200" />
@@ -34,7 +34,7 @@ const HomepageSearch = () => {
           </div>
 
           {/* second col */}
-          <div className="flex w-full items-center gap-x-2 rounded-full  px-2 justify-center">
+          <div className="flex w-full items-center justify-center gap-x-2  rounded-full px-2">
             {/* icon */}
             <div className="flex h-full w-9 items-center justify-center">
               <i className="fa-solid fa-calendar-days text-[36px] text-lmGrey200" />
@@ -53,7 +53,7 @@ const HomepageSearch = () => {
           </div>
 
           {/* third col */}
-          <div className="flex w-full items-center gap-x-2 rounded-full  px-2 justify-center">
+          <div className="flex w-full items-center justify-center gap-x-2  rounded-full px-2">
             {/* icon */}
             <div className="flex h-full w-9 items-center justify-center">
               <i className="fa-solid fa-calendar-days text-[36px] text-lmGrey200" />
@@ -74,7 +74,8 @@ const HomepageSearch = () => {
           {/* search button */}
           <div
             onClick={handleOpenFilter}
-            className="flex h-[68px] w-[68px] cursor-pointer items-center justify-center rounded-full bg-lmPrimary p-6 shadow">
+            className="flex h-[68px] w-[68px] cursor-pointer items-center justify-center rounded-full bg-lmPrimary p-6 shadow"
+          >
             <i className="fa-solid fa-magnifying-glass text-[28px] text-white" />
           </div>
         </div>

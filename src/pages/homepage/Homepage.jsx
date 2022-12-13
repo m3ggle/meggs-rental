@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomepageFooter from "./components/footer/HomepageFooter";
 import HomepageAbout from "./components/HomepageAbout";
 import HomepageChat from "./components/HomepageChat";
@@ -9,17 +9,23 @@ import HomepageNavbar from "./components/HomepageNavbar";
 import HomepageSearch from "./components/HomepageSearch";
 
 const Homepage = ({openModal}) => {
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+      setDarkMode(document.documentElement.classList.contains("dark"));
+    }, []);
+  
   return (
-    <div className="relative flex w-full flex-col overflow-hidden max-w-[1440px]">
+    <div className="relative flex w-full max-w-[1440px] flex-col overflow-hidden">
       <HomepageNavbar openModal={openModal} />
       <HomepageHero />
-      <HomepageExplore />
-      <HomepageChat />
+      <HomepageExplore darkMode={darkMode} />
+      <HomepageChat darkMode={darkMode} />
       {/* <HomepageSearch /> */}
       {/* <HomepageSearchByCity /> */}
       <HomepageMostViewed />
       <HomepageAbout />
-      <HomepageFooter />
+      <HomepageFooter darkMode={darkMode} />
     </div>
   );
 };

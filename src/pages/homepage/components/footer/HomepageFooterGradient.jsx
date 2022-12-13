@@ -1,8 +1,14 @@
 import React from "react";
 
-const HomepageFooterGradient = () => {
+const HomepageFooterGradient = ({ darkMode }) => {
   return (
-    <div className="absolute -top-1 left-0 z-10 min-h-[488px] min-w-full rounded-lg bg-gradient-to-b from-white to-white/0" />
+    <div
+      className={`absolute -top-1 left-0 z-10 min-h-[488px] min-w-full rounded-lg ${
+        darkMode
+          ? "bg-gradient-to-b from-dmGrey900  via-dmGrey900/80"
+          : "bg-gradient-to-b from-white"
+      }`}
+    />
   );
 };
 

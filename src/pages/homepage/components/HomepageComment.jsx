@@ -11,10 +11,10 @@ const HomepageComment = ({ photoUrl, comment, association, commentWidth }) => {
       />
       <div
         style={{ width: commentWidth }}
-        className="flex items-center rounded-2xl bg-white p-4 shadow"
+        className="flex items-center rounded-2xl bg-white p-4 shadow dark:bg-dmGrey900 dark:shadow-dmShadow"
       >
-        <span className="text-base text-lmGrey600">
-          {comment} <span className="text-lmGrey400">~ {association}</span>
+        <span className="text-base text-lmGrey600 dark:text-dmGrey100">
+          {comment} <span className="text-lmGrey400 dark:text-dmGrey300">~ {association}</span>
         </span>
       </div>
     </div>

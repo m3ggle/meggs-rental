@@ -25,14 +25,14 @@ const HomepageHero = () => {
   return (
     <div
       id="hero"
-      className="relative flex h-screen min-h-[800px] w-full flex-col justify-center gap-y-6 bg-white py-16 700:py-[100px] px-6 700:px-11 1200:h-screen 1200:flex-row 1200:items-center 1200:justify-start 1200:px-14"
+      className="relative flex h-screen min-h-[800px] w-full flex-col justify-center gap-y-6 bg-white py-16 px-6 dark:bg-dmGrey900 700:py-[100px] 700:px-11 1200:h-screen 1200:flex-row 1200:items-center 1200:justify-start 1200:px-14"
     >
       {/* text */}
-      <div className="z-30 mt-14 700:mt-10 flex w-full flex-col gap-y-5 700:w-[712px] 700:gap-y-6 1200:mt-0 1200:ml-11 1200:gap-y-9">
-        <h1 className="text-[40px] font-bold leading-[48px] -tracking-[1.2%] text-lmGrey900 drop-shadow 700:text-[60px] 700:leading-[60px] 700:-tracking-[1.5%] 1200:text-[80px] 1200:leading-[80px] 1200:tracking-[1%]">
+      <div className="z-30 mt-14 flex w-full flex-col gap-y-5 700:mt-10 700:w-[712px] 700:gap-y-6 1200:mt-0 1200:ml-11 1200:gap-y-9">
+        <h1 className="text-[40px] font-bold leading-[48px] -tracking-[1.2%] text-lmGrey900 drop-shadow dark:text-dmGrey25 700:text-[60px] 700:leading-[60px] 700:-tracking-[1.5%] 1200:text-[80px] 1200:leading-[80px] 1200:tracking-[1%]">
           Drive what you want, where and when you want!
         </h1>
-        <h3 className="text-lg text-lmGrey800 drop-shadow-sm 700:text-3xl 1200:text-4xl">
+        <h3 className="text-lg text-lmGrey800 drop-shadow-sm dark:text-dmGrey25 700:text-3xl 1200:text-4xl">
           Nisi facilisis mauris lacus sit arcu enim. Commodo faucibus tincidunt
           morbi risus imperdiet tincidunt.
         </h3>
@@ -62,15 +62,15 @@ const HomepageHero = () => {
           <TabletOfferCard offerInformation={singleOffer} index={0} />
         </div>
 
-        <div className="700:scale-100 absolute left-auto -top-12 z-20 scale-50 700:left-[30%] 700:top-[120px] 1200:left-[160px] 1200:top-[135px]">
+        <div className="absolute left-auto -top-12 z-20 scale-50 700:left-[30%] 700:top-[120px] 700:scale-100 1200:left-[160px] 1200:top-[135px]">
           <SpecialHomepageOfferCard offerInformation={singleOffer} index={0} />
         </div>
 
-        <div className="700:scale-100 absolute -left-[124px] -top-[100px] scale-50 opacity-80 700:-left-[44px] 700:top-0 1200:left-auto 1200:right-0 1200:top-[60px]">
+        <div className="absolute -left-[124px] -top-[100px] scale-50 opacity-80 700:-left-[44px] 700:top-0 700:scale-100 1200:left-auto 1200:right-0 1200:top-[60px]">
           <DesktopOfferCard offerInformation={singleOffer} index={0} />
         </div>
 
-        <div className="700:scale-100 700:w-[360px] absolute -top-[180px] -right-24 flex scale-50 flex-col gap-y-2 700:left-[64%] 700:top-[60px] 1200:top-auto 1200:-left-8 1200:-bottom-20">
+        <div className="absolute -top-[180px] -right-24 flex scale-50 flex-col gap-y-2 700:left-[64%] 700:top-[60px] 700:w-[360px] 700:scale-100 1200:top-auto 1200:-left-8 1200:-bottom-20">
           <div className="">
             <MobileOfferCard offerInformation={exampleOffers[0]} index={0} />
           </div>

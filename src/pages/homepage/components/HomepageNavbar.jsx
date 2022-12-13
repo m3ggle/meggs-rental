@@ -22,8 +22,8 @@ const HomepageNavbar = ({ openModal }) => {
   };
 
   const textInTheFooter =
-    "text-lmGrey600 dark:text-dmGrey100 cursor-pointer w-fit hover:text-lmGrey800 hover:text-dmGrey25 active:text-lmPrimary dark:active:text-dmPrimary duration-300";
-
+  "text-lmGrey600 dark:text-dmGrey100 cursor-pointer w-fit hover:text-lmGrey800 dark:hover:text-dmGrey25 hover:text-dmGrey25 active:text-lmPrimary dark:active:text-dmPrimary duration-300";
+  
   const navbarLinks = [
     {
       name: "Explore",
@@ -48,7 +48,7 @@ const HomepageNavbar = ({ openModal }) => {
   ];
 
   return (
-    <div className="fixed -top-1 left-auto z-40 flex h-fit w-full max-w-[1440px] items-center justify-between border-b-2 border-lmGrey100/50 bg-white/80 py-4 px-6 backdrop-blur-lg dark:border-dmGrey800/10 dark:bg-dmGrey900/20 700:px-11 1200:px-14">
+    <div className="fixed -top-1 left-auto z-40 flex h-fit w-full max-w-[1440px] items-center justify-between border-b-2 border-lmGrey100/50 bg-white/80 py-4 px-6 backdrop-blur-lg dark:border-dmGrey800/10 dark:bg-dmGrey900/80 700:px-11 1200:px-14">
       {/* logo */}
       <div className="flex w-fit cursor-pointer items-center gap-x-1 700:w-60">
         <div

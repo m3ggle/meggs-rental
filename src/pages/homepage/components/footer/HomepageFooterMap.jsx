@@ -26,14 +26,11 @@ const HomepageFooterMap = () => {
       return;
     }
 
-    if (position.latitude !== 52.522124) {
-      setPosition({
-        longitude: 13.391487,
-        latitude: 52.522124,
-        zoom: 14,
-      });
-      return 
-    }
+    setPosition({
+      longitude: 13.391487,
+      latitude: 52.522124,
+      zoom: 14,
+    });
   }, [windowSize.width]);
 
   const [staticState] = useState({

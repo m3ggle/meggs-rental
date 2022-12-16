@@ -6,8 +6,10 @@ import MobileChatSidebar from "../../../../assets/img/mobileChatSidebar.webp";
 import MobileChatSidebarDM from "../../../../assets/img/mobileChatSidebarDM.webp";
 import TabletChat from "../../../../assets/img/tabletChat.webp";
 import TabletChatDM from "../../../../assets/img/tabletChatMainDM.webp";
+import { useDarkModeContext } from "../../../../context/darkMode/darkModeContext";
 
-const HomepageChatImages = ({ darkMode }) => {
+const HomepageChatImages = () => {
+  let { darkMode } = useDarkModeContext();
   const navigate = useNavigate();
 
   return (

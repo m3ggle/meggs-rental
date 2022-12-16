@@ -4,10 +4,12 @@ import DesktopExploreMap from "../../../../assets/img/desktopExploreMap.webp";
 import DesktopExploreMapDM from "../../../../assets/img/desktopExploreMapDM.webp";
 import TabletExploreCatalog from "../../../../assets/img/tabletExploreCatalog.webp";
 import TabletExploreCatalogDM from "../../../../assets/img/tabletExploreCatalogDM.webp";
+import { useDarkModeContext } from '../../../../context/darkMode/darkModeContext';
 
-const HomepageExploreImages = ({darkMode}) => {
-    const navigate = useNavigate()
-
+const HomepageExploreImages = () => {
+  let { darkMode } = useDarkModeContext();
+  const navigate = useNavigate()
+  
     return (
       <>
         <img

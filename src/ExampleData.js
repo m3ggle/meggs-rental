@@ -964,6 +964,29 @@ const filterTypes = [
   "trunkVolume",
 ];
 
+  const navbarLinks = [
+    {
+      name: "Explore",
+      linkTo: "explore",
+    },
+    {
+      name: "Chat",
+      linkTo: "chat",
+    },
+    // {
+    //   name: "Search",
+    //   linkTo: "directSearch",
+    // },
+    {
+      name: "Most Viewed",
+      linkTo: "mostViewed",
+    },
+    {
+      name: "About",
+      linkTo: "about",
+    },
+  ];
+
 const ExampleData = () => {
   return {
     carSpecData,
@@ -990,6 +1013,7 @@ const ExampleData = () => {
     messages,
     chatPreviews,
     exampleOffers,
+    navbarLinks,
   };
 };
 

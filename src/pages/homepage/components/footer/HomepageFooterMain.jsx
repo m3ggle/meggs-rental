@@ -32,6 +32,8 @@ const HomepageFooterMain = () => {
     setShowButton(false);
   };
 
+  console.log(watch("email")?.length > 0)
+
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
@@ -44,6 +46,8 @@ const HomepageFooterMain = () => {
     animate: { opacity: 1, width: "140px", height: "52px" },
     transition: { duration: 0.3 },
   };
+
+  // recommendation: do not use react hook form, instead use good old useState to rerender frequently
 
   return (
     <div className="z-20 h-fit w-full px-0 1200:px-14">

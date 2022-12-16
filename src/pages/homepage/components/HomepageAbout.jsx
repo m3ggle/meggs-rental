@@ -23,12 +23,12 @@ const HomepageAbout = () => {
             alt="profile"
           />
           <div className="w-full max-w-[480px] rounded-[24px] bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow">
-            <span className="text-base text-lmGrey600 dark:text-dmGrey100">
+            <span className="text-base text-lmGrey600 dark:text-dmGrey100 700:text-xl">
               Congue egestas tempus id habitasse et quam netus rhoncus. Vitae
               enim euismod morbi varius consequat interdum sit phasellus in.
               Ipsum semper tempus arcu odio eu eros nunc. Morbi id id at
               ullamcorper viverra.{" "}
-              <span className="text-lmPrimary dark:dmPrimary block">
+              <span className="dark:dmPrimary block text-lmPrimary">
                 ~ Gustavo Bravo, CEO
               </span>
             </span>
@@ -76,15 +76,24 @@ const HomepageAbout = () => {
       </div>
 
       <div className="absolute -top-10 left-[68%] w-fit opacity-70 400:top-[4%]">
-        <HomepageSocial icon="fa-brands fa-github" />
+        <HomepageSocial
+          icon="fa-brands fa-github"
+          linkTo="https://github.com/Huhu436"
+        />
       </div>
 
       <div className="absolute -bottom-10 right-[60px] z-20 w-fit opacity-40 500:bottom-auto 500:right-auto 500:top-[420px] 500:left-[12px] ">
-        <HomepageSocial icon="fa-brands fa-instagram" />
+        <HomepageSocial
+          icon="fa-brands fa-instagram"
+          linkTo="https://www.instagram.com/m1ggle/?hl=de"
+        />
       </div>
 
       <div className="absolute -bottom-10 right-[144px] z-20 hidden w-fit opacity-20 400:bottom-6 500:flex 1000:right-auto 1000:bottom-[252px] 1000:left-[528px]">
-        <HomepageSocial icon="fa-brands fa-youtube" />
+        <HomepageSocial
+          icon="fa-brands fa-youtube"
+          linkTo="https://www.youtube.com/channel/UCT7kpZCPvEWuAQSHu4EJDsA"
+        />
       </div>
     </div>
   );

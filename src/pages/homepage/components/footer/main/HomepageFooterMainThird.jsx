@@ -1,4 +1,5 @@
 import React from "react";
+import { useDarkModeContext } from "../../../../../context/darkMode/darkModeContext";
 import { useNavigationContext } from "../../../../../context/navigation/navigationContext";
 import { FooterContent } from "./helper/FooterContent";
 import { textInTheFooter } from "./helper/TextInTheFooter";
@@ -11,6 +12,8 @@ const HomepageFooterMainThird = () => {
   const handleOpenNavigation = () => {
     dispatchNavigation({ type: "OPEN_NAVIGATION" });
   };
+
+  let { darkMode } = useDarkModeContext()
 
   return (
     <div className="flex min-w-[320px] flex-col gap-y-8 p-2 text-lg text-lmGrey800 dark:text-dmGrey25 700:flex-row 1200:flex-col">

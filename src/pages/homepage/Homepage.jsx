@@ -8,23 +8,23 @@ import HomepageMostViewed from "./components/HomepageMostViewed";
 import HomepageNavbar from "./components/navbar/HomepageNavbar";
 
 const Homepage = ({ openModal }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    setDarkMode(document.documentElement.classList.contains("dark"));
-  }, []);
+  // useEffect(() => {
+  //   setDarkMode(document.documentElement.classList.contains("dark"));
+  // }, []);
 
   return (
     <div className="relative flex w-full max-w-[1440px] flex-col overflow-hidden">
       <HomepageNavbar openModal={openModal} />
       <HomepageHero />
-      <HomepageExplore darkMode={darkMode} />
-      <HomepageChat darkMode={darkMode} />
+      <HomepageExplore />
+      <HomepageChat />
       {/* <HomepageSearch /> */}
       {/* <HomepageSearchByCity /> */}
       <HomepageMostViewed />
       <HomepageAbout />
-      <HomepageFooter darkMode={darkMode} />
+      <HomepageFooter />
     </div>
   );
 };

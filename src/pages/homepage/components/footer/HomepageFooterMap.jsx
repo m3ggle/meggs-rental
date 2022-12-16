@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Map, { Layer, Marker, Popup } from "react-map-gl";
+import { useDarkModeContext } from "../../../../context/darkMode/darkModeContext";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { darkModeLayer } from "../../../explore/map/components/helper/DarkModeLayer";
 
@@ -7,6 +8,8 @@ const HomepageFooterMap = () => {
   const MAPBOX_TOKEN =
     "pk.eyJ1IjoibTFnZ2xlIiwiYSI6ImNsYXVtaHM0ejA1eTgzdm1wMmRkaDBnNDAifQ.ayNDhREPUzI4mBOyVjor6A";
   const mapRef = useRef();
+
+  let { darkMode } = useDarkModeContext();
 
   const windowSize = useWindowSize();
 
@@ -40,9 +43,6 @@ const HomepageFooterMap = () => {
     maxZoom: 18,
   });
 
-  const handleZoom = (event) =>
-    setPosition({ ...position, zoom: event.viewState.zoom });
-
   const handleFly = () => {
     mapRef.current.flyTo({
       center: [13.391487, 52.522124],
@@ -50,8 +50,6 @@ const HomepageFooterMap = () => {
       zoom: 14,
     });
   };
-
-  const darkMode = document.documentElement.classList.contains("dark");
 
   return (
     <div className="absolute top-0 left-0 z-0 h-full w-full">

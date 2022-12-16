@@ -1,19 +1,36 @@
 // dropdown specifically for appearance (light or dark Mode)
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect } from "react";
+import { useDarkModeContext } from "../../context/darkMode/darkModeContext";
 
 const DropdownMode = () => {
+  let { darkMode, dispatchDarkMode } = useDarkModeContext();
   useEffect(() => setPreference(), []);
 
   // on change
   const setPreference = () => {
+    // if true, set to dark mode
     if (
       localStorage.theme === "dark" ||
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
-      document.documentElement.classList.add("dark");
-    } else {
+      if (!document.documentElement.classList.contains("dark")) {
+        // html does not contain the class dark yet
+        document.documentElement.classList.add("dark");
+      }
+      if (!darkMode) {
+        // context is not set to dark mode yet
+        dispatchDarkMode({ type: "SET_TO_DARK" });
+      }
+      return;
+    }
+
+    // "set" to light mode
+    if (document.documentElement.classList.contains("dark")) {
       document.documentElement.classList.remove("dark");
+    }
+    if (darkMode) {
+      dispatchDarkMode({ type: "SET_TO_LIGHT" });
     }
   };
 

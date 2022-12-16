@@ -10,7 +10,7 @@ const HomepageAbout = () => {
   return (
     <div
       id="about"
-      className="relative flex h-[1000px] w-full gap-x-6 bg-white px-6 py-10 dark:bg-dmGrey900 700:py-[100px] 700:px-11 1000:h-fit 1200:py-14 1200:px-14"
+      className="relative flex h-[1000px] w-full gap-x-6 bg-white px-6 py-10 dark:bg-dmGrey900 700:px-11 1000:h-fit 1200:py-14 1200:px-14"
     >
       <div className="flex w-full flex-col items-start gap-y-6 1000:items-center">
         <h2 className="text-4xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow  dark:text-dmGrey25 700:text-[40px] 700:leading-[40px] 1200:text-5xl">
@@ -89,7 +89,7 @@ const HomepageAbout = () => {
         />
       </div>
 
-      <div className="absolute -bottom-10 right-[144px] z-20 hidden w-fit opacity-20 400:bottom-6 500:flex 1000:right-auto 1000:bottom-[252px] 1000:left-[528px]">
+      <div className="absolute -bottom-10 right-[144px] z-20 hidden w-fit opacity-20 400:bottom-6 500:flex 1000:right-auto 1000:bottom-[52px] 1000:left-[528px]">
         <HomepageSocial
           icon="fa-brands fa-youtube"
           linkTo="https://www.youtube.com/channel/UCT7kpZCPvEWuAQSHu4EJDsA"

@@ -18,7 +18,7 @@ const HomepageNavbarLeft = () => {
         onClick={openModal}
         className={`h-14 w-14 rounded-full ${
           !loadedLogo && "bg-lmPrimary dark:bg-dmPrimary"
-        } duration-300`}
+        } duration-300 hover:scale-110 active:scale-99 drop-shadow-md`}
       >
         <Spline
           onLoad={handleLoad}

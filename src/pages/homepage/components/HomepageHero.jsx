@@ -25,7 +25,7 @@ const HomepageHero = () => {
   return (
     <div
       id="hero"
-      className="relative flex h-screen min-h-[800px] w-full flex-col justify-center gap-y-6 bg-white py-16 px-6 dark:bg-dmGrey900 700:py-[100px] 700:px-11 1200:h-screen 1200:flex-row 1200:items-center 1200:justify-start 1200:px-14"
+      className="relative flex h-screen max-h-[740px] 700:max-h-none 700:min-h-[1100px] w-full flex-col justify-center gap-y-8 700:gap-y-6 bg-white py-16 px-6 dark:bg-dmGrey900 700:py-[100px] 700:px-11 1200:h-screen 1200:flex-row 1200:items-center 1200:justify-start 1200:px-14"
     >
       {/* text */}
       <div className="z-30 mt-14 flex w-full flex-col gap-y-5 700:mt-10 700:w-[712px] 700:gap-y-6 1200:mt-0 1200:ml-11 1200:gap-y-9">
@@ -57,7 +57,7 @@ const HomepageHero = () => {
       </div>
 
       {/* imgs */}
-      <div className="relative flex h-fit w-full flex-grow  items-center justify-center 700:justify-start 1200:absolute 1200:right-[56px] 1200:h-[80%] 1200:w-[620px]">
+      <div className="relative flex h-fit w-full flex-grow items-center justify-center 700:justify-start 1200:absolute 1200:right-[56px] 1200:h-[80%] 1200:w-[620px]">
         <div className="absolute left-[20px] top-0 hidden opacity-40 1200:flex">
           <TabletOfferCard offerInformation={singleOffer} index={0} />
         </div>

@@ -48,7 +48,7 @@ const Logo = () => {
       </motion.div>
       <Spline
         onLoad={handleLoad}
-        className="z-10"
+        className="z-10 drop-shadow-lg"
         scene="https://prod.spline.design/og6CZMxsQfdlo-uE/scene.splinecode"
       />
       <div className="z-10 h-[60px] w-[60px] rounded-full bg-lmPrimary" />

@@ -23,10 +23,10 @@ const HomepageFooterMainFirst = () => {
           email.length > 0
             ? "border-lmGrey800 dark:border-dmGrey25"
             : "border-lmGrey300 dark:border-dmGrey300"
-        } px-3 pt-6 pb-3 duration-300`}
+        } px-3 pt-3 1200:pt-6 pb-2 1200:pb-3 duration-300`}
       >
         <i
-          className={`fa-solid fa-at text-[20px] 700:text-[30px] 1200:text-[36px] ${
+          className={`fa-solid fa-at text-[20px] 700:text-[24px] 1200:text-[36px] ${
             email.length > 0
               ? "text-lmGrey800 dark:text-dmGrey25"
               : "text-lmGrey300 dark:text-dmGrey300"
@@ -34,7 +34,7 @@ const HomepageFooterMainFirst = () => {
         />
         <input
           autoCorrect="off"
-          className="w-full bg-transparent text-xl text-lmGrey800 placeholder:text-dmGrey300 focus:outline-none dark:text-dmGrey25 700:text-3xl 1200:text-4xl"
+          className="w-full bg-transparent text-xl text-lmGrey800 placeholder:text-dmGrey300 focus:outline-none dark:text-dmGrey25 700:text-2xl 1200:text-4xl"
           placeholder="Your Email"
           onChange={handleChange}
           autoComplete="off"

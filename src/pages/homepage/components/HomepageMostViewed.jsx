@@ -18,7 +18,7 @@ const HomepageMostViewed = () => {
   return (
     <div
       id="mostViewed"
-      className="hideScrollbar flex w-full flex-col items-center gap-x-6 overflow-x-scroll bg-white py-10 dark:bg-dmGrey900 700:py-[100px] gap-y-6"
+      className="hideScrollbar flex w-full flex-col items-center gap-x-6 overflow-x-scroll bg-white py-10 dark:bg-dmGrey900 1200:py-14 gap-y-6"
     >
       <div className="flex w-full flex-col gap-y-6 px-6 700:hidden">
         <h2 className="text-4xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow dark:text-dmGrey25 700:text-[40px] 700:leading-[40px] 1200:text-5xl">
@@ -49,7 +49,7 @@ const HomepageMostViewed = () => {
             <SpecialHomepageOfferCard offerInformation={month} />
           </div>
 
-          <div className="hidden w-fit flex-col gap-y-6 p-12 700:flex 1200:justify-center">
+          <div className="hidden w-fit flex-col gap-y-3 p-12 700:flex 1200:justify-center">
             <h2 className="text-4xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow dark:text-dmGrey25 700:text-[40px] 700:leading-[40px] 1200:text-5xl">
               Most Viewed
             </h2>

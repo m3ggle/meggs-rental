@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import Btn from "../../../../components/common/Btn";
-import TextArea from "../../../../components/input/TextArea";
-import TextInput from "../../../../components/input/TextInput";
-import ModalWrapper from "../../../../components/wrapper/ModalWrapper";
+import Btn from "../../../../../components/common/Btn";
+import TextArea from "../../../../../components/input/TextArea";
+import TextInput from "../../../../../components/input/TextInput";
+import ModalWrapper from "../../../../../components/wrapper/ModalWrapper";
 
 const HomepageContactModal = ({ isOpen, closeModal, email }) => {
   const { control, setValue, watch } = useForm();
@@ -47,8 +45,6 @@ const HomepageContactModal = ({ isOpen, closeModal, email }) => {
     return true;
   };
 
-
-
   useEffect(() => {
     if (buttonCondition()) {
       if (!rightToSend) {
@@ -59,20 +55,17 @@ const HomepageContactModal = ({ isOpen, closeModal, email }) => {
     }
   }, [watchAllFields]);
 
-
   const handleDelete = (inputName, inputValue) => {
     setValue(inputName, inputValue);
   };
 
   const handleClickCheck = (e) => {
-    rightToSend && handleSubmit(e)
-  }
-  
-  const handleSubmit = (e) => {
-    closeModal()
+    rightToSend && handleSubmit(e);
   };
 
-
+  const handleSubmit = (e) => {
+    closeModal();
+  };
 
   return (
     <ModalWrapper isOpen={isOpen} closeModal={closeModal}>

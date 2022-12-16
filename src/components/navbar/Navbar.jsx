@@ -1,6 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useNavigationContext } from "../../context/navigation/navigationContext";
 import NavbarDivider from "./components/NavbarDivider";
 import NavbarMenu from "./components/NavbarMenu";
 import NavbarMessage from "./components/NavbarMessage";
@@ -8,7 +9,7 @@ import NavbarProfile from "./components/NavbarProfile";
 import NavbarWrapper from "./components/NavbarWrapper";
 import DropdownMode from "./DropdownMode";
 
-const Navbar = ({ isOpen, closeModal }) => {
+const Navbar = () => {
   const [signedIn] = useState(true);
   const navigate = useNavigate();
 
@@ -16,6 +17,12 @@ const Navbar = ({ isOpen, closeModal }) => {
     closeModal();
     navigate(navigateTo);
   };
+
+  const { isOpen, dispatchNavigation } = useNavigationContext();
+
+  const closeModal = () => {
+    dispatchNavigation({ type: "CLOSE_NAVIGATION" });
+  }
 
   return (
     <NavbarWrapper isOpen={isOpen} closeModal={closeModal}>

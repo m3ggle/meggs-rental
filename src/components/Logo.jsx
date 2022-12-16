@@ -2,8 +2,9 @@ import Spline from "@splinetool/react-spline";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useNavigationContext } from "../context/navigation/navigationContext";
 
-const Logo = ({ isOpen, openModal }) => {
+const Logo = () => {
   const [loadedLogo, setLoadedLogo] = useState(false);
   const [hideLogo, setHideLogo] = useState(false);
   const location = useLocation();
@@ -20,6 +21,11 @@ const Logo = ({ isOpen, openModal }) => {
 
   const handleLoad = () => setLoadedLogo(true);
 
+  const { isOpen, dispatchNavigation } = useNavigationContext();
+  const openModal = () => {
+    dispatchNavigation({ type: "OPEN_NAVIGATION" });
+  }
+
   return (
     <div
       className={`fixed ${isOpen || hideLogo ? "bottom-[-120px]" : "bottom-10"}
@@ -34,18 +40,7 @@ const Logo = ({ isOpen, openModal }) => {
           delay: 10,
           ease: "easeInOut",
         }}
-        // transition={{
-        //   type: "tween",
-        //   repeat: Infinity,
-        //   duration: 0.3,
-        //   repeatType: "reverse",
-        //   repeatDelay: 10,
-        //   delay: 10,
-        //   ease: "easeInOut",
-        // }}
-        // variants={labelVariant}
-        // custom={loadedLogo}
-        className="absolute -top-3 rounded-lg bg-white/80 dark:bg-dmGrey900/80 px-2 py-1 text-[16px] backdrop-blur-sm duration-300"
+        className="absolute -top-3 rounded-lg bg-white/80 px-2 py-1 text-[16px] backdrop-blur-sm duration-300 dark:bg-dmGrey900/80"
       >
         <span className="text-lmGrey600 drop-shadow-lg dark:text-dmGrey25">
           Menu

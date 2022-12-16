@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useCallback, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Logo from "./components/Logo";
 import DropdownMode from "./components/navbar/DropdownMode";
@@ -28,25 +27,7 @@ import Upload from "./pages/upload/Upload";
 import UserOffers from "./pages/userOffers/UserOffers";
 
 export default function App() {
-  let [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
-
   const queryClient = new QueryClient();
-
-  // const handleKeyPress = useCallback((event) => {
-  //   console.log(`Key pressed: ${event.key}`);
-  // }, []);
-
-  // useEffect(() => {
-  //   // attach the event listener
-  //   document.addEventListener("keydown", handleKeyPress);
-
-  //   // remove the event listener
-  //   return () => {
-  //     document.removeEventListener("keydown", handleKeyPress);
-  //   };
-  // }, [handleKeyPress]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -56,8 +37,8 @@ export default function App() {
             <div className="hidden" aria-hidden="true">
               <DropdownMode />
             </div>
-            <Navbar isOpen={isOpen} closeModal={closeModal} />
-            <Logo isOpen={isOpen} openModal={openModal} />
+            <Navbar />
+            <Logo />
             <Routes>
               <Route path="/explore/map" element={<Map />} />
               <Route path="/explore/catalog" element={<Catalog />} />
@@ -75,10 +56,7 @@ export default function App() {
               <Route path="/chat/chat-main/:chatId" element={<ChatMain />} />
 
               <Route path="/" element={<Homepage />} />
-              <Route
-                path="/homepage"
-                element={<Homepage openModal={openModal} />}
-              />
+              <Route path="/homepage" element={<Homepage />} />
 
               <Route path="/profile" element={<Profile />} />
               <Route path="/profile/account" element={<ProfileAccount />} />

@@ -1,7 +1,7 @@
 import React from "react";
 import HomepageFooterGradient from "./HomepageFooterGradient";
-import HomepageFooterMain from "./HomepageFooterMain";
 import HomepageFooterMap from "./HomepageFooterMap";
+import HomepageFooterMain from "./main/HomepageFooterMain";
 
 const HomepageFooter = ({ darkMode }) => {
   return (

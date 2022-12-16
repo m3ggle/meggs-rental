@@ -1,10 +1,16 @@
 import Spline from "@splinetool/react-spline";
 import React, { useState } from "react";
+import { useNavigationContext } from "../../../../context/navigation/navigationContext";
 import { smoothScroll } from "../../../../hooks/useSmoothScroll";
 
-const HomepageNavbarLeft = ({ openModal }) => {
+const HomepageNavbarLeft = () => {
   const [loadedLogo, setLoadedLogo] = useState(false);
   const handleLoad = () => setLoadedLogo(true);
+
+  const { dispatchNavigation } = useNavigationContext();
+  const openModal = () => {
+    dispatchNavigation({ type: "OPEN_NAVIGATION" });
+  };
 
   return (
     <div className="flex w-fit cursor-pointer items-center gap-x-1 700:w-60">

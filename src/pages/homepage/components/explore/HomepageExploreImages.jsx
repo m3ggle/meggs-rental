@@ -21,13 +21,13 @@ const HomepageExploreImages = () => {
 
       <img
         onClick={() => navigate("/explore/catalog")}
-        className="absolute -left-[6%] bottom-[100px] h-fit w-[50%] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99 900:-left-[8%]"
+        className="absolute -left-[6%] bottom-8 h-fit w-[50%] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99 900:-left-[8%] 1200:bottom-[100px]"
         src={darkMode ? TabletExploreCatalogDM : TabletExploreCatalog}
         alt="tablet"
       />
       <img
         onClick={() => navigate("/explore/map")}
-        className="absolute bottom-[100px] left-[45%] z-10 h-fit w-[84%] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99"
+        className="absolute bottom-8 left-[45%] z-10 h-fit w-[84%] cursor-pointer drop-shadow-lg duration-300 hover:scale-101 active:scale-99 1200:bottom-[100px]"
         src={darkMode ? DesktopExploreMapDM : DesktopExploreMap}
         alt="desktop"
       />

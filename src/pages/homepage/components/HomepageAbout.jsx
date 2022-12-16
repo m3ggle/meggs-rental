@@ -10,7 +10,7 @@ const HomepageAbout = () => {
   return (
     <div
       id="about"
-      className="relative flex h-[800px] w-full gap-x-6 bg-white px-6 py-16 dark:bg-dmGrey900 700:py-[100px] 700:px-11 1000:h-fit 1200:px-14"
+      className="relative flex h-[1000px] w-full gap-x-6 bg-white px-6 py-10 dark:bg-dmGrey900 700:py-[100px] 700:px-11 1000:h-fit 1200:py-14 1200:px-14"
     >
       <div className="flex w-full flex-col items-start gap-y-6 1000:items-center">
         <h2 className="text-4xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow  dark:text-dmGrey25 700:text-[40px] 700:leading-[40px] 1200:text-5xl">
@@ -39,7 +39,7 @@ const HomepageAbout = () => {
         <img src={CroppedPic} alt="cropped bmw" />
       </div>
 
-      <div className="absolute bottom-[60px] left-8 z-10 w-fit 400:bottom-[100px] 400:left-14 700:bottom-[120px] 700:left-[160px]">
+      <div className="absolute bottom-[120px] left-8 z-10 w-fit 400:bottom-[140px] 400:left-14 700:bottom-[120px] 700:left-[160px]">
         <HomepageComment
           photoUrl="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
           comment="Augue fringilla viverra id tristique malesuada cras urna."
@@ -48,7 +48,7 @@ const HomepageAbout = () => {
         />
       </div>
 
-      <div className="absolute bottom-[292px] right-[0%] z-10 w-fit opacity-50 400:bottom-[320px] 500:bottom-[360px] 500:right-[24%] 1200:right-[40%]">
+      <div className="absolute right-[0%] top-[440px] z-10 w-fit opacity-50 500:top-[360px] 500:right-[24%] 700:top-[420px] 1200:right-[40%] 1200:top-[500px]">
         <HomepageComment
           photoUrl="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80"
           comment="Sapien ac risus amet lectus. A pulvinar mauris ultricies duis mus in. Nunc mollis praesent et."
@@ -57,7 +57,7 @@ const HomepageAbout = () => {
         />
       </div>
 
-      <div className="absolute bottom-[180px] right-0 z-10 w-fit opacity-90 400:bottom-[220px] 1000:bottom-[480px] 1000:right-auto 1000:left-[640px]">
+      <div className="absolute top-[600px] right-0 z-10 w-fit opacity-90 400:bottom-auto 400:top-[580px] 1000:bottom-auto 1000:top-[280px] 1000:right-auto 1000:left-[640px]">
         <HomepageComment
           photoUrl="https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
           comment="Urna, arcu augue placerat facilisis elit enim. "

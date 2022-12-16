@@ -7,7 +7,7 @@ import HomepageHero from "./components/HomepageHero";
 import HomepageMostViewed from "./components/HomepageMostViewed";
 import HomepageNavbar from "./components/navbar/HomepageNavbar";
 
-const Homepage = ({ openModal }) => {
+const Homepage = () => {
   // const [darkMode, setDarkMode] = useState(false);
 
   // useEffect(() => {
@@ -16,7 +16,7 @@ const Homepage = ({ openModal }) => {
 
   return (
     <div className="relative flex w-full max-w-[1440px] flex-col overflow-hidden">
-      <HomepageNavbar openModal={openModal} />
+      <HomepageNavbar />
       <HomepageHero />
       <HomepageExplore />
       <HomepageChat />

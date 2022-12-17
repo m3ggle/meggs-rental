@@ -1,4 +1,5 @@
-import React from "react";
+import { useInView } from "framer-motion";
+import React, { useRef } from "react";
 import CroppedPic from "../../../assets/img/croppedPic.webp";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import HomepageComment from "./HomepageComment";
@@ -7,9 +8,14 @@ import HomepageSocial from "./HomepageSocial";
 const HomepageAbout = () => {
   const windowSize = useWindowSize();
 
+    const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  // console.log(isInView)
+
   return (
     <div
       id="about"
+      ref={ref}
       className="relative flex h-[1000px] w-full gap-x-6 bg-white px-6 py-10 dark:bg-dmGrey900 700:px-11 1000:h-fit 1200:py-14 1200:px-14"
     >
       <div className="flex w-full flex-col items-start gap-y-6 1000:items-center">

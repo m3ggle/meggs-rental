@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { useNavigationContext } from "../../../../../context/navigation/navigationContext";
+import { inViewItemVariants } from "../../../helper/HomepageAnimation";
 import { FooterContent } from "./helper/FooterContent";
 import { textInTheFooter } from "./helper/TextInTheFooter";
 import HomepageFooterMainList from "./HomepageFooterMainList";
@@ -13,7 +15,10 @@ const HomepageFooterMainThird = () => {
   };
 
   return (
-    <div className="flex min-w-[320px] flex-col gap-y-8 p-2 text-lg text-lmGrey800 dark:text-dmGrey25 700:flex-row 1200:flex-col">
+    <motion.div
+      variants={inViewItemVariants}
+      className="flex min-w-[320px] flex-col gap-y-8 p-2 text-lg text-lmGrey800 dark:text-dmGrey25 700:flex-row 1200:flex-col"
+    >
       <HomepageFooterMainList content={contentFooterMainThird} />
 
       <div className="flex w-full flex-col gap-y-8 ">
@@ -48,7 +53,7 @@ const HomepageFooterMainThird = () => {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

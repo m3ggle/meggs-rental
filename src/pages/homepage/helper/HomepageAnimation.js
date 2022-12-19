@@ -38,6 +38,9 @@ export const inViewItemVariants = {
   },
   animate: {
     opacity: 1,
-    translateY: 0,
+      translateY: 0,
+      transition: {
+        duration: .5
+    }
   },
 };

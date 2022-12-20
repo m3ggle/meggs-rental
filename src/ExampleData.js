@@ -987,6 +987,83 @@ const filterTypes = [
     },
   ];
 
+const firestoreFormattedOffer = {
+  name: "VW Golf",
+  extraInfo:
+    "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+  offerId: "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+  location: {
+    lat: 52.4199,
+    lng: 13.29384,
+    street: "Goerzallee",
+    houseNumber: 156,
+    city: "Berlin",
+    country: "Germany",
+    formatted: "Goerzallee 156",
+  },
+  price: {
+    day: 30,
+    week: 250,
+    month: 400,
+  },
+  calendar: {
+    startDate: "13.03.2023",
+    endDate: "23.03.2023",
+  },
+  carSpecs: {
+    condition: {
+      name: "Condition",
+      value: "Very Good",
+    },
+    transmission: {
+      name: "Transmission",
+      value: "Manual",
+    },
+    fuelType: {
+      name: "Fuel Type",
+      value: "Gas",
+    },
+    carType: {
+      name: "Car Type",
+      value: "Sedan",
+    },
+    milage: {
+      name: "Milage",
+      value: 30000,
+    },
+    color: {
+      name: "Color",
+      value: "Blue",
+    },
+    trunkVolume: {
+      name: "Trunk Volume",
+      value: 4,
+    },
+    seats: {
+      name: "Seats",
+      value: 5,
+    },
+    smoking: {
+      name: "Smoking",
+      value: "No",
+    },
+    eating: {
+      name: "Eating",
+      value: "No",
+    },
+  },
+  ownerId: "85c48b9a-32f8-4279-9c89-3a459455d994",
+  ratingId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+  status: "Active",
+  photoUrl: [
+    "https://images.unsplash.com/photo-1666346167029-d8bf4466fab3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80",
+    "https://images.unsplash.com/photo-1666346166820-67cc5ccdd678?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+    "https://images.unsplash.com/photo-1666346166850-e5ee1857ea18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    "https://images.unsplash.com/photo-1666346166835-a70595660aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+    "https://images.unsplash.com/photo-1666346166849-8443c47f50fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80",
+  ],
+};
+
 const ExampleData = () => {
   return {
     carSpecData,
@@ -1014,6 +1091,7 @@ const ExampleData = () => {
     chatPreviews,
     exampleOffers,
     navbarLinks,
+    firestoreFormattedOffer,
   };
 };
 

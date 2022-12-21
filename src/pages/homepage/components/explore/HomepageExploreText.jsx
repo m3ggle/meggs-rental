@@ -1,51 +1,29 @@
-import { motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import Btn from "../../../../components/common/Btn";
-import { inViewContainerVariants, inViewItemVariants } from "./hooks/HomepageAnimation";
 
 const HomepageExploreText = () => {
   const navigate = useNavigate();
 
-  const exploreTextRef = useRef(null);
-  const isInView = useInView(exploreTextRef, { once: true });
-
   return (
-    <motion.div
-      ref={exploreTextRef}
-      initial="initial"
-      animate={isInView && "animate"}
-      transition="transition"
-      variants={inViewContainerVariants}
-      className="flex w-full flex-col gap-y-3 700:w-[615px] 1200:gap-y-6"
-    >
-      <motion.span
-        variants={inViewItemVariants}
-        className="text-4xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow dark:text-dmGrey25 700:text-[40px] 700:leading-[40px] 1200:text-5xl"
-      >
+    <div className="flex w-full flex-col gap-y-3 700:w-[615px] 1200:gap-y-6">
+      <span className="text-4xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow dark:text-dmGrey25 700:text-[40px] 700:leading-[40px] 1200:text-5xl">
         Explore
-      </motion.span>
-      <motion.span
-        variants={inViewItemVariants}
-        className="w-full text-lg text-lmGrey800 drop-shadow-sm dark:text-dmGrey25 700:text-xl 1200:text-2xl"
-      >
+      </span>
+      <span className="w-full text-lg text-lmGrey800 drop-shadow-sm dark:text-dmGrey25 700:text-xl 1200:text-2xl">
         Explore low-cost rental cars in a catalog or on an interactive map. Find
         the best deal for you anywhere in the world.
-      </motion.span>
+      </span>
       <div className="flex w-full gap-x-3">
-        <motion.div 
-        variants={inViewItemVariants}
-        className="h-fit">
+        <div className="h-fit">
           <Btn
             title="Open the Catalog"
             uiType="secondary"
             type="button"
             onClick={() => navigate("/explore/catalog")}
           />
-        </motion.div>
-        <motion.div 
-        variants={inViewItemVariants}
-        className="h-fit">
+        </div>
+        <div className="h-fit">
           <Btn
             title="Open the Map"
             uiType="primary"
@@ -53,9 +31,9 @@ const HomepageExploreText = () => {
             icon="fa-solid fa-chevron-right"
             onClick={() => navigate("/explore/map")}
           />
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

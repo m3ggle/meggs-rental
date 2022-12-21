@@ -6,8 +6,11 @@ import SignInEmailPassword from "./view/SignInEmailPassword";
 const SignIn = () => {
   const { handleCallback } = useSignUpCallback();
 
+  const signInBg =
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FnewCar.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
+
   return (
-    <SignWrapper pic="https://images.unsplash.com/photo-1566896212627-e4f210557f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80">
+    <SignWrapper pic={signInBg}>
       <div className="flex w-full max-w-[348px] flex-col gap-y-[48px]">
         {/* title part */}
         <div className="flex flex-col items-center justify-center gap-y-1 p-2">

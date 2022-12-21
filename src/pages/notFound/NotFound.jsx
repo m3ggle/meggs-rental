@@ -1,23 +1,25 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import NotFoundBg from "../../assets/img/notFound.webp"
-import Btn from '../../components/common/Btn'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Btn from "../../components/common/Btn";
 
 const NotFound = () => {
-  const navigate = useNavigate()
-  const handleGoHome = () => navigate("/homepage")
-  
+  const navigate = useNavigate();
+  const handleGoHome = () => navigate("/homepage");
+
+  const notFoundBg =
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FnotFound.webp?alt=media&token=c72bbd0f-bb0b-4305-8223-2b8d461208ab";
+
   return (
     <div className="relative h-screen w-full bg-white p-3 dark:bg-dmGrey900">
       <div
         className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-[30px] bg-cover bg-center text-white"
-        style={{ backgroundImage: `url(${NotFoundBg})` }}
+        style={{ backgroundImage: `url(${notFoundBg})` }}
       >
         <div className="absolute z-0 flex h-full w-full bg-black/30" />
         <span className="dark:text z-10 text-[120px] font-bold leading-[120px] tracking-tight 600:text-[200px] 600:leading-[200px]">
           404
         </span>
-        <div className="z-10 flex flex-col items-center justify-center text-center gap-y-2">
+        <div className="z-10 flex flex-col items-center justify-center gap-y-2 text-center">
           <span className="text-2xl 600:text-4xl">Page was not found</span>
           <span className="text-xl 600:text-2xl">
             Sorry, we couldn’t find the page you’re looking for.
@@ -34,6 +36,6 @@ const NotFound = () => {
       </div>
     </div>
   );
-}
+};
 
-export default NotFound
+export default NotFound;

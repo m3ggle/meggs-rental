@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Imgig from "../../assets/img/germanStreet.webp"
 
 const SignWrapper = ({ children, pic, puffer }) => {
   const navigate = useNavigate();

@@ -24,8 +24,11 @@ const SignUp = () => {
     5: <SignUpBdayGenderCity handleCallback={handleCallback} />,
   };
 
+const signUpBg =
+  "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FstreetBlueSky.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
+
   return (
-    <SignWrapper pic="https://images.unsplash.com/photo-1628437255792-911a5d23097e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80">
+    <SignWrapper pic={signUpBg}>
       <div className="flex w-full max-w-[348px] flex-col gap-y-[48px]">
         {/* title part */}
         <div className="flex flex-col items-center justify-center gap-y-2 p-2">

@@ -1,21 +1,23 @@
-import { useInView } from "framer-motion";
-import React, { useRef } from "react";
-import CroppedPic from "../../../assets/img/croppedPic.webp";
+import React from "react";
 import { useWindowSize } from "../../../hooks/useWindowSize";
+import { homepageImgUrls } from "../content/homepageImgUrls";
 import HomepageComment from "./HomepageComment";
 import HomepageSocial from "./HomepageSocial";
 
 const HomepageAbout = () => {
   const windowSize = useWindowSize();
 
-    const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  // console.log(isInView)
+  const {
+    croppedBMW,
+    profileNeleLangrock,
+    profileGustavoBravo,
+    profileAlinaMertens,
+    profileMariaBierhoff,
+  } = homepageImgUrls();
 
   return (
     <div
       id="about"
-      ref={ref}
       className="relative flex h-[1000px] w-full gap-x-6 bg-white px-6 py-10 dark:bg-dmGrey900 700:px-11 1000:h-fit 1200:py-14 1200:px-14"
     >
       <div className="flex w-full flex-col items-start gap-y-6 1000:items-center">
@@ -25,7 +27,7 @@ const HomepageAbout = () => {
         <div className="flex w-full gap-x-3">
           <img
             className="h-[60px] w-[60px] rounded-full bg-blue-200 bg-cover bg-center 700:h-[88px] 700:w-[88px] 700:min-w-[88px]"
-            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+            src={profileGustavoBravo}
             alt="profile"
           />
           <div className="w-full max-w-[480px] rounded-[24px] bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow">
@@ -42,12 +44,12 @@ const HomepageAbout = () => {
         </div>
       </div>
       <div className="hidden w-full items-center justify-center py-6 1000:flex">
-        <img src={CroppedPic} alt="cropped bmw" />
+        <img src={croppedBMW} alt="cropped bmw" />
       </div>
 
       <div className="absolute bottom-[120px] left-8 z-10 w-fit 400:bottom-[140px] 400:left-14 700:bottom-[120px] 700:left-[160px]">
         <HomepageComment
-          photoUrl="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+          photoUrl={profileNeleLangrock}
           comment="Augue fringilla viverra id tristique malesuada cras urna."
           association="Nele Langrock, Co-Founder"
           commentWidth="360px"
@@ -56,7 +58,7 @@ const HomepageAbout = () => {
 
       <div className="absolute right-[0%] top-[440px] z-10 w-fit opacity-50 500:top-[360px] 500:right-[24%] 700:top-[420px] 1200:right-[40%] 1200:top-[500px]">
         <HomepageComment
-          photoUrl="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80"
+          photoUrl={profileMariaBierhoff}
           comment="Sapien ac risus amet lectus. A pulvinar mauris ultricies duis mus in. Nunc mollis praesent et."
           association="Maria Bierhoff"
           commentWidth={windowSize.width > 600 ? "400px" : "320px"}
@@ -65,7 +67,7 @@ const HomepageAbout = () => {
 
       <div className="absolute top-[600px] right-0 z-10 w-fit opacity-90 400:bottom-auto 400:top-[580px] 1000:bottom-auto 1000:top-[280px] 1000:right-auto 1000:left-[640px]">
         <HomepageComment
-          photoUrl="https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+          photoUrl={profileAlinaMertens}
           comment="Urna, arcu augue placerat facilisis elit enim. "
           association="Alina Mertens"
           commentWidth="240px"
@@ -74,7 +76,7 @@ const HomepageAbout = () => {
 
       <div className="absolute bottom-[200px] right-[132px] z-10 hidden w-fit 1200:flex">
         <HomepageComment
-          photoUrl="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+          photoUrl={profileGustavoBravo}
           comment="Pharetra tellus proin aenean diam metus, morbi. Dignissim malesuada blandittincidunt."
           association="Gustavo Bravo, CEO"
           commentWidth="360px"

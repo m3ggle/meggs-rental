@@ -17,8 +17,11 @@ const ForgotPassword = () => {
     2: <ForgotPasswordPassword handleCallback={handleCallback} />,
   };
 
+  const forgotPasswordBg =
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FitalienStreet.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
+
   return (
-    <SignWrapper pic="https://images.unsplash.com/photo-1651304285431-e46e5e15ed7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80">
+    <SignWrapper pic={forgotPasswordBg}>
       <div className="flex w-full max-w-[348px] flex-col gap-y-[48px]">
         {/* title part */}
         <div className="flex flex-col items-center justify-center gap-y-1 p-2">

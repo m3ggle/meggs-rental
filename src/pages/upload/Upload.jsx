@@ -22,11 +22,11 @@ const Upload = () => {
     6: <UploadPrev handleCallback={handleCallback} />,
   };
 
+  const uploadBg =
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FgermanStreet.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
+
   return (
-    <SignWrapper
-      puffer={false}
-      pic="https://images.unsplash.com/photo-1664286244753-7f5e25a2eb0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
-    >
+    <SignWrapper puffer={false} pic={uploadBg}>
       <div className="flex w-full max-w-[348px] flex-col gap-y-8">
         <UploadHeader
           handleCallback={handleCallback}

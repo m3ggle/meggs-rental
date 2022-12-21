@@ -187,7 +187,7 @@ const filterSelects = {
 
 const userProfileBig = {
   photoUrl:
-    "https://images.unsplash.com/photo-1635107510862-53886e926b74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2535&q=80",
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofilePic.webp?alt=media&token=6c64dddf-daf8-4d44-9b88-b2d8dd58be4a",
   firstName: "Meggle",
   lastName: "Bande",
   birthday: "2001/10/21",
@@ -213,7 +213,7 @@ const reviews = [
     displayName: "Gustavo Bravo",
     userId: "3985235c-702a-44be-943f-6a58045d273c",
     userProfilePicture:
-      "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofileGustavoBravo.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66",
     timestamp: "5. July 2022",
     rating: 4,
     reviewContent:
@@ -223,17 +223,17 @@ const reviews = [
     displayName: "Alina Mertens",
     userId: "713376b8-bc65-4709-9e69-cf45c5c7bb37",
     userProfilePicture:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofileAlinaMertens.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66",
     timestamp: "8. April 2022",
     rating: 3,
     reviewContent:
       "Proin sed mauris faucibus malesuada. Leo tincidunt tortor lectus sagittis, neque. Viverra mi vulputate quis amet neque tempor vitae nam nisi. Nulla sodales maecenas feugiat feugiat pellentesque sed. Faucibus posuere diam nibh odio non sed et egestas lectus. Tellus at ac dictum gravida viverra pellentesque arcu.",
   },
   {
-    displayName: "Olivia Kahn",
+    displayName: "Maria Bierhoff",
     userId: "79598150-5d15-4542-9808-c8743fef26aa",
     userProfilePicture:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2261&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofileMariaBierhoff.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66",
     timestamp: "4. April 2022",
     rating: 5,
     reviewContent:
@@ -243,7 +243,7 @@ const reviews = [
     displayName: "Nele Langrock",
     userId: "58be4286-ee5b-4c00-8ade-3019f744de20",
     userProfilePicture:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofileNeleLangrock.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66",
     timestamp: "18. April 2022",
     rating: 4,
     reviewContent:
@@ -502,11 +502,11 @@ const exampleOffers = [
     status: "Active",
     liked: true,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
   {
@@ -550,11 +550,11 @@ const exampleOffers = [
     status: "Active",
     liked: false,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
   {
@@ -598,11 +598,11 @@ const exampleOffers = [
     status: "Active",
     liked: true,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
   {
@@ -646,11 +646,11 @@ const exampleOffers = [
     status: "Active",
     liked: true,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
   {
@@ -694,11 +694,11 @@ const exampleOffers = [
     status: "Active",
     liked: true,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
   {
@@ -742,11 +742,11 @@ const exampleOffers = [
     status: "Active",
     liked: false,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
   {
@@ -790,11 +790,11 @@ const exampleOffers = [
     status: "Active",
     liked: false,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
   {
@@ -838,11 +838,11 @@ const exampleOffers = [
     status: "Active",
     liked: true,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
   {
@@ -886,11 +886,11 @@ const exampleOffers = [
     status: "Active",
     liked: false,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
   {
@@ -934,11 +934,11 @@ const exampleOffers = [
     status: "Active",
     liked: false,
     photoUrl: [
-      "https://images.unsplash.com/photo-1614373371554-bf2b8f62dd0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371562-abb8fcfa68f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371549-c7d2e4885f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371571-8ced51ad591c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80",
-      "https://images.unsplash.com/photo-1614373371611-6711f5292a78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
     ],
   },
 ];
@@ -1056,11 +1056,11 @@ const firestoreFormattedOffer = {
   ratingId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
   status: "Active",
   photoUrl: [
-    "https://images.unsplash.com/photo-1666346167029-d8bf4466fab3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80",
-    "https://images.unsplash.com/photo-1666346166820-67cc5ccdd678?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    "https://images.unsplash.com/photo-1666346166850-e5ee1857ea18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-    "https://images.unsplash.com/photo-1666346166835-a70595660aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    "https://images.unsplash.com/photo-1666346166849-8443c47f50fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80",
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fyee.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-8b6XX81mj9s-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-JcGztSmOrzc-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-OiHz7yru4o0-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fec641c7b-5a7e-421d-ac5a-fa915c65cb54%2Fmartin-katler-CMj1OjV7-gA-unsplash.webp?alt=media&token=587f6df7-dce3-46fb-9273-baa9196ee1dd",
   ],
 };
 

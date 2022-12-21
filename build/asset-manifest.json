@@ -1,30 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.f960bc03.css",
-    "main.js": "/static/js/main.f187fe6a.js",
+    "main.css": "/static/css/main.21620221.css",
+    "main.js": "/static/js/main.5f9f244a.js",
     "static/js/227.3cabc3e6.chunk.js": "/static/js/227.3cabc3e6.chunk.js",
     "static/js/526.37abd843.chunk.js": "/static/js/526.37abd843.chunk.js",
     "static/js/232.765aea66.chunk.js": "/static/js/232.765aea66.chunk.js",
     "static/js/237.e4106284.chunk.js": "/static/js/237.e4106284.chunk.js",
     "static/js/483.92d24b41.chunk.js": "/static/js/483.92d24b41.chunk.js",
-    "static/media/croppedPic.webp": "/static/media/croppedPic.3801639c556931862925.webp",
-    "static/media/germanStreet.webp": "/static/media/germanStreet.a01a5e40efbd8c02487d.webp",
-    "static/media/notFound.webp": "/static/media/notFound.1f70689dd6fe3aaf9f78.webp",
-    "static/media/mapScreenshot.webp": "/static/media/mapScreenshot.246e9cf836bc05df2ef9.webp",
-    "static/media/desktopExploreMap.webp": "/static/media/desktopExploreMap.724bf92836984efba811.webp",
-    "static/media/desktopExploreMapDM.webp": "/static/media/desktopExploreMapDM.414071521565c15294a0.webp",
-    "static/media/tabletExploreCatalogDM.webp": "/static/media/tabletExploreCatalogDM.30f3ac1d49ba91d30601.webp",
-    "static/media/tabletExploreCatalog.webp": "/static/media/tabletExploreCatalog.8e1eae8be99e4049d841.webp",
-    "static/media/desktopChat.webp": "/static/media/desktopChat.0846e1370fc66e1bf45c.webp",
-    "static/media/desktopChatDM.webp": "/static/media/desktopChatDM.1a55845abb6b48dd08f3.webp",
-    "static/media/tabletChat.webp": "/static/media/tabletChat.43212c318bbe823dcc1d.webp",
-    "static/media/tabletChatMainDM.webp": "/static/media/tabletChatMainDM.d53c4192e08996a0575f.webp",
-    "static/media/chameleon.webp": "/static/media/chameleon.67c06ef0145e189ee7d6.webp",
-    "static/media/mobileChatSidebarDM.webp": "/static/media/mobileChatSidebarDM.78fc46e5db63a8f078a5.webp",
-    "static/media/mobileChatSidebar.webp": "/static/media/mobileChatSidebar.04a9669a20f76572c309.webp",
     "index.html": "/index.html",
-    "main.f960bc03.css.map": "/static/css/main.f960bc03.css.map",
-    "main.f187fe6a.js.map": "/static/js/main.f187fe6a.js.map",
+    "main.21620221.css.map": "/static/css/main.21620221.css.map",
+    "main.5f9f244a.js.map": "/static/js/main.5f9f244a.js.map",
     "227.3cabc3e6.chunk.js.map": "/static/js/227.3cabc3e6.chunk.js.map",
     "526.37abd843.chunk.js.map": "/static/js/526.37abd843.chunk.js.map",
     "232.765aea66.chunk.js.map": "/static/js/232.765aea66.chunk.js.map",
@@ -32,7 +17,7 @@
     "483.92d24b41.chunk.js.map": "/static/js/483.92d24b41.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f960bc03.css",
-    "static/js/main.f187fe6a.js"
+    "static/css/main.21620221.css",
+    "static/js/main.5f9f244a.js"
   ]
 }

@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ProgressBar from "../../../components/ProgressBar";
 import SignWrapper from "../../../components/wrapper/SignWrapper";
 import ExampleData from "../../../ExampleData";
-import { auth } from "../../../firebase.config";
 import { useMultiStepHelper } from "../../../hooks/useMultiStepHelper";
 import { useSignUpCallback } from "./hooks/useSignUpCallback";
 import SignUpBdayGenderCity from "./view/SignUpBdayGenderCity";
@@ -23,19 +22,11 @@ const SignUp = () => {
     4: <SignUpBdayGenderCity handleCallback={handleCallback} />,
   };
 
-  // useEffect(() => {
-  //   if (auth.currentUser) {
-  //     console.log(auth.currentUser);
-  //   } else {
-  //     console.log("nothing");
-  //   }
-  // }, [auth.currentUser]);
-
   const signUpBgFirstStage =
     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FstreetBlueSky.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
   const signUpBgSecondStage =
-      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FsharedRide.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
-  
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FsharedRide.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
+
   return (
     <SignWrapper
       pic={currentRound < 3 ? signUpBgFirstStage : signUpBgSecondStage}

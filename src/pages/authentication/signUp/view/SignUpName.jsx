@@ -7,9 +7,10 @@ import { regexName } from "../../../../helper/regexCollection";
 const SignUpName = ({ handleCallback }) => {
   const { firstName, lastName } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
+  
   const { control, handleSubmit } = useForm();
+  
   const onSubmit = (data) => {
-    console.log("first and last name");
     const nextStep = true;
     handleCallback({ data, nextStep });
   };

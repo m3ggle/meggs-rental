@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Controller } from "react-hook-form";
 import { useLocation } from "react-router-dom";
-import { useMapCoordContext } from "../../context/map/mapCoord/mapCoordContext";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useHandleFly } from "../../hooks/useHandleFly";
@@ -9,14 +8,15 @@ import Autocomplete from "../input/Autocomplete";
 import { useAutocompleteApi } from "./hooks/useAutocompleteApi";
 
 // too many renders
-const MobileCatalogAutocomplete = ({ control, definedActions, callbackFunction }) => {
+const MobileCatalogAutocomplete = ({
+  control,
+  definedActions,
+  callbackFunction,
+}) => {
   definedActions = definedActions ?? "mapCatalog";
   let locationPathname = useLocation().pathname;
 
-  const {
-    getSingleParam,
-    deleteSingleParam,
-  } = useUrlManipulation();
+  const { getSingleParam, deleteSingleParam } = useUrlManipulation();
 
   const { handleFly } = useHandleFly();
 
@@ -25,27 +25,6 @@ const MobileCatalogAutocomplete = ({ control, definedActions, callbackFunction }
 
   const successFunc = (data) => {
     setItemList(filterDistributor(data));
-
-    // const filteredList = data.data.features.filter(
-    //   (feature) =>
-    //     feature.id && feature.place_name && feature.center && feature.bbox
-    // );
-
-    // const tempList = filteredList.map((feature) => {
-    //   return {
-    //     id: feature.id,
-    //     name: feature.place_name,
-    //     extraInfo: {
-    //       bounds: [
-    //         [feature.bbox[1], feature.bbox[0]],
-    //         [feature.bbox[3], feature.bbox[2]],
-    //       ],
-    //       center: feature.center,
-    //     },
-    //   };
-    // });
-
-    // setItemList(tempList);
   };
 
   const filterDistributor = (data) => {
@@ -65,11 +44,16 @@ const MobileCatalogAutocomplete = ({ control, definedActions, callbackFunction }
         id: feature.id,
         name: feature.place_name,
         extraInfo: {
-          bounds: [
-            [feature.bbox[1], feature.bbox[0]],
-            [feature.bbox[3], feature.bbox[2]],
-          ],
-          center: feature.center,
+          bounds: {
+            north: feature.bbox[3],
+            east: feature.bbox[2],
+            south: feature.bbox[1],
+            west: feature.bbox[0],
+          },
+          center: {
+            lat: feature.center[1],
+            lng: feature.center[0],
+          },
         },
       };
     });
@@ -99,7 +83,7 @@ const MobileCatalogAutocomplete = ({ control, definedActions, callbackFunction }
 
   const handleSelect = (callbackObject) => {
     setInputValue(callbackObject.name);
-    decideSelectAction(callbackObject)
+    decideSelectAction(callbackObject);
   };
 
   const decideSelectAction = (callbackObject) => {
@@ -111,8 +95,8 @@ const MobileCatalogAutocomplete = ({ control, definedActions, callbackFunction }
       locationPathname === "/explore/map"
     ) {
       handleFly(
-        callbackObject.extraInfo.center[0],
-        callbackObject.extraInfo.center[1]
+        callbackObject.extraInfo.center.lng,
+        callbackObject.extraInfo.center.lat
       );
       return;
     }
@@ -121,19 +105,9 @@ const MobileCatalogAutocomplete = ({ control, definedActions, callbackFunction }
       callbackFunction(callbackObject);
     }
 
-
     // Todo: autocomplete in: mobileCatalog and page: map (search)
     // Todo: autocomplete in: filter and page: catalog (search)
   };
-
-  // useEffect(() => {
-  //   if (center.length > 1 && inputValue.length >= 3) {
-  //     const urlPrep = { lng: center[0], lat: center[1] };
-  //     setArrayOfParams(urlPrep);
-  //     return;
-  //   }
-  //   deleteSingleParam("city");
-  // }, [center, setArrayOfParams, deleteArrayOfParams]);
 
   const handleDelete = () => {
     setInputValue("");

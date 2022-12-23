@@ -9,11 +9,11 @@ const PrivacyPolicy = () => {
   const handleClick = async () => {};
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
   };
 
   const autocompleteCallback = (data) => {
-    console.log("autocomplete callback: ", data);
+    // console.log("autocomplete callback: ", data);
   };
 
   return (

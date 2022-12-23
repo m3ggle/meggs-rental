@@ -6,6 +6,7 @@ import Autocomplete from "../Autocomplete";
 import Select from "../Select";
 import TextArea from "../TextArea";
 import TextInput from "../TextInput";
+import { regexName } from "../../../helper/regexCollection";
 
 const transmissionSelect = {
   icon: "fa-solid fa-person",
@@ -53,7 +54,7 @@ const Test = () => {
           required: "Last name is required",
           minLength: { value: 3, message: "At least 3 Characters" },
           pattern: {
-            value: /^[A-Za-z]+$/i,
+            value: regexName,
             message: "Only letters are allowed",
           },
         }}

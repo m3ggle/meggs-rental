@@ -20,6 +20,7 @@ export const useMultiStepHelper = () => {
     const localStorageData = JSON.parse(localStorage.getItem(localStorageName));
     let newLocalStorage = localStorageData ?? {};
     Object.entries(data).map((item) => {
+      console.log(item[1])
       newLocalStorage[item[0]] = item[1];
     });
     localStorage.setItem(localStorageName, JSON.stringify(newLocalStorage));

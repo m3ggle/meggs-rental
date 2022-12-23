@@ -4,6 +4,7 @@ import BottomPart from "../../../components/authentication/BottomPart";
 import Autocomplete from "../../../components/input/Autocomplete";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
+import { regexPrice } from "../../../helper/regexCollection";
 
 const { citiesAutocomplete } = ExampleData();
 
@@ -52,7 +53,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           rules={{
             required: "Price of the day is required",
             pattern: {
-              value: /^\d+$/,
+              value: regexPrice,
               message: "Only numbers are allowed",
             },
           }}
@@ -76,7 +77,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           rules={{
             required: "Price for a week is required",
             pattern: {
-              value: /^\d+$/,
+              value: regexPrice,
               message: "Only numbers are allowed",
             },
           }}
@@ -100,7 +101,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           rules={{
             required: "Price for a month is required",
             pattern: {
-              value: /^\d+$/,
+              value: regexPrice,
               message: "Only numbers are allowed",
             },
           }}

@@ -28,7 +28,7 @@ const HomepageHero = () => {
       className="relative flex h-screen max-h-[740px] 700:max-h-none 700:min-h-[1100px] 1200:min-h-0 w-full flex-col justify-center gap-y-8 700:gap-y-6 bg-white py-16 px-6 dark:bg-dmGrey900 700:py-[100px] 700:px-11 1200:h-screen 1200:flex-row 1200:items-center 1200:justify-start 1200:px-14"
     >
       {/* text */}
-      <div className="z-30 mt-14 flex w-full flex-col gap-y-5 700:mt-10 700:w-[712px] 700:gap-y-6 1200:mt-0 1200:ml-11 1200:gap-y-9">
+      <div className="z-30 mt-14 flex w-full flex-col gap-y-5 700:mt-10 700:w-[712px] 700:gap-y-6 1200:mt-0 1200:gap-y-9">
         <h1 className="text-[40px] font-bold leading-[48px] -tracking-[1.2%] text-lmGrey900 drop-shadow dark:text-dmGrey25 700:text-[60px] 700:leading-[60px] 700:-tracking-[1.5%] 1200:text-[80px] 1200:leading-[80px] 1200:tracking-[1%]">
           Drive what you want, where and when you want!
         </h1>

@@ -2,6 +2,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import TextInput from "../../../../components/input/TextInput";
 import BottomPart from "../../../../components/authentication/BottomPart";
+import { regexName } from "../../../../helper/regexCollection";
 
 const SignUpName = ({ handleCallback }) => {
   const { firstName, lastName } =
@@ -11,12 +12,6 @@ const SignUpName = ({ handleCallback }) => {
     console.log("first and last name");
     const nextStep = true;
     handleCallback({ data, nextStep });
-  };
-
-  const handleGoBack = () => {
-    console.log("going back");
-    const nextStep = false;
-    handleCallback({ nextStep });
   };
 
   return (
@@ -31,7 +26,7 @@ const SignUpName = ({ handleCallback }) => {
           rules={{
             required: "First name is required",
             pattern: {
-              value: /^[a-zA-Z]+$/,
+              value: regexName,
               message: "Only letter are allowed",
             },
           }}
@@ -55,7 +50,7 @@ const SignUpName = ({ handleCallback }) => {
           rules={{
             required: "Last name is required",
             pattern: {
-              value: /^[a-zA-Z]+$/,
+              value: regexName,
               message: "Only letter are allowed",
             },
           }}
@@ -79,10 +74,6 @@ const SignUpName = ({ handleCallback }) => {
         firstBtnTitle="Continue"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
-        secondBtn="secondary"
-        secondBtnTitle="Go Back"
-        secondBtnType="button"
-        secondBtnOnClick={handleGoBack}
       />
     </form>
   );

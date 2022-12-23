@@ -4,6 +4,7 @@ import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
+import { regexNumbersOnly } from "../../../helper/regexCollection";
 
 const { carTypeSelect, colorSelect } = ExampleData();
 
@@ -49,7 +50,7 @@ const UploadCarSpec2 = ({ handleCallback }) => {
           rules={{
             required: "Milage is required",
             pattern: {
-              value: /^\d+$/,
+              value: regexNumbersOnly,
               message: "Invalid code",
             },
           }}

@@ -3,6 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
+import { regexEmail } from "../../../../helper/regexCollection";
 
 const ForgotPasswordEmail = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();
@@ -33,7 +34,7 @@ const ForgotPasswordEmail = ({ handleCallback }) => {
         rules={{
           required: "Email is required",
           pattern: {
-            value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+            value: regexEmail,
             message: "Invalid email address",
           },
         }}

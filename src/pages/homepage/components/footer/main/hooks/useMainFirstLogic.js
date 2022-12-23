@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { emailRegex } from "../../../../../../helper/emailRegex";
+import { regexEmail } from "../../../../../../helper/regexCollection";
 
 export const useMainFirstLogic = () => {
   const [showButton, setShowButton] = useState(false);
@@ -12,7 +12,7 @@ export const useMainFirstLogic = () => {
   const handleChange = (e) => setEmail(e.target.value);
 
   useEffect(() => {
-    if (email.match(emailRegex) && !showButton) {
+    if (email.match(regexEmail) && !showButton) {
       setShowButton(true);
       return;
     }

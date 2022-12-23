@@ -2,6 +2,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import TextInput from "../../../../components/input/TextInput";
 import BottomPart from "../../../../components/authentication/BottomPart";
+import { regexPassword } from "../../../../helper/regexCollection";
 
 const ForgotPasswordPassword = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();
@@ -22,8 +23,7 @@ const ForgotPasswordPassword = ({ handleCallback }) => {
         rules={{
           required: "Password is required",
           pattern: {
-            value:
-              /^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*?+-=€/ ])\S*$/,
+            value: regexPassword,
             message:
               "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
           },

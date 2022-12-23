@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Btn from "../../components/common/Btn";
 import MobileCatalogAutocomplete from "../../components/filter/MobileCatalogAutocomplete";
+import { auth } from "../../firebase.config";
 
 const PrivacyPolicy = () => {
   const { control, handleSubmit } = useForm();
@@ -15,7 +16,7 @@ const PrivacyPolicy = () => {
   const autocompleteCallback = (data) => {
     // console.log("autocomplete callback: ", data);
   };
-
+  
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}

@@ -2,6 +2,7 @@ import React from "react";
 import ProgressBar from "../../../components/ProgressBar";
 import SignWrapper from "../../../components/wrapper/SignWrapper";
 import ExampleData from "../../../ExampleData";
+import { auth } from "../../../firebase.config";
 import { useMultiStepHelper } from "../../../hooks/useMultiStepHelper";
 import { useSignUpCallback } from "./hooks/useSignUpCallback";
 import SignUpBdayGenderCity from "./view/SignUpBdayGenderCity";
@@ -27,6 +28,8 @@ const SignUp = () => {
   const signUpBgSecondStage =
     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FsharedRide.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
 
+  console.log(auth.currentUser)
+  
   return (
     <SignWrapper
       pic={currentRound < 3 ? signUpBgFirstStage : signUpBgSecondStage}

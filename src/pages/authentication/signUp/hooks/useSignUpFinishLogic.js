@@ -76,6 +76,7 @@ export const useSignUpFinishLogic = () => {
     // set up
     const userInformation = JSON.parse(localStorage.getItem("signUpData"));
     const userEmail = getSingleParam("email");
+    userInformation.email = userEmail
     const apiKey =
       getSingleParam("apiKey") === "AIzaSyC1ssliMOJ0ctBKYbefFn_IIm4PmqI0tPo";
 
@@ -84,6 +85,7 @@ export const useSignUpFinishLogic = () => {
       console.log("please click the link inside the email");
       return;
     }
+    console.log(userInformation);
     if (!checkUserInformation(userInformation)) {
       console.log("information are not complete");
       return;

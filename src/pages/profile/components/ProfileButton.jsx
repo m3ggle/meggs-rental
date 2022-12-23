@@ -1,10 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSignOutAPI } from "../../../api/firebase/useSignOutAPI";
 import styles from "../../../style";
 
 const ProfileButton = ({ btnTitle, icon, link, secondIcon }) => {
   const navigate = useNavigate();
-  const handleClick = () => navigate(link)
+  const { signOutUser } = useSignOutAPI();
+  
+  const handleClick = () => {
+    if (btnTitle === "Sign Out") {
+      signOutUser()
+    }
+    navigate(link)
+  }
+  
   return (
     <button
       type="button"

@@ -1,8 +1,15 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { useSignOutAPI } from "../../../api/firebase/useSignOutAPI";
 
 const NavbarMenu = ({ signedIn, handleClickNavigation }) => {
   const location = useLocation();
+  const {signOutUser} = useSignOutAPI()
+
+  const handleSignOut = () => {
+    signOutUser();
+    handleClickNavigation("sign-in");
+  }
 
   const handleClickSign = () => {
     location.pathname === "/sign-in"
@@ -11,7 +18,7 @@ const NavbarMenu = ({ signedIn, handleClickNavigation }) => {
         location.pathname === "forgot-password"
       ? handleClickNavigation("sign-in")
       : signedIn
-      ? handleClickNavigation("sign-in")
+      ? handleSignOut()
       : handleClickNavigation("sign-in");
   };
 

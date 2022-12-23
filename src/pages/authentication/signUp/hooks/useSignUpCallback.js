@@ -27,6 +27,7 @@ export const useSignUpCallback = () => {
         handleStorage(data, "signUpData");
         break;
       case "finish":
+        handleStorage(data, "signUpData");
         handleFinish();
         break;
       case true:

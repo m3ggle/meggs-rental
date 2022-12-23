@@ -1,7 +1,7 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase.config";
 import { useUrlManipulation } from "./urlManipulation/useUrlManipulation";
 
@@ -12,6 +12,7 @@ export const useMultiStepHelper = () => {
   const currentRound = getSingleParam("round") ? +getSingleParam("round") : 1;
 
   const navigate = useNavigate();
+  const locationPathname = useLocation().pathname;
 
   useEffect(() => {
     !getSingleParam("round") && setSingleParam("round", 1);
@@ -22,23 +23,33 @@ export const useMultiStepHelper = () => {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
     const user = result.user; //this gives us the user
-    
+
     // check for user in firestore
     const docRef = doc(db, "users", user.uid); //creates reference
     const docSnap = await getDoc(docRef);
 
+    const params = {
+      round: 3,
+      apiKey: "AIzaSyC1ssliMOJ0ctBKYbefFn_IIm4PmqI0tPo",
+      email: user.email,
+    };
+
     // user does not exist
     if (!docSnap.exists()) {
-      setArrayOfParams({
-        round: 3,
-        apiKey: "AIzaSyC1ssliMOJ0ctBKYbefFn_IIm4PmqI0tPo",
-        email: user.email,
-      });
+      if (locationPathname === "/sign-up") {
+        setArrayOfParams(params);
+      } else {
+        // Todo: toast
+        console.log("you have an account but you are not verified");
 
-      return
+        const nextSearchParams = new URLSearchParams(params);
+        navigate(`/sign-up?${nextSearchParams}`);
+      }
+
+      return;
     }
-      // else does....
-      navigate("/homepage");
+    // else does....
+    navigate("/homepage");
     // Todo: toast msg: you are already sign up, enjoy.
   };
 

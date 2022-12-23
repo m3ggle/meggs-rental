@@ -1,38 +1,70 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { regexPassword, regexEmail } from "../../../../helper/regexCollection";
+import { auth, db } from "../../../../firebase.config";
+import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
+import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
 
-const SignInEmailPassword = ({ handleCallback }) => {
+const SignInEmailPassword = () => {
   const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log("signing in");
-    const nextStep = "finished";
-    handleCallback({ data, nextStep });
 
-    /*
-    const auth = getAuth();
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-    */
+  const { handleGoogle: handleGoogleHelper } = useMultiStepHelper();
 
+  const onSubmit = async (data) => {
+    let userInformation;
+    const q = query(collection(db, "users"), where("email", "==", data.email));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      userInformation = doc.data();
+    });
+
+
+    // does not have an acc
+    if (userInformation === undefined) {
+      // Todo: toast
+      console.log("you don't have an account yet, create one");
+      // Todo: call Modal, ask if he is sure this is his correct email address because this email does not exist in our database
+      /*
+      options: 
+      - this is the correct email address, meaning, sign up (create a basic account and then link to "/sign-up?round=1")
+      - there is a typo: close the modal and change the email
+      */
+
+      // navigate("/sign-up?round=1");
+      return;
+    }
+
+    // is not verified
+    if (!userInformation.displayName) {
+      // Todo: toast
+      console.log("you have an account but you are not verified");
+
+      const params = {
+        round: 3,
+        apiKey: "AIzaSyC1ssliMOJ0ctBKYbefFn_IIm4PmqI0tPo",
+        email: data.email,
+      };
+
+      const nextSearchParams = new URLSearchParams(params);
+      navigate(`/sign-up?${nextSearchParams}`);
+      return;
+    }
+
+    // alright
+    signInWithEmailAndPassword(auth, data.email, data.password).catch(
+      (error) => {
+        // Todo: toast
+        // most likely wrong password
+        console.log(error.message);
+      }
+    );
   };
 
-  const handleGoogle = () => {
-    console.log("making google stuff");
-    const nextStep = "google";
-    handleCallback({ nextStep });
-  };
+  const handleGoogle = () => handleGoogleHelper();
 
   // outsource
   const navigate = useNavigate();

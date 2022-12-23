@@ -1,56 +1,22 @@
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-} from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { firestoreSetUser } from "../../../../api/firebase/useSetUserAPI";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { auth, db } from "../../../../firebase.config";
 import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
+import { useSignUpEmailPasswordSubmit } from "../hooks/useSignUpEmailPasswordSubmit";
+
+// Todo: different kinds of status like loading error and success, for that use react-query
 
 const SignUpEmailPassword = ({ handleCallback }) => {
-  // Todo: different kinds of status like loading error and success, for that use react-query
-  
   const { email, password } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
 
   const { control, handleSubmit } = useForm();
 
-  const onSubmit = async (data) => {
-    const { email, password } = data;
-    try {
-      const credentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      if (credentials) {
-        await sendEmailVerification(credentials.user);
-
-        const prep = {
-          uid: credentials.user.uid,
-          information: {
-            uid: credentials.user.uid,
-            email: credentials.user.email,
-          },
-        };
-        firestoreSetUser(prep);
-
-        const nextStep = "email";
-        handleCallback({ data, nextStep });
-      }
-    } catch (error) {
-      console.log("something went wrong: ", error);
-    }
-  };
+  const { onSubmit } = useSignUpEmailPasswordSubmit(handleCallback);
 
   const handleGoogle = () => {
-    console.log("making google stuff");
     const nextStep = "google";
     handleCallback({ nextStep });
   };

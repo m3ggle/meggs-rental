@@ -1,38 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import MobileCatalogAutocomplete from "../../../../components/filter/MobileCatalogAutocomplete";
 import Select from "../../../../components/input/Select";
 import TextInput from "../../../../components/input/TextInput";
 import ExampleData from "../../../../ExampleData";
-import { auth } from "../../../../firebase.config";
 import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
 
-const { genderSelect, citiesAutocomplete } = ExampleData();
+const { genderSelect } = ExampleData();
 
 const SignUpBdayGenderCity = ({ handleCallback }) => {
-  const { birthday, gender, city } =
+  const { birthday, gender } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
 
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    // console.log("birthday, gender and city");
     const nextStep = "finish";
     handleCallback({ data, nextStep });
   };
 
   const handleGoBack = () => {
-    console.log("going back");
     const nextStep = false;
     handleCallback({ nextStep });
   };
 
+  // autocomplete stuff
   const { handleStorage } = useMultiStepHelper();
 
   const autocompleteCallback = (data) => {
     const preferredCity = {
       name: data.name,
-      bonds: data.extraInfo.bounds,
+      bounds: data.extraInfo.bounds,
       center: data.extraInfo.center,
     };
     handleStorage({ preferredCity }, "signUpData");
@@ -80,23 +78,6 @@ const SignUpBdayGenderCity = ({ handleCallback }) => {
             />
           )}
         />
-        {/* <Controller
-          name="city"
-          control={control}
-          rules={{
-            required: "City is required",
-          }}
-          render={({ field, fieldState }) => (
-            <Autocomplete
-              // placeholder={citiesAutocomplete.placeholder}
-              value={city ? city : undefined}
-              itemList={citiesAutocomplete.list}
-              onChange={field.onChange}
-              label="What city you live in?"
-              error={fieldState.error}
-            />
-          )}
-        /> */}
         <MobileCatalogAutocomplete
           definedActions="mapCatalog"
           control={control}

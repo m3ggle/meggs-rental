@@ -1,11 +1,8 @@
 import React from "react";
 import SignWrapper from "../../../components/wrapper/SignWrapper";
-import { useSignUpCallback } from "../signUp/hooks/useSignUpCallback";
 import SignInEmailPassword from "./view/SignInEmailPassword";
 
 const SignIn = () => {
-  const { handleCallback } = useSignUpCallback();
-
   const signInBg =
     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FnewCar.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
 
@@ -21,7 +18,7 @@ const SignIn = () => {
             Suspendisse et nunc fringilla in tempus.
           </span>
         </div>
-        <SignInEmailPassword handleCallback={handleCallback} />
+        <SignInEmailPassword />
       </div>
     </SignWrapper>
   );

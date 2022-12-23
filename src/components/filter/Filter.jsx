@@ -3,6 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import ExampleData from "../../ExampleData";
 import { cleanUpFilterData } from "../../helper/filter/cleanUpFilterData";
+import { regexPrice } from "../../helper/regexCollection";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
 import Btn from "../common/Btn";
 import Select from "../input/Select";
@@ -165,7 +166,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               )}
               rules={{
                 pattern: {
-                  value: /^[0-9]+$/,
+                  value: regexPrice,
                   message: "Only numbers are allowed",
                 },
               }}
@@ -193,7 +194,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               )}
               rules={{
                 pattern: {
-                  value: /^[0-9]+$/,
+                  value: regexPrice,
                   message: "Only numbers are allowed",
                 },
               }}
@@ -225,7 +226,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               )}
               rules={{
                 pattern: {
-                  value: /^[0-9]+$/,
+                  value: regexPrice,
                   message: "Only numbers are allowed",
                 },
               }}
@@ -253,7 +254,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               )}
               rules={{
                 pattern: {
-                  value: /^[0-9]+$/,
+                  value: regexPrice,
                   message: "Only numbers are allowed",
                 },
               }}
@@ -285,7 +286,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               )}
               rules={{
                 pattern: {
-                  value: /^[0-9]+$/,
+                  value: regexPrice,
                   message: "Only numbers are allowed",
                 },
               }}
@@ -313,7 +314,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               )}
               rules={{
                 pattern: {
-                  value: /^[0-9]+$/,
+                  value: regexPrice,
                   message: "Only numbers are allowed",
                 },
               }}

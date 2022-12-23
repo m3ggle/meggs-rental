@@ -5,6 +5,12 @@ import TextArea from "../../../components/input/TextArea";
 import TextInput from "../../../components/input/TextInput";
 import SignWrapper from "../../../components/wrapper/SignWrapper";
 import ExampleData from "../../../ExampleData";
+import {
+  regexEmail,
+  regexName,
+  regexPassword,
+  regexTelephoneNumber,
+} from "../../../helper/regexCollection";
 import ProfileSubPageHeader from "../components/ProfileSubPageHeader";
 
 const { genderSelect, userProfileBig } = ExampleData();
@@ -27,7 +33,7 @@ const ProfileAccount = () => {
             rules={{
               required: "First name is required",
               pattern: {
-                value: /^[a-zA-Z]+$/,
+                value: regexName,
                 message: "Only letter are allowed",
               },
             }}
@@ -50,7 +56,7 @@ const ProfileAccount = () => {
             rules={{
               required: "Last name is required",
               pattern: {
-                value: /^[a-zA-Z]+$/,
+                value: regexName,
                 message: "Only letter are allowed",
               },
             }}
@@ -92,7 +98,7 @@ const ProfileAccount = () => {
             rules={{
               required: "Email is required",
               pattern: {
-                value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+                value: regexEmail,
                 message: "Invalid email address",
               },
             }}
@@ -114,8 +120,7 @@ const ProfileAccount = () => {
             rules={{
               required: "Password is required",
               pattern: {
-                value:
-                  /^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$/,
+                value: regexPassword,
                 message:
                   "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
               },
@@ -153,7 +158,7 @@ const ProfileAccount = () => {
             control={control}
             rules={{
               pattern: {
-                value: /^\d+$/,
+                value: regexTelephoneNumber,
                 message: "Only numbers are allowed",
               },
             }}

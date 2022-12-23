@@ -9,7 +9,7 @@ import Autocomplete from "../input/Autocomplete";
 import { useAutocompleteApi } from "./hooks/useAutocompleteApi";
 
 // too many renders
-const MobileCatalogAutocomplete = ({ control, definedActions }) => {
+const MobileCatalogAutocomplete = ({ control, definedActions, callbackFunction }) => {
   definedActions = definedActions ?? "mapCatalog";
   let locationPathname = useLocation().pathname;
 
@@ -116,6 +116,11 @@ const MobileCatalogAutocomplete = ({ control, definedActions }) => {
       );
       return;
     }
+
+    if (definedActions === "mapCatalog" && callbackFunction) {
+      callbackFunction(callbackObject);
+    }
+
 
     // Todo: autocomplete in: mobileCatalog and page: map (search)
     // Todo: autocomplete in: filter and page: catalog (search)

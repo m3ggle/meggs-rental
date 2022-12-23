@@ -2,6 +2,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import TextInput from "../../../components/input/TextInput";
 import BottomPart from "../../../../components/authentication/BottomPart";
+import { regexTelephoneNumber } from "../../../../helper/regexCollection";
 
 const SignUpTele = ({ handleCallback }) => {
   const { control, handleSubmit } = useForm();
@@ -27,7 +28,7 @@ const SignUpTele = ({ handleCallback }) => {
         control={control}
         rules={{
           pattern: {
-            value: /^\d+$/,
+            value: regexTelephoneNumber,
             message: "Only numbers are allowed",
           },
         }}

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import Autocomplete from "../../../../components/input/Autocomplete";
+import BottomPart from "../../../../components/authentication/BottomPart";
+import MobileCatalogAutocomplete from "../../../../components/filter/MobileCatalogAutocomplete";
 import Select from "../../../../components/input/Select";
 import TextInput from "../../../../components/input/TextInput";
 import ExampleData from "../../../../ExampleData";
-import BottomPart from "../../../../components/authentication/BottomPart";
+import { auth } from "../../../../firebase.config";
+import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
 
 const { genderSelect, citiesAutocomplete } = ExampleData();
 
@@ -14,7 +16,7 @@ const SignUpBdayGenderCity = ({ handleCallback }) => {
 
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log("birthday, gender and city");
+    // console.log("birthday, gender and city");
     const nextStep = "finish";
     handleCallback({ data, nextStep });
   };
@@ -23,6 +25,17 @@ const SignUpBdayGenderCity = ({ handleCallback }) => {
     console.log("going back");
     const nextStep = false;
     handleCallback({ nextStep });
+  };
+
+  const { handleStorage } = useMultiStepHelper();
+
+  const autocompleteCallback = (data) => {
+    const preferredCity = {
+      name: data.name,
+      bonds: data.extraInfo.bounds,
+      center: data.extraInfo.center,
+    };
+    handleStorage({ preferredCity }, "signUpData");
   };
 
   return (
@@ -67,7 +80,7 @@ const SignUpBdayGenderCity = ({ handleCallback }) => {
             />
           )}
         />
-        <Controller
+        {/* <Controller
           name="city"
           control={control}
           rules={{
@@ -83,6 +96,11 @@ const SignUpBdayGenderCity = ({ handleCallback }) => {
               error={fieldState.error}
             />
           )}
+        /> */}
+        <MobileCatalogAutocomplete
+          definedActions="mapCatalog"
+          control={control}
+          callbackFunction={autocompleteCallback}
         />
       </div>
       <BottomPart

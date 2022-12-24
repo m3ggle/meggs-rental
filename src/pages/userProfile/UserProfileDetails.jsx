@@ -6,7 +6,7 @@ import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
 import ModalWrapperTypeBottom from "../../components/wrapper/ModalWrapperTypeBottom";
 import ExampleData from "../../ExampleData";
 
-const UserProfile = ({ isOpen, closeModal }) => {
+const UserProfileDetails = ({ isOpen, closeModal }) => {
   const { userProfileBig } = ExampleData();
   const { firstName, lastName, birthday, email } = userProfileBig;
 
@@ -44,4 +44,4 @@ const UserProfile = ({ isOpen, closeModal }) => {
   );
 };
 
-export default UserProfile;
+export default UserProfileDetails;

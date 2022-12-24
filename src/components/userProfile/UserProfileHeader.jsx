@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getAge } from "../../helper/getAge";
-import UserProfile from "../../pages/userProfile/UserProfile";
+import UserProfileDetails from "../../pages/userProfile/UserProfileDetails";
 
 const UserProfileHeader = ({ userProfileData = {} }) => {
   const { firstName, lastName, birthday, email, photoUrl } = userProfileData;
@@ -8,6 +8,8 @@ const UserProfileHeader = ({ userProfileData = {} }) => {
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
+  
+  
   return (
     <div
       onClick={openModal}
@@ -31,7 +33,7 @@ const UserProfileHeader = ({ userProfileData = {} }) => {
         </div>
         <span>{email}</span>
       </div>
-      <UserProfile isOpen={isOpen} closeModal={closeModal} />
+      <UserProfileDetails isOpen={isOpen} closeModal={closeModal} />
     </div>
   );
 };

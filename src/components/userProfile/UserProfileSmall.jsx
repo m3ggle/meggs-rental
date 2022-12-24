@@ -1,15 +1,22 @@
 // <UserProfileSmall review={true} rating="4" text="Click to view the owners account" displayName="Meggle Bande" profilePic="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80" />
 import React, { useState } from "react";
-import UserProfile from "../../pages/userProfile/UserProfile";
+import UserProfileDetails from "../../pages/userProfile/UserProfileDetails";
 
-const UserProfileSmall = ({ review, displayName, text, rating, profilePic }) => {
-    let [isOpen, setIsOpen] = useState(false);
-    const closeModal = () => setIsOpen(false);
-    const openModal = () => setIsOpen(true);
+const UserProfileSmall = ({
+  review,
+  displayName,
+  text,
+  rating,
+  profilePic,
+}) => {
+  let [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
   return (
     <div
       onClick={openModal}
-      className="flex h-11 w-full items-center gap-x-2 cursor-pointer">
+      className="flex h-11 w-full cursor-pointer items-center gap-x-2"
+    >
       {/* pic */}
       <div
         className="h-11 min-h-[44px] w-11 min-w-[44px] rounded-full bg-black bg-cover bg-center shadow"
@@ -35,7 +42,7 @@ const UserProfileSmall = ({ review, displayName, text, rating, profilePic }) => 
           {text}
         </span>
       </div>
-      <UserProfile isOpen={isOpen} closeModal={closeModal} />
+      <UserProfileDetails isOpen={isOpen} closeModal={closeModal} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from "react";
 import ReviewSection from "../../components/ratings/ReviewSection";
 import LittleOfferCardList from "../../components/userProfile/LittleOfferCardList";
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
-import ModalWrapper from "../../components/wrapper/ModalWrapper";
+import ModalWrapperTypeBottom from "../../components/wrapper/ModalWrapperTypeBottom";
 import ExampleData from "../../ExampleData";
 
 const UserProfile = ({ isOpen, closeModal }) => {
@@ -11,7 +11,7 @@ const UserProfile = ({ isOpen, closeModal }) => {
   const { firstName, lastName, birthday, email } = userProfileBig;
 
   return (
-    <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
+    <ModalWrapperTypeBottom isOpen={isOpen} closeModal={closeModal}>
       <div className="flex w-full max-w-[472px] flex-col items-center justify-center gap-y-6">
         <div className="flex flex-col gap-4">
           <UserProfileHeader
@@ -40,7 +40,7 @@ const UserProfile = ({ isOpen, closeModal }) => {
           <ReviewSection />
         </div>
       </div>
-    </ModalWrapper>
+    </ModalWrapperTypeBottom>
   );
 };
 

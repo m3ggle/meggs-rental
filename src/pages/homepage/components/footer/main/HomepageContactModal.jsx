@@ -3,7 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import Btn from "../../../../../components/common/Btn";
 import TextArea from "../../../../../components/input/TextArea";
 import TextInput from "../../../../../components/input/TextInput";
-import ModalWrapper from "../../../../../components/wrapper/ModalWrapper";
+import ModalWrapperTypeBottom from "../../../../../components/wrapper/ModalWrapperTypeBottom";
 
 const HomepageContactModal = ({ isOpen, closeModal, email }) => {
   const { control, setValue, watch } = useForm();
@@ -68,7 +68,7 @@ const HomepageContactModal = ({ isOpen, closeModal, email }) => {
   };
 
   return (
-    <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
+    <ModalWrapperTypeBottom isOpen={isOpen} closeModal={closeModal}>
       <form className="relative flex h-fit w-[340px] max-w-[340px] flex-col gap-y-3 rounded-lg pb-[90px]">
         <div className="flex flex-col gap-y-3">
           <span className="text-2xl text-lmGrey700 dark:text-dmGrey25">
@@ -138,7 +138,7 @@ const HomepageContactModal = ({ isOpen, closeModal, email }) => {
           </div>
         </div>
       </form>
-    </ModalWrapper>
+    </ModalWrapperTypeBottom>
   );
 };
 

@@ -1,10 +1,14 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
+import { useNotifyModalContext } from "../../../context/notifyModal/notifyModalContext";
 
-const NavbarWrapper = ({ isOpen, closeModal, children }) => {
+const NotifyModalWrapper = ({children}) => {
+const { isOpen, closeNotifyModal } = useNotifyModalContext();
+
   return (
+    // <div className='w-full h-screen absolute inset-0 bg-black z-50'>NotifyModalWrapper</div>
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="z-50" onClose={closeModal}>
+      <Dialog as="div" className="z-50" onClose={closeNotifyModal}>
         {/* backdrop */}
         <Transition.Child
           as={Fragment}
@@ -16,7 +20,7 @@ const NavbarWrapper = ({ isOpen, closeModal, children }) => {
           leaveTo="opacity-0"
         >
           <div
-            onClick={closeModal}
+            onClick={closeNotifyModal}
             className="fixed inset-0 z-40 bg-black bg-opacity-25"
           />
         </Transition.Child>
@@ -37,4 +41,4 @@ const NavbarWrapper = ({ isOpen, closeModal, children }) => {
   );
 };
 
-export default NavbarWrapper;
+export default NotifyModalWrapper;

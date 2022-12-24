@@ -2,11 +2,11 @@ import { Dialog } from "@headlessui/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNavigationContext } from "../../context/navigation/navigationContext";
+import NavbarWrapper from "../wrapper/ModalWrapper";
 import NavbarDivider from "./components/NavbarDivider";
 import NavbarMenu from "./components/NavbarMenu";
 import NavbarMessage from "./components/NavbarMessage";
 import NavbarProfile from "./components/NavbarProfile";
-import NavbarWrapper from "./components/NavbarWrapper";
 import DropdownMode from "./DropdownMode";
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const closeModal = () => {
     dispatchNavigation({ type: "CLOSE_NAVIGATION" });
-  }
+  };
 
   return (
     <NavbarWrapper isOpen={isOpen} closeModal={closeModal}>

@@ -1,41 +1,40 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import Btn from "../../components/common/Btn";
-import MobileCatalogAutocomplete from "../../components/filter/MobileCatalogAutocomplete";
-import { auth } from "../../firebase.config";
+import { useNotifyModalContext } from "../../context/notifyModal/notifyModalContext";
 
 const PrivacyPolicy = () => {
-  const { control, handleSubmit } = useForm();
+  const { dispatchNotifyModal } = useNotifyModalContext();
 
-  const handleClick = async () => {};
+  const desktopPhotoUrl =
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeCars.webp?alt=media&token=51d51fb2-414d-44a4-a549-40a36666b7cb";
+  const mobilePhotoUrl =
+    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2Fmoped.webp?alt=media&token=c3fbae96-06a8-4121-9067-25ca1dcea4af";
 
-  const onSubmit = (data) => {
-    // console.log(data);
+  const handleClick = () => {
+    dispatchNotifyModal({
+      type: "SET_NOTIFY_MODAL",
+      payload: {
+        isOpen: true,
+        preMade: "signIn",
+        photoUrl: {
+          desktop: desktopPhotoUrl,
+          mobile: mobilePhotoUrl,
+        },
+      },
+    });
   };
 
-  const autocompleteCallback = (data) => {
-    // console.log("autocomplete callback: ", data);
-  };
-  
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex h-screen w-full flex-col items-center justify-center gap-y-2"
-    >
-      <MobileCatalogAutocomplete
-        definedActions="mapCatalog"
-        control={control}
-        callbackFunction={autocompleteCallback}
-      />
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2">
       <div className="h-fit w-fit">
         <Btn
-          type="submit"
+          title="click to open"
           uiType="primary"
-          title="Click to Search"
-          // onClick={handleClick}
+          type="button"
+          onClick={handleClick}
         />
       </div>
-    </form>
+    </div>
   );
 };
 

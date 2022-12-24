@@ -1,8 +1,9 @@
 import React from "react";
-import { NavigationProvider } from "./navigation/navigationContext";
+import { DarkModeProvider } from "./darkMode/darkModeContext";
 import { MapCoordProvider } from "./map/mapCoord/mapCoordContext";
 import { MapSubProvider } from "./map/mapSub/mapSubContext";
-import { DarkModeProvider } from "./darkMode/darkModeContext";
+import { NavigationProvider } from "./navigation/navigationContext";
+import { NotifyModalProvider } from "./notifyModal/notifyModalContext";
 
 const ContextProviderWrapper = ({ children }) => {
   return (
@@ -10,8 +11,8 @@ const ContextProviderWrapper = ({ children }) => {
       <MapSubProvider>
         <NavigationProvider>
           <DarkModeProvider>
-          {children}
-        </DarkModeProvider>
+            <NotifyModalProvider>{children}</NotifyModalProvider>
+          </DarkModeProvider>
         </NavigationProvider>
       </MapSubProvider>
     </MapCoordProvider>

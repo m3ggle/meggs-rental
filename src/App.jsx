@@ -1,8 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AnimatePresence } from "framer-motion";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Logo from "./components/Logo";
 import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
+import NotifyModal from "./components/notifyModal/NotifyModal";
 import { auth } from "./firebase.config";
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
 import SignIn from "./pages/authentication/signIn/SignIn";
@@ -30,7 +32,7 @@ import UserOffers from "./pages/userOffers/UserOffers";
 export default function App() {
   const queryClient = new QueryClient();
 
-  console.log("app: ", auth.currentUser)
+  console.log("app: ", auth.currentUser);
 
   // d
 
@@ -38,51 +40,56 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <div className="flex h-full w-full items-center justify-center bg-white dark:bg-dmGrey900">
         <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white dark:bg-dmGrey900">
-          <Router>
-            <div className="hidden" aria-hidden="true">
-              <DropdownMode />
-            </div>
-            <Navbar />
-            <Logo />
-            <Routes>
-              <Route path="/explore/map" element={<Map />} />
-              <Route path="/explore/catalog" element={<Catalog />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route
-                path="/offer-details/:offerId"
-                element={<OfferDetails />}
-              />
+          
+            <Router>
+              <div className="hidden" aria-hidden="true">
+                <DropdownMode />
+              </div>
+              <Navbar />
+              {/* upcoming: modals */}
+              <NotifyModal />
+              {/* modals end */}
+              <Logo />
+              <Routes>
+                <Route path="/explore/map" element={<Map />} />
+                <Route path="/explore/catalog" element={<Catalog />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route
+                  path="/offer-details/:offerId"
+                  element={<OfferDetails />}
+                />
 
-              <Route path="/user-offers" element={<UserOffers />} />
-              <Route path="/upload" element={<Upload />} />
+                <Route path="/user-offers" element={<UserOffers />} />
+                <Route path="/upload" element={<Upload />} />
 
-              <Route path="/chat" element={<Chat />} />
-              <Route path="/chat/sidebar" element={<ChatSidebar />} />
-              <Route path="/chat/chat-main/:chatId" element={<ChatMain />} />
+                <Route path="/chat" element={<Chat />} />
+                <Route path="/chat/sidebar" element={<ChatSidebar />} />
+                <Route path="/chat/chat-main/:chatId" element={<ChatMain />} />
 
-              <Route path="/" element={<Homepage />} />
-              <Route path="/homepage" element={<Homepage />} />
+                <Route path="/" element={<Homepage />} />
+                <Route path="/homepage" element={<Homepage />} />
 
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/profile/account" element={<ProfileAccount />} />
-              <Route path="/profile/payments" element={<ProfilePayments />} />
-              <Route path="/profile/reviews" element={<ProfileReviews />} />
-              <Route
-                path="/profile/notification"
-                element={<ProfileNotification />}
-              />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile/account" element={<ProfileAccount />} />
+                <Route path="/profile/payments" element={<ProfilePayments />} />
+                <Route path="/profile/reviews" element={<ProfileReviews />} />
+                <Route
+                  path="/profile/notification"
+                  element={<ProfileNotification />}
+                />
 
-              <Route path="/help" element={<Help />} />
-              <Route path="/terms-of-service" element={<TermsOfService />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/help" element={<Help />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-              <Route path="/sign-in" element={<SignIn />} />
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/sign-in" element={<SignIn />} />
+                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
 
-              <Route path="/*" element={<NotFound />} />
-            </Routes>
-          </Router>
+                <Route path="/*" element={<NotFound />} />
+              </Routes>
+            </Router>
+          
         </div>
       </div>
       {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}

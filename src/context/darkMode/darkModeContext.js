@@ -1,7 +1,11 @@
 import { createContext, useContext, useReducer } from "react";
 import darkModeReducer from "./darkModeReducer";
 
-const DarkModeContext = createContext();
+const DarkModeContext = createContext({
+  darkMode: null,
+  
+  dispatchDarkMode: () => {}
+});
 DarkModeContext.displayName = "DarkModeContext";
 
 export function useDarkModeContext() {

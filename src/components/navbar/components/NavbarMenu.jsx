@@ -1,15 +1,18 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useSignOutAPI } from "../../../api/firebase/useSignOutAPI";
+import { useNavigationContext } from "../../../context/navigation/navigationContext";
 
 const NavbarMenu = ({ signedIn, handleClickNavigation }) => {
+  const { menu } = useNavigationContext();
+
   const location = useLocation();
-  const {signOutUser} = useSignOutAPI()
+  const { signOutUser } = useSignOutAPI();
 
   const handleSignOut = () => {
     signOutUser();
     handleClickNavigation("sign-in");
-  }
+  };
 
   const handleClickSign = () => {
     location.pathname === "/sign-in"
@@ -25,14 +28,19 @@ const NavbarMenu = ({ signedIn, handleClickNavigation }) => {
   return (
     <div className="flex w-[360px] flex-col gap-y-2 px-8 py-3 text-lmGrey400 dark:text-dmGrey100">
       <span className="text-sm font-semibold">Menu</span>
-      <div
-        onClick={() => handleClickNavigation("/homepage")}
-        className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
-      >
-        <div className="fa-solid fa-house flex h-11 w-11 items-center justify-center text-[18px]"></div>
-        <span>Homepage</span>
-      </div>
-      <div
+      {menu.map((item, index) => (
+        <div
+          key={index}
+          onClick={() => handleClickNavigation(item.navigateTo)}
+          className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
+        >
+          <div
+            className={`${item.icon} flex h-11 w-11 items-center justify-center text-[18px]`}
+          ></div>
+          <span>{item.text}</span>
+        </div>
+      ))}
+      {/* <div
         onClick={() => handleClickNavigation("/explore/map")}
         className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
       >
@@ -80,7 +88,7 @@ const NavbarMenu = ({ signedIn, handleClickNavigation }) => {
       >
         <div className="fa-solid fa-user flex h-11 w-11 items-center justify-center text-[18px]"></div>
         <span>Your Profile</span>
-      </div>
+      </div> */}
       <div
         onClick={handleClickSign}
         className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"

@@ -1,10 +1,9 @@
 const userReducer = (state, action) => {
-  const { type } = action;
+  const { type, payload } = action;
   switch (type) {
     case "SET_USER_CONTEXT":
       return {
-        ...state,
-        isOpen: true,
+        ...payload
       };
     default:
       break;

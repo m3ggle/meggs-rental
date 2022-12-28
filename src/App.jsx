@@ -5,6 +5,7 @@ import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
 import NotifyModal from "./components/notifyModal/NotifyModal";
 import { auth } from "./firebase.config";
+import { useAuthObserver } from "./hooks/firebase/useAuthObserver";
 import { FirebaseAuthLanding, useFirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding";
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
 import SignIn from "./pages/authentication/signIn/SignIn";
@@ -30,11 +31,11 @@ import Upload from "./pages/upload/Upload";
 import UserOffers from "./pages/userOffers/UserOffers";
 
 export default function App() {
+  // for react query
   const queryClient = new QueryClient();
 
-  console.log("app: ", auth.currentUser);
-
-  // d
+  // for firebase auth
+  useAuthObserver()
 
   return (
     <QueryClientProvider client={queryClient}>

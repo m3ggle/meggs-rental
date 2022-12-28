@@ -13,7 +13,6 @@ userInformation = {
 export const firestoreSetUser = async (userInformation) => {
   const { uid, information } = userInformation;
   
-  console.log("uploading: ", userInformation);
   try {
     await setDoc(doc(db, "users", uid), { ...information }, { merge: true });
   } catch (error) {

@@ -9,6 +9,7 @@ const SignUpConfirmation = ({ handleCallback }) => {
   const handleSendAgain = async () => {
     if (!email) {
       console.log("email is missing, please go back")
+      return
     }
 
     await sendEmailVerification(auth.currentUser);

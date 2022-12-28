@@ -2,7 +2,7 @@ import { Dialog } from "@headlessui/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNavigationContext } from "../../context/navigation/navigationContext";
-import NavbarWrapper from "../wrapper/ModalWrapper";
+import ModalWrapper from "../wrapper/ModalWrapper";
 import NavbarDivider from "./components/NavbarDivider";
 import NavbarMenu from "./components/NavbarMenu";
 import NavbarMessage from "./components/NavbarMessage";
@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <NavbarWrapper isOpen={isOpen} closeModal={closeModal}>
+    <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
       <Dialog.Panel className="hideScrollbar absolute top-20 left-0 bottom-0 w-full overflow-scroll 600:top-7 600:left-7 600:w-fit 600:pb-7">
         <button className="absolute opacity-0" aria-hidden="true"></button>
         <i
@@ -48,7 +48,7 @@ const Navbar = () => {
           <NavbarProfile handleClickNavigation={handleClickNavigation} />
         </div>
       </Dialog.Panel>
-    </NavbarWrapper>
+    </ModalWrapper>
   );
 };
 

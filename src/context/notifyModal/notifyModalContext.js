@@ -5,7 +5,22 @@ const NotifyModalContext = createContext({
   isOpen: null,
   preMade: null,
   customized: null,
-  photoUrl: null,
+  extraInfo: {
+    title: null,
+    bulletPoints: [],
+    primaryButton: {
+      title: null,
+      function: () => {}
+    },
+    secondaryButton: {
+      title: null,
+      function: () => {}
+    },
+  },
+  photoUrl: {
+    desktop: null,
+    mobile: null,
+  },
 
   closeNotifyModal: () => {},
   openNotifyModal: () => {},
@@ -22,29 +37,31 @@ export const NotifyModalProvider = ({ children }) => {
     isOpen: false,
     preMade: null,
     customized: null,
+    extraInfo: null,
     photoUrl: null,
   };
 
-    const closeNotifyModal = () => {
-      console.log("kkk")
+  const closeNotifyModal = () => {
     dispatchNotifyModal({
       type: "SET_NOTIFY_MODAL",
       payload: {
         isOpen: false,
         preMade: null,
         customized: null,
+        extraInfo: null,
         photoUrl: null,
       },
     });
   };
 
-  const openNotifyModal = ({ preMade, customized, photoUrl }) => {
+  const openNotifyModal = ({ preMade, extraInfo, customized, photoUrl }) => {
     dispatchNotifyModal({
       type: "SET_NOTIFY_MODAL",
       payload: {
         isOpen: true,
         preMade: preMade ?? null,
         customized: customized ?? null,
+        extraInfo: extraInfo ?? null,
         photoUrl: photoUrl ?? null,
       },
     });

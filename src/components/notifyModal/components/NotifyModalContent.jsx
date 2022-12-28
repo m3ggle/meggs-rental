@@ -1,10 +1,18 @@
-import { Dialog } from '@headlessui/react'
-import React from 'react'
+import React from "react";
+import { useNotifyModalContext } from "../../../context/notifyModal/notifyModalContext";
+import ContentStandard from "./ContentStandard";
 
 const NotifyModalContent = () => {
-  return (
-    <Dialog.Panel className='w-[60%] h-[40%] rounded-2xl bg-white'>NotifyModalContent</Dialog.Panel>
-  )
-}
+  const { preMade } = useNotifyModalContext();
 
-export default NotifyModalContent
+  const decision = {
+    signIn: "",
+    authChecker: "",
+    customized: "",
+    standard: <ContentStandard />,
+  };
+
+  return decision[preMade];
+};
+
+export default NotifyModalContent;

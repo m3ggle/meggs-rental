@@ -1,7 +1,14 @@
 import { createContext, useContext, useReducer } from "react";
 import mapCoordReducer from "./mapCoordReducer";
 
-const MapCoordContext = createContext();
+const MapCoordContext = createContext({
+  bounds: {},
+  storedZoom: null,
+  position: {},
+  externalPositionChange: null,
+
+  dispatchMapCoord: () => {}
+});
 MapCoordContext.displayName = "MapCoordContext";
 
 export function useMapCoordContext() {

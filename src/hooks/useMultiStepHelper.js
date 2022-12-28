@@ -70,7 +70,7 @@ export const useMultiStepHelper = () => {
 
   // special kinds
   // sign up
-  const handleEmailContinue = (data) => {
+  const  handleEmailContinue = (data) => {
     handleStorage(data, "signUpData");
     setArrayOfParams({ email: data.email, round: currentRound + 1 });
   };

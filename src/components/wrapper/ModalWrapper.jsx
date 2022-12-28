@@ -2,11 +2,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 
 const ModalWrapper = ({ isOpen, closeModal, children }) => {
-  const testDrive = () => {
-    console.log("test")
-    closeModal()
-  }
-  
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="z-50" onClose={closeModal}>
@@ -34,8 +29,7 @@ const ModalWrapper = ({ isOpen, closeModal, children }) => {
           leaveTo="opacity-0 scale-95"
         >
           <div
-            onClick={testDrive}
-            // onClick={closeModal}
+            onClick={closeModal}
             className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
           >
             {children}

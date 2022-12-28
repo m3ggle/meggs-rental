@@ -1,40 +1,68 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { collection, getDocs, query, where } from "firebase/firestore";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { auth, db } from "../../../../firebase.config";
+import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
+import { auth } from "../../../../firebase.config";
 import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
+import { useGetUserByEmail } from "../../../../hooks/firebase/useGetUserByEmail";
 import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
 
 const SignInEmailPassword = () => {
   const { control, handleSubmit } = useForm();
 
+  const { dispatchNotifyModal, closeNotifyModal } = useNotifyModalContext();
   const { handleGoogle: handleGoogleHelper } = useMultiStepHelper();
+  const { getUserByEmail } = useGetUserByEmail();
 
   const onSubmit = async (data) => {
-    let userInformation;
-    const q = query(collection(db, "users"), where("email", "==", data.email));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      userInformation = doc.data();
-    });
-
+    const userInformation = await getUserByEmail(data.email);
 
     // does not have an acc
     if (userInformation === undefined) {
-      // Todo: toast
-      console.log("you don't have an account yet, create one");
-      // Todo: call Modal, ask if he is sure this is his correct email address because this email does not exist in our database
-      /*
-      options: 
-      - this is the correct email address, meaning, sign up (create a basic account and then link to "/sign-up?round=1")
-      - there is a typo: close the modal and change the email
-      */
+      const desktopPhotoUrl =
+        "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeCars.webp?alt=media&token=51d51fb2-414d-44a4-a549-40a36666b7cb";
+      const mobilePhotoUrl =
+        "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2Fmoped.webp?alt=media&token=c3fbae96-06a8-4121-9067-25ca1dcea4af";
 
-      // navigate("/sign-up?round=1");
+      dispatchNotifyModal({
+        type: "SET_NOTIFY_MODAL",
+        payload: {
+          isOpen: true,
+          preMade: "standard",
+          extraInfo: {
+            title: "Your Email was not found",
+            bulletPoints: [
+              `"${data.email}" was not found.`,
+              "Is there a typo? Close the modal, correct the typo and try again.",
+              `Do not have an account yet? Click the "Create a new Account" button.`,
+            ],
+            primaryButton: {
+              title: "Create a new Account",
+              function: () => {
+                closeNotifyModal();
+                const prep = {
+                  round: 1,
+                  email: data.email,
+                  password: data.password,
+                };
+                const nextParams = new URLSearchParams(prep);
+                navigate(`/sign-up?${nextParams}`);
+              },
+            },
+            secondaryButton: {
+              title: "Typo in the Email input",
+              function: closeNotifyModal,
+            },
+          },
+          photoUrl: {
+            desktop: desktopPhotoUrl,
+            mobile: mobilePhotoUrl,
+          },
+        },
+      });
       return;
     }
 
@@ -55,18 +83,20 @@ const SignInEmailPassword = () => {
     }
 
     // alright
-    signInWithEmailAndPassword(auth, data.email, data.password).catch(
-      (error) => {
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then(() => {
+        // Todo: toast
+        navigate("/homepage");
+      })
+      .catch((error) => {
         // Todo: toast
         // most likely wrong password
         console.log(error.message);
-      }
-    );
+      });
   };
 
   const handleGoogle = () => handleGoogleHelper();
 
-  // outsource
   const navigate = useNavigate();
   const handleForgotClick = () => navigate("/forgot-password");
   const handleSignUpClick = () => navigate("/sign-up");

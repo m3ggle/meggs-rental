@@ -1,11 +1,14 @@
 import React from "react";
 import SignWrapper from "../../../components/wrapper/SignWrapper";
+import { auth } from "../../../firebase.config";
 import SignInEmailPassword from "./view/SignInEmailPassword";
 
 const SignIn = () => {
   const signInBg =
     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FnewCar.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
 
+    console.log(auth)
+  
   return (
     <SignWrapper pic={signInBg}>
       <div className="flex w-full max-w-[348px] flex-col gap-y-[48px]">

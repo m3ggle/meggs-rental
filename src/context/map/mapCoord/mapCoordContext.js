@@ -2,9 +2,18 @@ import { createContext, useContext, useReducer } from "react";
 import mapCoordReducer from "./mapCoordReducer";
 
 const MapCoordContext = createContext({
-  bounds: {},
+  bounds: {
+    north: null,
+    east: null,
+    south: null,
+    west: null,
+  },
   storedZoom: null,
-  position: {},
+  position: {
+    lat: null,
+    lng: null,
+    z: null,
+  },
   externalPositionChange: null,
 
   dispatchMapCoord: () => {}

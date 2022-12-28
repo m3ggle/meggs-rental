@@ -3,10 +3,7 @@ const signUpRounds = [
     title: "Create a new account",
   },
   {
-    title: "Confirm your Email Address",
-  },
-  {
-    title: "Welcome back, almost finished",
+    title: "Almost finished",
   },
   {
     title: "Last step, promised 🤞",

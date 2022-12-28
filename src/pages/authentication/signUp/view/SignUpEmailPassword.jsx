@@ -4,25 +4,19 @@ import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
 import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
+import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
 import { useSignUpEmailPasswordSubmit } from "../hooks/useSignUpEmailPasswordSubmit";
 
 // Todo: different kinds of status like loading error and success, for that use react-query
 
-const SignUpEmailPassword = ({ handleCallback }) => {
+const SignUpEmailPassword = () => {
+  const { control, handleSubmit } = useForm();
   const { email, password } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
-
-  const { control, handleSubmit } = useForm();
-
-  const { onSubmit } = useSignUpEmailPasswordSubmit(handleCallback);
-
-  const handleGoogle = () => {
-    const nextStep = "google";
-    handleCallback({ nextStep });
-  };
-
-  // outsource
   const navigate = useNavigate();
+  const { onSubmit } = useSignUpEmailPasswordSubmit();
+  const { handleGoogle } = useMultiStepHelper();
+
   const handleSignInClick = () => navigate("/sign-in");
 
   return (

@@ -42,6 +42,7 @@ export const useMultiStepHelper = () => {
         // Todo: toast
         console.log("you have an account but you are not verified");
 
+        // go verify
         const nextSearchParams = new URLSearchParams(params);
         navigate(`/sign-up?${nextSearchParams}`);
       }

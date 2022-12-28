@@ -1,38 +1,13 @@
-import { signInWithEmailAndPassword, updatePassword } from "firebase/auth";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { auth } from "../../../../firebase.config";
 import { regexPassword } from "../../../../helper/regexCollection";
-import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
+import { useForgotPasswordPasswordLogic } from "../hooks/useForgotPasswordPasswordLogic";
 
 const ForgotPasswordPassword = () => {
-  const { getSingleParam } = useUrlManipulation();
-  const navigate = useNavigate();
-
   const { control, handleSubmit } = useForm();
-
-  const onSubmit = async (data) => {
-    const userEmail = getSingleParam("email") ?? undefined;
-
-    if (userEmail) {
-      signInWithEmailAndPassword(auth, userEmail, data.oldPassword).then(() => {
-        updatePassword(auth.currentUser, data.newPassword)
-          .then(() => {
-            // Todo: toast, password got updated
-            navigate("/profile");
-          })
-          .catch((error) => {
-            // Todo: toast, error
-            console.log(error.code, error.message);
-          });
-      });
-    } else {
-      // todo: toast use the link in the email we send you
-    }
-  };
+  const { onSubmit } = useForgotPasswordPasswordLogic();
 
   return (
     <form

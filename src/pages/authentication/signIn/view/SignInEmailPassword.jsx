@@ -71,7 +71,7 @@ const SignInEmailPassword = () => {
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
         secondBtn="secondary"
-        secondBtnTitle="Sign Up with Google"
+        secondBtnTitle="Sign In with Google"
         secondBtnType="button"
         secondBtnOnClick={handleGoogle}
         underBtnFirstText="Forgot your password?"

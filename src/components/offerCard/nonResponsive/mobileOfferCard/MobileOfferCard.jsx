@@ -1,6 +1,8 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useMapSubContext } from "../../../../context/map/mapSub/mapSubContext";
+import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
+import { useUserContext } from "../../../../context/user/userContext";
 import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
 import { useHandleFly } from "../../../../hooks/useHandleFly";
 import MobileCatalogOfferCardIcons from "./MobileOfferCardIcons";
@@ -10,6 +12,8 @@ import MobileCatalogOfferCardInfoPart from "./MobileOfferCardInfoPart";
 const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
   const { offerId, photoUrl, liked, location } = offerInformation;
   const { dispatchMapSub } = useMapSubContext();
+  const { signedIn, verified } = useUserContext();
+  const { openAuthNotifyModal } = useNotifyModalContext();
 
   const navigate = useNavigate();
   const handleNavigation = () => {
@@ -36,7 +40,12 @@ const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
     });
   };
 
-  const handleLike = () => {};
+  const handleLike = () => {
+    if (!signedIn || !verified) {
+      openAuthNotifyModal();
+      return;
+    }
+  };
 
   const handleHover = (payload) =>
     dispatchMapSub({

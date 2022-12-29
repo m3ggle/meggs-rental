@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useNotifyModalContext } from "../../../context/notifyModal/notifyModalContext";
 import Btn from "../../common/Btn";
 
-// only difference between ContentStandard and ContentAuth is, how this component handles the button click event
+// only difference between ContentStandard and ContentNavigate is, how this component handles the button click event
 // problem: can't use navigate in context, it has to be inside <Router>
 
 const ContentNavigate = () => {

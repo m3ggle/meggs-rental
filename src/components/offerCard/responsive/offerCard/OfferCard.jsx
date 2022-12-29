@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
+import { useUserContext } from "../../../../context/user/userContext";
 import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
 import OfferCardIcons from "./OfferCardIcons";
 import OfferCardImagePart from "./OfferCardImagePart";
@@ -8,6 +10,8 @@ import OfferCardInfoPart from "./OfferCardInfoPart";
 
 const OfferCard = ({ offerInformation, index }) => {
   const { offerId, liked, photoUrl, location } = offerInformation;
+  const { signedIn, verified } = useUserContext();
+  const { openAuthNotifyModal } = useNotifyModalContext();
 
   const navigate = useNavigate();
   const handleNavigation = () => navigate(`/offer-details/${offerId}`);
@@ -15,7 +19,12 @@ const OfferCard = ({ offerInformation, index }) => {
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () => handleLocationNavigation(offerId, location);
 
-  const handleLike = () => {};
+  const handleLike = () => {
+    if (!signedIn || !verified) {
+      openAuthNotifyModal();
+      return
+    }
+  };
 
   return (
     <motion.div

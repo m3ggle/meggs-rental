@@ -1,32 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import Btn from "../../../../components/common/Btn";
+import { useUserContext } from "../../../../context/user/userContext";
 
 const HomepageNavbarRight = () => {
-  const [signedIn] = useState({
-    status: false,
-    firstName: "Meggle",
-    lastName: "Bande",
-    photoUrl:
-      "https://images.unsplash.com/photo-1635107510862-53886e926b74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2535&q=80",
-  });
-
+  const { signedIn, userData, verified } = useUserContext();
   const navigate = useNavigate();
 
-  return (
-    <div className="flex w-fit items-center justify-end gap-x-2 700:w-60">
-      {signedIn.status ? (
-        <>
-          <span className="text-lg text-lmGrey800 dark:text-dmGrey25">
-            {signedIn.firstName} {signedIn.lastName}
-          </span>
-          <img
-            className="h-11 w-11 rounded-full bg-blue-200 dark:bg-blue-800"
-            src={signedIn.photoUrl}
-            alt="user profile"
-          />
-        </>
-      ) : (
+  const renderContent = () => {
+    // not signed in
+    if (!signedIn) {
+      return (
         <div className="w-fit">
           <Btn
             title="Sign In"
@@ -36,7 +20,57 @@ const HomepageNavbarRight = () => {
             onClick={() => navigate("/sign-in")}
           />
         </div>
-      )}
+      );
+    }
+
+    // not verified
+    if (!verified) {
+      return (
+        <>
+          <span className="text-lg text-lmGrey600 dark:text-dmGrey25">
+            please verify
+          </span>
+          <div
+            className="h-11 w-11 overflow-hidden rounded-full bg-blue-200 bg-cover bg-center dark:bg-blue-800"
+            style={{
+              backgroundImage: `url(https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FplaceholderPhoto.webp?alt=media&token=59ad9960-a335-41dd-83bf-e816d630e677)`,
+            }}
+          />
+        </>
+      );
+    }
+
+    // verified
+    if (verified) {
+      return (
+        <>
+          <span
+            onClick={() => navigate("/profile")}
+            className="text-lg text-lmGrey800 dark:text-dmGrey25"
+          >
+            {userData.firstName} {userData.lastName}
+          </span>
+          <div
+            onClick={() => navigate("/profile")}
+            className="h-11 w-11 overflow-hidden rounded-full bg-blue-200 bg-cover bg-center dark:bg-blue-800"
+            style={{
+              backgroundImage: `url(${
+                userData.photoURL ??
+                "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FplaceholderPhoto.webp?alt=media&token=59ad9960-a335-41dd-83bf-e816d630e677"
+              })`,
+            }}
+            alt="user profile"
+          />
+        </>
+      );
+    }
+
+    return <></>;
+  };
+
+  return (
+    <div className="flex w-fit flex-row items-center justify-end gap-x-2 700:w-60">
+      {renderContent()}
     </div>
   );
 };

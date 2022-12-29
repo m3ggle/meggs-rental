@@ -1,5 +1,6 @@
 import React from "react";
 import { useNotifyModalContext } from "../../../context/notifyModal/notifyModalContext";
+import ContentNavigate from "./ContentNavigate";
 import ContentStandard from "./ContentStandard";
 
 const NotifyModalContent = () => {
@@ -7,7 +8,7 @@ const NotifyModalContent = () => {
 
   const decision = {
     signIn: "",
-    authChecker: "",
+    navigate: <ContentNavigate />,
     customized: "",
     standard: <ContentStandard />,
   };

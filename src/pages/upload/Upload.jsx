@@ -1,3 +1,4 @@
+import PageAuthChecker from "../../components/wrapper/PageAuthChecker";
 import SignWrapper from "../../components/wrapper/SignWrapper";
 import { useMultiStepHelper } from "../../hooks/useMultiStepHelper";
 import useUploadCallback from "./hooks/useUploadCallback";
@@ -26,16 +27,18 @@ const Upload = () => {
     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FgermanStreet.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
 
   return (
-    <SignWrapper puffer={false} pic={uploadBg}>
-      <div className="flex w-full max-w-[348px] flex-col gap-y-8">
-        <UploadHeader
-          handleCallback={handleCallback}
-          maxRounds={6}
-          currentRound={currentRound - 1}
-        />
-        {renderComponent[currentRound]}
-      </div>
-    </SignWrapper>
+    <PageAuthChecker>
+      <SignWrapper puffer={false} pic={uploadBg}>
+        <div className="flex w-full max-w-[348px] flex-col gap-y-8">
+          <UploadHeader
+            handleCallback={handleCallback}
+            maxRounds={6}
+            currentRound={currentRound - 1}
+          />
+          {renderComponent[currentRound]}
+        </div>
+      </SignWrapper>
+    </PageAuthChecker>
   );
 };
 

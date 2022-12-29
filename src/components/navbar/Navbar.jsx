@@ -10,7 +10,6 @@ import NavbarProfile from "./components/NavbarProfile";
 import DropdownMode from "./DropdownMode";
 
 const Navbar = () => {
-  const [signedIn] = useState(true);
   const navigate = useNavigate();
 
   const handleClickNavigation = (navigateTo) => {
@@ -39,7 +38,6 @@ const Navbar = () => {
             </div>
           </div>
           <NavbarMenu
-            signedIn={signedIn}
             handleClickNavigation={handleClickNavigation}
           />
           <NavbarDivider />

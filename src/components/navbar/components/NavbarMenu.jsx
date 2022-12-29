@@ -2,27 +2,42 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useSignOutAPI } from "../../../api/firebase/useSignOutAPI";
 import { useNavigationContext } from "../../../context/navigation/navigationContext";
+import { useUserContext } from "../../../context/user/userContext";
+import { auth } from "../../../firebase.config";
 
-const NavbarMenu = ({ signedIn, handleClickNavigation }) => {
+const NavbarMenu = ({ handleClickNavigation }) => {
   const { menu } = useNavigationContext();
+  const { signedIn } = useUserContext()
 
   const location = useLocation();
-  const { signOutUser } = useSignOutAPI();
+  // const { signOutUser } = useSignOutAPI();
 
   const handleSignOut = () => {
-    signOutUser();
+    // signOutUser();
+    auth.signOut()
     handleClickNavigation("sign-in");
   };
 
   const handleClickSign = () => {
-    location.pathname === "/sign-in"
-      ? handleClickNavigation("sign-up")
-      : location.pathname === "/sign-up" ||
-        location.pathname === "forgot-password"
-      ? handleClickNavigation("sign-in")
-      : signedIn
-      ? handleSignOut()
-      : handleClickNavigation("sign-in");
+    if (location.pathname === "/sign-in") {
+      handleClickNavigation("sign-up");
+      return
+    }
+
+    if (
+      location.pathname === "/sign-up" ||
+      location.pathname === "forgot-password"
+    ) {
+      handleClickNavigation("sign-in");
+      return
+    }
+
+    if (signedIn) {
+      handleSignOut();
+    }
+
+    // not signed in
+    handleClickNavigation("sign-in");
   };
 
   return (

@@ -1,5 +1,5 @@
 const navigationReducer = (state, action) => {
-  const { type } = action;
+  const { type, payload } = action;
   switch (type) {
     case "OPEN_NAVIGATION":
       return {
@@ -11,6 +11,11 @@ const navigationReducer = (state, action) => {
         ...state,
         isOpen: false,
       };
+    case "SET_MENU": 
+      return {
+        ...state,
+        menu: payload,
+      }
     default:
       break;
   }

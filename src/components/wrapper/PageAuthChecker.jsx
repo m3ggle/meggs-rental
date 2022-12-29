@@ -10,11 +10,7 @@ const PageAuthChecker = ({ children }) => {
     openAuthNotifyModal();
   }, [openAuthNotifyModal]);
 
-  if (!signedIn) {
-    return <></>;
-  }
-
-  if (!verified) {
+  if (!signedIn || !verified) {
     return <></>;
   }
 

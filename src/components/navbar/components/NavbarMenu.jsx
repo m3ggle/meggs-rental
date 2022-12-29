@@ -1,27 +1,26 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useSignOutAPI } from "../../../api/firebase/useSignOutAPI";
 import { useNavigationContext } from "../../../context/navigation/navigationContext";
 import { useUserContext } from "../../../context/user/userContext";
 import { auth } from "../../../firebase.config";
 
 const NavbarMenu = ({ handleClickNavigation }) => {
   const { menu } = useNavigationContext();
-  const { signedIn } = useUserContext()
+  const { signedIn, verified } = useUserContext();
 
   const location = useLocation();
   // const { signOutUser } = useSignOutAPI();
 
   const handleSignOut = () => {
     // signOutUser();
-    auth.signOut()
+    auth.signOut();
     handleClickNavigation("sign-in");
   };
 
   const handleClickSign = () => {
     if (location.pathname === "/sign-in") {
       handleClickNavigation("sign-up");
-      return
+      return;
     }
 
     if (
@@ -29,7 +28,7 @@ const NavbarMenu = ({ handleClickNavigation }) => {
       location.pathname === "forgot-password"
     ) {
       handleClickNavigation("sign-in");
-      return
+      return;
     }
 
     if (signedIn) {
@@ -39,6 +38,18 @@ const NavbarMenu = ({ handleClickNavigation }) => {
     // not signed in
     handleClickNavigation("sign-in");
   };
+
+  const handleIcon = (item) => {
+    if (item.text === "Homepage" || "Explore Map" || "Explore Catalog") {
+      return item.icon
+    }
+
+    if (!signedIn || !verified) {
+      return "fa-solid fa-lock"
+    }
+
+    return  item.icon
+  }
 
   return (
     <div className="flex w-[360px] flex-col gap-y-2 px-8 py-3 text-lmGrey400 dark:text-dmGrey100">
@@ -50,6 +61,7 @@ const NavbarMenu = ({ handleClickNavigation }) => {
           className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
         >
           <div
+            // className={`${() => handleIcon(item)} flex h-11 w-11 items-center justify-center text-[18px]`}
             className={`${item.icon} flex h-11 w-11 items-center justify-center text-[18px]`}
           ></div>
           <span>{item.text}</span>

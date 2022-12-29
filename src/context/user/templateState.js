@@ -13,7 +13,7 @@ export const templateState = {
     lastViewedOffers: [],
     ownOffers: [],
     phoneNumber: null,
-    photoUrl: null,
+    photoURL: null,
     preferredCity: {
       bounds: {
         east: null,

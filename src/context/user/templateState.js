@@ -1,0 +1,35 @@
+export const templateState = {
+  verified: null,
+  signedIn: null,
+  userData: {
+    birthday: null,
+    chatRooms: [],
+    displayName: null,
+    email: null,
+    favoriteOffers: [],
+    firstName: null,
+    gender: null,
+    lastName: null,
+    lastViewedOffers: [],
+    ownOffers: [],
+    phoneNumber: null,
+    photoUrl: null,
+    preferredCity: {
+      bounds: {
+        east: null,
+        north: null,
+        south: null,
+        west: null,
+      },
+      center: {
+        lat: null,
+        lng: null,
+      },
+      name: null,
+    },
+    smoker: null,
+    status: null,
+    timeStamp: null,
+    uid: null,
+  },
+};

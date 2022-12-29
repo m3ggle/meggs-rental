@@ -40,7 +40,7 @@ export const useAuthObserver = () => {
   };
 
   onAuthStateChanged(auth, async (user) => {
-    if (user) {
+    if (user !== null) {
       // only for the first time logging in
       if (!signedIn) {
         const docRef = doc(db, "users", user.uid);
@@ -56,8 +56,7 @@ export const useAuthObserver = () => {
     }
 
     // user signs out
-    if (signedIn && user) {
-      console.log("signing out");
+    if (signedIn) {
       handleSignOut();
       return;
     }

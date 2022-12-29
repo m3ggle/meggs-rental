@@ -13,11 +13,11 @@ export const useForgotPasswordEmailLogic = () => {
     const userInformation = await getUserByEmail(data.email);
 
     // logged in or not
-    if (auth.currentUser === null) {
-      console.log("you have to be logged in to change your password")
-      // todo: toast
-      return
-    }
+    // if (auth.currentUser === null) {
+    //   console.log("you have to be logged in to change your password")
+    //   // todo: toast
+    //   return
+    // }
 
     // does not have an acc
     if (userInformation === undefined) {

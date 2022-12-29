@@ -86,7 +86,9 @@ export const NotifyModalProvider = ({ children }) => {
       });
     }
 
+    console.log(verified)
     if (!verified && auth.currentUser !== null) {
+      console.log("inside verify: ", !verified);
       dispatchNotifyModal({
         type: "SET_NOTIFY_MODAL",
         payload: {

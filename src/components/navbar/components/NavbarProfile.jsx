@@ -1,7 +1,10 @@
 import React from 'react'
+import { useUserContext } from '../../../context/user/userContext';
 import UserProfileSmall from '../../userProfile/UserProfileSmall';
 
 const NavbarProfile = ({ handleClickNavigation }) => {
+  const {userData} = useUserContext()
+  
   return (
     <div className="flex w-[360px] items-center px-8 py-2">
       <div
@@ -10,8 +13,8 @@ const NavbarProfile = ({ handleClickNavigation }) => {
       >
         <UserProfileSmall
           text="Click to view the owners account"
-          displayName="Meggle Bande"
-          profilePic="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80"
+          displayName={`${userData.firstName} ${userData.lastName}`}
+          profilePic={userData.photoURL}
         />
       </div>
     </div>

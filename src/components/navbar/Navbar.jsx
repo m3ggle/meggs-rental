@@ -2,6 +2,7 @@ import { Dialog } from "@headlessui/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNavigationContext } from "../../context/navigation/navigationContext";
+import { useUserContext } from "../../context/user/userContext";
 import ModalWrapper from "../wrapper/ModalWrapper";
 import NavbarDivider from "./components/NavbarDivider";
 import NavbarMenu from "./components/NavbarMenu";
@@ -10,15 +11,15 @@ import NavbarProfile from "./components/NavbarProfile";
 import DropdownMode from "./DropdownMode";
 
 const Navbar = () => {
+  const { isOpen, dispatchNavigation } = useNavigationContext();
   const navigate = useNavigate();
-
+  const {signedIn, verified} = useUserContext()
+  
   const handleClickNavigation = (navigateTo) => {
     closeModal();
     navigate(navigateTo);
   };
-
-  const { isOpen, dispatchNavigation } = useNavigationContext();
-
+  
   const closeModal = () => {
     dispatchNavigation({ type: "CLOSE_NAVIGATION" });
   };
@@ -37,13 +38,15 @@ const Navbar = () => {
               <DropdownMode />
             </div>
           </div>
-          <NavbarMenu
-            handleClickNavigation={handleClickNavigation}
-          />
-          <NavbarDivider />
-          <NavbarMessage handleClickNavigation={handleClickNavigation} />
-          <NavbarDivider />
-          <NavbarProfile handleClickNavigation={handleClickNavigation} />
+          <NavbarMenu handleClickNavigation={handleClickNavigation} />
+          {signedIn && verified && (
+            <>
+              <NavbarDivider />
+              <NavbarMessage handleClickNavigation={handleClickNavigation} />
+              <NavbarDivider />
+              <NavbarProfile handleClickNavigation={handleClickNavigation} />
+            </>
+          )}
         </div>
       </Dialog.Panel>
     </ModalWrapper>

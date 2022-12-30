@@ -17,6 +17,7 @@ export const UserProvider = ({ children }) => {
   const initialState = {
     signedIn: false,
     verified: false,
+    userData: null,
   };
 
   const [state, dispatchUser] = useReducer(userReducer, initialState);

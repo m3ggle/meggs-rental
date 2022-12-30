@@ -15,7 +15,7 @@ const UserProfileHeader = ({ userProfileData = {} }) => {
       className="flex w-full cursor-pointer flex-col items-center gap-y-2"
     >
       <img
-        className="h-[84px] w-[84px] rounded-full bg-cover bg-center shadow"
+        className="h-[84px] w-[84px] rounded-full object-center object-cover shadow"
         src={photoURL}
         alt="user"
       />

@@ -56,6 +56,7 @@ export const useSignUpFinishLogic = () => {
       phoneNumber: auth.currentUser.phoneNumber,
       photoURL: "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FplaceholderPhoto.webp?alt=media&token=59ad9960-a335-41dd-83bf-e816d630e677",
       smoker: false,
+      bio: null,
       timestamp: serverTimestamp(),
       favoriteOffers: [],
       ownOffers: [],

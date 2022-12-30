@@ -1,10 +1,12 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
+import { useNotifyModalContext } from "../../context/notifyModal/notifyModalContext";
 import { useUserContext } from "../../context/user/userContext";
 import { auth, db } from "../../firebase.config";
 
 export const useAuthObserver = () => {
   const { dispatchUser, signedIn } = useUserContext();
+  const {closeNotifyModal, isOpen} = useNotifyModalContext()
 
   const handleSignIn = (userInformation) => {
     let preparation = {
@@ -27,6 +29,12 @@ export const useAuthObserver = () => {
       type: "SET_USER_CONTEXT",
       payload: preparation,
     });
+
+    // if the notify modal is open, close it
+    // could be a problem if the notify modal is not used for auth
+    if (isOpen) {
+      closeNotifyModal()
+    }
   };
 
   const handleSignOut = () => {

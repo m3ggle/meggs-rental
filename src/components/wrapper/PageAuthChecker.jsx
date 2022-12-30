@@ -14,6 +14,7 @@ const PageAuthChecker = ({ children }) => {
     return <></>;
   }
 
+  console.log("gets rendered")
   return <>{children}</>;
 };
 

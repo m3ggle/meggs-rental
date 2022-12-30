@@ -11,12 +11,14 @@ const Profile = () => {
 
   return (
     <PageAuthChecker>
-      <SignWrapper puffer={false} pic={userData.photoURL}>
-        <div className="flex w-full max-w-[348px] flex-col gap-y-3 overflow-y-scroll px-[2px]">
-          <UserProfileHeader userProfileData={userData} />
-          <ProfileButtonList profileButtonList={profileButtonListData} />
-        </div>
-      </SignWrapper>
+      {userData !== null && (
+        <SignWrapper puffer={false} pic={userData.photoURL}>
+          <div className="flex w-full max-w-[348px] flex-col gap-y-3 overflow-y-scroll px-[2px]">
+            <UserProfileHeader userProfileData={userData} />
+            <ProfileButtonList profileButtonList={profileButtonListData} />
+          </div>
+        </SignWrapper>
+      )}
     </PageAuthChecker>
   );
 };

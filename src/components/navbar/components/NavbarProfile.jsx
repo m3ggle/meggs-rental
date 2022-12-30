@@ -1,10 +1,14 @@
-import React from 'react'
-import { useUserContext } from '../../../context/user/userContext';
-import UserProfileSmall from '../../userProfile/UserProfileSmall';
+import React from "react";
+import { useUserContext } from "../../../context/user/userContext";
+import UserProfileSmall from "../../userProfile/UserProfileSmall";
 
 const NavbarProfile = ({ handleClickNavigation }) => {
-  const {userData} = useUserContext()
-  
+  const { userData } = useUserContext();
+
+  const dummyFunction = () => {
+    return;
+  };
+
   return (
     <div className="flex w-[360px] items-center px-8 py-2">
       <div
@@ -15,10 +19,11 @@ const NavbarProfile = ({ handleClickNavigation }) => {
           text="Click to view the owners account"
           displayName={`${userData.firstName} ${userData.lastName}`}
           profilePic={userData.photoURL}
+          callbackFunction={dummyFunction}
         />
       </div>
     </div>
   );
 };
 
-export default NavbarProfile
+export default NavbarProfile;

@@ -2,6 +2,7 @@ export const templateState = {
   verified: null,
   signedIn: null,
   userData: {
+    bio: null,
     birthday: null,
     chatRooms: [],
     displayName: null,

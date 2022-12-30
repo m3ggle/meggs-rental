@@ -8,13 +8,24 @@ const UserProfileSmall = ({
   text,
   rating,
   profilePic,
+  callbackFunction
 }) => {
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
+  
+  const handleClick = () => {
+    if (callbackFunction !== undefined) {
+      callbackFunction()
+      return
+    }
+
+    openModal()
+  }
+
   return (
     <div
-      onClick={openModal}
+      onClick={handleClick}
       className="flex h-11 w-full cursor-pointer items-center gap-x-2"
     >
       {/* pic */}

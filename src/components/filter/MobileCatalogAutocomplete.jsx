@@ -9,6 +9,8 @@ import { useAutocompleteApi } from "./hooks/useAutocompleteApi";
 
 // too many renders
 const MobileCatalogAutocomplete = ({
+  value,
+  label,
   control,
   definedActions,
   callbackFunction,
@@ -123,7 +125,9 @@ const MobileCatalogAutocomplete = ({
         render={({ field, fieldState }) => (
           <Autocomplete
             placeholder="Dresden..."
-            value={getSingleParam("city") ? getSingleParam("city") : null}
+            label={label ?? undefined}
+            // value={getSingleParam("city") ? getSingleParam("city") : null}
+            value={value ? value : getSingleParam("city") ? getSingleParam("city") : null}
             itemList={itemList}
             onChange={(callbackObject) => {
               field.onChange(callbackObject.name);

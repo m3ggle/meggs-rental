@@ -4,6 +4,7 @@ import Logo from "./components/Logo";
 import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
 import NotifyModal from "./components/notifyModal/NotifyModal";
+import { useUserObserver } from "./context/user/useUserObserver";
 import { auth } from "./firebase.config";
 import { useAuthObserver } from "./hooks/firebase/useAuthObserver";
 import { FirebaseAuthLanding, useFirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding";
@@ -36,6 +37,7 @@ export default function App() {
 
   // for firebase auth
   useAuthObserver()
+  useUserObserver()
 
   return (
     <QueryClientProvider client={queryClient}>

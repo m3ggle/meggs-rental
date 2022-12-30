@@ -267,6 +267,13 @@ const genderSelect = {
   list: ["Male", "feMale", "Divers"],
 };
 
+const yesNoSelect = {
+  label: null,
+  icon: "fa-solid fa-circle-notch",
+  placeholder: "Yes or No",
+  list: ["Yes", "No"]
+}
+
 const messages = [
   {
     id: 1,
@@ -1076,6 +1083,7 @@ const ExampleData = () => {
     reviewId,
     offerCard,
     genderSelect,
+    yesNoSelect,
     eatingSelect,
     smokingSelect,
     signUpRounds,

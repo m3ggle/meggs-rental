@@ -51,6 +51,19 @@ export const NotifyModalProvider = ({ children }) => {
     });
   };
 
+  const closeNotifyModal = useCallback(() => {
+    dispatchNotifyModal({
+      type: "SET_NOTIFY_MODAL",
+      payload: {
+        isOpen: false,
+        preMade: null,
+        customized: null,
+        extraInfo: null,
+        photoUrl: null,
+      },
+    });
+  }, []);
+
   const openAuthNotifyModal = useCallback(() => {
     if (!signedIn) {
       dispatchNotifyModal({
@@ -86,7 +99,7 @@ export const NotifyModalProvider = ({ children }) => {
       });
     }
 
-    console.log(verified)
+    console.log(verified);
     if (!verified && auth.currentUser !== null) {
       console.log("inside verify: ", !verified);
       dispatchNotifyModal({
@@ -130,20 +143,7 @@ export const NotifyModalProvider = ({ children }) => {
         },
       });
     }
-  }, []);
-
-  const closeNotifyModal = useCallback(() => {
-    dispatchNotifyModal({
-      type: "SET_NOTIFY_MODAL",
-      payload: {
-        isOpen: false,
-        preMade: null,
-        customized: null,
-        extraInfo: null,
-        photoUrl: null,
-      },
-    });
-  }, []);
+  }, [signedIn, verified, closeNotifyModal]);
   // functions end
 
   return (

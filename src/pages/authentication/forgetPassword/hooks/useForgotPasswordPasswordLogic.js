@@ -22,6 +22,9 @@ export const useForgotPasswordPasswordLogic = () => {
             // Todo: toast, error
             console.log(error.code, error.message);
           });
+      }).catch((error) => {
+        // todo: probably wrong password
+        console.log(error.message)
       });
     } else {
       // todo: toast use the link in the email we send you

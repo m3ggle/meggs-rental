@@ -1,11 +1,13 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import MobileCatalogAutocomplete from "../../../components/filter/MobileCatalogAutocomplete";
 import Select from "../../../components/input/Select";
 import TextArea from "../../../components/input/TextArea";
 import TextInput from "../../../components/input/TextInput";
 import SignWrapper from "../../../components/wrapper/SignWrapper";
 import { useUserContext } from "../../../context/user/userContext";
 import ExampleData from "../../../ExampleData";
+import { auth } from "../../../firebase.config";
 import {
   regexEmail,
   regexName,
@@ -13,20 +15,25 @@ import {
   regexTelephoneNumber,
 } from "../../../helper/regexCollection";
 import ProfileSubPageHeader from "../components/ProfileSubPageHeader";
+import { useProfileAccountLogic } from "./hooks/useProfileAccountLogic";
 
-const { genderSelect, userProfileBig } = ExampleData();
+const { genderSelect, yesNoSelect } = ExampleData();
 
 const ProfileAccount = () => {
   const { control, handleSubmit } = useForm();
   const { userData } = useUserContext();
 
-  const onSubmit = (data) => console.log(data);
+  const { onSubmit, autocompleteCallback } = useProfileAccountLogic();
 
+    // console.log("auth.currentUser", auth.currentUser);
+    // console.log("user context", userData);
+
+  // Todo: some are required and some not
   return (
     <>
       {userData !== null && (
         <SignWrapper puffer={false} pic={userData.photoURL}>
-          <div className="flex w-full max-w-[348px] flex-col gap-y-3 overflow-y-scroll px-[2px] py-6">
+          <div className="hideScrollbar flex w-full max-w-[348px] flex-col gap-y-3 overflow-y-scroll px-[2px] py-6">
             <ProfileSubPageHeader title="Account" />
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -124,22 +131,46 @@ const ProfileAccount = () => {
                 )}
               />
               <Controller
-                name="password"
+                name="oldPassword"
                 control={control}
                 rules={{
-                  required: "Password is required",
                   pattern: {
                     value: regexPassword,
                     message:
                       "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
                   },
                 }}
+                defaultValue={null}
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-lock"
                     onChange={field.onChange}
-                    label="Password"
+                    label="Old Password"
                     placeholder="••••••"
+                    type="password"
+                    value={field.value}
+                    onBlur={field.onBlur}
+                    error={fieldState.error}
+                  />
+                )}
+              />
+              <Controller
+                name="newPassword"
+                control={control}
+                rules={{
+                  pattern: {
+                    value: regexPassword,
+                    message:
+                      "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
+                  },
+                }}
+                defaultValue={null}
+                render={({ field, fieldState }) => (
+                  <TextInput
+                    firstIcon="fa-solid fa-lock"
+                    onChange={field.onChange}
+                    label="New Password"
+                    placeholder="••••••••••"
                     type="password"
                     value={field.value}
                     onBlur={field.onBlur}
@@ -155,6 +186,7 @@ const ProfileAccount = () => {
                 render={({ field, fieldState }) => (
                   <Select
                     icon={genderSelect.icon}
+                    value={userData.gender}
                     placeholder={genderSelect.placeholder}
                     itemList={genderSelect.list}
                     onChange={field.onChange}
@@ -164,7 +196,7 @@ const ProfileAccount = () => {
                 )}
               />
               <Controller
-                name="telephoneNumber"
+                name="phoneNumber"
                 control={control}
                 rules={{
                   pattern: {
@@ -172,32 +204,13 @@ const ProfileAccount = () => {
                     message: "Not a valid telephone number.",
                   },
                 }}
+                defaultValue={null}
                 render={({ field, fieldState }) => (
                   <TextInput
                     firstIcon="fa-solid fa-phone"
                     onChange={field.onChange}
                     label="Telephone number (optional)"
                     placeholder="03 251 2342783"
-                    type="number"
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    error={fieldState.error}
-                  />
-                )}
-              />
-              <Controller
-                name="preferredCity"
-                control={control}
-                rules={{
-                  required: "City is required",
-                }}
-                defaultValue={userData.preferredCity}
-                render={({ field, fieldState }) => (
-                  <TextInput
-                    firstIcon="fa-solid fa-city"
-                    onChange={field.onChange}
-                    label="Preferred city, city you live in"
-                    placeholder="Dresden"
                     type="text"
                     value={field.value}
                     onBlur={field.onBlur}
@@ -205,19 +218,25 @@ const ProfileAccount = () => {
                   />
                 )}
               />
+              <MobileCatalogAutocomplete
+                label="Preferred city, city you live in"
+                value={userData.preferredCity.name}
+                definedActions="mapCatalog"
+                control={control}
+                callbackFunction={autocompleteCallback}
+              />
               <Controller
-                name="smoking"
+                name="smoker"
                 control={control}
                 defaultValue={userData.smoker}
                 render={({ field, fieldState }) => (
-                  <TextInput
-                    firstIcon="fa-solid fa-smoking"
+                  <Select
+                    icon={genderSelect.icon}
+                    value={userData.smoker ? "Yes" : "No"}
+                    placeholder={yesNoSelect.placeholder}
+                    itemList={yesNoSelect.list}
                     onChange={field.onChange}
-                    label="Do you smoke?"
-                    placeholder="No"
-                    type="text"
-                    value={field.value}
-                    onBlur={field.onBlur}
+                    label="Are you a smoker?"
                     error={fieldState.error}
                   />
                 )}

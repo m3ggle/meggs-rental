@@ -1,30 +1,123 @@
 export const profileButtonListData = [
-    {
-      btnTitle: "Account",
-      icon: "fa-solid fa-user",
-      link: "account",
-    },
-    { btnTitle: "Payments", icon: "fa-solid fa-credit-card", link: "payments" },
-    { btnTitle: "Reviews", icon: "fa-solid fa-star", link: "reviews" },
-    {
-      btnTitle: "Notification",
-      icon: "fa-solid fa-bell",
-      link: "notification",
-    },
-    { btnTitle: "Help", icon: "fa-solid fa-handshake-angle", link: "/help" },
-    {
-      btnTitle: "Terms of Service",
-      icon: "fa-solid fa-section",
-      link: "/terms-of-service",
-    },
-    {
-      btnTitle: "Privacy Policy",
-      icon: "fa-solid fa-user-shield",
-      link: "/privacy-policy",
-    },
-    {
-      btnTitle: "Sign Out",
-      icon: "fa-solid fa-right-from-bracket",
-      link: "/sign-in",
-    },
-  ];
+  {
+    sectionTitle: "Profile",
+    buttons: [
+      {
+        btnTitle: "Show Profile",
+        icon: "fa-solid fa-eye",
+        link: "userModal",
+        id: "e995894b-b383-4688-a3fa-88188e777897",
+      },
+      {
+        btnTitle: "Personal Information",
+        icon: "fa-solid fa-user",
+        link: "/account",
+        id: "842c70a1-cac2-496a-8cd9-242673fb488f",
+      },
+      {
+        btnTitle: "Update E-Mail",
+        icon: "fa-solid fa-at",
+        link: "/update-email",
+        id: "8f13a821-4ee7-4e74-9e78-2dd05717d450",
+      },
+      {
+        btnTitle: "Update Password",
+        icon: "fa-solid fa-lock",
+        link: "/update-password",
+        id: "0f2b9b27-ed81-4f7b-8a40-86d89b375e7d",
+      },
+      {
+        btnTitle: "Your Offers",
+        icon: "fa-solid fa-user",
+        link: "/users-offers",
+        id: "998586a5-a3d7-443d-83bd-8456c4616c2d",
+      },
+      {
+        btnTitle: "Reviews",
+        icon: "fa-solid fa-star",
+        link: "/reviews",
+        id: "938d1458-3a53-4228-b24a-f03f00ecb0ed",
+      },
+      {
+        btnTitle: "Notification",
+        icon: "fa-solid fa-bell",
+        link: "/notification",
+        id: "5c3c5749-d37c-4e4e-88c2-2071a0001d07",
+      },
+    ],
+  },
+  {
+    sectionTitle: "Helpful",
+    buttons: [
+      {
+        btnTitle: "Help",
+        icon: "fa-solid fa-handshake-angle",
+        link: "/help",
+        id: "14edb648-4594-448b-bd3f-35173f244e4e",
+      },
+      {
+        btnTitle: "Tips and Tricks",
+        icon: "fa-solid fa-wand-magic-sparkles",
+        link: "/tips-and-tricks",
+        id: "c5a03b34-21e2-4dfe-97f0-54b1ffa11416",
+      },
+    ],
+  },
+  {
+    sectionTitle: "Legal",
+    buttons: [
+      {
+        btnTitle: "Terms of Service",
+        icon: "fa-solid fa-section",
+        link: "/terms-of-service",
+        id: "ec1cd5c7-9242-4a14-ba46-152ef6be9471",
+      },
+      {
+        btnTitle: "Privacy Policy",
+        icon: "fa-solid fa-user-shield",
+        link: "/privacy-policy",
+        id: "f2f21e9e-2bf7-4d2e-8d02-185d141f0893",
+      },
+    ],
+  },
+  {
+    sectionTitle: "Sign-out",
+    buttons: [
+      {
+        btnTitle: "Sign Out",
+        icon: "fa-solid fa-right-from-bracket",
+        link: "signOutModal",
+        id: "37b99301-3294-455b-919e-ddc92c81dedb",
+      },
+    ],
+  },
+
+  // {
+  //   btnTitle: "Account",
+  //   icon: "fa-solid fa-user",
+  //   link: "account",
+  // },
+  // { btnTitle: "Payments", icon: "fa-solid fa-credit-card", link: "payments" },
+  // { btnTitle: "Reviews", icon: "fa-solid fa-star", link: "reviews" },
+  // {
+  //   btnTitle: "Notification",
+  //   icon: "fa-solid fa-bell",
+  //   link: "notification",
+  // },
+  // { btnTitle: "Help", icon: "fa-solid fa-handshake-angle", link: "/help" },
+  // {
+  //   btnTitle: "Terms of Service",
+  //   icon: "fa-solid fa-section",
+  //   link: "/terms-of-service",
+  // },
+  // {
+  //   btnTitle: "Privacy Policy",
+  //   icon: "fa-solid fa-user-shield",
+  //   link: "/privacy-policy",
+  // },
+  // {
+  //   btnTitle: "Sign Out",
+  //   icon: "fa-solid fa-right-from-bracket",
+  //   link: "/sign-in",
+  // },
+];

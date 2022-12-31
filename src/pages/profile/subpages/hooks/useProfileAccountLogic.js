@@ -9,8 +9,10 @@ export const useProfileAccountLogic = () => {
   const onSubmit = async (formData) => {
     if (Object.keys(formData).includes("firstName")) {
       // prep
-      const { newPassword, oldPassword, modifiedUserData } =
-        handlePreparationProfileAccount({ formData, userData });
+      const { modifiedUserData } = handlePreparationProfileAccount({
+        formData,
+        userData,
+      });
 
       // compare
       const isTheSame =
@@ -18,23 +20,10 @@ export const useProfileAccountLogic = () => {
 
       // actual action
       if (!isTheSame) {
-        const result = await updateAuthProfileAccount({
-          formData,
-          userData,
-          newPassword,
-          oldPassword,
-        });
+        // update firstName (displayName) and phoneNumber
+        await updateAuthProfileAccount({ formData, userData });
 
-        // result is undefined if everything goes alright and error or something else if there is a problem
-        if (result === undefined) {
-          dispatchUser({
-            type: "SET_USER",
-            payload: formData,
-          });
-          return
-        }
-        
-        console.log("result: " + result.message);
+        dispatchUser({ type: "SET_USER", payload: formData });
       }
     }
   };

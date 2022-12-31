@@ -9,9 +9,7 @@ import { useUserContext } from "../../../context/user/userContext";
 import ExampleData from "../../../ExampleData";
 import { auth } from "../../../firebase.config";
 import {
-  regexEmail,
   regexName,
-  regexPassword,
   regexTelephoneNumber,
 } from "../../../helper/regexCollection";
 import ProfileSubPageHeader from "../components/ProfileSubPageHeader";
@@ -24,9 +22,6 @@ const ProfileAccount = () => {
   const { userData } = useUserContext();
 
   const { onSubmit, autocompleteCallback } = useProfileAccountLogic();
-
-    // console.log("auth.currentUser", auth.currentUser);
-    // console.log("user context", userData);
 
   // Todo: some are required and some not
   return (
@@ -107,7 +102,7 @@ const ProfileAccount = () => {
                   />
                 )}
               />
-              <Controller
+              {/* <Controller
                 name="email"
                 control={control}
                 rules={{
@@ -177,7 +172,7 @@ const ProfileAccount = () => {
                     error={fieldState.error}
                   />
                 )}
-              />
+              /> */}
               <Controller
                 name="gender"
                 control={control}

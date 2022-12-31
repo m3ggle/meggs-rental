@@ -1,14 +1,8 @@
 import { updateAuthDisplayName } from "./updateAuthDisplayName";
-import { updateAuthEmail } from "./updateAuthEmail";
-import { updateAuthPassword } from "./updateAuthPassword";
 import { updateAuthPhoneNumber } from "./updateAuthPhoneNumber";
 
-export const updateAuthProfileAccount = async ({
-  formData,
-  userData,
-  newPassword,
-  oldPassword,
-}) => {
+export const updateAuthProfileAccount = async ({ formData, userData }) => {
+  /*
   // email additional logic
   if (formData.email !== userData.email) {
     const result = await updateAuthEmail({
@@ -21,8 +15,9 @@ export const updateAuthProfileAccount = async ({
       return result;
     }
   }
+   */
 
-  console.log("going on");
+  /*
   // password update
   if (newPassword !== null && oldPassword !== null) {
     await updateAuthPassword({
@@ -31,7 +26,9 @@ export const updateAuthProfileAccount = async ({
       oldPassword,
     });
   }
+   */
 
+  // todo: merge
   // firstName
   if (formData.firstName !== userData.firstName) {
     await updateAuthDisplayName(formData.firstName);

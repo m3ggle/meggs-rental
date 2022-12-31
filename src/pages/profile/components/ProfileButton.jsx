@@ -1,19 +1,36 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSignOutAPI } from "../../../api/firebase/useSignOutAPI";
+import { auth } from "../../../firebase.config";
 import styles from "../../../style";
 
-const ProfileButton = ({ btnTitle, icon, link, secondIcon }) => {
+const ProfileButton = ({ information }) => {
+  const { btnTitle = "", icon = "", link = "", secondIcon = "" } = information;
+
   const navigate = useNavigate();
-  const { signOutUser } = useSignOutAPI();
-  
+
+  const handleUserModal = () => {
+    console.log("open user modal");
+  };
+  const handleSignOutModal = () => {
+    // currently no modal, but it is coming in the future
+    auth.signOut();
+    navigate("/sign-in");
+  };
+
+  const modalHandlers = {
+    userModal: () => handleUserModal(),
+    signOutModal: () => handleSignOutModal(),
+  };
+
   const handleClick = () => {
-    if (btnTitle === "Sign Out") {
-      signOutUser()
+    if (link.includes("Modal")) {
+      const toBeExecuted = modalHandlers[link];
+      toBeExecuted();
+      return;
     }
-    navigate(link)
-  }
-  
+    navigate(link);
+  };
+
   return (
     <button
       type="button"

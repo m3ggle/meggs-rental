@@ -13,9 +13,10 @@ const Profile = () => {
     <PageAuthChecker>
       {userData !== null && (
         <SignWrapper puffer={false} pic={userData.photoURL}>
-          <div className="flex w-full max-w-[348px] flex-col gap-y-3 overflow-y-scroll px-[2px]">
+          <div className="relative flex w-full max-w-[348px] h-screen max-h-screen flex-col gap-y-3 px-[2px] overflow-hidden">
             <UserProfileHeader userProfileData={userData} />
             <ProfileButtonList profileButtonList={profileButtonListData} />
+            <div className="w-full absolute bottom-0 h-12 bg-gradient-to-t from-white dark:from-dmGrey900" />
           </div>
         </SignWrapper>
       )}

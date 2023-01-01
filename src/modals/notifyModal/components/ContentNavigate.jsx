@@ -1,16 +1,32 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import Btn from "../../../components/common/Btn";
 import { useNotifyModalContext } from "../../../context/notifyModal/notifyModalContext";
-import Btn from "../../common/Btn";
 
-const ContentStandard = () => {
+// only difference between ContentStandard and ContentNavigate is, how this component handles the button click event
+// problem: can't use navigate in context, it has to be inside <Router>
+
+const ContentNavigate = () => {
   const { extraInfo } = useNotifyModalContext();
   const { title, bulletPoints, primaryButton, secondaryButton } = extraInfo;
 
+  const navigate = useNavigate();
+
+  const handleClick = (func) => {
+    if (typeof func === "function") {
+      func();
+      return;
+    }
+
+    navigate(`/${func}`);
+  };
+
   return (
     <div className="hideScrollbar flex h-full w-full flex-col gap-y-9 600:gap-y-12 1000:max-w-[340px]">
-    {/* <div className="hideScrollbar flex h-full w-full flex-col gap-y-9 overflow-scroll 600:gap-y-12 1000:max-w-[340px]"> */}
+      {/* better, but overflow cuts buttons hover effect */}
+      {/* <div className="hideScrollbar flex h-full w-full flex-col gap-y-9 overflow-y-scroll overflow-x-visible 600:gap-y-12 1000:max-w-[340px]"> */}
       <div className="flex w-full flex-col gap-y-2 600:gap-y-4">
-        <h2 className="text-2xl font-semibold text-lmGrey800 600:text-4xl">
+        <h2 className="text-2xl font-semibold text-lmGrey800 dark:text-dmGrey25 600:text-4xl">
           {title}
         </h2>
         <ul className="flex list-disc flex-col gap-y-2 pl-6 text-base text-lmGrey600 dark:text-dmGrey100">
@@ -24,18 +40,18 @@ const ContentStandard = () => {
           title={primaryButton.title}
           uiType="primary"
           type="button"
-          onClick={primaryButton.function}
+          onClick={() => handleClick(primaryButton.function)}
           icon="fa-solid fa-chevron-right"
         />
         <Btn
           title={secondaryButton.title}
           uiType="secondary"
           type="button"
-          onClick={secondaryButton.function}
+          onClick={() => handleClick(secondaryButton.function)}
         />
       </div>
     </div>
   );
 };
 
-export default ContentStandard;
+export default ContentNavigate;

@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import UserProfileBig from "../../../../components/userProfile/UserProfileBig";
 import ExampleData from "../../../../ExampleData";
-import styles from "../../../../style";
 
 const { userProfileBig } = ExampleData();
 
 const OfferDetailsOwner = () => {
-  useEffect(() => {getOwner()}, []);
-  const getOwner = () => {}
+  useEffect(() => {
+    getOwner();
+  }, []);
+  const getOwner = () => {};
 
   return (
     <div className="flex gap-x-6">

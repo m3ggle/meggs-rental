@@ -1,0 +1,30 @@
+[
+    {
+        "reviewId": "799c952e-5ba7-41f8-ab74-a5cf13d16f01",
+        "rating": 4,
+        "comment": "I am not a car person, but this car was a good rent for the price. The owner was reliable and the car was comfortable. I would recommend this car to anyone.",
+        "timeStamp": "",
+        "userId": "5BT8oUalNVXnyo1mbBjhZLaxceW2"
+    },
+    {
+        "reviewId": "3f6a1b14-0f01-47f4-9e5a-80566fc44ae7",
+        "rating": 5,
+        "comment": "Renting from this owner was a great experience! The car was exactly as described and worked perfectly for our needs. The owner was very easy to communicate with and made the whole process very smooth. We would definitely rent from them again!",
+        "timeStamp": "",
+        "userId": "5BT8oUalNVXnyo1mbBjhZLaxceW2"
+    },
+    {
+        "reviewId": "f570d800-b3af-4625-9067-0ad21a0a5546",
+        "rating": 4,
+        "comment": "I have rented the car a few times and have had a lovely experience each time. The car is comfortable and the owner are friendly and helpful. I would definitely recommend renting from this company.",
+        "timeStamp": "",
+        "userId": "5BT8oUalNVXnyo1mbBjhZLaxceW2"
+    },
+    {
+        "reviewId": "3c3c9def-8322-489e-adea-2d20c0f18da8",
+        "rating": 3,
+        "comment": "It's very reliable, but sometimes I was scared that it would break down. I think  I am going to rent it again.",
+        "timeStamp": "",
+        "userId": "5BT8oUalNVXnyo1mbBjhZLaxceW2"
+    }
+]

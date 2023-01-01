@@ -2,7 +2,7 @@ import React from 'react'
 
 const MobileOfferCardInfoPart = ({onNavigationCallback, offerInformation }) => {
   const { location, name, price, carSpecs } = offerInformation;
-  
+
   return (
     <div
       onClick={onNavigationCallback}
@@ -35,15 +35,14 @@ const MobileOfferCardInfoPart = ({onNavigationCallback, offerInformation }) => {
           </span>
         </span>
       </div>
-      {/* more info */}
       <div className="flex w-5/6 gap-x-4 500:w-fit">
         <div className="flex items-center gap-x-1 text-sm text-lmGrey300 dark:text-dmGrey100">
           <i className="fa-solid fa-gears"></i>
-          <span>{carSpecs.transmission}</span>
+          <span>{carSpecs.transmission.value}</span>
         </div>
         <div className="flex items-center gap-x-1 text-sm text-lmGrey300 dark:text-dmGrey100">
           <i className="fa-solid fa-chair"></i>
-          <span>{carSpecs.seats} Seats</span>
+          <span>{carSpecs.seats.value} Seats</span>
         </div>
       </div>
     </div>

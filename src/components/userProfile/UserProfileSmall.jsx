@@ -1,6 +1,6 @@
 // <UserProfileSmall review={true} rating="4" text="Click to view the owners account" displayName="Meggle Bande" profilePic="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80" />
-import React, { useState } from "react";
-import UserProfileDetails from "../../pages/userProfile/UserProfileDetails";
+import React from "react";
+import { useUserDetailsModalContext } from "../../context/userDetailsModal/userDetailsModalContext";
 
 const UserProfileSmall = ({
   review,
@@ -8,20 +8,18 @@ const UserProfileSmall = ({
   text,
   rating,
   profilePic,
-  callbackFunction
+  callbackFunction,
 }) => {
-  let [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
-  
+  const { openUserDetailsModal } = useUserDetailsModalContext();
+
   const handleClick = () => {
     if (callbackFunction !== undefined) {
-      callbackFunction()
-      return
+      callbackFunction();
+      return;
     }
 
-    openModal()
-  }
+    openUserDetailsModal("5BT8oUalNVXnyo1mbBjhZLaxceW2");
+  };
 
   return (
     <div
@@ -53,7 +51,7 @@ const UserProfileSmall = ({
           {text}
         </span>
       </div>
-      <UserProfileDetails isOpen={isOpen} closeModal={closeModal} />
+      {/* <UserProfileDetails isOpen={isOpen} closeModal={closeModal} /> */}
     </div>
   );
 };

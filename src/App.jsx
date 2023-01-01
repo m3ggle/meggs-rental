@@ -3,11 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Logo from "./components/Logo";
 import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
-import NotifyModal from "./components/notifyModal/NotifyModal";
 import { useUserObserver } from "./context/user/useUserObserver";
-import { auth } from "./firebase.config";
 import { useAuthObserver } from "./hooks/firebase/useAuthObserver";
-import { FirebaseAuthLanding, useFirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding";
+import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding";
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
 import SignIn from "./pages/authentication/signIn/SignIn";
 import SignUp from "./pages/authentication/signUp/SignUp";
@@ -30,14 +28,16 @@ import ProfileReviews from "./pages/profile/subpages/ProfileReviews";
 import TermsOfService from "./pages/termsOfService/TermsOfService";
 import Upload from "./pages/upload/Upload";
 import UserOffers from "./pages/userOffers/UserOffers";
+import NotifyModal from "./modals/notifyModal/NotifyModal"
+import UserDetailsModal from "./modals/userDetailsModal/UserDetailsModal";
 
 export default function App() {
   // for react query
   const queryClient = new QueryClient();
 
   // for firebase auth
-  useAuthObserver()
-  useUserObserver()
+  useAuthObserver();
+  useUserObserver();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -50,6 +50,7 @@ export default function App() {
             <Navbar />
             {/* upcoming: modals */}
             <NotifyModal />
+            <UserDetailsModal />
             {/* modals end */}
             <Logo />
             <Routes>
@@ -83,8 +84,11 @@ export default function App() {
               <Route path="/help" element={<Help />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              
-              <Route path="/firebase-auth-landing" element={<FirebaseAuthLanding />} />
+
+              <Route
+                path="/firebase-auth-landing"
+                element={<FirebaseAuthLanding />}
+              />
 
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />

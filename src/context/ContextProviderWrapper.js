@@ -5,6 +5,7 @@ import { MapSubProvider } from "./map/mapSub/mapSubContext";
 import { NavigationProvider } from "./navigation/navigationContext";
 import { NotifyModalProvider } from "./notifyModal/notifyModalContext";
 import { UserProvider } from "./user/userContext";
+import { UserDetailsModalProvider } from "./userDetailsModal/userDetailsModalContext";
 
 const ContextProviderWrapper = ({ children }) => {
   return (
@@ -13,7 +14,10 @@ const ContextProviderWrapper = ({ children }) => {
         <MapSubProvider>
           <NavigationProvider>
             <DarkModeProvider>
-              <NotifyModalProvider>{children}</NotifyModalProvider>
+              {/* modals */}
+              <NotifyModalProvider>
+                <UserDetailsModalProvider>{children}</UserDetailsModalProvider>
+              </NotifyModalProvider>
             </DarkModeProvider>
           </NavigationProvider>
         </MapSubProvider>

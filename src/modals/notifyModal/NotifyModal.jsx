@@ -1,14 +1,16 @@
 import { Dialog } from "@headlessui/react";
 import React from "react";
+import ModalWrapper from "../../components/wrapper/ModalWrapper";
 import { useNotifyModalContext } from "../../context/notifyModal/notifyModalContext";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import ModalWrapper from "../wrapper/ModalWrapper";
 import NotifyModalContent from "./components/NotifyModalContent";
 
 const NotifyModal = () => {
   const { isOpen, photoUrl, closeNotifyModal } = useNotifyModalContext();
 
   const windowSize = useWindowSize();
+
+  console.log("hallo")
 
   return (
     <ModalWrapper isOpen={isOpen} closeModal={closeNotifyModal}>

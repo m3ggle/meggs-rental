@@ -1,28 +1,18 @@
-import React, { useState } from "react";
-import ExampleData from "../../ExampleData";
+import React from "react";
 import Btn from "../common/Btn";
-import MobileCatalogOfferCard from "../offerCard/nonResponsive/mobileOfferCard/MobileOfferCard";
+import MobileOfferCard from "../offerCard/nonResponsive/mobileOfferCard/MobileOfferCard";
 
-const LittleOfferCardList = ({ closeModal }) => {
-  const [amountOfOfferCards, setAmountOfOfferCards] = useState([1, 2, 3]);
-  const { exampleOffers } = ExampleData();
-
-  const handleLoadMore = () => {
-    let currentAmount = amountOfOfferCards;
-    for (let i = 0; i < 3; i++) {
-      currentAmount.push(2);
-    }
-    setAmountOfOfferCards([...currentAmount]);
-  };
+const LittleOfferCardList = ({ offers, closeModal }) => {
+  const handleLoadMore = () => {};
 
   return (
     <div className="flex flex-col gap-y-2">
-      {amountOfOfferCards.map((item, index) => (
-        <MobileCatalogOfferCard
+      {offers.map((offer, index) => (
+        <MobileOfferCard
           closeModal={closeModal}
           key={index}
           index={index}
-          offerInformation={exampleOffers[index]}
+          offerInformation={offer}
         />
       ))}
       <Btn

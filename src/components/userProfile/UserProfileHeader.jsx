@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+import { useUserDetailsModalContext } from "../../context/userDetailsModal/userDetailsModalContext";
 import { getAge } from "../../helper/getAge";
-import UserProfileDetails from "../../pages/userProfile/UserProfileDetails";
 
 const UserProfileHeader = ({ userProfileData = {} }) => {
   const { firstName, lastName, birthday, email, photoURL } = userProfileData;
 
-  let [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
-  
+  const { openUserDetailsModal } = useUserDetailsModalContext();
+
+  const handleClick = () => {
+    openUserDetailsModal("5BT8oUalNVXnyo1mbBjhZLaxceW2");
+  };
+
   return (
     <div
-      onClick={openModal}
+      onClick={handleClick}
       className="flex w-full cursor-pointer flex-col items-center gap-y-2"
     >
       <img
-        className="h-[84px] w-[84px] rounded-full object-center object-cover shadow"
+        className="h-[84px] w-[84px] rounded-full object-cover object-center shadow"
         src={photoURL}
         alt="user"
       />
@@ -31,7 +33,6 @@ const UserProfileHeader = ({ userProfileData = {} }) => {
         </div>
         <span>{email}</span>
       </div>
-      <UserProfileDetails isOpen={isOpen} closeModal={closeModal} />
     </div>
   );
 };

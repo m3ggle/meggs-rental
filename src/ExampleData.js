@@ -180,7 +180,7 @@ const filterSelects = {
 };
 
 const userProfileBig = {
-  photoUrl:
+  photoURL:
     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofilePic.webp?alt=media&token=6c64dddf-daf8-4d44-9b88-b2d8dd58be4a",
   firstName: "Meggle",
   lastName: "Bande",

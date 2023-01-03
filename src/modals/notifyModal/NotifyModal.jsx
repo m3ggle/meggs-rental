@@ -10,7 +10,7 @@ const NotifyModal = () => {
 
   const windowSize = useWindowSize();
 
-  console.log("hallo")
+  console.log("hallo from notify")
 
   return (
     <ModalWrapper isOpen={isOpen} closeModal={closeNotifyModal}>

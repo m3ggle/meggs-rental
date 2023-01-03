@@ -10,6 +10,8 @@ const UserDetailsModal = () => {
   const { isOpen, closeUserDetailsModal, modalData, error } =
     useUserDetailsModalContext();
 
+    console.log("hallo from user details")
+  
   return (
     <ModalWrapperTypeBottom isOpen={isOpen} closeModal={closeUserDetailsModal}>
       {error !== null ? (

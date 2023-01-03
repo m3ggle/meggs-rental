@@ -28,6 +28,9 @@ export const getReviewsFirestore = async ({
     )
   );
 
+    // Todo: return reviewSection stats
+    // Todo: single review needs data like displayName, photoUrl...
+    
   // get reviews
   let reviews = [];
   reviewsPromise.map((item) => item.forEach((doc) => reviews.push(doc.data())));

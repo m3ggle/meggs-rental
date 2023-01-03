@@ -1,23 +1,24 @@
 import React from "react";
+import { getUserFirestore } from "../../api/firebase/getUserFirestore";
 import UserProfileSmall from "../userProfile/UserProfileSmall";
 
 const ReviewList = ({ reviews }) => {
   return (
     <>
-      {reviews.map((rev) => (
+      {reviews.map((review) => (
         <div
-          key={rev.userId}
+          key={review.userId}
           className="flex w-full flex-col gap-y-2 rounded-xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow"
         >
           <UserProfileSmall
-            review={true}
-            rating={rev.rating}
-            text={rev.timestamp}
-            displayName={rev.displayName}
-            profilePic={rev.userProfilePicture}
+            reviewiew={true}
+            rating={review.rating}
+            text={review.timestamp}
+            displayName={review.displayName}
+            profilePic={review.userProfilePicture}
           />
           <span className="text-xs text-lmGrey600 dark:text-dmGrey100">
-            {rev.reviewContent}
+            {review.reviewContent}
           </span>
         </div>
       ))}

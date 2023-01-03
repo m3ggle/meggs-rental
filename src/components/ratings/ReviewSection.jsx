@@ -4,7 +4,7 @@ import Btn from "../common/Btn";
 import ReviewHeader from "./ReviewHeader";
 import ReviewList from "./ReviewList";
 
-const ReviewSection = () => {
+const ReviewSection = ({reviews}) => {
   const { reviewId } = ExampleData();
   return (
     <div className="flex w-full flex-col gap-y-2 rounded-lg">
@@ -12,7 +12,7 @@ const ReviewSection = () => {
         totalAmount={reviewId.totalAmount}
         ratingDetailed={reviewId.ratingDetailed}
       />
-      <ReviewList reviews={reviewId.reviews} />
+      <ReviewList reviews={reviews} />
       <Btn type="button" uiType="secondary" title="Load More" />
     </div>
   );

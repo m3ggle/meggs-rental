@@ -1,0 +1,652 @@
+[
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Calle De Prim ",
+      "houseNumber": "50",
+      "city": "Madrid",
+      "country": "Spain",
+      "formatted": "Calle De Prim 50"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Calle De Puerto Rico",
+      "houseNumber": "47",
+      "city": "Madrid",
+      "country": "Spain",
+      "formatted": "Calle De Puerto Rico 47"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Calle De Jorge Juan",
+      "houseNumber": "79",
+      "city": "Madrid",
+      "country": "Spain",
+      "formatted": "Calle De Jorge Juan 79"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Calle De Núñez De Balboa",
+      "houseNumber": "16",
+      "city": "Madrid",
+      "country": "Spain",
+      "formatted": "Calle De Núñez De Balboa 16"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Calle De Goya",
+      "houseNumber": "54",
+      "city": "Madrid",
+      "country": "Spain",
+      "formatted": "Calle De Goya 54"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Carrer De Jaume I",
+      "houseNumber": "41",
+      "city": "Barcelona",
+      "country": "Spain",
+      "formatted": "Carrer De Jaume I 41"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Carrer De Jaume I ",
+      "houseNumber": "30",
+      "city": "Barcelona",
+      "country": "Spain",
+      "formatted": "Carrer De Jaume I 30"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Carrer De Sant Quintí",
+      "houseNumber": "33",
+      "city": "Barcelona",
+      "country": "Spain",
+      "formatted": "Carrer De Sant Quintí 33"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Rambla Del Raval",
+      "houseNumber": "93",
+      "city": "Barcelona",
+      "country": "Spain",
+      "formatted": "Rambla Del Raval 93"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Passeig De Fabra I Puig",
+      "houseNumber": "91",
+      "city": "Barcelona",
+      "country": "Spain",
+      "formatted": "Passeig De Fabra I Puig 91"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    }
+  }
+]

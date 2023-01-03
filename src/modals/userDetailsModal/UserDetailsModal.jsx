@@ -5,11 +5,8 @@ import LittleOfferCardList from "../../components/userProfile/LittleOfferCardLis
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
 import ModalWrapperTypeBottom from "../../components/wrapper/ModalWrapperTypeBottom";
 import { useUserDetailsModalContext } from "../../context/userDetailsModal/userDetailsModalContext";
-import ExampleData from "../../ExampleData";
 
 const UserDetailsModal = () => {
-  const { userProfileBig } = ExampleData();
-
   const { isOpen, closeUserDetailsModal, modalData, error } =
     useUserDetailsModalContext();
 
@@ -34,13 +31,16 @@ const UserDetailsModal = () => {
             <span className="text-base font-semibold text-lmGrey700 dark:text-dmGrey25">
               Offers
             </span>
-            <LittleOfferCardList offers={modalData.userOffers} closeModal={closeUserDetailsModal} />
+            <LittleOfferCardList
+              offers={modalData.userOffers}
+              closeModal={closeUserDetailsModal}
+            />
           </div>
           <div className="flex w-full flex-col gap-2">
             <span className="text-base font-semibold text-lmGrey700 dark:text-dmGrey25">
               Ratings
             </span>
-            <ReviewSection />
+            <ReviewSection reviews={modalData.reviews}  />
           </div>
         </div>
       ) : (

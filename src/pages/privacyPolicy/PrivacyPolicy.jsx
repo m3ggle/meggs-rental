@@ -10,18 +10,20 @@ import { db } from "../../firebase.config";
 import { useGetUserDetailsModal } from "../../modals/userDetailsModal/hooks/useGetUserDetailsModal";
 
 const PrivacyPolicy = () => {
-  const { openUserDetailsModal, uid } = useUserDetailsModalContext();
-  const {handleGetUserDetails} = useGetUserDetailsModal()
+  // const { openUserDetailsModal, uid } = useUserDetailsModalContext();
+  // const {handleGetUserDetails} = useGetUserDetailsModal()
 
-  const handleClick = async () => {
-    openUserDetailsModal("5BT8oUalNVXnyo1mbBjhZLaxceW2");
-  };
+  // const handleClick = async () => {
+  //   openUserDetailsModal("5BT8oUalNVXnyo1mbBjhZLaxceW2");
+  // };
 
-  useEffect(() => {
-    if (uid !== null) {
-      handleGetUserDetails("5BT8oUalNVXnyo1mbBjhZLaxceW2");
-    }
-  }, [uid, handleGetUserDetails]);
+  // useEffect(() => {
+  //   if (uid !== null) {
+  //     handleGetUserDetails("5BT8oUalNVXnyo1mbBjhZLaxceW2");
+  //   }
+  // }, [uid, handleGetUserDetails]);
+
+  // ! testoffers
 
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2">

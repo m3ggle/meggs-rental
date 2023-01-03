@@ -1,0 +1,752 @@
+[
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Rue Clisson",
+      "houseNumber": "28",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "28 Rue Clisson"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Rue Beaunier",
+      "houseNumber": "12",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "12 Rue Beaunier"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Rue de Grenelle",
+      "houseNumber": "85",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "85 Rue de Grenelle"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Rue de Paradis",
+      "houseNumber": "28",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "28 Rue de Paradis"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Avenue Bugeaud",
+      "houseNumber": "12",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "12 Avenue Bugeaud"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Place Dupleix",
+      "houseNumber": "20",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "20 Place Dupleix"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Rue Condorcet",
+      "houseNumber": "39",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "39 Rue Condorcet"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Avenue d'Italie",
+      "houseNumber": "180",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "180 Avenue d'Italie"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Rue des Périchaux",
+      "houseNumber": "5",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "5 Rue des Périchaux"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  },
+  {
+    "name": "Lamborghini Countach",
+    "extraInfo": "Blandit facilisis viverra etiam ut ultrices feugiat commodo amet ullamcorper. Nulla volutpat at praesent faucibus. Risus pulvinar purus a id urna sed risus.",
+    "offerId": "ec641c7b-5a7e-421d-ac5a-fa915c65cb54",
+    "location": {
+      "lat": null,
+      "lng": null,
+      "street": "Rue Nicolo",
+      "houseNumber": "56",
+      "city": "Paris",
+      "country": "France",
+      "formatted": "56 Rue Nicolo"
+    },
+    "price": {
+      "day": 30,
+      "week": 250,
+      "month": 400
+    },
+    "calendar": {
+      "startDate": "13.03.2023",
+      "endDate": "23.03.2023"
+    },
+    "carSpecs": {
+      "condition": {
+        "name": "Condition",
+        "value": "Very Good"
+      },
+      "transmission": {
+        "name": "Transmission",
+        "value": "Manual"
+      },
+      "fuelType": {
+        "name": "Fuel Type",
+        "value": "Gas"
+      },
+      "carType": {
+        "name": "Car Type",
+        "value": "Sport"
+      },
+      "milage": {
+        "name": "Milage",
+        "value": 30000
+      },
+      "color": {
+        "name": "Color",
+        "value": "Orange"
+      },
+      "trunkVolume": {
+        "name": "Trunk Volume",
+        "value": 4
+      },
+      "seats": {
+        "name": "Seats",
+        "value": 5
+      },
+      "smoking": {
+        "name": "Smoking",
+        "value": "No"
+      },
+      "eating": {
+        "name": "Eating",
+        "value": "No"
+      }
+    },
+    "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
+    "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "status": "Active",
+    "photoUrl": [
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-vh2eiaaijei-unsplash.webp?alt=media&token=79a5291e-8985-4640-b8d2-4ce650f9da97",
+      "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-4fq1clsuszg-unsplash.webp?alt=media&token=3a5e9bd4-d506-4fc4-ba46-13995f2325b4"
+    ]
+  }
+]

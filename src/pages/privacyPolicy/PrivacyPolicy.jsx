@@ -1,14 +1,9 @@
-import { format } from "date-fns";
-import React, { useEffect } from "react";
+import React from "react";
 import Btn from "../../components/common/Btn";
-import { useUserDetailsModalContext } from "../../context/userDetailsModal/userDetailsModalContext";
-import { useGetUserDetailsModal } from "../../modals/userDetailsModal/hooks/useGetUserDetailsModal";
 
 const PrivacyPolicy = () => {
-  const { openUserDetailsModal } = useUserDetailsModalContext();
-
   const handleClick = async () => {
-    openUserDetailsModal("5BT8oUalNVXnyo1mbBjhZLaxceW2");
+    console.log("hallo");
   };
 
   return (

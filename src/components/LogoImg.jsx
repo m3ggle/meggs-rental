@@ -1,11 +1,9 @@
-import Spline from "@splinetool/react-spline";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigationContext } from "../context/navigation/navigationContext";
 
-const Logo = () => {
-  const [loadedLogo, setLoadedLogo] = useState(false);
+const LogoImg = () => {
   const [hideLogo, setHideLogo] = useState(false);
   const location = useLocation();
 
@@ -19,12 +17,10 @@ const Logo = () => {
     }
   }, [location]);
 
-  const handleLoad = () => setLoadedLogo(true);
-
   const { isOpen, dispatchNavigation } = useNavigationContext();
   const openModal = () => {
     dispatchNavigation({ type: "OPEN_NAVIGATION" });
-  }
+  };
 
   return (
     <div
@@ -46,16 +42,13 @@ const Logo = () => {
           Menu
         </span>
       </motion.div>
-      <Spline
-        onLoad={handleLoad}
-        className="z-10 drop-shadow-lg"
-        scene="https://prod.spline.design/og6CZMxsQfdlo-uE/scene.splinecode"
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FcarRentalLogoLm.webp?alt=media&token=e350db99-c85d-4f00-a656-ead654d96151"
+        className="h-[100px] w-[100px] object-cover object-center drop-shadow-2xl"
+        alt="logo"
       />
-      {!loadedLogo && (
-        <div className="z-10 h-[60px] w-[60px] rounded-full bg-lmPrimary" />
-      )}
     </div>
   );
 };
 
-export default Logo;
+export default LogoImg;

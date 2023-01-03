@@ -1,12 +1,8 @@
-import Spline from "@splinetool/react-spline";
-import React, { useState } from "react";
+import React from "react";
 import { useNavigationContext } from "../../../../context/navigation/navigationContext";
 import { smoothScroll } from "../../../../hooks/useSmoothScroll";
 
 const HomepageNavbarLeft = () => {
-  const [loadedLogo, setLoadedLogo] = useState(false);
-  const handleLoad = () => setLoadedLogo(true);
-
   const { dispatchNavigation } = useNavigationContext();
   const openModal = () => {
     dispatchNavigation({ type: "OPEN_NAVIGATION" });
@@ -14,18 +10,12 @@ const HomepageNavbarLeft = () => {
 
   return (
     <div className="flex w-fit cursor-pointer items-center gap-x-1 700:w-60">
-      <div
+      <img
         onClick={openModal}
-        className={`h-14 w-14 rounded-full ${
-          !loadedLogo && "bg-lmPrimary dark:bg-dmPrimary"
-        } duration-300 hover:scale-110 active:scale-99 drop-shadow-md`}
-      >
-        <Spline
-          onLoad={handleLoad}
-          className="z-10"
-          scene="https://prod.spline.design/og6CZMxsQfdlo-uE/scene.splinecode"
-        />
-      </div>
+        src="https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FcarRentalLogoLm.webp?alt=media&token=e350db99-c85d-4f00-a656-ead654d96151"
+        className="h-14 w-14 object-cover object-center drop-shadow-2xl duration-300 hover:scale-110 active:scale-99"
+        alt="logo"
+      />
       <span
         onClick={() => smoothScroll("hero")}
         className="text-lg text-lmGrey800 dark:text-dmGrey25"

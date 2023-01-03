@@ -56,8 +56,8 @@ const ChatInfo = ({ isOpen, closeModal }) => {
             <span className="text-lg text-lmGrey600 dark:text-dmGrey100">
               Original Offer - Snippet
             </span>
-            <PreviewImgs offerImages={offerInformation.photoUrl} />
-            <div className="dark:mt-1 flex h-full w-full flex-col gap-y-1 rounded-xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow">
+            <PreviewImgs offerImages={offerInformation.photoURL} />
+            <div className="flex h-full w-full flex-col gap-y-1 rounded-xl bg-white p-6 shadow dark:mt-1 dark:bg-dmGrey900 dark:shadow-dmShadow">
               <PreviewBasicInfo offerInformation={offerInformation} />
             </div>
             <Calendar

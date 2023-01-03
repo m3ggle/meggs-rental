@@ -8,7 +8,7 @@ import SpecialHomepageOfferCardImagePart from "./SpecialHomepageOfferCardImagePa
 import SpecialHomepageOfferCardInfoPart from "./SpecialHomepageOfferCardInfoPart";
 
 const SpecialHomepageOfferCard = ({ offerInformation }) => {
-  const { offerId, liked, photoUrl, location } = offerInformation;
+  const { offerId, liked, photoURL, location } = offerInformation;
   const { signedIn, verified } = useUserContext();
   const { openAuthNotifyModal } = useNotifyModalContext();
 
@@ -28,7 +28,7 @@ const SpecialHomepageOfferCard = ({ offerInformation }) => {
   return (
     <div className="relative flex h-[406px] w-[292px] cursor-pointer justify-center gap-x-0 rounded-xl bg-white shadow-md duration-300 hover:scale-101 hover:shadow-lg active:scale-99 active:shadow-sm dark:border-none dark:bg-dmGrey900 dark:shadow-sm">
       <SpecialHomepageOfferCardImagePart
-        photoUrl={photoUrl}
+        photoURL={photoURL}
         onNavigationCallback={handleNavigation}
       />
       <SpecialHomepageOfferCardIcons

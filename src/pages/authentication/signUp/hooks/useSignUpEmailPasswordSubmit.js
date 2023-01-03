@@ -53,7 +53,7 @@ export const useSignUpEmailPasswordSubmit = () => {
             function: closeNotifyModal,
           },
         },
-        photoUrl: {
+        photoURL: {
           desktop: desktopPhotoUrl,
           mobile: mobilePhotoUrl,
         },

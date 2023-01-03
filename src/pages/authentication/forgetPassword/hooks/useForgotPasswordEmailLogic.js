@@ -21,7 +21,7 @@ export const useForgotPasswordEmailLogic = () => {
 
     // does not have an acc
     if (userInformation === undefined) {
-      console.log("does have an account")
+      console.log("does have an account");
       // Todo: this email does not exist in our database
       return;
     }
@@ -69,7 +69,7 @@ export const useForgotPasswordEmailLogic = () => {
                 function: closeNotifyModal,
               },
             },
-            photoUrl: {
+            photoURL: {
               desktop: desktopPhotoUrl,
               mobile: mobilePhotoUrl,
             },

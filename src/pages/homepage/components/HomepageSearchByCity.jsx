@@ -5,31 +5,31 @@ const HomepageSearchByCity = () => {
   const cities = [
     {
       cityName: "Dresden",
-      photoUrl:
+      photoURL:
         "https://images.unsplash.com/photo-1628683332372-baf5d6a35c5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       linkTo: "",
     },
     {
       cityName: "Berlin",
-      photoUrl:
+      photoURL:
         "https://images.unsplash.com/photo-1560969184-10fe8719e047?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       linkTo: "",
     },
     {
       cityName: "Hamburg",
-      photoUrl:
+      photoURL:
         "https://images.unsplash.com/photo-1560969184-10fe8719e047?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       linkTo: "",
     },
     {
       cityName: "Cologne",
-      photoUrl:
+      photoURL:
         "https://images.unsplash.com/photo-1560969184-10fe8719e047?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       linkTo: "",
     },
     {
       cityName: "Munich",
-      photoUrl:
+      photoURL:
         "https://images.unsplash.com/photo-1560969184-10fe8719e047?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       linkTo: "",
     },
@@ -55,7 +55,7 @@ const HomepageSearchByCity = () => {
                 onClick={() => testDrive(city.cityName)}
                 className="group relative h-[140px] min-h-[140px] w-full rounded-xl bg-blue-200 bg-cover bg-center duration-300 hover:min-h-[180px]"
                 style={{
-                  backgroundImage: `url(${city.photoUrl})`,
+                  backgroundImage: `url(${city.photoURL})`,
                 }}
               >
                 <span className="absolute bottom-4 left-6 text-2xl text-white duration-300 group-hover:bottom-6">

@@ -6,11 +6,9 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import NotifyModalContent from "./components/NotifyModalContent";
 
 const NotifyModal = () => {
-  const { isOpen, photoUrl, closeNotifyModal } = useNotifyModalContext();
+  const { isOpen, photoURL, closeNotifyModal } = useNotifyModalContext();
 
   const windowSize = useWindowSize();
-
-  console.log("hallo from notify")
 
   return (
     <ModalWrapper isOpen={isOpen} closeModal={closeNotifyModal}>
@@ -31,14 +29,14 @@ const NotifyModal = () => {
               <i className="fa-solid fa-times text-[24px] text-lmGrey800 drop-shadow dark:text-dmGrey25 " />
             </div>
           </button>
-          {photoUrl !== null && (
+          {photoURL !== null && (
             <img
               className="h-[180px] w-full object-cover 600:h-[260px] 600:w-[572px] 1000:h-[500px] 1000:w-[450px]"
               src={
                 windowSize.width > 1000
-                  ? photoUrl.desktop ??
+                  ? photoURL.desktop ??
                     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeCars.webp?alt=media&token=51d51fb2-414d-44a4-a549-40a36666b7cb"
-                  : photoUrl.mobile ??
+                  : photoURL.mobile ??
                     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2Fmoped.webp?alt=media&token=c3fbae96-06a8-4121-9067-25ca1dcea4af"
               }
               alt="space filler"

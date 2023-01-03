@@ -10,7 +10,7 @@ import MobileCatalogOfferCardImgPart from "./MobileOfferCardImgPart";
 import MobileCatalogOfferCardInfoPart from "./MobileOfferCardInfoPart";
 
 const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
-  const { offerId, photoUrl, liked, location } = offerInformation;
+  const { offerId, photoUrl: photoURL, liked, location } = offerInformation;
   const { dispatchMapSub } = useMapSubContext();
   const { signedIn, verified } = useUserContext();
   const { openAuthNotifyModal } = useNotifyModalContext();
@@ -61,7 +61,7 @@ const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
     >
       <MobileCatalogOfferCardImgPart
         onNavigationCallback={handleNavigation}
-        photoUrl={photoUrl}
+        photoURL={photoURL}
       />
       <MobileCatalogOfferCardIcons
         liked={liked}

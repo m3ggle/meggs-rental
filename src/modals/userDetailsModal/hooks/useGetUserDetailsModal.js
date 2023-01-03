@@ -11,10 +11,11 @@ export const useGetUserDetailsModal = () => {
     async (userId) => {
       const userData = await getUserFirestore(userId);
 
-      const [ownOffers, reviews] = await Promise.all([
+      const [ownOffers, reviewSection] = await Promise.all([
         getOffersFirestore(userData.ownOffers.slice(0, 3)),
-        getReviewsFirestore(userData.reviewSections, 5),
+        getReviewsFirestore({reviewSections: userData.reviewSections, limit: 5}),
       ]);
+      console.log("in logic, reviewSectionId" + reviewSection);
 
       if (userData) {
         // setting context
@@ -22,7 +23,7 @@ export const useGetUserDetailsModal = () => {
           type: "SET_USER_DATA",
           payload: {
             userOffers: ownOffers,
-            reviews,
+            reviewSection,
             userData,
           },
         });

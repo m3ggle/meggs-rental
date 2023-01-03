@@ -8,6 +8,9 @@ import { profileButtonListData } from "./data/profileButtonListData";
 
 const Profile = () => {
   const { userData } = useUserContext();
+  if (userData !== null) {
+    console.log("profile: ", userData.email);
+}
 
   return (
     <PageAuthChecker>

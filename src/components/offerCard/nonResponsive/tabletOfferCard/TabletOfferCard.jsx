@@ -8,7 +8,7 @@ import TabletOfferCardImagePart from "./TabletOfferCardImagePart";
 import TabletOfferCardInfoPart from "./TabletOfferCardInfoPart";
 
 const TabletOfferCard = ({ offerInformation }) => {
-  const { offerId, liked, photoUrl, location } = offerInformation;
+  const { offerId, liked, photoURL, location } = offerInformation;
   const { signedIn, verified } = useUserContext();
   const { openAuthNotifyModal } = useNotifyModalContext();
 
@@ -28,7 +28,7 @@ const TabletOfferCard = ({ offerInformation }) => {
   return (
     <div className="relative flex h-[252px] w-[180px] cursor-pointer justify-center gap-x-0 rounded-xl bg-white shadow-none duration-300 hover:scale-102 active:scale-99 dark:bg-dmGrey900 dark:shadow-sm">
       <TabletOfferCardImagePart
-        photoUrl={photoUrl}
+        photoURL={photoURL}
         onNavigationCallback={handleNavigation}
       />
       <TabletOfferCardIcons

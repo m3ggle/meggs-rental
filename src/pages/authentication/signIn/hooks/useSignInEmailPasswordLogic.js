@@ -45,7 +45,7 @@ export const useSignInEmailPasswordLogic = () => {
             function: closeNotifyModal,
           },
         },
-        photoUrl: {
+        photoURL: {
           desktop: desktopPhotoUrl,
           mobile: mobilePhotoUrl,
         },

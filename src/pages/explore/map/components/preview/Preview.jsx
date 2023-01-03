@@ -28,7 +28,7 @@ const Preview = () => {
           <>
             <PreviewIcons />
             <PreviewBasicInfo offerInformation={offerInformation} />
-            <PreviewImgs offerImages={offerInformation.photoUrl} />
+            <PreviewImgs offerImages={offerInformation.photoURL} />
             <div className={`min-h-fit w-full rounded-2xl px-1`}>
               <Calendar
                 dates={offerInformation.calendar}

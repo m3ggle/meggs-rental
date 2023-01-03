@@ -30,7 +30,7 @@ const ChatSidebarMain = () => {
           newMsg={chatPreview.newMsg}
           lastMsg={chatPreview.lastMsg}
           displayName={chatPreview.displayName}
-          photoUrl={chatPreview.photoUrl}
+          photoURL={chatPreview.photoURL}
         />
       ))}
     </div>

@@ -1,20 +1,33 @@
 import React from "react";
-import ExampleData from "../../ExampleData";
 import Btn from "../common/Btn";
 import ReviewHeader from "./ReviewHeader";
 import ReviewList from "./ReviewList";
 
-const ReviewSection = ({reviews}) => {
-  const { reviewId } = ExampleData();
+const ReviewSection = ({ reviewSection }) => {
   return (
-    <div className="flex w-full flex-col gap-y-2 rounded-lg">
-      <ReviewHeader
-        totalAmount={reviewId.totalAmount}
-        ratingDetailed={reviewId.ratingDetailed}
-      />
-      <ReviewList reviews={reviews} />
-      <Btn type="button" uiType="secondary" title="Load More" />
-    </div>
+    <>
+      {reviewSection !== null && (
+        <div className="flex w-full flex-col gap-2">
+          <span className="text-base font-semibold text-lmGrey700 dark:text-dmGrey25">
+            Ratings
+          </span>
+          <div className="flex w-full flex-col gap-y-2 rounded-lg">
+            {reviewSection === null ? (
+              <span>Currently no Reviews</span>
+            ) : (
+              <>
+                <ReviewHeader
+                  totalAmount={reviewSection.ratingStats.amount}
+                  ratingDetailed={reviewSection.ratingStats.ratings}
+                />
+                <ReviewList reviews={reviewSection.reviews} />
+                <Btn type="button" uiType="secondary" title="Load More" />
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

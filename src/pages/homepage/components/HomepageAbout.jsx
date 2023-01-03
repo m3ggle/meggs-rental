@@ -49,7 +49,7 @@ const HomepageAbout = () => {
 
       <div className="absolute bottom-[120px] left-8 z-10 w-fit 400:bottom-[140px] 400:left-14 700:bottom-[120px] 700:left-[160px]">
         <HomepageComment
-          photoUrl={profileNeleLangrock}
+          photoURL={profileNeleLangrock}
           comment="Augue fringilla viverra id tristique malesuada cras urna."
           association="Nele Langrock, Co-Founder"
           commentWidth="360px"
@@ -58,7 +58,7 @@ const HomepageAbout = () => {
 
       <div className="absolute right-[0%] top-[440px] z-10 w-fit opacity-50 500:top-[360px] 500:right-[24%] 700:top-[420px] 1200:right-[40%] 1200:top-[500px]">
         <HomepageComment
-          photoUrl={profileMariaBierhoff}
+          photoURL={profileMariaBierhoff}
           comment="Sapien ac risus amet lectus. A pulvinar mauris ultricies duis mus in. Nunc mollis praesent et."
           association="Maria Bierhoff"
           commentWidth={windowSize.width > 600 ? "400px" : "320px"}
@@ -67,7 +67,7 @@ const HomepageAbout = () => {
 
       <div className="absolute top-[600px] right-0 z-10 w-fit opacity-90 400:bottom-auto 400:top-[580px] 1000:bottom-auto 1000:top-[280px] 1000:right-auto 1000:left-[640px]">
         <HomepageComment
-          photoUrl={profileAlinaMertens}
+          photoURL={profileAlinaMertens}
           comment="Urna, arcu augue placerat facilisis elit enim. "
           association="Alina Mertens"
           commentWidth="240px"
@@ -76,7 +76,7 @@ const HomepageAbout = () => {
 
       <div className="absolute bottom-[200px] right-[132px] z-10 hidden w-fit 1200:flex">
         <HomepageComment
-          photoUrl={profileGustavoBravo}
+          photoURL={profileGustavoBravo}
           comment="Pharetra tellus proin aenean diam metus, morbi. Dignissim malesuada blandittincidunt."
           association="Gustavo Bravo, CEO"
           commentWidth="360px"

@@ -6,11 +6,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Rue de la Madeleine",
-      "houseNumber": "46",
-      "city": "Lyon",
-      "country": "France",
-      "formatted": "46 Rue de la Madeleine"
+      "street": "Dunbridge Street",
+      "houseNumber": "34",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "34 Dunbridge Street"
     },
     "price": {
       "day": 30,
@@ -66,7 +66,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
@@ -81,11 +81,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Avenue Berthelot",
-      "houseNumber": "84",
-      "city": "Lyon",
-      "country": "France",
-      "formatted": "84 Avenue Berthelot"
+      "street": "Orchard Street",
+      "houseNumber": "91",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "91 Orchard Street"
     },
     "price": {
       "day": 30,
@@ -141,7 +141,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
@@ -156,11 +156,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Rue Duguesclin",
-      "houseNumber": "31",
-      "city": "Lyon",
-      "country": "France",
-      "formatted": "31 Rue Duguesclin"
+      "street": "Berkeley Street",
+      "houseNumber": "28",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "28 Berkeley Street"
     },
     "price": {
       "day": 30,
@@ -216,7 +216,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
@@ -231,11 +231,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Rue Lavoisier",
-      "houseNumber": "9",
-      "city": "Lyon",
-      "country": "France",
-      "formatted": "9 Rue Lavoisier"
+      "street": "Halkin Street",
+      "houseNumber": "89",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "89 Halkin Street"
     },
     "price": {
       "day": 30,
@@ -291,7 +291,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
@@ -306,11 +306,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Cours Albert Thomas",
-      "houseNumber": "82",
-      "city": "Lyon",
-      "country": "France",
-      "formatted": "82 Cours Albert Thomas"
+      "street": "Hamilton Place",
+      "houseNumber": "56",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "56 Hamilton Place"
     },
     "price": {
       "day": 30,
@@ -366,7 +366,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
@@ -381,11 +381,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Boulevard Périer",
-      "houseNumber": "59",
-      "city": "Marseille",
-      "country": "France",
-      "formatted": "59 Boulevard Périer"
+      "street": "Upper Brook Street",
+      "houseNumber": "53",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "53 Upper Brook Street"
     },
     "price": {
       "day": 30,
@@ -441,7 +441,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
@@ -456,11 +456,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Avenue Alexandre Dumas",
-      "houseNumber": "19",
-      "city": "Marseille",
-      "country": "France",
-      "formatted": "19 Avenue Alexandre Dumas"
+      "street": "Tower Bridge Road",
+      "houseNumber": "97",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "97 Tower Bridge Road"
     },
     "price": {
       "day": 30,
@@ -516,7 +516,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
@@ -531,11 +531,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Rue Louis Maurel",
-      "houseNumber": "15",
-      "city": "Marseille",
-      "country": "France",
-      "formatted": "15 Rue Louis Maurel"
+      "street": "Strutton Ground",
+      "houseNumber": "95",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "95 Strutton Ground"
     },
     "price": {
       "day": 30,
@@ -591,7 +591,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
@@ -606,11 +606,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Rue Pierre Dupré",
-      "houseNumber": "30",
-      "city": "Marseille",
-      "country": "France",
-      "formatted": "30 Rue Pierre Dupré"
+      "street": "New Oxford Street",
+      "houseNumber": "26",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "26 New Oxford Street"
     },
     "price": {
       "day": 30,
@@ -666,7 +666,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",
@@ -681,11 +681,11 @@
     "location": {
       "lat": null,
       "lng": null,
-      "street": "Rond-Point du Prado",
-      "houseNumber": "93",
-      "city": "Marseille",
-      "country": "France",
-      "formatted": "93 Rond-Point du Prado"
+      "street": "Cleveland Street",
+      "houseNumber": "80",
+      "city": "London",
+      "country": "United Kingdom",
+      "formatted": "80 Cleveland Street"
     },
     "price": {
       "day": 30,
@@ -741,7 +741,7 @@
     "ownerId": "85c48b9a-32f8-4279-9c89-3a459455d994",
     "ratingId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
     "status": "Active",
-    "photoUrl": [
+    "photoURL": [
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-dpltqwyndae-unsplash.webp?alt=media&token=edc3059b-8392-436b-a059-7847da19c6da",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-onimvuak-ys-unsplash.webp?alt=media&token=973b87c1-6724-41cd-851b-9438dbfd3d51",
       "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/offers%2Fd22f4ccb-4a3a-44f0-8142-bafffd82d246%2Fd-martin-katler-oa6ciwqh7jy-unsplash.webp?alt=media&token=64bfbf9b-c199-4294-9829-2da722c870c4",

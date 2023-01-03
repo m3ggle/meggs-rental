@@ -8,7 +8,7 @@ import DesktopOfferCardImagePart from "./DesktopOfferCardImagePart";
 import DesktopOfferCardInfoPart from "./DesktopOfferCardInfoPart";
 
 const DesktopOfferCard = ({ offerInformation }) => {
-  const { offerId, liked, photoUrl, location } = offerInformation;
+  const { offerId, liked, photoURL, location } = offerInformation;
 const { signedIn, verified } = useUserContext();
 const { openAuthNotifyModal } = useNotifyModalContext();
 
@@ -28,7 +28,7 @@ const { openAuthNotifyModal } = useNotifyModalContext();
   return (
     <div className="relative flex h-[406px] w-[292px] cursor-pointer justify-center gap-x-0 rounded-xl bg-white shadow-none duration-300 hover:scale-101 active:scale-99 dark:border-none dark:bg-dmGrey900 dark:shadow-sm">
       <DesktopOfferCardImagePart
-        photoUrl={photoUrl}
+        photoURL={photoURL}
         onNavigationCallback={handleNavigation}
       />
       <DesktopOfferCardIcons

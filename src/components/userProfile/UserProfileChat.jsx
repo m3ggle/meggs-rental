@@ -7,8 +7,8 @@ const UserProfileChat = ({
   lastMsg,
   displayName,
   shadow,
-  photoUrl,
-  onClick
+  photoURL,
+  onClick,
 }) => {
   return (
     <div
@@ -22,7 +22,7 @@ const UserProfileChat = ({
         <div
           className="h-[46px] min-h-[46px] w-[46px] min-w-[46px] rounded-full bg-lmGrey100 bg-cover bg-center shadow"
           style={{
-            backgroundImage: `url(${photoUrl})`,
+            backgroundImage: `url(${photoURL})`,
           }}
         ></div>
 

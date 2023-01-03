@@ -29,7 +29,7 @@ export const NotifyModalProvider = ({ children }) => {
     preMade: null,
     customized: null,
     extraInfo: null,
-    photoUrl: null,
+    photoURL: null,
   };
 
   const [state, dispatchNotifyModal] = useReducer(
@@ -38,7 +38,7 @@ export const NotifyModalProvider = ({ children }) => {
   );
 
   // functions start
-  const openNotifyModal = ({ preMade, extraInfo, customized, photoUrl }) => {
+  const openNotifyModal = ({ preMade, extraInfo, customized, photoURL }) => {
     dispatchNotifyModal({
       type: "SET_NOTIFY_MODAL",
       payload: {
@@ -46,7 +46,7 @@ export const NotifyModalProvider = ({ children }) => {
         preMade: preMade ?? null,
         customized: customized ?? null,
         extraInfo: extraInfo ?? null,
-        photoUrl: photoUrl ?? null,
+        photoURL: photoURL ?? null,
       },
     });
   };
@@ -59,7 +59,7 @@ export const NotifyModalProvider = ({ children }) => {
         preMade: null,
         customized: null,
         extraInfo: null,
-        photoUrl: null,
+        photoURL: null,
       },
     });
   }, []);
@@ -89,7 +89,7 @@ export const NotifyModalProvider = ({ children }) => {
               function: "sign-in",
             },
           },
-          photoUrl: {
+          photoURL: {
             desktop:
               "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FnewCar.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1",
             mobile:
@@ -134,7 +134,7 @@ export const NotifyModalProvider = ({ children }) => {
               function: closeNotifyModal,
             },
           },
-          photoUrl: {
+          photoURL: {
             desktop:
               "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FnewCar.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1",
             mobile:

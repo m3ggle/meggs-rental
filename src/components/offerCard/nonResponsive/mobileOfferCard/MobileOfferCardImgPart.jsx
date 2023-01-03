@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const MobileOfferCardImgPart = ({ onNavigationCallback, photoUrl }) => {
+const MobileOfferCardImgPart = ({ onNavigationCallback, photoURL }) => {
   return (
     <div
       onClick={onNavigationCallback}
       className="min-h-[118px] w-[110px] min-w-[110px] rounded-lg bg-cover bg-center"
       style={{
-        backgroundImage: `url(${photoUrl})`,
+        backgroundImage: `url(${photoURL})`,
       }}
     >
       <i className="fa-solid fa-location-dot absolute left-3 top-3 hidden text-2xl text-white/40 drop-shadow"></i>
@@ -15,4 +15,4 @@ const MobileOfferCardImgPart = ({ onNavigationCallback, photoUrl }) => {
   );
 };
 
-export default MobileOfferCardImgPart
+export default MobileOfferCardImgPart;

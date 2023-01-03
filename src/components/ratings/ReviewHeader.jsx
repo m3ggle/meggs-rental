@@ -3,39 +3,39 @@ import { calcPercentage } from "../../helper/calcPercentage";
 import ReviewBar from "./ReviewBar";
 
 const ReviewHeader = ({ totalAmount, ratingDetailed }) => {
-  const { ratingFive, ratingFour, ratingThree, ratingTwo, ratingOne } =
-    ratingDetailed;
+  const { five, four, three, two, one } =
+  ratingDetailed;
 
   const [overallRating] = useState(
     (
-      (ratingFive * 5 +
-        ratingFour * 4 +
-        ratingThree * 3 +
-        ratingTwo * 2 +
-        ratingOne) /
+      (five * 5 +
+        four * 4 +
+        three * 3 +
+        two * 2 +
+        one) /
       totalAmount
     ).toFixed(1)
   );
   const [ratings] = useState({
     fiveStars: {
       color: "bg-lime-400",
-      value: calcPercentage(ratingFive, totalAmount),
+      value: calcPercentage(five, totalAmount),
     },
     fourStars: {
       color: "bg-lime-500",
-      value: calcPercentage(ratingFour, totalAmount),
+      value: calcPercentage(four, totalAmount),
     },
     threeStars: {
       color: "bg-yellow-300",
-      value: calcPercentage(ratingThree, totalAmount),
+      value: calcPercentage(three, totalAmount),
     },
     twoStars: {
       color: "bg-orange-400",
-      value: calcPercentage(ratingTwo, totalAmount),
+      value: calcPercentage(two, totalAmount),
     },
     oneStar: {
       color: "bg-red-500",
-      value: calcPercentage(ratingOne, totalAmount),
+      value: calcPercentage(one, totalAmount),
     },
   });
 

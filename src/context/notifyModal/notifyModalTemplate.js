@@ -14,7 +14,7 @@ export const notifyModalTemplate = {
       function: () => {},
     },
   },
-  photoUrl: {
+  photoURL: {
     desktop: null,
     mobile: null,
   },

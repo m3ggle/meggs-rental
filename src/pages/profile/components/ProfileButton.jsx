@@ -1,15 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../../../context/user/userContext";
+import { useUserDetailsModalContext } from "../../../context/userDetailsModal/userDetailsModalContext";
 import { auth } from "../../../firebase.config";
 import styles from "../../../style";
 
 const ProfileButton = ({ information }) => {
   const { btnTitle = "", icon = "", link = "", secondIcon = "" } = information;
 
+  const { openUserDetailsModal } = useUserDetailsModalContext();
+  const {userData} = useUserContext()
+
   const navigate = useNavigate();
 
   const handleUserModal = () => {
-    console.log("open user modal");
+    openUserDetailsModal(userData.uid);
   };
   const handleSignOutModal = () => {
     // currently no modal, but it is coming in the future

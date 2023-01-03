@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import { useCallback } from "react";
-import { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ExampleData from "../../ExampleData";
 import OfferDetailsImgPart from "./view/OfferDetailsImgPart";
 import OfferDetailsInfoPart from "./view/offerDetailsInfoPart/OfferDetailsInfoPart";
 
-const {exampleOffers} = ExampleData()
+const { exampleOffers } = ExampleData();
 
 const OfferDetails = () => {
   const [offerInformation, setOfferInformation] = useState(undefined);
   const param = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getOfferInformation = useCallback(() => {
     const localResult = exampleOffers.filter(
@@ -46,7 +44,7 @@ const OfferDetails = () => {
     <>
       {offerInformation ? (
         <div className="relative flex w-full max-w-[1440px] flex-col pt-6 1200:flex-row 1200:pt-0">
-          <OfferDetailsImgPart offerImages={offerInformation.photoUrl} />
+          <OfferDetailsImgPart offerImages={offerInformation.photoURL} />
           <OfferDetailsInfoPart offerInformation={offerInformation} />
         </div>
       ) : (

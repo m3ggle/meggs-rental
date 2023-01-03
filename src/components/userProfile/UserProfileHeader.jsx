@@ -2,13 +2,13 @@ import React from "react";
 import { useUserDetailsModalContext } from "../../context/userDetailsModal/userDetailsModalContext";
 import { getAge } from "../../helper/getAge";
 
-const UserProfileHeader = ({ userProfileData = {} }) => {
-  const { firstName, lastName, birthday, email, photoURL } = userProfileData;
+const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
+  const { firstName, lastName, birthday, email, photoURL, uid } = userProfileData;
 
   const { openUserDetailsModal } = useUserDetailsModalContext();
 
   const handleClick = () => {
-    openUserDetailsModal("5BT8oUalNVXnyo1mbBjhZLaxceW2");
+    if (!modal) openUserDetailsModal(uid);
   };
 
   return (

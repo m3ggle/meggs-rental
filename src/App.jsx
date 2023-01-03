@@ -1,10 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Logo from "./components/Logo";
+import LogoImg from "./components/LogoImg";
 import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
 import { useUserObserver } from "./context/user/useUserObserver";
 import { useAuthObserver } from "./hooks/firebase/useAuthObserver";
+import NotifyModal from "./modals/notifyModal/NotifyModal";
+import UserDetailsModal from "./modals/userDetailsModal/UserDetailsModal";
 import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding";
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
 import SignIn from "./pages/authentication/signIn/SignIn";
@@ -28,8 +30,6 @@ import ProfileReviews from "./pages/profile/subpages/ProfileReviews";
 import TermsOfService from "./pages/termsOfService/TermsOfService";
 import Upload from "./pages/upload/Upload";
 import UserOffers from "./pages/userOffers/UserOffers";
-import NotifyModal from "./modals/notifyModal/NotifyModal"
-import UserDetailsModal from "./modals/userDetailsModal/UserDetailsModal";
 
 export default function App() {
   // for react query
@@ -52,7 +52,8 @@ export default function App() {
             <NotifyModal />
             <UserDetailsModal />
             {/* modals end */}
-            <Logo />
+            {/* <LogoSpline /> */}
+            <LogoImg />
             <Routes>
               <Route path="/explore/map" element={<Map />} />
               <Route path="/explore/catalog" element={<Catalog />} />

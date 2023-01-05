@@ -11,6 +11,8 @@ import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAut
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
 import SignIn from "./pages/authentication/signIn/SignIn";
 import SignUp from "./pages/authentication/signUp/SignUp";
+import UpdateEmail from "./pages/authentication/updateEmail/UpdateEmail";
+import UpdatePassword from "./pages/authentication/updatePassword/UpdatePassword";
 import Chat from "./pages/chat/Chat";
 import ChatMain from "./pages/chat/view/chatMain/ChatMain";
 import ChatSidebar from "./pages/chat/view/chatSidebar/ChatSidebar";
@@ -27,7 +29,10 @@ import ProfileAccount from "./pages/profile/subpages/ProfileAccount";
 import ProfileNotification from "./pages/profile/subpages/ProfileNotification";
 import ProfilePayments from "./pages/profile/subpages/ProfilePayments";
 import ProfileReviews from "./pages/profile/subpages/ProfileReviews";
+import ReviewsOffer from "./pages/reviews/reviewsOffer/ReviewsOffer";
+import ReviewsUser from "./pages/reviews/reviewsUser/ReviewsUser";
 import TermsOfService from "./pages/termsOfService/TermsOfService";
+import TipsAndTricks from "./pages/tipsAndTricks/TipsAndTricks";
 import Upload from "./pages/upload/Upload";
 import UserOffers from "./pages/userOffers/UserOffers";
 
@@ -63,7 +68,7 @@ export default function App() {
                 element={<OfferDetails />}
               />
 
-              <Route path="/user-offers" element={<UserOffers />} />
+              <Route path="/users-offers" element={<UserOffers />} />
               <Route path="/upload" element={<Upload />} />
 
               <Route path="/chat" element={<Chat />} />
@@ -76,13 +81,16 @@ export default function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/profile/account" element={<ProfileAccount />} />
               <Route path="/profile/payments" element={<ProfilePayments />} />
-              <Route path="/profile/reviews" element={<ProfileReviews />} />
               <Route
                 path="/profile/notification"
                 element={<ProfileNotification />}
               />
 
+              <Route path="/reviews/user" element={<ReviewsUser />} />
+              <Route path="/reviews/offer" element={<ReviewsOffer />} />
+
               <Route path="/help" element={<Help />} />
+              <Route path="/tips-and-tricks" element={<TipsAndTricks />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
@@ -94,6 +102,8 @@ export default function App() {
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/update-email" element={<UpdateEmail />} />
+              <Route path="/update-password" element={<UpdatePassword />} />
 
               <Route path="/*" element={<NotFound />} />
             </Routes>

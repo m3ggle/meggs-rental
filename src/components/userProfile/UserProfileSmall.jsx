@@ -54,6 +54,7 @@ const UserProfileSmall = ({
 
   // ui
   // todo: outsource
+  // "loading"
   if (userData === null) {
     return (
       <div

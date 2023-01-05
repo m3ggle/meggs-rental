@@ -5,8 +5,7 @@ import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { darkModeLayer } from "../../../explore/map/components/helper/DarkModeLayer";
 
 const HomepageFooterMap = () => {
-  const MAPBOX_TOKEN =
-    "pk.eyJ1IjoibTFnZ2xlIiwiYSI6ImNsYXVtaHM0ejA1eTgzdm1wMmRkaDBnNDAifQ.ayNDhREPUzI4mBOyVjor6A";
+  const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
   const mapRef = useRef();
 
   let { darkMode } = useDarkModeContext();

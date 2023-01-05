@@ -2,8 +2,7 @@ import React, { useRef, useState } from "react";
 import Map, { Marker } from "react-map-gl";
 
 const Location = ({ lng, lat }) => {
-  const MAPBOX_TOKEN =
-    "pk.eyJ1IjoibTFnZ2xlIiwiYSI6ImNsYXVtaHM0ejA1eTgzdm1wMmRkaDBnNDAifQ.ayNDhREPUzI4mBOyVjor6A";
+  const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
   const mapRef = useRef();
 
   const [position, setPosition] = useState({

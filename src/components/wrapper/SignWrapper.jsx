@@ -19,12 +19,11 @@ const SignWrapper = ({ children, pic, puffer }) => {
 
       {/* pic part */}
       <div className="relative hidden h-screen w-full p-3 1000:flex">
-        <div
-          className="h-full w-full overflow-hidden rounded-[30px] bg-lmGrey100 bg-cover bg-center dark:bg-dmGrey800"
-          style={{ backgroundImage: `url(${pic})` }}
-        >
-          <div className="hidden h-full w-full dark:flex dark:bg-black/20"></div>
-        </div>
+        <img
+          className="h-full w-full overflow-hidden rounded-[30px] bg-lmGrey100 object-cover object-center dark:bg-dmGrey800"
+          src={pic}
+          alt="filler or user"
+        />
         <button
           onClick={handleHomeButtonClick}
           className={`absolute top-[56px] right-[76px] flex h-[64px] w-[64px] items-center justify-center rounded-full bg-white duration-300 hover:scale-102 active:scale-98 dark:border dark:border-solid dark:border-transparent dark:bg-dmGrey900 dark:hover:border-dmGrey800`}

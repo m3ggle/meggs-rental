@@ -33,7 +33,7 @@ export const initialStateNavigation = {
       icon: "fa-solid fa-heart",
     },
     {
-      navigateTo: "/user-offers",
+      navigateTo: "/users-offers",
       text: "Your Offers",
       icon: "fa-solid fa-file",
     },

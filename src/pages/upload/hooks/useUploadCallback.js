@@ -21,7 +21,7 @@ const useUploadCallback = () => {
         break;
       case "close":
         localStorage.removeItem("uploadData");
-        navigate("/user-offers");
+        navigate("/users-offers");
         break;
       default:
         break;

@@ -1,14 +1,13 @@
 import axios from "axios";
-import React from "react";
-import Btn from "../../components/common/Btn";
-import TestOffersJson from "../../testDataOffers/testOffersSum.json";
-import { v4 as uuidv4 } from "uuid";
 import { doc, writeBatch } from "firebase/firestore";
+import React from "react";
+import { v4 as uuidv4 } from "uuid";
+import Btn from "../../components/common/Btn";
 import { db } from "../../firebase.config";
+import TestOffersJson from "../../testDataOffers/testOffersSum.json";
 
 const uploadingBulkOfferToFirestore = () => {
-  const MAPBOX_TOKEN =
-    "pk.eyJ1IjoibTFnZ2xlIiwiYSI6ImNsYXVtaHM0ejA1eTgzdm1wMmRkaDBnNDAifQ.ayNDhREPUzI4mBOyVjor6A";
+  const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
   // ! testoffers
   const handleClick = async () => {

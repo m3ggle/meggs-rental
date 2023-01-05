@@ -28,7 +28,7 @@ const NotFound = () => {
             <Btn
               type="button"
               uiType="primary"
-              title="Come Back Home"
+              title="Back Home"
               onClick={handleGoHome}
             />
           </div>

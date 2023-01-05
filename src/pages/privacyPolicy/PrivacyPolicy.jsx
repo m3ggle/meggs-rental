@@ -1,11 +1,30 @@
 import React from "react";
 import Btn from "../../components/common/Btn";
+import { toastNotify } from "../../components/toastNotify/toastNotify";
 
 const PrivacyPolicy = () => {
+  const { notifyMessage, notifyStandard } = toastNotify();
+
+  const exampleMsg = {
+    from: "Meggle Bande",
+    content: "Hey, how about a new deal on Saturday till Monday",
+    navigateTo: "/chat",
+  };
+
+  const exampleStandard = {
+    type: "info",
+    content: "Offer was uploaded"
+  }
+
   const handleClick = async () => {
-    const link = "/users-offers?id";
-    const page = link.split("?")[0];
-    console.log(page);
+    notifyStandard({ information: exampleStandard, id: "standard" });
+  };
+
+  const handleClick2 = () => {
+    notifyMessage({
+      information: exampleMsg,
+      id: "sec",
+    });
   };
 
   return (
@@ -16,6 +35,14 @@ const PrivacyPolicy = () => {
           uiType="primary"
           type="button"
           onClick={handleClick}
+        />
+      </div>
+      <div className="h-fit w-fit">
+        <Btn
+          title="click to open"
+          uiType="secondary"
+          type="button"
+          onClick={handleClick2}
         />
       </div>
     </div>

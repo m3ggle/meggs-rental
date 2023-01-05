@@ -1,10 +1,12 @@
 import { doc, setDoc } from "firebase/firestore";
 import { useEffect } from "react";
+import { toastNotify } from "../../components/toastNotify/toastNotify";
 import { db } from "../../firebase.config";
 import { useUserContext } from "./userContext";
 
 export const useUserObserver = () => {
   const { userData } = useUserContext();
+  const { notifyStandard } = toastNotify();
 
   const handleUserUpload = async () => {
     console.log("upload");
@@ -13,7 +15,13 @@ export const useUserObserver = () => {
         await setDoc(doc(db, "users", userData.uid), userData);
       } catch (error) {
         console.log(error.message);
-        // todo: toast, could not upload user data
+        notifyStandard({
+          information: {
+            type: "warning",
+            content: "We could not upload your changes",
+          },
+          id: "userUploadError",
+        });
       }
     }
   };
@@ -26,16 +34,16 @@ export const useUserObserver = () => {
 
   // debounce
   useEffect(() => {
-    // handleUserUpload(); 
+    // handleUserUpload();
 
     /* problem when the window gets closed and this function hasn't fired */
-      const identifier = setTimeout(() => {
+    const identifier = setTimeout(() => {
       handleUserUpload();
     }, 180000); // 3 min
 
     return () => {
       console.log("Clean up");
-      clearTimeout(identifier); 
+      clearTimeout(identifier);
     };
     /* */
   }, [userData]);

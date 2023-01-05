@@ -1,5 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { toastNotify } from "../../../../components/toastNotify/toastNotify";
 import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
 import { auth } from "../../../../firebase.config";
 import { useGetUserByEmail } from "../../../../hooks/firebase/useGetUserByEmail";
@@ -8,6 +9,7 @@ export const useSignInEmailPasswordLogic = () => {
   const { dispatchNotifyModal, closeNotifyModal } = useNotifyModalContext();
   const { getUserByEmail } = useGetUserByEmail();
   const navigate = useNavigate();
+  const { notifyStandard } = toastNotify();
 
   const desktopPhotoUrl =
     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeCars.webp?alt=media&token=51d51fb2-414d-44a4-a549-40a36666b7cb";
@@ -68,13 +70,24 @@ export const useSignInEmailPasswordLogic = () => {
 
   const handleSendEmail = (data) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => {
-        // Todo: toast
+      .then((currentUser) => {
+        notifyStandard({
+          information: {
+            type: "info",
+            content: `Hello ${currentUser.user.displayName}`,
+          },
+          id: "signInSuccess",
+        });
         navigate("/homepage");
       })
       .catch((error) => {
-        // Todo: toast
-        // most likely wrong password
+        notifyStandard({
+          information: {
+            type: "warning",
+            content: error.message.split(":")[1],
+          },
+          id: "signInError",
+        });
         console.log(error.message);
       });
   };
@@ -91,7 +104,13 @@ export const useSignInEmailPasswordLogic = () => {
     // is not verified
     if (!userInformation.displayName) {
       handleNotVerified(data);
-      // Todo: toast
+      notifyStandard({
+        information: {
+          type: "info",
+          content: "You are not verified",
+        },
+        id: "signInError",
+      });
       return;
     }
 

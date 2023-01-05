@@ -1,5 +1,5 @@
 import { Dialog } from "@headlessui/react";
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useNavigationContext } from "../../context/navigation/navigationContext";
 import { useUserContext } from "../../context/user/userContext";
@@ -13,13 +13,13 @@ import DropdownMode from "./DropdownMode";
 const Navbar = () => {
   const { isOpen, dispatchNavigation } = useNavigationContext();
   const navigate = useNavigate();
-  const {signedIn, verified} = useUserContext()
-  
+  const { signedIn, verified } = useUserContext();
+
   const handleClickNavigation = (navigateTo) => {
     closeModal();
     navigate(navigateTo);
   };
-  
+
   const closeModal = () => {
     dispatchNavigation({ type: "CLOSE_NAVIGATION" });
   };

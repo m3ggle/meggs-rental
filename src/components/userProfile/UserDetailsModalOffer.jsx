@@ -2,13 +2,21 @@ import React from "react";
 import { useDarkModeContext } from "../../context/darkMode/darkModeContext";
 import Btn from "../common/Btn";
 import MobileOfferCard from "../offerCard/nonResponsive/mobileOfferCard/MobileOfferCard";
+import { toastNotify } from "../toastNotify/toastNotify";
 
 const UserDetailsModalOffer = ({ offers, closeModal }) => {
-  const {darkMode} = useDarkModeContext()
-  
+  const { notifyStandard } = toastNotify();
+  const { darkMode } = useDarkModeContext();
+
   const handleLoadMore = () => {
     console.log("open full userprofile");
-    // todo: toast, coming soon
+    notifyStandard({
+      information: {
+        type: "info",
+        content: "I am working on it",
+      },
+      id: "standard",
+    });
   };
 
   return (
@@ -35,13 +43,13 @@ const UserDetailsModalOffer = ({ offers, closeModal }) => {
             />
           </div>
         ) : (
-          <div className="h-fit flex items-center justify-center w-full">
+          <div className="flex h-fit w-full items-center justify-center">
             <img
               className="h-fit w-full max-w-[340px]"
               src={
                 darkMode
-                ? "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FyetiDm.svg?alt=media&token=f0326255-ec38-4284-9d11-21ff4593300b"
-                : "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FyetiLm.svg?alt=media&token=d21171c5-2622-47f0-b13c-398b4bc79169"
+                  ? "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FyetiDm.svg?alt=media&token=f0326255-ec38-4284-9d11-21ff4593300b"
+                  : "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FyetiLm.svg?alt=media&token=d21171c5-2622-47f0-b13c-398b4bc79169"
               }
               alt="yeti"
             />

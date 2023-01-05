@@ -2,11 +2,13 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toastNotify } from "../components/toastNotify/toastNotify";
 import { auth, db } from "../firebase.config";
 import { useUrlManipulation } from "./urlManipulation/useUrlManipulation";
 
 export const useMultiStepHelper = () => {
   // mandatory
+  const { notifyStandard } = toastNotify();
   const { searchParams, setSingleParam, setArrayOfParams, getSingleParam } =
     useUrlManipulation();
   const currentRound = getSingleParam("round") ? +getSingleParam("round") : 1;
@@ -39,7 +41,13 @@ export const useMultiStepHelper = () => {
       if (locationPathname === "/sign-up") {
         setArrayOfParams(params);
       } else {
-        // Todo: toast
+        notifyStandard({
+          information: {
+            type: "warning",
+            content: "Have to be verified",
+          },
+          id: "userUploadError",
+        });
         console.log("you have an account but you are not verified");
 
         // go verify
@@ -51,7 +59,13 @@ export const useMultiStepHelper = () => {
     }
     // else does....
     navigate("/homepage");
-    // Todo: toast msg: you are already sign up, enjoy.
+    notifyStandard({
+      information: {
+        type: "warning",
+        content: "Already signed up, enjoy",
+      },
+      id: "userUploadError",
+    });
   };
 
   const handleStorage = (data, localStorageName) => {
@@ -71,7 +85,7 @@ export const useMultiStepHelper = () => {
 
   // special kinds
   // sign up
-  const  handleEmailContinue = (data) => {
+  const handleEmailContinue = (data) => {
     handleStorage(data, "signUpData");
     setArrayOfParams({ email: data.email, round: currentRound + 1 });
   };

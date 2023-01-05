@@ -1,5 +1,5 @@
 import { Dialog } from "@headlessui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import ReviewSection from "../../components/ratings/ReviewSection";
 import UserDetailsModalOffer from "../../components/userProfile/UserDetailsModalOffer";
 
@@ -12,7 +12,7 @@ const UserDetailsModal = () => {
   const { isOpen, closeUserDetailsModal, modalData, error } =
     useUserDetailsModalContext();
   const {darkMode} = useDarkModeContext()
-  
+
   return (
     <ModalWrapperTypeBottom isOpen={isOpen} closeModal={closeUserDetailsModal}>
       {error !== null ? (

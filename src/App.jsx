@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LogoImg from "./components/LogoImg";
 import DropdownMode from "./components/navbar/DropdownMode";
@@ -28,7 +29,6 @@ import Profile from "./pages/profile/Profile";
 import ProfileAccount from "./pages/profile/subpages/ProfileAccount";
 import ProfileNotification from "./pages/profile/subpages/ProfileNotification";
 import ProfilePayments from "./pages/profile/subpages/ProfilePayments";
-import ProfileReviews from "./pages/profile/subpages/ProfileReviews";
 import ReviewsOffer from "./pages/reviews/reviewsOffer/ReviewsOffer";
 import ReviewsUser from "./pages/reviews/reviewsUser/ReviewsUser";
 import TermsOfService from "./pages/termsOfService/TermsOfService";
@@ -52,13 +52,17 @@ export default function App() {
             <div className="hidden" aria-hidden="true">
               <DropdownMode />
             </div>
+
+            {/* modals */}
             <Navbar />
-            {/* upcoming: modals */}
             <NotifyModal />
             <UserDetailsModal />
-            {/* modals end */}
-            {/* <LogoSpline /> */}
+            <Toaster />
+
+            {/* logo */}
             <LogoImg />
+
+            {/* routes  */}
             <Routes>
               <Route path="/explore/map" element={<Map />} />
               <Route path="/explore/catalog" element={<Catalog />} />

@@ -1,5 +1,6 @@
 import { sendEmailVerification } from "firebase/auth";
 import { createContext, useCallback, useContext, useReducer } from "react";
+import { toastNotify } from "../../components/toastNotify/toastNotify";
 import { auth } from "../../firebase.config";
 import { useUserContext } from "../user/userContext";
 import notifyModalReducer from "./notifyModalReducer";
@@ -23,6 +24,7 @@ export const NotifyModalProvider = ({ children }) => {
   // const { openNotifyModal, openAuthNotifyModal, closeNotifyModal } =
   //   useNotifyModalHooks();
   const { signedIn, verified } = useUserContext();
+  const { notifyStandard } = toastNotify();
 
   const initialState = {
     isOpen: false,
@@ -121,9 +123,21 @@ export const NotifyModalProvider = ({ children }) => {
               function: async () => {
                 try {
                   await sendEmailVerification(auth.currentUser);
-                  // todo: toast, we send an verification email
+                  notifyStandard({
+                    information: {
+                      type: "info",
+                      content: "We send an Verification Email",
+                    },
+                    id: "emailVerificationSuccess",
+                  });
                 } catch (error) {
-                  // todo: toast, error
+                  notifyStandard({
+                    information: {
+                      type: "error",
+                      content: error.message.split(":")[1],
+                    },
+                    id: "emailVerificationError",
+                  });
                   console.log(error.code);
                   console.log(error.message);
                 }

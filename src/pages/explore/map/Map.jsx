@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "framer-motion";
 import React, { useCallback, useEffect, useState } from "react";
 import { useMapCoordContext } from "../../../context/map/mapCoord/mapCoordContext";
 import { useMapSubContext } from "../../../context/map/mapSub/mapSubContext";
@@ -6,11 +5,11 @@ import ExampleData from "../../../ExampleData";
 import { useFilterByCustomObject } from "../../../hooks/FilterByCustomObject/useFilterByCustomObject";
 import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../../hooks/useWindowSize";
+import DesktopSearchPreview from "./components/DesktopSearchPreview";
+import MapLoading from "./components/MapLoading";
 import MapView from "./components/MapView";
-import MobileCatalog from "./components/mobileCatalog/MobileCatalog";
 import MobileSearchPreview from "./components/MobileSearchPreview";
 import { usePreviewLogic } from "./components/preview/hooks/usePreviewLogic";
-import Preview from "./components/preview/Preview";
 
 const { exampleOffers, filterTypes } = ExampleData();
 
@@ -26,7 +25,6 @@ const Map = () => {
   const { offerInformation: mobileOfferInformation, setOfferInformation } =
     usePreviewLogic();
   const windowSize = useWindowSize();
-
   const { bounds } = useMapCoordContext();
   const { mapLoaded } = useMapSubContext();
   const { searchParams, deleteArrayOfParams } = useUrlManipulation();
@@ -82,7 +80,7 @@ const Map = () => {
   const refetching = async () => {
     return await new Promise(() => {
       setTimeout(() => {
-        console.log("bounds changed, fetching")
+        console.log("bounds changed, fetching");
         // console.log("refetching for 1 seconds");
         setFilteredBoundsOffers(filterByBounds(filteredOffers ?? offers));
         setIsLoading(false);
@@ -109,69 +107,23 @@ const Map = () => {
     setOfferInformation(null);
   };
 
-  const loadingVariant = {
-    initial: {
-      opacity: 0,
-      translateY: -24,
-    },
-    animate: {
-      opacity: 1,
-      translateY: 0,
-    },
-    exit: {
-      opacity: 0,
-      translateY: 16,
-    },
-    transition: {
-      duration: 0.3,
-      scale: { ease: "easeInOut" },
-    },
-  };
-
   return (
     <div
       style={{ height: `${windowSize.height}px` }}
       className={`flex w-full justify-center`}
     >
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition="transition"
-            variants={loadingVariant}
-            className={`absolute ${
-              mobileOfferInformation ? "top-52" : "top-20"
-            } z-20 flex h-11 animate-pulse items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-lmGrey600 shadow-md dark:bg-dmGrey900 dark:text-white 1100:top-7`}
-          >
-            Loading...
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MapLoading
+        isLoading={isLoading}
+        mobileOfferInformation={mobileOfferInformation}
+      />
       <MapView offers={filteredBoundsOffers} />
-      {/* <MapView offers={filteredBoundsOffers ?? filteredOffers ?? offers} /> */}
       {windowSize.width >= 1100 ? (
-        <>
-          <motion.div
-            animate={mapLoaded && "visible"}
-            initial="hidden"
-            transition={{ duration: 0.3 }}
-            variants={{
-              visible: { opacity: 1, scale: 1 },
-              hidden: { opacity: 0, scale: 1 },
-            }}
-            className="absolute right-7 top-7 z-20 flex h-fit w-fit"
-          >
-            <MobileCatalog
-              definedActions="mapCatalog"
-              offerList={filteredBoundsOffers ?? filteredOffers ?? offers}
-            />
-          </motion.div>
-          <div className="absolute left-7 top-7 z-20 flex h-fit w-fit">
-            <Preview />
-          </div>
-        </>
+        <DesktopSearchPreview
+          mapLoaded={mapLoaded}
+          filteredBoundsOffers={filteredBoundsOffers}
+          filteredOffers={filteredOffers}
+          offers={offers}
+        />
       ) : (
         <MobileSearchPreview
           offerInformation={mobileOfferInformation}

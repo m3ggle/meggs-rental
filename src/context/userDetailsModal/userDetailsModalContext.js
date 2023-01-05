@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useReducer } from "react";
 import { getOffersFirestore } from "../../api/firebase/getOffersFirestore";
 import { getReviewsFirestore } from "../../api/firebase/getReviewsFirestore";
 import { getUserFirestore } from "../../api/firebase/getUserFirestore";
+import { toastNotify } from "../../components/toastNotify/toastNotify";
 import userDetailsModalReducer from "./userDetailsModalReducer";
 
 const UserDetailsModalContext = createContext({
@@ -41,6 +42,8 @@ export function useUserDetailsModalContext() {
 }
 
 export const UserDetailsModalProvider = ({ children }) => {
+  const { notifyStandard } = toastNotify();
+
   const initialState = {
     isOpen: false,
     uid: null,
@@ -80,10 +83,16 @@ export const UserDetailsModalProvider = ({ children }) => {
       const userData = await getUserFirestore(userId);
 
       if (!userData) {
-        closeUserDetailsModal()
-        console.log("could not find user") 
-        // todo: toast 
-        return
+        closeUserDetailsModal();
+        console.log("could not find user");
+        notifyStandard({
+          information: {
+            type: "warning",
+            content: "Could not find the user",
+          },
+          id: "userUploadError",
+        });
+        return;
       }
 
       let [ownOffers, reviewSection] = await Promise.all([

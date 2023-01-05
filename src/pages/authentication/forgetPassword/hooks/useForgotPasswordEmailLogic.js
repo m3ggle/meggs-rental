@@ -1,5 +1,6 @@
 import { sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { toastNotify } from "../../../../components/toastNotify/toastNotify";
 import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
 import { auth } from "../../../../firebase.config";
 import { useGetUserByEmail } from "../../../../hooks/firebase/useGetUserByEmail";
@@ -8,21 +9,21 @@ export const useForgotPasswordEmailLogic = () => {
   const { getUserByEmail } = useGetUserByEmail();
   const { dispatchNotifyModal, closeNotifyModal } = useNotifyModalContext();
   const navigate = useNavigate();
+  const { notifyStandard } = toastNotify();
 
   const onSubmit = async (data) => {
     const userInformation = await getUserByEmail(data.email);
 
-    // logged in or not
-    // if (auth.currentUser === null) {
-    //   console.log("you have to be logged in to change your password")
-    //   // todo: toast
-    //   return
-    // }
-
     // does not have an acc
     if (userInformation === undefined) {
       console.log("does have an account");
-      // Todo: this email does not exist in our database
+      notifyStandard({
+        information: {
+          type: "warning",
+          content: "Email address does not exist",
+        },
+        id: "userUploadError",
+      });
       return;
     }
 
@@ -30,7 +31,13 @@ export const useForgotPasswordEmailLogic = () => {
     if (data.email !== auth.currentUser.email) {
       console.log(data.email);
       console.log(auth.currentUser.email);
-      // todo: toast, this is not your email address
+      notifyStandard({
+        information: {
+          type: "warning",
+          content: "This is not your email address",
+        },
+        id: "userUploadError",
+      });
       return;
     }
 
@@ -61,7 +68,13 @@ export const useForgotPasswordEmailLogic = () => {
                   sendPasswordResetEmail(auth, data.email).catch((error) =>
                     console.log(error)
                   );
-                  // Todo: toast, email was send
+                  notifyStandard({
+                    information: {
+                      type: "warning",
+                      content: "Email was send",
+                    },
+                    id: "userUploadError",
+                  });
                 },
               },
               secondaryButton: {
@@ -77,10 +90,16 @@ export const useForgotPasswordEmailLogic = () => {
         });
       })
       .catch((error) => {
-        // Todo: toast error
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        notifyStandard({
+          information: {
+            type: "warning",
+            content: errorMessage.split(":")[1],
+          },
+          id: "userUploadError",
+        });
+        console.log("error code: " + errorCode, "error msg: " + errorMessage);
       });
   };
 

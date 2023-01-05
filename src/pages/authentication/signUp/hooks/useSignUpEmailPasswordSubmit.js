@@ -3,6 +3,7 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 import { firestoreSetUser } from "../../../../api/firebase/useSetUserAPI";
+import { toastNotify } from "../../../../components/toastNotify/toastNotify";
 import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
 import { auth } from "../../../../firebase.config";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
@@ -12,6 +13,7 @@ export const useSignUpEmailPasswordSubmit = () => {
   const { handleStorage } = useMultiStepHelper();
   const { setSingleParam } = useUrlManipulation();
   const { dispatchNotifyModal, closeNotifyModal } = useNotifyModalContext();
+  const { notifyStandard } = toastNotify();
 
   const desktopPhotoUrl =
     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeCars.webp?alt=media&token=51d51fb2-414d-44a4-a549-40a36666b7cb";
@@ -21,9 +23,21 @@ export const useSignUpEmailPasswordSubmit = () => {
   const modalHandleSendAgain = async () => {
     try {
       await sendEmailVerification(auth.currentUser);
-      // todo: toast, we send an verification email
+      notifyStandard({
+        information: {
+          type: "info",
+          content: "We send an verification email",
+        },
+        id: "sendVerifyEmail",
+      });
     } catch (error) {
-      // todo: toast, error
+      notifyStandard({
+        information: {
+          type: "info",
+          content: error.message.split(":")[1],
+        },
+        id: "sendAgainError",
+      });
       console.log(error.code);
       console.log(error.message);
     }
@@ -89,7 +103,13 @@ export const useSignUpEmailPasswordSubmit = () => {
       }
     } catch (error) {
       // most likely: email already exists
-      // Todo: toast msg
+      notifyStandard({
+        information: {
+          type: "info",
+          content: error.message.split(":")[1],
+        },
+        id: "sendVerifyEmail",
+      });
       console.error(error.message);
     }
   };

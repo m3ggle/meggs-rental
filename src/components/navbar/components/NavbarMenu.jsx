@@ -89,7 +89,7 @@ const NavbarMenu = ({ handleClickNavigation }) => {
         <span>Favorites</span>
       </div>
       <div
-        onClick={() => handleClickNavigation("/user-offers")}
+        onClick={() => handleClickNavigation("/users-offers")}
         className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
       >
         <div className="fa-solid fa-file flex h-11 w-11 items-center justify-center text-[18px]"></div>

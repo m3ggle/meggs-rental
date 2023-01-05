@@ -3,11 +3,13 @@ import Btn from "../../components/common/Btn";
 
 const PrivacyPolicy = () => {
   const handleClick = async () => {
-    console.log("hallo");
+    const link = "/users-offers?id";
+    const page = link.split("?")[0];
+    console.log(page);
   };
 
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2">
+    <div className="relative flex h-screen w-full flex-col items-center justify-center gap-y-2">
       <div className="h-fit w-fit">
         <Btn
           title="click to open"

@@ -16,13 +16,13 @@ export const profileButtonListData = [
       },
       {
         btnTitle: "Update E-Mail",
-        icon: "fa-solid fa-clock-rotate-left", //fa-solid fa-at
+        icon: "fa-solid fa-at",
         link: "/update-email",
         id: "8f13a821-4ee7-4e74-9e78-2dd05717d450",
       },
       {
         btnTitle: "Update Password",
-        icon: "fa-solid fa-clock-rotate-left", //fa-solid fa-unlock
+        icon: "fa-solid fa-unlock",
         link: "/update-password",
         id: "0f2b9b27-ed81-4f7b-8a40-86d89b375e7d",
       },

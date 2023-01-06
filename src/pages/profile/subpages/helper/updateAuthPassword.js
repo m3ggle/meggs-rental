@@ -2,14 +2,16 @@ import { signInWithEmailAndPassword, updatePassword } from "firebase/auth";
 import { toastNotify } from "../../../../components/toastNotify/toastNotify";
 import { auth } from "../../../../firebase.config";
 
-export const updateAuthPassword = async ({
-  email,
-  oldPassword,
-  newPassword,
-}) => {
+export const updateAuthPassword = async ({ currentPassword, newPassword }) => {
   const { notifyStandard } = toastNotify();
 
-  await signInWithEmailAndPassword(auth, email, oldPassword)
+  let errorReturn;
+
+  await signInWithEmailAndPassword(
+    auth,
+    auth.currentUser.email,
+    currentPassword
+  )
     .then(() => {
       updatePassword(auth.currentUser, newPassword)
         .then(() => {
@@ -25,21 +27,23 @@ export const updateAuthPassword = async ({
           notifyStandard({
             information: {
               type: "warning",
-              content: error.message.split(":")[1],
+              content: error.message.split("/")[1].replace(").", ""),
             },
             id: "updatePasswordError",
           });
-          console.log(error.message);
+          errorReturn = error.message
         });
     })
     .catch((error) => {
       notifyStandard({
         information: {
           type: "warning",
-          content: error.message.split(":")[1],
+          content: error.message.split("/")[1].replace(").", ""),
         },
         id: "signInError",
       });
-      console.log(error.message);
+      errorReturn = error.message;
     });
+  
+  return errorReturn
 };

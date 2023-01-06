@@ -84,7 +84,7 @@ export const useSignInEmailPasswordLogic = () => {
         notifyStandard({
           information: {
             type: "warning",
-            content: error.message.split(":")[1],
+            content: error.message.split("/")[1].replace(").", ""),
           },
           id: "signInError",
         });

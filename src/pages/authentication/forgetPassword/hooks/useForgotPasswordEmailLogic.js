@@ -95,7 +95,7 @@ export const useForgotPasswordEmailLogic = () => {
         notifyStandard({
           information: {
             type: "warning",
-            content: errorMessage.split(":")[1],
+            content: errorMessage.split("/")[1].replace(").", ""),
           },
           id: "userUploadError",
         });

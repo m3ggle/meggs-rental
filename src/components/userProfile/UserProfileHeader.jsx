@@ -1,13 +1,20 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { useUserDetailsModalContext } from "../../context/userDetailsModal/userDetailsModalContext";
 import { getAge } from "../../helper/getAge";
 
 const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
-  const { firstName, lastName, birthday, email, photoURL, uid } = userProfileData;
+  const { firstName, lastName, birthday, email, photoURL, uid } =
+    userProfileData;
 
   const { openUserDetailsModal } = useUserDetailsModalContext();
+  const locationPath = useLocation().pathname;
 
   const handleClick = () => {
+    if (locationPath === "/profile") {
+      console.log("choose a image as your new profile pic");
+      return
+    }
     if (!modal) openUserDetailsModal(uid);
   };
 
@@ -16,11 +23,14 @@ const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
       onClick={handleClick}
       className="flex w-full cursor-pointer flex-col items-center gap-y-2"
     >
-      <img
-        className="h-[84px] w-[84px] rounded-full object-cover object-center shadow"
-        src={photoURL}
-        alt="user"
-      />
+      <div
+        className="h-[84px] w-[84px] overflow-hidden rounded-full bg-cover bg-center shadow"
+        style={{ backgroundImage: `url(${photoURL})` }}
+      >
+        {locationPath === "/profile" && (
+          <i className="fa-solid fa-camera flex h-full w-full items-center justify-center bg-lmGrey900/20 text-[28px] text-lmGrey100/60 duration-300 hover:bg-lmGrey900/60 hover:text-lmGrey25" />
+        )}
+      </div>
       <div className="flex w-full flex-col items-center gap-y-[2px] text-sm text-lmGrey600 dark:text-dmGrey100">
         <div className="flex w-full items-center justify-center gap-x-[2px]">
           <span className="w-full truncate text-right text-lg text-lmGrey800 dark:text-dmGrey25">

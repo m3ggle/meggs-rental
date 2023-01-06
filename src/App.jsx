@@ -12,8 +12,7 @@ import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAut
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
 import SignIn from "./pages/authentication/signIn/SignIn";
 import SignUp from "./pages/authentication/signUp/SignUp";
-import UpdateEmail from "./pages/authentication/updateEmail/UpdateEmail";
-import UpdatePassword from "./pages/authentication/updatePassword/UpdatePassword";
+import UpdateEmailPassword from "./pages/authentication/updateEmailPassword/UpdateEmailPassword";
 import Chat from "./pages/chat/Chat";
 import ChatMain from "./pages/chat/view/chatMain/ChatMain";
 import ChatSidebar from "./pages/chat/view/chatSidebar/ChatSidebar";
@@ -106,8 +105,11 @@ export default function App() {
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/update-email" element={<UpdateEmail />} />
-              <Route path="/update-password" element={<UpdatePassword />} />
+              <Route path="/update-email" element={<UpdateEmailPassword />} />
+              <Route
+                path="/update-password"
+                element={<UpdateEmailPassword />}
+              />
 
               <Route path="/*" element={<NotFound />} />
             </Routes>

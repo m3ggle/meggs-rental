@@ -1,3 +1,4 @@
+// signed in or not
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useNotifyModalContext } from "../../context/notifyModal/notifyModalContext";

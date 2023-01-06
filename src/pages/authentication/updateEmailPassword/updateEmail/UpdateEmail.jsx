@@ -3,13 +3,22 @@ import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
+import { auth } from "../../../../firebase.config";
 import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
+import { updateAuthEmail } from "../../../profile/subpages/helper/updateAuthEmail";
 
 const UpdateEmail = () => {
   const { control, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = () => {};
+  const onSubmit = async (data) => {
+    const {newEmail, currentPassword} = data
+    const result = await updateAuthEmail({newEmail, currentPassword});
+    
+    // ironically this means everything went alright else there would be the error stored innit
+    result === undefined && navigate("/profile");
+  };
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -79,6 +88,9 @@ const UpdateEmail = () => {
         underBtnFirstText="Want to update your password?"
         underBtnFirstLinkText="Here"
         underBtnFirstOnClick={() => navigate("/update-password")}
+        underBtnSecondText="Forgot your password?"
+        underBtnSecondLinkText="Let's fix that"
+        underBtnSecondOnClick={() => navigate("/forgot-password")}
       />
     </form>
   );

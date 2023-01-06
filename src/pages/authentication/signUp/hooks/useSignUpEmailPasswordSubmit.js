@@ -34,7 +34,7 @@ export const useSignUpEmailPasswordSubmit = () => {
       notifyStandard({
         information: {
           type: "info",
-          content: error.message.split(":")[1],
+          content: error.message.split("/")[1].replace(").", ""),
         },
         id: "sendAgainError",
       });
@@ -106,7 +106,7 @@ export const useSignUpEmailPasswordSubmit = () => {
       notifyStandard({
         information: {
           type: "info",
-          content: error.message.split(":")[1],
+          content: error.message.split("/")[1].replace(").", ""),
         },
         id: "sendVerifyEmail",
       });

@@ -16,31 +16,6 @@ const ForgotPasswordPassword = () => {
     >
       <div className="flex w-full flex-col gap-y-2">
         <Controller
-          name="oldPassword"
-          control={control}
-          rules={{
-            required: "Old Password is required",
-            pattern: {
-              value: regexPassword,
-              message:
-                "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
-            },
-          }}
-          render={({ field, fieldState }) => (
-            <TextInput
-              firstIcon="fa-solid fa-lock"
-              onChange={field.onChange}
-              label="Old Password"
-              placeholder="••••••"
-              type="password"
-              value={field.value}
-              onBlur={field.onBlur}
-              error={fieldState.error}
-            />
-          )}
-        />
-
-        <Controller
           name="newPassword"
           control={control}
           rules={{

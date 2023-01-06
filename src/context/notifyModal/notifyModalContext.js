@@ -134,7 +134,7 @@ export const NotifyModalProvider = ({ children }) => {
                   notifyStandard({
                     information: {
                       type: "error",
-                      content: error.message.split(":")[1],
+                      content: error.message.split("/")[1].replace(").", ""),
                     },
                     id: "emailVerificationError",
                   });

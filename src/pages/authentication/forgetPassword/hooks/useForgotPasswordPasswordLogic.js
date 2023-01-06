@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword, updatePassword } from "firebase/auth";
+import { confirmPasswordReset } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toastNotify } from "../../../../components/toastNotify/toastNotify";
 import { auth } from "../../../../firebase.config";
@@ -10,54 +10,30 @@ export const useForgotPasswordPasswordLogic = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    const userEmail = getSingleParam("email") ?? undefined;
+    // const userEmail = getSingleParam("email") ?? undefined;
+    const oobCode = getSingleParam("oobCode");
 
-    if (userEmail) {
-      // recent sign in is required for updatePassword else, bug
-      signInWithEmailAndPassword(auth, userEmail, data.oldPassword)
-        .then(() => {
-          updatePassword(auth.currentUser, data.newPassword)
-            .then(() => {
-              notifyStandard({
-                information: {
-                  type: "check",
-                  content: "Password got updated",
-                },
-                id: "passwordUpdate",
-              });
-              navigate("/profile");
-            })
-            .catch((error) => {
-              notifyStandard({
-                information: {
-                  type: "warning",
-                  content: error.message.split(":")[1],
-                },
-                id: "error",
-              });
-              console.log(error.code, error.message);
-            });
-        })
-        .catch((error) => {
-          notifyStandard({
-            information: {
-              type: "warning",
-              content: "Probably wrong password",
-            },
-            id: "wrongPassword",
-          });
-          console.log(error.message);
+    confirmPasswordReset(auth, oobCode, data.newPassword)
+      .then(() => {
+        notifyStandard({
+          information: {
+            type: "check",
+            content: "Password got updated",
+          },
+          id: "passwordUpdate",
         });
-    } else {
-      notifyStandard({
-        information: {
-          type: "warning",
-          content: "Use the link in the Email",
-        },
-        id: "incorrectLink",
+        navigate("/profile");
+      })
+      .catch((error) => {
+        notifyStandard({
+          information: {
+            type: "warning",
+            content: error.message.split("/")[1].replace(").", ""),
+          },
+          id: "forgotPasswordError",
+        });
+        console.log(error.code, error.message);
       });
-    }
   };
-
   return { onSubmit };
 };

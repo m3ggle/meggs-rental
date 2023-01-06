@@ -9,9 +9,14 @@ import { updateAuthPassword } from "../../../profile/subpages/helper/updateAuthP
 const UpdatePassword = () => {
   const { control, handleSubmit } = useForm();
   const navigate = useNavigate();
+   
+  // react query (
+  // if possible pass in the function, uid
+
 
   const onSubmit = async (data) => {
     const { currentPassword, newPassword } = data;
+    // refetch
     const result = await updateAuthPassword({ currentPassword, newPassword });
 
     // ironically this means everything went alright else there would be the error stored innit

@@ -78,6 +78,19 @@ export const UserDetailsModalProvider = ({ children }) => {
     });
   }, []);
 
+
+  // const {data: userDataRQ, isLoading, error, isError, refetch: handleGetUserDetails} = 
+  //   useQuery(
+  //     ["userDetailsModal", uid], 
+  //     () => getUserDetails(userId),
+  //     {
+  //       enabled: false,
+  //       refetchOnMount: false,
+  //       refetchOnWindowFocus: false,
+  //     }
+  //   )
+
+  // getUserDetails
   const handleGetUserDetails = useCallback(
     async (userId) => {
       const userData = await getUserFirestore(userId);

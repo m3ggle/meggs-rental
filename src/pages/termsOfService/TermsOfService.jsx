@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
+import { useQuery } from "react-query";
 import Btn from "../../components/common/Btn";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useAnother } from "./hooks/useAnother";
@@ -20,20 +20,20 @@ const fetchPerson = () => {
 
 // polling is the process of (re-)fetching in a regular interval
 
-// 
+//
 
 const TermsOfService = () => {
   const { debounce } = useDebounce();
 
   const onSuccessMsg = (data) => {
-    console.log(data)
-    console.log("perform sideeffect after data fetching")
-  }
-  
+    console.log(data);
+    console.log("perform sideeffect after data fetching");
+  };
+
   const onErrorMsg = (error) => {
     console.log(error);
-    console.log("perform sideeffect after error")
-  }
+    console.log("perform sideeffect after error");
+  };
 
   const { data, isLoading, isError, error } = useQuery(
     ["map-autocomplete"],
@@ -50,22 +50,25 @@ const TermsOfService = () => {
     data: dataP,
     isLoading: isLoadingP,
     refetch: fetchThePerson,
-    isFetching
+    isFetching,
   } = useQuery(["fetch-person"], fetchPerson, {
-    enabled: false, // does not fetch on mount so we are going to fetch manually 
+    enabled: false, // does not fetch on mount so we are going to fetch manually
     // after clicking for the first time, the next times it wont be a fetch, it will be a background fetch
     onSuccess: onSuccessMsg,
     onError: onErrorMsg,
     select: (data) => {
-      const heroNames = data.data.map(hero => hero.name)
-      return heroNames // array of heroNames (if data.data is an Array it would work)
-    },// data transformation, changes the return data (dataP) to the one we return here
+      const heroNames = data.data.map((hero) => hero.name);
+      return heroNames; // array of heroNames (if data.data is an Array it would work)
+    }, // data transformation, changes the return data (dataP) to the one we return here
   });
 
-  const tosaSuccess = (data) => console.log("hook and api works: ", data.data.name)
-  const { data: dataPlanet, refetch: refetchPlanet } = useTOSAPI({onSuccessCallback: tosaSuccess});
+  const tosaSuccess = (data) =>
+    console.log("hook and api works: ", data.data.name);
+  const { data: dataPlanet, refetch: refetchPlanet } = useTOSAPI({
+    onSuccessCallback: tosaSuccess,
+  });
 
-  const anotherSuccess = (data) => console.log("another one: ", data.data.name)
+  const anotherSuccess = (data) => console.log("another one: ", data.data.name);
   const { data: specificData, refetch: specificFunc } = useAnother({
     personId: 10,
     onSuccessCallback: anotherSuccess,

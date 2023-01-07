@@ -1,5 +1,5 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LogoImg from "./components/LogoImg";
 import DropdownMode from "./components/navbar/DropdownMode";

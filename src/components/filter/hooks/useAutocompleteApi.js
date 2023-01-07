@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useQuery } from "react-query";
 
 const fetchAutocompleteOptions = (value) => {
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;

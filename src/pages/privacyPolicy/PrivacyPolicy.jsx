@@ -1,12 +1,12 @@
-import { collection, getDocs, limit, query, where } from "firebase/firestore";
 import React from "react";
 import Btn from "../../components/common/Btn";
 import supabase from "../../config/supabaseClient";
-import { db } from "../../firebase.config";
 
 const PrivacyPolicy = () => {
   const handleClick = async () => {
-    console.log(supabase);
+    const {error, data} = await supabase.from("offers").select("*")
+
+    console.log(data)
   };
 
   return (

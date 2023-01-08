@@ -17,6 +17,7 @@
     "framer-motion": "^7.6.1",
     "leaflet": "^1.9.3",
     "mapbox-gl": "^2.11.0",
+    "prisma": "^4.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.38.0",
@@ -61,6 +62,7 @@
     ]
   },
   "devDependencies": {
+    "@prisma/client": "^4.8.1",
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",

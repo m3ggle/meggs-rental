@@ -5,3 +5,5 @@ const supabaseKey = process.env.REACT_APP_ANON_KEY ;
 const supabase = createClient(supabaseUrl, supabaseKey);
  
 export default supabase
+
+// refer to image in storage: https://[project_ref].supabase.co/storage/v1/object/public/[id]

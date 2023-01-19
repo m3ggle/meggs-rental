@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import supabase from "../../../config/supabaseClient";
 import { useMapCoordContext } from "../../../context/map/mapCoord/mapCoordContext";
 import { useMapSubContext } from "../../../context/map/mapSub/mapSubContext";
 import ExampleData from "../../../ExampleData";
@@ -76,6 +77,19 @@ const Map = () => {
     [bounds]
   );
 
+  const supabaseTest = async () => {
+    const prep = {
+      east_: bounds.east,
+      north_: bounds.north,
+      south_: bounds.south,
+      west_: bounds.west
+    };
+
+    // let { data, error } = await supabase.rpc("get_offers_by_bbox", prep);
+    // if (error) console.error(error);
+    // else console.log(data);
+  };
+
   // mock (waiting on the api)
   const refetching = async () => {
     return await new Promise(() => {
@@ -83,6 +97,7 @@ const Map = () => {
         console.log("bounds changed, fetching");
         // console.log("refetching for 1 seconds");
         setFilteredBoundsOffers(filterByBounds(filteredOffers ?? offers));
+
         setIsLoading(false);
       }, 1000);
     });
@@ -93,6 +108,7 @@ const Map = () => {
     const identifier = setTimeout(() => {
       if (Object.keys(bounds).length > 0) {
         setIsLoading(true);
+        supabaseTest();
         refetching();
       }
     }, 1000);

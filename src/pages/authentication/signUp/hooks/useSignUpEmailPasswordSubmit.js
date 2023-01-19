@@ -4,6 +4,7 @@ import {
 } from "firebase/auth";
 import { firestoreSetUser } from "../../../../api/firebase/useSetUserAPI";
 import { toastNotify } from "../../../../components/toastNotify/toastNotify";
+import supabase from "../../../../config/supabaseClient";
 import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
 import { auth } from "../../../../firebase.config";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
@@ -75,10 +76,27 @@ export const useSignUpEmailPasswordSubmit = () => {
     });
   };
 
-  const onSubmit = async (data) => {
-    const { email, password } = data;
+  const onSubmit = async (formData) => {
+    const { data, error } = await supabase.auth.signUp(formData);
+    console.log(data, error)
 
-    try {
+    // error is always null 
+    if (error) {
+      notifyStandard({
+        information: {
+          type: "info",
+          content: error.message.split("/")[1].replace(").", ""),
+        },
+        id: "sendVerifyEmail",
+      });
+      console.error(error.message);
+      return
+    } 
+
+    console.log(data)
+    // automatically sends verification email
+
+    /*try {
       const credentials = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -112,6 +130,7 @@ export const useSignUpEmailPasswordSubmit = () => {
       });
       console.error(error.message);
     }
+    */
   };
 
   return { onSubmit };

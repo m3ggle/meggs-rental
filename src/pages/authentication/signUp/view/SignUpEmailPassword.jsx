@@ -1,5 +1,6 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
@@ -10,14 +11,30 @@ import { useSignUpEmailPasswordSubmit } from "../hooks/useSignUpEmailPasswordSub
 // Todo: different kinds of status like loading error and success, for that use react-query
 
 const SignUpEmailPassword = () => {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, watch } = useForm();
   const { email, password } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
   const navigate = useNavigate();
-  const { onSubmit } = useSignUpEmailPasswordSubmit();
+  // const { onSubmit } = useSignUpEmailPasswordSubmit();
   const { handleGoogle } = useMultiStepHelper();
 
   const handleSignInClick = () => navigate("/sign-in");
+
+  const signUpUser = async () => {
+    console.log()
+  }
+
+  const { data, isLoading, isError, error, refetch } = useQuery(
+    ["map-autocomplete", watch("email"), watch("password")],
+    signUpUser,
+    {
+      enabled: false,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  const onSubmit = () => refetch();
 
   return (
     <form

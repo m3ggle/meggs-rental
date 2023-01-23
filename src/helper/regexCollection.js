@@ -11,3 +11,5 @@ export const regexTelephoneNumber =
 export const regexName = /^[A-Za-z]{3,}/i;
 
 export const regexNumbersOnly = /^\d+$/;
+
+export const regexUserName = /^[a-zA-Z0-9]{3,}/;

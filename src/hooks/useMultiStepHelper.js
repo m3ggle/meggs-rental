@@ -17,10 +17,13 @@ export const useMultiStepHelper = () => {
   const locationPathname = useLocation().pathname;
 
   useEffect(() => {
-    !getSingleParam("round") && setSingleParam("round", 1);
+    if (locationPathname !== "/sign-in") {
+      !getSingleParam("round") && setSingleParam("round", 1);
+    }
   }, [searchParams]);
 
   // all functions
+  // todo: firebase -> supabase
   const handleGoogle = async () => {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);

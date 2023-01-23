@@ -1,18 +1,22 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import TextInput from "../../../../components/input/TextInput";
 import BottomPart from "../../../../components/authentication/BottomPart";
+import TextInput from "../../../../components/input/TextInput";
 import { regexName } from "../../../../helper/regexCollection";
+import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
+import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
 
-const SignUpName = ({ handleCallback }) => {
+const SignUpName = () => {
   const { firstName, lastName } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
-  
+
   const { control, handleSubmit } = useForm();
-  
+  const { handleStorage } = useMultiStepHelper();
+  const { getSingleParam, setSingleParam } = useUrlManipulation();
+
   const onSubmit = (data) => {
-    const nextStep = true;
-    handleCallback({ data, nextStep });
+    handleStorage(data, "signUpData");
+    setSingleParam("round", +getSingleParam("round") + 1);
   };
 
   return (

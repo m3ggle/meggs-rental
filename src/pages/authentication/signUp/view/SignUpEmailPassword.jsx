@@ -1,7 +1,5 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
 import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
@@ -11,30 +9,12 @@ import { useSignUpEmailPasswordSubmit } from "../hooks/useSignUpEmailPasswordSub
 // Todo: different kinds of status like loading error and success, for that use react-query
 
 const SignUpEmailPassword = () => {
-  const { control, handleSubmit, watch } = useForm();
+  const { control, handleSubmit } = useForm();
   const { email, password } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
-  const navigate = useNavigate();
-  // const { onSubmit } = useSignUpEmailPasswordSubmit();
+  const { onSubmit, isLoading, handleEmailChange } =
+    useSignUpEmailPasswordSubmit();
   const { handleGoogle } = useMultiStepHelper();
-
-  const handleSignInClick = () => navigate("/sign-in");
-
-  const signUpUser = async () => {
-    console.log()
-  }
-
-  const { data, isLoading, isError, error, refetch } = useQuery(
-    ["map-autocomplete", watch("email"), watch("password")],
-    signUpUser,
-    {
-      enabled: false,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-    }
-  );
-
-  const onSubmit = () => refetch();
 
   return (
     <form
@@ -56,7 +36,10 @@ const SignUpEmailPassword = () => {
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-at"
-              onChange={field.onChange}
+              onChange={(e) => {
+                field.onChange(e);
+                handleEmailChange(e);
+              }}
               label="Email"
               placeholder="maxMustermann@web.de"
               value={field.value}
@@ -93,16 +76,14 @@ const SignUpEmailPassword = () => {
       </div>
       <BottomPart
         firstBtn="primary"
-        firstBtnTitle="Send Email For Confirmation"
+        firstBtnTitle="Create Account"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
+        firstBtnIsLoading={isLoading}
         secondBtn="secondary"
-        secondBtnTitle="Sign Up with Google"
+        secondBtnTitle="Create Account with Google"
         secondBtnType="button"
         secondBtnOnClick={handleGoogle}
-        underBtnFirstText="Already have an Account?"
-        underBtnFirstLinkText="Sign In instead"
-        underBtnFirstOnClick={handleSignInClick}
       />
     </form>
   );

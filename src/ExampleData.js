@@ -1,15 +1,3 @@
-const signUpRounds = [
-  {
-    title: "Create a new account",
-  },
-  {
-    title: "Almost finished",
-  },
-  {
-    title: "Last step, promised 🤞",
-  },
-];
-
 const forgotPasswordRounds = [
   {
     title: "Forgot your password?",
@@ -1086,7 +1074,6 @@ const ExampleData = () => {
     yesNoSelect,
     eatingSelect,
     smokingSelect,
-    signUpRounds,
     forgotPasswordRounds,
     citiesAutocomplete,
     messages,

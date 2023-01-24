@@ -8,7 +8,7 @@ import { useSignUpUserNameCityHelpers } from "../hooks/useSignUpUserNameCityHelp
 import { useSignUpUserNameCitySubmit } from "../hooks/useSignUpUserNameCitySubmit";
 
 const SignUpUserNameCity = () => {
-  const { userName } = JSON.parse(localStorage.getItem("signUpData")) ?? false;
+  const { userName, city } = JSON.parse(localStorage.getItem("signUpData")) ?? false;
 
   const { control, handleSubmit } = useForm();
   const { handleGoBack, autocompleteCallback, handleUserNameChange } =
@@ -50,6 +50,7 @@ const SignUpUserNameCity = () => {
           )}
         />
         <MobileCatalogAutocomplete
+          value={city ? city : undefined}
           label="Preferred city (default Berlin)"
           definedActions="mapCatalog"
           control={control}

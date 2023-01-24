@@ -10,6 +10,12 @@ export const useSignUpHandleModal = () => {
   const mobilePhotoUrl =
     "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2Fmoped.webp?alt=media&token=c3fbae96-06a8-4121-9067-25ca1dcea4af";
 
+  // megglebande@web.de
+  // Tester123+
+  // BisdassderTodunsscheidet211001
+
+  // 2023-01-22 00:00:00.108234+00
+
   const handleModal = (email) => {
     dispatchNotifyModal({
       type: "SET_NOTIFY_MODAL",
@@ -25,12 +31,12 @@ export const useSignUpHandleModal = () => {
             `Nothing? Then the email is already in use, try to sign in.`,
           ],
           primaryButton: {
-            title: "Sign In",
-            function: navigate(`/sign-in?email=${email}`),
-          },
-          secondaryButton: {
             title: "Close",
             function: closeNotifyModal,
+          },
+          secondaryButton: {
+            title: "Sign In",
+            function: navigate(`/sign-in?email=${email}`),
           },
         },
         photoURL: {

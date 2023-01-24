@@ -22,7 +22,7 @@ export const useSignUpUserNameCityHelpers = () => {
 
   // todo: old version, solve it with url manipulation
   const handleGoBack = () => {
-    setSingleParam("round", +getSingleParam("round") + 1);
+    setSingleParam("round", +getSingleParam("round") - 1);
   };
 
   // autocomplete stuff

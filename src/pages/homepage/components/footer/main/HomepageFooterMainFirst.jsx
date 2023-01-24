@@ -1,5 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
+import Btn from "../../../../../components/common/Btn";
+import supabase from "../../../../../config/supabaseClient";
 import HomepageContactModal from "./HomepageContactModal";
 import { useMainFirstLogic } from "./hooks/useMainFirstLogic";
 
@@ -12,6 +14,17 @@ const HomepageFooterMainFirst = () => {
     animate: { opacity: 1, width: "140px", height: "52px" },
     transition: { duration: 0.3 },
   };
+
+  const handleClick = async () => {
+    const { data, error } = await supabase.auth.getSession()
+
+    if (error) {
+      console.log(error)
+      return 
+    }
+
+    console.log(data)
+  }
 
   return (
     <div className="flex w-full flex-col gap-y-6 1200:p-6">
@@ -69,6 +82,13 @@ const HomepageFooterMainFirst = () => {
         isOpen={isOpen}
         closeModal={closeModal}
         email={email}
+      />
+
+      <Btn
+        onClick={handleClick}
+        title="Get Session"
+        type='button'
+        uiType='primary'
       />
     </div>
   );

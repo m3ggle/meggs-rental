@@ -13,13 +13,37 @@ export const useSignUpUserNameCitySubmit = () => {
       user_name: data.userName,
     });
 
-    if (!userNameExists) {
-      handleStorage(data, "signUpData");
-      setSingleParam("round", +getSingleParam("round") + 1);
+    if (userNameExists) {
+      notifyUserNameExist();
       return;
     }
 
-    notifyUserNameExist();
+    // if no city, set it to berlin
+    if (!data.city) {
+      data.city = "Berlin, Germany";
+      handleStorage(handleCityDefault(), "signUpData");
+    }
+
+    handleStorage(data, "signUpData");
+    setSingleParam("round", +getSingleParam("round") + 1);
+  };
+
+  const handleCityDefault = () => {
+    const preferredCity = {
+      bounds: {
+        north: 52.675502098,
+        east: 13.761131097,
+        south: 52.338260903,
+        west: 13.088359904,
+      },
+      center: {
+        lat: 52.5170365,
+        lng: 13.3888599,
+      },
+      name: "Berlin, Germany",
+    };
+
+    return { preferredCity };
   };
 
   return { onSubmit };

@@ -29,7 +29,7 @@ const SignUpUserNameCity = () => {
             pattern: {
               value: regexUserName,
               message:
-                "Only letters and numbers are allowed, minimum length of 3",
+                "Only letters and numbers, hyphen and underscore are allowed, min. characters of 3 and max. 14",
             },
           }}
           defaultValue={userName ? userName : undefined}

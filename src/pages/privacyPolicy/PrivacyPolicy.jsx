@@ -4,26 +4,16 @@ import supabase from "../../config/supabaseClient";
 
 const PrivacyPolicy = () => {
   const handleClick = async () => {
-    const userMetaData = {
-      first_name: "Meggle",
-      last_name: "Bande",
-      user_name: "m1ggle",
-    };
+    // const { data, error } = await supabase.auth.signInWithPassword({
+    //   email: "meggle@web.de",
+    //   password: "Tester123+",
+    // });
 
-    const { data, error } = await supabase.auth.signUp({
-      email: "example@email.com",
-      password: "example-password",
-      options: {
-        data: { ...userMetaData },
-      },
-    });
+    // console.log("error", error)
+    // console.log("data", data)
 
-    if (error) {
-      console.log(error)
-      return
-    }
-
-    console.log(data)
+    const { error } = await supabase.auth.signOut();
+    console.log(error)
   };
 
   return (

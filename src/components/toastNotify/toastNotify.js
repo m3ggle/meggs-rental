@@ -50,7 +50,7 @@ export const toastNotify = () => {
     });
   };
 
-  const notifyStandard = ({ information, id }) => {
+  const notifyStandard = ({ information = {type: "",  msg: ""}, id }) => {
     toast.custom((t) => <ToastStandard information={information} t={t} />, {
       id: id ?? "message",
     });

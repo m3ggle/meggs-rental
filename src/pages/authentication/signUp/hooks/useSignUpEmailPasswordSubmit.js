@@ -16,7 +16,6 @@ export const useSignUpEmailPasswordSubmit = () => {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
 
   const onSubmit = async (formData) => {
     // preparation
@@ -95,6 +94,5 @@ export const useSignUpEmailPasswordSubmit = () => {
     handleEmailChange,
     handleGoogle,
     isLoading,
-    isLoadingGoogle,
   };
 };

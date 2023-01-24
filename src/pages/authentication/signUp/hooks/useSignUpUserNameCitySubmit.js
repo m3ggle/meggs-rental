@@ -8,7 +8,7 @@ export const useSignUpUserNameCitySubmit = () => {
   const { handleStorage } = useMultiStepHelper();
   const { getSingleParam, setSingleParam } = useUrlManipulation();
 
-  const onSubmit = async (data) => {
+  const onSubmitBody = async (data) => {
     let { data: userNameExists } = await supabase.rpc("check_user_name_taken", {
       user_name: data.userName,
     });
@@ -25,6 +25,11 @@ export const useSignUpUserNameCitySubmit = () => {
     }
 
     handleStorage(data, "signUpData");
+    return data
+  };
+
+  const onSubmit = async (data) => {
+    onSubmitBody(data);
     setSingleParam("round", +getSingleParam("round") + 1);
   };
 
@@ -46,5 +51,5 @@ export const useSignUpUserNameCitySubmit = () => {
     return { preferredCity };
   };
 
-  return { onSubmit };
+  return { onSubmit, onSubmitBody, handleCityDefault };
 };

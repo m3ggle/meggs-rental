@@ -36,7 +36,10 @@ export const useSignUpHandleModal = () => {
           },
           secondaryButton: {
             title: "Sign In",
-            function: navigate(`/sign-in?email=${email}`),
+            function: () => {
+              closeNotifyModal();
+              navigate(`/sign-in?email=${email}`)
+            },
           },
         },
         photoURL: {

@@ -11,6 +11,7 @@ import UserDetailsModal from "./modals/userDetailsModal/UserDetailsModal";
 import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding";
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
 import SignIn from "./pages/authentication/signIn/SignIn";
+import GoogleCallback from "./pages/authentication/signUp/google/GoogleCallback";
 import SignUp from "./pages/authentication/signUp/SignUp";
 import UpdateEmailPassword from "./pages/authentication/updateEmailPassword/UpdateEmailPassword";
 import Chat from "./pages/chat/Chat";
@@ -104,6 +105,7 @@ export default function App() {
 
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/sign-up/google-callback" element={<GoogleCallback />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/update-email" element={<UpdateEmailPassword />} />
               <Route

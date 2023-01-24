@@ -2,31 +2,14 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import supabase from "../../../../config/supabaseClient";
 import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
+import { signInGoogle } from "../helpers/signInGoogle";
 import { useSignInEmailPasswordLogic } from "../hooks/useSignInEmailPasswordLogic";
 
 const SignInEmailPassword = () => {
   const { control, handleSubmit } = useForm();
-  const { onSubmit, handleForgotClick, handleSignUpClick } =
+  const { onSubmit, handleForgotClick, handleSignUpClick, isLoading } =
     useSignInEmailPasswordLogic();
-  // const { handleGoogle } = useMultiStepHelper();
-
-  const handleGoogle = async () => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: "http://localhost:3000/explore/catalog",
-      },
-    });
-
-    if (error) {
-      console.log(error)
-      return 
-    }
-
-    console.log(data)
-  };
 
   return (
     <form
@@ -86,10 +69,11 @@ const SignInEmailPassword = () => {
         firstBtnTitle="Sign In"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
+        firstBtnIsLoading={isLoading}
         secondBtn="secondary"
         secondBtnTitle="Sign In with Google"
         secondBtnType="button"
-        secondBtnOnClick={handleGoogle}
+        secondBtnOnClick={signInGoogle}
         underBtnFirstText="Forgot your password?"
         underBtnFirstLinkText="Let's fix that"
         underBtnFirstOnClick={handleForgotClick}

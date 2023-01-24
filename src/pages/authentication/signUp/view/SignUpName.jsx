@@ -3,21 +3,15 @@ import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
 import { regexName } from "../../../../helper/regexCollection";
-import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
-import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
+import { handleGoogleSignUp } from "../helpers/handleGoogleSignUp";
+import { useSignUpNameOnSubmit } from "../hooks/useSignUpNameOnSubmit";
 
 const SignUpName = () => {
   const { firstName, lastName } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
 
   const { control, handleSubmit } = useForm();
-  const { handleStorage } = useMultiStepHelper();
-  const { getSingleParam, setSingleParam } = useUrlManipulation();
-
-  const onSubmit = (data) => {
-    handleStorage(data, "signUpData");
-    setSingleParam("round", +getSingleParam("round") + 1);
-  };
+  const { onSubmit } = useSignUpNameOnSubmit();
 
   return (
     <form
@@ -79,6 +73,10 @@ const SignUpName = () => {
         firstBtnTitle="Continue"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
+        secondBtn="secondary"
+        secondBtnTitle="Sign Up with Google"
+        secondBtnType="button"
+        secondBtnOnClick={handleGoogleSignUp}
       />
     </form>
   );

@@ -12,4 +12,4 @@ export const regexName = /^[A-Za-z]{3,}/i;
 
 export const regexNumbersOnly = /^\d+$/;
 
-export const regexUserName = /^[a-zA-Z0-9]{3,}/;
+export const regexUserName = /^[a-zA-Z0-9\-_]{3,14}$/;

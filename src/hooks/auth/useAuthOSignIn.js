@@ -11,12 +11,13 @@ export const useAuthOSignIn = () => {
   const [userIdSignIn, setUserIdSignIn] = useState(null);
 
   // for user context
+  // !!!
   const getUserWPC = () => {
-    if (userIdSignIn !== null) {
-      return supabase.rpc("get_user_with_preferred_city", {
-        uid: userIdSignIn,
-      });
-    }
+    // if (userIdSignIn !== null) {
+    //   return supabase.rpc("get_user_with_preferred_city", {
+    //     uid: userIdSignIn,
+    //   });
+    // }
     return null;
   };
 
@@ -43,10 +44,13 @@ export const useAuthOSignIn = () => {
   });
 
   // telling db the user is online (mutating db)
+  // !!!
   const handleDbUpdate = async () => {
-    return supabase.rpc("update_user_online", {
-      uid: userIdSignIn,
-    });
+    // return supabase.rpc("update_user_online", {
+    //   uid: userIdSignIn,
+    // });
+
+    return null;
   };
 
   const dbUpdateError = () => {

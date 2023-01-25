@@ -34,7 +34,7 @@ export const useSignInEmailPasswordLogic = () => {
     setIsLoading(false);
   };
 
-  const handleSuccess = (data) => {
+  const handleSuccess = () => {
     notifyStandard({
       information: {
         type: "success",

@@ -1,19 +1,14 @@
 import React from "react";
 import Btn from "../../components/common/Btn";
 import supabase from "../../config/supabaseClient";
+import { useUserContext } from "../../context/user/userContext";
 
 const PrivacyPolicy = () => {
   const handleClick = async () => {
-    // const { data, error } = await supabase.auth.signInWithPassword({
-    //   email: "meggle@web.de",
-    //   password: "Tester123+",
-    // });
-
-    // console.log("error", error)
-    // console.log("data", data)
-
     const { error } = await supabase.auth.signOut();
-    console.log(error)
+    if (error) {
+      console.log(error)
+    }
   };
 
   return (

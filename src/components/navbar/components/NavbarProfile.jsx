@@ -3,7 +3,7 @@ import { useUserContext } from "../../../context/user/userContext";
 import UserProfileSmall from "../../userProfile/UserProfileSmall";
 
 const NavbarProfile = ({ handleClickNavigation }) => {
-  const { userData } = useUserContext();
+  const { userName, profilePictureUrl, userId } = useUserContext();
 
   const dummyFunction = () => {
     return;
@@ -17,8 +17,9 @@ const NavbarProfile = ({ handleClickNavigation }) => {
       >
         <UserProfileSmall
           text="Click to view the owners account"
-          displayName={`${userData.firstName} ${userData.lastName}`}
-          profilePic={userData.photoURL}
+          uid={userId}
+          displayName={userName}
+          photoUrl={profilePictureUrl}
           callbackFunction={dummyFunction}
         />
       </div>

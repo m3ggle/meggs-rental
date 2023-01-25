@@ -24,7 +24,7 @@ export function useNavigationContext() {
 // provider
 export const NavigationProvider = ({ children }) => {
   // hooks import
-  const { signedIn, verified } = useUserContext();
+  const { userId } = useUserContext();
 
   // reducer
   const [state, dispatchNavigation] = useReducer(
@@ -40,8 +40,9 @@ export const NavigationProvider = ({ children }) => {
       if (non.includes(item.text)) {
         return { ...item };
       }
+      
 
-      if (!signedIn || !verified) {
+      if (!userId) {
         return {
           ...item,
           icon: "fa-solid fa-lock",
@@ -55,7 +56,7 @@ export const NavigationProvider = ({ children }) => {
       type: "SET_MENU",
       payload: newMenu,
     });
-  }, [signedIn, verified]);
+  }, [userId]);
 
   // exporting provider
   return (

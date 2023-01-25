@@ -13,7 +13,7 @@ import DropdownMode from "./DropdownMode";
 const Navbar = () => {
   const { isOpen, dispatchNavigation } = useNavigationContext();
   const navigate = useNavigate();
-  const { signedIn, verified } = useUserContext();
+  const { userId } = useUserContext();
 
   const handleClickNavigation = (navigateTo) => {
     closeModal();
@@ -39,7 +39,7 @@ const Navbar = () => {
             </div>
           </div>
           <NavbarMenu handleClickNavigation={handleClickNavigation} />
-          {signedIn && verified && (
+          {userId && (
             <>
               <NavbarDivider />
               <NavbarMessage handleClickNavigation={handleClickNavigation} />

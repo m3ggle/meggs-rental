@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { regexEmail } from "../../../../../../helper/regexCollection";
+import { regexEmail } from "../../../../../../helpers/regexCollection";
 
 export const useMainFirstLogic = () => {
   const [showButton, setShowButton] = useState(false);

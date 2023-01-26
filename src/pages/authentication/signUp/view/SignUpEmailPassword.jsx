@@ -2,7 +2,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
+import { regexEmail, regexPassword } from "../../../../helpers/regexCollection";
 import { useSignUpEmailPasswordSubmit } from "../hooks/useSignUpEmailPasswordSubmit";
 import { useSignUpUserNameCityHelpers } from "../hooks/useSignUpUserNameCityHelpers";
 

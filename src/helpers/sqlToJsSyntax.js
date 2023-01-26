@@ -19,6 +19,20 @@ export const sqlToJsObject = (sqlSyntaxObject) => {
   return result;
 };
 
+export const jsToSqlObject = (jsSyntaxObject) => {
+  let result = {};
+  for (const [key, value] of Object.entries(jsSyntaxObject)) {
+    const newKey = key.split(/(?=[A-Z])/);
+    let inProcess = "";
+    newKey.forEach((part, index) => {
+      index === 0
+        ? (inProcess += part.toLocaleLowerCase())
+        : (inProcess += `_${part.toLocaleLowerCase()}`);
+    });
+    result[inProcess] = value;
+  }
+  return result
+};
 
 export const sqlToJsString = (str) => {
   let splitUp = str.split("_");
@@ -28,5 +42,5 @@ export const sqlToJsString = (str) => {
       ? (inProcess += part)
       : (inProcess += part.charAt(0).toUpperCase() + part.slice(1));
   });
-  return inProcess
-}
+  return inProcess;
+};

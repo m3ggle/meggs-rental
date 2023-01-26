@@ -11,7 +11,7 @@ export const profileButtonListData = [
       {
         btnTitle: "Personal Information",
         icon: "fa-solid fa-user",
-        link: "/profile/account",
+        link: "/profile/personal-information",
         id: "842c70a1-cac2-496a-8cd9-242673fb488f",
       },
       {

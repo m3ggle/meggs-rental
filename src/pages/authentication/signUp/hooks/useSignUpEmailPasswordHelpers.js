@@ -1,7 +1,8 @@
 import { toastNotify } from "../../../../components/toastNotify/toastNotify";
 import supabase from "../../../../config/supabaseClient";
-import { stripAnyWhiteSpace } from "../../../../helper/stripAnyWhiteSpace";
+import { stripAnyWhiteSpace } from "../../../../helpers/stripAnyWhiteSpace";
 import { useDebounce } from "../../../../hooks/useDebounce";
+import { handlePreferredCity } from "../helpers/handlePreferredCity";
 
 export const useSignUpEmailPasswordHelpers = () => {
   const { debounce } = useDebounce();
@@ -54,38 +55,17 @@ export const useSignUpEmailPasswordHelpers = () => {
   };
 
   const handleSignUpPreparation = (data) => {
-      console.log(data)
-      const { preferredCity } = data;
-      const { bounds } = preferredCity;
-      const { north, east, south, west } = bounds;
+    const preferredCity = handlePreferredCity(data.preferredCity)
 
-      let location = {};
-      location.city = stripAnyWhiteSpace(preferredCity.name.split(",")[0]);
-      if (preferredCity.name.split(",").length === 3) {
-        location.province = stripAnyWhiteSpace(preferredCity.name.split(",")[1]);
-        location.country = stripAnyWhiteSpace(preferredCity.name.split(",")[2]);
-      } else {
-        location.province = stripAnyWhiteSpace(preferredCity.name.split(",")[0]);
-        location.country = stripAnyWhiteSpace(preferredCity.name.split(",")[1]);
-      }
-
-      let userMetaData = {
-        first_name: stripAnyWhiteSpace(data.firstName),
-        last_name: stripAnyWhiteSpace(data.lastName),
-        user_name: stripAnyWhiteSpace(data.userName),
-        north,
-        east,
-        south,
-        west,
-        latitude: preferredCity.center.lat,
-        longitude: preferredCity.center.lng,
-        city: location.city,
-        province: location.province,
-        country: location.country,
-      };
-
-      return userMetaData;
+    let userMetaData = {
+      first_name: stripAnyWhiteSpace(data.firstName),
+      last_name: stripAnyWhiteSpace(data.lastName),
+      user_name: stripAnyWhiteSpace(data.userName),
+      ...preferredCity,
     };
+
+    return userMetaData;
+  };
 
   return {
     handleEmailChange,

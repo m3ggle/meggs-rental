@@ -4,14 +4,14 @@ import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
-import { regexNumbersOnly } from "../../../helper/regexCollection";
+import { regexNumbersOnly } from "../../../helpers/regexCollection";
 
 const { carTypeSelect, colorSelect } = ExampleData();
 
 const UploadCarSpec2 = ({ handleCallback }) => {
-      const { carType, milage, color } =
-        JSON.parse(localStorage.getItem("uploadData")) ?? false;
-    
+  const { carType, milage, color } =
+    JSON.parse(localStorage.getItem("uploadData")) ?? false;
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("basic info");

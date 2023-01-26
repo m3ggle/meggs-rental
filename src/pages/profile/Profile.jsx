@@ -7,15 +7,19 @@ import ProfileButtonList from "./components/ProfileButtonList";
 import { profileButtonListData } from "./data/profileButtonListData";
 
 const Profile = () => {
-  const { userData } = useUserContext();
-  if (userData !== null) {
-    console.log("profile: ", userData.email);
-}
+  const { userId, profilePictureUrl, userName, isOnline, createdAt } = useUserContext();
+  const userData = {
+    userId,
+    profilePictureUrl,
+    userName,
+    isOnline,
+    createdAt,
+  };
 
   return (
     <PageAuthChecker>
-      {userData !== null && (
-        <SignWrapper puffer={false} pic={userData.photoURL}>
+      {userId !== null && (
+        <SignWrapper puffer={false} pic={profilePictureUrl}>
           <div className="relative flex h-screen max-h-screen w-full max-w-[348px] flex-col gap-y-3 overflow-hidden px-[2px]">
             <UserProfileHeader userProfileData={userData} />
             <ProfileButtonList profileButtonList={profileButtonListData} />

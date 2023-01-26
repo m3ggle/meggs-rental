@@ -7,7 +7,7 @@ import {
   regexEmail,
   regexName,
   regexUserName,
-} from "../../../../helper/regexCollection";
+} from "../../../../helpers/regexCollection";
 import { useSignUpEmailPasswordSubmit } from "../hooks/useSignUpEmailPasswordSubmit";
 import { useSignUpUserNameCityHelpers } from "../hooks/useSignUpUserNameCityHelpers";
 import { signUpGoogleGetCurrentUser } from "./helpers/signUpGoogleGetCurrentUser";

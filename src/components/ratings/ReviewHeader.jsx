@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import { calcPercentage } from "../../helper/calcPercentage";
+import { calcPercentage } from "../../helpers/calcPercentage";
 import ReviewBar from "./ReviewBar";
 
 const ReviewHeader = ({ totalAmount, ratingDetailed }) => {
-  const { five, four, three, two, one } =
-  ratingDetailed;
+  const { five, four, three, two, one } = ratingDetailed;
 
   const [overallRating] = useState(
-    (
-      (five * 5 +
-        four * 4 +
-        three * 3 +
-        two * 2 +
-        one) /
-      totalAmount
-    ).toFixed(1)
+    ((five * 5 + four * 4 + three * 3 + two * 2 + one) / totalAmount).toFixed(1)
   );
   const [ratings] = useState({
     fiveStars: {

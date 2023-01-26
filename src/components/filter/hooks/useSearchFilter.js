@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { cleanUpFilterData } from "../../../helper/filter/cleanUpFilterData";
+import { cleanUpFilterData } from "../../../helpers/filter/cleanUpFilterData";
 import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipulation";
 
 export const useSearchFilter = () => {

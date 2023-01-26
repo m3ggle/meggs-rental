@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { notifySupabaseError } from "../../components/toastNotify/notifySupabaseError";
-import supabase from "../../config/supabaseClient";
 import { useUserContext } from "../../context/user/userContext";
-import { sqlToJsObject } from "../../helper/sqlToJsSyntax";
+import { sqlToJsObject } from "../../helpers/sqlToJsSyntax";
 import { toDesirableStructure } from "./helpers/toDesirableStructure";
 
 export const useAuthOSignIn = () => {
@@ -37,10 +36,10 @@ export const useAuthOSignIn = () => {
   };
 
   useQuery(["get_user_with_preferred_city", userIdSignIn], getUserWPC, {
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    onSuccess: onSuccessGetUserWPC,
-    onError: onErrorGetUserWPC,
+    // refetchOnMount: false,
+    // refetchOnWindowFocus: false,
+    // onSuccess: onSuccessGetUserWPC,
+    // onError: onErrorGetUserWPC,
   });
 
   // telling db the user is online (mutating db)

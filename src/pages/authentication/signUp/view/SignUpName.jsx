@@ -2,7 +2,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { regexName } from "../../../../helper/regexCollection";
+import { regexName } from "../../../../helpers/regexCollection";
 import { handleGoogleSignUp } from "../helpers/handleGoogleSignUp";
 import { useSignUpNameOnSubmit } from "../hooks/useSignUpNameOnSubmit";
 

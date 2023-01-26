@@ -3,12 +3,13 @@ import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import MobileCatalogAutocomplete from "../../../../components/filter/MobileCatalogAutocomplete";
 import TextInput from "../../../../components/input/TextInput";
-import { regexUserName } from "../../../../helper/regexCollection";
+import { regexUserName } from "../../../../helpers/regexCollection";
 import { useSignUpUserNameCityHelpers } from "../hooks/useSignUpUserNameCityHelpers";
 import { useSignUpUserNameCitySubmit } from "../hooks/useSignUpUserNameCitySubmit";
 
 const SignUpUserNameCity = () => {
-  const { userName, city } = JSON.parse(localStorage.getItem("signUpData")) ?? false;
+  const { userName, city } =
+    JSON.parse(localStorage.getItem("signUpData")) ?? false;
 
   const { control, handleSubmit } = useForm();
   const { handleGoBack, autocompleteCallback, handleUserNameChange } =

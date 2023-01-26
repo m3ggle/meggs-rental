@@ -3,16 +3,15 @@ import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { regexPassword } from "../../../../helper/regexCollection";
+import { regexPassword } from "../../../../helpers/regexCollection";
 import { updateAuthPassword } from "../../../profile/subpages/helper/updateAuthPassword";
 
 const UpdatePassword = () => {
   const { control, handleSubmit } = useForm();
   const navigate = useNavigate();
-   
+
   // react query (
   // if possible pass in the function, uid
-
 
   const onSubmit = async (data) => {
     const { currentPassword, newPassword } = data;

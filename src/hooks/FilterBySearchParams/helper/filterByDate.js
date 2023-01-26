@@ -1,5 +1,5 @@
 import { isWithinInterval } from "date-fns";
-import { createDate } from "../../../helper/date/createDate";
+import { createDate } from "../../../helpers/date/createDate";
 
 export const filterByDate = (offerList, desiredValue) =>
   offerList.filter((offer) =>

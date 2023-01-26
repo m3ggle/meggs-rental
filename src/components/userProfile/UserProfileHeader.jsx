@@ -1,10 +1,10 @@
+import { format } from "date-fns";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useUserDetailsModalContext } from "../../context/userDetailsModal/userDetailsModalContext";
-import { getAge } from "../../helper/getAge";
 
 const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
-  const { firstName, lastName, birthday, email, photoURL, uid } =
+  const { userId, profilePictureUrl, userName, isOnline, createdAt } =
     userProfileData;
 
   const { openUserDetailsModal } = useUserDetailsModalContext();
@@ -13,9 +13,9 @@ const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
   const handleClick = () => {
     if (locationPath === "/profile") {
       console.log("choose a image as your new profile pic");
-      return
+      return;
     }
-    if (!modal) openUserDetailsModal(uid);
+    if (!modal) openUserDetailsModal(userId);
   };
 
   return (
@@ -25,23 +25,23 @@ const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
     >
       <div
         className="h-[84px] w-[84px] overflow-hidden rounded-full bg-cover bg-center shadow"
-        style={{ backgroundImage: `url(${photoURL})` }}
+        style={{ backgroundImage: `url(${profilePictureUrl})` }}
       >
         {locationPath === "/profile" && (
           <i className="fa-solid fa-camera flex h-full w-full items-center justify-center bg-lmGrey900/20 text-[28px] text-lmGrey100/60 duration-300 hover:bg-lmGrey900/60 hover:text-lmGrey25" />
         )}
       </div>
-      <div className="flex w-full flex-col items-center gap-y-[2px] text-sm text-lmGrey600 dark:text-dmGrey100">
+      <div className="flex w-full flex-col items-center gap-y-[2px] text-lg text-lmGrey800 dark:text-dmGrey25">
+        <span>{userName}</span>
         <div className="flex w-full items-center justify-center gap-x-[2px]">
-          <span className="w-full truncate text-right text-lg text-lmGrey800 dark:text-dmGrey25">
-            {firstName} {lastName}
+          <span className="w-full truncate text-right text-sm text-lmGrey600 dark:text-dmGrey100">
+            {isOnline ? "online" : "offline"}
           </span>
           <div className="text-lg">•</div>
           <span className="w-full truncate text-left text-sm">
-            {getAge(birthday)} years old
+            {format(new Date(createdAt), "MMM yyyy")}
           </span>
         </div>
-        <span>{email}</span>
       </div>
     </div>
   );

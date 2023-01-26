@@ -5,13 +5,31 @@ import { useUserContext } from "../../context/user/userContext";
 
 const PrivacyPolicy = () => {
   const handleClick = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.log(error)
+    let obj = {
+      firstName: "Meggle",
+      lastName: "Bande",
+      uid: "bingbong"
     }
+
+      let result = {};
+      for (const [key, value] of Object.entries(obj)) {
+        const newKey = key.split(/(?=[A-Z])/);
+        let inProcess = ""
+        newKey.forEach((part, index) => {
+          console.log(part)
+          index === 0
+            ? (inProcess += part.toLocaleLowerCase())
+            : (inProcess += `_${part.toLocaleLowerCase()}`);
+        })
+        result[inProcess] = value;
+      }
+    
+    console.log(result)
   };
 
-  return (
+  console.log("huhu")
+
+    return (
     <div className="gap-y2 flex h-screen w-full flex-col items-center justify-center">
       <div className="h-fit w-fit">
         <Btn

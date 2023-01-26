@@ -2,7 +2,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { regexPassword } from "../../../../helper/regexCollection";
+import { regexPassword } from "../../../../helpers/regexCollection";
 import { useForgotPasswordPasswordLogic } from "../hooks/useForgotPasswordPasswordLogic";
 
 const ForgotPasswordPassword = () => {

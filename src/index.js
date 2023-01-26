@@ -7,15 +7,15 @@ import ContextProviderWrapper from "./context/ContextProviderWrapper";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
+    {/* <QueryClientProvider client={queryClient}> */}
       <ContextProviderWrapper>
         <App />
       </ContextProviderWrapper>
-      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-    </QueryClientProvider>
+      {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}
+    {/* </QueryClientProvider> */}
   </React.StrictMode>
 );

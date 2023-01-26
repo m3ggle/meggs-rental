@@ -4,7 +4,7 @@ import BottomPart from "../../../components/authentication/BottomPart";
 import Autocomplete from "../../../components/input/Autocomplete";
 import TextInput from "../../../components/input/TextInput";
 import ExampleData from "../../../ExampleData";
-import { regexPrice } from "../../../helper/regexCollection";
+import { regexPrice } from "../../../helpers/regexCollection";
 
 const { citiesAutocomplete } = ExampleData();
 

@@ -12,7 +12,6 @@ export const useAuthOSignIn = () => {
 
   // for user context
   const getUserWPC = () => {
-    console.log(userIdSignIn);
     if (userIdSignIn !== null) {
       return supabase.rpc("get_user_with_preferred_city", {
         uid: userIdSignIn,
@@ -32,8 +31,7 @@ export const useAuthOSignIn = () => {
     }
 
     if (data.data !== null) {
-      let userData = data.data;
-      userData = sqlToJsObject(userData);
+      let userData = sqlToJsObject(data.data);
       userData = toDesirableStructure(userData);
 
       dispatchUser({ type: "SET_USER_CONTEXT", payload: userData });

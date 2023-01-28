@@ -46,7 +46,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* auth */}
-      {/* <Auth /> */}
+      <Auth />
       <div className="flex h-full w-full items-center justify-center bg-white dark:bg-dmGrey900">
         <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white dark:bg-dmGrey900">
           <Router>

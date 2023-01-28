@@ -3,11 +3,11 @@ import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
 import { regexPassword } from "../../../../helpers/regexCollection";
-import { useForgotPasswordPasswordLogic } from "../hooks/useForgotPasswordPasswordLogic";
+import { useForgotPasswordPasswordOnSubmit } from "../hooks/useForgotPasswordPasswordOnSubmit";
 
 const ForgotPasswordPassword = () => {
   const { control, handleSubmit } = useForm();
-  const { onSubmit } = useForgotPasswordPasswordLogic();
+  const { onSubmit } = useForgotPasswordPasswordOnSubmit();
 
   return (
     <form
@@ -16,7 +16,7 @@ const ForgotPasswordPassword = () => {
     >
       <div className="flex w-full flex-col gap-y-2">
         <Controller
-          name="newPassword"
+          name="password"
           control={control}
           rules={{
             required: "Password is required",

@@ -1,9 +1,11 @@
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LogoImg from "./components/LogoImg";
 import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
+import Auth from "./hooks/auth/Auth";
 import NotifyModal from "./modals/notifyModal/NotifyModal";
 import UserDetailsModal from "./modals/userDetailsModal/UserDetailsModal";
 import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding"; // not needed anymore
@@ -43,9 +45,12 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      {/* auth */}
+      {/* <Auth /> */}
       <div className="flex h-full w-full items-center justify-center bg-white dark:bg-dmGrey900">
         <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white dark:bg-dmGrey900">
           <Router>
+            {/* dark/light mode */}
             <div className="hidden" aria-hidden="true">
               <DropdownMode />
             </div>
@@ -121,7 +126,7 @@ export default function App() {
           </Router>
         </div>
       </div>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 }
-// <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />

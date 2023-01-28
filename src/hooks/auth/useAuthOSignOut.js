@@ -25,8 +25,8 @@ export const useAuthOSignOut = () => {
 
   const setToOffline = async () => {
     if (userId !== undefined) {
-      // handleContext();
-      // handleDbUpdate(userId);
+      handleContext();
+      handleDbUpdate(userId);
     } else {
     }
   };

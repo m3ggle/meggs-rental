@@ -20,19 +20,23 @@ const ContentStandard = () => {
         </ul>
       </div>
       <div className="flex flex-col gap-y-2">
-        <Btn
-          title={primaryButton.title}
-          uiType="primary"
-          type="button"
-          onClick={primaryButton.function}
-          icon="fa-solid fa-chevron-right"
-        />
-        <Btn
-          title={secondaryButton.title}
-          uiType="secondary"
-          type="button"
-          onClick={secondaryButton.function}
-        />
+        {primaryButton && (
+          <Btn
+            title={primaryButton.title}
+            uiType="primary"
+            type="button"
+            onClick={primaryButton.function}
+            icon="fa-solid fa-chevron-right"
+          />
+        )}
+        {secondaryButton && (
+          <Btn
+            title={secondaryButton.title}
+            uiType="secondary"
+            type="button"
+            onClick={secondaryButton.function}
+          />
+        )}
       </div>
     </div>
   );

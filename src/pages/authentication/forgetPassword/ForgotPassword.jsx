@@ -1,17 +1,16 @@
 import React from "react";
 import ProgressBar from "../../../components/ProgressBar";
 import SignWrapper from "../../../components/wrapper/SignWrapper";
-import ExampleData from "../../../ExampleData";
 import { useMultiStepHelper } from "../../../hooks/useMultiStepHelper";
+import {
+  forgotPasswordBg,
+  forgotPasswordRounds,
+} from "./data/forgotPasswordStatic";
 import ForgotPasswordEmail from "./view/ForgotPasswordEmail";
 import ForgotPasswordPassword from "./view/ForgotPasswordPassword";
 
 const ForgotPassword = () => {
-  const { forgotPasswordRounds } = ExampleData();
   const { currentRound } = useMultiStepHelper();
-
-  const forgotPasswordBg =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FitalienStreet.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
 
   const renderComponent = {
     1: <ForgotPasswordEmail />,

@@ -14,6 +14,7 @@ export const useAuthObserver = () => {
         setUserIdSignIn(session.user.id);
       }
       if (event === "SIGNED_OUT") {
+        console.log("sign out getriggert")
         setToOffline();
       }
     });

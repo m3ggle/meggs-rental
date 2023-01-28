@@ -23,7 +23,7 @@ export const profileButtonListData = [
       {
         btnTitle: "Update Password",
         icon: "fa-solid fa-unlock",
-        link: "/update-password",
+        link: "/forgot-password",
         id: "0f2b9b27-ed81-4f7b-8a40-86d89b375e7d",
       },
       {

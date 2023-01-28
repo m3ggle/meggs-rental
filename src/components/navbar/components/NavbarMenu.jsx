@@ -1,30 +1,41 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import supabase from "../../../config/supabaseClient";
 import { useNavigationContext } from "../../../context/navigation/navigationContext";
 import { useUserContext } from "../../../context/user/userContext";
+import { useHandleSignOut } from "../../../hooks/auth/useHandleSignOut";
 import { toastNotify } from "../../toastNotify/toastNotify";
 
 const NavbarMenu = ({ handleClickNavigation }) => {
   const { menu } = useNavigationContext();
   const { userId } = useUserContext();
-  const { notifyStandard } = toastNotify();
   const location = useLocation();
+  // const { handleSignOut  } = useHandleSignOut();
 
+  // this code is actually in useHandleSignOut but react did not recognize "handleSignOut" as a function
+  const { notifyStandard } = toastNotify();
+  const { isOpen, dispatchNavigation } = useNavigationContext();
+  // const { userId } = useUserContext();
+  const navigate = useNavigate();
+  const displayNotify = (content, type = "waning", id = "SignOutError") => {
+    notifyStandard({ information: { type, content }, id });
+  };
   const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {    
-      notifyStandard({
-      information: {
-        type: "warning",
-        content: error.message,
-      },
-      id: error.message,
-    });
-      console.log(error);
+    // supabase sign out
+    const { errorSignOut } = await supabase.auth.signOut();
+
+    if (errorSignOut) {
+      displayNotify(errorSignOut.message);
+      console.log("this is an error (signOut)", errorSignOut);
       return;
     }
-    handleClickNavigation("sign-in");
+
+    // navbar close if open
+    if (isOpen) {
+      dispatchNavigation({ type: "CLOSE_NAVIGATION" });
+    }
+
+    navigate("/sign-in");
   };
 
   const handleClickSign = () => {

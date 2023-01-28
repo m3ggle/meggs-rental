@@ -1,14 +1,3 @@
-const forgotPasswordRounds = [
-  {
-    title: "Forgot your password?",
-    btnTitle: "Send Email",
-  },
-  {
-    title: "Reset your password",
-    btnTitle: "Reset password",
-  },
-];
-
 const citiesAutocomplete = {
   // placeholder: "Dresden",
   list: ["Berlin", "Dresden", "Cologne", "Munich", "Paris", "New York"],
@@ -1074,7 +1063,6 @@ const ExampleData = () => {
     yesNoSelect,
     eatingSelect,
     smokingSelect,
-    forgotPasswordRounds,
     citiesAutocomplete,
     messages,
     chatPreviews,

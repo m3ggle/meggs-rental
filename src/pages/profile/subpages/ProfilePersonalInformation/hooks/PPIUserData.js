@@ -38,7 +38,7 @@ export const PPIUserData = () => {
   };
 
   let { data } = useQuery(
-    ["get_user_with_preferred_city", personalInformationId],
+    ["get_personal_information", personalInformationId],
     getPersonalInformation,
     {
       refetchOnMount: false,
@@ -47,7 +47,11 @@ export const PPIUserData = () => {
     }
   );
 
+  console.log(data)
+  console.log(userData)
+
   useEffect(() => {
+    console.log(data)
     if (data?.data !== null && data?.data) {
       setUserData(sqlToJsObject(data.data));
     }

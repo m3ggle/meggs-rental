@@ -38,6 +38,8 @@ export const useSignUpEmailPasswordSubmit = () => {
 
     const userMetaData = handleSignUpPreparation(data);
 
+    console.log(userMetaData)
+
     // sign up to supabase
     const { error: signUpError } = await supabase.auth.signUp({
       email: formData.email,

@@ -11,10 +11,10 @@ export const useAuthObserver = () => {
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_IN") {
-        // setUserIdSignIn(session.user.id);
+        setUserIdSignIn(session.user.id);
       }
       if (event === "SIGNED_OUT") {
-        // setToOffline();
+        setToOffline();
       }
     });
   }, [setUserIdSignIn]);

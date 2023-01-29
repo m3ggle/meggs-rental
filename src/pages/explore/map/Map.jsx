@@ -15,12 +15,12 @@ import { useMapGetOffers } from "./hooks/useMapGetOffers";
 const { exampleOffers, filterTypes } = ExampleData();
 
 const Map = () => {
-  const [offers] = useState(exampleOffers);
-  const [filteredOffers, setFilteredOffers] = useState();
-  const [filteredBoundsOffers, setFilteredBoundsOffers] = useState([]);
+  // const [offers] = useState(exampleOffers);
+  // const [filteredOffers, setFilteredOffers] = useState();
+  // const [filteredBoundsOffers, setFilteredBoundsOffers] = useState([]);
   const [filterTypeSearchParamsState, setFilterTypeSearchParamsState] =
     useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   // const [mobileSizeOffer, setMobileSizeOffer] = useState();
   const { offerInformation: mobileOfferInformation, setOfferInformation } =
@@ -34,78 +34,79 @@ const Map = () => {
   // entkopplung, heißt ein useEffect das die searchParams überwacht, wenn es geschehen ist speicher die filterTypes inside a state
 
   // test
-  // const { offers, isLoading } = useMapGetOffers()
+  const { offers, isLoading } = useMapGetOffers()
 
   // filtering
-  useEffect(() => {
-    let filterTypeSearchParams = {}; // storage for the current filter type params
-    // get only the params which are inside filterTypes Array (getArrayOfParams would also give back values like null)
-    for (const [key, value] of searchParams.entries()) {
-      if (filterTypes.includes(key)) {
-        filterTypeSearchParams[key] = value;
-      }
-    }
+  // useEffect(() => {
+  //   let filterTypeSearchParams = {}; // storage for the current filter type params
+  //   // get only the params which are inside filterTypes Array (getArrayOfParams would also give back values like null)
+  //   for (const [key, value] of searchParams.entries()) {
+  //     if (filterTypes.includes(key)) {
+  //       filterTypeSearchParams[key] = value;
+  //     }
+  //   }
 
-    if (
-      JSON.stringify(filterTypeSearchParams) !==
-      JSON.stringify(filterTypeSearchParamsState)
-    ) {
-      // not the same, do filtering
-      let tempHolder = filterByCustomObject({
-        offerList: exampleOffers,
-        object: filterTypeSearchParams,
-      });
-      setFilteredOffers(tempHolder);
-      setFilterTypeSearchParamsState(filterTypeSearchParams);
-      return;
-    }
-  }, [searchParams]);
+  //   if (
+  //     JSON.stringify(filterTypeSearchParams) !==
+  //     JSON.stringify(filterTypeSearchParamsState)
+  //   ) {
+  //     // not the same, do filtering
+  //     let tempHolder = filterByCustomObject({
+  //       offerList: exampleOffers,
+  //       object: filterTypeSearchParams,
+  //     });
+  //     setFilteredOffers(tempHolder);
+  //     setFilterTypeSearchParamsState(filterTypeSearchParams);
+  //     return;
+  //   }
+  // }, [searchParams]);
 
-  const filterByBounds = useCallback(
-    (offers) => {
-      let filtered = [];
-      if (Object.keys(bounds).length > 0) {
-        filtered = offers.filter(
-          (offer) =>
-            offer.location.lat > bounds.south &&
-            offer.location.lat < bounds.north &&
-            offer.location.lng > bounds.west &&
-            offer.location.lng < bounds.east
-        );
-        return filtered;
-      } else {
-        return offers;
-      }
-    },
-    [bounds]
-  );
+  // const filterByBounds = useCallback(
+  //   (offers) => {
+  //     let filtered = [];
+  //     if (Object.keys(bounds).length > 0) {
+  //       filtered = offers.filter(
+  //         (offer) =>
+  //           offer.location.lat > bounds.south &&
+  //           offer.location.lat < bounds.north &&
+  //           offer.location.lng > bounds.west &&
+  //           offer.location.lng < bounds.east
+  //       );
+  //       return filtered;
+  //     } else {
+  //       return offers;
+  //     }
+  //   },
+  //   [bounds]
+  // );
 
   // mock (waiting on the api)
-  const refetching = async () => {
-    return await new Promise(() => {
-      setTimeout(() => {
-        console.log("bounds changed, fetching");
-        // console.log("refetching for 1 seconds");
-        setFilteredBoundsOffers(filterByBounds(filteredOffers ?? offers));
+  // const refetching = async () => {
+  //   return await new Promise(() => {
+  //     setTimeout(() => {
+  //       console.log("bounds changed, fetching");
+  //       // console.log("refetching for 1 seconds");
+  //       setFilteredBoundsOffers(filterByBounds(filteredOffers ?? offers));
 
-        setIsLoading(false);
-      }, 1000);
-    });
-  };
+  //       setIsLoading(false);
+  //     }, 1000);
+  //   });
+  // };
 
   // bounds with debounce
-  useEffect(() => {
-    const identifier = setTimeout(() => {
-      if (Object.keys(bounds).length > 0) {
-        setIsLoading(true);
-        refetching();
-      }
-    }, 1000);
+  // useEffect(() => {
+  //   const identifier = setTimeout(() => {
+  //     if (Object.keys(bounds).length > 0) {
+  //       setIsLoading(true);
+  //       refetching();
+  //     }
+  //   }, 1000);
 
-    return () => {
-      clearTimeout(identifier);
-    };
-  }, [bounds]);
+  //   return () => {
+  //     clearTimeout(identifier);
+  //   };
+  // }, [bounds]); 
+
 
   const handleMobilePreviewDelete = () => {
     deleteArrayOfParams(["offerId", "hoverId"]);
@@ -121,12 +122,10 @@ const Map = () => {
         isLoading={isLoading}
         mobileOfferInformation={mobileOfferInformation}
       />
-      <MapView offers={filteredBoundsOffers} />
+      <MapView offers={offers} />
       {windowSize.width >= 1100 ? (
         <DesktopSearchPreview
           mapLoaded={mapLoaded}
-          filteredBoundsOffers={filteredBoundsOffers}
-          filteredOffers={filteredOffers}
           offers={offers}
         />
       ) : (

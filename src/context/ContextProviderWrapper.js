@@ -1,6 +1,7 @@
 import React from "react";
 import { DarkModeProvider } from "./darkMode/darkModeContext";
 import { MapCoordProvider } from "./map/mapCoord/mapCoordContext";
+import { MapPreviewProvider } from "./map/mapPreview/mapPreviewContext";
 import { MapSubProvider } from "./map/mapSub/mapSubContext";
 import { NavigationProvider } from "./navigation/navigationContext";
 import { NotifyModalProvider } from "./notifyModal/notifyModalContext";
@@ -12,14 +13,18 @@ const ContextProviderWrapper = ({ children }) => {
     <UserProvider>
       <MapCoordProvider>
         <MapSubProvider>
-          <NavigationProvider>
-            <DarkModeProvider>
-              {/* modals */}
-              <NotifyModalProvider>
-                <UserDetailsModalProvider>{children}</UserDetailsModalProvider>
-              </NotifyModalProvider>
-            </DarkModeProvider>
-          </NavigationProvider>
+          <MapPreviewProvider>
+            <NavigationProvider>
+              <DarkModeProvider>
+                {/* modals */}
+                <NotifyModalProvider>
+                  <UserDetailsModalProvider>
+                    {children}
+                  </UserDetailsModalProvider>
+                </NotifyModalProvider>
+              </DarkModeProvider>
+            </NavigationProvider>
+          </MapPreviewProvider>
         </MapSubProvider>
       </MapCoordProvider>
     </UserProvider>

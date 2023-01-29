@@ -80,7 +80,7 @@ const HomepageMostViewed = () => {
             </h3>
             <div className="flex w-full flex-col gap-y-3">
               {today.map((offer) => (
-                <MobileOfferCard key={offer.offerId} offerInformation={offer} />
+                <MobileOfferCard key={offer.id} offerInformation={offer} />
               ))}
             </div>
           </div>

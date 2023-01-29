@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import supabase from "../../../config/supabaseClient";
 import { useMapCoordContext } from "../../../context/map/mapCoord/mapCoordContext";
 import { useMapSubContext } from "../../../context/map/mapSub/mapSubContext";
 import ExampleData from "../../../ExampleData";
@@ -11,6 +10,7 @@ import MapLoading from "./components/MapLoading";
 import MapView from "./components/MapView";
 import MobileSearchPreview from "./components/MobileSearchPreview";
 import { usePreviewLogic } from "./components/preview/hooks/usePreviewLogic";
+import { useMapGetOffers } from "./hooks/useMapGetOffers";
 
 const { exampleOffers, filterTypes } = ExampleData();
 
@@ -32,6 +32,9 @@ const Map = () => {
   const { filterByCustomObject } = useFilterByCustomObject();
 
   // entkopplung, heißt ein useEffect das die searchParams überwacht, wenn es geschehen ist speicher die filterTypes inside a state
+
+  // test
+  // const { offers, isLoading } = useMapGetOffers()
 
   // filtering
   useEffect(() => {
@@ -77,19 +80,6 @@ const Map = () => {
     [bounds]
   );
 
-  const supabaseTest = async () => {
-    const prep = {
-      east_: bounds.east,
-      north_: bounds.north,
-      south_: bounds.south,
-      west_: bounds.west
-    };
-
-    // let { data, error } = await supabase.rpc("get_offers_by_bbox", prep);
-    // if (error) console.error(error);
-    // else console.log(data);
-  };
-
   // mock (waiting on the api)
   const refetching = async () => {
     return await new Promise(() => {
@@ -108,7 +98,6 @@ const Map = () => {
     const identifier = setTimeout(() => {
       if (Object.keys(bounds).length > 0) {
         setIsLoading(true);
-        supabaseTest();
         refetching();
       }
     }, 1000);

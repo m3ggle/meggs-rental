@@ -5,8 +5,6 @@ import Preview from './preview/Preview';
 
 const DesktopSearchPreview = ({
   mapLoaded,
-  filteredBoundsOffers,
-  filteredOffers,
   offers,
 }) => {
   return (
@@ -23,7 +21,7 @@ const DesktopSearchPreview = ({
       >
         <MobileCatalog
           definedActions="mapCatalog"
-          offerList={filteredBoundsOffers ?? filteredOffers ?? offers}
+          offerList={offers}
         />
       </motion.div>
       <div className="absolute left-7 top-7 z-20 flex h-fit w-fit">

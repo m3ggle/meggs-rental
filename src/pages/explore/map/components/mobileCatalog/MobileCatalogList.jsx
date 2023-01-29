@@ -6,7 +6,7 @@ const MobileCatalogList = ({ offerList }) => {
     <>
       {offerList.map((offer, index) => (
         <MobileOfferCard
-          key={offer.offerId}
+          key={offer.id}
           offerInformation={offer}
           index={index}
         />

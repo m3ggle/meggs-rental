@@ -88,21 +88,21 @@ const MapView = ({ offers }) => {
         >
           {offers.map((offer, index) => (
             <Marker
-              key={offer.offerId}
-              longitude={offer.location.lng}
-              latitude={offer.location.lat}
+              key={offer.id}
+              longitude={offer.longitude}
+              latitude={offer.latitude}
               style={{
                 width: "44px",
                 height: "44px",
                 zIndex:
-                  activeMarker === offer.offerId
+                  activeMarker === offer.id
                     ? "15"
-                    : hoverMarker === offer.offerId
+                    : hoverMarker === offer.id
                     ? "10"
                     : "5",
               }}
               anchor="bottom"
-              onClick={() => handleMarkerClick(offer.offerId)}
+              onClick={() => handleMarkerClick(offer.id)}
             >
               <motion.div
                 initial="initial"
@@ -113,9 +113,9 @@ const MapView = ({ offers }) => {
                 variants={markerVariants}
                 custom={{ offer, index }}
                 className={`fa-solid fa-location-dot ${
-                  activeMarker === offer.offerId
+                  activeMarker === offer.id
                     ? "text-lmPrimary dark:text-lmPrimary"
-                    : hoverMarker === offer.offerId
+                    : hoverMarker === offer.id
                     ? "text-lmGrey400 dark:text-dmGrey400"
                     : "text-lmGrey800 dark:text-dmGrey900"
                 } text-[44px] drop-shadow-lg duration-300`}

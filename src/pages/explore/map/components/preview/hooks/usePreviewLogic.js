@@ -1,8 +1,6 @@
-import React, { useEffect, useState, memo } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useMapCoordContext } from "../../../../../../context/map/mapCoord/mapCoordContext";
 import { useMapSubContext } from "../../../../../../context/map/mapSub/mapSubContext";
-import { useUrlManipulation } from "../../../../../../hooks/urlManipulation/useUrlManipulation";
 import { useGetOffer } from "../../../../../../hooks/useGetOffer";
 
 export const usePreviewLogic = () => {
@@ -11,9 +9,7 @@ export const usePreviewLogic = () => {
 
   const { mapLoaded, activeMarker } = useMapSubContext();
 
-  const [show, setShow] = useState(
-    activeMarker && mapLoaded ? true : false
-  );
+  const [show, setShow] = useState(activeMarker && mapLoaded ? true : false);
   const [offerInformation, setOfferInformation] = useState();
 
   useEffect(() => {
@@ -22,8 +18,8 @@ export const usePreviewLogic = () => {
     if (tempShow) {
       setShow(true);
 
-      const result = getOffer(activeMarker);
-      result ? setOfferInformation(result) : navigate("not-found");
+      // const result = getOffer(activeMarker);
+      // result ? setOfferInformation(result) : navigate("not-found");
       return;
     }
 

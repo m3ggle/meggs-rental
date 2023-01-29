@@ -15,11 +15,11 @@ const userReducer = (state, action) => {
           ...payload,
         },
       };
-    case "SET_USER_CONTEXT_DEFAULT": 
+    case "SET_USER_CONTEXT_DEFAULT":
       return {
         ...templateState,
       };
-      
+
     default:
       break;
   }

@@ -1,4 +1,4 @@
-import { toastNotify } from "../../../../../components/toastNotify/toastNotify";
+import { queryClient } from "../../../../../api/reactQuery/queryClient";
 import { useUserContext } from "../../../../../context/user/userContext";
 import { jsToSqlObject } from "../../../../../helpers/sqlToJsSyntax";
 import { handleCity } from "../helpers/PPIhandleCity";
@@ -9,7 +9,6 @@ import { useUpdatePreferredCity } from "./useUpdatePreferredCity";
 
 export const usePPIOnSubmit = (initialUserData) => {
   const { userId } = useUserContext();
-  const { notifyStandard } = toastNotify();
   const { updatePreferredCity } = useUpdatePreferredCity();
   const { updatePersonalInformation } = useUpdatePersonalInformation();
 
@@ -29,9 +28,10 @@ export const usePPIOnSubmit = (initialUserData) => {
         uid: formData.uid,
         ...formData.preferredCity,
       });
+      queryClient.invalidateQueries(["get_user_with_preferred_city", userId]);
     }
 
-    // prepare for comparison 
+    // prepare for comparison
     delete formData.preferredCity;
     initialUserData.uid = initialUserData.userId ?? initialUserData.uid;
     delete initialUserData.userId;
@@ -44,15 +44,6 @@ export const usePPIOnSubmit = (initialUserData) => {
       updatePersonalInformation.mutate(jsToSqlObject(formData));
       return;
     }
-
-    // nothing change notification
-    notifyStandard({
-      information: {
-        type: "info",
-        content: "No changes were made.",
-      },
-      id: "personalInformationFD",
-    });
   };
 
   return { onSubmit };

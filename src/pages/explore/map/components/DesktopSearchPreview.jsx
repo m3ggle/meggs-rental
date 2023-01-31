@@ -1,12 +1,9 @@
-import { motion } from 'framer-motion';
-import React from 'react'
-import MobileCatalog from './mobileCatalog/MobileCatalog';
-import Preview from './preview/Preview';
+import { motion } from "framer-motion";
+import React from "react";
+import MobileCatalog from "./mobileCatalog/MobileCatalog";
+import Preview from "./preview/Preview";
 
-const DesktopSearchPreview = ({
-  mapLoaded,
-  offers,
-}) => {
+const DesktopSearchPreview = ({ mapLoaded, offers, activeMarkerId }) => {
   return (
     <>
       <motion.div
@@ -19,16 +16,15 @@ const DesktopSearchPreview = ({
         }}
         className="absolute right-7 top-7 z-20 flex h-fit w-fit"
       >
-        <MobileCatalog
-          definedActions="mapCatalog"
-          offerList={offers}
-        />
+        <MobileCatalog definedActions="mapCatalog" offerList={offers} />
       </motion.div>
-      <div className="absolute left-7 top-7 z-20 flex h-fit w-fit">
-        <Preview />
-      </div>
+      {activeMarkerId !== null && (
+        <div className="absolute left-7 top-7 z-20 flex h-fit w-fit">
+          <Preview offerId={activeMarkerId} />
+        </div>
+      )}
     </>
   );
 };
 
-export default DesktopSearchPreview
+export default DesktopSearchPreview;

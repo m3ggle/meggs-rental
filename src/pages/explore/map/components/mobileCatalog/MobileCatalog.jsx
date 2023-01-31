@@ -22,7 +22,6 @@ const MobileCatalog = ({ offerList, definedActions }) => {
     >
       <div
         className={`w-[312px]`}
-        // className={`${!extended && "pb-4"} w-[312px]`}
       >
         <SearchFilter
           definedActions={definedActions}

@@ -1,8 +1,12 @@
 import React from "react";
 import Btn from "../../components/common/Btn";
+import { useAuthSetOffline } from "../../hooks/auth/useAuthSetOffline";
 
 const PrivacyPolicy = () => {
-  const handleClick = async () => {};
+  const { setToOffline } = useAuthSetOffline();
+  const handleClick = async () => {
+    setToOffline.mutate()
+  };
 
   return (
     <div className="gap-y2 flex h-screen w-full flex-col items-center justify-center">

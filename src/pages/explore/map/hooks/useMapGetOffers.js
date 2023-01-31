@@ -45,8 +45,6 @@ export const useMapGetOffers = () => {
 //   bounds with debounce
   useEffect(() => {
     const identifier = setTimeout(() => {
-    //   if (Object.keys(bounds).length > 0) {
-        // setIsLoading(true);
         refetch();
     //   }
     }, 1400);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { notifySupabaseError } from "../../components/toastNotify/notifySupabaseError";
 import supabase from "../../config/supabaseClient";
@@ -47,6 +47,7 @@ export const useAuthOSignIn = () => {
   };
 
   useQuery(["get_user_with_preferred_city", userIdSignIn], getUserWPC, {
+    staleTime: 600000,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     onSuccess: onSuccessGetUserWPC,

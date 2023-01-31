@@ -5,7 +5,7 @@ import { useAuthOSignOut } from "./useAuthOSignOut";
 
 export const useAuthObserver = () => {
   const { setUserIdSignIn } = useAuthOSignIn();
-  const { setToOffline } = useAuthOSignOut();
+  const { finishSignOut } = useAuthOSignOut();
 
   // auth change
   useEffect(() => {
@@ -14,8 +14,7 @@ export const useAuthObserver = () => {
         setUserIdSignIn(session.user.id);
       }
       if (event === "SIGNED_OUT") {
-        console.log("sign out getriggert")
-        setToOffline();
+        finishSignOut();
       }
     });
   }, [setUserIdSignIn]);

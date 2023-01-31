@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { queryClient } from "./api/reactQuery/queryClient";
 import LogoImg from "./components/LogoImg";
 import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
@@ -37,11 +39,14 @@ import Upload from "./pages/upload/Upload";
 import UserOffers from "./pages/userOffers/UserOffers";
 
 export default function App() {
-  // for auth
-  // useAuthInitial();
-  // useAuthObserver();
+  // cleanup
+  useEffect(() => {
+    window.addEventListener("beforeunload", () => {
+      localStorage.removeItem("exploreMapLastPosition");
+    });
+  }, []);
 
-  const queryClient = new QueryClient();
+  
 
   return (
     <QueryClientProvider client={queryClient}>

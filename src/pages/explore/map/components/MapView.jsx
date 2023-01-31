@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React, { useRef, useState } from "react";
 import Map, { Layer, Marker } from "react-map-gl";
 import { useMapSubContext } from "../../../../context/map/mapSub/mapSubContext";
+import { useHandleFly } from "../../../../hooks/useHandleFly";
 import { useFlyTo } from "../hooks/useFlyTo";
 import { useHandleMapInit } from "../hooks/useHandleMapInit";
 import { useHandleMoveEnd } from "../hooks/useHandleMoveEnd";
@@ -36,6 +37,7 @@ const MapView = ({ offers }) => {
 
   // flyTo functionality
   useFlyTo({ mapRef });
+  const { handleFly } = useHandleFly();
 
   // when the component unmounts
   useMapViewCleanUp();
@@ -44,12 +46,15 @@ const MapView = ({ offers }) => {
   const darkMode = document.documentElement.classList.contains("dark");
 
   // marker click
-  const handleMarkerClick = (id) =>
-    dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: id });
+  const handleMarkerClick = (offer) => {
+    dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: offer.id });
+    handleFly(offer.longitude, offer.latitude);
+    // dispatchPreview({ type: "SET_PREVIEW", payload: offer });
+  };
   // marker animation
   const markerVariants = {
     hover: ({ offer }) => ({
-      scale: activeMarker === offer.offerId ? 1.25 : 1.1,
+      scale: activeMarker === offer.id ? 1.25 : 1.1,
       transition: {
         duration: 0.1,
       },
@@ -65,9 +70,9 @@ const MapView = ({ offers }) => {
       opacity: 1,
       translateY: 0,
       scale:
-        activeMarker === offer.offerId
+        activeMarker === offer.id
           ? 1.25
-          : hoverMarker === offer.offerId
+          : hoverMarker === offer.id
           ? 1.1
           : 1,
     }),
@@ -102,7 +107,7 @@ const MapView = ({ offers }) => {
                     : "5",
               }}
               anchor="bottom"
-              onClick={() => handleMarkerClick(offer.id)}
+              onClick={() => handleMarkerClick(offer)}
             >
               <motion.div
                 initial="initial"

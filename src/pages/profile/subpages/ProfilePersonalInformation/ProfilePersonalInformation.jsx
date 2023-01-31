@@ -37,7 +37,6 @@ const ProfilePersonalInformation = () => {
       );
     };
 
-  // Todo: some are required and some not
   return (
     <>
       <SignWrapper puffer={false} pic={profilePictureUrl}>

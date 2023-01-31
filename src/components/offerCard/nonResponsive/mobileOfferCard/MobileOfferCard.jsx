@@ -11,7 +11,7 @@ import MobileCatalogOfferCardInfoPart from "./MobileOfferCardInfoPart";
 // id, street, house_number, city, province country, like_count, offer_name, day_price, week_price, month_price, transmission, amount_seats, latitude, longitude, picture_urls
 
 const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
-  console.log(offerInformation);
+  // console.log(offerInformation);
   const { id, picture_urls } = offerInformation;
   const { dispatchMapSub } = useMapSubContext();
   // const { signedIn, verified } = useUserContext();

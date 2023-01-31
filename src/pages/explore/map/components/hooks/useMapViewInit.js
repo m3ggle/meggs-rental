@@ -1,10 +1,12 @@
 import { useCallback, useEffect } from "react";
 import { useMapCoordContext } from "../../../../../context/map/mapCoord/mapCoordContext";
+import { useUserContext } from "../../../../../context/user/userContext";
 
 // mainly for setting the state position
 
 export const useMapViewInit = ({ setPosition }) => {
   const { externalPositionChange, dispatchMapCoord } = useMapCoordContext();
+  const { userId, preferredCity } = useUserContext();
 
   useEffect(() => {
     // if anything is inside externalPositionChange ctx
@@ -14,12 +16,17 @@ export const useMapViewInit = ({ setPosition }) => {
     }
 
     // look in localStorage
-    if (localStorage.getItem("exploreMapLastPosition") !== null ) {
+    if (localStorage.getItem("exploreMapLastPosition") !== null) {
+      console.log("i found something in the local storage, i am using the local storage data")
       handleLocalStorage();
       return;
     }
 
     // look in userProfile
+    if (userId !== null) {
+      handlePreferredCity();
+      return
+    }
 
     // use default
     handleDefault();
@@ -46,6 +53,23 @@ export const useMapViewInit = ({ setPosition }) => {
     },
     [setPosition]
   );
+
+  const handlePreferredCity = () => {
+    console.log(
+      "setting the map on the preferred city of the user with these coordinates: ",
+      {
+        lat: preferredCity.coordinates.center.latitude,
+        lng: preferredCity.coordinates.center.longitude,
+        z: 12,
+      }
+    );
+
+    setPositionHelper({
+      lat: preferredCity.coordinates.center.latitude,
+      lng: preferredCity.coordinates.center.longitude,
+      z: 12,
+    });
+  };
 
   const handleExternal = useCallback(() => {
     setPositionHelper(externalPositionChange);

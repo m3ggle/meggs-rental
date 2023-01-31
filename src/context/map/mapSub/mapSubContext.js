@@ -19,8 +19,8 @@ export const MapSubProvider = ({ children }) => {
   const initialState = {
     mapLoaded: false,
     flyTo: false,
-    activeMarker: false,
-    hoverMarker: false,
+    activeMarker: null,
+    hoverMarker: null,
   };
 
   const [state, dispatchMapSub] = useReducer(mapSubReducer, initialState);

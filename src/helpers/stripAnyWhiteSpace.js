@@ -1,3 +1,6 @@
 export const stripAnyWhiteSpace = (str) => {
-    return str.replace(/\s+/g, "");
+    if (str !== null && str !== undefined && typeof str === "string") {
+        return str.replace(/\s+/g, "");
+    }
+    return str
 }

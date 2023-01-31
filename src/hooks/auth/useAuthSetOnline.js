@@ -2,15 +2,18 @@ import { useEffect } from "react";
 import { useMutation } from "react-query";
 import { notifySupabaseError } from "../../components/toastNotify/notifySupabaseError";
 import supabase from "../../config/supabaseClient";
+import { useUserContext } from "../../context/user/userContext";
+import { stripAnyWhiteSpace } from "../../helpers/stripAnyWhiteSpace";
 import { useAuthOSignIn } from "./useAuthOSignIn";
 
 export const useAuthSetOnline = () => {
-  const { userIdSignIn } = useAuthOSignIn();
+  const {userId} = useUserContext()
 
   const handleDbUpdate = async () => {
-    return supabase.rpc("update_user_online", {
-      uid: userIdSignIn,
-    });
+    const uid = stripAnyWhiteSpace(userId)
+      return supabase.rpc("update_user_online", {
+        uid: uid,
+      });
   };
 
   const dbUpdateError = () => {
@@ -18,15 +21,13 @@ export const useAuthSetOnline = () => {
   };
 
   const setToOnline = useMutation(handleDbUpdate, {
-    mutationKey: `setOnline_${userIdSignIn}`,
+    mutationKey: `update_user_online_${userId}`,
     onError: dbUpdateError,
   });
 
   useEffect(() => {
-    // when the id in this component state is not null, a user is currently signed in
-    // and when the userId inside the user context is not null, meaning only when we were successfully able to get the user from the db
-    if (userIdSignIn !== null) {
+    if (userId !== null) {
       setToOnline.mutate();
     }
-  }, [userIdSignIn]);
+  }, [userId]);
 };

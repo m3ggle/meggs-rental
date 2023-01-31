@@ -1,19 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
-import ExampleData from "../../../ExampleData";
+import { useCallback } from "react";
+import { carSpecData } from "../data/carSpecData";
+import { previewSpecs } from "../data/previewSpecs";
 
-const { carSpecData, previewSpecs } = ExampleData();
-
-export const useCarSpecFilter = ({ specs, amount }) => {
-  const [filteredSpecs, setFilteredSpecs] = useState([]);
-
-  const handleAmountAll = useCallback(() => {
+export const useCarSpecFilter = () => {
+  const handleAmountAll = useCallback((specs) => {
     Object.keys(carSpecData).map((itemKey) => {
       carSpecData[itemKey].value = specs[itemKey];
     });
-    setFilteredSpecs(carSpecData);
-  }, [specs]);
+  }, []);
 
-  const handleAmountPreview = useCallback(() => {
+  const handleAmountPreview = useCallback((specs) => {
     let filSpecs = {};
     Object.keys(carSpecData).map((itemKey) => {
       if (previewSpecs.includes(itemKey)) {
@@ -21,12 +17,8 @@ export const useCarSpecFilter = ({ specs, amount }) => {
         filSpecs[itemKey].value = specs[itemKey];
       }
     });
-    setFilteredSpecs(filSpecs);
-  }, [specs]);
+    return filSpecs;
+  }, []);
 
-  useEffect(() => {
-    amount === "preview" ? handleAmountPreview() : handleAmountAll();
-  }, [amount, handleAmountAll, handleAmountPreview]);
-
-  return { filteredSpecs };
+  return { handleAmountPreview, handleAmountAll };
 };

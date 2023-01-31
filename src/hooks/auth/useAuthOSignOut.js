@@ -1,39 +1,21 @@
-import { notifySupabaseError } from "../../components/toastNotify/notifySupabaseError";
-import { toastNotify } from "../../components/toastNotify/toastNotify";
-import supabase from "../../config/supabaseClient";
 import { useUserContext } from "../../context/user/userContext";
+import { useAuthSetOffline } from "./useAuthSetOffline";
 
 export const useAuthOSignOut = () => {
   const { dispatchUser, userId } = useUserContext();
-  const { notifyStandard } = toastNotify();
+  const { setToOffline } = useAuthSetOffline();
 
   // context
   const handleContext = () => {
     dispatchUser({ type: "SET_USER_CONTEXT_DEFAULT", payload: null });
   };
 
-  // mutating
-  const handleDbUpdate = async () => {
-    const { error } = await supabase.rpc("update_user_offline", {
-      uid: userId,
-    });
-    if (error) {
-      notifySupabaseError({ message: "Could not update offline status." });
-      console.log(error);
-      return;
-    }
-    notifyStandard({
-      information: { type: "success", content: "Your are signed out." },
-      id: "signOut",
-    });
-  };
-
-  const setToOffline = async () => {
+  const finishSignOut = async () => {
     if (userId !== null) {
-      handleDbUpdate();
+      setToOffline.mutate();
       handleContext();
     }
   };
 
-  return { setToOffline };
+  return { finishSignOut };
 };

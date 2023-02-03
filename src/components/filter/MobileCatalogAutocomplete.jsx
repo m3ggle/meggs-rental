@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Controller } from "react-hook-form";
 import { useLocation } from "react-router-dom";
+import { filterMapboxResponseCity } from "../../helpers/filterMapboxResponse";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useHandleFly } from "../../hooks/useHandleFly";
@@ -12,10 +13,9 @@ const MobileCatalogAutocomplete = ({
   value,
   label,
   control,
-  definedActions,
+  definedActions = "mapCatalog",
   callbackFunction,
 }) => {
-  definedActions = definedActions ?? "mapCatalog";
   let locationPathname = useLocation().pathname;
 
   const { getSingleParam, deleteSingleParam } = useUrlManipulation();
@@ -24,43 +24,14 @@ const MobileCatalogAutocomplete = ({
 
   const [inputValue, setInputValue] = useState("");
   const [itemList, setItemList] = useState([]);
-
   const successFunc = (data) => {
     setItemList(filterDistributor(data));
   };
 
   const filterDistributor = (data) => {
     if (definedActions === "mapCatalog") {
-      return mapCatalogFilter(data);
+      return filterMapboxResponseCity(data);
     }
-  };
-
-  const mapCatalogFilter = (data) => {
-    const filteredList = data.data.features.filter(
-      (feature) =>
-        feature.id && feature.place_name && feature.center && feature.bbox
-    );
-
-    const tempList = filteredList.map((feature) => {
-      return {
-        id: feature.id,
-        name: feature.place_name,
-        extraInfo: {
-          bounds: {
-            north: feature.bbox[3],
-            east: feature.bbox[2],
-            south: feature.bbox[1],
-            west: feature.bbox[0],
-          },
-          center: {
-            lat: feature.center[1],
-            lng: feature.center[0],
-          },
-        },
-      };
-    });
-
-    return tempList;
   };
 
   // Todo: setItemList to error in other words display the error in the autocomplete results
@@ -127,7 +98,13 @@ const MobileCatalogAutocomplete = ({
             placeholder="Dresden..."
             label={label ?? undefined}
             // value={getSingleParam("city") ? getSingleParam("city") : null}
-            value={value ? value : getSingleParam("city") ? getSingleParam("city") : null}
+            value={
+              value
+                ? value
+                : getSingleParam("city")
+                ? getSingleParam("city")
+                : null
+            }
             itemList={itemList}
             onChange={(callbackObject) => {
               field.onChange(callbackObject.name);

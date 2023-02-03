@@ -1,9 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
+import Loading from "../../components/Loading";
 import ExampleData from "../../ExampleData";
 import { stripAnyWhiteSpace } from "../../helpers/stripAnyWhiteSpace";
-import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
 import { useGetOfferDetails } from "../../hooks/useGetOfferDetails";
+import { useGetOfferReviews } from "../../hooks/useGetOfferReviews";
+import { useGetOfferSummary } from "../../hooks/useGetOfferSummary";
 import OfferDetailsImgPart from "./view/OfferDetailsImgPart";
 import OfferDetailsInfoPart from "./view/offerDetailsInfoPart/OfferDetailsInfoPart";
 
@@ -44,21 +46,49 @@ const OfferDetails = () => {
   // const getOfferInformationFromFirestore = () => {};
 
   const param = useParams();
-  const { offerInformation, isLoading } = useGetOfferDetails(
+  // all get queried in parallel
+  const { offerInformation, isLoading: offerLoading } = useGetOfferDetails(
+    stripAnyWhiteSpace(param.offerId)
+  );
+  const { summary, isLoading: summaryLoading } = useGetOfferSummary(
+    stripAnyWhiteSpace(param.offerId)
+  );
+  const { reviews, isLoading: reviewsLoading } = useGetOfferReviews(
     stripAnyWhiteSpace(param.offerId)
   );
 
-    console.log(offerInformation)
+  const reviewSection = {
+    summary,
+    reviews,
+    summaryLoading,
+    reviewsLoading,
+  };
+
+  //   const isLoading = false;
+  // const offerInformation = null;
 
   return (
     <>
-      {offerInformation ? (
-        <div className="relative flex w-full max-w-[1440px] flex-col pt-6 1200:flex-row 1200:pt-0">
-          {/* <OfferDetailsImgPart offerImages={offerInformation.photoURL} />
-          <OfferDetailsInfoPart offerInformation={offerInformation} /> */}
+      {offerLoading ? (
+        <div className="h-screen w-full bg-white dark:bg-dmGrey900">
+          <Loading />
+        </div>
+      ) : offerInformation === null ? (
+        <div className="flex h-screen w-full items-center justify-center bg-white dark:bg-dmGrey900">
+          <span className="text-center text-base text-lmGrey800 dark:text-dmGrey25">
+            Seems like the offer does not exists anymore.
+          </span>
         </div>
       ) : (
-        <div className="h-screen w-full bg-white dark:bg-dmGrey900"></div>
+        <div className="relative flex w-full max-w-[1440px] flex-col pt-6 1200:flex-row 1200:pt-0">
+          <OfferDetailsImgPart
+            offerImages={offerInformation.offer_pictures.picture_urls}
+          />
+          <OfferDetailsInfoPart
+            offerInformation={offerInformation}
+            reviewSection={reviewSection}
+          />
+        </div>
       )}
     </>
   );

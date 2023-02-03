@@ -3,12 +3,10 @@ import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
-import ExampleData from "../../../ExampleData";
 import { regexNumbersOnly } from "../../../helpers/regexCollection";
+import { carTypeSelect, colorSelect } from "../data/uploadVehicleDetailsData";
 
-const { carTypeSelect, colorSelect } = ExampleData();
-
-const UploadCarSpec2 = ({ handleCallback }) => {
+const UploadVehicleDetails2 = ({ handleCallback }) => {
   const { carType, milage, color } =
     JSON.parse(localStorage.getItem("uploadData")) ?? false;
 
@@ -26,7 +24,7 @@ const UploadCarSpec2 = ({ handleCallback }) => {
     >
       <div className="flex w-full flex-col gap-y-2">
         <span className="text-base font-semibold text-lmGrey600 dark:text-dmGrey100">
-          Car Specification - 2
+          Vehicle Details - 2
         </span>
         <Controller
           name="carType"
@@ -37,7 +35,7 @@ const UploadCarSpec2 = ({ handleCallback }) => {
               value={carType ? carType : undefined}
               icon={carTypeSelect.icon}
               placeholder={carTypeSelect.placeholder}
-              itemList={carTypeSelect.list}
+              itemList={[]}
               onChange={field.onChange}
               label="Select the Car Type"
               error={fieldState.error}
@@ -95,4 +93,4 @@ const UploadCarSpec2 = ({ handleCallback }) => {
   );
 };
 
-export default UploadCarSpec2;
+export default UploadVehicleDetails2;

@@ -7,8 +7,8 @@ import ExampleData from "../../../ExampleData";
 
 const { smokingSelect, eatingSelect } = ExampleData();
 
-const UploadCarSpec3 = ({ handleCallback }) => {
-      const { smoking, eating, carBio } =
+const UploadVehicleDetails3 = ({ handleCallback }) => {
+      const { smoking, eating } =
         JSON.parse(localStorage.getItem("uploadData")) ?? false;
 
     const { control, handleSubmit } = useForm();
@@ -25,7 +25,7 @@ const UploadCarSpec3 = ({ handleCallback }) => {
     >
       <div className="flex w-full flex-col gap-y-2">
         <span className="text-base font-semibold text-lmGrey600 dark:text-dmGrey100">
-          Car Specification - 3
+          Car Specification - 3 (Trivia)
         </span>
         <Controller
           name="smoking"
@@ -59,22 +59,6 @@ const UploadCarSpec3 = ({ handleCallback }) => {
             />
           )}
         />
-        <Controller
-          name="carBio"
-          control={control}
-          defaultValue={carBio ? carBio : undefined}
-          render={({ field, fieldState }) => (
-            <TextArea
-              onChange={field.onChange}
-              label="Do you have additional remarks/notes"
-              placeholder="She likes it gentle, then it is smooth sailing with my beauty :D"
-              value={field.value}
-              name={field.name}
-              onBlur={field.onBlur}
-              error={fieldState.error}
-            />
-          )}
-        />
       </div>
       <BottomPart
         firstBtn="primary"
@@ -86,4 +70,4 @@ const UploadCarSpec3 = ({ handleCallback }) => {
   );
 };
 
-export default UploadCarSpec3;
+export default UploadVehicleDetails3;

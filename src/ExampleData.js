@@ -1,85 +1,15 @@
+import { colorSelect, fuelTypeSelect, seatSelect, smokingSelect, transmissionSelect, trunkVolumeSelect } from "./pages/upload/data/uploadVehicleDetailsData";
+
 const citiesAutocomplete = {
   // placeholder: "Dresden",
   list: ["Berlin", "Dresden", "Cologne", "Munich", "Paris", "New York"],
 };
 
-const eatingSelect = {
-  label: null,
-  icon: "fa-solid fa-utensils",
-  placeholder: "Eating allowed?",
-  list: ["Yes", "No"],
-};
-
-const carTypeSelect = {
-  label: null,
-  icon: "fa-solid fa-car",
-  placeholder: "Which transmission?",
-  list: ["Coupe", "Sedan", "SUV", "Hatchback", "Sport", "Minivan"],
-};
-
-const transmissionSelect = {
-  label: null,
-  icon: "fa-solid fa-gears",
-  placeholder: "Which transmission?",
-  list: ["Automatic", "Manual"],
-};
-
-const fuelSelect = {
-  label: null,
-  icon: "fa-solid fa-gas-pump",
-  placeholder: "Which fuel type?",
-  list: ["Diesel", "Gas", "Electro"],
-};
-
-const seatSelect = {
-  label: null,
-  icon: "fa-solid fa-chair",
-  placeholder: "How many seats?",
-  list: ["2 seats", "3 seats", "4 seats", "5 seats", "6 seats", "7 seats"],
-};
-
-const trunkSelect = {
-  label: null,
-  icon: "fa-solid fa-suitcase",
-  placeholder: "How much trunk volume?",
-  list: [
-    "3 suitcases",
-    "4 suitcases",
-    "5 suitcases",
-    "6 suitcases",
-    "7 suitcases",
-    "8 suitcases",
-  ],
-};
-
-const colorSelect = {
-  label: null,
-  icon: "fa-solid fa-palette",
-  placeholder: "Which color?",
-  list: [
-    "Yellow",
-    "Green",
-    "Blue",
-    "Violet",
-    "Red",
-    "Orange",
-    "White",
-    "Black",
-  ],
-};
-
-const smokingSelect = {
-  label: null,
-  icon: "fa-solid fa-smoking",
-  placeholder: "Smoking allowed?",
-  list: ["Yes", "No"],
-};
-
 const filterSelects = {
   transmissionSelect: { ...transmissionSelect },
-  fuelSelect: { ...fuelSelect },
+  fuelSelect: { ...fuelTypeSelect },
   seatSelect: { ...seatSelect },
-  trunkSelect: { ...trunkSelect },
+  trunkSelect: { ...trunkVolumeSelect },
   colorSelect: { ...colorSelect },
   smokingSelect: { ...smokingSelect },
 };
@@ -893,17 +823,10 @@ const ExampleData = () => {
     userProfileBig,
     reviews,
     reviewRating,
-    carTypeSelect,
-    transmissionSelect,
-    colorSelect,
-    fuelSelect,
-    trunkSelect,
-    seatSelect,
     reviewId,
     offerCard,
     genderSelect,
     yesNoSelect,
-    eatingSelect,
     smokingSelect,
     citiesAutocomplete,
     messages,

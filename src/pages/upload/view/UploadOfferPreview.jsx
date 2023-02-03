@@ -2,7 +2,7 @@ import React from "react";
 import BottomPart from "../../../components/authentication/BottomPart";
 import Preview from "../../explore/map/components/preview/Preview";
 
-const UploadPrev = ({ handleCallback }) => {
+const UploadOfferPreview = ({ handleCallback }) => {
   const upload = () => {
     console.log("finish");
     const nextStep = "finish";
@@ -30,4 +30,4 @@ const UploadPrev = ({ handleCallback }) => {
   );
 };
 
-export default UploadPrev;
+export default UploadOfferPreview;

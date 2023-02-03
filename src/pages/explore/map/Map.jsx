@@ -18,9 +18,7 @@ const Map = () => {
       style={{ height: `${windowSize.height}px` }}
       className={`flex w-full justify-center`}
     >
-      <MapLoading
-        isLoading={isLoading}
-      />
+      <MapLoading isLoading={isLoading} />
       <MapView offers={offers} />
       {windowSize.width >= 1100 ? (
         <DesktopSearchPreview

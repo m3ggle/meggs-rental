@@ -3,10 +3,14 @@ import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandle
 import styles from "../../../../style";
 
 const OfferDetailsBasicInfo = ({ offerInformation }) => {
-  const { name, location, price, extraInfo, offerId } = offerInformation;
+  const { offer_basics, offer_location, offer_prices } = offerInformation;
+  const { id, offer_name, offer_description } = offer_basics
+  const { formatted, latitude, longitude } = offer_location
+  const {day_price, week_price, month_price} = offer_prices
 
   const { handleLocationNavigation } = useHandleLocationNavigation();
-  const handleLocation = () => handleLocationNavigation(offerId, location);
+  const handleLocation = () =>
+    handleLocationNavigation(id, { lat: latitude, lng: longitude });
 
   return (
     <div className="flex gap-x-6">
@@ -24,15 +28,15 @@ const OfferDetailsBasicInfo = ({ offerInformation }) => {
               aria-hidden="true"
             />
             <span onClick={handleLocation} className="cursor-pointer text-base">
-              {location.formatted}
+              {formatted}
             </span>
           </div>
           <span className="text-2xl font-semibold text-lmGrey800 dark:text-dmGrey25">
-            {name}
+            {offer_name}
           </span>
           <div className="flex w-full flex-wrap items-center gap-x-[2px] 700:hidden 1200:flex 1400:hidden">
             <span className="text-lg text-lmPrimary dark:text-dmPrimary">
-              {price.day}{" "}
+              {day_price}{" "}
               <span className="text-sm text-lmGrey400 dark:text-dmGrey300">
                 /day
               </span>
@@ -41,7 +45,7 @@ const OfferDetailsBasicInfo = ({ offerInformation }) => {
               <div className="h-1 w-1 rounded-full bg-lmGrey400"></div>
             </div>
             <span className="text-lg text-lmPrimary dark:text-dmPrimary">
-              {price.week}{" "}
+              {week_price}{" "}
               <span className="text-sm text-lmGrey400 dark:text-dmGrey300">
                 /week
               </span>
@@ -50,16 +54,16 @@ const OfferDetailsBasicInfo = ({ offerInformation }) => {
               <div className="h-1 w-1 rounded-full bg-lmGrey400"></div>
             </div>
             <span className="text-lg text-lmPrimary dark:text-dmPrimary">
-              {price.month}{" "}
+              {month_price}{" "}
               <span className="text-sm text-lmGrey400 dark:text-dmGrey300">
                 /month
               </span>
             </span>
           </div>
-          {/* bio */}
+          {/* description */}
           <div className="hidden h-[60px] w-full 700:flex 1200:hidden 1400:flex">
             <span className="w-full text-sm text-lmGrey600 line-clamp-3 dark:text-dmGrey300">
-              {extraInfo}
+              {offer_description}
             </span>
           </div>
         </div>
@@ -73,19 +77,19 @@ const OfferDetailsBasicInfo = ({ offerInformation }) => {
           className={`flex h-full w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
         >
           <span className="text-lg text-lmPrimary dark:text-dmPrimary">
-            {price.day}{" "}
+            {day_price}{" "}
             <span className="text-sm text-lmGrey400 dark:text-dmGrey300">
               /day
             </span>
           </span>
           <span className="text-lg text-lmPrimary dark:text-dmPrimary">
-            {price.week}{" "}
+            {week_price}{" "}
             <span className="text-sm text-lmGrey400 dark:text-dmGrey300">
               /week
             </span>
           </span>
           <span className="text-lg text-lmPrimary dark:text-dmPrimary">
-            {price.month}{" "}
+            {month_price}{" "}
             <span className="text-sm text-lmGrey400 dark:text-dmGrey300">
               /month
             </span>

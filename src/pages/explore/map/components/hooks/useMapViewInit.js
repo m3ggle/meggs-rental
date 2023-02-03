@@ -17,7 +17,6 @@ export const useMapViewInit = ({ setPosition }) => {
 
     // look in localStorage
     if (localStorage.getItem("exploreMapLastPosition") !== null) {
-      console.log("i found something in the local storage, i am using the local storage data")
       handleLocalStorage();
       return;
     }
@@ -55,15 +54,6 @@ export const useMapViewInit = ({ setPosition }) => {
   );
 
   const handlePreferredCity = () => {
-    console.log(
-      "setting the map on the preferred city of the user with these coordinates: ",
-      {
-        lat: preferredCity.coordinates.center.latitude,
-        lng: preferredCity.coordinates.center.longitude,
-        z: 12,
-      }
-    );
-
     setPositionHelper({
       lat: preferredCity.coordinates.center.latitude,
       lng: preferredCity.coordinates.center.longitude,

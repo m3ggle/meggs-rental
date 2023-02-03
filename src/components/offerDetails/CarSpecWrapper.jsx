@@ -1,16 +1,16 @@
 // <CarSpecWrapper amount="preview" specs={carSpecData} mobile={true} />
 import React from "react";
+import { useCarSpecFilter } from "../../hooks/useCarSpecFilter";
 import CarSpec from "./CarSpec";
-import { useCarSpecFilter } from "./hooks/useCarSpecFilter";
 
 const CarSpecWrapper = ({ amount, specs }) => {
   const { handleAmountPreview, handleAmountAll } = useCarSpecFilter();
-  
+
   let carSpecs = {};
   if (amount === "preview") {
     carSpecs = handleAmountPreview(specs);
   } else {
-    carSpecs = handleAmountAll(specs)
+    carSpecs = handleAmountAll(specs);
   }
 
   return (

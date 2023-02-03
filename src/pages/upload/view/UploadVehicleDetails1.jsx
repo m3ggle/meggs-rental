@@ -2,18 +2,17 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
-import ExampleData from "../../../ExampleData";
+import { seatSelect, trunkSelect, trunkVolumeSelect } from "../data/uploadVehicleDetailsData";
+import { useVD1GetOptions } from "../hooks/useVD1GetOptions";
 
-const { transmissionSelect, fuelSelect, trunkSelect, seatSelect } =
-  ExampleData();
+const UploadVehicleDetails1 = ({ handleCallback }) => {
+  const { transmission, fuelType, trunkVolume, amountSeats } =
+    JSON.parse(localStorage.getItem("uploadData")) ?? false;
 
-const UploadCarSpec1 = ({ handleCallback }) => {
-    const { transmission, fuelType, trunkVolume, seats } = JSON.parse(
-    localStorage.getItem("uploadData")) ?? false;
+  const { fuelTypes, transmissions } = useVD1GetOptions();
 
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log("basic info");
     const nextStep = true;
     handleCallback({ data, nextStep });
   };
@@ -25,7 +24,7 @@ const UploadCarSpec1 = ({ handleCallback }) => {
     >
       <div className="flex w-full flex-col gap-y-2">
         <span className="text-base font-semibold text-lmGrey600 dark:text-dmGrey100">
-          Car Specification - 1
+          Vehicle Details - 1
         </span>
         <Controller
           name="transmission"
@@ -34,9 +33,9 @@ const UploadCarSpec1 = ({ handleCallback }) => {
           render={({ field, fieldState }) => (
             <Select
               value={transmission ? transmission : undefined}
-              icon={transmissionSelect.icon}
-              placeholder={transmissionSelect.placeholder}
-              itemList={transmissionSelect.list}
+              icon="fa-solid fa-gears"
+              placeholder="Manual "
+              itemList={transmissions}
               onChange={field.onChange}
               label="Select the Transmission"
               error={fieldState.error}
@@ -50,9 +49,9 @@ const UploadCarSpec1 = ({ handleCallback }) => {
           render={({ field, fieldState }) => (
             <Select
               value={fuelType ? fuelType : undefined}
-              icon={fuelSelect.icon}
-              placeholder={fuelSelect.placeholder}
-              itemList={fuelSelect.list}
+              icon="fa-solid fa-gas-pump"
+              placeholder="Gas "
+              itemList={fuelTypes}
               onChange={field.onChange}
               label="Select the Fuel Type"
               error={fieldState.error}
@@ -66,9 +65,9 @@ const UploadCarSpec1 = ({ handleCallback }) => {
           render={({ field, fieldState }) => (
             <Select
               value={trunkVolume ? trunkVolume : undefined}
-              icon={trunkSelect.icon}
-              placeholder={trunkSelect.placeholder}
-              itemList={trunkSelect.list}
+              icon={trunkVolumeSelect.icon}
+              placeholder={trunkVolumeSelect.placeholder}
+              itemList={trunkVolumeSelect.list}
               onChange={field.onChange}
               label="Select the Trunk Volume"
               error={fieldState.error}
@@ -76,12 +75,12 @@ const UploadCarSpec1 = ({ handleCallback }) => {
           )}
         />
         <Controller
-          name="seats"
+          name="amountSeats"
           control={control}
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
-              value={seats ? seats : undefined}
+              value={amountSeats ? amountSeats : undefined}
               icon={seatSelect.icon}
               placeholder={seatSelect.placeholder}
               itemList={seatSelect.list}
@@ -102,4 +101,4 @@ const UploadCarSpec1 = ({ handleCallback }) => {
   );
 };
 
-export default UploadCarSpec1;
+export default UploadVehicleDetails1;

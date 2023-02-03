@@ -50,7 +50,7 @@ const DropdownMode = () => {
       {/* button */}
       {({ open }) => (
         <>
-          <Menu.Button className="flex w-full items-center gap-2 rounded-lg bg-white px-3 py-[10px] shadow-sm hover:bg-lmGrey50 dark:bg-dmGrey800">
+          <Menu.Button className="flex w-full items-center gap-2 rounded-lg bg-white px-3 py-[10px] shadow-sm duration-300 hover:bg-lmGrey50 dark:bg-dmGrey800">
             <i
               className={`${
                 localStorage.theme === "light"

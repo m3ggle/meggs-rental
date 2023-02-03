@@ -1,20 +1,15 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../components/authentication/BottomPart";
-import Autocomplete from "../../../components/input/Autocomplete";
 import TextInput from "../../../components/input/TextInput";
-import ExampleData from "../../../ExampleData";
 import { regexPrice } from "../../../helpers/regexCollection";
 
-const { citiesAutocomplete } = ExampleData();
-
-const UploadBasicInfo = ({ handleCallback }) => {
-  const { name, priceDay, priceWeek, priceMonth, startDate, endDate, city } =
+const UploadOfferPrices = ({ handleCallback }) => {
+  const { priceDay, priceWeek, priceMonth } =
     JSON.parse(localStorage.getItem("uploadData")) ?? false;
 
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log("basic info");
     const nextStep = true;
     handleCallback({ data, nextStep });
   };
@@ -26,32 +21,13 @@ const UploadBasicInfo = ({ handleCallback }) => {
     >
       <div className="flex w-full flex-col gap-y-2">
         <span className="text-base font-semibold text-lmGrey600 dark:text-dmGrey100">
-          Basic Information
+          Offer Prices
         </span>
-        <Controller
-          name="name"
-          control={control}
-          rules={{
-            required: "Name is required",
-          }}
-          defaultValue={name ? name : undefined}
-          render={({ field, fieldState }) => (
-            <TextInput
-              firstIcon="fa-solid fa-signature"
-              onChange={field.onChange}
-              label="What is the name of the offer/car?"
-              placeholder="Volkswagen Fox"
-              value={field.value}
-              onBlur={field.onBlur}
-              error={fieldState.error}
-            />
-          )}
-        />
         <Controller
           name="priceDay"
           control={control}
           rules={{
-            required: "Price of the day is required",
+            required: "Price per day is required",
             pattern: {
               value: regexPrice,
               message: "Only numbers are allowed",
@@ -75,7 +51,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           name="priceWeek"
           control={control}
           rules={{
-            required: "Price for a week is required",
+            required: "Price per week is required",
             pattern: {
               value: regexPrice,
               message: "Only numbers are allowed",
@@ -99,7 +75,7 @@ const UploadBasicInfo = ({ handleCallback }) => {
           name="priceMonth"
           control={control}
           rules={{
-            required: "Price for a month is required",
+            required: "Price per month is required",
             pattern: {
               value: regexPrice,
               message: "Only numbers are allowed",
@@ -119,65 +95,6 @@ const UploadBasicInfo = ({ handleCallback }) => {
             />
           )}
         />
-        <div className="flex gap-x-2">
-          <Controller
-            name="startDate"
-            control={control}
-            rules={{
-              required: "Start date is required",
-            }}
-            defaultValue={startDate ? startDate : undefined}
-            render={({ field, fieldState }) => (
-              <TextInput
-                firstIcon="fa-solid fa-calendar-days"
-                onChange={field.onChange}
-                label="Start date"
-                placeholder="02.06.2023"
-                type="date"
-                value={field.value}
-                onBlur={field.onBlur}
-                error={fieldState.error}
-              />
-            )}
-          />
-          <Controller
-            name="endDate"
-            control={control}
-            rules={{
-              required: "End date is required",
-            }}
-            defaultValue={endDate ? endDate : undefined}
-            render={({ field, fieldState }) => (
-              <TextInput
-                firstIcon="fa-solid fa-calendar-days"
-                onChange={field.onChange}
-                label="End date"
-                placeholder="21.06.2023"
-                type="date"
-                value={field.value}
-                onBlur={field.onBlur}
-                error={fieldState.error}
-              />
-            )}
-          />
-        </div>
-        <Controller
-          name="city"
-          control={control}
-          rules={{
-            required: "City is required",
-          }}
-          render={({ field, fieldState }) => (
-            <Autocomplete
-              //   placeholder={citiesAutocomplete.placeholder}
-              value={city ? city : undefined}
-              itemList={citiesAutocomplete.list}
-              onChange={field.onChange}
-              label="Where is the offer/car located?"
-              error={fieldState.error}
-            />
-          )}
-        />
       </div>
       <BottomPart
         firstBtn="primary"
@@ -189,4 +106,4 @@ const UploadBasicInfo = ({ handleCallback }) => {
   );
 };
 
-export default UploadBasicInfo;
+export default UploadOfferPrices;

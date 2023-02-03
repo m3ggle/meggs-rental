@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import BottomPart from "../../../components/authentication/BottomPart";
 import FileUpload from "../../../components/input/FileUpload";
 
-const UploadImgUpload = ({ handleCallback }) => {
+const UploadOfferPictures = ({ handleCallback }) => {
   const { handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("basic info");
@@ -45,4 +45,4 @@ const UploadImgUpload = ({ handleCallback }) => {
   );
 };
 
-export default UploadImgUpload;
+export default UploadOfferPictures;

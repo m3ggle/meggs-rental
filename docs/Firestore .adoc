@@ -85,7 +85,7 @@ offerId
         |- icon: string
     |- transmission: {}
     |- fuelType: {}
-    |- carType: {}
+    |- category: {}
     |- milage: {}
     |- color: {}
     |- trunkVolume: {}

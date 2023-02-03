@@ -1,8 +1,34 @@
-import React from 'react'
+import React, { useState } from "react";
+import FileUploadImagePreview from "./FileUploadImagePreview";
 
 const FileUpload = () => {
-  // ! follow this guide for the logic and preview
-  // https://blog.logrocket.com/using-filereader-api-preview-images-react/
+  const [image, setImage] = useState(null);
+  const [imagePreviewURLs, setImagePreviewURLs] = useState([]);
+
+  const handleImageChange = (e) => {
+    let files = Array.from(e.target.files);
+
+    if (files.length > 6) {
+      files = files.slice(0, 6);
+    }
+
+    const allPromises = files.map(async (file) => {
+      const objectUrl = URL.createObjectURL(file);
+      setImagePreviewURLs((prevState) => [...prevState, objectUrl]);
+    });
+    setImage(files);
+    Promise.all(allPromises);
+  };
+
+  const handleDelete = (url) => {
+    console.log("bam")
+    const arr = image.filter((img) => img !== url);
+    const arrUrl = imagePreviewURLs.filter((img) => img !== url);
+
+    setImage(arr);
+    setImagePreviewURLs(arrUrl);
+  };
+
   return (
     <div className="flex w-full max-w-[340px] flex-col gap-y-2">
       <label
@@ -18,14 +44,20 @@ const FileUpload = () => {
           Click to choose a file
         </span>
         <input
+          onChange={handleImageChange}
           type="file"
           name="fileUpload"
-          multiple
-          className="absolute opacity-0 h-full cursor-pointer"
+          multiple={true}
+          className="absolute h-full cursor-pointer opacity-0"
         />
       </div>
+
+      <FileUploadImagePreview
+        imagePreviewURLs={imagePreviewURLs}
+        handleDelete={handleDelete}
+      />
     </div>
   );
-}
+};
 
-export default FileUpload
+export default FileUpload;

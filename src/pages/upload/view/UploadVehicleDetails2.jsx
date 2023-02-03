@@ -4,15 +4,17 @@ import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import { regexNumbersOnly } from "../../../helpers/regexCollection";
-import { carTypeSelect, colorSelect } from "../data/uploadVehicleDetailsData";
+import { categorySelect, colorSelect, conditionSelect } from "../data/uploadVehicleDetailsData";
+import { useVD2GetOptions } from "../hooks/useVD2GetOptions";
 
 const UploadVehicleDetails2 = ({ handleCallback }) => {
-  const { carType, milage, color } =
+  const { category, vehicleCondition, milage, color } =
     JSON.parse(localStorage.getItem("uploadData")) ?? false;
 
+    const { categories, conditions, colors } = useVD2GetOptions();
+  
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log("basic info");
     const nextStep = true;
     handleCallback({ data, nextStep });
   };
@@ -27,17 +29,49 @@ const UploadVehicleDetails2 = ({ handleCallback }) => {
           Vehicle Details - 2
         </span>
         <Controller
-          name="carType"
+          name="category"
           control={control}
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
-              value={carType ? carType : undefined}
-              icon={carTypeSelect.icon}
-              placeholder={carTypeSelect.placeholder}
-              itemList={[]}
+              value={category ? category : undefined}
+              icon={categorySelect.icon}
+              placeholder="Sedan "
+              itemList={categories}
               onChange={field.onChange}
-              label="Select the Car Type"
+              label="In which category fits the offer in?"
+              error={fieldState.error}
+            />
+          )}
+        />
+        <Controller
+          name="vehicleCondition"
+          control={control}
+          rules={{ required: "Select an option" }}
+          render={({ field, fieldState }) => (
+            <Select
+              value={vehicleCondition ? vehicleCondition : undefined}
+              icon={conditionSelect.icon}
+              placeholder={conditionSelect.placeholder}
+              itemList={conditions}
+              onChange={field.onChange}
+              label="In what condition is the offer?"
+              error={fieldState.error}
+            />
+          )}
+        />
+        <Controller
+          name="color"
+          control={control}
+          rules={{ required: "Select an option" }}
+          render={({ field, fieldState }) => (
+            <Select
+              value={color ? color : undefined}
+              icon={colorSelect.icon}
+              placeholder="Blue "
+              itemList={colors}
+              onChange={field.onChange}
+              label="What color is the offer?"
               error={fieldState.error}
             />
           )}
@@ -62,22 +96,6 @@ const UploadVehicleDetails2 = ({ handleCallback }) => {
               placeholder="187000"
               value={field.value}
               onBlur={field.onBlur}
-              error={fieldState.error}
-            />
-          )}
-        />
-        <Controller
-          name="color"
-          control={control}
-          rules={{ required: "Select an option" }}
-          render={({ field, fieldState }) => (
-            <Select
-              value={color ? color : undefined}
-              icon={colorSelect.icon}
-              placeholder={colorSelect.placeholder}
-              itemList={colorSelect.list}
-              onChange={field.onChange}
-              label="Select the Color"
               error={fieldState.error}
             />
           )}

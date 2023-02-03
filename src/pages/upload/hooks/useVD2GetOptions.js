@@ -1,17 +1,23 @@
+import { useQuery } from "react-query";
+import supabase from "../../../config/supabaseClient";
+
 export const useVD2GetOptions = () => {
     const getFuelTypes = () => {
       return Promise.all([
         supabase
-          .rpc("get_vehicle_fuel_type_options")
+          .rpc("get_vehicle_category_options")
           .then((response) => response.data),
         supabase
-          .rpc("get_vehicle_transmission_options")
+          .rpc("get_vehicle_condition_options")
+          .then((response) => response.data),
+        supabase
+          .rpc("get_vehicle_color_options")
           .then((response) => response.data),
       ]);
     };
     const onError = (error) => console.log(error);
 
-    const { data } = useQuery(["get_vehicle_fuel_type_options"], getFuelTypes, {
+    const { data } = useQuery(["get_options", "category", "condition", "color"], getFuelTypes, {
       staleTime: 600000,
       refetchOnMount: true,
       refetchOnWindowFocus: false,
@@ -19,7 +25,8 @@ export const useVD2GetOptions = () => {
     });
 
     return {
-      fuelTypes: data === undefined ? [] : data[0],
-      transmissions: data === undefined ? [] : data[1],
+      categories: data === undefined ? [] : data[0],
+      conditions: data === undefined ? [] : data[1],
+      colors: data === undefined ? [] : data[2],
     };
 }

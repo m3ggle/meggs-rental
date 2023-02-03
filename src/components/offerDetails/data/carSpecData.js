@@ -25,7 +25,7 @@ export const carSpecData = {
     icon: "fa-solid fa-gas-pump",
   },
   category: {
-    title: "Car Type",
+    title: "Category",
     value: "Oldtimer",
     icon: "fa-solid fa-car",
   },

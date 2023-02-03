@@ -15,7 +15,7 @@ export const useVD1GetOptions = () => {
       const onError = (error) => console.log(error);
 
       const { data } = useQuery(
-        ["get_vehicle_fuel_type_options"],
+        ["get_options", "fuel_type", "transmission"],
         getFuelTypes,
         {
           staleTime: 600000,

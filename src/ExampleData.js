@@ -1,4 +1,11 @@
-import { colorSelect, fuelTypeSelect, seatSelect, smokingSelect, transmissionSelect, trunkVolumeSelect } from "./pages/upload/data/uploadVehicleDetailsData";
+import {
+  colorSelect,
+  fuelTypeSelect,
+  seatSelect,
+  smokingSelect,
+  transmissionSelect,
+  trunkVolumeSelect,
+} from "./pages/upload/data/uploadVehicleDetailsData";
 
 const citiesAutocomplete = {
   // placeholder: "Dresden",
@@ -775,8 +782,8 @@ const firestoreFormattedOffer = {
       name: "Fuel Type",
       value: "Gas",
     },
-    carType: {
-      name: "Car Type",
+    category: {
+      name: "Category",
       value: "Sedan",
     },
     milage: {

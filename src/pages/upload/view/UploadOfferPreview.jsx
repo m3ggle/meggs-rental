@@ -18,7 +18,7 @@ const UploadOfferPreview = ({ handleCallback }) => {
         <span className="text-base font-semibold text-lmGrey600 dark:text-dmGrey100">
           Upload Preview
         </span>
-        <Preview />
+        {/* <Preview /> */}
       </div>
       <BottomPart
         firstBtn="primary"

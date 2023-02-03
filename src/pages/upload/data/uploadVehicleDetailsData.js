@@ -5,6 +5,13 @@ export const transmissionSelect = {
   list: ["Automatic", "Manual"],
 };
 
+export const conditionSelect = {
+  label: null,
+  icon: "fa-solid fa-car-on",
+  placeholder: "Perfect",
+  list: [],
+};
+
 export const fuelTypeSelect = {
   label: null,
   icon: "fa-solid fa-gas-pump",
@@ -33,7 +40,7 @@ export const trunkVolumeSelect = {
   ],
 };
 
-export const carTypeSelect = {
+export const categorySelect = {
   label: null,
   icon: "fa-solid fa-car",
   placeholder: "Which transmission?",

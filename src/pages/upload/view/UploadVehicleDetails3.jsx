@@ -4,8 +4,7 @@ import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import TextArea from "../../../components/input/TextArea";
 import ExampleData from "../../../ExampleData";
-
-const { smokingSelect, eatingSelect } = ExampleData();
+import { eatingSelect, smokingSelect } from "../data/uploadVehicleDetailsData";
 
 const UploadVehicleDetails3 = ({ handleCallback }) => {
       const { smoking, eating } =
@@ -28,7 +27,7 @@ const UploadVehicleDetails3 = ({ handleCallback }) => {
           Car Specification - 3 (Trivia)
         </span>
         <Controller
-          name="smoking"
+          name="smokingAllowed"
           control={control}
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
@@ -44,7 +43,7 @@ const UploadVehicleDetails3 = ({ handleCallback }) => {
           )}
         />
         <Controller
-          name="eating"
+          name="eatingAllowed"
           control={control}
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (

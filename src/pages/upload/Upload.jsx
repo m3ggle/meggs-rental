@@ -36,7 +36,7 @@ const Upload = () => {
         <div className="flex w-full max-w-[348px] flex-col gap-y-8">
           <UploadHeader
             handleCallback={handleCallback}
-            maxRounds={6}
+            maxRounds={8}
             currentRound={currentRound - 1}
           />
           {renderComponent[currentRound]}

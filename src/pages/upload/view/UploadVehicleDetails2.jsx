@@ -2,17 +2,20 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
-import TextInput from "../../../components/input/TextInput";
-import { regexNumbersOnly } from "../../../helpers/regexCollection";
-import { categorySelect, colorSelect, conditionSelect } from "../data/uploadVehicleDetailsData";
+import {
+  categorySelect,
+  conditionSelect,
+  seatSelect,
+  trunkVolumeSelect,
+} from "../data/uploadVehicleDetailsData";
 import { useVD2GetOptions } from "../hooks/useVD2GetOptions";
 
 const UploadVehicleDetails2 = ({ handleCallback }) => {
-  const { category, vehicleCondition, milage, color } =
+  const { category, vehicleCondition, trunkVolume, amountSeats } =
     JSON.parse(localStorage.getItem("uploadData")) ?? false;
 
-    const { categories, conditions, colors } = useVD2GetOptions();
-  
+  const { categories, conditions } = useVD2GetOptions();
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const nextStep = true;
@@ -60,42 +63,35 @@ const UploadVehicleDetails2 = ({ handleCallback }) => {
             />
           )}
         />
+
         <Controller
-          name="color"
+          name="trunkVolume"
           control={control}
           rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
             <Select
-              value={color ? color : undefined}
-              icon={colorSelect.icon}
-              placeholder="Blue "
-              itemList={colors}
+              value={trunkVolume ? trunkVolume : undefined}
+              icon={trunkVolumeSelect.icon}
+              placeholder={trunkVolumeSelect.placeholder}
+              itemList={trunkVolumeSelect.list}
               onChange={field.onChange}
-              label="What color is the offer?"
+              label="Select the Trunk Volume"
               error={fieldState.error}
             />
           )}
         />
         <Controller
-          name="milage"
+          name="amountSeats"
           control={control}
-          rules={{
-            required: "Milage is required",
-            pattern: {
-              value: regexNumbersOnly,
-              message: "Invalid code",
-            },
-          }}
-          defaultValue={milage ? milage : undefined}
+          rules={{ required: "Select an option" }}
           render={({ field, fieldState }) => (
-            <TextInput
-              firstIcon="fa-solid fa-gauge"
-              type="number"
+            <Select
+              value={amountSeats ? amountSeats : undefined}
+              icon={seatSelect.icon}
+              placeholder={seatSelect.placeholder}
+              itemList={seatSelect.list}
               onChange={field.onChange}
-              label="What is the Car Milage? (in km)"
-              placeholder="187000"
-              value={field.value}
-              onBlur={field.onBlur}
+              label="Select the amounts of Seats"
               error={fieldState.error}
             />
           )}

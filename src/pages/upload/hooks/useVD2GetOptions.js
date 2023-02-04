@@ -10,14 +10,11 @@ export const useVD2GetOptions = () => {
         supabase
           .rpc("get_vehicle_condition_options")
           .then((response) => response.data),
-        supabase
-          .rpc("get_vehicle_color_options")
-          .then((response) => response.data),
       ]);
     };
     const onError = (error) => console.log(error);
 
-    const { data } = useQuery(["get_options", "category", "condition", "color"], getFuelTypes, {
+    const { data } = useQuery(["get_options", "category", "condition"], getFuelTypes, {
       staleTime: 600000,
       refetchOnMount: true,
       refetchOnWindowFocus: false,
@@ -26,7 +23,6 @@ export const useVD2GetOptions = () => {
 
     return {
       categories: data === undefined ? [] : data[0],
-      conditions: data === undefined ? [] : data[1],
-      colors: data === undefined ? [] : data[2],
+      conditions: data === undefined ? [] : data[1]
     };
 }

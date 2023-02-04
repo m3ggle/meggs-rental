@@ -5,7 +5,7 @@ import TextInput from "../../../components/input/TextInput";
 import { regexPrice } from "../../../helpers/regexCollection";
 
 const UploadOfferPrices = ({ handleCallback }) => {
-  const { priceDay, priceWeek, priceMonth } =
+  const { dayPrice, weekPrice, monthPrice } =
     JSON.parse(localStorage.getItem("uploadData")) ?? false;
 
   const { control, handleSubmit } = useForm();
@@ -24,7 +24,7 @@ const UploadOfferPrices = ({ handleCallback }) => {
           Offer Prices
         </span>
         <Controller
-          name="priceDay"
+          name="dayPrice"
           control={control}
           rules={{
             required: "Price per day is required",
@@ -33,7 +33,7 @@ const UploadOfferPrices = ({ handleCallback }) => {
               message: "Only numbers are allowed",
             },
           }}
-          defaultValue={priceDay ? priceDay : undefined}
+          defaultValue={dayPrice ? dayPrice : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-coins"
@@ -48,7 +48,7 @@ const UploadOfferPrices = ({ handleCallback }) => {
           )}
         />
         <Controller
-          name="priceWeek"
+          name="weekPrice"
           control={control}
           rules={{
             required: "Price per week is required",
@@ -57,7 +57,7 @@ const UploadOfferPrices = ({ handleCallback }) => {
               message: "Only numbers are allowed",
             },
           }}
-          defaultValue={priceWeek ? priceWeek : undefined}
+          defaultValue={weekPrice ? weekPrice : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-coins"
@@ -72,7 +72,7 @@ const UploadOfferPrices = ({ handleCallback }) => {
           )}
         />
         <Controller
-          name="priceMonth"
+          name="monthPrice"
           control={control}
           rules={{
             required: "Price per month is required",
@@ -81,7 +81,7 @@ const UploadOfferPrices = ({ handleCallback }) => {
               message: "Only numbers are allowed",
             },
           }}
-          defaultValue={priceMonth ? priceMonth : undefined}
+          defaultValue={monthPrice ? monthPrice : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-coins"

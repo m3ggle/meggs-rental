@@ -10,8 +10,9 @@ const FileUploadImagePreview = ({ handleDelete, imagePreviewURLs }) => {
         >
           <button
             type="button"
-            onClick={() => handleDelete(url)}
-            className="absolute -top-3 -right-3 flex h-8 w-8 items-center justify-center rounded-full bg-lmGrey100 dark:bg-dmGrey700"
+            onClick={() => handleDelete(url, index)}
+            // onClick={() => handleDelete(url)}
+            className="absolute -top-3 -right-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-lmGrey50 dark:bg-dmGrey700"
           >
             <i className="fa-solid fa-times h-4 w-4 text-lmGrey600 dark:text-dmGrey300"></i>
           </button>
@@ -20,6 +21,11 @@ const FileUploadImagePreview = ({ handleDelete, imagePreviewURLs }) => {
             alt="testDrive"
             className="h-[236px] w-[160px] overflow-hidden rounded-lg bg-dmGrey900 object-cover object-center"
           />
+          <div className="absolute inset-0 z-10 flex h-full w-full items-center justify-center dark:bg-dmGrey900/10">
+            <span className=" text-[60px] text-white/40 dark:text-dmGrey100/50">
+              {index + 1}
+            </span>
+          </div>
         </div>
       ))}
     </div>

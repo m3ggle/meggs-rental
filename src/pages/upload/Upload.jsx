@@ -23,7 +23,6 @@ const Upload = () => {
     5: <UploadCarSpec2 handleCallback={handleCallback} />,
     6: <UploadCarSpec3 handleCallback={handleCallback} />,
     7: <UploadImgUpload handleCallback={handleCallback} />,
-    8: <UploadPrev handleCallback={handleCallback} />,
   };
 
   const uploadBg =
@@ -36,7 +35,7 @@ const Upload = () => {
         <div className="flex w-full max-w-[348px] flex-col gap-y-8">
           <UploadHeader
             handleCallback={handleCallback}
-            maxRounds={8}
+            maxRounds={7}
             currentRound={currentRound - 1}
           />
           {renderComponent[currentRound]}

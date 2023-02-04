@@ -39,7 +39,7 @@ const UploadOfferBasics = ({ handleCallback }) => {
               firstIcon="fa-solid fa-signature"
               onChange={field.onChange}
               label="What is the name of the offer/car?"
-              placeholder="Volkswagen Fox"
+              placeholder="VW Fox"
               value={field.value}
               onBlur={field.onBlur}
               error={fieldState.error}

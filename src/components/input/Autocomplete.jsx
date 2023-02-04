@@ -9,11 +9,11 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 const Autocomplete = ({
   label,
   onChange,
-  onInputChange,
+  onInputChange = () => {},
   error,
   placeholder,
   itemList,
-  isLoading,
+  isLoading = false,
   onDelete,
   value,
 }) => {
@@ -98,7 +98,7 @@ const Autocomplete = ({
                 // onChange={(event) => setQuery(event.target.value)}
               />
               {/* delete btn */}
-              <i
+              {onDelete && <i
                 onClick={handleDelete}
                 className={`${
                   error
@@ -113,7 +113,7 @@ const Autocomplete = ({
                       ? "text-red-300 dark:text-red-100"
                       : "text-lmGrey600 dark:text-dmGrey25"
                   }`}
-              />
+              />}
               {/* <Combobox.Button>
                 <i
                   className={`${

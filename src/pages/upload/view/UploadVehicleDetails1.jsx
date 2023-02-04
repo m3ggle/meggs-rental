@@ -1,15 +1,16 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../components/authentication/BottomPart";
+import Autocomplete from "../../../components/input/Autocomplete";
 import Select from "../../../components/input/Select";
-import { seatSelect, trunkSelect, trunkVolumeSelect } from "../data/uploadVehicleDetailsData";
+import TextInput from "../../../components/input/TextInput";
 import { useVD1GetOptions } from "../hooks/useVD1GetOptions";
 
 const UploadVehicleDetails1 = ({ handleCallback }) => {
-  const { transmission, fuelType, trunkVolume, amountSeats } =
+  const { transmission, fuelType, vehicleName, brandName } =
     JSON.parse(localStorage.getItem("uploadData")) ?? false;
 
-  const { fuelTypes, transmissions } = useVD1GetOptions();
+  const { fuelTypes, transmissions, brandNames } = useVD1GetOptions();
 
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -26,6 +27,42 @@ const UploadVehicleDetails1 = ({ handleCallback }) => {
         <span className="text-base font-semibold text-lmGrey600 dark:text-dmGrey100">
           Vehicle Details - 1
         </span>
+        <Controller
+          name="vehicleName"
+          control={control}
+          rules={{
+            required: "Vehicle name is required",
+          }}
+          defaultValue={vehicleName ? vehicleName : undefined}
+          render={({ field, fieldState }) => (
+            <TextInput
+              firstIcon="fa-solid fa-car"
+              onChange={field.onChange}
+              label="What is the name of the offer/car?"
+              placeholder="Volkswagen Fox"
+              value={field.value}
+              onBlur={field.onBlur}
+              error={fieldState.error}
+            />
+          )}
+        />
+
+        <Controller
+          name="brandName"
+          control={control}
+          rules={{ required: "Select an option" }}
+          defaultValue={brandName ?? undefined}
+          render={({ field, fieldState }) => (
+            <Autocomplete
+              label="From which brand is the offer?"
+              onChange={(e) => field.onChange(e.name)}
+              value={field.value}
+              placeholder="Volkswagen "
+              itemList={brandNames}
+              error={fieldState.error}
+            />
+          )}
+        />
         <Controller
           name="transmission"
           control={control}
@@ -58,38 +95,6 @@ const UploadVehicleDetails1 = ({ handleCallback }) => {
             />
           )}
         />
-        <Controller
-          name="trunkVolume"
-          control={control}
-          rules={{ required: "Select an option" }}
-          render={({ field, fieldState }) => (
-            <Select
-              value={trunkVolume ? trunkVolume : undefined}
-              icon={trunkVolumeSelect.icon}
-              placeholder={trunkVolumeSelect.placeholder}
-              itemList={trunkVolumeSelect.list}
-              onChange={field.onChange}
-              label="Select the Trunk Volume"
-              error={fieldState.error}
-            />
-          )}
-        />
-        <Controller
-          name="amountSeats"
-          control={control}
-          rules={{ required: "Select an option" }}
-          render={({ field, fieldState }) => (
-            <Select
-              value={amountSeats ? amountSeats : undefined}
-              icon={seatSelect.icon}
-              placeholder={seatSelect.placeholder}
-              itemList={seatSelect.list}
-              onChange={field.onChange}
-              label="Select the amounts of Seats"
-              error={fieldState.error}
-            />
-          )}
-        />
       </div>
       <BottomPart
         firstBtn="primary"
@@ -102,3 +107,21 @@ const UploadVehicleDetails1 = ({ handleCallback }) => {
 };
 
 export default UploadVehicleDetails1;
+
+// <Controller
+//   name="brandName"
+//   control={control}
+//   rules={{ required: "Select an option" }}
+//   render={({ field, fieldState }) => (
+
+// <Select
+//   value={brandName ? brandName : undefined}
+//   icon="fa-solid fa-tag"
+//   placeholder="Volkswagen "
+//   itemList={brandNames}
+//   onChange={field.onChange}
+//   label="Select a Brand"
+//   error={fieldState.error}
+// />
+//               )}
+// />

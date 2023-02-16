@@ -1,3 +1,5 @@
+import { templateState } from "./templateState";
+
 const userReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
@@ -13,6 +15,11 @@ const userReducer = (state, action) => {
           ...payload,
         },
       };
+    case "SET_USER_CONTEXT_DEFAULT":
+      return {
+        ...templateState,
+      };
+
     default:
       break;
   }

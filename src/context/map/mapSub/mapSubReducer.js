@@ -21,6 +21,13 @@ const mapCoordReducer = (state, action) => {
         ...state,
         activeMarker: payload,
       };
+    case "SET_DEFAULT":
+      return {
+        mapLoaded: false,
+        flyTo: false,
+        activeMarker: null,
+        hoverMarker: null,
+      };
     default:
       break;
   }

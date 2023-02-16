@@ -71,7 +71,7 @@ const Select = ({
               >
                 {selected}
               </span>
-              <i
+              {/* <i
                 className={` ${
                   open ? "translate-y-1" : "translate-y-0"
                 } flex items-center justify-center text-xl duration-500 ease-in-out ${
@@ -91,7 +91,7 @@ const Select = ({
                     <HiChevronUpDown aria-hidden="true" className="text-xl" />
                   )}
                 </motion.div>
-              </i>
+              </i> */}
             </Listbox.Button>
             {error && !open && (
               <div className="flex items-center gap-x-2 px-3 ">

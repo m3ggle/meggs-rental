@@ -13,7 +13,7 @@ const OfferDetailsCalLoc = ({offerInformation}) => {
         </span>
         <div className="flex w-full flex-col items-center gap-y-1 overflow-hidden rounded-3xl bg-white shadow dark:bg-dmGrey900 dark:shadow-dmShadow 1200:p-6 1400:p-0">
           <div className="w-full 1200:w-[360px] 1400:w-full">
-            <Calendar offerInformation={offerInformation} />
+            <Calendar />
           </div>
         </div>
       </div>
@@ -26,8 +26,8 @@ const OfferDetailsCalLoc = ({offerInformation}) => {
           className={`flex h-[256px] w-full flex-col gap-y-1 overflow-hidden rounded-3xl bg-cover bg-center shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
         >
           <Location
-            lng={offerInformation.location.lng}
-            lat={offerInformation.location.lat}
+            lng={offerInformation.offer_location.longitude}
+            lat={offerInformation.offer_location.latitude}
           />
         </div>
       </div>

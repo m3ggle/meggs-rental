@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import UserProfileBig from "../../../../components/userProfile/UserProfileBig";
 import ExampleData from "../../../../ExampleData";
 
 const { userProfileBig } = ExampleData();
 
-const OfferDetailsOwner = () => {
-  useEffect(() => {
-    getOwner();
-  }, []);
-  const getOwner = () => {};
-
+const OfferDetailsOwner = ({ offer_owner }) => {
   return (
     <div className="flex gap-x-6">
       {/* bio */}
@@ -18,12 +13,10 @@ const OfferDetailsOwner = () => {
           Short Bio
         </span>
         <div
-          className={`flex h-[242px] w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
+          className={`flex h-full w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
         >
           <span className="w-full text-sm text-lmGrey600 line-clamp-[9] dark:text-dmGrey300">
-            I rather take my bike or the OVP to the Uni so I don’t really have a
-            need for my cars. If you like any of my offer(s), don’t be scared to
-            send me a Message 😊.
+            {offer_owner.bio}
           </span>
         </div>
       </div>
@@ -35,7 +28,18 @@ const OfferDetailsOwner = () => {
         <div
           className={`rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
         >
-          <UserProfileBig userProfileData={userProfileBig} />
+          <UserProfileBig
+            userProfileData={{
+              userId: offer_owner.owner_id,
+              profilePictureUrl: offer_owner.profile_picture_url,
+              userName: offer_owner.user_name,
+              firstName: offer_owner.first_name,
+              lastName: offer_owner.last_name,
+              isOnline: offer_owner.is_online,
+              lastOnline: offer_owner.last_online,
+              createdAt: offer_owner.user_created_at,
+            }}
+          />
         </div>
       </div>
     </div>

@@ -1,20 +1,9 @@
 import { createContext, useContext, useReducer } from "react";
+import { mapCoordContextTemplate } from "./mapCoordContextTemplate";
 import mapCoordReducer from "./mapCoordReducer";
 
 const MapCoordContext = createContext({
-  bounds: {
-    north: null,
-    east: null,
-    south: null,
-    west: null,
-  },
-  storedZoom: null,
-  position: {
-    lat: null,
-    lng: null,
-    z: null,
-  },
-  externalPositionChange: null,
+  ...mapCoordContextTemplate,
 
   dispatchMapCoord: () => {}
 });
@@ -26,10 +15,7 @@ export function useMapCoordContext() {
 
 export const MapCoordProvider = ({ children }) => {
   const initialState = {
-    bounds: {},
-    storedZoom: null,
-    position: {},
-    externalPositionChange: null,
+    ...mapCoordContextTemplate,
   };
 
   const [state, dispatchMapCoord] = useReducer(mapCoordReducer, initialState);

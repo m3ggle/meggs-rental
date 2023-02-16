@@ -1,41 +1,40 @@
 import React, { useState } from "react";
-import { calcPercentage } from "../../helper/calcPercentage";
+import { calcPercentage } from "../../helpers/calcPercentage";
 import ReviewBar from "./ReviewBar";
 
-const ReviewHeader = ({ totalAmount, ratingDetailed }) => {
-  const { five, four, three, two, one } =
-  ratingDetailed;
+const ReviewHeader = ({ summary }) => {
+  const {
+    total_reviews,
+    five_stars,
+    four_stars,
+    three_stars,
+    two_stars,
+    one_stars,
+  } = summary;
 
   const [overallRating] = useState(
-    (
-      (five * 5 +
-        four * 4 +
-        three * 3 +
-        two * 2 +
-        one) /
-      totalAmount
-    ).toFixed(1)
+    ((five_stars * 5 + four_stars * 4 + three_stars * 3 + two_stars * 2 + one_stars) / total_reviews).toFixed(1)
   );
   const [ratings] = useState({
     fiveStars: {
       color: "bg-lime-400",
-      value: calcPercentage(five, totalAmount),
+      value: calcPercentage(five_stars, total_reviews),
     },
     fourStars: {
       color: "bg-lime-500",
-      value: calcPercentage(four, totalAmount),
+      value: calcPercentage(four_stars, total_reviews),
     },
     threeStars: {
       color: "bg-yellow-300",
-      value: calcPercentage(three, totalAmount),
+      value: calcPercentage(three_stars, total_reviews),
     },
     twoStars: {
       color: "bg-orange-400",
-      value: calcPercentage(two, totalAmount),
+      value: calcPercentage(two_stars, total_reviews),
     },
     oneStar: {
       color: "bg-red-500",
-      value: calcPercentage(one, totalAmount),
+      value: calcPercentage(one_stars, total_reviews),
     },
   });
 
@@ -46,7 +45,7 @@ const ReviewHeader = ({ totalAmount, ratingDetailed }) => {
           {overallRating}
         </span>
         <span className="text-xs text-lmGrey300 dark:text-dmGrey300">
-          {totalAmount} Reviews
+          {total_reviews} Reviews
         </span>
       </div>
 

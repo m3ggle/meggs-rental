@@ -1,16 +1,19 @@
+import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { queryClient } from "./api/reactQuery/queryClient";
 import LogoImg from "./components/LogoImg";
 import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
-import { useUserObserver } from "./context/user/useUserObserver";
-import { useAuthObserver } from "./hooks/firebase/useAuthObserver";
+import Auth from "./hooks/auth/Auth";
 import NotifyModal from "./modals/notifyModal/NotifyModal";
 import UserDetailsModal from "./modals/userDetailsModal/UserDetailsModal";
-import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding";
+import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding"; // not needed anymore
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
 import SignIn from "./pages/authentication/signIn/SignIn";
+import GoogleCallback from "./pages/authentication/signUp/google/GoogleCallback";
 import SignUp from "./pages/authentication/signUp/SignUp";
 import UpdateEmailPassword from "./pages/authentication/updateEmailPassword/UpdateEmailPassword";
 import Chat from "./pages/chat/Chat";
@@ -25,9 +28,9 @@ import NotFound from "./pages/notFound/NotFound";
 import OfferDetails from "./pages/offerDetails/OfferDetails";
 import PrivacyPolicy from "./pages/privacyPolicy/PrivacyPolicy";
 import Profile from "./pages/profile/Profile";
-import ProfileAccount from "./pages/profile/subpages/ProfileAccount";
 import ProfileNotification from "./pages/profile/subpages/ProfileNotification";
 import ProfilePayments from "./pages/profile/subpages/ProfilePayments";
+import ProfilePersonalInformation from "./pages/profile/subpages/ProfilePersonalInformation/ProfilePersonalInformation";
 import ReviewsOffer from "./pages/reviews/reviewsOffer/ReviewsOffer";
 import ReviewsUser from "./pages/reviews/reviewsUser/ReviewsUser";
 import TermsOfService from "./pages/termsOfService/TermsOfService";
@@ -36,18 +39,23 @@ import Upload from "./pages/upload/Upload";
 import UserOffers from "./pages/userOffers/UserOffers";
 
 export default function App() {
-  // for react query
-  const queryClient = new QueryClient();
+  // cleanup
+  useEffect(() => {
+    window.addEventListener("beforeunload", () => {
+      localStorage.removeItem("exploreMapLastPosition");
+    });
+  }, []);
 
-  // for firebase auth
-  useAuthObserver();
-  useUserObserver();
+  
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex h-full w-full items-center justify-center bg-white dark:bg-dmGrey900">
         <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white dark:bg-dmGrey900">
           <Router>
+      {/* auth */}
+      <Auth />
+            {/* dark/light mode */}
             <div className="hidden" aria-hidden="true">
               <DropdownMode />
             </div>
@@ -82,7 +90,10 @@ export default function App() {
               <Route path="/homepage" element={<Homepage />} />
 
               <Route path="/profile" element={<Profile />} />
-              <Route path="/profile/account" element={<ProfileAccount />} />
+              <Route
+                path="/profile/personal-information"
+                element={<ProfilePersonalInformation />}
+              />
               <Route path="/profile/payments" element={<ProfilePayments />} />
               <Route
                 path="/profile/notification"
@@ -104,6 +115,10 @@ export default function App() {
 
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route
+                path="/sign-up/google-callback"
+                element={<GoogleCallback />}
+              />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/update-email" element={<UpdateEmailPassword />} />
               <Route
@@ -116,7 +131,7 @@ export default function App() {
           </Router>
         </div>
       </div>
-      {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 }

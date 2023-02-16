@@ -3,11 +3,11 @@ import React from "react";
 
 const UserProfileChat = ({
   chatId,
-  newMsg,
+  chatStatus,
   lastMsg,
   displayName,
   shadow,
-  photoURL,
+  profilePicture,
   onClick,
 }) => {
   return (
@@ -19,12 +19,17 @@ const UserProfileChat = ({
     >
       <div className="flex h-11 w-full gap-x-2">
         {/* pic */}
-        <div
+        <img
+          className="h-[46px] min-h-[46px] w-[46px] min-w-[46px] rounded-full bg-lmGrey100 object-cover object-center shadow"
+          src={profilePicture}
+          alt="user avatar"
+        />
+        {/* <div
           className="h-[46px] min-h-[46px] w-[46px] min-w-[46px] rounded-full bg-lmGrey100 bg-cover bg-center shadow"
           style={{
             backgroundImage: `url(${photoURL})`,
           }}
-        ></div>
+        ></div> */}
 
         {/* info */}
         <div className="flex w-full flex-col justify-center gap-y-[2px] overflow-hidden">
@@ -39,7 +44,7 @@ const UserProfileChat = ({
         </div>
 
         <div className={`flex h-full w-6 min-w-fit items-center`}>
-          {newMsg && (
+          {chatStatus && (
             <div
               className={`h-2 w-2 rounded-full bg-lmPrimary dark:bg-dmPrimary`}
             ></div>

@@ -1,118 +1,100 @@
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-} from "firebase/auth";
-import { firestoreSetUser } from "../../../../api/firebase/useSetUserAPI";
-import { toastNotify } from "../../../../components/toastNotify/toastNotify";
-import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
-import { auth } from "../../../../firebase.config";
-import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
-import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import supabase from "../../../../config/supabaseClient";
+import { useSignUpEmailPasswordHelpers } from "./useSignUpEmailPasswordHelpers";
+import { useSignUpHandleModal } from "./useSignUpHandleModal";
 
 export const useSignUpEmailPasswordSubmit = () => {
-  const { handleStorage } = useMultiStepHelper();
-  const { setSingleParam } = useUrlManipulation();
-  const { dispatchNotifyModal, closeNotifyModal } = useNotifyModalContext();
-  const { notifyStandard } = toastNotify();
+  const { handleModal } = useSignUpHandleModal();
+  const {
+    handleEmailChange,
+    handleEmailCheckCall,
+    displayNotify,
+    checkSignUpFormData,
+    handleSignUpPreparation,
+  } = useSignUpEmailPasswordHelpers();
+  const navigate = useNavigate();
 
-  const desktopPhotoUrl =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeCars.webp?alt=media&token=51d51fb2-414d-44a4-a549-40a36666b7cb";
-  const mobilePhotoUrl =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2Fmoped.webp?alt=media&token=c3fbae96-06a8-4121-9067-25ca1dcea4af";
+  const [isLoading, setIsLoading] = useState(false);
 
-  const modalHandleSendAgain = async () => {
-    try {
-      await sendEmailVerification(auth.currentUser);
-      notifyStandard({
-        information: {
-          type: "info",
-          content: "We send an verification email",
-        },
-        id: "sendVerifyEmail",
-      });
-    } catch (error) {
-      notifyStandard({
-        information: {
-          type: "info",
-          content: error.message.split("/")[1].replace(").", ""),
-        },
-        id: "sendAgainError",
-      });
-      console.log(error.code);
-      console.log(error.message);
+  const onSubmit = async (formData) => {
+    // preparation
+    let data = JSON.parse(localStorage.getItem("signUpData")) ?? false;
+    data.email = formData.email;
+    data.password = formData.password;
+
+    // checks before sign up
+    const checkFormResult = checkSignUpFormData(data, true);
+    if (!checkFormResult) {
+      return;
     }
-  };
+    setIsLoading(true);
+    const checkEmailResult = await handleEmailCheckCall(formData.email); //true if the email already exists
+    if (checkEmailResult) {
+      displayNotify("This email already exists.");
+      setIsLoading(false);
+      return;
+    }
 
-  const handleModal = (email) => {
-    dispatchNotifyModal({
-      type: "SET_NOTIFY_MODAL",
-      payload: {
-        isOpen: true,
-        preMade: "standard",
-        extraInfo: {
-          title: "Email send",
-          bulletPoints: [
-            `We send you an email to "${email}".`,
-            "Check your invoices and spam folder.",
-            `Found it? Click the blue highlighted text.`,
-            `If not, then click the "Send Again" button.`,
-            `Still nothing? Click the "Go Back" button and check if you put in your correct email address.`,
-          ],
-          primaryButton: {
-            title: "Send Again",
-            function: modalHandleSendAgain,
-          },
-          secondaryButton: {
-            title: "Close",
-            function: closeNotifyModal,
-          },
-        },
-        photoURL: {
-          desktop: desktopPhotoUrl,
-          mobile: mobilePhotoUrl,
-        },
+    const userMetaData = handleSignUpPreparation(data);
+
+    console.log(userMetaData)
+
+    // sign up to supabase
+    const { error: signUpError } = await supabase.auth.signUp({
+      email: formData.email,
+      password: formData.password,
+      options: {
+        data: { ...userMetaData },
       },
     });
-  };
 
-  const onSubmit = async (data) => {
-    const { email, password } = data;
-
-    try {
-      const credentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      if (credentials) {
-        await sendEmailVerification(credentials.user);
-
-        const prep = {
-          uid: credentials.user.uid,
-          information: {
-            uid: credentials.user.uid,
-            email: credentials.user.email,
-          },
-        };
-        firestoreSetUser(prep);
-
-        handleModal(email);
-        handleStorage(data, "signUpData");
-        setSingleParam("email", email);
-      }
-    } catch (error) {
-      // most likely: email already exists
-      notifyStandard({
-        information: {
-          type: "info",
-          content: error.message.split("/")[1].replace(").", ""),
-        },
-        id: "sendVerifyEmail",
-      });
-      console.error(error.message);
+    if (signUpError !== null) {
+      displayNotify("Something went wrong", "signUpEnd");
+      console.log(signUpError);
+      setIsLoading(false);
+      return;
     }
+
+    // everything alright, lets move on
+    handleModal(data.email);
+    navigate("/homepage");
+    setIsLoading(false);
   };
 
-  return { onSubmit };
+  const handleGoogle = async () => {
+    // prep
+    let data = JSON.parse(localStorage.getItem("signUpData")) ?? false;
+
+    // check
+    const checkFormResult = checkSignUpFormData(data);
+    if (!checkFormResult) {
+      return;
+    }
+
+    // user meta data prep
+    const userMetaData = handleSignUpPreparation(data);
+
+    const { data: googleData, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "http://localhost:3000/explore/catalog",
+        // data: { ...userMetaData },
+      },
+    });
+
+    if (error) {
+      console.log(error);
+      return;
+    }
+
+    console.log(googleData);
+  };
+
+  return {
+    onSubmit,
+    handleEmailChange,
+    handleGoogle,
+    isLoading,
+  };
 };

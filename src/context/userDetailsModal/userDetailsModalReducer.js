@@ -6,11 +6,6 @@ const userDetailsModalReducer = (state, action) => {
         ...state,
         ...payload,
       };
-    case "SET_USER_DATA":
-      return {
-        ...state,
-        modalData: payload,
-      };
     default:
       break;
   }

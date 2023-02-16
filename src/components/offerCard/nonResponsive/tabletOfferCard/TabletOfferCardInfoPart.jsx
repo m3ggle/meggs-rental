@@ -1,30 +1,38 @@
-import React from 'react'
+import React from "react";
 
 const TabletOfferCardInfoPart = ({
   onNavigationCallback,
   offerInformation,
 }) => {
-  const { location, price, carSpecs, name } = offerInformation;
+  const {
+    formatted,
+    day_price,
+    week_price,
+    month_price,
+    transmission,
+    amount_seats,
+    offer_name,
+  } = offerInformation;
 
   return (
     <div
       onClick={onNavigationCallback}
-      className={`flex flex-col rounded-xl py-3 dark:bg-dmGrey900 dark:shadow-sm dark:shadow-dmShadow absolute bottom-[2%] z-10 w-11/12 gap-y-0 bg-white p-3 shadow`}
+      className={`absolute bottom-[2%] z-10 flex w-11/12 flex-col gap-y-0 rounded-xl bg-white p-3 py-3 shadow dark:bg-dmGrey900 dark:shadow-sm dark:shadow-dmShadow`}
     >
       <div className="flex w-full flex-col gap-y-1 overflow-hidden">
-        <div className="flex items-center gap-x-1 text-sm text-lmGrey600 dark:text-dmGrey100 w-full">
+        <div className="flex w-full items-center gap-x-1 text-sm text-lmGrey600 dark:text-dmGrey100">
           <i className="fa-solid fa-location-dot"></i>
-          <span className="w-full truncate">{location.formatted}</span>
+          <span className="w-full truncate">{formatted}</span>
         </div>
-        <span className="truncate text-base font-semibold text-lmGrey700 dark:text-dmGrey25 w-full">
-          {name}
+        <span className="w-full truncate text-base font-semibold text-lmGrey700 dark:text-dmGrey25">
+          {offer_name}
         </span>
       </div>
 
       {/* price */}
       <div className="flex w-full items-center gap-x-[2px] truncate">
         <span className="text-base text-lmPrimary dark:text-dmPrimary">
-          {price.day}€{" "}
+          {day_price}€{" "}
           <span className="text-xs text-lmGrey400 dark:text-dmGrey300">
             /day
           </span>
@@ -33,7 +41,7 @@ const TabletOfferCardInfoPart = ({
           <div className="h-1 w-1 rounded-full bg-lmGrey400"></div>
         </div>
         <span className="flex items-center truncate text-base text-lmPrimary dark:text-dmPrimary">
-          {price.week}€{" "}
+          {week_price}€{" "}
           <span className="truncate text-xs text-lmGrey400 dark:text-dmGrey300">
             /week
           </span>
@@ -42,7 +50,7 @@ const TabletOfferCardInfoPart = ({
           <div className="h-1 w-1 rounded-full bg-lmGrey400"></div>
         </div>
         <span className="hidden items-center text-lg text-lmPrimary dark:text-dmPrimary">
-          {price.month}€{" "}
+          {month_price}€{" "}
           <span className="truncate text-xs text-lmGrey400 dark:text-dmGrey300">
             /month
           </span>
@@ -50,18 +58,18 @@ const TabletOfferCardInfoPart = ({
       </div>
 
       {/* sum more info */}
-      <div className="gap-x-4 hidden w-fit">
+      <div className="hidden w-fit gap-x-4">
         <div className="flex items-center gap-x-1 text-sm text-lmGrey300 dark:text-dmGrey100">
           <i className="fa-solid fa-gears"></i>
-          <span>{carSpecs.transmission}</span>
+          <span>{transmission}</span>
         </div>
         <div className="flex items-center gap-x-1 text-sm text-lmGrey300 dark:text-dmGrey100">
           <i className="fa-solid fa-chair"></i>
-          <span>{carSpecs.seats} Seats</span>
+          <span>{amount_seats} Seats</span>
         </div>
       </div>
     </div>
   );
 };
 
-export default TabletOfferCardInfoPart
+export default TabletOfferCardInfoPart;

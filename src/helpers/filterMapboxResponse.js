@@ -1,5 +1,5 @@
 export const filterMapboxResponseCity = (data) => {
-  console.log(data);
+  // console.log(data);
   const filteredList = data.data.features.filter(
     (feature) =>
       feature.id && feature.place_name && feature.center && feature.bbox

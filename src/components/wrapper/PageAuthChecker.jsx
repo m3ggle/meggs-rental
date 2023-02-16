@@ -4,14 +4,21 @@ import { useUserContext } from "../../context/user/userContext";
 
 const PageAuthChecker = ({ children }) => {
   const { userId } = useUserContext();
-  const { openAuthNotifyModal } = useNotifyModalContext();
+  const { isOpen, openAuthNotifyModal, closeNotifyModal } = useNotifyModalContext();
+
+  console.log(userId)
 
   useEffect(() => {
     if (!userId) {
       openAuthNotifyModal();
+      return;
     }
-  }, [openAuthNotifyModal, userId]);
-
+    if (isOpen && userId) {
+      closeNotifyModal();
+      return;
+    }
+  }, [openAuthNotifyModal, userId, closeNotifyModal, isOpen]);
+    
   if (!userId) {
     return <></>;
   }

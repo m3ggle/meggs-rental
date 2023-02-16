@@ -39,6 +39,7 @@ const SignUpGoogle = () => {
       bounds: data.extraInfo.bounds,
       center: data.extraInfo.center,
     };
+
     setPreferredCity(preferredCity);
   };
 

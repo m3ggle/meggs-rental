@@ -11,7 +11,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.0",
-    "base64-arraybuffer": "^1.0.2",
     "browser-image-compression": "^2.0.0",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
@@ -19,7 +18,6 @@
     "framer-motion": "^7.6.1",
     "leaflet": "^1.9.3",
     "mapbox-gl": "^2.11.0",
-    "prisma": "^4.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.38.0",
@@ -32,8 +30,7 @@
     "react-scripts": "5.0.1",
     "react-use-measure": "^2.1.1",
     "uuid": "^9.0.0",
-    "web-vitals": "^2.1.4",
-    "yup": "^0.32.11"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

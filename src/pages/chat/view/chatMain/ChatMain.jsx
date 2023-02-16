@@ -11,7 +11,9 @@ const ChatMain = () => {
   const { getSingleParam } = useUrlManipulation();
   const chatId = getSingleParam("chatId");
 
-  const { chatMessages } = useGetChatMessages({chatId});
+  const { chatMessages } = useGetChatMessages({ chatId });
+  
+  // get chatinfo
 
   return (
     <div

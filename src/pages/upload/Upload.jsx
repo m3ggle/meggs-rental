@@ -22,7 +22,8 @@ const Upload = () => {
     4: <UploadCarSpec1 handleCallback={handleCallback} />,
     5: <UploadCarSpec2 handleCallback={handleCallback} />,
     6: <UploadCarSpec3 handleCallback={handleCallback} />,
-    7: <UploadImgUpload handleCallback={handleCallback} />,
+    7: <UploadImgUpload />,
+    // 7: <UploadImgUpload handleCallback={handleCallback} />,
   };
 
   const uploadBg =

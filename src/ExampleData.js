@@ -736,10 +736,10 @@ const navbarLinks = [
   //   name: "Search",
   //   linkTo: "directSearch",
   // },
-  {
-    name: "Most Viewed",
-    linkTo: "mostViewed",
-  },
+  // {
+  //   name: "Most Viewed",
+  //   linkTo: "mostViewed",
+  // },
   {
     name: "About",
     linkTo: "about",

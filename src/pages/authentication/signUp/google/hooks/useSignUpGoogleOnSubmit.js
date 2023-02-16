@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { toastNotify } from "../../../../../components/toastNotify/toastNotify";
 import supabase from "../../../../../config/supabaseClient";
 import { useSignUpEmailPasswordHelpers } from "../../hooks/useSignUpEmailPasswordHelpers";
@@ -9,6 +10,7 @@ export const useSignUpGoogleOnSubmit = ({ uid, preferredCity }) => {
   const { notifyUserNameExist } = useSignUpUserNameCityHelpers();
   const { handleCityDefault } = useSignUpUserNameCitySubmit();
   const { handleSignUpPreparation } = useSignUpEmailPasswordHelpers();
+  const navigate = useNavigate()
 
   const onSubmit = async (data) => {
     // checks
@@ -33,9 +35,13 @@ export const useSignUpGoogleOnSubmit = ({ uid, preferredCity }) => {
     let userData = handleSignUpPreparation(data);
     userData.uid = uid;
     userData.email = data.email;
+    
+    userData.phone = null
+    userData.email_confirmed = true
+    userData.phone_confirmed = false
 
-    const { data: uploadResult, error } = await supabase.rpc(
-      "upload_user_google",
+    const { error } = await supabase.rpc(
+      "upload_new_user",
       userData
     );
 
@@ -47,18 +53,8 @@ export const useSignUpGoogleOnSubmit = ({ uid, preferredCity }) => {
         },
         id: "googleAccountCreation",
       });
+      console.log(error)
       return;
-    }
-
-    if (uploadResult.fail != null) {
-      notifyStandard({
-        information: {
-          type: "warning",
-          content: uploadResult.fail,
-        },
-        id: "googleAccountCreation",
-      });
-      return
     }
 
     notifyStandard({
@@ -68,6 +64,8 @@ export const useSignUpGoogleOnSubmit = ({ uid, preferredCity }) => {
       },
       id: "googleAccountCreation",
     });
+
+    navigate('/homepage')
   };
 
   return { onSubmit };

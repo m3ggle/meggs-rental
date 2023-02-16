@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { notifySupabaseError } from "../../components/toastNotify/notifySupabaseError";
+import { toastNotify } from "../../components/toastNotify/toastNotify";
 import supabase from "../../config/supabaseClient";
 import { useUserContext } from "../../context/user/userContext";
 import { sqlToJsObject } from "../../helpers/sqlToJsSyntax";
@@ -9,6 +11,8 @@ import { toDesirableStructure } from "./helpers/toDesirableStructure";
 export const useAuthOSignIn = () => {
   const { dispatchUser } = useUserContext();
   const [userIdSignIn, setUserIdSignIn] = useState(null);
+  const { notifyStandard } = toastNotify();
+  const navigate = useNavigate();
 
   // for user context
   const getUserWPC = () => {
@@ -26,7 +30,15 @@ export const useAuthOSignIn = () => {
     }
 
     if (data.error !== null) {
-      notifySupabaseError(data.error);
+      notifyStandard({
+        information: {
+          type: "info",
+          content: "Signed in but incomplete.",
+        },
+        id: "signInIncomplete",
+      });
+      navigate("/sign-up/google-callback");
+      console.log(data.error);
       return;
     }
 

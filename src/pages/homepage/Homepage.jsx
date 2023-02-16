@@ -16,7 +16,7 @@ const Homepage = () => {
       <HomepageChat />
       {/* <HomepageSearch /> */}
       {/* <HomepageSearchByCity /> */}
-      <HomepageMostViewed />
+      {/* <HomepageMostViewed /> */}
       <HomepageAbout />
       <HomepageFooter />
     </div>

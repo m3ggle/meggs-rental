@@ -1,45 +1,28 @@
-import React, { useState } from "react";
-import Btn from "../../components/common/Btn";
-import FileUpload from "../../components/input/FileUpload";
-import supabase from "../../config/supabaseClient";
+import React from "react";
 
 const PrivacyPolicy = () => {
-  const [images, setImages] = useState([])
-  
-  const handleClick = async (data) => {
-    // setImages(data);
-    const test = "4 Seats"
-    console.log(+test.split(" ")[0])
-  };
-
-  const handleUpload = async () => {
-    if (images.length > 0) {
-      const { data, error } = await supabase.storage
-        .from("user-offers")
-        .upload(`1238u0nk123-123-213-12312039uj/${images[0].name}`, images[0], {
-          contentType: "image/webp",
-          upsert: true,
-        });
-      
-      console.log(data, error)
-      return 
-    }
-
-    console.log("no images to upload")
-  };
-
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2 overflow-scroll">
-      <div className="h-fit w-fit">
-        <Btn
-          title="Click Me"
-          type="button"
-          uiType="primary"
-          onClick={handleClick}
-          // onClick={handleUpload}
-        />
-      </div>
-      <FileUpload filesCallback={handleClick} />
+    // <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2 overflow-scroll">
+    //   <div className="h-fit w-fit">
+    //     <Btn
+    //       title="Click Me"
+    //       type="button"
+    //       uiType="primary"
+    //       onClick={handleClick}
+    //     />
+    //   </div>
+    // </div>
+    <div className="h-fit w-full flex flex-col">
+      <section className="flex h-screen w-full bg-green-400 p-8">
+        <div className="sticky top-4 flex h-48 w-full items-center justify-center rounded-lg bg-green-700 text-4xl font-medium text-white shadow-lg">
+          top-0
+        </div>
+      </section>
+      <section className="flex h-screen w-full items-end bg-blue-400 p-8">
+        <div className="sticky bottom-4 flex h-48 w-full items-center justify-center rounded-lg bg-blue-700 text-4xl font-medium text-white shadow-lg">
+          bottom-0
+        </div>
+      </section>
     </div>
   );
 };

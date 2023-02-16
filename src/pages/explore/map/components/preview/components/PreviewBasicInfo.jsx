@@ -2,7 +2,10 @@ import React from "react";
 import { useHandleFly } from "../../../../../../hooks/useHandleFly";
 
 const PreviewBasicInfo = ({ offerInformation }) => {
-  const { location, name, price } = offerInformation;
+  const { offer_basics, offer_location, offer_prices } = offerInformation;
+  const { latitude, longitude, formatted } = offer_location
+  const { offer_name } = offer_basics
+  const {day_price, week_price, month_price} = offer_prices
 
   const { handleFly } = useHandleFly();
 
@@ -14,18 +17,18 @@ const PreviewBasicInfo = ({ offerInformation }) => {
           aria-hidden="true"
         />
         <span
-          onClick={() => handleFly(location.lng, location.lat)}
+          onClick={() => handleFly(longitude, latitude)}
           className="w-10/12 cursor-pointer truncate text-sm"
         >
-          {location.formatted}
+          {formatted}
         </span>
       </div>
       <span className="w-10/12 truncate text-xl text-lmGrey800 dark:text-dmGrey25">
-        {name}
+        {offer_name}
       </span>
       <div className="flex w-full items-center gap-x-[2px] overflow-hidden truncate">
         <span className="truncate text-lg text-lmPrimary dark:text-dmPrimary">
-          {price.day}{" "}
+          {day_price}{" "}
           <span className="truncate text-sm text-lmGrey400 dark:text-dmGrey300">
             /day
           </span>
@@ -34,7 +37,7 @@ const PreviewBasicInfo = ({ offerInformation }) => {
           <div className="h-1 w-1 rounded-full bg-lmGrey400"></div>
         </div>
         <span className="truncate text-lg text-lmPrimary dark:text-dmPrimary">
-          {price.week}{" "}
+          {week_price}{" "}
           <span className="truncate text-sm text-lmGrey400 dark:text-dmGrey300">
             /week
           </span>
@@ -43,7 +46,7 @@ const PreviewBasicInfo = ({ offerInformation }) => {
           <div className="h-1 w-1 rounded-full bg-lmGrey400"></div>
         </div>
         <span className="truncate text-lg text-lmPrimary dark:text-dmPrimary">
-          {price.month}{" "}
+          {month_price}{" "}
           <span className="truncate text-sm text-lmGrey400 dark:text-dmGrey300">
             /month
           </span>

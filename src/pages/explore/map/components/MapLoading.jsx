@@ -1,9 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
-import { useDarkModeContext } from "../../../../context/darkMode/darkModeContext";
+import Loading from "../../../../components/Loading";
+import { useWindowSize } from "../../../../hooks/useWindowSize";
 
-const MapLoading = ({ isLoading, mobileOfferInformation }) => {
-  const { darkMode } = useDarkModeContext();
+const MapLoading = ({ isLoading }) => {
+  const windowWidth = useWindowSize().width;
 
   const loadingVariant = {
     initial: {
@@ -26,24 +27,16 @@ const MapLoading = ({ isLoading, mobileOfferInformation }) => {
 
   return (
     <AnimatePresence>
-      {isLoading && (
+      {isLoading && windowWidth > 1100 && (
         <motion.div
           initial="initial"
           animate="animate"
           exit="exit"
           transition="transition"
           variants={loadingVariant}
-          className={`absolute ${
-            mobileOfferInformation ? "top-52" : "top-20"
-          } z-20 flex h-11 items-center justify-center rounded-full bg-white/80 px-6 shadow-md backdrop-blur-lg dark:bg-dmGrey900 dark:text-white 1100:top-7`}
+          className={`absolute top-20 z-20 flex h-11 items-center justify-center rounded-full bg-white/80 px-6 shadow-md backdrop-blur-lg dark:bg-dmGrey900 dark:text-white 1100:top-7`}
         >
-          <img
-            className="w-11 opacity-90"
-            src={`https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeDotsLoading${
-              darkMode ? "Dm" : "Lm"
-            }.svg?alt=media&token=0e60be95-2b3a-4e03-88f0-a329a1397a88`}
-            alt="loading"
-          />
+          <Loading width={44} />
         </motion.div>
       )}
     </AnimatePresence>

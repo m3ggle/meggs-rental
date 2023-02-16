@@ -3,14 +3,23 @@ import { useNotifyModalContext } from "../../context/notifyModal/notifyModalCont
 import { useUserContext } from "../../context/user/userContext";
 
 const PageAuthChecker = ({ children }) => {
-  const { signedIn, verified } = useUserContext();
-  const { openAuthNotifyModal } = useNotifyModalContext();
+  const { userId } = useUserContext();
+  const { isOpen, openAuthNotifyModal, closeNotifyModal } = useNotifyModalContext();
+
+  console.log(userId)
 
   useEffect(() => {
-    openAuthNotifyModal();
-  }, [openAuthNotifyModal]);
-
-  if (!signedIn || !verified) {
+    if (!userId) {
+      openAuthNotifyModal();
+      return;
+    }
+    if (isOpen && userId) {
+      closeNotifyModal();
+      return;
+    }
+  }, [openAuthNotifyModal, userId, closeNotifyModal, isOpen]);
+    
+  if (!userId) {
     return <></>;
   }
 

@@ -8,66 +8,19 @@ import { useUrlManipulation } from "./urlManipulation/useUrlManipulation";
 
 export const useMultiStepHelper = () => {
   // mandatory
-  const { notifyStandard } = toastNotify();
   const { searchParams, setSingleParam, setArrayOfParams, getSingleParam } =
     useUrlManipulation();
   const currentRound = getSingleParam("round") ? +getSingleParam("round") : 1;
 
-  const navigate = useNavigate();
   const locationPathname = useLocation().pathname;
 
   useEffect(() => {
-    !getSingleParam("round") && setSingleParam("round", 1);
+    if (locationPathname !== "/sign-in") {
+      !getSingleParam("round") && setSingleParam("round", 1);
+    }
   }, [searchParams]);
 
   // all functions
-  const handleGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user; //this gives us the user
-
-    // check for user in firestore
-    const docRef = doc(db, "users", user.uid); //creates reference
-    const docSnap = await getDoc(docRef);
-
-    const params = {
-      round: 3,
-      apiKey: "AIzaSyC1ssliMOJ0ctBKYbefFn_IIm4PmqI0tPo",
-      email: user.email,
-    };
-
-    // user does not exist
-    if (!docSnap.exists()) {
-      if (locationPathname === "/sign-up") {
-        setArrayOfParams(params);
-      } else {
-        notifyStandard({
-          information: {
-            type: "warning",
-            content: "Have to be verified",
-          },
-          id: "userUploadError",
-        });
-        console.log("you have an account but you are not verified");
-
-        // go verify
-        const nextSearchParams = new URLSearchParams(params);
-        navigate(`/sign-up?${nextSearchParams}`);
-      }
-
-      return;
-    }
-    // else does....
-    navigate("/homepage");
-    notifyStandard({
-      information: {
-        type: "warning",
-        content: "Already signed up, enjoy",
-      },
-      id: "userUploadError",
-    });
-  };
-
   const handleStorage = (data, localStorageName) => {
     const localStorageData = JSON.parse(localStorage.getItem(localStorageName));
     let newLocalStorage = localStorageData ?? {};
@@ -100,7 +53,6 @@ export const useMultiStepHelper = () => {
     handleStorage,
     handleContinue,
     handleGoBack,
-    handleGoogle,
     handleEmailContinue,
     handleConfirmationContinue,
   };

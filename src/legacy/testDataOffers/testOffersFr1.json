@@ -34,8 +34,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {
@@ -109,8 +109,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {
@@ -184,8 +184,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {
@@ -259,8 +259,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {
@@ -334,8 +334,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {
@@ -409,8 +409,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {
@@ -484,8 +484,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {
@@ -559,8 +559,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {
@@ -634,8 +634,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {
@@ -709,8 +709,8 @@
         "name": "Fuel Type",
         "value": "Gas"
       },
-      "carType": {
-        "name": "Car Type",
+      "category": {
+        "name": "Category",
         "value": "Sport"
       },
       "milage": {

@@ -9,12 +9,12 @@ const ProfileButton = ({ information }) => {
   const { btnTitle = "", icon = "", link = "", secondIcon = "" } = information;
 
   const { openUserDetailsModal } = useUserDetailsModalContext();
-  const { userData } = useUserContext();
+  const { userId } = useUserContext();
 
   const navigate = useNavigate();
 
   const handleUserModal = () => {
-    openUserDetailsModal(userData.uid);
+    openUserDetailsModal(userId);
   };
   const handleSignOutModal = () => {
     // currently no modal, but it is coming in the future
@@ -38,7 +38,7 @@ const ProfileButton = ({ information }) => {
     // link to a page with userId
     if (link.includes("?currentUserId")) {
       const page = link.split("?")[0];
-      navigate(`${page}?${userData.uid}`);
+      navigate(`${page}?${userId}`);
       return;
     }
 

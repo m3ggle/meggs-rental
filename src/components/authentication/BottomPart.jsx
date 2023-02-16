@@ -6,10 +6,12 @@ const BottomPart = ({
   firstBtnTitle,
   firstBtnType,
   firstBtnOnClick,
+  firstBtnIsLoading = false,
   secondBtn,
   secondBtnTitle,
   secondBtnType,
   secondBtnOnClick,
+  secondBtnIsLoading = false,
   underBtnFirstText,
   underBtnFirstLinkText,
   underBtnFirstOnClick,
@@ -23,7 +25,7 @@ const BottomPart = ({
         <Btn
           uiType={firstBtn}
           type={firstBtnType}
-          title={firstBtnTitle}
+          title={firstBtnIsLoading ? "Loading..." : firstBtnTitle}
           onClick={firstBtnOnClick}
         />
       )}
@@ -31,7 +33,7 @@ const BottomPart = ({
         <Btn
           uiType={secondBtn}
           type={secondBtnType}
-          title={secondBtnTitle}
+          title={secondBtnIsLoading ? "Loading..." : secondBtnTitle}
           onClick={secondBtnOnClick}
         />
       )}

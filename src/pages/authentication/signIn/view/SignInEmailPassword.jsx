@@ -2,15 +2,14 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
-import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
+import { regexEmail, regexPassword } from "../../../../helpers/regexCollection";
+import { signInGoogle } from "../helpers/signInGoogle";
 import { useSignInEmailPasswordLogic } from "../hooks/useSignInEmailPasswordLogic";
 
 const SignInEmailPassword = () => {
   const { control, handleSubmit } = useForm();
-  const { onSubmit, handleForgotClick, handleSignUpClick } =
+  const { onSubmit, handleForgotClick, handleSignUpClick, isLoading } =
     useSignInEmailPasswordLogic();
-  const { handleGoogle } = useMultiStepHelper();
 
   return (
     <form
@@ -70,10 +69,11 @@ const SignInEmailPassword = () => {
         firstBtnTitle="Sign In"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
+        firstBtnIsLoading={isLoading}
         secondBtn="secondary"
         secondBtnTitle="Sign In with Google"
         secondBtnType="button"
-        secondBtnOnClick={handleGoogle}
+        secondBtnOnClick={signInGoogle}
         underBtnFirstText="Forgot your password?"
         underBtnFirstLinkText="Let's fix that"
         underBtnFirstOnClick={handleForgotClick}

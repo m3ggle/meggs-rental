@@ -13,9 +13,11 @@ const CarSpec = ({title, value, icon}) => {
       <div
         className={`${icon} flex h-6 w-6 items-center justify-center text-[24px] text-lmGrey300 dark:text-dmGrey300`}
       ></div>
-      <div className="flex flex-col items-center justify-center gap-y-1 text-xs">
-        <span className="text-lmGrey300 dark:text-dmGrey300">{title}</span>
-        <span className="text-lmGrey600 dark:text-dmGrey100">
+      <div className="flex flex-col items-center justify-center w-full gap-y-1 text-xs px-1">
+        <span className="truncate text-lmGrey300 dark:text-dmGrey300">
+          {title}
+        </span>
+        <span className="truncate w-full text-center text-lmGrey600 dark:text-dmGrey100">
           {renderValue()}
         </span>
       </div>

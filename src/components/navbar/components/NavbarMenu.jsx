@@ -1,20 +1,41 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import supabase from "../../../config/supabaseClient";
 import { useNavigationContext } from "../../../context/navigation/navigationContext";
 import { useUserContext } from "../../../context/user/userContext";
-import { auth } from "../../../firebase.config";
+import { useHandleSignOut } from "../../../hooks/auth/useHandleSignOut";
+import { toastNotify } from "../../toastNotify/toastNotify";
 
 const NavbarMenu = ({ handleClickNavigation }) => {
   const { menu } = useNavigationContext();
-  const { signedIn, verified } = useUserContext();
-
+  const { userId } = useUserContext();
   const location = useLocation();
-  // const { signOutUser } = useSignOutAPI();
+  // const { handleSignOut  } = useHandleSignOut();
 
-  const handleSignOut = () => {
-    // signOutUser();
-    auth.signOut();
-    handleClickNavigation("sign-in");
+  // this code is actually in useHandleSignOut but react did not recognize "handleSignOut" as a function
+  const { notifyStandard } = toastNotify();
+  const { isOpen, dispatchNavigation } = useNavigationContext();
+  // const { userId } = useUserContext();
+  const navigate = useNavigate();
+  const displayNotify = (content, type = "waning", id = "SignOutError") => {
+    notifyStandard({ information: { type, content }, id });
+  };
+  const handleSignOut = async () => {
+    // supabase sign out
+    const { errorSignOut } = await supabase.auth.signOut();
+
+    if (errorSignOut) {
+      displayNotify(errorSignOut.message);
+      console.log("this is an error (signOut)", errorSignOut);
+      return;
+    }
+
+    // navbar close if open
+    if (isOpen) {
+      dispatchNavigation({ type: "CLOSE_NAVIGATION" });
+    }
+
+    navigate("/sign-in");
   };
 
   const handleClickSign = () => {
@@ -31,25 +52,13 @@ const NavbarMenu = ({ handleClickNavigation }) => {
       return;
     }
 
-    if (signedIn) {
+    if (userId) {
       handleSignOut();
     }
 
     // not signed in
     handleClickNavigation("sign-in");
   };
-
-  const handleIcon = (item) => {
-    if (item.text === "Homepage" || "Explore Map" || "Explore Catalog") {
-      return item.icon
-    }
-
-    if (!signedIn || !verified) {
-      return "fa-solid fa-lock"
-    }
-
-    return  item.icon
-  }
 
   return (
     <div className="flex w-[360px] flex-col gap-y-2 px-8 py-3 text-lmGrey400 dark:text-dmGrey100">
@@ -61,68 +70,18 @@ const NavbarMenu = ({ handleClickNavigation }) => {
           className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
         >
           <div
-            // className={`${() => handleIcon(item)} flex h-11 w-11 items-center justify-center text-[18px]`}
             className={`${item.icon} flex h-11 w-11 items-center justify-center text-[18px]`}
           ></div>
           <span>{item.text}</span>
         </div>
       ))}
-      {/* <div
-        onClick={() => handleClickNavigation("/explore/map")}
-        className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
-      >
-        <div className="fa-solid fa-map flex h-11 w-11 items-center justify-center text-[18px]"></div>
-        <span>Explore Map</span>
-      </div>
-      <div
-        onClick={() => handleClickNavigation("/explore/catalog")}
-        className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
-      >
-        <div className="fa-solid fa-list flex h-11 w-11 items-center justify-center text-[18px]"></div>
-        <span>Explore Catalog</span>
-      </div>
-      <div
-        onClick={() => handleClickNavigation("/favorites")}
-        className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
-      >
-        <div className="fa-solid fa-heart flex h-11 w-11 items-center justify-center text-[18px]"></div>
-        <span>Favorites</span>
-      </div>
-      <div
-        onClick={() => handleClickNavigation("/users-offers")}
-        className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
-      >
-        <div className="fa-solid fa-file flex h-11 w-11 items-center justify-center text-[18px]"></div>
-        <span>Your Offers</span>
-      </div>
-      <div
-        onClick={() => handleClickNavigation("/upload")}
-        className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
-      >
-        <div className="fa-solid fa-plus flex h-11 w-11 items-center justify-center text-[18px]"></div>
-        <span>Upload</span>
-      </div>
-      <div
-        onClick={() => handleClickNavigation("/chat")}
-        className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
-      >
-        <div className="fa-solid fa-comments flex h-11 w-11 items-center justify-center text-[18px]"></div>
-        <span>Chats</span>
-      </div>
-      <div
-        onClick={() => handleClickNavigation("/profile")}
-        className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
-      >
-        <div className="fa-solid fa-user flex h-11 w-11 items-center justify-center text-[18px]"></div>
-        <span>Your Profile</span>
-      </div> */}
       <div
         onClick={handleClickSign}
         className="flex cursor-pointer items-center gap-x-2 rounded-lg text-base duration-300 hover:bg-white dark:hover:bg-dmGrey800"
       >
         <div
           className={`fa-solid ${
-            signedIn &&
+            userId &&
             location.pathname !== "/sign-in" &&
             location.pathname !== "/sign-up" &&
             location.pathname === "forgot-password" &&
@@ -136,7 +95,7 @@ const NavbarMenu = ({ handleClickNavigation }) => {
             : location.pathname === "/sign-up" ||
               location.pathname === "forgot-password"
             ? "In"
-            : signedIn
+            : userId
             ? "Out"
             : "In"}
         </span>

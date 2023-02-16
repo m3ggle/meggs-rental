@@ -12,6 +12,8 @@ const HomepageFooterMainThird = () => {
     dispatchNavigation({ type: "OPEN_NAVIGATION" });
   };
 
+  const textClasses = textInTheFooter({ type: "text", linkTo: "own" });
+
   return (
     <div className="flex min-w-[320px] flex-col gap-y-8 p-2 text-lg text-lmGrey800 dark:text-dmGrey25 700:flex-row 1200:flex-col">
       <HomepageFooterMainList content={contentFooterMainThird} />
@@ -19,7 +21,7 @@ const HomepageFooterMainThird = () => {
       <div className="flex w-full flex-col gap-y-8 ">
         <span
           onClick={handleOpenNavigation}
-          className={() => textInTheFooter({ type: "text", linkTo: "own" })}
+          className={textClasses}
         >
           Open the Navigation
         </span>

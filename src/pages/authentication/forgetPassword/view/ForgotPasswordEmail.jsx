@@ -1,15 +1,17 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { regexEmail } from "../../../../helper/regexCollection";
+import { regexEmail } from "../../../../helpers/regexCollection";
 import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
-import { useForgotPasswordEmailLogic } from "../hooks/useForgotPasswordEmailLogic";
+import { useForgotPasswordEmailOnSubmit } from "../hooks/useForgotPasswordEmailOnSubmit";
 
 const ForgotPasswordEmail = () => {
   const { control, handleSubmit } = useForm();
   const { handleGoogle } = useMultiStepHelper();
-  const { onSubmit, handleSignInClick } = useForgotPasswordEmailLogic();
+  const { onSubmit } = useForgotPasswordEmailOnSubmit();
+  const navigate = useNavigate();
 
   return (
     <form
@@ -50,7 +52,7 @@ const ForgotPasswordEmail = () => {
         secondBtnOnClick={handleGoogle}
         underBtnFirstText="Already have an Account?"
         underBtnFirstLinkText="Sign In instead"
-        underBtnFirstOnClick={handleSignInClick}
+        underBtnFirstOnClick={() => navigate("/sign-in")}
       />
     </form>
   );

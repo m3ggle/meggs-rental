@@ -1,19 +1,17 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import TextInput from "../../../../components/input/TextInput";
 import BottomPart from "../../../../components/authentication/BottomPart";
-import { regexName } from "../../../../helper/regexCollection";
+import TextInput from "../../../../components/input/TextInput";
+import { regexName } from "../../../../helpers/regexCollection";
+import { handleGoogleSignUp } from "../helpers/handleGoogleSignUp";
+import { useSignUpNameOnSubmit } from "../hooks/useSignUpNameOnSubmit";
 
-const SignUpName = ({ handleCallback }) => {
+const SignUpName = () => {
   const { firstName, lastName } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
-  
+
   const { control, handleSubmit } = useForm();
-  
-  const onSubmit = (data) => {
-    const nextStep = true;
-    handleCallback({ data, nextStep });
-  };
+  const { onSubmit } = useSignUpNameOnSubmit();
 
   return (
     <form
@@ -75,6 +73,10 @@ const SignUpName = ({ handleCallback }) => {
         firstBtnTitle="Continue"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
+        secondBtn="secondary"
+        secondBtnTitle="Sign Up with Google"
+        secondBtnType="button"
+        secondBtnOnClick={handleGoogleSignUp}
       />
     </form>
   );

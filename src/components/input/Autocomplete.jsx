@@ -9,11 +9,11 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 const Autocomplete = ({
   label,
   onChange,
-  onInputChange,
+  onInputChange = () => {},
   error,
   placeholder,
   itemList,
-  isLoading,
+  isLoading = false,
   onDelete,
   value,
 }) => {
@@ -98,7 +98,7 @@ const Autocomplete = ({
                 // onChange={(event) => setQuery(event.target.value)}
               />
               {/* delete btn */}
-              <i
+              {onDelete && <i
                 onClick={handleDelete}
                 className={`${
                   error
@@ -113,8 +113,8 @@ const Autocomplete = ({
                       ? "text-red-300 dark:text-red-100"
                       : "text-lmGrey600 dark:text-dmGrey25"
                   }`}
-              />
-              <Combobox.Button>
+              />}
+              {/* <Combobox.Button>
                 <i
                   className={`${
                     open ? "translate-y-1" : "translate-y-0"
@@ -139,7 +139,7 @@ const Autocomplete = ({
                     )}
                   </motion.div>
                 </i>
-              </Combobox.Button>
+              </Combobox.Button> */}
             </div>
 
             {/* errorMsg */}
@@ -167,7 +167,9 @@ const Autocomplete = ({
                 inputColorCondition
                   ? "bg-white dark:bg-dmGrey900"
                   : "bg-lmGrey50 dark:bg-dmGrey800"
-              } absolute left-0 z-30 mt-14 flex min-h-[40px] w-full flex-col gap-y-1 rounded-lg py-2 px-2 shadow-sm`}
+              } absolute left-0 z-30 ${
+                label ? "mt-[80px]" : "mt-14"
+              } flex min-h-[40px] w-full flex-col gap-y-1 rounded-lg py-2 px-2 shadow-sm`}
             >
               {isLoading ? (
                 <div className="relative block cursor-default select-none truncate px-3 py-2 text-sm text-lmGrey600 dark:text-lmGrey100"></div>

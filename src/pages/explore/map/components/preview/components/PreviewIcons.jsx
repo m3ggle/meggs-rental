@@ -1,14 +1,16 @@
 import React from "react";
 import { useMapSubContext } from "../../../../../../context/map/mapSub/mapSubContext";
 
-const PreviewIcons = ({ liked }) => {
+const PreviewIcons = ({ offerId }) => {
   // const {deleteSingleParam} = useUrlManipulation()
   // const handleClose = () => deleteSingleParam("offerId")
 
   const { dispatchMapSub } = useMapSubContext();
   const handleClose = () => {
-    dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: false });
+    dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: null });
   };
+
+  const liked = false
 
   return (
     <div className="absolute -top-[2px] right-0 flex h-fit w-fit cursor-pointer flex-col items-center justify-center text-[24px]">

@@ -7,7 +7,7 @@ import { useNotifyModalContext } from "../../../context/notifyModal/notifyModalC
 // problem: can't use navigate in context, it has to be inside <Router>
 
 const ContentNavigate = () => {
-  const { extraInfo } = useNotifyModalContext();
+  const { extraInfo, closeNotifyModal } = useNotifyModalContext();
   const { title, bulletPoints, primaryButton, secondaryButton } = extraInfo;
 
   const navigate = useNavigate();
@@ -15,10 +15,12 @@ const ContentNavigate = () => {
   const handleClick = (func) => {
     if (typeof func === "function") {
       func();
+      closeNotifyModal()
       return;
     }
 
     navigate(`/${func}`);
+    closeNotifyModal()
   };
 
   return (

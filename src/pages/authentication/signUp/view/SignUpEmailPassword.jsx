@@ -1,11 +1,10 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
-import { regexEmail, regexPassword } from "../../../../helper/regexCollection";
-import { useMultiStepHelper } from "../../../../hooks/useMultiStepHelper";
+import { regexEmail, regexPassword } from "../../../../helpers/regexCollection";
 import { useSignUpEmailPasswordSubmit } from "../hooks/useSignUpEmailPasswordSubmit";
+import { useSignUpUserNameCityHelpers } from "../hooks/useSignUpUserNameCityHelpers";
 
 // Todo: different kinds of status like loading error and success, for that use react-query
 
@@ -13,11 +12,9 @@ const SignUpEmailPassword = () => {
   const { control, handleSubmit } = useForm();
   const { email, password } =
     JSON.parse(localStorage.getItem("signUpData")) ?? false;
-  const navigate = useNavigate();
-  const { onSubmit } = useSignUpEmailPasswordSubmit();
-  const { handleGoogle } = useMultiStepHelper();
-
-  const handleSignInClick = () => navigate("/sign-in");
+  const { onSubmit, handleEmailChange, isLoading } =
+    useSignUpEmailPasswordSubmit();
+  const { handleGoBack } = useSignUpUserNameCityHelpers();
 
   return (
     <form
@@ -35,11 +32,15 @@ const SignUpEmailPassword = () => {
               message: "Invalid email address",
             },
           }}
-          defaultValue={email ? email : undefined}
+          // defaultValue={email ? email : undefined}
+          defaultValue="megglebande@web.de"
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-at"
-              onChange={field.onChange}
+              onChange={(e) => {
+                field.onChange(e);
+                handleEmailChange(e);
+              }}
               label="Email"
               placeholder="maxMustermann@web.de"
               value={field.value}
@@ -59,7 +60,8 @@ const SignUpEmailPassword = () => {
                 "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
             },
           }}
-          defaultValue={password ? password : undefined}
+          // defaultValue={password ? password : undefined}
+          defaultValue="Tester123+"
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-lock"
@@ -76,16 +78,14 @@ const SignUpEmailPassword = () => {
       </div>
       <BottomPart
         firstBtn="primary"
-        firstBtnTitle="Send Email For Confirmation"
+        firstBtnTitle="Create Account"
         firstBtnType="submit"
         firstBtnOnClick={handleSubmit}
+        firstBtnIsLoading={isLoading}
         secondBtn="secondary"
-        secondBtnTitle="Sign Up with Google"
+        secondBtnTitle="Go Back"
         secondBtnType="button"
-        secondBtnOnClick={handleGoogle}
-        underBtnFirstText="Already have an Account?"
-        underBtnFirstLinkText="Sign In instead"
-        underBtnFirstOnClick={handleSignInClick}
+        secondBtnOnClick={handleGoBack}
       />
     </form>
   );

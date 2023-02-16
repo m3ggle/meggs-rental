@@ -1,63 +1,32 @@
-import { collection, getDocs, limit, query, where } from "firebase/firestore";
 import React from "react";
-import Btn from "../../components/common/Btn";
-import { db } from "../../firebase.config";
 
 const PrivacyPolicy = () => {
-  const handleClick = async () => {
-    const q = query(
-      collection(db, "offers"),
-      where(
-        "price.week",
-        "<=",
-        300,
-        "&&",
-        "name",
-        "!=",
-        "(Test) Lamborghini Countach"
-      ),
-      limit(5)
-    );
-
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data().name, doc.data().price)
-    });
-  };
-
   return (
-    <div className="gap-y2 flex h-screen w-full flex-col items-center justify-center">
-      <div className="h-fit w-fit">
-        <Btn
-          title="Click Me"
-          type="button"
-          uiType="primary"
-          onClick={handleClick}
-        />
-      </div>
+    // <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2 overflow-scroll">
+    //   <div className="h-fit w-fit">
+    //     <Btn
+    //       title="Click Me"
+    //       type="button"
+    //       uiType="primary"
+    //       onClick={handleClick}
+    //     />
+    //   </div>
+    // </div>
+    <div className="h-fit w-full flex flex-col">
+      <section className="flex h-screen w-full bg-green-400 p-8">
+        <div className="sticky top-4 flex h-48 w-full items-center justify-center rounded-lg bg-green-700 text-4xl font-medium text-white shadow-lg">
+          top-0
+        </div>
+      </section>
+      <section className="flex h-screen w-full items-end bg-blue-400 p-8">
+        <div className="sticky bottom-4 flex h-48 w-full items-center justify-center rounded-lg bg-blue-700 text-4xl font-medium text-white shadow-lg">
+          bottom-0
+        </div>
+      </section>
     </div>
   );
-
-  // Example
-  // const { isLoading, error, data } = useQuery("repoData", () =>
-  //   fetch("https://api.github.com/repos/tannerlinsley/react-query").then(
-  //     (res) => res.json()
-  //   )
-  // );
-
-  // if (isLoading) return "Loading...";
-
-  // if (error) return "An error has occurred: " + error.message;
-
-  // return (
-  //   <div>
-  //     <h1>{data.name}</h1>
-  //     <p>{data.description}</p>
-  //     <strong>👀 {data.subscribers_count}</strong>{" "}
-  //     <strong>✨ {data.stargazers_count}</strong>{" "}
-  //     <strong>🍴 {data.forks_count}</strong>
-  //   </div>
-  // );
 };
 
 export default PrivacyPolicy;
+
+// "Insufficient Arguments. Values needed to upload a vehicle: brand_name, category, color, fuel_type, transmission, vehicle_condition. Furthermore: vehicle_name, plate_number, amount_seats, trunk_volume, kilometer, eating_allowed, smoking_allowed, picture_urls."

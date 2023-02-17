@@ -11,7 +11,6 @@ const UserProfileChat = ({
   onClick,
 }) => {
 
-  console.log(lastMsgRead);
   return (
     <div
       onClick={() => onClick(chatId)}

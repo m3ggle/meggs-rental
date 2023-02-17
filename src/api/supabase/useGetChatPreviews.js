@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import supabase from "../../config/supabaseClient";
 
 export const useGetChatPreviews = ({ userId, offset = 0, limit = 10 }) => {
-  const getOfferCard = async () => {
+  const getChatPreviews = async () => {
     if (userId !== null) {
       return await supabase.rpc("get_chat_previews", {
         uid: userId,
@@ -15,11 +15,11 @@ export const useGetChatPreviews = ({ userId, offset = 0, limit = 10 }) => {
 
   const { data, isLoading } = useQuery(
     ["get_chat_previews", userId, offset, limit],
-    getOfferCard,
+    getChatPreviews,
     {
       refetchOnMount: true,
       refetchOnWindowFocus: false,
-      staleTime: Infinity, // ten minutes
+      staleTime: Infinity,
     }
   );
 

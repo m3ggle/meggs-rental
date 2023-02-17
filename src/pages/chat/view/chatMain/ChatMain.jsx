@@ -1,4 +1,5 @@
 import React from "react";
+import { useGetChatInformation } from "../../../../api/supabase/useGetChatInformation";
 import { useGetChatMessages } from "../../../../api/supabase/useGetChatMessages";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
@@ -12,8 +13,11 @@ const ChatMain = () => {
   const chatId = getSingleParam("chatId");
 
   const { chatMessages } = useGetChatMessages({ chatId });
-
+  const { chatInformation, isLoading: chatInformationLoading } =
+    useGetChatInformation(chatId);
   // get chatinfo
+
+  console.log("chat info is", chatInformation);
 
   return (
     <div

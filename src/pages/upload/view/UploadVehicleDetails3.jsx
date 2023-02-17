@@ -1,11 +1,11 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useVD3GetOptions } from "../../../api/supabase/useVD3GetOptions";
 import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 import { regexNumbersOnly } from "../../../helpers/regexCollection";
 import { colorSelect, eatingSelect, smokingSelect } from "../data/uploadVehicleDetailsData";
-import { useVD3GetOptions } from "../hooks/useVD3GetOptions";
 
 const UploadVehicleDetails3 = ({ handleCallback }) => {
   const { kilometer, color, smokingAllowed, eatingAllowed } =

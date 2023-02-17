@@ -1,5 +1,4 @@
 import React from "react";
-import Btn from "../common/Btn";
 import Loading from "../Loading";
 import ReviewHeader from "./ReviewHeader";
 import ReviewList from "./ReviewList";
@@ -18,6 +17,8 @@ const ReviewSection = ({ reviewSection }) => {
             <div className="h-[100px]">
               <Loading />
             </div>
+          ) : reviews === null ? (
+            <div className="w-full h-10 flex justify-center items-center text-lmGrey600 dark:text-dmGrey300 text-base">currently no reviews</div>
           ) : (
             <div className="flex w-full flex-col gap-y-2 rounded-lg">
               {reviews.length === 0 ? (

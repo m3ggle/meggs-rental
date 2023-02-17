@@ -61,23 +61,3 @@ const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
 };
 
 export default UserProfileHeader;
-
-/*
-{"user_id":"65a15d09-e39c-42f8-82d4-6db975952736",
-"personal_information_id":"23f50bf5-7a25-4b9f-a040-cc853da0bde4",
-"preferred_city_id":"c3ff12d6-54fc-4b10-a21b-670c22840e4c",
-"email":"shaina.bahringer@hotmail.com",
-"user_name":"gustavy",
-"status":"active",
-"profile_picture_url":"https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/user-avatars/profileGustavoBravo.webp",
-"is_online":false
-"last_online":"2023-01-15T13:43:07.823139+00:00"
-"created_at":"2023-01-15T13:43:07.823139+00:00"
-"email_confirmed":true
-"phone_confirmed":true
-"phone":null
-"first_name":"Gustavo"
-"last_name":"Bravo"
-"bio":"I rather take my bike or the OVP to the Uni so I don’t really have a need for my cars. If you like any of my offer(s)
- don’t be scared to send me a Message 😊."}
-*/

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import supabase from "../../../../config/supabaseClient";
-import { useMapCoordContext } from "../../../../context/map/mapCoord/mapCoordContext";
+import supabase from "../../config/supabaseClient";
+import { useMapCoordContext } from "../../context/map/mapCoord/mapCoordContext";
 
 export const useMapGetOffers = () => {
   const [offers, setOffers] = useState([]);
@@ -42,11 +42,11 @@ export const useMapGetOffers = () => {
     }
   );
 
-//   bounds with debounce
+  //   bounds with debounce
   useEffect(() => {
     const identifier = setTimeout(() => {
-        refetch();
-    //   }
+      refetch();
+      //   }
     }, 1400);
 
     return () => {

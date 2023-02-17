@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import React, { memo } from "react";
+import { useGetOfferDetails } from "../../../../../api/supabase/useGetOfferDetails";
 import Loading from "../../../../../components/Loading";
 import Calendar from "../../../../../components/offerDetails/Calendar";
 import CarSpecWrapper from "../../../../../components/offerDetails/CarSpecWrapper";
-import { useGetOfferDetails } from "../../../../../hooks/useGetOfferDetails";
 import PreviewBasicInfo from "./components/PreviewBasicInfo";
 import PreviewButtons from "./components/PreviewButtons";
 import PreviewIcons from "./components/PreviewIcons";

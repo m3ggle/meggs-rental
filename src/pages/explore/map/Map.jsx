@@ -1,11 +1,11 @@
 import React from "react";
+import { useMapGetOffers } from "../../../api/supabase/useMapGetOffers";
 import { useMapSubContext } from "../../../context/map/mapSub/mapSubContext";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import DesktopSearchPreview from "./components/DesktopSearchPreview";
 import MapLoading from "./components/MapLoading";
 import MapView from "./components/MapView";
 import MobileSearchPreview from "./components/MobileSearchPreview";
-import { useMapGetOffers } from "./hooks/useMapGetOffers";
 
 const Map = () => {
   const windowSize = useWindowSize();

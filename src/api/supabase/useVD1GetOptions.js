@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import supabase from "../../../config/supabaseClient";
+import supabase from "../../config/supabaseClient";
 
 export const useVD1GetOptions = () => {
   const getFuelTypes = () => {

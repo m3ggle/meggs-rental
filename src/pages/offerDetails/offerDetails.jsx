@@ -1,50 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useGetOfferDetails } from "../../api/supabase/useGetOfferDetails";
+import { useGetOfferReviews } from "../../api/supabase/useGetOfferReviews";
+import { useGetOfferSummary } from "../../api/supabase/useGetOfferSummary";
 import Loading from "../../components/Loading";
 import ExampleData from "../../ExampleData";
 import { stripAnyWhiteSpace } from "../../helpers/stripAnyWhiteSpace";
-import { useGetOfferDetails } from "../../hooks/useGetOfferDetails";
-import { useGetOfferReviews } from "../../hooks/useGetOfferReviews";
-import { useGetOfferSummary } from "../../hooks/useGetOfferSummary";
 import OfferDetailsImgPart from "./view/OfferDetailsImgPart";
 import OfferDetailsInfoPart from "./view/offerDetailsInfoPart/OfferDetailsInfoPart";
 
-const { exampleOffers } = ExampleData();
-
 const OfferDetails = () => {
-  // const [offerInformation, setOfferInformation] = useState(undefined);
-  // const param = useParams();
-  // const navigate = useNavigate();
-
-  // const getOfferInformation = useCallback(() => {
-  //   const localResult = exampleOffers.filter(
-  //     (offer) => offer.offerId === param.offerId
-  //   );
-  //   return localResult[0];
-  // }, [param.offerId]);
-
-  // useEffect(() => {
-  //   // check if we have it on the website
-  //   let tempHolderLocal = getOfferInformation();
-
-  //   if (tempHolderLocal) {
-  //     // if yes, set state on result
-  //     setOfferInformation(tempHolderLocal);
-  //   } else {
-  //     // not found, check on firestore
-  //     let tempHolderFireStore = getOfferInformationFromFirestore();
-  //     if (tempHolderFireStore) {
-  //       setOfferInformation(tempHolderLocal);
-  //       // found it in firestore and setting state
-  //     } else {
-  //       // not found, redirecting to not found
-  //       navigate("/not-found");
-  //     }
-  //   }
-  // }, [navigate, getOfferInformation]);
-
-  // const getOfferInformationFromFirestore = () => {};
-
   const param = useParams();
   // all get queried in parallel
   const { offerInformation, isLoading: offerLoading } = useGetOfferDetails(
@@ -63,9 +28,6 @@ const OfferDetails = () => {
     summaryLoading,
     reviewsLoading,
   };
-
-  //   const isLoading = false;
-  // const offerInformation = null;
 
   return (
     <>

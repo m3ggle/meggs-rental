@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import supabase from "../../../config/supabaseClient";
+import supabase from "../../config/supabaseClient";
 
 export const useGetChatMessages = ({ chatId, offset = 0, limit = 10 }) => {
   const getOfferCard = async () => {

@@ -40,8 +40,8 @@ const ChatSidebarMain = ({ chatPreviews }) => {
           }
           profilePicture={
             chatPreview.owner_id === userId
-              ? chatPreview.owner_profile_picture
-              : chatPreview.borrower_profile_picture
+              ? chatPreview.owner_profile_picture_url
+              : chatPreview.borrower_profile_picture_url
           }
         />
       ))}

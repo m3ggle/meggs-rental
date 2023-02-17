@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGetChatInformation } from "../../../../api/supabase/useGetChatInformation";
 import { useGetChatMessages } from "../../../../api/supabase/useGetChatMessages";
+import { useUserContext } from "../../../../context/user/userContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
+import { useUpdateLastMessage } from "../../hooks/useUpdateLastMessage";
 import ChatMainChat from "./ChatMainChat";
 import ChatMainHeader from "./ChatMainHeader";
 import ChatMainInputArea from "./ChatMainInputArea";
 
 const ChatMain = () => {
-  const windowSize = useWindowSize();
+  const {userId} = useUserContext()
   const { getSingleParam } = useUrlManipulation();
   const chatId = getSingleParam("chatId");
 
   const { chatMessages } = useGetChatMessages({ chatId });
   const { chatInformation, isLoading: chatInformationLoading } =
     useGetChatInformation(chatId);
-  // get chatinfo
+  
+    useUpdateLastMessage(chatInformation);
 
-  console.log("chat info is", chatInformation);
-
+  const windowSize = useWindowSize();
   return (
     <div
       style={{ height: `${windowSize.height}px` }}

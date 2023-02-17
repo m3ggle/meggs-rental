@@ -39,13 +39,13 @@ const ChatSidebarMain = ({ chatPreviews }) => {
           lastMsg={chatPreview.last_message_content}
           displayName={
             chatPreview.owner_id === userId
-              ? chatPreview.owner_user_name
-              : chatPreview.borrower_user_name
+            ? chatPreview.borrower_user_name
+            : chatPreview.owner_user_name
           }
           profilePicture={
             chatPreview.owner_id === userId
-              ? chatPreview.owner_profile_picture_url
-              : chatPreview.borrower_profile_picture_url
+            ? chatPreview.borrower_profile_picture_url
+              : chatPreview.owner_profile_picture_url
           }
         />
       ))}

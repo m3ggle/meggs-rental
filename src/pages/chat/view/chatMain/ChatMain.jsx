@@ -32,7 +32,10 @@ const ChatMain = () => {
         </div>
       ) : (
         <>
-          <ChatMainHeader />
+          <ChatMainHeader
+            chatInformation={chatInformation}
+            chatInformationLoading={chatInformationLoading}
+          />
           <ChatMainChat messages={chatMessages} />
           <ChatMainInputArea />
         </>

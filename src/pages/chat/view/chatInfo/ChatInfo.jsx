@@ -1,17 +1,14 @@
 import { Dialog } from "@headlessui/react";
 import React from "react";
-import { useGetChatParticipants } from "../../../../api/supabase/useGetChatParticipants";
 import { useGetOfferDetails } from "../../../../api/supabase/useGetOfferDetails";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import ChatInfoOffer from "./ChatInfoOffer";
 import ChatInfoParticipants from "./ChatInfoParticipants";
 import ChatInfoWrapper from "./ChatInfoWrapper";
 
-const ChatInfo = ({ isOpen, closeModal }) => {
+const ChatInfo = ({ isOpen, closeModal, chatInformation }) => {
   const { getSingleParam } = useUrlManipulation();
 
-  const { chatParticipants, isLoading: participantsIsLoading } =
-    useGetChatParticipants(getSingleParam("chatId"));
   const { offerInformation, isLoading: offerIsLoading } = useGetOfferDetails(
     getSingleParam("offerId")
   );
@@ -32,10 +29,7 @@ const ChatInfo = ({ isOpen, closeModal }) => {
             />
           </div>
           {/* parti... */}
-          <ChatInfoParticipants
-            chatParticipants={chatParticipants}
-            participantsIsLoading={participantsIsLoading}
-          />
+          <ChatInfoParticipants chatInformation={chatInformation} />
           {/* original */}
           <ChatInfoOffer
             offerInformation={offerInformation}

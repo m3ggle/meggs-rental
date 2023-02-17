@@ -1,24 +1,20 @@
 import { Dialog } from "@headlessui/react";
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Btn from "../../../../components/common/Btn";
-import Location from "../../../../components/Location";
-import Calendar from "../../../../components/offerDetails/Calendar";
-import UserProfileSmall from "../../../../components/userProfile/UserProfileSmall";
-import ExampleData from "../../../../ExampleData";
-import PreviewBasicInfo from "../../../explore/map/components/preview/components/PreviewBasicInfo";
-import PreviewImgs from "../../../explore/map/components/preview/components/PreviewImgs";
+import { useGetChatParticipants } from "../../../../api/supabase/useGetChatParticipants";
+import { useGetOfferDetails } from "../../../../api/supabase/useGetOfferDetails";
+import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
+import ChatInfoOffer from "./ChatInfoOffer";
+import ChatInfoParticipants from "./ChatInfoParticipants";
 import ChatInfoWrapper from "./ChatInfoWrapper";
 
-const { exampleOffers } = ExampleData();
-
 const ChatInfo = ({ isOpen, closeModal }) => {
-  const navigate = useNavigate();
-  const handleViewOffer = () => {
-    navigate("/offer-details/4469d428-3ee6-42a3-ad96-a5e42b481379");
-  };
+  const { getSingleParam } = useUrlManipulation();
 
-  const offerInformation = exampleOffers[0];
+  const { chatParticipants, isLoading: participantsIsLoading } =
+    useGetChatParticipants(getSingleParam("chatId"));
+  const { offerInformation, isLoading: offerIsLoading } = useGetOfferDetails(
+    getSingleParam("offerId")
+  );
 
   return (
     <ChatInfoWrapper isOpen={isOpen} closeModal={closeModal}>
@@ -36,50 +32,15 @@ const ChatInfo = ({ isOpen, closeModal }) => {
             />
           </div>
           {/* parti... */}
-          <div className="flex flex-col gap-y-2">
-            <span className="text-lg text-lmGrey600 dark:text-dmGrey100">
-              Participants
-            </span>
-            <UserProfileSmall
-              text="Online • Burrower"
-              displayName="Nele Langrock"
-              profilePic="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80"
-            />
-            <UserProfileSmall
-              text="Online • Owner"
-              displayName="Meggle Bande"
-              profilePic="https://images.unsplash.com/photo-1635107510862-53886e926b74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2535&q=80"
-            />
-          </div>
+          <ChatInfoParticipants
+            chatParticipants={chatParticipants}
+            participantsIsLoading={participantsIsLoading}
+          />
           {/* original */}
-          <div className="flex flex-col gap-y-2">
-            <span className="text-lg text-lmGrey600 dark:text-dmGrey100">
-              Original Offer - Snippet
-            </span>
-            <PreviewImgs offerImages={offerInformation.photoURL} />
-            <div className="flex h-full w-full flex-col gap-y-1 rounded-xl bg-white p-6 shadow dark:mt-1 dark:bg-dmGrey900 dark:shadow-dmShadow">
-              <PreviewBasicInfo offerInformation={offerInformation} />
-            </div>
-            <Calendar
-              dates={offerInformation.calendar}
-              shadowUI={true}
-              header={true}
-            />
-            <div
-              className={`flex h-[256px] w-full flex-col gap-y-1 overflow-hidden rounded-xl bg-cover bg-center shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
-            >
-              <Location
-                lng={offerInformation.location.lng}
-                lat={offerInformation.location.lat}
-              />
-            </div>
-            <Btn
-              type="button"
-              uiType="primary"
-              title="View full Offer"
-              onClick={handleViewOffer}
-            />
-          </div>
+          <ChatInfoOffer
+            offerInformation={offerInformation}
+            offerIsLoading={offerIsLoading}
+          />
         </div>
       </Dialog.Panel>
     </ChatInfoWrapper>

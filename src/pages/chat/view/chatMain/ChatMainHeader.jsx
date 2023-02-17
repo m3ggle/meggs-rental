@@ -1,8 +1,12 @@
+import { formatRelative } from "date-fns";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGetChatParticipants } from "../../../../api/supabase/useGetChatParticipants";
+import Loading from "../../../../components/Loading";
 import UserProfileSmall from "../../../../components/userProfile/UserProfileSmall";
+import { useUserContext } from "../../../../context/user/userContext";
+import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
-import ChatInfo from "../chatInfo/ChatInfo";
 
 const ChatMainHeader = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -11,6 +15,13 @@ const ChatMainHeader = () => {
 
   const navigate = useNavigate();
   const windowSize = useWindowSize();
+
+  const { userId } = useUserContext();
+  const { getSingleParam } = useUrlManipulation();
+
+  const { chatParticipants, isLoading } = useGetChatParticipants(
+    getSingleParam("chatId")
+  );
 
   const handleGoBack = () => navigate("/chat/sidebar");
 
@@ -23,11 +34,37 @@ const ChatMainHeader = () => {
             className="fa-solid fa-chevron-left h-fit w-7 text-[24px] text-lmGrey300 hover:text-lmGrey600"
           />
         )}
-        <UserProfileSmall
-          text="Online"
-          displayName="Meggle Bande"
-          profilePic="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80"
-        />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <UserProfileSmall
+            text={
+              userId === chatParticipants.owner_id
+                ? chatParticipants.owner_is_online
+                  ? "Currently online"
+                  : formatRelative(
+                      new Date(chatParticipants.owner_last_online),
+                      new Date()
+                    )
+                : chatParticipants.borrower_is_online
+                ? "Currently online"
+                : formatRelative(
+                    new Date(chatParticipants.borrower_last_online),
+                    new Date()
+                  )
+            }
+            displayName={
+              userId === chatParticipants.owner_id
+                ? chatParticipants.owner_user_name
+                : chatParticipants.borrower_user_name
+            }
+            photoUrl={
+              userId === chatParticipants.owner_id
+                ? chatParticipants.owner_profile_picture_url
+                : chatParticipants.borrower_profile_picture_url
+            }
+          />
+        )}
       </div>
       <div
         onClick={openModal}

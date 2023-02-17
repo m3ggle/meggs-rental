@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { queryClient } from "./api/reactQuery/queryClient";
@@ -46,15 +46,13 @@ export default function App() {
     });
   }, []);
 
-  
-
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex h-full w-full items-center justify-center bg-white dark:bg-dmGrey900">
         <div className="relative flex  w-full max-w-[1440px] flex-col items-center overflow-scroll bg-white dark:bg-dmGrey900">
           <Router>
-      {/* auth */}
-      <Auth />
+            {/* auth */}
+            <Auth />
             {/* dark/light mode */}
             <div className="hidden" aria-hidden="true">
               <DropdownMode />

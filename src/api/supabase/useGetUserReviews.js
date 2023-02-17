@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import supabase from "../config/supabaseClient";
+import supabase from "../../config/supabaseClient";
 
 export const useGetUserReviews = (userId, limit = 10, offset = 0) => {
   const getUserReviews = async () => {
@@ -12,14 +12,14 @@ export const useGetUserReviews = (userId, limit = 10, offset = 0) => {
     }
     return { error: null, data: null };
   };
-    
+
   const { data, isLoading } = useQuery(
     ["get_user_rs_reviews", userId, limit, offset],
     getUserReviews,
     {
       refetchOnMount: true,
       refetchOnWindowFocus: false,
-        staleTime: Infinity, // ten minutes
+      staleTime: Infinity, // ten minutes
     }
   );
 

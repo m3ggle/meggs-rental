@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import supabase from "../config/supabaseClient";
+import supabase from "../../config/supabaseClient";
 
 export const useGetUserSummary = (userId) => {
   const getUserSummary = async () => {
@@ -23,4 +23,3 @@ export const useGetUserSummary = (userId) => {
 
   return { userSummary: data?.data, isLoading, error: data?.error };
 };
-

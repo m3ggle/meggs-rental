@@ -1,8 +1,8 @@
 import { motion, useAnimation } from "framer-motion";
 import React from "react";
+import { useGetOfferCard } from "../../../../../api/supabase/useGetOfferCard";
 import MobileOfferCard from "../../../../../components/offerCard/nonResponsive/mobileOfferCard/MobileOfferCard";
 import { useMapSubContext } from "../../../../../context/map/mapSub/mapSubContext";
-import { useGetOfferCard } from "../../../../../hooks/useGetOfferCard";
 import { useHandleDragEnd } from "../preview/hooks/useHandleDragEnd";
 
 const PreviewLittle = () => {

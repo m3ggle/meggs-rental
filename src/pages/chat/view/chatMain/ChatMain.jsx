@@ -1,7 +1,7 @@
 import React from "react";
+import { useGetChatMessages } from "../../../../api/supabase/useGetChatMessages";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
-import { useGetChatMessages } from "../../hooks/useGetChatMessages";
 import ChatMainChat from "./ChatMainChat";
 import ChatMainHeader from "./ChatMainHeader";
 import ChatMainInputArea from "./ChatMainInputArea";
@@ -12,7 +12,7 @@ const ChatMain = () => {
   const chatId = getSingleParam("chatId");
 
   const { chatMessages } = useGetChatMessages({ chatId });
-  
+
   // get chatinfo
 
   return (
@@ -29,7 +29,7 @@ const ChatMain = () => {
       ) : (
         <>
           <ChatMainHeader />
-            <ChatMainChat messages={chatMessages} />
+          <ChatMainChat messages={chatMessages} />
           <ChatMainInputArea />
         </>
       )}

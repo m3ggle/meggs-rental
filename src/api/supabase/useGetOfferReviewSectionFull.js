@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { toastNotify } from "../components/toastNotify/toastNotify";
-import supabase from "../config/supabaseClient";
+import { toastNotify } from "../../components/toastNotify/toastNotify";
+import supabase from "../../config/supabaseClient";
 
 export const useGetOfferReviewSectionFull = (offerId) => {
   const { notifyStandard } = toastNotify();

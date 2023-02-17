@@ -1,10 +1,10 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useVD1GetOptions } from "../../../api/supabase/useVD1GetOptions";
 import BottomPart from "../../../components/authentication/BottomPart";
 import Autocomplete from "../../../components/input/Autocomplete";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
-import { useVD1GetOptions } from "../hooks/useVD1GetOptions";
 
 const UploadVehicleDetails1 = ({ handleCallback }) => {
   const { transmission, fuelType, vehicleName, brandName } =

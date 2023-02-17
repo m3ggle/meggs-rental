@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
-import supabase from "../../../config/supabaseClient";
+import supabase from "../../config/supabaseClient";
 
-export const useGetChatPreviews = ({userId, offset = 0, limit = 10}) => {
+export const useGetChatPreviews = ({ userId, offset = 0, limit = 10 }) => {
   const getOfferCard = async () => {
     if (userId !== null) {
       return await supabase.rpc("get_chat_previews", {

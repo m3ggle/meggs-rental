@@ -1,13 +1,13 @@
 import { Dialog } from "@headlessui/react";
 import React from "react";
+import { useGetUserOffers } from "../../api/supabase/useGetUserOffers";
+import { useGetUserReviews } from "../../api/supabase/useGetUserReviews";
+import { useGetUserSummary } from "../../api/supabase/useGetUserSummary";
+import { useGetUserWithPersonalInformation } from "../../api/supabase/useGetUserWithPersonalInformation";
 import Loading from "../../components/Loading";
 import ReviewSection from "../../components/ratings/ReviewSection";
 import UserDetailsModalOffer from "../../components/userProfile/UserDetailsModalOffer";
 import UserProfileHeader from "../../components/userProfile/UserProfileHeader";
-import { useGetUserOffers } from "../../hooks/useGetUserOffers";
-import { useGetUserReviews } from "../../hooks/useGetUserReviews";
-import { useGetUserSummary } from "../../hooks/useGetUserSummary";
-import { useGetUserWithPersonalInformation } from "../../hooks/useGetUserWithPersonalInformation";
 
 const UserDetails = ({ userId, closeModal }) => {
   const { userWithPersonal, isLoading: userPersonalLoading } =
@@ -57,7 +57,9 @@ const UserDetails = ({ userId, closeModal }) => {
             </Dialog.Description>
           </div>
           <UserDetailsModalOffer offers={userOffers} closeModal={closeModal} />
-          {userReviews.length > 0 && <ReviewSection reviewSection={reviewSection} />}
+          {userReviews.length > 0 && (
+            <ReviewSection reviewSection={reviewSection} />
+          )}
         </div>
       )}
     </>

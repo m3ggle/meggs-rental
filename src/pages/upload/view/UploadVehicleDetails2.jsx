@@ -1,5 +1,6 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useVD2GetOptions } from "../../../api/supabase/useVD2GetOptions";
 import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import {
@@ -8,7 +9,6 @@ import {
   seatSelect,
   trunkVolumeSelect,
 } from "../data/uploadVehicleDetailsData";
-import { useVD2GetOptions } from "../hooks/useVD2GetOptions";
 
 const UploadVehicleDetails2 = ({ handleCallback }) => {
   const { category, vehicleCondition, trunkVolume, amountSeats } =

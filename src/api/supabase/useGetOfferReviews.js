@@ -1,10 +1,10 @@
 import { useQuery } from "react-query";
-import supabase from "../config/supabaseClient";
+import supabase from "../../config/supabaseClient";
 
-export const useGetOfferSummary = (offerId) => {
-  const getSummary = async () => {
+export const useGetOfferReviews = (offerId) => {
+  const getReviews = async () => {
     if (offerId !== null) {
-      return supabase.rpc("get_offer_rs_summary", {
+      return supabase.rpc("get_offer_rs_reviews", {
         oid: offerId,
       });
     }
@@ -12,8 +12,8 @@ export const useGetOfferSummary = (offerId) => {
   };
 
   const { data, isLoading } = useQuery(
-    ["get_offer_rs_summary", offerId],
-    getSummary,
+    ["get_offer_rs_reviews", offerId],
+    getReviews,
     {
       refetchOnMount: true,
       refetchOnWindowFocus: false,
@@ -21,5 +21,5 @@ export const useGetOfferSummary = (offerId) => {
     }
   );
 
-  return { summary: data?.data, isLoading, error: data?.error };
+  return { reviews: data?.data, isLoading, error: data?.error };
 };

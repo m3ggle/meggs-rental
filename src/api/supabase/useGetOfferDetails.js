@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import supabase from "../config/supabaseClient";
+import supabase from "../../config/supabaseClient";
 
 export const useGetOfferDetails = (offerId) => {
   const getOfferDetails = async () => {
@@ -10,7 +10,6 @@ export const useGetOfferDetails = (offerId) => {
     }
     return { error: null, data: null };
   };
-
 
   const { data, isLoading } = useQuery(
     ["get_offer_details", offerId],

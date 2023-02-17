@@ -1,13 +1,13 @@
 import { useQuery } from "react-query";
-import supabase from "../config/supabaseClient";
+import supabase from "../../config/supabaseClient";
 
 export const useGetUserOffers = (userId, limit = 10, offset = 0) => {
   const getUserOffers = async () => {
     if (userId !== null) {
       return supabase.rpc("get_user_offers", {
         uid: userId,
-          limit_: limit,
-        offset_: offset
+        limit_: limit,
+        offset_: offset,
       });
     }
     return { error: null, data: null };

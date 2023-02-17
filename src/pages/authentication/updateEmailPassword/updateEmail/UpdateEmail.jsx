@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
 import { regexEmail, regexPassword } from "../../../../helpers/regexCollection";
-import { updateAuthEmail } from "../../../profile/subpages/helper/updateAuthEmail";
 
 const UpdateEmail = () => {
   const { control, handleSubmit } = useForm();
@@ -12,10 +11,6 @@ const UpdateEmail = () => {
 
   const onSubmit = async (data) => {
     const { newEmail, currentPassword } = data;
-    const result = await updateAuthEmail({ newEmail, currentPassword });
-
-    // ironically this means everything went alright else there would be the error stored innit
-    result === undefined && navigate("/profile");
   };
 
   const handleGoBack = () => {

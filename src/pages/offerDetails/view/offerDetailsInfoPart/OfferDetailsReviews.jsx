@@ -1,9 +1,7 @@
-import React from 'react'
-import ReviewSection from '../../../../components/ratings/ReviewSection';
-import styles from '../../../../style';
+import React from "react";
+import ReviewSection from "../../../../components/ratings/ReviewSection";
 
 const OfferDetailsReviews = ({ reviewSection }) => {
-  
   return (
     <div className="flex w-full flex-col">
       <span className="text-lg text-lmGrey600 dark:text-dmGrey100">
@@ -18,4 +16,4 @@ const OfferDetailsReviews = ({ reviewSection }) => {
   );
 };
 
-export default OfferDetailsReviews
+export default OfferDetailsReviews;

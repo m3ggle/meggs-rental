@@ -28,23 +28,21 @@ const ChatSidebarMain = ({ chatPreviews }) => {
     <div className="flex w-full flex-col gap-y-2">
       {chatPreviews.map((chatPreview) => (
         <UserProfileChat
-          onClick={() => handleClick(chatPreview.chatroom_id, chatPreview.offer_id)}
+          onClick={() =>
+            handleClick(chatPreview.chatroom_id, chatPreview.offer_id)
+          }
           key={chatPreview.chatroom_id}
           chatId={chatPreview.chatroom_id}
-          chatStatus={
-            chatPreview.last_message_user_id === userId
-              ? !chatPreview.is_read
-              : false
-          }
+          lastMsgRead={chatPreview.is_read_by.includes(userId)}
           lastMsg={chatPreview.last_message_content}
           displayName={
             chatPreview.owner_id === userId
-            ? chatPreview.borrower_user_name
-            : chatPreview.owner_user_name
+              ? chatPreview.borrower_user_name
+              : chatPreview.owner_user_name
           }
           profilePicture={
             chatPreview.owner_id === userId
-            ? chatPreview.borrower_profile_picture_url
+              ? chatPreview.borrower_profile_picture_url
               : chatPreview.owner_profile_picture_url
           }
         />

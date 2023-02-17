@@ -3,13 +3,15 @@ import React from "react";
 
 const UserProfileChat = ({
   chatId,
-  chatStatus,
+  lastMsgRead,
   lastMsg,
   displayName,
   shadow,
   profilePicture,
   onClick,
 }) => {
+
+  console.log(lastMsgRead);
   return (
     <div
       onClick={() => onClick(chatId)}
@@ -44,10 +46,10 @@ const UserProfileChat = ({
         </div>
 
         <div className={`flex h-full w-6 min-w-fit items-center`}>
-          {chatStatus && (
+          {!lastMsgRead && (
             <div
               className={`h-2 w-2 rounded-full bg-lmPrimary dark:bg-dmPrimary`}
-            ></div>
+            />
           )}
         </div>
       </div>

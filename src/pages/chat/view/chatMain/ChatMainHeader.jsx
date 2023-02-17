@@ -41,28 +41,28 @@ const ChatMainHeader = () => {
           <UserProfileSmall
             text={
               userId === chatParticipants.owner_id
-                ? chatParticipants.owner_is_online
+                ? chatParticipants.borrower_is_online
                   ? "Currently online"
                   : formatRelative(
-                      new Date(chatParticipants.owner_last_online),
+                      new Date(chatParticipants.borrower_last_online),
                       new Date()
                     )
-                : chatParticipants.borrower_is_online
+                : chatParticipants.owner_is_online
                 ? "Currently online"
                 : formatRelative(
-                    new Date(chatParticipants.borrower_last_online),
+                    new Date(chatParticipants.owner_last_online),
                     new Date()
                   )
             }
             displayName={
               userId === chatParticipants.owner_id
-                ? chatParticipants.owner_user_name
-                : chatParticipants.borrower_user_name
+                ? chatParticipants.borrower_user_name
+                : chatParticipants.owner_user_name
             }
             photoUrl={
               userId === chatParticipants.owner_id
-                ? chatParticipants.owner_profile_picture_url
-                : chatParticipants.borrower_profile_picture_url
+                ? chatParticipants.borrower_profile_picture_url
+                : chatParticipants.owner_profile_picture_url
             }
           />
         )}

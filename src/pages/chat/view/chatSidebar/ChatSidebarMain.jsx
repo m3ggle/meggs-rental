@@ -6,15 +6,19 @@ import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlMani
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 
 const ChatSidebarMain = ({ chatPreviews }) => {
-  const { setSingleParam } = useUrlManipulation();
+  const { setSingleParam, setArrayOfParams } = useUrlManipulation();
 
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { userId } = useUserContext();
 
-  const handleClick = (chatId) => {
+  const handleClick = (chatId, offerId) => {
     if (windowSize.width > 1000) {
       setSingleParam("chatId", chatId);
+      setArrayOfParams({
+        chatId,
+        offerId,
+      });
     } else {
       navigate(`/chat/chat-main/${chatId}`);
     }
@@ -24,7 +28,7 @@ const ChatSidebarMain = ({ chatPreviews }) => {
     <div className="flex w-full flex-col gap-y-2">
       {chatPreviews.map((chatPreview) => (
         <UserProfileChat
-          onClick={handleClick}
+          onClick={() => handleClick(chatPreview.chatroom_id, chatPreview.offer_id)}
           key={chatPreview.chatroom_id}
           chatId={chatPreview.chatroom_id}
           chatStatus={

@@ -7,6 +7,7 @@ import UserProfileSmall from "../../../../components/userProfile/UserProfileSmal
 import { useUserContext } from "../../../../context/user/userContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
+import ChatInfo from "../chatInfo/ChatInfo";
 
 const ChatMainHeader = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -70,7 +71,7 @@ const ChatMainHeader = () => {
         onClick={openModal}
         className="fa-solid fa-bars-staggered flex h-12 w-12 rotate-180 cursor-pointer items-center justify-center rounded-full text-[24px] text-lmGrey300 duration-300 hover:bg-lmGrey50 hover:text-lmGrey600"
       />
-      {/* <ChatInfo isOpen={isOpen} closeModal={closeModal} /> */}
+      <ChatInfo isOpen={isOpen} closeModal={closeModal} />
     </div>
   );
 };

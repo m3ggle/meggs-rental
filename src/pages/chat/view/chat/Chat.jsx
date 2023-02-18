@@ -1,34 +1,31 @@
 import React from "react";
 import { useGetChatInformation } from "../../../../api/supabase/useGetChatInformation";
 import { useGetChatMessages } from "../../../../api/supabase/useGetChatMessages";
+import Loading from "../../../../components/Loading";
+import supabase from "../../../../config/supabaseClient";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
-import { useWindowSize } from "../../../../hooks/useWindowSize";
+import { useRealTimeChat } from "../../hooks/useRealTimeChat";
 import { useUpdateLastMessage } from "../../hooks/useUpdateLastMessage";
-import ChatMessageThread from "./ChatMessageThread";
 import ChatHeader from "./ChatHeader";
 import ChatMessageComposer from "./ChatMessageComposer";
+import ChatMessageThread from "./ChatMessageThread";
 
 const Chat = () => {
   const { getSingleParam } = useUrlManipulation();
   const chatId = getSingleParam("chatId");
 
-  const { chatMessages } = useGetChatMessages({ chatId });
   const { chatInformation, isLoading: chatInformationLoading } =
     useGetChatInformation(chatId);
 
   useUpdateLastMessage(chatInformation);
 
-  const windowSize = useWindowSize();
+  useRealTimeChat(chatId);
+
   return (
-    <div
-      style={{ height: `${windowSize.height}px` }}
-      className="flex min-w-[360px] max-w-[720px] flex-col gap-y-2 1000:w-full 1000:min-w-0 1000:max-w-none"
-    >
-      {chatId === null ? (
+    <>
+      {chatInformationLoading ? (
         <div className="flex h-screen w-full items-center justify-center">
-          <span className="text-xs text-lmGrey800 dark:text-dmGrey100">
-            No chat has been selected
-          </span>
+          <Loading />
         </div>
       ) : (
         <>
@@ -36,11 +33,11 @@ const Chat = () => {
             chatInformation={chatInformation}
             chatInformationLoading={chatInformationLoading}
           />
-          <ChatMessageThread messages={chatMessages} />
+          <ChatMessageThread chatId={chatId} />
           <ChatMessageComposer />
         </>
       )}
-    </div>
+    </>
   );
 };
 

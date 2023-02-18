@@ -4,10 +4,10 @@ import { useGetChatPreviews } from "../../../../api/supabase/useGetChatPreviews"
 import Loading from "../../../../components/Loading";
 import { useUserContext } from "../../../../context/user/userContext";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
-import ChatSidebarMain from "./ChatSidebarMain";
+import ChatPreviewList from "./ChatPreviewList";
 // import ChatSidebarSearch from "./ChatSidebarSearch";
 
-const ChatSidebar = () => {
+const ChatMenu = () => {
   const windowSize = useWindowSize();
   const navigate = useNavigate();
 
@@ -25,14 +25,16 @@ const ChatSidebar = () => {
       {/* <ChatSidebarSearch /> */}
 
       {isLoading ? (
-        <Loading />
+        <div className="flex h-20 w-full items-center justify-center">
+          <Loading />
+        </div>
       ) : (
         chatPreviews.length !== 0 && (
-          <ChatSidebarMain chatPreviews={chatPreviews} />
+          <ChatPreviewList chatPreviews={chatPreviews} />
         )
       )}
     </div>
   );
 };
 
-export default ChatSidebar;
+export default ChatMenu;

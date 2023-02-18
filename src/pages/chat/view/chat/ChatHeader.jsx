@@ -7,7 +7,7 @@ import { useUserContext } from "../../../../context/user/userContext";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import ChatInfo from "../chatInfo/ChatInfo";
 
-const ChatMainHeader = ({ chatInformation, chatInformationLoading }) => {
+const ChatHeader = ({ chatInformation, chatInformationLoading }) => {
   const { userId } = useUserContext();
 
   // chat info modal
@@ -74,4 +74,4 @@ const ChatMainHeader = ({ chatInformation, chatInformationLoading }) => {
   );
 };
 
-export default ChatMainHeader;
+export default ChatHeader;

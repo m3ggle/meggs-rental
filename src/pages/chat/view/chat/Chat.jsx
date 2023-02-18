@@ -4,11 +4,11 @@ import { useGetChatMessages } from "../../../../api/supabase/useGetChatMessages"
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { useUpdateLastMessage } from "../../hooks/useUpdateLastMessage";
-import ChatMainChat from "./ChatMainChat";
-import ChatMainHeader from "./ChatMainHeader";
-import ChatMainInputArea from "./ChatMainInputArea";
+import ChatMessageThread from "./ChatMessageThread";
+import ChatHeader from "./ChatHeader";
+import ChatMessageComposer from "./ChatMessageComposer";
 
-const ChatMain = () => {
+const Chat = () => {
   const { getSingleParam } = useUrlManipulation();
   const chatId = getSingleParam("chatId");
 
@@ -32,16 +32,16 @@ const ChatMain = () => {
         </div>
       ) : (
         <>
-          <ChatMainHeader
+          <ChatHeader
             chatInformation={chatInformation}
             chatInformationLoading={chatInformationLoading}
           />
-          <ChatMainChat messages={chatMessages} />
-          <ChatMainInputArea />
+          <ChatMessageThread messages={chatMessages} />
+          <ChatMessageComposer />
         </>
       )}
     </div>
   );
 };
 
-export default ChatMain;
+export default Chat;

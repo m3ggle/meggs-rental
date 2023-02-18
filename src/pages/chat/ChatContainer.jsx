@@ -1,12 +1,11 @@
-
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PageAuthChecker from "../../components/wrapper/PageAuthChecker";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import ChatMain from "./view/chatMain/ChatMain";
-import ChatSidebar from "./view/chatSidebar/ChatSidebar";
+import ChatMain from "./view/chat/Chat";
+import ChatSidebar from "./view/chatMenu/ChatMenu";
 
-const Chat = () => {
+const ChatContainer = () => {
   const windowSize = useWindowSize();
   const navigate = useNavigate();
 
@@ -25,4 +24,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default ChatContainer;

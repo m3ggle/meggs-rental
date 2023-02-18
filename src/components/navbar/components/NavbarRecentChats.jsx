@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const NavbarMessage = ({handleClickNavigation}) => {
+const NavbarRecentChats = ({ handleClickNavigation }) => {
   return (
     <div className="flex w-[360px] flex-col gap-y-2 py-3 px-8">
       <span className="text-sm font-semibold text-lmGrey400 dark:text-dmGrey100">
         Message
       </span>
-      <div className="flex w-full flex-col gap-y-2 rounded-xl bg-white p-3 text-sm text-lmGrey500 dark:bg-dmGrey900 dark:shadow dark:shadow-dmShadow dark:text-dmGrey100">
+      <div className="flex w-full flex-col gap-y-2 rounded-xl bg-white p-3 text-sm text-lmGrey500 dark:bg-dmGrey900 dark:text-dmGrey100 dark:shadow dark:shadow-dmShadow">
         <div
           onClick={() => handleClickNavigation("/chat")}
           className="flex w-full cursor-pointer items-center gap-x-2 rounded-lg bg-white px-4 py-2 duration-300 hover:bg-lmGrey50 dark:bg-dmGrey900 dark:hover:bg-dmGrey800"
@@ -74,6 +74,6 @@ const NavbarMessage = ({handleClickNavigation}) => {
       </div>
     </div>
   );
-}
+};
 
-export default NavbarMessage
+export default NavbarRecentChats;

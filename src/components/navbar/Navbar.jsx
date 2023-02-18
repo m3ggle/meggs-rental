@@ -6,8 +6,8 @@ import { useUserContext } from "../../context/user/userContext";
 import ModalWrapper from "../wrapper/ModalWrapper";
 import NavbarDivider from "./components/NavbarDivider";
 import NavbarMenu from "./components/NavbarMenu";
-import NavbarMessage from "./components/NavbarMessage";
 import NavbarProfile from "./components/NavbarProfile";
+import NavbarRecentChats from "./components/NavbarRecentChats";
 import DropdownMode from "./DropdownMode";
 
 const Navbar = () => {
@@ -42,7 +42,9 @@ const Navbar = () => {
           {userId && (
             <>
               <NavbarDivider />
-              <NavbarMessage handleClickNavigation={handleClickNavigation} />
+              <NavbarRecentChats
+                handleClickNavigation={handleClickNavigation}
+              />
               <NavbarDivider />
               <NavbarProfile handleClickNavigation={handleClickNavigation} />
             </>

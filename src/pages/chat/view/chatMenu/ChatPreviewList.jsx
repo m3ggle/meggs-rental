@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import UserProfileChat from "../../../../components/userProfile/UserProfileChat";
 import { useUserContext } from "../../../../context/user/userContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
+import ChatPreview from "./ChatPreview";
 
-const ChatSidebarMain = ({ chatPreviews }) => {
+const ChatPreviewList = ({ chatPreviews }) => {
   const { setSingleParam, setArrayOfParams } = useUrlManipulation();
 
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const ChatSidebarMain = ({ chatPreviews }) => {
   return (
     <div className="flex w-full flex-col gap-y-2">
       {chatPreviews.map((chatPreview) => (
-        <UserProfileChat
+        <ChatPreview
           onClick={() =>
             handleClick(chatPreview.chatroom_id, chatPreview.offer_id)
           }
@@ -51,4 +51,4 @@ const ChatSidebarMain = ({ chatPreviews }) => {
   );
 };
 
-export default ChatSidebarMain;
+export default ChatPreviewList;

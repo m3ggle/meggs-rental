@@ -4,7 +4,7 @@ import Btn from "../../../../components/common/Btn";
 import { useChatInputSubmit } from "../../hooks/useChatInputSubmit";
 import ChatInput from "./ChatInput";
 
-const ChatMainInputArea = () => {
+const ChatMessageComposer = () => {
   const [currentMsgState, setCurrentMsgState] = useState(false);
   const { control, handleSubmit, setValue } = useForm();
   const { onSubmit } = useChatInputSubmit(setValue);
@@ -50,4 +50,4 @@ const ChatMainInputArea = () => {
   );
 };
 
-export default ChatMainInputArea;
+export default ChatMessageComposer;

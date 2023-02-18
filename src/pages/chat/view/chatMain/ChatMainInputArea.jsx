@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import Btn from "../../../../components/common/Btn";
+import { useChatInputSubmit } from "../../hooks/useChatInputSubmit";
 import ChatInput from "./ChatInput";
 
 const ChatMainInputArea = () => {
   const [currentMsgState, setCurrentMsgState] = useState(false);
-  const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => data;
+  const { control, handleSubmit, setValue } = useForm();
+  const { onSubmit } = useChatInputSubmit(setValue);
 
   const handleBlur = () => setCurrentMsgState(false);
   const handleFocus = () => setCurrentMsgState(true);
@@ -21,7 +22,7 @@ const ChatMainInputArea = () => {
         control={control}
         render={({ field, fieldState }) => (
           <ChatInput
-            secondIcon="fa-solid fa-paperclip"
+            // secondIcon="fa-solid fa-paperclip"
             onChange={field.onChange}
             placeholder="Write your next message..."
             value={field.value}
@@ -32,7 +33,11 @@ const ChatMainInputArea = () => {
         )}
       />
       <div className={`flex h-full items-center duration-300`}>
-        <div className={`${currentMsgState && "-translate-y-5"} h-fit w-fit duration-300`}>
+        <div
+          className={`${
+            currentMsgState && "-translate-y-5"
+          } h-fit w-fit duration-300`}
+        >
           <Btn
             type="submit"
             uiType="primary"

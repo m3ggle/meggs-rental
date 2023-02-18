@@ -1,54 +1,17 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { useGetChatMessages } from "../../../../api/supabase/useGetChatMessages";
 import Loading from "../../../../components/Loading";
-import supabase from "../../../../config/supabaseClient";
 import { useUserContext } from "../../../../context/user/userContext";
-import { checkChannelAlreadyExist } from "../../../../helpers/checkChannelAlreadyExist";
+import { useChatRealTime } from "../../hooks/useChatRealTime";
 import ChatMessage from "./ChatMessage";
 
 const ChatMessageThread = ({ chatId }) => {
   const { userId } = useUserContext();
 
-  const showMe = supabase.getChannels()
-  console.log(showMe)
-
+  // get all messages
   const { messages, isLoading, setMessages } = useGetChatMessages({ chatId });
-
-  const handleNewMessage = useCallback(
-    (payload) => {
-      setMessages((prevState) => [{ ...payload.new }, ...prevState]);
-    },
-    [setMessages]
-  );
-
-  useEffect(() => {
-    if (!checkChannelAlreadyExist("newMessage")) {
-      supabase
-        .channel("newMessage")
-        .on(
-          "postgres_changes",
-          {
-            event: "INSERT",
-            schema: "public",
-            table: "messages",
-            filter: `chatroom_id=eq.${chatId}`,
-          },
-          (payload) => {
-            handleNewMessage(payload);
-          }
-        )
-        .subscribe();
-    }
-
-    return () => {
-      // ! throws an error because: "channel.unsubscribe is not a function"
-      // if (checkChannelAlreadyExist("newMessage")) {
-      //   supabase.removeChannel("newMessage");
-      // }
-    };
-  }, [chatId, handleNewMessage]);
-
-  console.log(messages);
+  // when new message, insert it into messages state
+  useChatRealTime({ setMessages, chatId });
 
   return (
     <>

@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useQuery } from "react-query";
 import supabase from "../../config/supabaseClient";
 
-export const useGetChatMessages = ({ chatId, offset = 0, limit = 10 }) => {
+export const useGetChatMessages = ({ chatId, offset = 0, limit = 50 }) => {
+  const [messages, setMessages] = useState([])
+  
   const getOfferCard = async () => {
     if (chatId !== null) {
       return await supabase.rpc("get_chat_messages", {
@@ -13,6 +16,13 @@ export const useGetChatMessages = ({ chatId, offset = 0, limit = 10 }) => {
     return { error: null, data: [] };
   };
 
+  const onSuccess = (data) => {
+    console.log(data)
+    if (data?.data !== null && typeof data.data === 'object') {
+      setMessages([...data.data])
+    }
+  }
+
   const { data, isLoading } = useQuery(
     ["get_chat_messages", chatId, offset, limit],
     getOfferCard,
@@ -20,8 +30,9 @@ export const useGetChatMessages = ({ chatId, offset = 0, limit = 10 }) => {
       refetchOnMount: true,
       refetchOnWindowFocus: false,
       staleTime: Infinity, // ten minutes
+      onSuccess,
     }
   );
 
-  return { chatMessages: data?.data ?? [], isLoading, error: data?.error };
+  return { messages, isLoading, error: data?.error, setMessages };
 };

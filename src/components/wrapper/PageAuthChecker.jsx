@@ -6,8 +6,6 @@ const PageAuthChecker = ({ children }) => {
   const { userId } = useUserContext();
   const { isOpen, openAuthNotifyModal, closeNotifyModal } = useNotifyModalContext();
 
-  console.log(userId)
-
   useEffect(() => {
     if (!userId) {
       openAuthNotifyModal();
@@ -23,7 +21,6 @@ const PageAuthChecker = ({ children }) => {
     return <></>;
   }
 
-  console.log("gets rendered")
   return <>{children}</>;
 };
 

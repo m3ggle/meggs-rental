@@ -1,7 +1,7 @@
 // <UserProfileChat newMsg={true} lastMsg={"Hey long time no see!"} displayName="Meggle Bande" />
 import React from "react";
 
-const UserProfileChat = ({
+const ChatPreview = ({
   chatId,
   lastMsgRead,
   lastMsg,
@@ -56,4 +56,4 @@ const UserProfileChat = ({
   );
 };
 
-export default UserProfileChat;
+export default ChatPreview;

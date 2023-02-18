@@ -6,7 +6,7 @@ import TextInput from "../../../../components/input/TextInput";
 import { cleanUpFilterData } from "../../../../helpers/filter/cleanUpFilterData";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 
-const ChatSidebarSearch = () => {
+const ChatPreviewSearch = () => {
   let [searchParams] = useSearchParams();
   const { setSingleParam, deleteSingleParam } = useUrlManipulation();
   const { control, handleSubmit, setValue } = useForm();
@@ -56,4 +56,4 @@ const ChatSidebarSearch = () => {
   );
 };
 
-export default ChatSidebarSearch;
+export default ChatPreviewSearch;

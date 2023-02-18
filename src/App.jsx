@@ -16,9 +16,9 @@ import SignIn from "./pages/authentication/signIn/SignIn";
 import GoogleCallback from "./pages/authentication/signUp/google/GoogleCallback";
 import SignUp from "./pages/authentication/signUp/SignUp";
 import UpdateEmailPassword from "./pages/authentication/updateEmailPassword/UpdateEmailPassword";
-import Chat from "./pages/chat/Chat";
-import ChatMain from "./pages/chat/view/chatMain/ChatMain";
-import ChatSidebar from "./pages/chat/view/chatSidebar/ChatSidebar";
+import ChatContainer from "./pages/chat/ChatContainer";
+import Chat from "./pages/chat/view/chat/Chat";
+import ChatMenu from "./pages/chat/view/chatMenu/ChatMenu";
 import Catalog from "./pages/explore/catalog/Catalog";
 import Map from "./pages/explore/map/Map";
 import Favorites from "./pages/favorites/Favorites";
@@ -80,9 +80,9 @@ export default function App() {
               <Route path="/users-offers" element={<UserOffers />} />
               <Route path="/upload" element={<Upload />} />
 
-              <Route path="/chat" element={<Chat />} />
-              <Route path="/chat/sidebar" element={<ChatSidebar />} />
-              <Route path="/chat/chat-main/:chatId" element={<ChatMain />} />
+              <Route path="/chat" element={<ChatContainer />} />
+              <Route path="/chat/menu" element={<ChatMenu />} />
+              <Route path="/chat/chat-main/:chatId" element={<Chat />} />
 
               <Route path="/" element={<Homepage />} />
               <Route path="/homepage" element={<Homepage />} />

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../../../style";
 
-const ChatMsg = ({ owner, text }) => {
+const ChatMessage = ({ owner, text }) => {
   return (
     <div
       className={`${owner ? "justify-end" : "justify-start"} flex h-fit w-full`}
@@ -19,4 +19,4 @@ const ChatMsg = ({ owner, text }) => {
   );
 };
 
-export default ChatMsg;
+export default ChatMessage;

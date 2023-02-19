@@ -11,7 +11,7 @@ const ChatMessageThread = ({ chatId }) => {
   // get all messages
   const { messages, isLoading, setMessages } = useGetChatMessages({ chatId });
   // when new message, insert it into messages state
-  useChatRealTime({ setMessages, chatId });
+  useChatRealTime({ setMessages, chatId, userId });
 
   return (
     <>

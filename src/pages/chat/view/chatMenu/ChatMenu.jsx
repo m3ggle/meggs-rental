@@ -8,12 +8,13 @@ import ChatPreviewList from "./ChatPreviewList";
 // import ChatSidebarSearch from "./ChatSidebarSearch";
 
 const ChatMenu = () => {
+  const { userId } = useUserContext();
   const windowSize = useWindowSize();
   const navigate = useNavigate();
 
-  const { userId } = useUserContext();
-
   const { chatPreviews, isLoading } = useGetChatPreviews({ userId });
+  
+
 
   // debounce to prevent from overdoing
   useEffect(() => {

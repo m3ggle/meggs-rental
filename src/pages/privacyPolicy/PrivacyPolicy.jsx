@@ -1,32 +1,73 @@
 import React from "react";
+import Btn from "../../components/common/Btn";
+import supabase from "../../config/supabaseClient";
+import { checkChannelAlreadyExist } from "../../helpers/checkChannelAlreadyExist";
 
 const PrivacyPolicy = () => {
+  let newMessageChannel
+
+  const showConnections = () => {
+    const allConnections = supabase.getChannels();
+    console.log("all connections: ", allConnections);
+  };
+
+  const handleConnect = () => {
+    console.log("establishing real time connection");
+    if (!checkChannelAlreadyExist("newMessage")) {
+      newMessageChannel = supabase
+        .channel("newMessage")
+        .on(
+          "postgres_changes",
+          {
+            event: "INSERT",
+            schema: "public",
+            table: "messages",
+          },
+          (payload) => {
+            console.log(payload);
+          }
+        )
+        .subscribe();
+    }
+  };
+
+  const handleDisconnect = () => {
+    console.log("disconnecting real time connection");
+    if (checkChannelAlreadyExist("newMessage")) {
+      // supabase.removeChannel("newMessage");
+      newMessageChannel.unsubscribe()
+      // console.log(newMessageChannel)
+    }
+  };
+
   return (
-    // <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2 overflow-scroll">
-    //   <div className="h-fit w-fit">
-    //     <Btn
-    //       title="Click Me"
-    //       type="button"
-    //       uiType="primary"
-    //       onClick={handleClick}
-    //     />
-    //   </div>
-    // </div>
-    <div className="h-fit w-full flex flex-col">
-      <section className="flex h-screen w-full bg-green-400 p-8">
-        <div className="sticky top-4 flex h-48 w-full items-center justify-center rounded-lg bg-green-700 text-4xl font-medium text-white shadow-lg">
-          top-0
-        </div>
-      </section>
-      <section className="flex h-screen w-full items-end bg-blue-400 p-8">
-        <div className="sticky bottom-4 flex h-48 w-full items-center justify-center rounded-lg bg-blue-700 text-4xl font-medium text-white shadow-lg">
-          bottom-0
-        </div>
-      </section>
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2 overflow-scroll">
+      <div className="h-fit w-fit">
+        <Btn
+          title="Connect"
+          type="button"
+          uiType="primary"
+          onClick={handleConnect}
+        />
+      </div>
+      <div className="h-fit w-fit">
+        <Btn
+          title="Disconnect"
+          type="button"
+          uiType="secondary"
+          onClick={handleDisconnect}
+        />
+      </div>
+      <div className="h-fit w-fit">
+        <Btn
+          title="Show all connections"
+          type="button"
+          uiType="primary"
+          onClick={showConnections}
+        />
+      </div>
     </div>
   );
 };
 
 export default PrivacyPolicy;
-
-// "Insufficient Arguments. Values needed to upload a vehicle: brand_name, category, color, fuel_type, transmission, vehicle_condition. Furthermore: vehicle_name, plate_number, amount_seats, trunk_volume, kilometer, eating_allowed, smoking_allowed, picture_urls."

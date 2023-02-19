@@ -1,18 +1,27 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import supabase from "../../../config/supabaseClient";
 import { checkChannelAlreadyExist } from "../../../helpers/checkChannelAlreadyExist";
+import { checkAndUpdateMessage } from "../helpers/checkAndUpdateMessage";
 
-export const useChatRealTime = ({ setMessages, chatId }) => {
+// component establishes a real time connection to the postgresql table messages on the event insert
+// if it gets triggered, then it takes the new message and inserts it into the messages state locally
+
+export const useChatRealTime = ({ setMessages, chatId, userId }) => {
+  const [newMessageChannel, setNewMessageChannel] = useState();
+
   const handleNewMessage = useCallback(
-    (payload) => {
+    async (payload) => {
       setMessages((prevState) => [{ ...payload.new }, ...prevState]);
+
+      // check if the current user was the sender, if not then update the message
+      checkAndUpdateMessage({ payload, userId });
     },
-    [setMessages]
+    [setMessages, userId]
   );
 
-  useEffect(() => {
+  const subscribeToChannel = useCallback(() => {
     if (!checkChannelAlreadyExist("newMessage")) {
-      supabase
+      const channel = supabase
         .channel("newMessage")
         .on(
           "postgres_changes",
@@ -27,13 +36,19 @@ export const useChatRealTime = ({ setMessages, chatId }) => {
           }
         )
         .subscribe();
+
+      setNewMessageChannel(channel);
     }
+  }, [setNewMessageChannel, handleNewMessage, chatId]);
+    
+  useEffect(() => {
+    subscribeToChannel();
 
     return () => {
-      // ! throws an error because: "channel.unsubscribe is not a function"
-      // if (checkChannelAlreadyExist("newMessage")) {
-      //   supabase.removeChannel("newMessage");
-      // }
+      // unsubscribe if it exists
+      if (checkChannelAlreadyExist("newMessage")) {
+        newMessageChannel?.unsubscribe();
+      }
     };
-  }, [chatId, handleNewMessage]);
+  }, [subscribeToChannel, newMessageChannel]);
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import Btn from "../../../../components/common/Btn";
+import supabase from "../../../../config/supabaseClient";
 import { useChatInputSubmit } from "../../hooks/useChatInputSubmit";
 import ChatInput from "./ChatInput";
 

@@ -15,7 +15,7 @@ const ChatContainer = () => {
 
   // debounce to prevent from overdoing
   useEffect(() => {
-    windowSize.width < 1000 && navigate("/chat/sidebar");
+    windowSize.width < 1000 && navigate("/chat/menu");
   }, [navigate, windowSize]);
 
   return (

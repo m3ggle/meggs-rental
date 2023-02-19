@@ -16,7 +16,7 @@ const ChatHeader = ({ chatInformation, chatInformationLoading }) => {
   const openModal = () => setIsOpen(true);
 
   const navigate = useNavigate();
-  const handleGoBack = () => navigate("/chat/sidebar");
+  const handleGoBack = () => navigate("/chat/menu");
 
   const windowSize = useWindowSize();
 

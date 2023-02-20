@@ -1,10 +1,12 @@
 import { useQuery } from "react-query";
 import supabase from "../../config/supabaseClient";
+import { useRecentChatsContext } from "../../context/recentChats/recentChatsContext";
 import { useUserContext } from "../../context/user/userContext";
 
-export const useGetChatPreviews = ({ offset = 0, limit = 10 }) => {
+export const useGetChatPreviews = () => {
   const { userId } = useUserContext();
-  
+  const { limit, offset} = useRecentChatsContext()
+
   const getChatPreviews = async () => {
     if (userId !== null) {
       return await supabase.rpc("get_chat_previews", {
@@ -23,6 +25,7 @@ export const useGetChatPreviews = ({ offset = 0, limit = 10 }) => {
       refetchOnMount: true,
       refetchOnWindowFocus: false,
       staleTime: Infinity,
+      keepPreviousData: true,
     }
   );
 

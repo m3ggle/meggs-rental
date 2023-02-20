@@ -7,12 +7,15 @@ export const useRecentChatsConnections = () => {
   const { dispatchRecentChats, recentChats } = useRecentChatsContext();
 
   const handleChatroomChange = useCallback(
-    async (payload) => {
+      async (payload, chatPreviews) => {
+          console.log("first", chatPreviews);
       try {
         const { new: newObj } = payload;
         const chatroomId = newObj.id;
         const newLastMsgId = newObj.last_message_id;
 
+        console.log("nskejdnkwe", recentChats, chatroomId);
+          
         // get specific chat preview out of recentChats
         let tempChatPreview = recentChats.filter(
           (preview) => preview.chatroom_id === chatroomId
@@ -35,23 +38,23 @@ export const useRecentChatsConnections = () => {
 
         // replace with new information
         const newChatPreview = {
-          ...tempChatPreview,
-          is_read: data.is_read,
-          is_read_by: data.is_read_by,
-          last_message_content: data.content,
-          last_message_created_at: data.created_at,
-          last_message_id: data.id,
-          last_message_user_id: data.user_id,
+            ...tempChatPreview,
+            is_read: data.is_read,
+            is_read_by: data.is_read_by,
+            last_message_content: data.content,
+            last_message_created_at: data.created_at,
+            last_message_id: data.id,
+            last_message_user_id: data.user_id,
         };
+          
+          console.log(tempChatPreview, newChatPreview);
 
         console.log([{ ...newChatPreview }, ...tempRecentChats]);
 
         // replace combine the special one and the other chat previews and dispatch for context
         dispatchRecentChats({
           type: "SET_RECENT_CHATS",
-          payload: {
-            recentChats: [{ ...newChatPreview }, ...tempRecentChats],
-          },
+          payload: [{ ...newChatPreview }, ...tempRecentChats],
         });
       } catch (error) {
         console.log(error);
@@ -74,7 +77,7 @@ export const useRecentChatsConnections = () => {
               filter: `id=eq.${id}`,
             },
             (payload) => {
-              handleChatroomChange(payload);
+              handleChatroomChange(payload, recentChats);
             }
           )
           .subscribe();
@@ -83,13 +86,15 @@ export const useRecentChatsConnections = () => {
     [handleChatroomChange]
   );
 
-  const establishConnections = useCallback(() => {
-    recentChats.forEach((chat) => {
+  const establishConnections = useCallback((chatPreviews) => {
+    chatPreviews.forEach((chat) => {
       subscribeToChannel(chat.chatroom_id);
     });
-  }, [recentChats, subscribeToChannel]);
+  }, [subscribeToChannel]);
+    
+    return { establishConnections };
 
-  useEffect(() => {
-    establishConnections();
-  }, [establishConnections]);
+//   useEffect(() => {
+//     establishConnections();
+//   }, [establishConnections]);
 };

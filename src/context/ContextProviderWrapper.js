@@ -4,24 +4,29 @@ import { MapCoordProvider } from "./map/mapCoord/mapCoordContext";
 import { MapSubProvider } from "./map/mapSub/mapSubContext";
 import { NavigationProvider } from "./navigation/navigationContext";
 import { NotifyModalProvider } from "./notifyModal/notifyModalContext";
+import { RecentChatsProvider } from "./recentChats/recentChatsContext";
 import { UserProvider } from "./user/userContext";
 import { UserDetailsModalProvider } from "./userDetailsModal/userDetailsModalContext";
 
 const ContextProviderWrapper = ({ children }) => {
   return (
     <UserProvider>
-      <MapCoordProvider>
-        <MapSubProvider>
-          <NavigationProvider>
-            <DarkModeProvider>
-              {/* modals */}
-              <NotifyModalProvider>
-                <UserDetailsModalProvider>{children}</UserDetailsModalProvider>
-              </NotifyModalProvider>
-            </DarkModeProvider>
-          </NavigationProvider>
-        </MapSubProvider>
-      </MapCoordProvider>
+      <RecentChatsProvider>
+        <MapCoordProvider>
+          <MapSubProvider>
+            <NavigationProvider>
+              <DarkModeProvider>
+                {/* modals */}
+                <NotifyModalProvider>
+                  <UserDetailsModalProvider>
+                    {children}
+                  </UserDetailsModalProvider>
+                </NotifyModalProvider>
+              </DarkModeProvider>
+            </NavigationProvider>
+          </MapSubProvider>
+        </MapCoordProvider>
+      </RecentChatsProvider>
     </UserProvider>
   );
 };

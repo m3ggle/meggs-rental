@@ -2,7 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 import recentChatsReducer from "./recentChatsReducer";
 
 const RecentChatsContext = createContext({
-//   ...templateState,
+  recentChats: [],
 
   dispatchRecentChats: () => {},
 });
@@ -14,7 +14,7 @@ export function useRecentChatsContext() {
 
 export const RecentChatsProvider = ({ children }) => {
   const initialState = {
-    // ...templateState,
+    recentChats: [],
   };
 
   const [state, dispatchRecentChats] = useReducer(

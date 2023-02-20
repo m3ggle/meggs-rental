@@ -1,12 +1,22 @@
 import React from "react";
+import supabase from "../../../../config/supabaseClient";
 import styles from "../../../../style";
+import { useMessageStatusRealTime } from "../../hooks/useMessageStatusRealTime";
 
 const ChatMessage = ({
+  id,
   isOwner = false,
   text = "",
   isFirst = false,
-  isRead,
+  isRead = false,
 }) => {
+  const { isReadState } = useMessageStatusRealTime({id, isFirst, isRead});
+
+  if (isFirst) {
+    const allChannels = supabase.getChannels()
+    console.log(allChannels)
+  }
+
   return (
     <div
       className={`${
@@ -27,7 +37,7 @@ const ChatMessage = ({
               isOwner ? "-left-1" : "-right-2"
             }`}
           >
-            {isRead ? "🐵" : "🙈"}
+            {isReadState ? "🐵" : "🙈"}
           </span>
         )}
       </div>

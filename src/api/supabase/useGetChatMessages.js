@@ -17,7 +17,6 @@ export const useGetChatMessages = ({ chatId, offset = 0, limit = 50 }) => {
   };
 
   const onSuccess = (data) => {
-    console.log(data)
     if (data?.data !== null && typeof data.data === 'object') {
       setMessages([...data.data])
     }

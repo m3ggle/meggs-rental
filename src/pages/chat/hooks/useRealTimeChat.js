@@ -6,7 +6,7 @@ import { checkAndUpdateMessage } from "../helpers/checkAndUpdateMessage";
 // component establishes a real time connection to the postgresql table messages on the event insert
 // if it gets triggered, then it takes the new message and inserts it into the messages state locally
 
-export const useChatRealTime = ({ setMessages, chatId, userId }) => {
+export const useRealTimeChat = ({ setMessages, chatId, userId }) => {
   const [newMessageChannel, setNewMessageChannel] = useState();
 
   const handleNewMessage = useCallback(
@@ -40,7 +40,7 @@ export const useChatRealTime = ({ setMessages, chatId, userId }) => {
       setNewMessageChannel(channel);
     }
   }, [setNewMessageChannel, handleNewMessage, chatId]);
-    
+
   useEffect(() => {
     subscribeToChannel();
 

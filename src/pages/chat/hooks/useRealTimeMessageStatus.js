@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import supabase from "../../../config/supabaseClient";
 import { checkChannelAlreadyExist } from "../../../helpers/checkChannelAlreadyExist";
 
-export const useMessageStatusRealTime = ({ id, isFirst, isRead }) => {
+export const useRealTimeMessageStatus = ({ id, isFirst, isRead }) => {
   const [messageChannel, setMessageChannel] = useState();
   const [isReadState, setIsReadState] = useState(isRead);
 

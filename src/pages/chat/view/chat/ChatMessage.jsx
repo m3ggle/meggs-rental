@@ -1,7 +1,7 @@
 import React from "react";
 import supabase from "../../../../config/supabaseClient";
 import styles from "../../../../style";
-import { useMessageStatusRealTime } from "../../hooks/useMessageStatusRealTime";
+import { useRealTimeMessageStatus } from "../../hooks/useRealTimeMessageStatus";
 
 const ChatMessage = ({
   id,
@@ -10,11 +10,11 @@ const ChatMessage = ({
   isFirst = false,
   isRead = false,
 }) => {
-  const { isReadState } = useMessageStatusRealTime({id, isFirst, isRead});
+  const { isReadState } = useRealTimeMessageStatus({ id, isFirst, isRead });
 
   if (isFirst) {
-    const allChannels = supabase.getChannels()
-    console.log(allChannels)
+    const allChannels = supabase.getChannels();
+    console.log(allChannels);
   }
 
   return (

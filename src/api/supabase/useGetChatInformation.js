@@ -4,7 +4,6 @@ import supabase from "../../config/supabaseClient";
 export const useGetChatInformation = (chatId) => {
   const getOfferCard = async () => {
       if (chatId !== null) {
-        console.log("sending to supabase")
       return await supabase.rpc("get_chat_information", {
         chat_id: chatId,
       });

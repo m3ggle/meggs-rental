@@ -2,7 +2,7 @@ import React from "react";
 import { useRecentChatsContext } from "../../../context/recentChats/recentChatsContext";
 import ChatPreviewList from "../../../pages/chat/view/chatMenu/ChatPreviewList";
 
-const NavbarRecentChats = ({ handleClickNavigation }) => {
+const NavbarRecentChats = () => {
   const { recentChats } = useRecentChatsContext();
   const chatPreviews = recentChats.slice(0, 4);
 

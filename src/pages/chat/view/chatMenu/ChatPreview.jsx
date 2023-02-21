@@ -1,4 +1,3 @@
-// <UserProfileChat newMsg={true} lastMsg={"Hey long time no see!"} displayName="Meggle Bande" />
 import React from "react";
 
 const ChatPreview = ({

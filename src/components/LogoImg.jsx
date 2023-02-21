@@ -2,30 +2,33 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigationContext } from "../context/navigation/navigationContext";
+import { useUrlManipulation } from "../hooks/urlManipulation/useUrlManipulation";
 
 const LogoImg = () => {
   const [hideLogo, setHideLogo] = useState(false);
   const location = useLocation();
+  const { getSingleParam } = useUrlManipulation();
 
   useEffect(() => {
-    if (location.pathname.includes("/chat/")) {
-      if (location.pathname.includes("/chat/chat-main/")) {
+    if (location.pathname.includes("/chat")) {
+      if (getSingleParam("chatId")) {
         setHideLogo(true);
-      } else {
-        setHideLogo(false);
+        return
       }
     }
-  }, [location]);
+    setHideLogo(false);
+  }, [location, getSingleParam]);
 
   const { isOpen, dispatchNavigation } = useNavigationContext();
   const openModal = () => {
     dispatchNavigation({ type: "OPEN_NAVIGATION" });
   };
 
+  // className={`fixed ${isOpen || hideLogo ? "bottom-[-120px]" : "bottom-10"}
   return (
     <div
-      className={`fixed ${isOpen || hideLogo ? "bottom-[-120px]" : "bottom-10"}
-        z-50 flex h-[80px] w-[80px] cursor-pointer items-center justify-center rounded-full duration-300 hover:scale-105 active:scale-95 800:h-[92px] 800:w-[92px]`}
+      className={`fixed ${isOpen || hideLogo ? "bottom-[-60px]" : "bottom-10"}
+        group z-50 flex h-[80px] w-[80px] cursor-pointer items-center justify-center rounded-full duration-300 hover:scale-105 active:scale-95 800:h-[92px] 800:w-[92px]`}
       onClick={openModal}
     >
       <motion.div
@@ -42,6 +45,11 @@ const LogoImg = () => {
           Menu
         </span>
       </motion.div>
+      <div className="absolute -top-3 rounded-lg bg-white/80 px-2 py-1 text-[16px] opacity-0 backdrop-blur-sm duration-300 group-hover:opacity-100 dark:bg-dmGrey900/80">
+        <span className="text-lmGrey600 drop-shadow-lg dark:text-dmGrey25">
+          Menu
+        </span>
+      </div>
       <img
         src="https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FcarRentalLogoLm.webp?alt=media&token=e350db99-c85d-4f00-a656-ead654d96151"
         className="h-[100px] w-[100px] object-cover object-center drop-shadow-2xl"

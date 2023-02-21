@@ -28,6 +28,10 @@ export const useGetChatMessages = ({ chatId, offset = 0, limit = 100 }) => {
   );
 
   useEffect(() => {
+    if (data === undefined) {
+      return 
+    }
+    
     if (data?.data !== null && typeof data.data === "object") {
       setMessages([...data.data]);
     }

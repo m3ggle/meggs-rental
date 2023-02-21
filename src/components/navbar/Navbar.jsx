@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useNavigationContext } from "../../context/navigation/navigationContext";
 import { useUserContext } from "../../context/user/userContext";
+import { useWindowSize } from "../../hooks/useWindowSize";
 import ModalWrapper from "../wrapper/ModalWrapper";
 import NavbarDivider from "./components/NavbarDivider";
 import NavbarMenu from "./components/NavbarMenu";
@@ -14,9 +15,16 @@ const Navbar = () => {
   const { isOpen, dispatchNavigation } = useNavigationContext();
   const navigate = useNavigate();
   const { userId } = useUserContext();
+  const windowWidth = useWindowSize().width;
 
   const handleClickNavigation = (navigateTo) => {
     closeModal();
+    if (navigateTo === "/chat") {
+      if (windowWidth < 1200) {
+        navigate("/chat/menu");
+        return
+      }
+    }
     navigate(navigateTo);
   };
 

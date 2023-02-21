@@ -8,15 +8,15 @@ export const useHandleChatRoomChange = () => {
 
   const handleChatroomChange = useCallback(async () => {
     try {
+      // if empty,leave
       if (Object.keys(changePayload).length === 0) {
-        console.log("is empty: ", Object.keys(changePayload).length);
         return;
       }
+
+      // preparation
       const { new: newObj } = changePayload;
       const chatroomId = newObj.id;
       const newLastMsgId = newObj.last_message_id;
-
-      console.log("nskejdnkwe", recentChats, chatroomId);
 
       // get specific chat preview out of recentChats
       let tempChatPreview = recentChats.filter(
@@ -33,6 +33,7 @@ export const useHandleChatRoomChange = () => {
         message_id: newLastMsgId,
       });
 
+      // if error, leave
       if (error) {
         console.error(error);
         return;
@@ -49,10 +50,6 @@ export const useHandleChatRoomChange = () => {
         last_message_user_id: data.user_id,
       };
 
-      console.log(tempChatPreview, newChatPreview);
-
-      console.log([{ ...newChatPreview }, ...tempRecentChats]);
-
       // replace combine the special one and the other chat previews and dispatch for context
       dispatchRecentChats({
         type: "SET_RECENT_CHATS",
@@ -64,7 +61,6 @@ export const useHandleChatRoomChange = () => {
   }, [recentChats, dispatchRecentChats, changePayload]);
 
   useEffect(() => {
-    console.log("hete the payload change to", changePayload);
     handleChatroomChange();
   }, [changePayload]);
 };

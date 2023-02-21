@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import supabase from "../../../config/supabaseClient";
 import { useRecentChatsContext } from "../../../context/recentChats/recentChatsContext";
 import { checkChannelAlreadyExist } from "../../../helpers/checkChannelAlreadyExist";
@@ -7,15 +7,14 @@ export const useRecentChatsConnections = () => {
   const { dispatchRecentChats, recentChats } = useRecentChatsContext();
 
   const handleChatroomChange = useCallback(
-      async (payload, chatPreviews) => {
-          console.log("first", chatPreviews);
+    async (payload) => {
       try {
         const { new: newObj } = payload;
         const chatroomId = newObj.id;
         const newLastMsgId = newObj.last_message_id;
 
         console.log("nskejdnkwe", recentChats, chatroomId);
-          
+
         // get specific chat preview out of recentChats
         let tempChatPreview = recentChats.filter(
           (preview) => preview.chatroom_id === chatroomId
@@ -38,16 +37,16 @@ export const useRecentChatsConnections = () => {
 
         // replace with new information
         const newChatPreview = {
-            ...tempChatPreview,
-            is_read: data.is_read,
-            is_read_by: data.is_read_by,
-            last_message_content: data.content,
-            last_message_created_at: data.created_at,
-            last_message_id: data.id,
-            last_message_user_id: data.user_id,
+          ...tempChatPreview,
+          is_read: data.is_read,
+          is_read_by: data.is_read_by,
+          last_message_content: data.content,
+          last_message_created_at: data.created_at,
+          last_message_id: data.id,
+          last_message_user_id: data.user_id,
         };
-          
-          console.log(tempChatPreview, newChatPreview);
+
+        console.log(tempChatPreview, newChatPreview);
 
         console.log([{ ...newChatPreview }, ...tempRecentChats]);
 
@@ -77,24 +76,30 @@ export const useRecentChatsConnections = () => {
               filter: `id=eq.${id}`,
             },
             (payload) => {
-              handleChatroomChange(payload, recentChats);
+              dispatchRecentChats({
+                type: "SET_CHANGE_PAYLOAD",
+                payload,
+              });
             }
           )
           .subscribe();
       }
     },
-    [handleChatroomChange]
+    [dispatchRecentChats]
   );
 
-  const establishConnections = useCallback((chatPreviews) => {
-    chatPreviews.forEach((chat) => {
-      subscribeToChannel(chat.chatroom_id);
-    });
-  }, [subscribeToChannel]);
-    
-    return { establishConnections };
+  const establishConnections = useCallback(
+    (chatPreviews) => {
+      chatPreviews.forEach((chat) => {
+        subscribeToChannel(chat.chatroom_id);
+      });
+    },
+    [subscribeToChannel]
+  );
 
-//   useEffect(() => {
-//     establishConnections();
-//   }, [establishConnections]);
+  return { establishConnections };
+
+  //   useEffect(() => {
+  //     establishConnections();
+  //   }, [establishConnections]);
 };

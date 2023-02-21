@@ -3,6 +3,7 @@ import recentChatsReducer from "./recentChatsReducer";
 
 const RecentChatsContext = createContext({
   recentChats: [],
+  changePayload: {},
   limit: 0,
   offset: 0,
 
@@ -18,6 +19,7 @@ export function useRecentChatsContext() {
 export const RecentChatsProvider = ({ children }) => {
   const initialState = {
     recentChats: [],
+    changePayload: {},
     limit: 10,
     offset: 0,
   };
@@ -29,7 +31,7 @@ export const RecentChatsProvider = ({ children }) => {
 
   const loadMorePreviews = () => {
     dispatchRecentChats({
-      type: "UPDATE_LIMIT_AND_OFFSET",
+      type: "SET_LIMIT_AND_OFFSET",
       payload: {
         limit: state.limit + 10,
         offset: state.offset + 10,

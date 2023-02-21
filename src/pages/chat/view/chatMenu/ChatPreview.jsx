@@ -10,7 +10,6 @@ const ChatPreview = ({
   profilePicture,
   onClick,
 }) => {
-
   return (
     <div
       onClick={() => onClick(chatId)}
@@ -25,12 +24,6 @@ const ChatPreview = ({
           src={profilePicture}
           alt="user avatar"
         />
-        {/* <div
-          className="h-[46px] min-h-[46px] w-[46px] min-w-[46px] rounded-full bg-lmGrey100 bg-cover bg-center shadow"
-          style={{
-            backgroundImage: `url(${photoURL})`,
-          }}
-        ></div> */}
 
         {/* info */}
         <div className="flex w-full flex-col justify-center gap-y-[2px] overflow-hidden">

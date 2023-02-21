@@ -15,7 +15,6 @@ const NavbarMenu = ({ handleClickNavigation }) => {
   // this code is actually in useHandleSignOut but react did not recognize "handleSignOut" as a function
   const { notifyStandard } = toastNotify();
   const { isOpen, dispatchNavigation } = useNavigationContext();
-  // const { userId } = useUserContext();
   const navigate = useNavigate();
   const displayNotify = (content, type = "waning", id = "SignOutError") => {
     notifyStandard({ information: { type, content }, id });

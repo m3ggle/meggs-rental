@@ -89,7 +89,7 @@ export default function App() {
 
               <Route path="/chat" element={<ChatContainer />} />
               <Route path="/chat/menu" element={<ChatMenu />} />
-              <Route path="/chat/chat-main/:chatId" element={<Chat />} />
+              <Route path="/chat/mobile" element={<Chat />} />
 
               <Route path="/" element={<Homepage />} />
               <Route path="/homepage" element={<Homepage />} />

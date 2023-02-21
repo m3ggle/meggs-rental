@@ -13,8 +13,6 @@ const ChatMessageThread = ({ chatId }) => {
   // when new message, insert it into messages state
   useRealTimeChat({ setMessages, chatId, userId });
 
-  console.log("the messages are:", messages)
-
   return (
     <>
       {isLoading ? (

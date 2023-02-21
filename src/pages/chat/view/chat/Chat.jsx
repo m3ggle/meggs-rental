@@ -16,7 +16,6 @@ const Chat = () => {
     useGetChatInformation(chatId);
   useUpdateLastMessage(chatInformation);
 
-
   return (
     <>
       {chatInformationLoading ? (

@@ -1,12 +1,33 @@
 import React from "react";
 import Btn from "../../components/common/Btn";
-import { useRecentChatsContext } from "../../context/recentChats/recentChatsContext";
+import supabase from "../../config/supabaseClient";
 
 const PrivacyPolicy = () => {
-  const { ...takeAll } = useRecentChatsContext();
-  console.log(takeAll);
+  const handleConnect = () => {
+    supabase
+      .channel(`testDrive`)
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "messages",
+        },
+        (payload) => {
+          console.log(payload);
+        }
+      )
+      .subscribe();
+  };
 
-  const handleClick = () => {};
+  const handleDisconnect = () => {
+    supabase.channel("testDrive").unsubscribe();
+  };
+
+  const handleShow = () => {
+    const all = supabase.getChannels();
+    console.log("all channels", all);
+  };
 
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2 overflow-scroll">
@@ -15,7 +36,23 @@ const PrivacyPolicy = () => {
           title="Connect"
           type="button"
           uiType="primary"
-          onClick={handleClick}
+          onClick={handleConnect}
+        />
+      </div>
+      <div className="h-fit w-fit">
+        <Btn
+          title="Disconnect"
+          type="button"
+          uiType="primary"
+          onClick={handleDisconnect}
+        />
+      </div>
+      <div className="h-fit w-fit">
+        <Btn
+          title="Show connections"
+          type="button"
+          uiType="primary"
+          onClick={handleShow}
         />
       </div>
     </div>

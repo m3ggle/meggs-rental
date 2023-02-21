@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetAndUpdateRecentChats } from "./hooks/useGetAndUpdateRecentChats";
-import { useHandleChatRoomChange } from "./hooks/useHandleChatRoomChange";
+import { useHandleUpdatedChatroomPayloadChange } from "./hooks/useHandleUpdatedChatroomPayloadChange";
+import { useHandleUpdatedMessagePayloadChange } from "./hooks/useHandleUpdatedMessagePayloadChange";
 
 const RecentChats = () => {
   // gets all (max 10) recent chats and stores them inside the context
@@ -9,7 +10,10 @@ const RecentChats = () => {
 
   // mentioned function which establishes connection to receive real time updates, the response function will dispatch the payload into the context
   // this hook will monitor the payloads/changes the which get dispatch into the context
-  useHandleChatRoomChange();
+  useHandleUpdatedChatroomPayloadChange();
+
+  // test
+  useHandleUpdatedMessagePayloadChange()
 
   return <></>;
 };

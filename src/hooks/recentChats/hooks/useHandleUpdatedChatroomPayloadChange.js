@@ -1,20 +1,53 @@
 import { useCallback, useEffect } from "react";
 import supabase from "../../../config/supabaseClient";
 import { useRecentChatsContext } from "../../../context/recentChats/recentChatsContext";
+import { checkChannelAlreadyExist } from "../../../helpers/checkChannelAlreadyExist";
 
-export const useHandleChatRoomChange = () => {
-  const { recentChats, changePayload, dispatchRecentChats } =
+export const useHandleUpdatedChatroomPayloadChange = () => {
+  const { recentChats, updatedChatroomPayload, dispatchRecentChats } =
     useRecentChatsContext();
+
+  const subscribeToNewMessage = (newId) => {
+    if (!checkChannelAlreadyExist(`chatroom_latest_message_${newId}`)) {
+      supabase
+        .channel(`chatroom_latest_message_${newId}`)
+        .on(
+          "postgres_changes",
+          {
+            event: "UPDATE",
+            schema: "public",
+            table: "messages",
+            filter: `id=eq.${newId}`,
+          },
+          (payload) => {
+            dispatchRecentChats({
+              type: "SET_UPDATED_MESSAGE_PAYLOAD",
+              payload,
+            });
+          }
+        )
+        .subscribe();
+    }
+  };
+
+  const handleMessageSubscribeChange = ({ newId, oldId }) => {
+    if (checkChannelAlreadyExist(`chatroom_latest_message_${oldId}`)) {
+      // unsub old
+      supabase.channel(`chatroom_latest_message_${oldId}`).unsubscribe();
+      // sub new
+      subscribeToNewMessage(newId);
+    }
+  };
 
   const handleChatroomChange = useCallback(async () => {
     try {
       // if empty,leave
-      if (Object.keys(changePayload).length === 0) {
+      if (Object.keys(updatedChatroomPayload).length === 0) {
         return;
       }
 
       // preparation
-      const { new: newObj } = changePayload;
+      const { new: newObj, old: oldObj } = updatedChatroomPayload;
       const chatroomId = newObj.id;
       const newLastMsgId = newObj.last_message_id;
 
@@ -55,12 +88,18 @@ export const useHandleChatRoomChange = () => {
         type: "SET_RECENT_CHATS",
         payload: [{ ...newChatPreview }, ...tempRecentChats],
       });
+
+      // unsubscribe the old message and subscribe to the new message
+      handleMessageSubscribeChange({
+        newId: newObj.last_message_id,
+        oldId: oldObj.last_message_id,
+      });
     } catch (error) {
       console.log(error);
     }
-  }, [recentChats, dispatchRecentChats, changePayload]);
+  }, [recentChats, dispatchRecentChats, updatedChatroomPayload]);
 
   useEffect(() => {
     handleChatroomChange();
-  }, [changePayload]);
+  }, [updatedChatroomPayload]);
 };

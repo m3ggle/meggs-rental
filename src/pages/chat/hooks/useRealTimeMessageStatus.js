@@ -6,17 +6,20 @@ export const useRealTimeMessageStatus = ({ id, isFirst, isRead }) => {
   const [messageChannel, setMessageChannel] = useState();
   const [isReadState, setIsReadState] = useState(isRead);
 
-  const handleMessageUpdate = (payload) => {
-    try {
-      const { new: newObj } = payload;
+  const handleMessageUpdate = useCallback(
+    (payload) => {
+      try {
+        const { new: newObj } = payload;
 
-      if (newObj.is_read !== isReadState) {
-        setIsReadState(newObj.is_read);
+        if (newObj.is_read !== isReadState) {
+          setIsReadState(newObj.is_read);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    },
+    [setIsReadState, isReadState]
+  );
 
   const subscribeToChannel = useCallback(() => {
     // use case of an message that already exists and was first but now is second

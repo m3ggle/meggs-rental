@@ -1,8 +1,5 @@
 const recentChatsReducer = (state, action) => {
   const { type, payload } = action;
-  if (type === "SET_UPDATED_MESSAGE_PAYLOAD") {
-    console.log("context, specifically message..., gets updated with the payload of: ", payload)
-  }
     switch (type) {
       case "SET_RECENT_CHATS":
         return {

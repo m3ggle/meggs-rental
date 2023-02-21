@@ -7,21 +7,44 @@ export const useRecentChatsConnections = () => {
   const { dispatchRecentChats } = useRecentChatsContext();
 
   const subscribeToChannel = useCallback(
-    (id) => {
-      if (!checkChannelAlreadyExist(`chatroom_${id}`)) {
+    (chatroomId, lastMessageId) => {
+      // initially subscribing to chatPreviews
+      if (!checkChannelAlreadyExist(`chatroom_${chatroomId}`)) {
         supabase
-          .channel(`chatroom_${id}`)
+          .channel(`chatroom_${chatroomId}`)
           .on(
             "postgres_changes",
             {
               event: "UPDATE",
               schema: "public",
               table: "chatrooms",
-              filter: `id=eq.${id}`,
+              filter: `id=eq.${chatroomId}`,
             },
             (payload) => {
               dispatchRecentChats({
-                type: "SET_CHANGE_PAYLOAD",
+                type: "SET_UPDATED_CHATROOM_PAYLOAD",
+                payload,
+              });
+            }
+          )
+          .subscribe();
+      }
+      if (
+        !checkChannelAlreadyExist(`chatroom_latest_message_${lastMessageId}`)
+      ) {
+        supabase
+          .channel(`chatroom_latest_message_${lastMessageId}`)
+          .on(
+            "postgres_changes",
+            {
+              event: "UPDATE",
+              schema: "public",
+              table: "messages",
+              filter: `id=eq.${lastMessageId}`,
+            },
+            (payload) => {
+              dispatchRecentChats({
+                type: "SET_UPDATED_MESSAGE_PAYLOAD",
                 payload,
               });
             }
@@ -35,7 +58,7 @@ export const useRecentChatsConnections = () => {
   const establishConnections = useCallback(
     (chatPreviews) => {
       chatPreviews.forEach((chat) => {
-        subscribeToChannel(chat.chatroom_id);
+        subscribeToChannel(chat.chatroom_id, chat.last_message_id);
       });
     },
     [subscribeToChannel]

@@ -3,7 +3,8 @@ import recentChatsReducer from "./recentChatsReducer";
 
 const RecentChatsContext = createContext({
   recentChats: [],
-  changePayload: {},
+  updatedChatroomPayload: {},
+  updatedMessagePayload: {},
   limit: 0,
   offset: 0,
 
@@ -19,7 +20,8 @@ export function useRecentChatsContext() {
 export const RecentChatsProvider = ({ children }) => {
   const initialState = {
     recentChats: [],
-    changePayload: {},
+    updatedChatroomPayload: {},
+    updatedMessagePayload: {},
     limit: 10,
     offset: 0,
   };

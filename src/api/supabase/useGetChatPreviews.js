@@ -5,7 +5,7 @@ import { useUserContext } from "../../context/user/userContext";
 
 export const useGetChatPreviews = () => {
   const { userId } = useUserContext();
-  const { limit, offset} = useRecentChatsContext()
+  const { limit, offset } = useRecentChatsContext();
 
   const getChatPreviews = async () => {
     if (userId !== null) {

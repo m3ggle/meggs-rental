@@ -1,4 +1,6 @@
 const recentChatsReducer = (state, action) => {
+  console.log("someone is changing the state");
+
   const { type, payload } = action;
   switch (type) {
     case "SET_RECENT_CHATS":
@@ -6,21 +8,26 @@ const recentChatsReducer = (state, action) => {
         ...state,
         recentChats: payload,
       };
-    case "UPDATE_LIMIT_AND_OFFSET":
+    case "SET_LIMIT_AND_OFFSET":
       return {
         ...state,
         limit: payload.limit,
         offset: payload.offset,
       };
-    case "UPDATE_LIMIT":
+    case "SET_LIMIT":
       return {
         ...state,
         limit: payload,
       };
-    case "UPDATE_OFFSET":
+    case "SET_OFFSET":
       return {
         ...state,
         offset: payload,
+      };
+    case "SET_CHANGE_PAYLOAD":
+      return {
+        ...state,
+        changePayload: payload,
       };
 
     default:

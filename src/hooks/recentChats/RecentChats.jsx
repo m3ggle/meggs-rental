@@ -1,5 +1,6 @@
 import React from "react";
 import { useGetAndUpdateRecentChats } from "./hooks/useGetAndUpdateRecentChats";
+import { useHandleChatRoomChange } from "./hooks/useHandleChatRoomChange";
 
 const RecentChats = () => {
   //   const { dispatchRecentChats, recentChats } = useRecentChatsContext();
@@ -20,7 +21,9 @@ const RecentChats = () => {
   //   }, [updateContext]);
 
   // gets all (max 10) recent chats and stores them inside the context
-  useGetAndUpdateRecentChats();
+    useGetAndUpdateRecentChats();
+    
+    useHandleChatRoomChange()
 
   // establishes to all recent chats a real time connection and updates the context if there is a change
   //   useRecentChatsConnections();

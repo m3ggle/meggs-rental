@@ -12,11 +12,6 @@ const ChatMessage = ({
 }) => {
   const { isReadState } = useRealTimeMessageStatus({ id, isFirst, isRead });
 
-  if (isFirst) {
-    const allChannels = supabase.getChannels();
-    console.log(allChannels);
-  }
-
   return (
     <div
       className={`${

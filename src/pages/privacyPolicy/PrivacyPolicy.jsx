@@ -1,43 +1,32 @@
 import React from "react";
 import Btn from "../../components/common/Btn";
 import supabase from "../../config/supabaseClient";
-import { checkChannelAlreadyExist } from "../../helpers/checkChannelAlreadyExist";
 
 const PrivacyPolicy = () => {
-  let newMessageChannel
-
-  const showConnections = () => {
-    const allConnections = supabase.getChannels();
-    console.log("all connections: ", allConnections);
-  };
-
   const handleConnect = () => {
-    console.log("establishing real time connection");
-    if (!checkChannelAlreadyExist("newMessage")) {
-      newMessageChannel = supabase
-        .channel("newMessage")
-        .on(
-          "postgres_changes",
-          {
-            event: "INSERT",
-            schema: "public",
-            table: "messages",
-          },
-          (payload) => {
-            console.log(payload);
-          }
-        )
-        .subscribe();
-    }
+    supabase
+      .channel(`testDrive`)
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "messages",
+        },
+        (payload) => {
+          console.log(payload);
+        }
+      )
+      .subscribe();
   };
 
   const handleDisconnect = () => {
-    console.log("disconnecting real time connection");
-    if (checkChannelAlreadyExist("newMessage")) {
-      // supabase.removeChannel("newMessage");
-      newMessageChannel.unsubscribe()
-      // console.log(newMessageChannel)
-    }
+    supabase.channel("testDrive").unsubscribe();
+  };
+
+  const handleShow = () => {
+    const all = supabase.getChannels();
+    console.log("all channels", all);
   };
 
   return (
@@ -54,16 +43,16 @@ const PrivacyPolicy = () => {
         <Btn
           title="Disconnect"
           type="button"
-          uiType="secondary"
+          uiType="primary"
           onClick={handleDisconnect}
         />
       </div>
       <div className="h-fit w-fit">
         <Btn
-          title="Show all connections"
+          title="Show connections"
           type="button"
           uiType="primary"
-          onClick={showConnections}
+          onClick={handleShow}
         />
       </div>
     </div>

@@ -7,7 +7,9 @@ import { queryClient } from "./api/reactQuery/queryClient";
 import LogoImg from "./components/LogoImg";
 import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
+import supabase from "./config/supabaseClient";
 import Auth from "./hooks/auth/Auth";
+import RecentChats from "./hooks/recentChats/RecentChats";
 import NotifyModal from "./modals/notifyModal/NotifyModal";
 import UserDetailsModal from "./modals/userDetailsModal/UserDetailsModal";
 import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding"; // not needed anymore
@@ -43,6 +45,7 @@ export default function App() {
   useEffect(() => {
     window.addEventListener("beforeunload", () => {
       localStorage.removeItem("exploreMapLastPosition");
+      
     });
   }, []);
 
@@ -53,6 +56,10 @@ export default function App() {
           <Router>
             {/* auth */}
             <Auth />
+
+            {/* recent chats */}
+            <RecentChats />
+
             {/* dark/light mode */}
             <div className="hidden" aria-hidden="true">
               <DropdownMode />
@@ -82,7 +89,7 @@ export default function App() {
 
               <Route path="/chat" element={<ChatContainer />} />
               <Route path="/chat/menu" element={<ChatMenu />} />
-              <Route path="/chat/chat-main/:chatId" element={<Chat />} />
+              <Route path="/chat/mobile" element={<Chat />} />
 
               <Route path="/" element={<Homepage />} />
               <Route path="/homepage" element={<Homepage />} />

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
 import PageAuthChecker from "../../components/wrapper/PageAuthChecker";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../hooks/useWindowSize";
@@ -8,15 +7,9 @@ import ChatMenu from "./view/chatMenu/ChatMenu";
 
 const ChatContainer = () => {
   const windowSize = useWindowSize();
-  // const navigate = useNavigate();
   const { getSingleParam } = useUrlManipulation();
 
   const chatId = getSingleParam("chatId");
-
-  // debounce to prevent from overdoing
-  // useEffect(() => {
-  //   windowSize.width < 1000 && navigate("/chat/menu");
-  // }, [navigate, windowSize]);
 
   return (
     <PageAuthChecker>

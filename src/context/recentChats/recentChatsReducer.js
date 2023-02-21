@@ -1,6 +1,4 @@
 const recentChatsReducer = (state, action) => {
-  console.log("someone is changing the state");
-
   const { type, payload } = action;
   switch (type) {
     case "SET_RECENT_CHATS":

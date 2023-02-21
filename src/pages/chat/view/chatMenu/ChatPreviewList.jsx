@@ -24,8 +24,6 @@ const ChatPreviewList = ({ chatPreviews }) => {
     }
   };
 
-  console.log("preview key bug", chatPreviews)
-
   return (
     <div className="flex w-full flex-col gap-y-2">
       {chatPreviews.map((chatPreview) => (

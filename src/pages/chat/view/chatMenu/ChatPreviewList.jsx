@@ -1,26 +1,34 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useNavigationContext } from "../../../../context/navigation/navigationContext";
 import { useUserContext } from "../../../../context/user/userContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import ChatPreview from "./ChatPreview";
 
 const ChatPreviewList = ({ chatPreviews }) => {
-  const { setSingleParam, setArrayOfParams } = useUrlManipulation();
+  const { setArrayOfParams } = useUrlManipulation();
+  const { isOpen, dispatchNavigation } = useNavigationContext();
 
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { userId } = useUserContext();
 
   const handleClick = (chatId, offerId) => {
+    if (isOpen) {
+      if (windowSize.width > 1000) navigate(`/chat?chatId=${chatId}&offerId=${offerId}`);
+      else navigate(`/chat/mobile?chatId=${chatId}&offerId=${offerId}`);
+      dispatchNavigation({ type: "CLOSE_NAVIGATION" });
+      return
+    }
+    
     if (windowSize.width > 1000) {
-      setSingleParam("chatId", chatId);
       setArrayOfParams({
         chatId,
         offerId,
       });
     } else {
-      navigate(`/chat/chat-main/${chatId}`);
+      navigate(`/chat/mobile?chatId=${chatId}&offerId=${offerId}`);
     }
   };
 

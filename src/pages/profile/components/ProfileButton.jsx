@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../context/user/userContext";
 import { useUserDetailsModalContext } from "../../../context/userDetailsModal/userDetailsModalContext";
-import { auth } from "../../../firebase.config";
 import styles from "../../../style";
 
 const ProfileButton = ({ information }) => {
@@ -18,7 +17,7 @@ const ProfileButton = ({ information }) => {
   };
   const handleSignOutModal = () => {
     // currently no modal, but it is coming in the future
-    auth.signOut();
+    // auth.signOut();
     navigate("/sign-in");
   };
 

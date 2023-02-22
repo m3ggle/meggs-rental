@@ -4,7 +4,7 @@ import PageAuthChecker from "../../components/wrapper/PageAuthChecker";
 import SignWrapper from "../../components/wrapper/SignWrapper";
 import { useUserContext } from "../../context/user/userContext";
 import ProfileButtonList from "./components/ProfileButtonList";
-import { profileButtonListData } from "./data/profileButtonListData";
+import { profileButtonListData } from "../../data/profileButtonListData";
 import { useHandleProfilePictureChange } from "./hooks/useHandleProfilePictureChange";
 
 const Profile = () => {

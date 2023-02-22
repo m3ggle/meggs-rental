@@ -23,6 +23,7 @@ const UserProfileSmall = ({
         className="h-11 min-h-[44px] w-11 min-w-[44px] rounded-full object-cover object-center text-lmGrey600 shadow dark:text-dmGrey300"
         src={photoUrl}
         alt="loading"
+        loading="lazy"
       />
       <div className="flex w-full flex-col gap-y-[2px]">
         <div className="flex w-full items-center justify-between">

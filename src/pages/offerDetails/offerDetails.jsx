@@ -4,7 +4,6 @@ import { useGetOfferDetails } from "../../api/supabase/useGetOfferDetails";
 import { useGetOfferReviews } from "../../api/supabase/useGetOfferReviews";
 import { useGetOfferSummary } from "../../api/supabase/useGetOfferSummary";
 import Loading from "../../components/Loading";
-import ExampleData from "../../ExampleData";
 import { stripAnyWhiteSpace } from "../../helpers/stripAnyWhiteSpace";
 import OfferDetailsImgPart from "./view/OfferDetailsImgPart";
 import OfferDetailsInfoPart from "./view/offerDetailsInfoPart/OfferDetailsInfoPart";

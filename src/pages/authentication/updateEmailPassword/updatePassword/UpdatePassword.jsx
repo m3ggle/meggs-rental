@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import BottomPart from "../../../../components/authentication/BottomPart";
 import TextInput from "../../../../components/input/TextInput";
 import { regexPassword } from "../../../../helpers/regexCollection";
-import { updateAuthPassword } from "../../../profile/subpages/helper/updateAuthPassword";
 
 const UpdatePassword = () => {
   const { control, handleSubmit } = useForm();
@@ -14,12 +13,6 @@ const UpdatePassword = () => {
   // if possible pass in the function, uid
 
   const onSubmit = async (data) => {
-    const { currentPassword, newPassword } = data;
-    // refetch
-    const result = await updateAuthPassword({ currentPassword, newPassword });
-
-    // ironically this means everything went alright else there would be the error stored innit
-    result === undefined && navigate("/profile");
   };
 
   const handleGoBack = () => {

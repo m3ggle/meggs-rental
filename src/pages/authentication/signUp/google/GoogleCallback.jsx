@@ -5,7 +5,7 @@ import SignUpGoogle from './SignUpGoogle';
 
 const GoogleCallback = () => {
   const signUpBgGoogleCallback =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FsharedRide.webp?alt=media&token=8bec7ac0-cca8-4f04-8ac1-99f39ef37bb6";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/picture-placeholders/sharedRide.webp";
 
   return (
     <SignWrapper pic={signUpBgGoogleCallback}>

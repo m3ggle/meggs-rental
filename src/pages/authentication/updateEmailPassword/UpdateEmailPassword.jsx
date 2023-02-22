@@ -8,9 +8,9 @@ const UpdateEmailPassword = () => {
   const locationPath = useLocation().pathname;
 
   const updateEmailBg =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2ForangeBlue.webp?alt=media&token=e7f7865e-5dc3-41d5-a032-41691705372a";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/picture-placeholders/orangeBlue.webp";
   const updatePasswordBg =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FlonUSStreet.webp?alt=media&token=2e54c6f9-5e62-4b6f-9b4b-641c0fdc2fa6";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/picture-placeholders/lonUSStreet.webp";
 
   return (
     <SignWrapper

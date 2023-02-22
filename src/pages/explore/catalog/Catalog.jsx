@@ -1,7 +1,7 @@
 import React from "react";
 import CatalogWrapper from "../../../components/wrapper/CatalogWrapper";
 import { useUserContext } from "../../../context/user/userContext";
-import ExampleData from "../../../ExampleData";
+import ExampleData from "../../../data/dataCollection";
 
 const Catalog = () => {
   const { exampleOffers } = ExampleData();

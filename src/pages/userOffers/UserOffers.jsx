@@ -1,7 +1,7 @@
 import React from "react";
 import CatalogWrapper from "../../components/wrapper/CatalogWrapper";
 import PageAuthChecker from "../../components/wrapper/PageAuthChecker";
-import ExampleData from "../../ExampleData";
+import ExampleData from "../../data/dataCollection";
 
 const UserOffers = () => {
   const { exampleOffers } = ExampleData();

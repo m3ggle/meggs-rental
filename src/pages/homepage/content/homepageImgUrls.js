@@ -1,43 +1,43 @@
 export const homepageImgUrls = () => {
   const mobileChatSidebar =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FmobileChatSidebar.webp?alt=media&token=9fdf9554-7c37-4ace-8c91-57a64e86f528";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/mobile/mobileChatSidebar.webp";
   const mobileChatSidebarDM =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FmobileChatSidebarDM.webp?alt=media&token=9fdf9554-7c37-4ace-8c91-57a64e86f528";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/mobile/mobileChatSidebarDM.webp";
 
   const tabletExploreCatalog =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FtabletExploreCatalog.webp?alt=media&token=525dd884-5c87-4c64-8ffc-41b088d56ca9";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/tablet/tabletExploreCatalog.webp";
   const tabletExploreCatalogDM =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FtabletExploreCatalogDM.webp?alt=media&token=fb1f99b9-88fe-4923-8e27-12f36dcfd32f";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/tablet/tabletExploreCatalogDM.webp";
 
   const tabletChat =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FtabletChat.webp?alt=media&token=525dd884-5c87-4c64-8ffc-41b088d56ca9";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/tablet/tabletChat.webp";
   const tabletChatDM =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FtabletExploreCatalogDM.webp?alt=media&token=fb1f99b9-88fe-4923-8e27-12f36dcfd32f";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/tablet/tabletChatMainDM.webp";
 
   const desktopExploreMap =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FdesktopExploreMap.webp?alt=media&token=73e14a8b-c171-4c6d-bb76-9ea261bcf5f2";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/desktop/desktopExploreMap.webp";
   const desktopExploreMapDM =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FdesktopExploreMapDM.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/desktop/desktopExploreMapDM.webp";
 
   const desktopChat =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FdesktopChat.webp?alt=media&token=73e14a8b-c171-4c6d-bb76-9ea261bcf5f2";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/desktop/desktopChat.webp";
   const desktopChatDM =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FdesktopChatDM.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/mockups/desktop/desktopChatDM.webp";
 
   const croppedBMW =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FcroppedPic.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/others/croppedPic.webp";
 
-  const chameleon =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2Fchameleon.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
+  // const chameleon =
+  //   "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2Fchameleon.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
 
   const profileNeleLangrock =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofileNeleLangrock.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/user-avatars/profileNeleLangrock.webp";
   const profileGustavoBravo =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofileGustavoBravo.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/user-avatars/profileGustavoBravo.webp";
   const profileAlinaMertens =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofileAlinaMertens.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/user-avatars/profileAlinaMertens.webp";
   const profileMariaBierhoff =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FprofileMariaBierhoff.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/user-avatars/profileMariaBierhoff.webp";
 
   return {
     mobileChatSidebar,
@@ -54,7 +54,7 @@ export const homepageImgUrls = () => {
     desktopChatDM,
 
     croppedBMW,
-    chameleon,
+    // chameleon,
 
     profileNeleLangrock,
     profileGustavoBravo,

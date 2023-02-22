@@ -5,7 +5,7 @@ import { useMultiStepHelper } from "../../../hooks/useMultiStepHelper";
 import {
   forgotPasswordBg,
   forgotPasswordRounds,
-} from "./data/forgotPasswordStatic";
+} from "../../../data/forgotPasswordStatic";
 import ForgotPasswordEmail from "./view/ForgotPasswordEmail";
 import ForgotPasswordPassword from "./view/ForgotPasswordPassword";
 

@@ -4,10 +4,11 @@ import MobileCatalogAutocomplete from "../../../../components/filter/MobileCatal
 import Select from "../../../../components/input/Select";
 import TextArea from "../../../../components/input/TextArea";
 import TextInput from "../../../../components/input/TextInput";
+import Loading from "../../../../components/Loading";
 import SignWrapper from "../../../../components/wrapper/SignWrapper";
 import { useDarkModeContext } from "../../../../context/darkMode/darkModeContext";
 import { useUserContext } from "../../../../context/user/userContext";
-import ExampleData from "../../../../ExampleData";
+import ExampleData from "../../../../data/dataCollection";
 import {
   regexName,
   regexTelephoneNumber,
@@ -24,18 +25,18 @@ const ProfilePersonalInformation = () => {
   const { profilePictureUrl } = useUserContext();
   const { userData } = PPIUserData();
   const { onSubmit } = usePPIOnSubmit(userData);
-  
-    const autocompleteCallback = (formData) => {
-      const preferredCity = {
-        name: formData.name,
-        bounds: formData.extraInfo.bounds,
-        center: formData.extraInfo.center,
-      };
-      localStorage.setItem(
-        "personalInformationPreferredCity",
-        JSON.stringify(preferredCity)
-      );
+
+  const autocompleteCallback = (formData) => {
+    const preferredCity = {
+      name: formData.name,
+      bounds: formData.extraInfo.bounds,
+      center: formData.extraInfo.center,
     };
+    localStorage.setItem(
+      "personalInformationPreferredCity",
+      JSON.stringify(preferredCity)
+    );
+  };
 
   return (
     <>
@@ -201,17 +202,7 @@ const ProfilePersonalInformation = () => {
                 </button>
               </>
             ) : (
-              <div className="mt-10 flex h-full w-full items-center justify-center">
-                <img
-                  className="h-fit w-[100px]"
-                  src={
-                    darkMode
-                      ? "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeDotsLoadingDm.svg?alt=media&token=0e60be95-2b3a-4e03-88f0-a329a1397a88"
-                      : "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeDotsLoadingLm.svg?alt=media&token=0e60be95-2b3a-4e03-88f0-a329a1397a88"
-                  }
-                  alt="loading"
-                />
-              </div>
+              <Loading />
             )}
           </form>
         </div>

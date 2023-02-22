@@ -5,9 +5,15 @@ const HomepageComment = ({ photoURL, comment, association, commentWidth }) => {
 
   return (
     <div className="flex min-w-fit gap-3">
-      <div
+      {/* <div
         className="h-[60px] w-[60px] rounded-full bg-lmGrey200 bg-cover bg-center shadow 700:h-[88px] 700:w-[88px]"
         style={{ backgroundImage: `url(${photoURL})` }}
+      /> */}
+      <img
+        className="h-[60px] w-[60px] rounded-full bg-lmGrey200 object-cover object-center shadow 700:h-[88px] 700:w-[88px]"
+        src={photoURL}
+        alt="comment"
+        loading="lazy"
       />
       <div
         style={{ width: commentWidth }}

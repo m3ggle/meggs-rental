@@ -19,6 +19,11 @@ const userReducer = (state, action) => {
       return {
         ...templateState,
       };
+    case "SET_USER_PROFILE_PICTURE_URL": 
+      return {
+        ...state,
+        profilePictureUrl: payload,
+      };
 
     default:
       break;

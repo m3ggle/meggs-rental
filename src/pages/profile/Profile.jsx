@@ -5,6 +5,7 @@ import SignWrapper from "../../components/wrapper/SignWrapper";
 import { useUserContext } from "../../context/user/userContext";
 import ProfileButtonList from "./components/ProfileButtonList";
 import { profileButtonListData } from "./data/profileButtonListData";
+import { useHandleProfilePictureChange } from "./hooks/useHandleProfilePictureChange";
 
 const Profile = () => {
   const {
@@ -25,15 +26,20 @@ const Profile = () => {
     createdAt,
     lastOnline,
     firstName,
-    lastName
+    lastName,
   };
+
+  const { handleProfilePicture } = useHandleProfilePictureChange();
 
   return (
     <PageAuthChecker>
       {userId !== null && (
         <SignWrapper puffer={false} pic={profilePictureUrl}>
           <div className="relative flex h-screen max-h-screen w-full max-w-[348px] flex-col gap-y-3 overflow-hidden px-[2px]">
-            <UserProfileHeader userProfileData={userData} />
+            <UserProfileHeader
+              userProfileData={userData}
+              clickCallback={handleProfilePicture}
+            />
             <ProfileButtonList profileButtonList={profileButtonListData} />
             <div className="absolute bottom-0 h-12 w-full bg-gradient-to-t from-white dark:from-dmGrey900" />
           </div>

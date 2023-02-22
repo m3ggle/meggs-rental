@@ -23,6 +23,7 @@ const SignWrapper = ({ children, pic, puffer }) => {
           className="h-full w-full overflow-hidden rounded-[30px] bg-lmGrey100 object-cover object-center dark:bg-dmGrey800"
           src={pic}
           alt="filler or user"
+          loading="lazy"
         />
         <button
           onClick={handleHomeButtonClick}

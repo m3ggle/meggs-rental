@@ -11,7 +11,6 @@ import Auth from "./hooks/auth/Auth";
 import RecentChats from "./hooks/recentChats/RecentChats";
 import NotifyModal from "./modals/notifyModal/NotifyModal";
 import UserDetailsModal from "./modals/userDetailsModal/UserDetailsModal";
-import { FirebaseAuthLanding } from "./pages/authentication/firebase/FirebaseAuthLanding"; // not needed anymore
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
 import SignIn from "./pages/authentication/signIn/SignIn";
 import GoogleCallback from "./pages/authentication/signUp/google/GoogleCallback";
@@ -110,11 +109,6 @@ export default function App() {
               <Route path="/tips-and-tricks" element={<TipsAndTricks />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-
-              <Route
-                path="/firebase-auth-landing"
-                element={<FirebaseAuthLanding />}
-              />
 
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />

@@ -1,13 +1,6 @@
 import React, { Suspense } from "react";
-// import HomepageExplore from "./components/explore/HomepageExplore";
-// import HomepageFooter from "./components/footer/HomepageFooter";
-// import HomepageAbout from "./components/HomepageAbout";
-// import HomepageChat from "./components/HomepageChat";
 import HomepageHero from "./components/HomepageHero";
-// import HomepageMostViewed from "./components/HomepageMostViewed";
 import HomepageNavbar from "./components/navbar/HomepageNavbar";
-
-//const About = React. Lazy(() import("./About"));
 
 const HomepageExplore = React.lazy(() =>
   import("./components/explore/HomepageExplore")

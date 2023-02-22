@@ -25,7 +25,6 @@ const FileUpload = ({ filesCallback }) => {
       height: 1400,
       width: 1400,
     });
-    console.log(files)
     setImage((prevState) => [...prevState, ...files]);
     const urls = await handlePreviewUrl(files);
     setImagePreviewURLs((prevState) => [...prevState, ...urls]);
@@ -47,7 +46,6 @@ const FileUpload = ({ filesCallback }) => {
   }
 
   useEffect(() => {
-    console.log("inside state", image)
     filesCallback(image);
   }, [image]);
 

@@ -4,15 +4,13 @@ import BottomPart from "../../../components/authentication/BottomPart";
 import FileUpload from "../../../components/input/FileUpload";
 import useUploadCallback from "../hooks/useUploadCallback";
 
-const UploadOfferPictures = ({ handleCallback }) => {
+const UploadOfferPictures = () => {
   const { handleSubmit } = useForm();
   const { handleSubmit: formSubmit } = useUploadCallback();
 
   const [files, setFiles] = useState([]);
 
   const onSubmit = async () => {
-    // const nextStep = "finish";
-    // handleCallback({ data: { pictureUrls: files }, nextStep });
     formSubmit(files);
   };
 

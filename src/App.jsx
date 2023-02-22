@@ -7,7 +7,6 @@ import { queryClient } from "./api/reactQuery/queryClient";
 import LogoImg from "./components/LogoImg";
 import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
-import supabase from "./config/supabaseClient";
 import Auth from "./hooks/auth/Auth";
 import RecentChats from "./hooks/recentChats/RecentChats";
 import NotifyModal from "./modals/notifyModal/NotifyModal";
@@ -45,7 +44,6 @@ export default function App() {
   useEffect(() => {
     window.addEventListener("beforeunload", () => {
       localStorage.removeItem("exploreMapLastPosition");
-      
     });
   }, []);
 

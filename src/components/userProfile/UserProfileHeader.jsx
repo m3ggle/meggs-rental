@@ -1,17 +1,24 @@
 import { formatRelative } from "date-fns";
 import React from "react";
 import { useLocation } from "react-router-dom";
+import supabase from "../../config/supabaseClient";
 import { useUserDetailsModalContext } from "../../context/userDetailsModal/userDetailsModalContext";
+import { compressImages } from "../../helpers/compressImages";
+import { queryClient } from "../../api/reactQuery/queryClient";
 
-const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
+const UserProfileHeader = ({
+  userProfileData = {},
+  modal = false,
+  clickCallback,
+}) => {
   const {
     userId,
     profilePictureUrl,
     userName,
     isOnline,
     lastOnline,
-    firstName, 
-    lastName 
+    firstName,
+    lastName,
   } = userProfileData;
 
   const { openUserDetailsModal } = useUserDetailsModalContext();
@@ -19,7 +26,6 @@ const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
 
   const handleClick = () => {
     if (locationPath === "/profile") {
-      console.log("choose a image as your new profile pic");
       return;
     }
     if (!modal) openUserDetailsModal(userId);
@@ -31,12 +37,22 @@ const UserProfileHeader = ({ userProfileData = {}, modal = false }) => {
       className="flex w-full cursor-pointer flex-col items-center gap-y-2"
     >
       <div
-        className="h-[84px] w-[84px] overflow-hidden rounded-full bg-cover bg-center shadow"
+        className="group relative h-[84px] w-[84px] overflow-hidden rounded-full bg-cover bg-center shadow"
         style={{ backgroundImage: `url(${profilePictureUrl})` }}
       >
-        {(locationPath === "/profile" && !modal) && (
-            <i className="fa-solid fa-camera flex h-full w-full items-center justify-center bg-lmGrey900/20 text-[28px] text-lmGrey100/60 duration-300 hover:bg-lmGrey900/60 hover:text-lmGrey25" />
-          )}
+        {locationPath === "/profile" && !modal && (
+          <>
+            <i className="fa-solid fa-camera flex h-full w-full items-center justify-center bg-lmGrey900/20 text-[28px] text-lmGrey100/60 duration-300 group-hover:bg-lmGrey900/60 group-hover:text-lmGrey25" />
+            <input
+              onChange={clickCallback}
+              type="file"
+              name="fileUpload"
+              multiple={true}
+              accept=".jpg, .jpeg, .png"
+              className="absolute top-0 h-[84px] w-[84px] cursor-pointer opacity-0"
+            />
+          </>
+        )}
       </div>
       <div className="flex w-full flex-col items-center gap-y-[2px]">
         <span className="text-lg text-lmGrey800 dark:text-dmGrey25">

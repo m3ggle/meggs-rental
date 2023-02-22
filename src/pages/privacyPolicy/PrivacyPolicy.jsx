@@ -4,11 +4,19 @@ import supabase from "../../config/supabaseClient";
 
 const PrivacyPolicy = () => {
   const handleClick = async () => {
-    const { data, error } = await supabase.storage
-      .from("user-avatars")
-      .remove(["921ed632-ab15-4812-ad30-*"]);
+    const testDrive =
+      "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/user-avatars/921ed632-ab15-4812-ad30-b0d258771532.webp";
     
-    console.log(data, error);
+    if (testDrive.includes('user-default')) {
+      console.log("default image")
+      return 
+    }
+    console.log(
+      "ready to be deleted",
+      testDrive.split(
+        "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/user-avatars/"
+      )
+    );
     
     // const cDate = new Date()
     // console.log(new Date().toISOString());

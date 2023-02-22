@@ -7,7 +7,7 @@ const NotFound = () => {
   const handleGoHome = () => navigate("/homepage");
 
   const notFoundBg =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FnotFound.webp?alt=media&token=c72bbd0f-bb0b-4305-8223-2b8d461208ab";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/others/notFound.webp";
 
   return (
     <div className="relative h-screen w-full bg-white p-3 dark:bg-dmGrey900">

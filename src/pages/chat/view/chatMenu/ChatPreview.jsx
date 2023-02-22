@@ -22,6 +22,7 @@ const ChatPreview = ({
           className="h-[46px] min-h-[46px] w-[46px] min-w-[46px] rounded-full bg-lmGrey100 object-cover object-center shadow"
           src={profilePicture}
           alt="user avatar"
+          loading="lazy"
         />
 
         {/* info */}

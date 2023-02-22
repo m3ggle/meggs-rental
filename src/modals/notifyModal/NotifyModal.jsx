@@ -35,11 +35,12 @@ const NotifyModal = () => {
               src={
                 windowSize.width > 1000
                   ? photoURL.desktop ??
-                    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FthreeCars.webp?alt=media&token=51d51fb2-414d-44a4-a549-40a36666b7cb"
+                    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/picture-placeholders/threeCars.webp"
                   : photoURL.mobile ??
-                    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2Fmoped.webp?alt=media&token=c3fbae96-06a8-4121-9067-25ca1dcea4af"
+                    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/picture-placeholders/moped.webp"
               }
               alt="space filler"
+              loading="lazy"
             />
           )}
         </div>

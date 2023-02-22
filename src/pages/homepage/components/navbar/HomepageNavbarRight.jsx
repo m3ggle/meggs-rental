@@ -21,6 +21,7 @@ const HomepageNavbarRight = () => {
             className="h-11 w-11 overflow-hidden rounded-full bg-blue-200 object-cover object-center dark:bg-blue-800"
             src={profilePictureUrl}
             alt="user avatar"
+            loading="lazy"
           />
         </div>
       );

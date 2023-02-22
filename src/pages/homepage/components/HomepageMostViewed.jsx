@@ -71,6 +71,7 @@ const HomepageMostViewed = () => {
               className="absolute bottom-0 right-0 h-[335px] min-w-fit"
               src={chameleon}
               alt="Chameleon"
+              loading="lazy"
             />
           </div>
 

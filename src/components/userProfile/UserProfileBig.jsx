@@ -1,4 +1,3 @@
-// <UserProfileBig userProfileData={userProfileBig} />
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Btn from "../common/Btn";

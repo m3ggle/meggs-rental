@@ -13,7 +13,7 @@ const LogoImg = () => {
     if (location.pathname.includes("/chat")) {
       if (getSingleParam("chatId")) {
         setHideLogo(true);
-        return
+        return;
       }
     }
     setHideLogo(false);
@@ -51,7 +51,7 @@ const LogoImg = () => {
         </span>
       </div>
       <img
-        src="https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FcarRentalLogoLm.webp?alt=media&token=e350db99-c85d-4f00-a656-ead654d96151"
+        src="https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/logos/meggs_rental_logo.webp"
         className="h-[100px] w-[100px] object-cover object-center drop-shadow-2xl"
         alt="logo"
       />

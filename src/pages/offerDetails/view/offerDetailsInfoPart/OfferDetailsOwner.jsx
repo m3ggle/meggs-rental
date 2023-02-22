@@ -1,8 +1,5 @@
 import React from "react";
 import UserProfileBig from "../../../../components/userProfile/UserProfileBig";
-import ExampleData from "../../../../ExampleData";
-
-const { userProfileBig } = ExampleData();
 
 const OfferDetailsOwner = ({ offer_owner }) => {
   return (

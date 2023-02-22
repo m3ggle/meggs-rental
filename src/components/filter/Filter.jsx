@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
-import ExampleData from "../../ExampleData";
+import ExampleData from "../../data/dataCollection";
 import { cleanUpFilterData } from "../../helpers/filter/cleanUpFilterData";
 import { regexPrice } from "../../helpers/regexCollection";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";

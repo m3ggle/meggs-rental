@@ -27,7 +27,7 @@ const Upload = () => {
   };
 
   const uploadBg =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FgermanStreet.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/picture-placeholders/germanStreet.webp";
 
   return (
     <>

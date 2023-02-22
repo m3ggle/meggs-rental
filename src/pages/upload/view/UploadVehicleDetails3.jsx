@@ -4,15 +4,17 @@ import { useVD3GetOptions } from "../../../api/supabase/useVD3GetOptions";
 import BottomPart from "../../../components/authentication/BottomPart";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
+import dataCollection from "../../../data/dataCollection";
 import { regexNumbersOnly } from "../../../helpers/regexCollection";
-import { colorSelect, eatingSelect, smokingSelect } from "../data/uploadVehicleDetailsData";
+
+const { colorSelect, eatingSelect, smokingSelect } = dataCollection();
 
 const UploadVehicleDetails3 = ({ handleCallback }) => {
   const { kilometer, color, smokingAllowed, eatingAllowed } =
     JSON.parse(localStorage.getItem("uploadData")) ?? false;
 
-    const {colors } = useVD3GetOptions();
-  
+  const { colors } = useVD3GetOptions();
+
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log("basic info");

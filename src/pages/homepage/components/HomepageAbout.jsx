@@ -29,6 +29,7 @@ const HomepageAbout = () => {
             className="h-[60px] w-[60px] rounded-full bg-blue-200 bg-cover bg-center 700:h-[88px] 700:w-[88px] 700:min-w-[88px]"
             src={profileGustavoBravo}
             alt="profile"
+            loading="lazy"
           />
           <div className="w-full max-w-[480px] rounded-[24px] bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow">
             <span className="text-base text-lmGrey600 dark:text-dmGrey100 700:text-xl">

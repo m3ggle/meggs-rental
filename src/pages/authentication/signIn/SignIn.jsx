@@ -4,7 +4,7 @@ import SignInEmailPassword from "./view/SignInEmailPassword";
 
 const SignIn = () => {
   const signInBg =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FnewCar.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/picture-placeholders/newCar.webp";
 
   return (
     <SignWrapper pic={signInBg}>

@@ -2,7 +2,7 @@ import React from "react";
 import ProgressBar from "../../../components/ProgressBar";
 import SignWrapper from "../../../components/wrapper/SignWrapper";
 import { useMultiStepHelper } from "../../../hooks/useMultiStepHelper";
-import { signUpRounds } from "./data/signUpRounds";
+import { signUpRounds } from "../../../data/signUpRounds";
 import SignUpEmailPassword from "./view/SignUpEmailPassword";
 import SignUpName from "./view/SignUpName";
 import SignUpUserNameCity from "./view/SignUpUserNameCity";
@@ -11,7 +11,7 @@ const SignUp = () => {
   const { currentRound } = useMultiStepHelper();
 
   const signUpBgFirstStage =
-    "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2FstreetBlueSky.webp?alt=media&token=299dade6-a4d2-40cc-a099-cfb97431bec1";
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/picture-placeholders/streetBlueSky.webp";
 
   const renderComponent = {
     1: <SignUpName />,

@@ -44,7 +44,7 @@ const HomepageAbout = () => {
         </div>
       </div>
       <div className="hidden w-full items-center justify-center py-6 1000:flex">
-        <img src={croppedBMW} alt="cropped bmw" />
+        <img src={croppedBMW} alt="cropped bmw" loading="lazy" />
       </div>
 
       <div className="absolute bottom-[120px] left-8 z-10 w-fit 400:bottom-[140px] 400:left-14 700:bottom-[120px] 700:left-[160px]">

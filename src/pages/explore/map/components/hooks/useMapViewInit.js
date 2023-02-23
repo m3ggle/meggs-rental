@@ -76,6 +76,13 @@ export const useMapViewInit = ({ setPosition }) => {
   }, [setPositionHelper]);
 
   const handleDefault = useCallback(() => {
-    setPositionHelper({ lat: 52.4199, lng: 13.29384, z: 14 });
+    setPositionHelper({
+      lat: 46.673524770958494,
+      lng: 2.77317509625982,
+      z: 4.2587848801252,
+    });
   }, [setPositionHelper]);
 };
+
+
+//46.673524770958494&lng=2.77317509625982&z=4.258784880125204

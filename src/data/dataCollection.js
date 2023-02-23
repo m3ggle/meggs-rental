@@ -149,6 +149,18 @@ const navbarLinks = [
   },
 ];
 
+const browserLogos = {
+  samsung:
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/logos/samsung%20internet%20logo.svg",
+  edge: "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/logos/microsoft%20edge%20logo.svg",
+  chrome:
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/logos/google%20chrome%20logo.svg",
+  firefox:
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/logos/firefox%20logo.svg",
+  opera:
+    "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/logos/opera%20logo.svg",
+};
+
 const dataCollection = () => {
   return {
     filterTypes,
@@ -166,6 +178,7 @@ const dataCollection = () => {
     categorySelect,
     colorSelect,
     eatingSelect,
+    browserLogos,
   };
 };
 

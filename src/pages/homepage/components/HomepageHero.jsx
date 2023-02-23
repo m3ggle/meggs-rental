@@ -30,7 +30,7 @@ const HomepageHero = () => {
   return (
     <div
       id="hero"
-      className="700:max-h-none relative flex h-screen max-h-[740px] w-full flex-col justify-center gap-y-8 bg-white py-16 px-6 dark:bg-dmGrey900 700:min-h-[1100px] 700:gap-y-6 700:py-[100px] 700:px-11 1200:h-screen 1200:min-h-0 1200:flex-row 1200:items-center 1200:justify-start 1200:px-14"
+      className="700:max-h-none relative flex h-screen max-h-[740px] w-full flex-col justify-center gap-y-8 bg-white py-16 px-6 dark:bg-dmGrey900 700:min-h-[1100px] 700:gap-y-6 700:py-[100px] 700:px-11 1200:h-screen 1200:min-h-screen 1200:flex-row 1200:items-center 1200:justify-start 1200:px-14"
     >
       {/* text */}
       <div className="z-30 mt-14 flex w-full flex-col gap-y-5 700:mt-10 700:w-[712px] 700:gap-y-6 1200:mt-0 1200:gap-y-9">

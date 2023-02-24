@@ -1,7 +1,11 @@
-import { Combobox } from '@headlessui/react';
-import React from 'react'
+import { Combobox } from "@headlessui/react";
+import React from "react";
 
-const AutocompleteOption = ({ item, inputColorCondition }) => {
+const AutocompleteOption = ({
+  item,
+  inputColorCondition,
+  icon = "fa-solid fa-magnifying-glass",
+}) => {
   return (
     <Combobox.Option
       key={item.id}
@@ -20,7 +24,7 @@ const AutocompleteOption = ({ item, inputColorCondition }) => {
         <>
           <i
             className={`${
-              selected && "fa-solid fa-check"
+              selected ? "fa-solid fa-check" : icon
             } flex h-5 w-5 items-center justify-center text-lmGrey600 dark:text-dmGrey100`}
             aria-hidden="true"
           />
@@ -37,4 +41,4 @@ const AutocompleteOption = ({ item, inputColorCondition }) => {
   );
 };
 
-export default AutocompleteOption
+export default AutocompleteOption;

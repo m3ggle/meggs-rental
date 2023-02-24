@@ -13,6 +13,7 @@ export const OfferNameAutocomplete = ({
   defaultValue = undefined,
   value = undefined,
   placeholder = "VW Fox ",
+  isCostumeAllowed = true,
 }) => {
   //any states
   const [offerNameInput, setOfferNameInput] = useState("");
@@ -68,6 +69,7 @@ export const OfferNameAutocomplete = ({
               handleSelect(callbackObject);
             }}
             isLoading={isLoading}
+            isCostumeAllowed={isCostumeAllowed}
             onBlur={field.onBlur}
             onDelete={handleDelete}
             onInputChange={handleInputChange}

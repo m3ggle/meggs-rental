@@ -4,7 +4,8 @@ import { useUserContext } from "../../../context/user/userContext";
 import ExampleData from "../../../data/dataCollection";
 
 const Catalog = () => {
-  const { exampleOffers } = ExampleData();
+  // const { exampleOffers } = ExampleData();
+  const exampleOffers = []
   const { userData } = useUserContext();
 
   return (

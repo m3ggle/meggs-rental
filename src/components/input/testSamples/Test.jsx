@@ -83,7 +83,7 @@ const Test = () => {
           <Autocomplete
             placeholder="Silly placeholder"
             itemList={people.list}
-            onChange={field.onChange}
+            onSelect={field.onChange}
             label="What is your nickname?"
             error={fieldState.error}
           />
@@ -110,7 +110,7 @@ const Test = () => {
 
       <button
         type="submit"
-        className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 dark:bg-dmPrimary shadow-md shadow-dmPrimary/40"
+        className="max-w-[340px] rounded-lg bg-lmPrimary px-3 py-[10px] text-sm font-semibold text-lmGrey25 shadow-md shadow-dmPrimary/40 dark:bg-dmPrimary"
       >
         Click to Submit
       </button>

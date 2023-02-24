@@ -11,6 +11,7 @@ const Autocomplete = ({
   placeholder,
   itemList,
   isLoading = false,
+  isCostumeAllowed= false,
   value,
   onInputChange = () => {},
   onSelect = () => {},
@@ -133,6 +134,7 @@ const Autocomplete = ({
             query={query}
             filteredItems={filteredItems}
             isLoading={isLoading}
+            isCostumeAllowed={isCostumeAllowed}
             setQuery={setQuery}
           />
         </div>

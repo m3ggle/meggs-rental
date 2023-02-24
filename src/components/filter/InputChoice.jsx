@@ -1,6 +1,6 @@
 import React from "react";
 import MobileCatalogAutocomplete from "./MobileCatalogAutocomplete";
-import MobileCatalogSearch from "./MobileCatalogSearch";
+import { OfferNameAutocomplete } from "./OfferNameAutocomplete";
 
 const InputChoice = ({ choice, control, handleDelete, definedActions }) => {
   if (choice === "autocomplete") {
@@ -14,7 +14,11 @@ const InputChoice = ({ choice, control, handleDelete, definedActions }) => {
 
   if (choice === "search") {
     return (
-      <MobileCatalogSearch control={control} handleDelete={handleDelete} />
+      // <MobileCatalogSearch control={control} handleDelete={handleDelete} />
+      <OfferNameAutocomplete
+        control={control}
+        onDelete={() => handleDelete("offerName", "")}
+      />
     );
   }
 

@@ -9,7 +9,14 @@ const AutocompleteOptions = ({
   isLoading = false,
   filteredItems = [],
   setQuery = () => {},
+  isCostumeAllowed = false,
 }) => {
+  const userInputObj = {
+    id: "userInput",
+    name: query,
+    icon: "fa-solid fa-quote-left",
+  };
+
   return (
     <Transition
       as={Fragment}
@@ -29,19 +36,28 @@ const AutocompleteOptions = ({
         } absolute left-0 z-30 ${
           label ? "mt-[80px]" : "mt-14"
         } flex min-h-[40px] w-full flex-col gap-y-1 rounded-lg py-2 px-2 shadow-sm`}
-          >
-              {/* user input */}
+      >
+        {/* user input */}
+        {isCostumeAllowed && (
+          <AutocompleteOption
+            key="userInput"
+            item={userInputObj}
+            icon={userInputObj.icon}
+            inputColorCondition={inputColorCondition}
+          />
+        )}
         {isLoading ? (
           <div className="relative block cursor-default select-none truncate px-3 py-2 text-sm text-lmGrey600 dark:text-lmGrey100"></div>
-        ) : filteredItems.length === 0 && query !== "" ? (
+        ) : filteredItems.length === 0 && query !== "" && !isCostumeAllowed ? (
           <div className="relative block cursor-default select-none truncate px-3 py-2 text-sm text-lmGrey600 dark:text-lmGrey100">
             Nothing found.
           </div>
         ) : (
           filteredItems.map((item, index) => (
             <AutocompleteOption
-                key={item?.id ?? index}
-                item={item}
+              key={item?.id ?? index}
+              item={item}
+              icon={item?.icon}
               inputColorCondition={inputColorCondition}
             />
           ))

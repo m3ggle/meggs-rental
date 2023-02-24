@@ -9,6 +9,7 @@ import Btn from "../common/Btn";
 import Select from "../input/Select";
 import TextInput from "../input/TextInput";
 import MobileCatalogAutocomplete from "./MobileCatalogAutocomplete";
+import { OfferNameAutocomplete } from "./OfferNameAutocomplete";
 const { filterSelects } = ExampleData();
 const {
   transmissionSelect,
@@ -26,6 +27,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
   const [resetCount, setResetCount] = useState(0);
 
   const onSubmit = (data) => {
+    console.log(data)
     setArrayOfParams(cleanUpFilterData(data));
     filterModal && closeModal();
   };
@@ -66,7 +68,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
         <span className="text-2xl text-lmGrey700 dark:text-dmGrey25">
           Filter
         </span>
-        <Controller
+        {/* <Controller
           name="search"
           control={control}
           defaultValue={
@@ -84,6 +86,10 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               error={fieldState.error}
             />
           )}
+        /> */}
+        <OfferNameAutocomplete
+          control={control}
+          onDelete={() => handleDelete("offerName", "")}
         />
 
         <MobileCatalogAutocomplete

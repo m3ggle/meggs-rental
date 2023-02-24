@@ -5,12 +5,12 @@ import { filterMapboxResponseCity } from "../../helpers/filterMapboxResponse";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useHandleFly } from "../../hooks/useHandleFly";
-import Autocomplete from "../input/Autocomplete";
+import Autocomplete from "../input/autocomplete/Autocomplete";
 import { useAutocompleteApi } from "./hooks/useAutocompleteApi";
 
 // too many renders
 const MobileCatalogAutocomplete = ({
-  value,
+  value = null,
   label,
   control,
   definedActions = "mapCatalog",
@@ -34,16 +34,14 @@ const MobileCatalogAutocomplete = ({
     }
   };
 
-  // Todo: setItemList to error in other words display the error in the autocomplete results
   const errorFunc = (data) => console.log("error", data.data);
 
-  const { data, isLoading, error, isError, refetch, isFetching } =
-    useAutocompleteApi({
-      definedActions,
-      value: inputValue,
-      onSuccessCallback: successFunc,
-      onErrorCallback: errorFunc,
-    });
+  const { isLoading, refetch } = useAutocompleteApi({
+    definedActions,
+    value: inputValue,
+    onSuccessCallback: successFunc,
+    onErrorCallback: errorFunc,
+  });
 
   useEffect(() => {
     if (inputValue.length >= 3) {
@@ -60,8 +58,6 @@ const MobileCatalogAutocomplete = ({
   };
 
   const decideSelectAction = (callbackObject) => {
-    console.log(callbackObject);
-
     // autocomplete in: mobileCatalog or filterModal and page: map (city)
     if (
       definedActions === "mapCatalog" &&
@@ -77,9 +73,6 @@ const MobileCatalogAutocomplete = ({
     if (definedActions === "mapCatalog" && callbackFunction) {
       callbackFunction(callbackObject);
     }
-
-    // Todo: autocomplete in: mobileCatalog and page: map (search)
-    // Todo: autocomplete in: filter and page: catalog (search)
   };
 
   const handleDelete = () => {
@@ -106,7 +99,7 @@ const MobileCatalogAutocomplete = ({
                 : null
             }
             itemList={itemList}
-            onChange={(callbackObject) => {
+            onSelect={(callbackObject) => {
               field.onChange(callbackObject.name);
               handleInputChange(callbackObject.name);
               handleSelect(callbackObject);

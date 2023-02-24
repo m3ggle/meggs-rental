@@ -2,7 +2,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useVD1GetOptions } from "../../../api/supabase/useVD1GetOptions";
 import BottomPart from "../../../components/authentication/BottomPart";
-import Autocomplete from "../../../components/input/Autocomplete";
+import Autocomplete from "../../../components/input/autocomplete/Autocomplete";
 import Select from "../../../components/input/Select";
 import TextInput from "../../../components/input/TextInput";
 
@@ -55,7 +55,7 @@ const UploadVehicleDetails1 = ({ handleCallback }) => {
           render={({ field, fieldState }) => (
             <Autocomplete
               label="From which brand is the offer?"
-              onChange={(e) => field.onChange(e.name)}
+              onSelect={(e) => field.onChange(e.name)}
               value={field.value}
               placeholder="Volkswagen "
               itemList={brandNames}

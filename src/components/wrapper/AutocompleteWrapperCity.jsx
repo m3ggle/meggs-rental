@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Controller } from "react-hook-form";
 import { useQuery } from "react-query";
 import { filterMapboxResponseStreet } from "../../helpers/filterMapboxResponse";
-import Autocomplete from "../input/Autocomplete";
+import Autocomplete from "../input/autocomplete/Autocomplete";
 
 const AutocompleteWrapperCity = ({ control, label, value, callback }) => {
   const [inputValue, setInputValue] = useState("");
@@ -66,7 +66,7 @@ const AutocompleteWrapperCity = ({ control, label, value, callback }) => {
             label={label ?? undefined}
             value={value ?? null}
             itemList={itemList}
-            onChange={(callbackObject) => {
+            onSelect={(callbackObject) => {
               field.onChange(callbackObject.name);
               handleInputChange(callbackObject.name);
               handleSelect(callbackObject);

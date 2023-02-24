@@ -10,7 +10,6 @@ const AutocompleteOptions = ({
   filteredItems = [],
   setQuery = () => {},
 }) => {
-    isLoading = true
   return (
     <Transition
       as={Fragment}
@@ -39,9 +38,10 @@ const AutocompleteOptions = ({
             Nothing found.
           </div>
         ) : (
-          filteredItems.map((item) => (
+          filteredItems.map((item, index) => (
             <AutocompleteOption
-              item={item}
+                key={item?.id ?? index}
+                item={item}
               inputColorCondition={inputColorCondition}
             />
           ))

@@ -8,6 +8,7 @@ import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulati
 import Btn from "../common/Btn";
 import Select from "../input/Select";
 import TextInput from "../input/TextInput";
+import AutocompleteWrapperCity from "../wrapper/AutocompleteWrapperCity";
 import MobileCatalogAutocomplete from "./MobileCatalogAutocomplete";
 import { OfferNameAutocomplete } from "./OfferNameAutocomplete";
 const { filterSelects } = ExampleData();
@@ -91,10 +92,16 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
           control={control}
           onDelete={() => handleDelete("offerName", "")}
         />
-
-        <MobileCatalogAutocomplete
+        {/* <MobileCatalogAutocomplete
           definedActions={definedActions}
           control={control}
+        /> */}
+
+        <AutocompleteWrapperCity
+          control={control}
+          // label="Where is your offer located?"
+          // value={offerLocation ? offerLocation.name : null}
+          // callback={autocompleteCallback}
         />
 
         <div className="gap-y-1">
@@ -150,11 +157,11 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
         <div className="gap-y-1">
           <div className="flex gap-x-2">
             <Controller
-              name="startPriceDay"
+              name="dayStartPrice"
               control={control}
               defaultValue={
-                searchParams.get("startPriceDay")
-                  ? searchParams.get("startPriceDay")
+                searchParams.get("dayStartPrice")
+                  ? searchParams.get("dayStartPrice")
                   : undefined
               }
               render={({ field, fieldState }) => (
@@ -178,11 +185,11 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               }}
             />
             <Controller
-              name="endPriceDay"
+              name="dayEndPrice"
               control={control}
               defaultValue={
-                searchParams.get("endPriceDay")
-                  ? searchParams.get("endPriceDay")
+                searchParams.get("dayEndPrice")
+                  ? searchParams.get("dayEndPrice")
                   : undefined
               }
               render={({ field, fieldState }) => (
@@ -210,11 +217,11 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
         <div className="gap-y-1">
           <div className="flex gap-x-2">
             <Controller
-              name="startPriceWeek"
+              name="weekStartPrice"
               control={control}
               defaultValue={
-                searchParams.get("startPriceWeek")
-                  ? searchParams.get("startPriceWeek")
+                searchParams.get("weekStartPrice")
+                  ? searchParams.get("weekStartPrice")
                   : undefined
               }
               render={({ field, fieldState }) => (
@@ -238,11 +245,11 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               }}
             />
             <Controller
-              name="endPriceWeek"
+              name="weekEndPrice"
               control={control}
               defaultValue={
-                searchParams.get("endPriceWeek")
-                  ? searchParams.get("endPriceWeek")
+                searchParams.get("weekEndPrice")
+                  ? searchParams.get("weekEndPrice")
                   : undefined
               }
               render={({ field, fieldState }) => (
@@ -270,11 +277,11 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
         <div className="gap-y-1">
           <div className="flex gap-x-2">
             <Controller
-              name="startPriceMonth"
+              name="monthStartPrice"
               control={control}
               defaultValue={
-                searchParams.get("startPriceMonth")
-                  ? searchParams.get("startPriceMonth")
+                searchParams.get("monthStartPrice")
+                  ? searchParams.get("monthStartPrice")
                   : undefined
               }
               render={({ field, fieldState }) => (
@@ -298,11 +305,11 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               }}
             />
             <Controller
-              name="endPriceMonth"
+              name="monthEndPrice"
               control={control}
               defaultValue={
-                searchParams.get("endPriceMonth")
-                  ? searchParams.get("endPriceMonth")
+                searchParams.get("monthEndPrice")
+                  ? searchParams.get("monthEndPrice")
                   : undefined
               }
               render={({ field, fieldState }) => (
@@ -373,13 +380,13 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               )}
             />
             <Controller
-              name="seats"
+              name="amountSeats"
               control={control}
               render={({ field, fieldState }) => (
                 <Select
                   value={
-                    searchParams.get("seats")
-                      ? searchParams.get("seats")
+                    searchParams.get("amountSeats")
+                      ? searchParams.get("amountSeats")
                       : undefined
                   }
                   icon={seatSelect.icon}
@@ -433,13 +440,13 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
               )}
             />
             <Controller
-              name="smoking"
+              name="smokingAllowed"
               control={control}
               render={({ field, fieldState }) => (
                 <Select
                   value={
-                    searchParams.get("smoking")
-                      ? searchParams.get("smoking")
+                    searchParams.get("smokingAllowed")
+                      ? searchParams.get("smokingAllowed")
                       : undefined
                   }
                   icon={smokingSelect.icon}

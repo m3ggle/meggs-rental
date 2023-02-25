@@ -3,6 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import BottomPart from "../../../components/authentication/BottomPart";
 import TextArea from "../../../components/input/TextArea";
 import TextInput from "../../../components/input/TextInput";
+import AutocompleteWrapperPlace from "../../../components/wrapper/AutocompleteWrapperCity";
 import AutocompleteWrapperCity from "../../../components/wrapper/AutocompleteWrapperCity";
 import { useUploadOfferBasicsOnSubmit } from "../hooks/useUploadOfferBasicsOnSubmit";
 
@@ -46,7 +47,7 @@ const UploadOfferBasics = ({ handleCallback }) => {
             />
           )}
         />
-        <AutocompleteWrapperCity
+        <AutocompleteWrapperPlace
           control={control}
           label="Where is your offer located?"
           value={offerLocation ? offerLocation.name : null}

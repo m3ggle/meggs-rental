@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { filterMapboxResponseStreet } from "../../helpers/filterMapboxResponse";
 import Autocomplete from "../input/autocomplete/Autocomplete";
 
-const AutocompleteWrapperCity = ({ control, label, value, callback }) => {
+const AutocompleteWrapperPlace = ({ control, label, value, callback }) => {
   const [inputValue, setInputValue] = useState("");
   const [itemList, setItemList] = useState([]);
 
@@ -83,4 +83,4 @@ const AutocompleteWrapperCity = ({ control, label, value, callback }) => {
   );
 };
 
-export default AutocompleteWrapperCity;
+export default AutocompleteWrapperPlace;

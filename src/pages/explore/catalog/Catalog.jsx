@@ -8,11 +8,12 @@ import { useHandleCatalogFilter } from "./hooks/useHandleCatalogFilter";
 const Catalog = () => {
   const { searchParams } = useUrlManipulation();
   const { handleCatalogFilter } = useHandleCatalogFilter();
+  const {userId} = useUserContext()
 
   const [filter, setFilter] = useState({});
   useEffect(() => {
     setFilter(handleCatalogFilter());
-  }, [searchParams, setFilter, handleCatalogFilter]);
+  }, [searchParams, setFilter, handleCatalogFilter, userId]);
 
   const { offers} = useGetOffersByFilter(filter)
 

@@ -30,6 +30,7 @@ export const useHandleCatalogFilter = () => {
       }
     }
 
+    console.log("in filter sus", userId);
     if (userId !== null) {
       filter["user_id"] = userId;
     }
@@ -46,7 +47,7 @@ export const useHandleCatalogFilter = () => {
     }
 
     return filter;
-  }, [getAllParams]);
+  }, [getAllParams, userId, preferredCity]);
 
   return { handleCatalogFilter };
 };

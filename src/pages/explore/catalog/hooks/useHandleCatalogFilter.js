@@ -1,21 +1,15 @@
 import { useCallback } from "react";
+import { useUserContext } from "../../../../context/user/userContext";
 import { placeNameToObject } from "../../../../helpers/placeNameToObject";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
 
 export const useHandleCatalogFilter = () => {
   const { getAllParams } = useUrlManipulation();
+  const { userId, preferredCity } = useUserContext();
 
   const formatString = (str = "") => {
-    // let formattedStr = str.replace(/ /g, "_");
-    // formattedStr += "_";
-    // return formattedStr;
-
-    // Replace all uppercase letters with "_[lowercase]"
     let formattedStr = str.replace(/([A-Z])/g, "_$1").toLowerCase();
-    // Remove any underscores at the beginning or end of the string
-    // formattedStr += "_";
     return formattedStr.replace(/^_+|_+$/g, "");
-    // return formattedStr
   };
 
   const handleCatalogFilter = useCallback(() => {
@@ -34,26 +28,19 @@ export const useHandleCatalogFilter = () => {
       }
     }
 
+    if (userId !== null) {
+      filter["user_id"] = userId;
+    }
+
+    if (filter.city === undefined && userId !== null) {
+      // user is logged in, use preferred city
+      filter["city"] = preferredCity.text.city;
+      filter["province"] = preferredCity.text.province;
+      filter["country"] = preferredCity.text.country;
+    }
+
     return filter;
   }, [getAllParams]);
 
   return { handleCatalogFilter };
 };
-
-/*
-write a function which will format a string:
-input: string
-output: string
-
-examples:
-- "offerName" => "offer_name",
-- "city" => "city",
-- "dayStartPrice" => "day_start_price",
-- "dayEndPrice" => "day_end_price",
-- "weekStartPrice" => "week_start_price",
-- "weekEndPrice" => "week_end_price",
-- "monthStartPrice" => "month_start_price",
-- "monthEndPrice" => "month_end_price",
-- "transmission" => "transmission",
-- "trunkVolume" => "trunk_volume",
-*/

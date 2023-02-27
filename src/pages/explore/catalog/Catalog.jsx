@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useGetOffersByFilter } from "../../../api/supabase/useGetOffersByFilter";
 import CatalogWrapper from "../../../components/wrapper/CatalogWrapper";
 import { useUserContext } from "../../../context/user/userContext";
 import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipulation";
@@ -14,15 +15,17 @@ const Catalog = () => {
 
   const [filter, setFilter] = useState({});
   useEffect(() => {
+    console.log("gets called please in the initial")
     setFilter(handleCatalogFilter());
-  }, [searchParams]);
+  }, [searchParams, setFilter, handleCatalogFilter]);
 
-  // const { offers, isLoading} = useGetOffersByFilter(filter)
+  const { offers, isLoading} = useGetOffersByFilter(filter)
+  console.log(offers)
 
   // need to edit city, split it up 
   return (
     <CatalogWrapper
-      offerList={exampleOffers}
+      offerList={offers}
       preferredCity={userData?.preferredCity}
     />
   );

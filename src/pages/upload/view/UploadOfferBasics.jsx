@@ -4,7 +4,6 @@ import BottomPart from "../../../components/authentication/BottomPart";
 import TextArea from "../../../components/input/TextArea";
 import TextInput from "../../../components/input/TextInput";
 import AutocompleteWrapperPlace from "../../../components/wrapper/AutocompleteWrapperCity";
-import AutocompleteWrapperCity from "../../../components/wrapper/AutocompleteWrapperCity";
 import { useUploadOfferBasicsOnSubmit } from "../hooks/useUploadOfferBasicsOnSubmit";
 
 const UploadOfferBasics = ({ handleCallback }) => {
@@ -17,7 +16,8 @@ const UploadOfferBasics = ({ handleCallback }) => {
     setError,
   });
 
-  const autocompleteCallback = (data) => localStorage.setItem("uploadOfferLocation", JSON.stringify(data));
+  const autocompleteCallback = (data) =>
+    localStorage.setItem("uploadOfferLocation", JSON.stringify(data));
 
   return (
     <form

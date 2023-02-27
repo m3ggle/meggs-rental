@@ -8,7 +8,6 @@ import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulati
 import Btn from "../common/Btn";
 import Select from "../input/Select";
 import TextInput from "../input/TextInput";
-import AutocompleteWrapperCity from "../wrapper/AutocompleteWrapperCity";
 import MobileCatalogAutocomplete from "./MobileCatalogAutocomplete";
 import { OfferNameAutocomplete } from "./OfferNameAutocomplete";
 const { filterSelects } = ExampleData();
@@ -23,12 +22,12 @@ const {
 
 const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
   let [searchParams] = useSearchParams();
-  const { setArrayOfParams, deleteSingleParam } = useUrlManipulation();
+  const { setArrayOfParams, deleteSingleParam, getSingleParam } =
+    useUrlManipulation();
   const { control, handleSubmit, setValue, watch } = useForm();
   const [resetCount, setResetCount] = useState(0);
 
   const onSubmit = (data) => {
-    console.log(data)
     setArrayOfParams(cleanUpFilterData(data));
     filterModal && closeModal();
   };
@@ -42,13 +41,14 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
   useEffect(() => setResetCount(0), [isOpen]);
 
   const handleDelete = (inputName, inputValue) => {
+    console.log("gets called", inputName, inputValue);
     setValue(inputName, inputValue);
     deleteSingleParam(inputName);
   };
 
   const handleClearAll = () => {
     // delete textInputs
-    Object.keys(watch()).map((item) => {
+    Object.keys(watch()).forEach((item) => {
       handleDelete(item, "");
     });
 
@@ -56,7 +56,6 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
     setResetCount((prevState) => prevState + 1);
   };
 
-  // todo: set default values depending on url
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -69,39 +68,16 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
         <span className="text-2xl text-lmGrey700 dark:text-dmGrey25">
           Filter
         </span>
-        {/* <Controller
-          name="search"
-          control={control}
-          defaultValue={
-            searchParams.get("search") ? searchParams.get("search") : undefined
-          }
-          render={({ field, fieldState }) => (
-            <TextInput
-              firstIcon="fa-solid fa-magnifying-glass"
-              secondIcon="fa-solid fa-times"
-              onChange={field.onChange}
-              placeholder="Audi A8"
-              value={field.value}
-              onBlur={field.onBlur}
-              onDelete={() => handleDelete("search", "")}
-              error={fieldState.error}
-            />
-          )}
-        /> */}
         <OfferNameAutocomplete
           control={control}
           onDelete={() => handleDelete("offerName", "")}
+          value={getSingleParam("offerName") ?? undefined}
+          placeholder="VW Fox..."
         />
-        {/* <MobileCatalogAutocomplete
+
+        <MobileCatalogAutocomplete
           definedActions={definedActions}
           control={control}
-        /> */}
-
-        <AutocompleteWrapperCity
-          control={control}
-          // label="Where is your offer located?"
-          // value={offerLocation ? offerLocation.name : null}
-          // callback={autocompleteCallback}
         />
 
         <div className="gap-y-1">
@@ -169,7 +145,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
                   firstIcon="fa-solid fa-coins"
                   secondIcon="fa-solid fa-times"
                   onChange={field.onChange}
-                  onDelete={() => handleDelete("startPriceDay", "")}
+                  onDelete={() => handleDelete("dayStartPrice", "")}
                   label="Daily start price"
                   placeholder="30..."
                   value={field.value}
@@ -196,7 +172,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
                 <TextInput
                   firstIcon="fa-solid fa-coins"
                   secondIcon="fa-solid fa-times"
-                  onDelete={() => handleDelete("endPriceDay", "")}
+                  onDelete={() => handleDelete("dayEndPrice", "")}
                   onChange={field.onChange}
                   label="Daily end price"
                   placeholder="300..."
@@ -229,7 +205,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
                   firstIcon="fa-solid fa-coins"
                   secondIcon="fa-solid fa-times"
                   onChange={field.onChange}
-                  onDelete={() => handleDelete("startPriceWeek", "")}
+                  onDelete={() => handleDelete("weekStartPrice", "")}
                   label="Weekly start price"
                   placeholder="30..."
                   value={field.value}
@@ -256,7 +232,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
                 <TextInput
                   firstIcon="fa-solid fa-coins"
                   secondIcon="fa-solid fa-times"
-                  onDelete={() => handleDelete("endPriceWeek", "")}
+                  onDelete={() => handleDelete("weekEndPrice", "")}
                   onChange={field.onChange}
                   label="Weekly end price"
                   placeholder="300..."
@@ -289,7 +265,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
                   firstIcon="fa-solid fa-coins"
                   secondIcon="fa-solid fa-times"
                   onChange={field.onChange}
-                  onDelete={() => handleDelete("startPriceMonth", "")}
+                  onDelete={() => handleDelete("monthStartPrice", "")}
                   label="Monthly start price"
                   placeholder="30..."
                   value={field.value}
@@ -316,7 +292,7 @@ const Filter = ({ isOpen, closeModal, filterModal, definedActions }) => {
                 <TextInput
                   firstIcon="fa-solid fa-coins"
                   secondIcon="fa-solid fa-times"
-                  onDelete={() => handleDelete("endPriceMonth", "")}
+                  onDelete={() => handleDelete("monthEndPrice", "")}
                   onChange={field.onChange}
                   label="Monthly end price"
                   placeholder="300..."

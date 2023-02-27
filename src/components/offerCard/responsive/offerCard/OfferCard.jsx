@@ -9,15 +9,17 @@ import OfferCardImagePart from "./OfferCardImagePart";
 import OfferCardInfoPart from "./OfferCardInfoPart";
 
 const OfferCard = ({ offerInformation, index }) => {
-  const { offerId, liked, photoURL, location } = offerInformation;
+  const { id, picture_urls, latitude, longitude, is_liked } = offerInformation;
   const { signedIn, verified } = useUserContext();
   const { openAuthNotifyModal } = useNotifyModalContext();
 
   const navigate = useNavigate();
-  const handleNavigation = () => navigate(`/offer-details/${offerId}`);
+  const handleNavigation = () => navigate(`/offer-details/${id}`);
 
   const { handleLocationNavigation } = useHandleLocationNavigation();
-  const handleLocation = () => handleLocationNavigation(offerId, location);
+  const handleLocation = () =>
+    handleLocationNavigation(id, { lat: latitude, lng: longitude });
+  // const handleLocation = () => handleLocationNavigation(id, location);
 
   const handleLike = () => {
     if (!signedIn || !verified) {
@@ -41,11 +43,11 @@ const OfferCard = ({ offerInformation, index }) => {
       className={`relative flex w-full min-w-[312px] cursor-pointer gap-x-3 rounded-lg bg-white shadow dark:border dark:border-solid dark:border-dmGrey800/50 dark:bg-dmGrey900 dark:shadow-sm 500:h-[252px] 500:w-[180px] 500:min-w-0 500:justify-center 500:gap-x-0 500:rounded-xl 500:shadow-none dark:500:border-none 1400:h-[406px] 1400:w-[292px]`}
     >
       <OfferCardImagePart
-        photoURL={photoURL}
+        photoURLs={picture_urls}
         onNavigationCallback={handleNavigation}
       />
       <OfferCardIcons
-        liked={liked}
+        isLiked={is_liked}
         onLikeCallback={handleLike}
         onLocationCallback={handleLocation}
       />

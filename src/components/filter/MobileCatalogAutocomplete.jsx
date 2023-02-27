@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Controller } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { filterMapboxResponseCity } from "../../helpers/filterMapboxResponse";
+import { formatPlaceName } from "../../helpers/placeNameToObject";
 import { useUrlManipulation } from "../../hooks/urlManipulation/useUrlManipulation";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useHandleFly } from "../../hooks/useHandleFly";

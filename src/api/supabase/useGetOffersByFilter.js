@@ -3,31 +3,33 @@ import supabase from "../../config/supabaseClient";
 
 export const useGetOffersByFilter = (filter = {}) => {
   const getOfferCards = async () => {
+    console.log(filter)
     if (Object.keys(filter).length > 0) {
+      console.log("in here")
       return supabase.rpc("get_offers_by_filter", {
-        // amount_seats_,
+        // amount_seats,
         // brand,
-        // color_,
-        // day_end_price_,
-        // day_start_price_,
-        // east_,
-        // eating_allowed_,
-        // end_date_,
-        // fuel_type_,
+        // color,
+        // day_end_price,
+        // day_start_price,
+        // east,
+        // eating_allowed,
+        // end_date,
+        // fuel_type,
         // limit_,
-        // month_end_price_,
-        // month_start_price_,
-        // north_,
-        // offer_name_,
+        // month_end_price,
+        // month_start_price,
+        // north,
+        // offer_name,
         // offset_,
-        // smoking_allowed_,
-        // south_,
-        // start_date_,
-        // transmission_,
-        // trunk_volume_,
-        // week_end_price_,
-        // week_start_price_,
-        // west_,
+        // smoking_allowed,
+        // south,
+        // start_date,
+        // transmission,
+        // trunk_volume,
+        // week_end_price,
+        // week_start_price,
+        // west,
           ...filter
       });
     }

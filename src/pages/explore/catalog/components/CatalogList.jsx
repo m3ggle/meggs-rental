@@ -2,10 +2,11 @@ import React from "react";
 import OfferCard from "../../../../components/offerCard/responsive/offerCard/OfferCard";
 
 const CatalogList = ({ offerList }) => {
+  console.log(offerList)
   return (
     <>
       {offerList.map((offer, index) => (
-        <OfferCard key={offer.offerId} offerInformation={offer} index={index} />
+        <OfferCard key={offer.id} offerInformation={offer} index={index} />
       ))}
     </>
   );

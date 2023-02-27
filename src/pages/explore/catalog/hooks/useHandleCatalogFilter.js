@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import { useUserContext } from "../../../../context/user/userContext";
 import { placeNameToObject } from "../../../../helpers/placeNameToObject";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
@@ -6,6 +7,7 @@ import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlMani
 export const useHandleCatalogFilter = () => {
   const { getAllParams } = useUrlManipulation();
   const { userId, preferredCity } = useUserContext();
+  const locationPath = useLocation()
 
   const formatString = (str = "") => {
     let formattedStr = str.replace(/([A-Z])/g, "_$1").toLowerCase();
@@ -32,7 +34,11 @@ export const useHandleCatalogFilter = () => {
       filter["user_id"] = userId;
     }
 
-    if (filter.city === undefined && userId !== null) {
+    if (
+      filter.city === undefined &&
+      userId !== null &&
+      locationPath !== "/favorites"
+    ) {
       // user is logged in, use preferred city
       filter["city"] = preferredCity.text.city;
       filter["province"] = preferredCity.text.province;

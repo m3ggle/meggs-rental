@@ -2,7 +2,6 @@ import React from "react";
 import OfferCard from "../../../../components/offerCard/responsive/offerCard/OfferCard";
 
 const CatalogList = ({ offerList }) => {
-  console.log(offerList)
   return (
     <>
       {offerList.map((offer, index) => (

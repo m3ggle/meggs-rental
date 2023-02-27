@@ -1,8 +1,6 @@
 // Listbox (Select)
 import { Listbox, Transition } from "@headlessui/react";
-import { motion } from "framer-motion";
 import React, { Fragment, useEffect, useState } from "react";
-import { HiChevronUpDown } from "react-icons/hi2";
 
 const Select = ({
   icon,
@@ -16,9 +14,10 @@ const Select = ({
 }) => {
   const [selected, setSelected] = useState(value ? value : placeholder);
 
+  // prevent loop
   useEffect(() => {
     itemList.includes(selected) && onChange(selected);
-  }, [selected, onChange, itemList]);
+  }, [selected, itemList]); // onChange is missing, but if it is in there, infinite rerender loop is possible
 
   useEffect(() => {
     reset > 0 && setSelected(placeholder);

@@ -15,7 +15,7 @@ export const useGetOfferNameAutocomplete = (offerNameInput = "") => {
     ["fuzzy_search_offer_name", offerNameInput],
     getOffer,
     {
-      refetchOnMount: true,
+      refetchOnMount: false,
       refetchOnWindowFocus: false,
       staleTime: 300000, // ten minutes
     }

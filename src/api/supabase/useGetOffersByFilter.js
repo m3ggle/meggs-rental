@@ -1,25 +1,26 @@
 import { useQuery } from "react-query";
 import supabase from "../../config/supabaseClient";
+import { useUserContext } from "../../context/user/userContext";
 
 export const useGetOffersByFilter = (filter = {}) => {
+  const { userId } = useUserContext();
+
   const getOfferCards = async () => {
-    // if (Object.keys(filter).length > 0) {
-      return supabase.rpc("get_offers_by_filter", {
-        ...filter,
-      });
-    // }
-    // return { error: null, data: null };
+    return supabase.rpc("get_offers_by_filter", {
+      ...filter,
+    });
   };
 
   const { data, isLoading } = useQuery(
-    ["get_offer_cards", filter],
+    ["get_offers_by_filter", filter, userId],
     getOfferCards,
     {
       refetchOnMount: true,
       refetchOnWindowFocus: false,
-      staleTime: Infinity,
+      // staleTime: Infinity,
     }
   );
+
 
   return { offers: data?.data ?? [], isLoading, error: data?.error };
 };

@@ -1,32 +1,26 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
-import { useUserContext } from "../../../../context/user/userContext";
 import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
+import { useHandleOfferLikeIcon } from "../../hooks/useHandleOfferLikeIcon";
 import OfferCardIcons from "./OfferCardIcons";
 import OfferCardImagePart from "./OfferCardImagePart";
 import OfferCardInfoPart from "./OfferCardInfoPart";
 
 const OfferCard = ({ offerInformation, index }) => {
-  const { id, picture_urls, latitude, longitude, is_liked } = offerInformation;
-  const { signedIn, verified } = useUserContext();
-  const { openAuthNotifyModal } = useNotifyModalContext();
+  let { id, picture_urls, latitude, longitude, is_liked } = offerInformation;
 
   const navigate = useNavigate();
   const handleNavigation = () => navigate(`/offer-details/${id}`);
 
+  const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
+    offerId: id,
+    is_liked,
+  });
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () =>
     handleLocationNavigation(id, { lat: latitude, lng: longitude });
   // const handleLocation = () => handleLocationNavigation(id, location);
-
-  const handleLike = () => {
-    if (!signedIn || !verified) {
-      openAuthNotifyModal();
-      return;
-    }
-  };
 
   return (
     <motion.div
@@ -47,8 +41,8 @@ const OfferCard = ({ offerInformation, index }) => {
         onNavigationCallback={handleNavigation}
       />
       <OfferCardIcons
-        isLiked={is_liked}
-        onLikeCallback={handleLike}
+        isLiked={isLiked}
+        onLikeCallback={handleOfferLikeIcon}
         onLocationCallback={handleLocation}
       />
       <OfferCardInfoPart

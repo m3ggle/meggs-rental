@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import supabase from "../../config/supabaseClient";
 import { useMapCoordContext } from "../../context/map/mapCoord/mapCoordContext";
+import { useUserContext } from "../../context/user/userContext";
 
 export const useMapGetOffers = () => {
   const [offers, setOffers] = useState([]);
   const { bounds } = useMapCoordContext();
+  const { userId } = useUserContext();
 
   const getOffers = async () => {
-    console.log("calling supabase");
-    return supabase.rpc("get_offers_by_bbox", bounds);
-    return { error: null, data: null };
+    return supabase.rpc("get_offers_by_bbox", { ...bounds, user_id: userId });
   };
 
   const onSuccess = (responseObj) => {
@@ -31,7 +31,7 @@ export const useMapGetOffers = () => {
   };
 
   const { isLoading, refetch } = useQuery(
-    ["get_offers_by_bounds", bounds],
+    ["get_offers_by_bounds", bounds, userId],
     getOffers,
     {
       enabled: false,

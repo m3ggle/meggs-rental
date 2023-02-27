@@ -1,6 +1,6 @@
 import React from "react";
 
-const OfferCardIcons = ({ liked, onLikeCallback, onLocationCallback }) => {
+const OfferCardIcons = ({ isLiked, onLikeCallback, onLocationCallback }) => {
   return (
     <>
       <i
@@ -10,7 +10,7 @@ const OfferCardIcons = ({ liked, onLikeCallback, onLocationCallback }) => {
       <i
         onClick={onLikeCallback}
         className={`fa-solid fa-heart ${
-          liked
+          isLiked
             ? "text-red-500"
             : "text-lmGrey200 dark:text-dmGrey300 500:text-white/40 dark:500:text-white/40"
         } absolute right-2 top-2 text-2xl drop-shadow-sm duration-300 hover:text-red-400 500:right-3 500:top-3 500:flex 1400:right-6 1400:top-6 1400:text-[36px]`}

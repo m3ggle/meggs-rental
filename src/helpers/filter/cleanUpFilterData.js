@@ -6,7 +6,6 @@ export const cleanUpFilterData = (data) => {
       allActives[key] = value.replace(/\s+/g, " ").trim();
     }
   }
-  console.log(allActives)
   return allActives;
 };
 

@@ -6,27 +6,19 @@ import { useUrlManipulation } from "../../../hooks/urlManipulation/useUrlManipul
 import { useHandleCatalogFilter } from "./hooks/useHandleCatalogFilter";
 
 const Catalog = () => {
-  // const { exampleOffers } = ExampleData();
-  const exampleOffers = [];
-  const { userData } = useUserContext();
-
   const { searchParams } = useUrlManipulation();
   const { handleCatalogFilter } = useHandleCatalogFilter();
 
   const [filter, setFilter] = useState({});
   useEffect(() => {
-    console.log("gets called please in the initial")
     setFilter(handleCatalogFilter());
   }, [searchParams, setFilter, handleCatalogFilter]);
 
-  const { offers, isLoading} = useGetOffersByFilter(filter)
-  console.log(offers)
+  const { offers} = useGetOffersByFilter(filter)
 
-  // need to edit city, split it up 
   return (
     <CatalogWrapper
       offerList={offers}
-      preferredCity={userData?.preferredCity}
     />
   );
 };

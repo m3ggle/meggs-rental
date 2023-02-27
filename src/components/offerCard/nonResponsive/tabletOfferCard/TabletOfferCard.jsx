@@ -1,15 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
+import { useHandleOfferLikeIcon } from "../../hooks/useHandleOfferLikeIcon";
+import TabletOfferCardIcons from "./TabletOfferCardIcons";
 import TabletOfferCardImagePart from "./TabletOfferCardImagePart";
 import TabletOfferCardInfoPart from "./TabletOfferCardInfoPart";
 
 const TabletOfferCard = ({ offerInformation }) => {
-  const { id, picture_urls, latitude, longitude } = offerInformation;
+  const { id, picture_urls, latitude, longitude, is_liked } = offerInformation;
 
   const navigate = useNavigate();
   const handleNavigation = () => navigate(`/offer-details/${id}`);
 
+    const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
+      offerId: id,
+      is_liked,
+    });
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () =>
     handleLocationNavigation(id, { lat: latitude, lng: longitude });
@@ -19,6 +25,11 @@ const TabletOfferCard = ({ offerInformation }) => {
       <TabletOfferCardImagePart
         picture_urls={picture_urls}
         onNavigationCallback={handleNavigation}
+      />
+      <TabletOfferCardIcons
+        liked={isLiked}
+        onLikeCallback={handleOfferLikeIcon}
+        onLocationCallback={handleLocation}
       />
       <TabletOfferCardInfoPart
         offerInformation={offerInformation}

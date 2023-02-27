@@ -1,21 +1,22 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMapSubContext } from "../../../../context/map/mapSub/mapSubContext";
-import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
-import { useUserContext } from "../../../../context/user/userContext";
 import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
-import { useHandleFly } from "../../../../hooks/useHandleFly";
+import { useHandleOfferLikeIcon } from "../../hooks/useHandleOfferLikeIcon";
+import MobileOfferCardIcons from "./MobileOfferCardIcons";
 import MobileCatalogOfferCardImgPart from "./MobileOfferCardImgPart";
 import MobileCatalogOfferCardInfoPart from "./MobileOfferCardInfoPart";
 
 // id, street, house_number, city, province country, like_count, offer_name, day_price, week_price, month_price, transmission, amount_seats, latitude, longitude, picture_urls
 
 const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
-  // console.log(offerInformation);
-  const { id, picture_urls } = offerInformation;
+  const { id, picture_urls, latitude, longitude, is_liked } = offerInformation;
   const { dispatchMapSub } = useMapSubContext();
-  // const { signedIn, verified } = useUserContext();
-  // const { openAuthNotifyModal } = useNotifyModalContext();
+
+  const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
+    offerId: id,
+    is_liked,
+  });
 
   const navigate = useNavigate();
   const handleNavigation = () => {
@@ -23,31 +24,9 @@ const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
     navigate(`/offer-details/${id}`);
   };
 
-  // const { handleFly } = useHandleFly();
-
-  // const locationDom = useLocation();
-
-  // const { handleLocationNavigation } = useHandleLocationNavigation();
-
-  // const handleLocation = () => {
-  //   closeModal && closeModal();
-  //   if (locationDom.pathname !== "/explore/map") {
-  //     handleLocationNavigation(id, { lat: latitude, lng: longitude });
-  //     return;
-  //   }
-  //   handleFly(longitude, latitude, 14);
-  //   dispatchMapSub({
-  //     type: "UPDATE_ACTIVE_MARKER",
-  //     payload: id,
-  //   });
-  // };
-
-  // const handleLike = () => {
-  //   if (!signedIn || !verified) {
-  //     openAuthNotifyModal();
-  //     return;
-  //   }
-  // };
+  const { handleLocationNavigation } = useHandleLocationNavigation();
+  const handleLocation = () =>
+    handleLocationNavigation(id, { lat: latitude, lng: longitude });
 
   const handleHover = (payload) =>
     dispatchMapSub({
@@ -64,6 +43,11 @@ const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
       <MobileCatalogOfferCardImgPart
         onNavigationCallback={handleNavigation}
         picture_urls={picture_urls}
+      />
+      <MobileOfferCardIcons
+        liked={isLiked}
+        onLikeCallback={handleOfferLikeIcon}
+        onLocationCallback={handleLocation}
       />
       <MobileCatalogOfferCardInfoPart
         onNavigationCallback={handleNavigation}

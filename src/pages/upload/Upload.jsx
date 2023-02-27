@@ -1,3 +1,4 @@
+import PageAuthChecker from "../../components/wrapper/PageAuthChecker";
 import SignWrapper from "../../components/wrapper/SignWrapper";
 import { useMultiStepHelper } from "../../hooks/useMultiStepHelper";
 import useUploadCallback from "./hooks/useUploadCallback";
@@ -31,7 +32,7 @@ const Upload = () => {
 
   return (
     <>
-      {/* <PageAuthChecker> */}
+      <PageAuthChecker>
       <SignWrapper puffer={false} pic={uploadBg}>
         <div className="flex w-full max-w-[348px] flex-col gap-y-8">
           <UploadHeader
@@ -42,7 +43,7 @@ const Upload = () => {
           {renderComponent[currentRound]}
         </div>
       </SignWrapper>
-      {/* </PageAuthChecker> */}
+      </PageAuthChecker>
     </>
   );
 };

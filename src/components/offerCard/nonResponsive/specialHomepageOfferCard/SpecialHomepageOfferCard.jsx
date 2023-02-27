@@ -1,15 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
+import { useHandleOfferLikeIcon } from "../../hooks/useHandleOfferLikeIcon";
+import SpecialHomepageOfferCardIcons from "./SpecialHomepageOfferCardIcons";
 import SpecialHomepageOfferCardImagePart from "./SpecialHomepageOfferCardImagePart";
 import SpecialHomepageOfferCardInfoPart from "./SpecialHomepageOfferCardInfoPart";
 
 const SpecialHomepageOfferCard = ({ offerInformation }) => {
-  const { id, picture_urls, latitude, longitude } = offerInformation;
+  const { id, picture_urls, latitude, longitude, is_liked } = offerInformation;
 
   const navigate = useNavigate();
   const handleNavigation = () => navigate(`/offer-details/${id}`);
 
+  const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
+    offerId: id,
+    is_liked,
+  });
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () =>
     handleLocationNavigation(id, { lat: latitude, lng: longitude });
@@ -19,6 +25,11 @@ const SpecialHomepageOfferCard = ({ offerInformation }) => {
       <SpecialHomepageOfferCardImagePart
         photoURL={picture_urls}
         onNavigationCallback={handleNavigation}
+      />
+      <SpecialHomepageOfferCardIcons
+        liked={isLiked}
+        onLikeCallback={handleOfferLikeIcon}
+        onLocationCallback={handleLocation}
       />
       <SpecialHomepageOfferCardInfoPart
         offerInformation={offerInformation}

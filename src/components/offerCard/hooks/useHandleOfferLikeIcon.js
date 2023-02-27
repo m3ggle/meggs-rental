@@ -10,7 +10,6 @@ export const useHandleOfferLikeIcon = ({offerId, is_liked}) => {
   const [isLiked, setIsLiked] = useState(is_liked);
 
   const handleDislike = async () => {
-    console.log("disliking", offerId);
     let { error } = await supabase.rpc("dislike_offer", {
       oid: offerId,
       uid: userId,
@@ -31,7 +30,6 @@ export const useHandleOfferLikeIcon = ({offerId, is_liked}) => {
   };
 
   const handleLike = async () => {
-    console.log("liking", offerId);
     let { error } = await supabase.rpc("like_offer", {
       oid: offerId,
       uid: userId,

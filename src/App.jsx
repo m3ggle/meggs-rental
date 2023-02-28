@@ -9,6 +9,7 @@ import DropdownMode from "./components/navbar/DropdownMode";
 import Navbar from "./components/navbar/Navbar";
 import Auth from "./hooks/auth/Auth";
 import RecentChats from "./hooks/recentChats/RecentChats";
+import ChatInputModal from "./modals/chatInputModal/ChatInputModal";
 import NotifyModal from "./modals/notifyModal/NotifyModal";
 import UserDetailsModal from "./modals/userDetailsModal/UserDetailsModal";
 import ForgotPassword from "./pages/authentication/forgetPassword/ForgotPassword";
@@ -53,24 +54,21 @@ export default function App() {
           <Router>
             {/* auth */}
             <Auth />
-
             {/* recent chats */}
             <RecentChats />
-
             {/* dark/light mode */}
             <div className="hidden" aria-hidden="true">
               <DropdownMode />
             </div>
-
             {/* modals */}
             <Navbar />
             <NotifyModal />
             <UserDetailsModal />
+            <ChatInputModal />
+            
             <Toaster />
-
             {/* logo */}
             <LogoImg />
-
             {/* routes  */}
             <Routes>
               <Route path="/explore/map" element={<Map />} />

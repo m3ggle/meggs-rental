@@ -44,7 +44,7 @@ const Preview = ({ offerId }) => {
               amount="preview"
             />
             <PreviewOwner owner={offerInformation.offer_owner} />
-            <PreviewButtons offerId={offerInformation.offer_basics.id} />
+            <PreviewButtons offerInformation={offerInformation} />
           </>
         )}
       </div>

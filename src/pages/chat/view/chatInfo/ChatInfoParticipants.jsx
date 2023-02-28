@@ -13,10 +13,10 @@ const ChatInfoParticipants = ({ chatInformation }) => {
                 ${
                   chatInformation.owner_is_online
                     ? "Currently online"
-                    : formatRelative(
+                    : `Last seen: ${formatRelative(
                         new Date(chatInformation.owner_last_online),
                         new Date()
-                      )
+                      )}`
                 } • Owner`}
         displayName={chatInformation.owner_user_name}
         photoUrl={chatInformation.owner_profile_picture_url}
@@ -26,10 +26,10 @@ const ChatInfoParticipants = ({ chatInformation }) => {
                 ${
                   chatInformation.borrower_is_online
                     ? "Currently online"
-                    : formatRelative(
+                    : `Last seen: ${formatRelative(
                         new Date(chatInformation.borrower_last_online),
                         new Date()
-                      )
+                      )}`
                 } • Borrower`}
         displayName={chatInformation.borrower_user_name}
         photoUrl={chatInformation.borrower_profile_picture_url}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import Btn from "../../../../components/common/Btn";
 import { useChatInputSubmit } from "../../hooks/useChatInputSubmit";
-import ChatInput from "./ChatInput";
+import ChatInput from "./chatInput/ChatInput";
 
 const ChatMessageComposer = () => {
   const [currentMsgState, setCurrentMsgState] = useState(false);

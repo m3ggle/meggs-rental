@@ -56,7 +56,7 @@ const HomepageAbout = () => {
         />
       </div>
       {/* <FadingAnimation duration={6} delay={4}> */}
-      <div className="absolute bottom-[120px] left-8 z-10 w-fit 400:bottom-[140px] 400:left-14 700:bottom-[120px] 700:left-[160px]">
+      <div className="absolute bottom-[100px] left-8 z-10 w-fit 400:left-14 700:bottom-[120px] 700:left-[160px]">
         <HomepageComment
           photoURL={profileNeleLangrock}
           comment="Megg's Rental made the process incredibly easy and stress-free. I now make extra money while my car is idle, and I couldn't be happier!"
@@ -66,7 +66,7 @@ const HomepageAbout = () => {
       </div>
       {/* </FadingAnimation> */}
       {/* <FadingAnimation duration={8} delay={2}> */}
-      <div className="absolute right-[0%] top-[440px] z-10 w-fit opacity-50 500:top-[360px] 500:right-[24%] 700:top-[420px] 1200:right-[40%] 1200:top-[500px]">
+      <div className="absolute right-[0%] top-[360px] z-10 w-fit opacity-50 500:top-[360px] 500:right-[24%] 700:top-[420px] 1000:right-[50%] 1000:top-[300px] 1200:right-[40%] 1200:top-[500px]">
         <HomepageComment
           photoURL={profileMariaBierhoff}
           comment="Megg's Rental is a fantastic solution for anyone who wants to rent a car or lend theirs. It has saved me time and money."
@@ -76,7 +76,7 @@ const HomepageAbout = () => {
       </div>
       {/* </FadingAnimation> */}
       {/* <FadingAnimation duration={5} delay={10}> */}
-      <div className="absolute top-[600px] right-0 z-10 w-fit opacity-90 400:bottom-auto 400:top-[580px] 1000:bottom-auto 1000:top-[280px] 1000:right-auto 1000:left-[640px]">
+      <div className="absolute top-[540px] right-0 z-10 w-fit opacity-90 400:bottom-auto 400:top-[520px] 1000:bottom-auto 1000:top-[280px] 1000:right-auto 1000:left-[640px]">
         <HomepageComment
           photoURL={profileAlinaMertens}
           comment="Megg's Rental has changed the way I think about car ownership. I would recommend it to anyone who wants to make the most out of their unused car."

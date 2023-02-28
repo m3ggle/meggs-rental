@@ -1,10 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getChatroomId } from "../../../../../../api/supabase/getChatroomId";
 import Btn from "../../../../../../components/common/Btn";
-import { useChatInputModalContext } from "../../../../../../context/chatInputModalContext/chatInputModalContext";
 import { useUserContext } from "../../../../../../context/user/userContext";
-import { useNavigateToChat } from "../../../../../../hooks/useNavigateToChat";
+import { useHandleContactOwner } from "../../../../../../hooks/useHandleContactOwner";
 
 const PreviewButtons = ({ offerInformation }) => {
   const { offer_basics, offer_owner } = offerInformation;
@@ -12,28 +10,14 @@ const PreviewButtons = ({ offerInformation }) => {
   const { owner_id, profile_picture_url, user_name, is_online, last_online } =
     offer_owner;
 
-  const { openModal } = useChatInputModalContext();
   const { userId, profilePictureUrl, userName } = useUserContext();
 
   const navigate = useNavigate();
   const handleViewOffer = () => navigate(`/offer-details/${id}`);
-  const { navigateToChat } = useNavigateToChat();
+  const { handleContactOwner } = useHandleContactOwner();
 
-  const handleChat = async () => {
-    // calling supabase
-    const chatroomId = await getChatroomId({
-      offerId: id,
-      ownerId: owner_id,
-      borrowerId: userId,
-    });
-
-    if (chatroomId !== null) {
-      navigateToChat({ chatroomId, offerId: id });
-      return;
-    }
-
+  const handleContactClick = async () => {
     const prep = {
-      chatroomId,
       offerId: id,
       ownerInformation: {
         userId: owner_id,
@@ -49,7 +33,7 @@ const PreviewButtons = ({ offerInformation }) => {
       },
     };
 
-    openModal(prep);
+    handleContactOwner(prep);
   };
 
   return (
@@ -62,7 +46,7 @@ const PreviewButtons = ({ offerInformation }) => {
       />
       {userId !== owner_id && (
         <Btn
-          onClick={handleChat}
+          onClick={handleContactClick}
           uiType="primary"
           type="button"
           title="Contact Owner"

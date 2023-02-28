@@ -16,7 +16,7 @@ const HomepageFooterMainFirst = () => {
 
   return (
     <div className="flex w-full flex-col gap-y-6 1200:p-6">
-      <h2 className="text-4xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow dark:text-dmGrey25 700:text-[40px] 700:leading-[40px] 1200:text-4xl">
+      <h2 className="text-3xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow dark:text-dmGrey25 700:text-4xl 700:leading-[40px]">
         Thank you for visiting Megg's Rental
       </h2>
       <div className="flex h-fit w-full flex-col gap-y-4">

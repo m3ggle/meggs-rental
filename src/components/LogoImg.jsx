@@ -27,7 +27,7 @@ const LogoImg = () => {
   // className={`fixed ${isOpen || hideLogo ? "bottom-[-120px]" : "bottom-10"}
   return (
     <div
-      className={`fixed ${isOpen || hideLogo ? "bottom-[-60px]" : "bottom-10"}
+      className={`fixed ${isOpen || hideLogo ? "bottom-[-60px]" : "bottom-6 800:bottom-10"}
         group z-50 flex h-[80px] w-[80px] cursor-pointer items-center justify-center rounded-full duration-300 hover:scale-105 active:scale-95 800:h-[92px] 800:w-[92px]`}
       onClick={openModal}
     >
@@ -52,7 +52,7 @@ const LogoImg = () => {
       </div>
       <img
         src="https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/logos/meggs_rental_logo.webp"
-        className="h-[100px] w-[100px] object-cover object-center drop-shadow-2xl"
+        className="h-[80px] w-[80px] object-cover object-center drop-shadow-2xl 800:h-[100px] 800:w-[100px]"
         alt="logo"
       />
     </div>

@@ -6,7 +6,6 @@ import { useMapSubContext } from "../../../../../../context/map/mapSub/mapSubCon
 const PreviewIcons = ({ offerInformation }) => {
   const { offer_basics } = offerInformation;
   const { id, is_liked } = offer_basics;
-  console.log(is_liked, id)
 
   const { dispatchMapSub } = useMapSubContext();
   const handleClose = () => {

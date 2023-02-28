@@ -1,11 +1,15 @@
 import { useQuery } from "react-query";
 import supabase from "../../config/supabaseClient";
+import { useUserContext } from "../../context/user/userContext";
 
 export const useGetOfferCard = (offerId) => {
+  const { userId } = useUserContext();
+
   const getOfferCard = async () => {
     if (offerId !== null) {
       return supabase.rpc("get_offer_card", {
         oid: offerId,
+        uid: userId,
       });
     }
     return { error: null, data: null };

@@ -1,7 +1,10 @@
 import React from "react";
 import UserProfileBig from "../../../../components/userProfile/UserProfileBig";
+import { useUserContext } from "../../../../context/user/userContext";
 
 const OfferDetailsOwner = ({ offer_owner }) => {
+  const { userId } = useUserContext();
+
   return (
     <div className="flex gap-x-6">
       {/* bio */}
@@ -36,6 +39,7 @@ const OfferDetailsOwner = ({ offer_owner }) => {
               lastOnline: offer_owner.last_online,
               createdAt: offer_owner.user_created_at,
             }}
+            showButton={offer_owner.owner_id !== userId}
           />
         </div>
       </div>

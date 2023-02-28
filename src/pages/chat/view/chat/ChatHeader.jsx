@@ -37,16 +37,16 @@ const ChatHeader = ({ chatInformation, chatInformationLoading }) => {
               userId === chatInformation.owner_id
                 ? chatInformation.borrower_is_online
                   ? "Currently online"
-                  : formatRelative(
+                  : `Last seen: ${formatRelative(
                       new Date(chatInformation.borrower_last_online),
                       new Date()
-                    )
+                    )}`
                 : chatInformation.owner_is_online
                 ? "Currently online"
-                : formatRelative(
+                : `Last seen: ${formatRelative(
                     new Date(chatInformation.owner_last_online),
                     new Date()
-                  )
+                  )}`
             }
             displayName={
               userId === chatInformation.owner_id
@@ -63,7 +63,7 @@ const ChatHeader = ({ chatInformation, chatInformationLoading }) => {
       </div>
       <div
         onClick={openModal}
-        className="fa-solid fa-bars-staggered flex h-12 w-12 rotate-180 cursor-pointer items-center justify-center rounded-full text-[24px] text-lmGrey300 duration-300 hover:bg-lmGrey50 hover:text-lmGrey600"
+        className="fa-solid fa-bars-staggered flex h-12 w-12 rotate-180 cursor-pointer items-center justify-center rounded-full text-[24px] text-lmGrey300 duration-300 hover:bg-lmGrey50 hover:text-lmGrey600 dark:text-dmGrey300 dark:hover:text-dmGrey600"
       />
       <ChatInfo
         isOpen={isOpen}

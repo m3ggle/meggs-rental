@@ -7,7 +7,6 @@ export const useGetOfferDetails = (offerId) => {
 
   const getOfferDetails = async () => {
     if (offerId !== null) {
-      console.log(`calling supabase with offer id: ${offerId} and user id: ${userId}`)
       return supabase.rpc("get_offer_details", {
         oid: offerId,
         uid: userId,

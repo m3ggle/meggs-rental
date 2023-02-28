@@ -1,4 +1,5 @@
 import React from "react";
+import { ChatInputModalProvider } from "./chatInputModalContext/chatInputModalContext";
 import { DarkModeProvider } from "./darkMode/darkModeContext";
 import { MapCoordProvider } from "./map/mapCoord/mapCoordContext";
 import { MapSubProvider } from "./map/mapSub/mapSubContext";
@@ -19,7 +20,7 @@ const ContextProviderWrapper = ({ children }) => {
                 {/* modals */}
                 <NotifyModalProvider>
                   <UserDetailsModalProvider>
-                    {children}
+                    <ChatInputModalProvider>{children}</ChatInputModalProvider>
                   </UserDetailsModalProvider>
                 </NotifyModalProvider>
               </DarkModeProvider>

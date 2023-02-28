@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useNavigationContext } from "../../../../context/navigation/navigationContext";
 import { useUserContext } from "../../../../context/user/userContext";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
+import { useNavigateToChat } from "../../../../hooks/useNavigateToChat";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import ChatPreview from "./ChatPreview";
 
@@ -13,11 +14,13 @@ const ChatPreviewList = ({ chatPreviews }) => {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { userId } = useUserContext();
+  const {navigateToChat} = useNavigateToChat();
 
   const handleClick = (chatId, offerId) => {
     if (isOpen) {
-      if (windowSize.width > 1000) navigate(`/chat?chatId=${chatId}&offerId=${offerId}`);
-      else navigate(`/chat/mobile?chatId=${chatId}&offerId=${offerId}`);
+      // if (windowSize.width > 1000) navigate(`/chat?chatId=${chatId}&offerId=${offerId}`);
+      // else navigate(`/chat/mobile?chatId=${chatId}&offerId=${offerId}`);
+      navigateToChat({chatId, offerId})
       dispatchNavigation({ type: "CLOSE_NAVIGATION" });
       return
     }

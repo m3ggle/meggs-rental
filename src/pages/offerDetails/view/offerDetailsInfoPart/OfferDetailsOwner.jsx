@@ -1,9 +1,33 @@
 import React from "react";
 import UserProfileBig from "../../../../components/userProfile/UserProfileBig";
 import { useUserContext } from "../../../../context/user/userContext";
+import { useHandleContactOwner } from "../../../../hooks/useHandleContactOwner";
 
-const OfferDetailsOwner = ({ offer_owner }) => {
-  const { userId } = useUserContext();
+const OfferDetailsOwner = ({ offerInformation }) => {
+  const { offer_owner, offer_basics } = offerInformation;
+
+  const { userId, profilePictureUrl, userName } = useUserContext();
+  const { handleContactOwner } = useHandleContactOwner();
+
+  const handleContactClick = async () => {
+    const prep = {
+      offerId: offer_basics.id,
+      ownerInformation: {
+        userId: offer_owner.owner_id,
+        profilePictureUrl: offer_owner.profile_picture_url,
+        userName: offer_owner.user_name,
+        isOnline: offer_owner.is_online,
+        lastOnline: offer_owner.last_online,
+      },
+      borrowerInformation: {
+        userId,
+        profilePictureUrl,
+        userName,
+      },
+    };
+
+    handleContactOwner(prep);
+  };
 
   return (
     <div className="flex gap-x-6">
@@ -40,6 +64,7 @@ const OfferDetailsOwner = ({ offer_owner }) => {
               createdAt: offer_owner.user_created_at,
             }}
             showButton={offer_owner.owner_id !== userId}
+            onCallback={handleContactClick}
           />
         </div>
       </div>

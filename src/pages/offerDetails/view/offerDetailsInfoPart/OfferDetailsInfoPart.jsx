@@ -14,7 +14,7 @@ const OfferDetailsInfoPart = ({ offerInformation, reviewSection }) => {
         <OfferDetailsCarSpecs
           vehicle_details={offerInformation.vehicle_details}
         />
-        <OfferDetailsOwner offer_owner={offerInformation.offer_owner} />
+        <OfferDetailsOwner offerInformation={offerInformation} />
         <OfferDetailsReviews reviewSection={reviewSection} />
       </div>
     </div>

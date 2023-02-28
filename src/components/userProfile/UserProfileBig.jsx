@@ -1,12 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Btn from "../common/Btn";
 import UserProfileHeader from "./UserProfileHeader";
 
-const UserProfileBig = ({ userProfileData = {}, showButton = true }) => {
-  const navigate = useNavigate();
-  const handleButtonClick = () => navigate("/chat");
-
+const UserProfileBig = ({
+  userProfileData = {},
+  showButton = true,
+  onCallback = () => {},
+}) => {
   return (
     <div className="flex h-[242] w-full flex-col items-center gap-y-2">
       <UserProfileHeader userProfileData={userProfileData} />
@@ -15,7 +15,7 @@ const UserProfileBig = ({ userProfileData = {}, showButton = true }) => {
           type="button"
           uiType="primary"
           title="Contact Owner"
-          onClick={handleButtonClick}
+          onClick={onCallback}
         />
       )}
     </div>

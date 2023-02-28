@@ -5,11 +5,12 @@ import Btn from "../../components/common/Btn";
 import UserProfileSmall from "../../components/userProfile/UserProfileSmall";
 import ModalWrapper from "../../components/wrapper/ModalWrapper";
 import { useChatInputModalContext } from "../../context/chatInputModalContext/chatInputModalContext";
+import ChatInputModalFiller from "./ChatInputModalFiller";
 
 const ChatInputModal = () => {
-  const { isOpen, offerId, ownerInformation, borrowerInformation, closeModal } =
+  const { isOpen, offerId, ownerInformation, closeModal } =
     useChatInputModalContext();
-  const { isOnline, lastOnline, profilePictureUrl, userName } =
+  const { isOnline, lastOnline, profilePictureUrl, userName, userId } =
     ownerInformation;
 
   const inputRef = useRef(null);
@@ -29,15 +30,6 @@ const ChatInputModal = () => {
     }
   };
 
-  //   const { register, handleSubmit } = useForm();
-  //   const onSubmit = (data) => console.log(data);
-
-  //   const testUrl =
-  //     "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/user-avatars/profileMariaBierhoff.webp";
-  //   const testUserName = "MariaBria";
-  //   const testIsOnline = true;
-  //   const testLastOnline = new Date();
-
   return (
     <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
       <Dialog.Panel className="absolute bottom-0 top-20 flex h-fit w-full flex-col overflow-hidden rounded-t-2xl bg-white shadow-2xl dark:bg-dmGrey900 600:static 600:w-[572px] 600:rounded-2xl 1000:w-[600px]">
@@ -48,10 +40,14 @@ const ChatInputModal = () => {
               text={
                 isOnline
                   ? "Currently online"
-                  : `Last seen: ${formatRelative(new Date(lastOnline), new Date())}`
+                  : `Last seen: ${formatRelative(
+                      new Date(lastOnline),
+                      new Date()
+                    )}`
               }
               displayName={userName}
               photoUrl={profilePictureUrl}
+              uid={userId}
             />
 
             <div
@@ -61,6 +57,9 @@ const ChatInputModal = () => {
               <i className="fa-solid fa-times text-[24px] text-lmGrey300 duration-300 group-hover:text-lmGrey600 dark:text-dmGrey300 group-hover:dark:text-dmGrey100" />
             </div>
           </div>
+
+          {/* filler */}
+          <ChatInputModalFiller />
 
           {/* input area */}
           <form

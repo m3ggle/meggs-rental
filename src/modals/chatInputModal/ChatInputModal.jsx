@@ -1,32 +1,40 @@
 import { Dialog } from "@headlessui/react";
 import { formatRelative } from "date-fns";
 import React, { useRef } from "react";
+import { uploadChatroom } from "../../api/supabase/uploadChatroom";
 import Btn from "../../components/common/Btn";
 import UserProfileSmall from "../../components/userProfile/UserProfileSmall";
 import ModalWrapper from "../../components/wrapper/ModalWrapper";
 import { useChatInputModalContext } from "../../context/chatInputModalContext/chatInputModalContext";
+import { useNavigateToChat } from "../../hooks/useNavigateToChat";
 import ChatInputModalFiller from "./ChatInputModalFiller";
 
 const ChatInputModal = () => {
-  const { isOpen, offerId, ownerInformation, closeModal } =
+  const { isOpen, offerId, ownerInformation, borrowerInformation, closeModal } =
     useChatInputModalContext();
-  const { isOnline, lastOnline, profilePictureUrl, userName, userId } =
-    ownerInformation;
+
+  const { navigateToChat } = useNavigateToChat();
 
   const inputRef = useRef(null);
 
-  const onSubmit = (text) => {
-    console.log(text);
+  const onSubmit = async (text) => {
+    const preparation = {
+      offerId,
+      ownerId: ownerInformation.userId,
+      borrowerId: borrowerInformation.userId,
+      messageContent: text,
+    };
+
+    const chatroomId = await uploadChatroom(preparation);
+    navigateToChat({ chatroomId, offerId });
+    closeModal();
   };
 
   const handleSubmit = (event) => {
     if (event !== undefined) {
       event.preventDefault();
       const text = inputRef.current.value.trim();
-      if (text.length > 0) {
-        onSubmit(text);
-        inputRef.current.value = "";
-      }
+      text.length > 0 && onSubmit(text);
     }
   };
 
@@ -38,16 +46,16 @@ const ChatInputModal = () => {
           <div className="flex w-full items-center gap-x-2">
             <UserProfileSmall
               text={
-                isOnline
+                ownerInformation.isOnline
                   ? "Currently online"
                   : `Last seen: ${formatRelative(
-                      new Date(lastOnline),
+                      new Date(ownerInformation.lastOnline),
                       new Date()
                     )}`
               }
-              displayName={userName}
-              photoUrl={profilePictureUrl}
-              uid={userId}
+              displayName={ownerInformation.userName}
+              photoUrl={ownerInformation.profilePictureUrl}
+              uid={ownerInformation.userId}
             />
 
             <div

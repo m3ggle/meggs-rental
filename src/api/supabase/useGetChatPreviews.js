@@ -10,9 +10,9 @@ export const useGetChatPreviews = () => {
   const getChatPreviews = async () => {
     if (userId !== null) {
       return await supabase.rpc("get_chat_previews", {
-        uid: userId,
-        limit_: limit,
-        offset_: offset,
+        user_id: userId,
+        limit: limit,
+        offset: offset,
       });
     }
     return { error: null, data: [] };

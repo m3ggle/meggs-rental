@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { getChatroomId } from "../../../../../../api/supabase/getChatroomId";
 import Btn from "../../../../../../components/common/Btn";
 import { useChatInputModalContext } from "../../../../../../context/chatInputModalContext/chatInputModalContext";
 import { useUserContext } from "../../../../../../context/user/userContext";
@@ -18,14 +19,16 @@ const PreviewButtons = ({ offerInformation }) => {
   const handleViewOffer = () => navigate(`/offer-details/${id}`);
   const { navigateToChat } = useNavigateToChat();
 
-  const handleChat = () => {
-    console.log("open chat modal");
-
-    // call supabase
-    const chatroomId = null;
+  const handleChat = async () => {
+    // calling supabase
+    const chatroomId = await getChatroomId({
+      offerId: id,
+      ownerId: owner_id,
+      borrowerId: userId,
+    });
 
     if (chatroomId !== null) {
-      navigateToChat({ chatId: chatroomId, offerId: id });
+      navigateToChat({ chatroomId, offerId: id });
       return;
     }
 

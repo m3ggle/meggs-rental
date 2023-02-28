@@ -11,6 +11,8 @@ const ChatPreviewList = ({ chatPreviews }) => {
   const { setArrayOfParams } = useUrlManipulation();
   const { isOpen, dispatchNavigation } = useNavigationContext();
 
+  console.log(chatPreviews);
+
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { userId } = useUserContext();
@@ -18,9 +20,7 @@ const ChatPreviewList = ({ chatPreviews }) => {
 
   const handleClick = (chatId, offerId) => {
     if (isOpen) {
-      // if (windowSize.width > 1000) navigate(`/chat?chatId=${chatId}&offerId=${offerId}`);
-      // else navigate(`/chat/mobile?chatId=${chatId}&offerId=${offerId}`);
-      navigateToChat({chatId, offerId})
+      navigateToChat({chatroomId: chatId, offerId})
       dispatchNavigation({ type: "CLOSE_NAVIGATION" });
       return
     }
@@ -48,13 +48,13 @@ const ChatPreviewList = ({ chatPreviews }) => {
           lastMsg={chatPreview.last_message_content}
           displayName={
             chatPreview.owner_id === userId
-              ? chatPreview.borrower_user_name
-              : chatPreview.owner_user_name
+              ? chatPreview.borrower.user_name
+              : chatPreview.owner.user_name
           }
           profilePicture={
             chatPreview.owner_id === userId
-              ? chatPreview.borrower_profile_picture_url
-              : chatPreview.owner_profile_picture_url
+              ? chatPreview.borrower.profile_picture_url
+              : chatPreview.owner.profile_picture_url
           }
         />
       ))}

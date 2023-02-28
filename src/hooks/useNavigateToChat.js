@@ -5,10 +5,10 @@ export const useNavigateToChat = () => {
   const windowSize = useWindowSize();
   const navigate = useNavigate();
 
-  const navigateToChat = ({ chatId = "", offerId = "" }) => {
+  const navigateToChat = ({ chatroomId = "", offerId = "" }) => {
     if (windowSize.width > 1000)
-      navigate(`/chat?chatId=${chatId}&offerId=${offerId}`);
-    else navigate(`/chat/mobile?chatId=${chatId}&offerId=${offerId}`);
+      navigate(`/chat?chatId=${chatroomId}&offerId=${offerId}`);
+    else navigate(`/chat/mobile?chatId=${chatroomId}&offerId=${offerId}`);
   };
 
   return { navigateToChat };

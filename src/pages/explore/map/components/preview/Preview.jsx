@@ -29,7 +29,7 @@ const Preview = ({ offerId }) => {
           <Loading height="2/3" />
         ) : (
           <>
-            <PreviewIcons offerId={offerId} />
+            <PreviewIcons offerInformation={offerInformation} />
             <PreviewBasicInfo offerInformation={offerInformation} />
             <PreviewImgs offerImages={offerInformation.offer_pictures} />
             <div className={`min-h-fit w-full rounded-2xl px-1`}>

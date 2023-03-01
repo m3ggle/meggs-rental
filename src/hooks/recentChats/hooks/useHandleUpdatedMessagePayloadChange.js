@@ -23,25 +23,6 @@ export const useHandleUpdatedMessagePayloadChange = () => {
       // get specific chat preview out of recentChats
       // get all chat previews which are not the one in question
         const {specificChat, restChats} = splitChatPreviews({ recentChats, chatroomId });
-        
-    //   let tempChatPreview = recentChats.filter(
-    //     (preview) => preview.chatroom_id === chatroomId
-    //   )[0];
-
-    //   let tempRecentChats = recentChats.filter(
-    //     (preview) => preview.chatroom_id !== chatroomId
-    //   );
-
-      // get new message information
-    //   let { data, error } = await supabase.rpc("get_message", {
-    //     message_id: newLastMsgId,
-    //   });
-
-    //   // if error, leave
-    //   if (error) {
-    //     console.error(error);
-    //     return;
-    //   }
 
       // replace with new information
       const newChatPreview = {

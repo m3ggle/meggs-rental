@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useGetChatPreviews } from "../../../api/supabase/useGetChatPreviews";
 import { useRecentChatsContext } from "../../../context/recentChats/recentChatsContext";
+import { useChatroomsInsertChannel } from "./useChatroomsInsertChannel";
 import { useRecentChatsConnections } from "./useRecentChatsConnections";
 
 export const useGetAndUpdateRecentChats = () => {
@@ -22,9 +23,17 @@ export const useGetAndUpdateRecentChats = () => {
     }
   }, [chatPreviews, dispatchRecentChats, establishConnections]);
 
+  // const { chatroomsInsertChannel } = useChatroomsInsertChannel()
+
+  // when the chatPreviews changes
   useEffect(() => {
     updateContext();
   }, [updateContext]);
+
+  // initializing channel to observe inserts in table "chatrooms" of the current user 
+  // useEffect(() => {
+  //   chatroomsInsertChannel();
+  // }, [])
 };
 
 // ! thoughts on pagination

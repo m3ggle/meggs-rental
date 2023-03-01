@@ -1,4 +1,5 @@
 import React from "react";
+import { useChatroomsInsertChannel } from "./hooks/useChatroomsInsertChannel";
 import { useGetAndUpdateRecentChats } from "./hooks/useGetAndUpdateRecentChats";
 import { useHandleUpdatedChatroomPayloadChange } from "./hooks/useHandleUpdatedChatroomPayloadChange";
 import { useHandleUpdatedMessagePayloadChange } from "./hooks/useHandleUpdatedMessagePayloadChange";
@@ -12,8 +13,11 @@ const RecentChats = () => {
   // this hook will monitor the payloads/changes the which get dispatch into the context
   useHandleUpdatedChatroomPayloadChange();
 
-  // test
+  // when the message payload changes, this hook will handle the changes
   useHandleUpdatedMessagePayloadChange()
+
+  // establishing insert connection 
+  useChatroomsInsertChannel()
 
   return <></>;
 };

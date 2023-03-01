@@ -1,13 +1,16 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import supabase from "../../config/supabaseClient";
 import { useUserContext } from "../../context/user/userContext";
+import { useUpdateOfferViewCount } from "./useUpdateOfferViewCount";
 
 export const useGetOfferDetails = (offerId) => {
   const { userId } = useUserContext();
+  const { debouncedMutate } = useUpdateOfferViewCount({ offerId });
+
 
   const getOfferDetails = async () => {
     if (offerId !== null) {
-      console.log("calling supabase")
+      debouncedMutate();
       return supabase.rpc("get_offer_details", {
         oid: offerId,
         uid: userId,

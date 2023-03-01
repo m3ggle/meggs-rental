@@ -1,5 +1,4 @@
 import React from "react";
-import { useDarkModeContext } from "../../context/darkMode/darkModeContext";
 import Btn from "../common/Btn";
 import Loading from "../Loading";
 import MobileOfferCard from "../offerCard/nonResponsive/mobileOfferCard/MobileOfferCard";
@@ -7,7 +6,6 @@ import { toastNotify } from "../toastNotify/toastNotify";
 
 const UserDetailsModalOffer = ({ offers, closeModal }) => {
   const { notifyStandard } = toastNotify();
-  const { darkMode } = useDarkModeContext();
 
   const handleLoadMore = () => {
     console.log("open full userprofile");

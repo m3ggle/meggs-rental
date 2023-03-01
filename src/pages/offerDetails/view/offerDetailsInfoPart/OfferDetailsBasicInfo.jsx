@@ -11,7 +11,7 @@ const OfferDetailsBasicInfo = ({ offerInformation }) => {
   const { formatted, latitude, longitude } = offer_location
   const {day_price, week_price, month_price} = offer_prices
 
-  const {userId} = useUserContext()
+  const { userId } = useUserContext()
 
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () =>

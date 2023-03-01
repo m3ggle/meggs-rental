@@ -5,25 +5,25 @@ const OfferDetailsHeaderPart = ({
   value = "",
   leftIcon = "",
   rightIcon = "",
+  cursor = "cursor-default",
+  hoverEnabled = true,
 }) => {
   return (
     <div
       onClick={onClickCallback}
-      className="flex items-center gap-x-2 text-lmGrey600 hover:text-lmGrey800 dark:text-dmGrey100 dark:hover:text-lmGrey25"
+      className={`${cursor} flex items-center gap-x-2 text-lmGrey600 ${
+        hoverEnabled && "hover:text-lmGrey800 dark:hover:text-lmGrey25"
+      }  dark:text-dmGrey100`}
     >
       {leftIcon !== "" && (
         <div className="flex h-[14px] w-[14px] items-center justify-center">
           <i className={`${leftIcon} text-[14px]`} />
         </div>
       )}
-      <span className="text-base">
-        {value}
-      </span>
+      <span className="text-base">{value}</span>
       {rightIcon !== "" && (
         <div className="flex h-[14px] w-[14px] items-center justify-center">
-          <i
-            className={`${rightIcon} text-[14px]`}
-          />
+          <i className={`${rightIcon} text-[14px]`} />
         </div>
       )}
     </div>

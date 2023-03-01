@@ -5,6 +5,7 @@ import { useGetOfferReviews } from "../../api/supabase/useGetOfferReviews";
 import { useGetOfferSummary } from "../../api/supabase/useGetOfferSummary";
 import Loading from "../../components/Loading";
 import { stripAnyWhiteSpace } from "../../helpers/stripAnyWhiteSpace";
+import OfferDetailsHeader from "./view/OfferDetailsHeader";
 import OfferDetailsImgPart from "./view/OfferDetailsImgPart";
 import OfferDetailsInfoPart from "./view/offerDetailsInfoPart/OfferDetailsInfoPart";
 
@@ -42,7 +43,8 @@ const OfferDetails = () => {
         </div>
       ) : (
         <div className="relative flex w-full max-w-[1440px] flex-col pt-6 1200:flex-row 1200:pt-0">
-          <OfferDetailsImgPart
+          {/* <OfferDetailsHeader /> */}
+              <OfferDetailsImgPart
             offerImages={offerInformation.offer_pictures.picture_urls}
           />
           <OfferDetailsInfoPart

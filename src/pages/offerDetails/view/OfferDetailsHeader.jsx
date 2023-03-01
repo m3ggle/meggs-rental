@@ -1,21 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useHandleOfferLikeIcon } from "../../../components/offerCard/hooks/useHandleOfferLikeIcon";
+import { useUserContext } from "../../../context/user/userContext";
 import { copyUrlToClipboard } from "../../../helpers/copyUrlToClipboard";
 import { getCurrentUrl } from "../../../helpers/getCurrentUrl";
 import styles from "../../../style";
+import { handleLikeSetQuery } from "../helpers/handleLikeSetQuery";
 import OfferDetailsHeaderPart from "./OfferDetailsHeaderPart";
 
 const OfferDetailsHeader = ({ offerInformation }) => {
+  const { userId } = useUserContext();
   const { offer_basics } = offerInformation;
   const { is_liked, like_count, view_count } = offer_basics;
 
-  const handleGoBack = () => {};
+  const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
+    offerId: offer_basics.id,
+    is_liked,
+  });
+
+  const handleGoBack = () => window.history.back();
   const handleShare = () => {
     copyUrlToClipboard({
       url: getCurrentUrl(),
       successMessage: "Ready to share!",
     });
   };
-  const handleLike = () => {};
+
+  // debounce
+  const handleLike = async () => {
+    await handleOfferLikeIcon();
+  };
+
+  useEffect(() => {
+    handleLikeSetQuery({
+      offerId: offer_basics.id,
+      userId,
+      isLiked,
+    });
+  }, [isLiked]);
 
   return (
     <div
@@ -39,7 +60,7 @@ const OfferDetailsHeader = ({ offerInformation }) => {
         <div
           onClick={handleLike}
           className={`flex items-center gap-x-2 py-2 ${
-            is_liked
+            isLiked
               ? styles.badgeRedTextGradient
               : "text-lmGrey600 hover:text-lmGrey800 dark:text-dmGrey100 dark:hover:text-lmGrey25"
           } `}

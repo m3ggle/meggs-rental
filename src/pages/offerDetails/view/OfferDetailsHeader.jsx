@@ -1,20 +1,11 @@
-import React, { useEffect } from "react";
-import { useHandleOfferLikeIcon } from "../../../components/offerCard/hooks/useHandleOfferLikeIcon";
-import { useUserContext } from "../../../context/user/userContext";
+import React from "react";
 import { copyUrlToClipboard } from "../../../helpers/copyUrlToClipboard";
 import { getCurrentUrl } from "../../../helpers/getCurrentUrl";
-import { handleLikeSetQuery } from "../helpers/handleLikeSetQuery";
 import OfferDetailsHeaderPart from "./OfferDetailsHeaderPart";
 
 const OfferDetailsHeader = ({ offerInformation }) => {
-  const { userId } = useUserContext();
   const { offer_basics } = offerInformation;
-  const { is_liked, like_count, view_count } = offer_basics;
-
-  const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
-    offerId: offer_basics.id,
-    is_liked,
-  });
+  const { like_count, view_count } = offer_basics;
 
   const handleGoBack = () => window.history.back();
   const handleShare = () => {

@@ -41,7 +41,6 @@ export const useChatroomsInsertChannel = () => {
         }
       )
       .subscribe();
-
   }, [invalidateQuery, userId]);
 
   const unsubscribeFromChannel = () => {
@@ -49,6 +48,10 @@ export const useChatroomsInsertChannel = () => {
   };
 
   useEffect(() => {
+    if (userId === null) {
+      return;
+    }
+
     if (!checkChannelAlreadyExist(`insert_chatroom_channel`)) {
       subscribeToChannel();
       return;
@@ -58,7 +61,3 @@ export const useChatroomsInsertChannel = () => {
     subscribeToChannel();
   }, [userId, limit, offset]);
 };
-
-/* *!explanation
-- to keep the invalidateQuery function up to date in the case userId or limit or offset changes
-*/

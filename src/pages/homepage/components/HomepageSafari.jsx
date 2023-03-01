@@ -1,39 +1,18 @@
 import React from "react";
 import Btn from "../../../components/common/Btn";
 import LazyImage from "../../../components/LazyImage";
-import { toastNotify } from "../../../components/toastNotify/toastNotify";
 import dataCollection from "../../../data/dataCollection";
+import { copyUrlToClipboard } from "../../../helpers/copyUrlToClipboard";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 
 const HomepageSafari = () => {
   const { browserLogos } = dataCollection();
 
   const windowWidth = useWindowSize().width;
-  const { notifyStandard } = toastNotify();
 
   const handleClick = () => {
     const url = "https://meggsrental.netlify.app/homepage"; // replace with the URL you want to copy
-    navigator.clipboard
-      .writeText(url)
-      .then(() =>
-        notifyStandard({
-          information: {
-            type: "success",
-            content: "Url was copied.",
-          },
-          id: "url copy",
-        })
-      )
-      .catch((error) => {
-        notifyStandard({
-          information: {
-            type: "error",
-            content: "Failed to copy the Url.",
-          },
-          id: "url copy",
-        });
-        console.error("Failed to copy link: ", error);
-      });
+    copyUrlToClipboard({ url });
   };
 
   return (

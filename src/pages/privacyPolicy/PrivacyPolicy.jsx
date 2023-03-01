@@ -2,7 +2,9 @@ import React from "react";
 import Btn from "../../components/common/Btn";
 
 const PrivacyPolicy = () => {
-  const handleClick = async () => {};
+  const handleClick = async () => {
+    console.log(window.location.href)
+  }
 
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center gap-y-2 overflow-scroll p-3">

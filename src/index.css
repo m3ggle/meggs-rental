@@ -31,3 +31,11 @@
   font-size: 14px;
   line-height: 24px;
 }
+
+.primary-gradient {
+  background: linear-gradient(90deg, #0177ED 0%, #2591FE 100%);
+}
+
+.badge-red {
+  background: linear-gradient(180deg, #BE0504 0%, #8C0403 100%);
+}

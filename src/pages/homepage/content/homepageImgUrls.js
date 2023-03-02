@@ -27,9 +27,6 @@ export const homepageImgUrls = () => {
   const croppedBMW =
     "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/website/others/croppedPic.webp";
 
-  // const chameleon =
-  //   "https://firebasestorage.googleapis.com/v0/b/meggsrental.appspot.com/o/others%2Fchameleon.webp?alt=media&token=1f49457e-bc4b-4f14-94f9-4c93a69f5b66";
-
   const profileNeleLangrock =
     "https://cymyxcckynyeemdvnckd.supabase.co/storage/v1/object/public/user-avatars/profileNeleLangrock.webp";
   const profileGustavoBravo =

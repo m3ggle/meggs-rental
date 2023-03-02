@@ -1,15 +1,14 @@
-import React from 'react'
+import React from "react";
 
 const DesktopOfferCardImagePart = ({ onNavigationCallback, photoURL }) => {
   return (
-    <div
+    <img
       onClick={onNavigationCallback}
-      className="min-w-[110px] bg-cover bg-center absolute top-0 left-0 w-full rounded-xl h-80"
-      style={{
-        backgroundImage: `url(${photoURL[0]})`,
-      }}
+      src={photoURL[0]}
+      alt="offer visual"
+      className="absolute top-0 left-0 h-80 w-full min-w-[110px] rounded-xl bg-cover bg-center"
     />
   );
 };
 
-export default DesktopOfferCardImagePart
+export default DesktopOfferCardImagePart;

@@ -16,8 +16,6 @@ const UserOffers = () => {
 
   const { userOffers } = useGetUserOffersByFilter(filter);
 
-  console.log(userOffers);
-
   return (
     <PageAuthChecker>
       <CatalogWrapper offerList={userOffers} />;

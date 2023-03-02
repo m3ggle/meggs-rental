@@ -8,7 +8,6 @@ export const useGetOffersByFilterFavorites = (filter = {}) => {
   const getOfferCards = async () => {
     return supabase.rpc("get_offers_by_filter_favorites", {
       ...filter,
-      user_id: userId,
     });
   };
 

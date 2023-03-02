@@ -7,7 +7,7 @@ import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlMani
 export const useHandleCatalogFilter = () => {
   const { getAllParams } = useUrlManipulation();
   const { userId, preferredCity } = useUserContext();
-  const locationPath = useLocation()
+  const locationPath = useLocation().pathname;
 
   const formatString = (str = "") => {
     let formattedStr = str.replace(/([A-Z])/g, "_$1").toLowerCase();
@@ -37,7 +37,7 @@ export const useHandleCatalogFilter = () => {
     if (
       filter.city === undefined &&
       userId !== null &&
-      locationPath !== "/favorites"
+      locationPath === "/explore/catalog" 
     ) {
       // user is logged in, use preferred city
       filter["city"] = preferredCity.text.city;

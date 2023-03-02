@@ -9,7 +9,6 @@ export const useGetUserOffersByFilter = (filter = {}) => {
     if (userId !== null) {
       return supabase.rpc("get_user_offers_by_filter", {
         ...filter,
-        user_id: userId,
       });
     }
     return { error: null, data: null };
@@ -21,9 +20,9 @@ export const useGetUserOffersByFilter = (filter = {}) => {
     {
       refetchOnMount: true,
       refetchOnWindowFocus: false,
-      staleTime: Infinity, // ten minutes
+      staleTime: Infinity,
     }
   );
 
-  return { userOffers: data?.data, isLoading, error: data?.error };
+  return { userOffers: data?.data ?? [], isLoading, error: data?.error };
 };

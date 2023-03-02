@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { toastNotify } from "../../../components/toastNotify/toastNotify";
+import supabase from "../../../config/supabaseClient";
 import { useUserContext } from "../../../context/user/userContext";
 import { useUserDetailsModalContext } from "../../../context/userDetailsModal/userDetailsModalContext";
 import styles from "../../../style";
@@ -8,16 +10,32 @@ const ProfileButton = ({ information }) => {
   const { btnTitle = "", icon = "", link = "", secondIcon = "" } = information;
 
   const { openUserDetailsModal } = useUserDetailsModalContext();
-  const { userId } = useUserContext();
+  const { userId, dispatchUser } = useUserContext();
+  const { notifyStandard } = toastNotify();
 
   const navigate = useNavigate();
 
   const handleUserModal = () => {
     openUserDetailsModal(userId);
   };
-  const handleSignOutModal = () => {
-    // currently no modal, but it is coming in the future
-    // auth.signOut();
+
+  const handleSignOutModal = async () => {
+    const { errorSignOut } = await supabase.auth.signOut();
+
+    if (errorSignOut) {
+      notifyStandard({
+        information: {
+          type: "warning",
+          content: errorSignOut.message,
+        },
+        id: "SignOutError",
+      });
+      console.log("this is an error (signOut)", errorSignOut);
+      return;
+    }
+    dispatchUser({
+      type: "SET_USER_CONTEXT_DEFAULT",
+    });
     navigate("/sign-in");
   };
 

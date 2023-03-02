@@ -3,16 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import supabase from "../../../config/supabaseClient";
 import { useNavigationContext } from "../../../context/navigation/navigationContext";
 import { useUserContext } from "../../../context/user/userContext";
-import { useHandleSignOut } from "../../../hooks/auth/useHandleSignOut";
 import { toastNotify } from "../../toastNotify/toastNotify";
 
 const NavbarMenu = ({ handleClickNavigation }) => {
   const { menu } = useNavigationContext();
-  const { userId } = useUserContext();
+  const { userId, dispatchUser } = useUserContext();
   const location = useLocation();
-  // const { handleSignOut  } = useHandleSignOut();
 
-  // this code is actually in useHandleSignOut but react did not recognize "handleSignOut" as a function
   const { notifyStandard } = toastNotify();
   const { isOpen, dispatchNavigation } = useNavigationContext();
   const navigate = useNavigate();
@@ -20,7 +17,6 @@ const NavbarMenu = ({ handleClickNavigation }) => {
     notifyStandard({ information: { type, content }, id });
   };
   const handleSignOut = async () => {
-    // supabase sign out
     const { errorSignOut } = await supabase.auth.signOut();
 
     if (errorSignOut) {
@@ -34,6 +30,9 @@ const NavbarMenu = ({ handleClickNavigation }) => {
       dispatchNavigation({ type: "CLOSE_NAVIGATION" });
     }
 
+    dispatchUser({
+      type: "SET_USER_CONTEXT_DEFAULT",
+    });
     navigate("/sign-in");
   };
 

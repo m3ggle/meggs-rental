@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React, { memo } from "react";
 import { useGetOfferDetails } from "../../../../../api/supabase/useGetOfferDetails";
 import Loading from "../../../../../components/Loading";
-import Calendar from "../../../../../components/offerDetails/Calendar";
+import CalendarWrapper from "../../../../../components/offerDetails/calendar/CalendarWrapper";
 import CarSpecWrapper from "../../../../../components/offerDetails/CarSpecWrapper";
 import PreviewBasicInfo from "./components/PreviewBasicInfo";
 import PreviewButtons from "./components/PreviewButtons";
@@ -33,8 +33,9 @@ const Preview = ({ offerId }) => {
             <PreviewBasicInfo offerInformation={offerInformation} />
             <PreviewImgs offerImages={offerInformation.offer_pictures} />
             <div className={`min-h-fit w-full rounded-2xl px-1`}>
-              <Calendar
-                // dates={offerInformation.calendar}
+              <CalendarWrapper
+                start_date={offerInformation.offer_dates.start_date}
+                end_date={offerInformation.offer_dates.end_date}
                 shadowUI={true}
                 header={true}
               />

@@ -1,9 +1,11 @@
-import React from 'react'
-import Calendar from '../../../../components/offerDetails/Calendar';
-import styles from '../../../../style';
-import Location from '../../../../components/Location';
+import React from "react";
+import Location from "../../../../components/Location";
+import CalendarWrapper from "../../../../components/offerDetails/calendar/CalendarWrapper";
 
-const OfferDetailsCalLoc = ({offerInformation}) => {
+const OfferDetailsCalLoc = ({ offerInformation }) => {
+  const { offer_dates } = offerInformation;
+  const { start_date, end_date } = offer_dates;
+
   return (
     <div className="flex flex-col gap-6 700:flex-row 1200:flex-col 1400:flex-row">
       {/* calendar */}
@@ -13,7 +15,7 @@ const OfferDetailsCalLoc = ({offerInformation}) => {
         </span>
         <div className="flex w-full flex-col items-center gap-y-1 overflow-hidden rounded-3xl bg-white shadow dark:bg-dmGrey900 dark:shadow-dmShadow 1200:p-6 1400:p-0">
           <div className="w-full 1200:w-[360px] 1400:w-full">
-            <Calendar />
+            <CalendarWrapper start_date={start_date} end_date={end_date} />
           </div>
         </div>
       </div>
@@ -33,6 +35,6 @@ const OfferDetailsCalLoc = ({offerInformation}) => {
       </div>
     </div>
   );
-}
+};
 
-export default OfferDetailsCalLoc
+export default OfferDetailsCalLoc;

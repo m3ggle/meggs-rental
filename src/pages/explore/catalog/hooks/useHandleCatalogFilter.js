@@ -30,7 +30,6 @@ export const useHandleCatalogFilter = () => {
       }
     }
 
-    console.log("in filter sus", userId);
     if (userId !== null) {
       filter["user_id"] = userId;
     }

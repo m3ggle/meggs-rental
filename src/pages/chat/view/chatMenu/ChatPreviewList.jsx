@@ -11,8 +11,6 @@ const ChatPreviewList = ({ chatPreviews }) => {
   const { setArrayOfParams } = useUrlManipulation();
   const { isOpen, dispatchNavigation } = useNavigationContext();
 
-  console.log(chatPreviews);
-
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { userId } = useUserContext();

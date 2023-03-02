@@ -20,7 +20,7 @@ const HomepageFooterMainFirst = () => {
         Thank you for visiting Megg's Rental
       </h2>
       <div className="flex h-fit w-full flex-col gap-y-4">
-        <span className="dm:text-dmGrey100 text-base text-lmGrey600">
+        <span className="dm:text-dmGrey100 text-base text-lmGrey600 dark:text-dmGrey100">
           Please note that this website is a personal project and not intended
           for commercial use. If you are interested in learning about the
           process of creating this platform, please visit my personal website

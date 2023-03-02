@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetChatInformation } from "../../../../api/supabase/useGetChatInformation";
 import Loading from "../../../../components/Loading";
 import { useUrlManipulation } from "../../../../hooks/urlManipulation/useUrlManipulation";
@@ -10,13 +10,17 @@ import ChatMessageThread from "./ChatMessageThread";
 
 const Chat = () => {
   const windowSize = useWindowSize();
-  const { getSingleParam } = useUrlManipulation();
+  const { searchParams, getSingleParam } = useUrlManipulation();
 
-  const [chatId] = useState(getSingleParam("chatId"));
+  const [chatId, setChatId] = useState(getSingleParam("chatId"));
 
   const { chatInformation, isLoading: chatInformationLoading } =
     useGetChatInformation(chatId);
   useUpdateLastMessage(chatInformation);
+
+  useEffect(() => {
+    setChatId(getSingleParam("chatId"));
+  }, [searchParams, getSingleParam]);
 
   return (
     <>

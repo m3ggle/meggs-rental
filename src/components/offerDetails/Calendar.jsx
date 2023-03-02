@@ -13,7 +13,6 @@ import {
   startOfWeek,
 } from "date-fns";
 import { useState } from "react";
-import styles from "../../style";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -23,7 +22,7 @@ const Calendar = ({ dates, shadowUI, header }) => {
   // instead of selectDay, selectDays (dates props)
   // implement when dates are in between selectedDays then they have a different color
   // implement popover to signal that it is available
-  // 
+  //
 
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today); // selected day
@@ -122,7 +121,7 @@ const Calendar = ({ dates, shadowUI, header }) => {
                       "text-lmGrey300 dark:text-dmGrey600",
                     isEqual(day, selectedDay) &&
                       isToday(day) &&
-                      "bg-lmPrimary dark:bg-dmPrimary",
+                      "bg-gradient-to-r from-[#0180FE] to-[#2591FE]",
                     isEqual(day, selectedDay) &&
                       !isToday(day) &&
                       "bg-lmGrey600 dark:bg-dmGrey600",

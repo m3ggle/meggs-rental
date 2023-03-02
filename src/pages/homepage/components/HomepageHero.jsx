@@ -44,7 +44,7 @@ const HomepageHero = () => {
         {windowSize.width > 700 ? (
           <button
             onClick={handleGetStarted}
-            className="flex w-fit items-center justify-center gap-x-2 rounded-lg bg-lmPrimary py-3 px-4 text-lg font-semibold text-white shadow duration-300 hover:scale-101 hover:shadow-lg active:scale-99 active:shadow-sm dark:bg-dmPrimary dark:hover:bg-lmPrimary"
+            className="flex w-fit items-center justify-center gap-x-2 rounded-lg bg-gradient-to-r from-[#0180FE] to-[#2591FE] py-3 px-4 text-lg font-semibold text-white shadow duration-300 hover:scale-101 hover:from-[#0173E5] hover:to-[#0B84FE] hover:shadow-lg active:scale-99 active:shadow-sm"
           >
             Get Started
             <i className="fa-solid fa-chevron-right text-[16px]" />
@@ -67,30 +67,36 @@ const HomepageHero = () => {
           <>
             <div className="absolute left-[20px] top-0 hidden opacity-40 1200:flex">
               <TabletOfferCard
-                offerInformation={offers.filter(
-                  (offer) =>
-                    offer?.id === "fb91e500-9d3e-4604-8e42-5bc3ad86bb21"
-                )[0]}
+                offerInformation={
+                  offers.filter(
+                    (offer) =>
+                      offer?.id === "fb91e500-9d3e-4604-8e42-5bc3ad86bb21"
+                  )[0]
+                }
                 index={0}
               />
             </div>
 
             <div className="absolute left-auto -top-12 z-20 scale-50 700:left-[30%] 700:top-[120px] 700:scale-100 1200:left-[160px] 1200:top-[135px]">
               <SpecialHomepageOfferCard
-                offerInformation={offers.filter(
-                  (offer) =>
-                    offer?.id === "a6f1eef7-bf24-4044-b8e3-4b73946f0650"
-                )[0]}
+                offerInformation={
+                  offers.filter(
+                    (offer) =>
+                      offer?.id === "a6f1eef7-bf24-4044-b8e3-4b73946f0650"
+                  )[0]
+                }
                 index={0}
               />
             </div>
 
             <div className="absolute -left-[124px] -top-[100px] scale-50 opacity-80 700:-left-[44px] 700:top-0 700:scale-100 1200:left-auto 1200:right-0 1200:top-[60px]">
               <DesktopOfferCard
-                offerInformation={offers.filter(
-                  (offer) =>
-                    offer?.id === "adb589db-d842-4c1e-95cf-e1357a3e5938"
-                )[0]}
+                offerInformation={
+                  offers.filter(
+                    (offer) =>
+                      offer?.id === "adb589db-d842-4c1e-95cf-e1357a3e5938"
+                  )[0]
+                }
                 index={0}
               />
             </div>
@@ -98,28 +104,34 @@ const HomepageHero = () => {
             <div className="absolute -top-[180px] -right-24 flex scale-50 flex-col gap-y-2 700:left-[64%] 700:top-[60px] 700:w-[360px] 700:scale-100 1200:top-auto 1200:-left-8 1200:-bottom-20">
               <div className="">
                 <MobileOfferCard
-                  offerInformation={offers.filter(
-                    (offer) =>
-                      offer?.id === "840bd5bb-5609-43c9-bde9-c53906e61ebb"
-                  )[0]}
+                  offerInformation={
+                    offers.filter(
+                      (offer) =>
+                        offer?.id === "840bd5bb-5609-43c9-bde9-c53906e61ebb"
+                    )[0]
+                  }
                   index={0}
                 />
               </div>
               <div className="opacity-60">
                 <MobileOfferCard
-                  offerInformation={offers.filter(
-                    (offer) =>
-                      offer?.id === "11c2e1c0-dec8-42e4-a26e-4707a5af4304"
-                  )[0]}
+                  offerInformation={
+                    offers.filter(
+                      (offer) =>
+                        offer?.id === "11c2e1c0-dec8-42e4-a26e-4707a5af4304"
+                    )[0]
+                  }
                   index={0}
                 />
               </div>
               <div className="opacity-30">
                 <MobileOfferCard
-                  offerInformation={offers.filter(
-                    (offer) =>
-                      offer?.id === "ef7c26bd-24cb-4b63-a9e6-d8be86c95647"
-                  )[0]}
+                  offerInformation={
+                    offers.filter(
+                      (offer) =>
+                        offer?.id === "ef7c26bd-24cb-4b63-a9e6-d8be86c95647"
+                    )[0]
+                  }
                   index={0}
                 />
               </div>

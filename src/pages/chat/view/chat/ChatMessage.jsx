@@ -21,7 +21,7 @@ const ChatMessage = ({
       <div
         className={`${
           isOwner
-            ? "bg-lmPrimary text-white dark:bg-dmPrimary"
+            ? "bg-gradient-to-r from-[#0180FE] to-[#2591FE] text-white"
             : `${styles.darkModeBorder} dark: bg-lmGrey25 text-lmGrey600 dark:bg-dmGrey900 dark:text-dmGrey100`
         } relative w-fit max-w-[90%] rounded-lg p-4 text-sm 600:max-w-[640px]`}
       >

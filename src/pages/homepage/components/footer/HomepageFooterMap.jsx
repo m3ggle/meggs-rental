@@ -65,6 +65,7 @@ const HomepageFooterMap = () => {
           longitude={13.401487}
           anchor="bottom"
         >
+          {/* bg-gradient-to-r from-#0180FE] to-[#2591FE] bg-clip-text text-transparent */}
           <div className="fa-solid fa-location-dot text-[44px] text-lmPrimary drop-shadow-lg duration-300" />
         </Marker>
         <Popup

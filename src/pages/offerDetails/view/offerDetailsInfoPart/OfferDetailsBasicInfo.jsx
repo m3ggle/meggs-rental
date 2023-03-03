@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useHandleOfferLikeIcon } from "../../../../components/offerCard/hooks/useHandleOfferLikeIcon";
+import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
 import { useUserContext } from "../../../../context/user/userContext";
 import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
 import styles from "../../../../style";
@@ -7,28 +8,38 @@ import { handleLikeSetQuery } from "../../helpers/handleLikeSetQuery";
 
 const OfferDetailsBasicInfo = ({ offerInformation }) => {
   const { offer_basics, offer_location, offer_prices } = offerInformation;
-  const { id, offer_name, offer_description, is_liked } = offer_basics
-  const { formatted, latitude, longitude } = offer_location
-  const {day_price, week_price, month_price} = offer_prices
+  const { id, offer_name, offer_description, is_liked } = offer_basics;
+  const { formatted, latitude, longitude } = offer_location;
+  const { day_price, week_price, month_price } = offer_prices;
 
-  const { userId } = useUserContext()
+  const { userId } = useUserContext();
+  const { openAuthNotifyModal } = useNotifyModalContext();
 
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () =>
     handleLocationNavigation(id, { lat: latitude, lng: longitude });
 
-    const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
-      offerId: offer_basics.id,
-      is_liked,
-    });
+  const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
+    offerId: offer_basics.id,
+    is_liked,
+  });
 
-    useEffect(() => {
-      handleLikeSetQuery({
-        offerId: offer_basics.id,
-        userId,
-        isLiked,
-      });
-    }, [isLiked]);
+    const handleLike = () => {
+      if (userId === null) {
+        openAuthNotifyModal();
+        return;
+      }
+
+      handleOfferLikeIcon();
+    };
+
+  useEffect(() => {
+    handleLikeSetQuery({
+      offerId: offer_basics.id,
+      userId,
+      isLiked,
+    });
+  }, [isLiked]);
 
   return (
     <div className="flex gap-x-6">
@@ -54,16 +65,17 @@ const OfferDetailsBasicInfo = ({ offerInformation }) => {
               {offer_name}
             </span>
             <div
-                onClick={handleOfferLikeIcon}
-              className="w-8 h-8 flex justify-center items-center cursor-pointer pb-[2px]">
-            <i
-              className={`fa-solid fa-heart text-[30px] ${
-                isLiked
-                ? styles.badgeRedTextGradient
-                : "text-lmGrey600 hover:text-lmGrey800 dark:text-dmGrey100 dark:hover:text-lmGrey25"
-              }`}
+              onClick={handleLike}
+              className="flex h-8 w-8 cursor-pointer items-center justify-center pb-[2px]"
+            >
+              <i
+                className={`fa-solid fa-heart text-[30px] ${
+                  isLiked
+                    ? styles.badgeRedTextGradient
+                    : "text-lmGrey600 hover:text-lmGrey800 dark:text-dmGrey100 dark:hover:text-lmGrey25"
+                }`}
               />
-              </div>
+            </div>
           </div>
           <div className="flex w-full flex-wrap items-center gap-x-[2px] 700:hidden 1200:flex 1400:hidden">
             <span className="text-lg text-lmPrimary dark:text-dmPrimary">

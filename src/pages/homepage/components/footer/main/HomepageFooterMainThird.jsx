@@ -28,7 +28,7 @@ const HomepageFooterMainThird = () => {
 
         <div className="flex gap-11 text-[24px] text-lmGrey600">
           <a
-            href={"https://github.com/Huhu436"}
+            href={"https://github.com/m3ggle"}
             target="_blank"
             rel="noopener noreferrer"
           >

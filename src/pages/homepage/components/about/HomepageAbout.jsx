@@ -98,7 +98,7 @@ const HomepageAbout = () => {
       <div className="absolute -top-10 left-[68%] w-fit opacity-70 400:top-[4%]">
         <HomepageSocial
           icon="fa-brands fa-github"
-          linkTo="https://github.com/m3ggle"
+          linkTo="https://github.com/m3ggle/meggs-rental"
         />
       </div>
       {/* <FadingAnimation> */}

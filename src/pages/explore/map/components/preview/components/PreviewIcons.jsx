@@ -2,11 +2,15 @@ import React from "react";
 import { queryClient } from "../../../../../../api/reactQuery/queryClient";
 import { useHandleOfferLikeIcon } from "../../../../../../components/offerCard/hooks/useHandleOfferLikeIcon";
 import { useMapSubContext } from "../../../../../../context/map/mapSub/mapSubContext";
+import { useNotifyModalContext } from "../../../../../../context/notifyModal/notifyModalContext";
+import { useUserContext } from "../../../../../../context/user/userContext";
 
 const PreviewIcons = ({ offerInformation }) => {
   const { offer_basics } = offerInformation;
   const { id, is_liked } = offer_basics;
 
+  const { userId } = useUserContext();
+  const { openAuthNotifyModal } = useNotifyModalContext();
   const { dispatchMapSub } = useMapSubContext();
   const handleClose = () => {
     dispatchMapSub({ type: "UPDATE_ACTIVE_MARKER", payload: null });
@@ -18,6 +22,11 @@ const PreviewIcons = ({ offerInformation }) => {
   });
 
   const handleLikeButton = async () => {
+    if (userId === null) {
+      openAuthNotifyModal();
+      return;
+    }
+    
     await handleOfferLikeIcon();
     queryClient.invalidateQueries(["get_offer_details", id]);
   };

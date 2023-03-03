@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useMapSubContext } from "../../../../context/map/mapSub/mapSubContext";
+import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
+import { useUserContext } from "../../../../context/user/userContext";
 import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
 import { useHandleOfferLikeIcon } from "../../hooks/useHandleOfferLikeIcon";
 import MobileOfferCardIcons from "./MobileOfferCardIcons";
@@ -11,10 +13,22 @@ const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
   const { id, picture_urls, latitude, longitude, is_liked } = offerInformation;
   const { dispatchMapSub } = useMapSubContext();
 
+  const { userId } = useUserContext();
+  const { openAuthNotifyModal } = useNotifyModalContext();
+
   const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
     offerId: id,
     is_liked,
   });
+
+  const handleLike = () => {
+    if (userId === null) {
+      openAuthNotifyModal();
+      return;
+    }
+
+    handleOfferLikeIcon()
+  };
 
   const navigate = useNavigate();
   const handleNavigation = () => {
@@ -44,7 +58,7 @@ const MobileOfferCard = ({ offerInformation, index, closeModal }) => {
       />
       <MobileOfferCardIcons
         liked={isLiked}
-        onLikeCallback={handleOfferLikeIcon}
+        onLikeCallback={handleLike}
         onLocationCallback={handleLocation}
       />
       <MobileCatalogOfferCardInfoPart

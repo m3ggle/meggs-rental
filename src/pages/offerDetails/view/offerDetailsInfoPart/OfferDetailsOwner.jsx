@@ -1,5 +1,6 @@
 import React from "react";
 import UserProfileBig from "../../../../components/userProfile/UserProfileBig";
+import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
 import { useUserContext } from "../../../../context/user/userContext";
 import { useHandleContactOwner } from "../../../../hooks/useHandleContactOwner";
 
@@ -8,8 +9,14 @@ const OfferDetailsOwner = ({ offerInformation }) => {
 
   const { userId, profilePictureUrl, userName } = useUserContext();
   const { handleContactOwner } = useHandleContactOwner();
+  const { openAuthNotifyModal } = useNotifyModalContext();
 
   const handleContactClick = async () => {
+    if (userId === null) {
+      openAuthNotifyModal();
+      return;
+    }
+
     const prep = {
       offerId: offer_basics.id,
       ownerInformation: {

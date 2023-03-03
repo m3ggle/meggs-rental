@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Btn from "../../../../../../components/common/Btn";
+import { useNotifyModalContext } from "../../../../../../context/notifyModal/notifyModalContext";
 import { useUserContext } from "../../../../../../context/user/userContext";
 import { useHandleContactOwner } from "../../../../../../hooks/useHandleContactOwner";
 
@@ -11,12 +12,19 @@ const PreviewButtons = ({ offerInformation }) => {
     offer_owner;
 
   const { userId, profilePictureUrl, userName } = useUserContext();
+  const { openAuthNotifyModal } =
+    useNotifyModalContext();
 
   const navigate = useNavigate();
   const handleViewOffer = () => navigate(`/offer-details/${id}`);
   const { handleContactOwner } = useHandleContactOwner();
 
   const handleContactClick = async () => {
+    if (userId === null) {
+      openAuthNotifyModal();
+      return 
+    }
+    
     const prep = {
       offerId: id,
       ownerInformation: {

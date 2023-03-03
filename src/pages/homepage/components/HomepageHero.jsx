@@ -24,7 +24,7 @@ const HomepageHero = () => {
 
   const navigate = useNavigate();
   const handleGetStarted = () => {
-    navigate("/explore/catalog");
+    navigate("/explore/map");
   };
 
   return (
@@ -37,9 +37,9 @@ const HomepageHero = () => {
         <h1 className="text-[40px] font-bold leading-[48px] -tracking-[1.2%] text-lmGrey900 drop-shadow dark:text-dmGrey25 700:text-[60px] 700:leading-[60px] 700:-tracking-[1.5%] 1200:text-[80px] 1200:leading-[80px] 1200:tracking-[1%]">
           Drive what you want, where and when you want!
         </h1>
-        <h3 className="text-lg text-lmGrey800 drop-shadow-sm dark:text-dmGrey25 700:text-3xl 1200:text-4xl">
-          Nisi facilisis mauris lacus sit arcu enim. Commodo faucibus tincidunt
-          morbi risus imperdiet tincidunt.
+        <h3 className="text-lg text-lmGrey800 drop-shadow-sm dark:text-dmGrey25 700:w-[660px] 700:text-3xl 1200:text-4xl">
+          Why let your car sit idle in the garage? Share it with others and make
+          a profit while helping those in need of a ride!
         </h3>
         {windowSize.width > 700 ? (
           <button

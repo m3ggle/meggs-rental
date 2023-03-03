@@ -15,7 +15,7 @@ const Calendar = ({ firstDayCurrentMonth, days, startDate, endDate }) => {
   }
 
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col gap-y-2 cursor-default">
       {/* weeks */}
       <div className="grid grid-cols-7 text-center text-xs leading-6 text-lmGrey400 dark:text-dmGrey300">
         <div>S</div>

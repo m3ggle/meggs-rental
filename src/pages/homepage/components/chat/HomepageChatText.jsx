@@ -1,12 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Btn from "../../../../components/common/Btn";
+import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
+import { useUserContext } from "../../../../context/user/userContext";
 
 const HomepageChatText = () => {
   const navigate = useNavigate();
 
+  const { userId } = useUserContext();
+  const { openAuthNotifyModal } = useNotifyModalContext();
+
+  const handleNavigateChat = () => {
+    if (userId === null) {
+      openAuthNotifyModal();
+      return;
+    }
+
+    navigate("/chat")
+  };
+
   return (
-    <div className="flex w-full flex-col gap-y-3 1200:gap-y-6 px-6 700:w-[615px] 700:px-0">
+    <div className="flex w-full flex-col gap-y-3 px-6 700:w-[615px] 700:px-0 1200:gap-y-6">
       <span className="text-4xl font-semibold -tracking-[1.2%] text-lmGrey800 drop-shadow dark:text-dmGrey25 700:text-[40px] 700:leading-[40px] 1200:text-5xl">
         Chat
       </span>
@@ -30,7 +44,7 @@ const HomepageChatText = () => {
             uiType="primary"
             type="button"
             icon="fa-solid fa-chevron-right"
-            onClick={() => navigate("/chat")}
+            onClick={handleNavigateChat}
           />
         </div>
       </div>

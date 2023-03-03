@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useNotifyModalContext } from "../../../../context/notifyModal/notifyModalContext";
+import { useUserContext } from "../../../../context/user/userContext";
 import { useHandleLocationNavigation } from "../../../../hooks/catalog/useHandleLocationNavigation";
 import { useHandleOfferLikeIcon } from "../../hooks/useHandleOfferLikeIcon";
 import SpecialHomepageOfferCardIcons from "./SpecialHomepageOfferCardIcons";
@@ -12,10 +14,22 @@ const SpecialHomepageOfferCard = ({ offerInformation }) => {
   const navigate = useNavigate();
   const handleNavigation = () => navigate(`/offer-details/${id}`);
 
+  const { userId } = useUserContext();
+  const { openAuthNotifyModal } = useNotifyModalContext();
+
   const { isLiked, handleOfferLikeIcon } = useHandleOfferLikeIcon({
     offerId: id,
     is_liked,
   });
+
+  const handleLike = () => {
+    if (userId === null) {
+      openAuthNotifyModal();
+      return;
+    }
+
+    handleOfferLikeIcon();
+  };
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () =>
     handleLocationNavigation(id, { lat: latitude, lng: longitude });
@@ -28,7 +42,7 @@ const SpecialHomepageOfferCard = ({ offerInformation }) => {
       />
       <SpecialHomepageOfferCardIcons
         liked={isLiked}
-        onLikeCallback={handleOfferLikeIcon}
+        onLikeCallback={handleLike}
         onLocationCallback={handleLocation}
       />
       <SpecialHomepageOfferCardInfoPart

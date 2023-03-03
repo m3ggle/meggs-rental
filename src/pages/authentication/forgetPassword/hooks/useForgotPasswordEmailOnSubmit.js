@@ -11,7 +11,7 @@ export const useForgotPasswordEmailOnSubmit = () => {
     const email = stripAnyWhiteSpace(data.email);
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `http://localhost:3000/forgot-password?round=2&email=${email}`,
+      redirectTo: `http://meggsrental.netlify.app/forgot-password?round=2&email=${email}`,
     });
 
     if (error !== null) {

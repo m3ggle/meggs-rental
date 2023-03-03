@@ -78,8 +78,7 @@ export const useSignUpEmailPasswordSubmit = () => {
     const { data: googleData, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "http://localhost:3000/explore/catalog",
-        // data: { ...userMetaData },
+        redirectTo: "https://meggsrental.netlify.app/explore/catalog",
       },
     });
 
@@ -88,7 +87,7 @@ export const useSignUpEmailPasswordSubmit = () => {
       return;
     }
 
-    console.log(googleData);
+    // console.log(googleData);
   };
 
   return {

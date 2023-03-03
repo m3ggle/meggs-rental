@@ -13,7 +13,7 @@ export const useSignInEmailPasswordLogic = () => {
     setIsLoading(true);
     const { data: signInResult, error } =
       await supabase.auth.signInWithPassword(data, {
-        redirectTo: "http://localhost:3000/homepage",
+        redirectTo: "https://meggsrental.netlify.app/homepage",
       });
 
     if (error) {

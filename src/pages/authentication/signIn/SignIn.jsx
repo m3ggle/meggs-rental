@@ -15,7 +15,7 @@ const SignIn = () => {
             Welcome Back
           </span>
           <span className="text-base text-lmGrey600 dark:text-dmGrey300">
-            Suspendisse et nunc fringilla in tempus.
+            Good to see you again! Let's get started.
           </span>
         </div>
         <SignInEmailPassword />

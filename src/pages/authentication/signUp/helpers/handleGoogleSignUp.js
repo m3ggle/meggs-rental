@@ -4,7 +4,8 @@ export const handleGoogleSignUp = async () => {
   const { data: googleData, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "http://localhost:3000/sign-up/google-callback",
+      redirectTo:
+        "https://meggsrental.netlify.app/sign-up/google-callback",
     },
   });
 

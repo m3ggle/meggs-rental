@@ -32,8 +32,7 @@ const SignUpEmailPassword = () => {
               message: "Invalid email address",
             },
           }}
-          // defaultValue={email ? email : undefined}
-          defaultValue="megglebande@web.de"
+          defaultValue={email ? email : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-at"
@@ -60,8 +59,7 @@ const SignUpEmailPassword = () => {
                 "Minimum 6 Characters - 1 upper and 1 lower case - 1 letter and 1 special character",
             },
           }}
-          // defaultValue={password ? password : undefined}
-          defaultValue="Tester123+"
+          defaultValue={password ? password : undefined}
           render={({ field, fieldState }) => (
             <TextInput
               firstIcon="fa-solid fa-lock"

@@ -1,6 +1,6 @@
 // Combobox (Autocomplete)
-import { Combobox, Transition } from "@headlessui/react";
-import React, { Fragment, useEffect, useState } from "react";
+import { Combobox } from "@headlessui/react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import AutocompleteOptions from "./AutocompleteOptions";
@@ -11,14 +11,13 @@ const Autocomplete = ({
   placeholder,
   itemList,
   isLoading = false,
-  isCostumeAllowed= false,
+  isCostumeAllowed = false,
   value,
   onInputChange = () => {},
   onSelect = () => {},
   onDelete = () => {},
 }) => {
   const [selected, setSelected] = useState(value ? value : null);
-  // const [selected, setSelected] = useState(value ? value : placeholder);
   const [query, setQuery] = useState("");
 
   const filteredItems =

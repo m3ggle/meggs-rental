@@ -18,8 +18,8 @@ const OfferCardInfoPart = ({ onNavigationCallback, offerInformation }) => {
     >
       <div className="flex w-full flex-col overflow-hidden">
         <div className="flex w-10/12 items-center gap-x-1 text-sm text-lmGrey600 dark:text-dmGrey100 400:w-10/12 500:w-full 1400:text-base">
-          <i className="fa-solid fa-location-dot"></i>
-          <span className="w-8/12 truncate 400:w-9/12 500:w-full">
+          <i className="fa-solid fa-location-dot" />
+          <span className="w-7/12 truncate 400:w-9/12 500:w-full bg-black">
             {formatted}
           </span>
         </div>

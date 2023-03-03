@@ -20,7 +20,6 @@ const OfferCard = ({ offerInformation, index }) => {
   const { handleLocationNavigation } = useHandleLocationNavigation();
   const handleLocation = () =>
     handleLocationNavigation(id, { lat: latitude, lng: longitude });
-  // const handleLocation = () => handleLocationNavigation(id, location);
 
   return (
     <motion.div

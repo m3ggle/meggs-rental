@@ -5,8 +5,6 @@ const Btn = ({ type, title, icon, onClick, onSubmit, uiType }) => {
   const handleClick = () => onClick !== undefined && onClick();
   const handleSubmit = () => onSubmit !== undefined && onSubmit();
 
-  // bg-lmPrimary dark:bg-dmPrimary dark:hover:bg-lmPrimary
-
   const renderUiTypeClasses = () => {
     if (uiType === "primary") {
       return `bg-gradient-to-r from-[#0180FE] to-[#2591FE] ${

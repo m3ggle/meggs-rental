@@ -26,14 +26,14 @@ const SearchFilter = ({
         // onSubmit={handleSubmit(onSubmit)}
         className="flex w-full max-w-[340px] flex-col gap-y-2"
       >
-        <label
+        {/* <label
           htmlFor={name}
           className="text-sm text-lmGrey500 dark:text-dmGrey100"
         >
           {label}
-        </label>
+        </label> */}
         {/* input and error*/}
-        <div className="flex w-full items-end gap-x-2">
+        <div className="flex w-full items-end gap-x-2 ">
           <InputChoice
             definedActions={definedActions}
             choice={choice}

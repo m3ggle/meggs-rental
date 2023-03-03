@@ -14,7 +14,6 @@ const InputChoice = ({ choice, control, handleDelete, definedActions }) => {
 
   if (choice === "search") {
     return (
-      // <MobileCatalogSearch control={control} handleDelete={handleDelete} />
       <OfferNameAutocomplete
         control={control}
         onDelete={() => handleDelete("offerName", "")}

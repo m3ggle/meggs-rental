@@ -50,4 +50,3 @@ const Calendar = ({ firstDayCurrentMonth, days, startDate, endDate }) => {
 };
 
 export default Calendar;
-// isWithinInterval(dateToCheck, { start: startDate, end: endDate })

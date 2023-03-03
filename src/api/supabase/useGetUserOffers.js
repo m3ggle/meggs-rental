@@ -19,7 +19,7 @@ export const useGetUserOffers = (userId, limit = 10, offset = 0) => {
     {
       refetchOnMount: true,
       refetchOnWindowFocus: false,
-      staleTime: Infinity, // ten minutes
+      staleTime: Infinity, 
     }
   );
 

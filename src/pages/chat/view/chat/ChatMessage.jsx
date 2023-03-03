@@ -1,5 +1,4 @@
 import React from "react";
-import supabase from "../../../../config/supabaseClient";
 import styles from "../../../../style";
 import { useRealTimeMessageStatus } from "../../hooks/useRealTimeMessageStatus";
 

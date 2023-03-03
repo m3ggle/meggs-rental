@@ -17,7 +17,7 @@ const ChatContainer = () => {
         <ChatMenu />
         <div
           style={{ height: `${windowSize.height}px` }}
-          className="flex min-w-[360px] max-w-[720px] flex-col gap-y-2 1000:w-full 1000:min-w-0 1000:max-w-none"
+          className="flex min-w-[360px] flex-col gap-y-2 1000:w-full 1000:min-w-0"
         >
           {chatId === null ? (
             <div className="flex h-screen w-full items-center justify-center">

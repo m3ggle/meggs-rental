@@ -7,11 +7,12 @@ const OfferDetailsHeaderPart = ({
   rightIcon = "",
   cursor = "cursor-default",
   hoverEnabled = true,
+  additionalCSS = ""
 }) => {
   return (
     <div
       onClick={onClickCallback}
-      className={`${cursor} flex items-center gap-x-2 text-lmGrey600 ${
+      className={`${cursor} ${additionalCSS} flex items-center gap-x-2 text-lmGrey600 ${
         hoverEnabled && "hover:text-lmGrey800 dark:hover:text-lmGrey25"
       }  dark:text-dmGrey100`}
     >

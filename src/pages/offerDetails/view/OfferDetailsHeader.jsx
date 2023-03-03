@@ -17,7 +17,7 @@ const OfferDetailsHeader = ({ offerInformation }) => {
 
   return (
     <div
-      className={`flex h-full w-full items-center justify-between gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
+      className={`flex h-full w-full items-center justify-between flex-row gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
     >
       {/* go back */}
       <OfferDetailsHeaderPart
@@ -25,6 +25,7 @@ const OfferDetailsHeader = ({ offerInformation }) => {
         value="Go Back"
         onClickCallback={handleGoBack}
         cursor="cursor-pointer"
+        additionalCSS="min-w-[84px]"
       />
       {/* views, likes and share */}
       <div className="flex items-center gap-x-8">

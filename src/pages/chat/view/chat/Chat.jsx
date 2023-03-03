@@ -31,7 +31,7 @@ const Chat = () => {
       ) : (
         <div
           style={{ height: `${windowSize.height}px` }}
-          className="flex flex-col"
+          className="flex flex-col w-full"
         >
           <ChatHeader
             chatInformation={chatInformation}

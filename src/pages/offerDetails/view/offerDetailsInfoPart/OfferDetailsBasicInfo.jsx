@@ -51,12 +51,12 @@ const OfferDetailsBasicInfo = ({ offerInformation }) => {
         <div
           className={`flex h-full w-full flex-col gap-y-1 rounded-3xl bg-white p-6 shadow dark:bg-dmGrey900 dark:shadow-dmShadow`}
         >
-          <div className="flex items-center text-lmGrey600 dark:text-dmGrey100">
-            <div
+          <div className="flex w-full items-center text-lmGrey600 dark:text-dmGrey100">
+            <i
               className="fa-solid fa-location-dot mb-[3px] h-[16px] w-[16px] text-[16px]"
               aria-hidden="true"
             />
-            <span onClick={handleLocation} className="cursor-pointer text-base">
+            <span onClick={handleLocation} className="cursor-pointer text-base w-full truncate">
               {formatted}
             </span>
           </div>

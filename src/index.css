@@ -33,9 +33,35 @@
 }
 
 .primary-gradient {
-  background: linear-gradient(90deg, #0177ED 0%, #2591FE 100%);
+  background: linear-gradient(90deg, #0177ed 0%, #2591fe 100%);
 }
 
 .badge-red {
-  background: linear-gradient(180deg, #BE0504 0%, #8C0403 100%);
+  background: linear-gradient(180deg, #be0504 0%, #8c0403 100%);
+}
+
+.catalog-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+@media screen and (min-width: 500px) {
+  .catalog-grid {
+    width: 100%;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 3fr));
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .catalog-grid {
+    width: 100%;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(292px, 1fr));
+  }
 }

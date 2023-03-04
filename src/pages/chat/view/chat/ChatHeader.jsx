@@ -58,6 +58,11 @@ const ChatHeader = ({ chatInformation, chatInformationLoading }) => {
                 ? chatInformation.borrower_profile_picture_url
                 : chatInformation.owner_profile_picture_url
             }
+            uid={
+              userId === chatInformation.owner_id
+                ? chatInformation.borrower_id
+                : chatInformation.owner_id
+            }
           />
         )}
       </div>

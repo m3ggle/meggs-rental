@@ -18,7 +18,7 @@ const UserOffers = () => {
 
   return (
     <PageAuthChecker>
-      <CatalogWrapper offerList={userOffers} />;
+      <CatalogWrapper offerList={userOffers} />
     </PageAuthChecker>
   );
 };

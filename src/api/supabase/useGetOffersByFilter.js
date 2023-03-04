@@ -6,7 +6,6 @@ export const useGetOffersByFilter = (filter = {}) => {
   const { userId } = useUserContext();
 
   const getOfferCards = async () => {
-    console.log(filter)
     return supabase.rpc("get_offers_by_filter", {
       ...filter,
     });

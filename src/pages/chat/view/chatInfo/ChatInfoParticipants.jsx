@@ -20,6 +20,7 @@ const ChatInfoParticipants = ({ chatInformation }) => {
                 } • Owner`}
         displayName={chatInformation.owner_user_name}
         photoUrl={chatInformation.owner_profile_picture_url}
+        uid={chatInformation.owner_id}
       />
       <UserProfileSmall
         text={`
@@ -33,6 +34,7 @@ const ChatInfoParticipants = ({ chatInformation }) => {
                 } • Borrower`}
         displayName={chatInformation.borrower_user_name}
         photoUrl={chatInformation.borrower_profile_picture_url}
+        uid={chatInformation.borrower_id}
       />
     </div>
   );

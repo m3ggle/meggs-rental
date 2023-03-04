@@ -40,7 +40,7 @@
   background: linear-gradient(180deg, #be0504 0%, #8c0403 100%);
 }
 
-.catalog-grid {
+/* .catalog-grid {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -64,4 +64,4 @@
     gap: 16px;
     grid-template-columns: repeat(auto-fit, minmax(292px, 1fr));
   }
-}
+} */

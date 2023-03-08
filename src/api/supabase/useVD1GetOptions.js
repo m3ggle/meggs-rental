@@ -29,12 +29,9 @@ export const useVD1GetOptions = () => {
   );
 
   const handleBrandName = () => {
-    if (data !== undefined) {
-      return data.map((brand, index) => {
+      return data[0].map((brand, index) => {
         return { id: index, name: brand };
       });
-    }
-    return [];
   };
 
   return {

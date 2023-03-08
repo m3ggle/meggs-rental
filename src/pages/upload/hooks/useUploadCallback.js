@@ -13,8 +13,6 @@ const useUploadCallback = () => {
   const { notifyStandard } = toastNotify();
   const navigate = useNavigate();
 
-  // startDate and endDate: startDate ?? null
-
   const handleSubmit = async (pictures = []) => {
     notifyStandard({
       information: {
@@ -38,9 +36,9 @@ const useUploadCallback = () => {
     }
 
     // uploading offers
-    const { offerId, error } = uploadOfferData({ formData, userId });
+    const { offerId, error } = await uploadOfferData({ formData, userId });
 
-    if (error) {
+    if (error || offerId === null || !offerId) {
       console.log(error);
       notifyStandard({
         information: {
@@ -53,7 +51,7 @@ const useUploadCallback = () => {
     }
 
     // uploading images to storage
-    const { pictureUrls } = uploadOfferPictures({ offerId, pictures });
+    const { pictureUrls } = await uploadOfferPictures({ offerId, pictures });
 
     // preparation for inserting the images regarding the offer
     const prox =

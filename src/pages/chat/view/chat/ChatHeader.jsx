@@ -21,7 +21,7 @@ const ChatHeader = ({ chatInformation, chatInformationLoading }) => {
   const windowSize = useWindowSize();
 
   return (
-    <div className="flex min-h-[106px] w-full items-center justify-between gap-y-2 px-6 pb-6 pt-9">
+    <div className="flex w-full items-center justify-between gap-y-2 px-4 pt-4 pb-2 shadow-sm 800:min-h-[106px] 1200:px-6 1200:pb-6 1200:pt-9">
       <div className="flex w-[240px] items-center gap-x-4 600:w-[320px]">
         {windowSize.width < 1000 && (
           <i

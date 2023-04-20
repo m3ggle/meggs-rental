@@ -48,7 +48,10 @@ const OfferCard = ({ offerInformation, index }) => {
       }}
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
-      className={`relative flex w-full min-w-[312px] overflow-hidden cursor-pointer gap-x-3 rounded-lg bg-white shadow dark:border dark:border-solid dark:border-dmGrey800/50 dark:bg-dmGrey900 dark:shadow-sm 500:h-[252px] 500:w-[180px] 500:min-w-0 500:justify-center 500:gap-x-0 500:rounded-xl 500:shadow-none dark:500:border-none 1400:h-[406px] 1400:w-[292px]`}
+      className={`relative flex w-full min-w-[312px] cursor-pointer gap-x-3 overflow-hidden rounded-lg 
+      bg-white shadow dark:border dark:border-solid dark:border-dmGrey800/50 dark:bg-dmGrey900
+      dark:shadow-sm 500:h-[252px] 500:w-[180px] 500:min-w-0 500:justify-center 500:gap-x-0 500:rounded-xl
+      500:shadow-none dark:500:border-none 1400:h-[406px] 1400:w-[292px]`}
     >
       <OfferCardImagePart
         photoURLs={picture_urls}
